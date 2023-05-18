@@ -1,0 +1,31 @@
+---230510 회의록 ---
+
+1. 기능명세 초안 작성
+
+2. 메인화면 디자인 틀 결정
+색, 
+
+
+
+
+디자인 참고할만한 사이트
+
+펫플래닛
+https://petplanet.co/
+
+와요
+https://wayopet.com/
+
+아이조아펫파크
+https://www.ijoapetpark.com/
+
+페펨
+http://www.pefam.co.kr/index.html
+
+온누리펫시터
+https://www.onnuript.co.kr/
+
+비마이펫
+https://mypetlife.co.kr/
+
+
