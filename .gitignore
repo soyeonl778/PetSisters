@@ -1,6 +1,21 @@
 # Created by https://www.toptal.com/developers/gitignore/api/macos,windows,java,eclipse,serverless
 # Edit at https://www.toptal.com/developers/gitignore?templates=macos,windows,java,eclipse,serverless
 
+HELP.md
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
 ### Eclipse ###
 .metadata
 bin/
@@ -15,7 +30,6 @@ local.properties
 .loadpath
 .recommenders
 MANIFEST.MF
-web.xml
 # External tool builders
 .externalToolBuilders/
 
@@ -83,7 +97,6 @@ web.xml
 .mtj.tmp/
 
 # Package Files #
-*.jar
 *.war
 *.nar
 *.ear
