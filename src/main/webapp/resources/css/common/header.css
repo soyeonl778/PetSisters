@@ -738,3 +738,6 @@ input::placeholder {
   background-color: #B9EAFF!important;
   color: aliceblue!important;
 }
+.navbar-nav {
+	gap: 11px!important;
+}
