@@ -1,0 +1,133 @@
+.mainContent {
+    height: 650px;
+    background-color: rgb(255, 255, 255);
+}
+
+.mainImg {
+    display: flex;
+    justify-content: center;
+}
+
+.login {
+    display: flex;
+    justify-content: center;
+    color: #484848;
+}
+
+.first_hr1 {
+    width:80%;
+    display: flex;
+    margin-left : auto;
+    margin-right : auto;
+}
+
+.login_group {
+    float: left;
+    width: 600px;
+    margin-right: 35px;
+}
+
+.login_group p label {
+    float: left;
+    width: 100px;
+    padding-bottom: 0;
+    line-height: 40px;
+    font-size: 17px;
+    margin-top: 20px;
+}
+
+.login_group p input {
+    float: left;
+    width: 500px;
+    height: 40px;
+    line-height: 38px;
+    padding-left: 20px;
+    font-size: 17px;
+    background-color: #ECECEC;
+    border: 1px solid #ECECEC;
+    margin-top: 20px;
+}
+.login_group p input[type="password"] {
+    margin-bottom: 17px;
+}
+
+.inputArea {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.input_btn {
+    margin: 0 0 20px 100px;
+}
+
+.btn_group {
+    float: right;
+    width: 190px;
+    height: 181px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+.btn_group button {
+    margin-bottom: 11px;
+}
+
+.btn_log {
+    height: 100px;
+    width: 100%;
+    background-color: #0888D0;
+    color:white;
+    font-size: 20px;
+    display: inline-block;
+    border-radius: 4px;
+}
+
+.btn_group.click1 {
+    font-size: 0;
+    margin-top: 20px;
+    text-align: center;
+}
+#groupWrapper1 {
+    display: flex;
+    align-items: center;
+}
+.click1 {
+    display: flex;
+    padding: 0;
+    justify-content: space-around;
+}
+
+li > a {
+    color: #484848;
+    font-size: 15px;
+    text-decoration: none;
+}
+
+.otherArea {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.notLogin {
+    font-size: 17px;
+}
+
+.btn_enroll {
+    height: 50px;
+    width: 350px;
+    background-color: #0888D0;
+    color:white;
+    font-size: 17px;
+    display: inline-block;
+    margin-left: 100px;
+    border-radius: 4px;
+}
+
+#groupWrapper2 {
+    display: flex;
+    align-items: center;
+    margin-top: 80px;
+    margin-bottom: 80px;
+}

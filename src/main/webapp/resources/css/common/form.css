@@ -1,0 +1,508 @@
+#container, #content{
+    position:relative;
+    margin-top: 100px;
+}
+
+.page_aticle button, .page_aticle input, .page_aticle select, .page_aticle * {
+    font-family: 'NanumSquare','Noto Sans KR', sans-serif;
+    font-weight: 400;
+    letter-spacing: 0;
+}
+
+
+#main{
+    border-bottom: 1px solid #f7f7f7;
+}
+
+#content{
+    min-width:1050px;
+    padding-bottom: 120px;
+}
+
+.page_aticle {
+    margin: 0 auto;
+}
+
+.page_aticle.aticle_type2 {
+    padding-top: 65px;
+}
+
+.page_aticle {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+#snb {
+    float: left;
+    width: 200px;
+}
+
+#snb .tit_snb {
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 34px;
+    color: #0888D0;
+    letter-spacing: -.5px;
+    text-align: center;
+    border-bottom: 1px solid gray;
+    padding-bottom: 15px;
+}
+.list_menu {
+    padding-left: unset;
+}
+
+.list_menu a {
+    text-decoration: none;
+}
+
+#snb .list_menu li.on a, #snb .list_menu li a:hover {
+    background-size: 6px 11px;
+    font-weight: 700;
+    font-size: large;
+    color: #0888D0;
+}
+
+#snb .list_menu li a {
+    display: block;
+    overflow: hidden;
+    padding: 15px 0 15px 20px;
+    background-size: 6px 11px;
+    font-size: 14px;
+    color: #666;
+    line-height: 20px;
+    letter-spacing: -.3px;
+}
+
+#snb .link_inquire {
+    display: block;
+    overflow: hidden;
+    width: 200px;
+    height: 60px;
+    margin-top: 20px;
+    padding: 9px 0 0 21px;
+    border-radius: 0 100px 100px 0;
+    background: #fafafa url(https://res.kurly.com/pc/ico/2008/ico_arrow_6x11_on.svg) no-repeat 174px 25px;
+    background-size: 6px 11px;
+    font-size: 12px;
+    color: #333;
+    line-height: 20px;
+}
+
+#snb .link_inquire .emph {
+    display: block;
+    padding-bottom: 1px;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.page_aticle.aticle_type2:after {
+    content: "";
+    display: block;
+    overflow: hidden;
+    width: 100%;
+    clear: both;
+}
+/*
+.page_aticle.aticle_type2 .page_section {
+    float: right;
+    width: 950px;
+}
+*/
+.page_aticle .head_aticle {
+    padding: 5px 0 34px;
+}
+
+.page_aticle .head_aticle .tit {
+    height: 36px;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 36px;
+    color: #333;
+    letter-spacing: -.5px;
+}
+
+.page_aticle .head_aticle .tit_sub {
+    padding-left: 11px;
+    font-size: 14px;
+    color: #999;
+    line-height: 20px;
+    letter-spacing: -.3px;
+    vertical-align: 3px;
+}
+
+.page_aticle .layout-pagination {
+    font-size: 0;
+}
+
+.page_aticle .layout-pagination-first-page:first-child {
+    border-left: 1px solid #ddd;
+}
+
+.page_aticle .layout-pagination-button:first-child {
+    border-left: 0;
+}
+
+.page_aticle .layout-pagination a {
+    cursor: pointer;
+}
+
+.page_aticle .layout-pagination a, .page_aticle .layout-pagination strong {
+    font-weight: 700;
+    font-size: 12px;
+}
+
+body #container #main .layout-pagination-button:first-child{
+    border-left: 1px solid #ddd;
+}
+.layout-pagination-prev-page {
+    background-image: url(https://res.kurly.com/pc/etc/old/images/common/icon-pagination-prev.png);
+}
+.layout-pagination-first-page, .layout-pagination-prev-page, .layout-pagination-next-page, .layout-pagination-last-page {
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    text-indent: -9999px;
+}
+
+.layout-pagination-button {
+    display: inline-block;
+    width: 34px;
+    height: 34px;
+    border: 1px solid #ddd;
+    border-left: 0;
+    vertical-align: top;
+}
+
+.layout-pagination {
+    margin: 60px 0 0;
+    text-align: center;
+}
+
+.layout-pagination-first-page {
+    background-image: url(https://res.kurly.com/pc/etc/old/images/common/icon-pagination-first.png);
+}
+
+.layout-pagination-number:hover, .layout-pagination-number.__active {
+    background-color: #f7f7f7;
+    color: #5f0080;
+}
+
+.layout-pagination-number{
+    font-weight: 700;
+    color: #333;
+    line-height: 34px;
+}
+
+body #container #main .layout-pagination .pagediv span strong{
+    border-left: 0px;
+}
+
+.layout-pagination-next-page {
+    background-image: url(https://res.kurly.com/pc/etc/old/images/common/icon-pagination-next.png);
+}
+
+.layout-pagination-last-page {
+    background-image: url(https://res.kurly.com/pc/etc/old/images/common/icon-pagination-last.png);
+}
+
+#drop-section {
+    width: 85px!important;
+    height: 30px!important;
+    font-size: revert!important;
+    font-weight: bold!important;
+    border:2px solid lightgray;
+}
+.section_destination .new_address {
+    position: relative;
+}
+
+.section_destination .new_address .btn {
+    position: absolute;
+    right: 3px;
+    bottom: 7px;
+    border: 0 none;
+    background-color: #fff;
+    font-weight: 700;
+    font-size: 16px;
+    color: #333;
+    line-height: 24px;
+    letter-spacing: -0.5px;
+    text-align: right;
+}
+
+.page_aticle .head_aticle {
+    padding: 5px 0 34px;
+}
+
+.section_destination .tbl_type1 {
+    border-bottom: 1px solid #f4f4f4;
+}
+
+.page_aticle .tbl {
+    width: 100%;
+}
+
+
+
+
+/*
+.section_destination .tbl_type1 th {
+    padding: 17px 0 20px;
+    vertical-align: top;
+}
+
+.page_aticle .tbl_type1 th {
+    padding: 20px 0;
+    border-top: 2px solid #333;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    color: #333;
+    letter-spacing: -.5px;
+}
+*/
+
+/*
+.section_destination .type_select .tit_address {
+    padding-left: 0;
+    text-indent: -8px;
+}
+
+.section_destination .tbl_type1 .tit_address {
+    width: auto;
+}
+
+.section_destination .tbl_type1 .tit_receive {
+    width: 120px;
+}
+
+.section_destination .tbl_type1 .tit_phone {
+    width: 100px;
+}
+
+
+.section_destination .tbl_type1 .tit_delivery {
+    width: 100px;
+}
+
+.section_destination .tbl_type1 .tit_modify {
+    width: 60px;
+}
+*/
+
+
+.section_destination .tbl_type1 tr:first-child td, .section_destination .tbl_type1 td {
+    height: 90px;
+    font-size: 14px;
+    color: #333;
+    line-height: 22px;
+    letter-spacing: -0.4px;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.page_aticle .tbl_type1 tr:first-child td {
+    border-top: 1px solid #333;
+}
+
+.section_destination .type_select .select {
+    display: table-cell;
+}
+
+.type_radio label {
+    font-size: 14px;
+    line-height: 22px;
+}
+
+.type_radio input[type="radio"] {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+}
+
+.section_destination .tbl_type1 .type_radio input[type="radio"] + .ico {
+    margin: 0;
+    vertical-align: middle;
+}
+
+.type_radio input[type="radio"]:checked + .ico {
+    background: url(https://res.kurly.com/mobile/service/common/2003/ico_checkbox_checked.png) no-repeat 50% 50%;
+    background-size: 24px 24px;
+}
+
+.type_radio input[type="radio"] + .ico {
+    display: inline-block;
+    position: relative;
+    width: 24px;
+    height: 24px;
+    margin-right: 12px;
+    border: 0 none;
+    background: url(https://res.kurly.com/mobile/service/common/2003/ico_checkbox.png?v=1) no-repeat 50% 50%;
+    background-size: 24px 24px;
+    vertical-align: -7px;
+}
+
+
+
+/*
+.section_destination .tbl_type1 .badge_default {
+    display: block;
+    width: 74px;
+    height: 22px;
+    margin-bottom: 7px;
+    border-radius: 11px;
+    background-color: #f7f7f7;
+    font-weight: 700;
+    font-size: 12px;
+    color: #666;
+    line-height: 22px;
+    letter-spacing: 0;
+    text-align: center;
+}
+*/
+
+
+
+
+
+/*
+.delete_position {
+    position: relative;
+}
+
+.product_delete {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    border: 0 none;
+    background: url(https://res.kurly.com/pc/service/cart/2007/ico_delete.svg) no-repeat 50% 50%;
+    font-size: 0;
+    line-height: 0;
+    top: 33px;
+    left: 19px;
+}
+
+.tit_delete{
+    width:80px;
+}
+*/
+
+/* 이제 내가 작성 */
+
+.page_aticle .tbl_type1 th { /* 후기 작성(굵은 글씨) 밑에 마이무당 색깔의 줄 */
+    padding: 20px 0;
+
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    color: #333;
+    letter-spacing: -.5px;
+}
+.tilte sub {
+    color : black;
+}
+#rev-img {
+    width : 100px;
+    height: 100px;
+    border: 1px solid red;
+}
+
+#rev-productName {
+    width : 700px;
+    height: 100px;
+    border: 1px solid pink;
+    text-align: center;
+    margin-left : 50px;
+    font-size : 30px;
+}.page_aticle .head_aticle .tit-review {
+    height: 36px;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 36px;
+    color: #1c2abc;
+    letter-spacing: -.5px;
+}
+
+.rev-title, .rev-content, .rev-image {
+    border-bottom: 1px solid lightblue;
+    width: 100px;
+    box-sizing: border-box;
+    background-color: rgb(241, 204, 210);
+}
+#rev-input-title {
+    border: 1px solid black;
+    box-sizing: border-box;
+}
+#title-InputArea {
+    width: 700px;
+    height: 50px;
+    font-size : 15px;
+}
+.rev-content {
+    width: 100px;
+    height: 300px;
+}
+#inputReview-content {
+    width: 700px;
+  
+    height: 300px;
+    border : 1px solid black;
+    border-radius: 1px;
+}
+
+#rev-content2 {
+    width: 700px;
+    height: 280px;
+    border : 1px solid black;
+    font-size: 15px;
+    text-align: left;
+    box-sizing: border-box;
+}
+
+#rev-inputImage {
+    border: 1px solid black;
+    width: 700px;
+    box-sizing: border-box;
+    height: 100px;
+    padding-top : 6px;
+}
+#uploadImg-B {
+    border: 1px solid black;
+    width: 100px;
+    height: 100px;
+    margin-left: 10px;
+    color : purple;
+    font-size: large;
+
+}
+#about_1to1 {
+    width: 700px;
+    border: 2px solid blue;
+    height: 50px;
+}
+
+#link-1to1Text {
+    width : 700px;
+    border : none;
+    text-align: left;
+    padding-left: 10px;
+    padding-top: 0px;
+    height: 50px;
+    font-size: 12px;
+}
+
+#link-1to1 {
+    font-size: small;
+    color : rgb(254, 116, 119);
+    border : none;
+    font-weight: bold;
+    margin: 10px;;
+}
+
+#reviewInsert-submit {
+    width: 120px;
+    height: 50px;
+    font-size: 20px;
+    font-weight: bold;
+    color : white;
+    background-color:rgb(254, 116, 119);
+}
