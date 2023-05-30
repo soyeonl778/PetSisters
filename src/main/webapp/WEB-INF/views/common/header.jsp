@@ -11,16 +11,19 @@
         <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
           <ul class="navbar-nav">
             <li class="nav-item">
+              <a class="nav-link" href="#">펫시터 찾기</a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" href="#">커뮤니티</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">채팅상담</a>
+              <a class="nav-link" href="#">후기</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">펫시터찾기</a>
+              <a class="nav-link" href="#">채팅</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">이용후기</a>
+              <a class="nav-link" href="#">고객센터</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">로그인</a>
