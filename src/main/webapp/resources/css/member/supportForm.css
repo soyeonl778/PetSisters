@@ -1,0 +1,77 @@
+.supportBody {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.supportTitle {
+    width: 100%;
+    background-color: white;
+}
+
+.supportContentArea {
+    margin-top: 102px;
+    background-color: rgb(245, 245, 245);
+    padding-bottom: 150px;
+}
+
+.supportContent {
+    width: 1000px;
+    margin: 0px auto;
+    padding-top: 95px;
+}
+
+.supportForm {
+    background-color: white;
+    border: 1px solid rgb(235, 235, 235);
+    border-radius: 12px;
+    padding: 75px 80px 80px;
+    margin-top: 45px;
+}
+
+input[name="address"] {
+    width: 100%; 
+    height: 58px; 
+    border: 1px solid rgb(235, 235, 235); 
+    border-radius: 5px; 
+    padding: 20px;
+}
+
+.typeOfResidence {
+    margin-top: 20px;
+}
+
+.experienceArea {
+    width: 100%;
+    height: 173px;
+    min-height: 173px;
+    border: 1px solid #E0E0E0;
+    border-radius: 5px;
+    padding: 20px 18px;
+    color: #333333;
+    font-size: 15px;
+    font-weight: 400;
+    margin-top: 20px;
+}
+
+#consent1, #consent2, #consent3 {
+    margin-bottom: 10px;
+}
+
+#supportSubmitArea {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#supportSubmit {
+    width: 270px;
+    height: 70px;
+    background-color: #0888D0;
+    border-radius: 5px;
+
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: 600;
+    color: white;
+    margin-top: 50px;
+}

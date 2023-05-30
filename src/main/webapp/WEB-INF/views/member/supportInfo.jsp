@@ -3,21 +3,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <link rel="stylesheet" href="/resources/css/common/main.css">
 <link rel="stylesheet" href="/resources/css/member/supportInfo.css">
 <jsp:include page="../common/common.jsp" />
-  <!-- AOS-->
-  <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
-    <!-- AOS-->
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
 <script src="/resources/js/main.js"></script>
-
 <title>펫시스터즈</title>
 </head>
 <body>

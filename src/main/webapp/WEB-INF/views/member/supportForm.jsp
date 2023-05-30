@@ -1,66 +1,19 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Main</title>
-  <link rel="stylesheet" href="/resources/css/reset.css">
-  <link rel="stylesheet" href="/resources/css/mainContent.css">
-  <link rel="stylesheet" href="/resources/css/header.css">
-  <link rel="stylesheet" href="/resources/css/footer.css">
-  <link rel="stylesheet" href="/resources/css/supportForm.css">
-  <!-- CSS only -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-
-  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-  <!-- 슬라이더 CDN-->
-  <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
-
-  <script src="/resources/js/main.js"></script>
-  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@2.0/nanumsquare.css">
-
+  <link rel="stylesheet" href="/resources/css/member/supportForm.css">
+  <jsp:include page="../common/common.jsp" />
+  <title>펫시터지원폼</title>
 </head>
 
 <body>
   <div id="wrap">
-    <!-- 헤더 영역 시작-->
-    <nav class="navbar navbar-expand-lg bg-light fixed-top">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="/mian/main.html"><img class="headerLogo" src="/resources/img/헤더로고.png" alt="headerLogo"></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link" href="#">커뮤니티</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">채팅상담</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">펫시터찾기</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">이용후기</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">로그인</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link petsiter" href="#">펫시터지원</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-    <!-- 헤더 영역 끝-->
+  
+      <jsp:include page="../common/header.jsp" />	
+  
     <!-- 본문 시작 -->
 
     <main class="supportBody">
@@ -149,61 +102,11 @@
 
 
     <!-- 본문 끝 -->
+    
+    
+        <jsp:include page="../common/footer.jsp" />
+    
 
-
-    <!-- Footer 영역 시작 -->
-    <div id="footer">
-      <div class="inner_footer">
-        <div class="cc_footer">
-          <!-- cc = company calls -->
-          <h2 class="cc_tit">더 궁금한것이 있으세요?
-          </h2>
-          <div class="cc_view cc_kakao">
-            <a href="#" class="footerTag">
-              <div class="footerLink">1:1 카톡상담</div>
-            </a>
-            <a href="#" class="footerTag">
-              <div class="footerLink">자주묻는질문</div>
-            </a>
-            <a href="#" class="footerTag">
-              <div class="footerLink">02-1561-4463</div>
-            </a>
-          </div>
-          <strong class="copy">Copyright ©2023 PetSisters. All Right Reserved.</strong>
-        </div>
-
-        <div class="company_info">
-          <h2 class="cc_tit">펫시스터즈
-            <img id="footerLogo" src="/resources/img/푸터로고.png" alt="footerLogo">
-          </h2>
-          <div class="spec_info">
-            주식회사 개봐주는언니들
-            <span class="bar">I</span>
-            대표 : 조승호
-            <br>
-            사업자등록번호 : 215-15-41572
-            <br>
-            대표전화 : 02-1588-1548
-            <span class="bar">I</span>
-            통신판매업 신고 : 2011-경기광명-1384 <br>
-            팩스 : 02-1568-4548
-            <br>
-            사업장 소재지 : 서울특별시 영등포구 선유동2로 57 이레빌딩
-            <br>
-            개인정보 보호 책임자 : 정재훈 <a href="#">jjh156@naver.com</a>
-            <br>
-          </div>
-        </div>
-      </div>
-
-      <div class="link_footer">
-        <a href="">이용약관</a>
-        <a href="">위치정보활용약관</a>
-        <a href="">개인정보취급방침</a>
-        <a href="">안정보상프로그램</a>
-      </div>
-    </div>
-    <!-- Footer 영역 끝 -->
   </div>
   <!-- JavaScript Bundle with Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
