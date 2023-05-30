@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Main</title>
+  <link rel="stylesheet" href="/resources/css/reset.css">
+  <link rel="stylesheet" href="/resources/css/mainContent.css">
+  <link rel="stylesheet" href="/resources/css/header.css">
+  <link rel="stylesheet" href="/resources/css/footer.css">
+  <link rel="stylesheet" href="/resources/css/supportForm.css">
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+
+  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+  <!-- 슬라이더 CDN-->
+  <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
+
+  <script src="/resources/js/main.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@2.0/nanumsquare.css">
+
+</head>
+
+<body>
+  <div id="wrap">
+    <!-- 헤더 영역 시작-->
+    <nav class="navbar navbar-expand-lg bg-light fixed-top">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/mian/main.html"><img class="headerLogo" src="/resources/img/헤더로고.png" alt="headerLogo"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="#">커뮤니티</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">채팅상담</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">펫시터찾기</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">이용후기</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">로그인</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link petsiter" href="#">펫시터지원</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- 헤더 영역 끝-->
+    <!-- 본문 시작 -->
+
+    <main class="supportBody">
+      <section class="supportTitle">
+        <div style="width: 1000px; margin: 0px auto; padding-top: 158px;">
+          <h2 style="font-size: 50px; font-weight: 600; color: rgb(85, 85, 85);">
+            지원서 작성하기</h2>
+        </div>
+      </section>
+      <section class="supportContentArea">
+        <div class="supportContent">
+          <form class="supportForm">
+              <p style="font-size: 17px; font-weight: 600; color: rgb(85, 85, 85);">● 거주지 주소</p>
+              <p style="margin-top: 10px; font-size: 13px; color: rgb(153, 153, 153);">시/군/구까지 입력해주세요</p>
+              <div style="margin-top: 15px;">
+                <input type="text" name="address" placeholder="예) 서울시 강남구 논현동" value="">
+              </div>
+              <p style="margin-top: 50px; font-size: 17px; 
+              font-weight: 600; color: rgb(85, 85, 85);">● 거주지 유형</p>
+              <div style="margin-top: 20px;">
+                <input type="radio" id="10pyeong" name="pyeong" value="10" style="margin-left: 3px;">
+                <label style="margin-left: 5px;" for="10pyeong">10평 이하</label>
+                <input type="radio" id="20pyeong" name="pyeong" value="20" style="margin-left: 20px;">
+                <label style="margin-left: 5px;" for="20pyeong">11평 ~ 20평 이하</label>
+                <input type="radio" id="30pyeong" name="pyeong" value="30" style="margin-left: 20px;">
+                <label style="margin-left: 5px;" for="30pyeong">21평 ~ 30평 이하</label>
+                <input type="radio" id="40pyeong" name="pyeong" value="40" style="margin-left: 20px;">
+                <label style="margin-left: 5px;" for="40pyeong">31평 이상</label>
+              </div>
+
+              <p style="margin-top: 50px; font-size: 17px; 
+              font-weight: 600; color: rgb(85, 85, 85);">● 본인을 포함한 가족구성원 흡연 여부</p>
+              <div style="margin-top: 20px;">
+                <input type="radio" id="smoking" name="smoke" value="10" style="margin-left: 3px;">
+                <label style="margin-left: 5px;" for="smoking">네, 흡연자가 있어요.</label>
+                <input type="radio" id="non-smoking" name="smoke" value="10" style="margin-left: 20px;">
+                <label style="margin-left: 5px;" for="non-smoking">아니오, 흡연자는 없습니다.</label>
+              </div>
+              
+              <p style="margin-top: 50px; font-size: 17px; 
+              font-weight: 600; color: rgb(85, 85, 85);">● 강아지 반려 경험 유무</p>
+              <div style="margin-top: 20px;">
+                <input type="radio" id="yes-myExperience" name="myExperience" value="Y" style="margin-left: 3px;">
+                <label style="margin-left: 5px;" for="yes-myExperience">예, 강아지 반려 경험이 있습니다.</label>
+                <input type="radio" id="no-myExperience" name="myExperience" value="N" style="margin-left: 20px;">
+                <label style="margin-left: 5px;" for="no-myExperience">아니오, 강아지 반려 경험이 없습니다.</label>
+              </div>
+
+              <p style="margin-top: 50px; font-size: 17px; 
+              font-weight: 600; color: rgb(85, 85, 85);">● 타인의 반려동물을 돌봐준 경험</p>
+              <span style="font-size: 15px; margin-top: 10px; color: rgb(153, 153, 153);">
+                자신의 반려동물이 아닌 친구, 다른 가족 구성원의 반려동물을 돌보았던 
+                  경험이 있다면 구체적으로 적어주세요. (경험이 없다면 "없습니다" 라고 작성)
+              </span>
+              <textarea class="experienceArea" name="otherExperience" placeholder="타인의 반려동물을 돌봐준 경험에 대해서 알려주세요."></textarea>
+
+              <p style="margin-top: 50px; font-size: 17px; 
+              font-weight: 600; color: rgb(85, 85, 85);">● 그 외 반려동물 관련 경력 또는 경험</p>
+              <span style="font-size: 15px; margin-top: 10px; color: rgb(153, 153, 153);">
+                봉사활동 동물 병원 근무 경험, 애견 카페 이용 경험, 호텔링/펫시터 이용 경험, 아르바이트 경험, 
+                자격증 취득 여부 등을 구체적으로 적어주세요. (경험이 없다면 "없습니다" 라고 작성)</span>
+              <textarea class="experienceArea" name="etcExperience" placeholder="그 외 반려동물 관련 경력 또는 경험에 대해서 알려주세요."></textarea>
+
+              <p style="margin-top: 50px; font-size: 17px; 
+              font-weight: 600; color: rgb(85, 85, 85);">● 펫시터 활동 경력</p>
+              <input type="radio" id="yes-petsitterExperience" name="petsitterExperience" value="Y" style="margin-left: 3px;">
+              <label style="margin-left: 5px;" for="yes-petsitterExperience">예, 펫시터 활동 경험이 있습니다.</label>
+              <input type="radio" id="no-petsitterExperience" name="petsitterExperience" value="N" style="margin-left: 20px;">
+              <label style="margin-left: 5px;" for="no-petsitterExperience">아니오, 펫시터 활동 경험이 없습니다.</label>
+
+              <p style="margin-top: 50px; font-size: 17px; 
+              font-weight: 600; color: rgb(85, 85, 85);">● 동의 사항</p>
+              <input type="checkbox" id="consent1" name="consent1" value="O"> <label for="consent1">개인정보 수집/이용에 동의합니다.</label><br>
+              <input type="checkbox" id="consent2" name="consent2" value="O"> <label for="consent2">펫시터 활동을 위한 교육수료에 동의하며 평일 혹은 주말 중 하루 진행되는 교육 참여가 가능합니다.</label><br>
+              <input type="checkbox" id="consent3" name="consent3" value="O"> <label for="consent3">지원서에 기재된 내용은 모두 본인이 작성하였으며, 사실과 다름 없음을 확인했습니다.</label><br>
+              <p style="font-size: 13px; color: rgb(153, 153, 153); 
+              margin-left: 25px;">* 사실과 다를 경우, 합격이 취소될 수 있습니다.</p>
+              <div id="supportSubmitArea">
+                <button id="supportSubmit" type="submit">최종 제출</button>
+              </div>
+            </form>
+
+        </div>
+      </section>
+    </main>
+
+
+    <!-- 본문 끝 -->
+
+
+    <!-- Footer 영역 시작 -->
+    <div id="footer">
+      <div class="inner_footer">
+        <div class="cc_footer">
+          <!-- cc = company calls -->
+          <h2 class="cc_tit">더 궁금한것이 있으세요?
+          </h2>
+          <div class="cc_view cc_kakao">
+            <a href="#" class="footerTag">
+              <div class="footerLink">1:1 카톡상담</div>
+            </a>
+            <a href="#" class="footerTag">
+              <div class="footerLink">자주묻는질문</div>
+            </a>
+            <a href="#" class="footerTag">
+              <div class="footerLink">02-1561-4463</div>
+            </a>
+          </div>
+          <strong class="copy">Copyright ©2023 PetSisters. All Right Reserved.</strong>
+        </div>
+
+        <div class="company_info">
+          <h2 class="cc_tit">펫시스터즈
+            <img id="footerLogo" src="/resources/img/푸터로고.png" alt="footerLogo">
+          </h2>
+          <div class="spec_info">
+            주식회사 개봐주는언니들
+            <span class="bar">I</span>
+            대표 : 조승호
+            <br>
+            사업자등록번호 : 215-15-41572
+            <br>
+            대표전화 : 02-1588-1548
+            <span class="bar">I</span>
+            통신판매업 신고 : 2011-경기광명-1384 <br>
+            팩스 : 02-1568-4548
+            <br>
+            사업장 소재지 : 서울특별시 영등포구 선유동2로 57 이레빌딩
+            <br>
+            개인정보 보호 책임자 : 정재훈 <a href="#">jjh156@naver.com</a>
+            <br>
+          </div>
+        </div>
+      </div>
+
+      <div class="link_footer">
+        <a href="">이용약관</a>
+        <a href="">위치정보활용약관</a>
+        <a href="">개인정보취급방침</a>
+        <a href="">안정보상프로그램</a>
+      </div>
+    </div>
+    <!-- Footer 영역 끝 -->
+  </div>
+  <!-- JavaScript Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+</body>
+
+</html>
