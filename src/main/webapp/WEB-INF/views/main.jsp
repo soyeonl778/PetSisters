@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,7 +19,7 @@
 <script src="/resources/js/main.js"></script>
 
 
-<title>Æê½Ã½ºÅÍÁî</title>
+<title>íŽ«ì‹œìŠ¤í„°ì¦ˆ</title>
 </head>
 <body>
 
@@ -28,101 +29,101 @@
     
       <div id="topImg" onclick="location.href='#';">
         <video class="mainVideo" muted autoplay loop>
-          <source src="/resources/video/¸ÞÀÎÆäÀÌÁö-¹è³Ê.mp4" type="video/mp4">
+          <source src="/resources/video/ë©”ì¸íŽ˜ì´ì§€-ë°°ë„ˆ.mp4" type="video/mp4">
         </video>
       </div>
       <div id="contents" class="page_aticle">
-        <!-- Å¾ ¹öÆ° -->
+        <!-- íƒ‘ ë²„íŠ¼ -->
         <div class="top_btn">
-          <button id="go-top" alt="¸Ç À§·Î°¡±â" style="display: none;"></button>
+          <button id="go-top" alt="ë§¨ ìœ„ë¡œê°€ê¸°" style="display: none;"></button>
         </div>
-        <!-- Å¾ ¹öÆ° ³¡ -->
+        <!-- íƒ‘ ë²„íŠ¼ ë -->
 
-        <!-- ½½¶óÀÌµå -->
+        <!-- ìŠ¬ë¼ì´ë“œ -->
         <div class="wrap">
           <div class="slider">
 
             <div class="item">
-              <img src="/resources/img/main/µ¹º½ÀÏÁö_ÃÖÁ¾-011.png" alt="">
+              <img src="/resources/img/main/ëŒë´„ì¼ì§€_ìµœì¢…-011.png" alt="">
             </div>
             <div class="item">
-              <img src="/resources/img/main/Áß°£2.png" alt="">
+              <img src="/resources/img/main/ì¤‘ê°„2.png" alt="">
             </div>
             <div class="item">
-              <img src="/resources/img/main/Áß°£3.png" alt="">
+              <img src="/resources/img/main/ì¤‘ê°„3.png" alt="">
             </div>
             <div class="item">
-              <img src="/resources/img/main/Áß°£4.png" alt="">
+              <img src="/resources/img/main/ì¤‘ê°„4.png" alt="">
             </div>
             <div class="item">
-              <img src="/resources/img/main/Áß°£5.png" alt="">
+              <img src="/resources/img/main/ì¤‘ê°„5.png" alt="">
             </div>
             <div class="item">
-              <img src="/resources/img/main/Áß°£6.png" alt="">
+              <img src="/resources/img/main/ì¤‘ê°„6.png" alt="">
             </div>
             <div class="item">
-              <img src="/resources/img/main/Áß°£7.png" alt="">
+              <img src="/resources/img/main/ì¤‘ê°„7.png" alt="">
             </div>
             <div class="item">
-              <img src="/resources/img/main/Áß°£8.png" alt="">
+              <img src="/resources/img/main/ì¤‘ê°„8.png" alt="">
             </div>
 
           </div>
         </div>
-        <!-- ½½¶óÀÌµå -->
+        <!-- ìŠ¬ë¼ì´ë“œ -->
 
       </div>
 
-      <!-- ÇÏ´Ü ¹è³Ê ¿µ¿ª -->
+      <!-- í•˜ë‹¨ ë°°ë„ˆ ì˜ì—­ -->
       <%-- 
       <div id="bottomImg" data-aos="fade-zoom-out">
       </div>
       --%>
-      <!-- ÇÏ´Ü ¹è³Ê ³¡ -->
+      <!-- í•˜ë‹¨ ë°°ë„ˆ ë -->
       <section id="section2">
         <div class="bottomWrapper">
           <div class="bottomLeft">
             <h1 data-aos="fade-right">
-              Æí¾ÈÇÑ ÇÏ·ç¸¦<br>
-              ¼±¹°ÇÏ¼¼¿ä!
+              íŽ¸ì•ˆí•œ í•˜ë£¨ë¥¼<br>
+              ì„ ë¬¼í•˜ì„¸ìš”!
             </h1>
 
             <div class="bottomText2" data-aos="fade-zoom-in" data-aos-easing="ease-in-back" data-aos-delay="200" data-aos-offset="0">
-              ¿©Çà, ÃâÀå ´ÊÀºÅð±Ù¿¡µµ °ÆÁ¤¸¶¼¼¿ä! <br>
-              °¡Á·°°Àº Æê½Ã½ºÅÍÁî°¡ ³» ¾ÆÀÌ¿Í <br>
-              ÇÔ²²ÇÕ´Ï´Ù!
+              ì—¬í–‰, ì¶œìž¥ ëŠ¦ì€í‡´ê·¼ì—ë„ ê±±ì •ë§ˆì„¸ìš”! <br>
+              ê°€ì¡±ê°™ì€ íŽ«ì‹œìŠ¤í„°ì¦ˆê°€ ë‚´ ì•„ì´ì™€ <br>
+              í•¨ê»˜í•©ë‹ˆë‹¤!
             </div>
           </div>
           <div class="bottomRight">
             <div class="bottomCard" data-aos="fade-up-left">
-              <img src="/resources/img/main/°¡°Ý1.png" alt="banner">
+              <img src="/resources/img/main/ê°€ê²©1.png" alt="banner">
               <!-- 
               <div class="bottomTextArea">
-                <h3>µ¥ÀÌ µ¹º½</h3>
-                <p>ÇÏ·ç ÀÌ»ó ¸Ã±æ¶§</p>
+                <h3>ë°ì´ ëŒë´„</h3>
+                <p>í•˜ë£¨ ì´ìƒ ë§¡ê¸¸ë•Œ</p>
                 <div>
                   <span class="bottomPrice">55,000</span>
-                  <span class="bottomPriceText">¿ø ºÎÅÍ!</span><br>
+                  <span class="bottomPriceText">ì› ë¶€í„°!</span><br>
                 </div>
               </div>
               <div class="bottomBtn">
-                <button type="button" class="btn btn-primary" style="border-radius: 17px; width: 100px; height: 40px; font-size: large; font-weight: 900;">¿¹¾àÇÏ±â</button>
+                <button type="button" class="btn btn-primary" style="border-radius: 17px; width: 100px; height: 40px; font-size: large; font-weight: 900;">ì˜ˆì•½í•˜ê¸°</button>
               </div>
                -->
             </div>
             <div class="bottomCard" data-aos="fade-down-left">
-              <img src="/resources/img/main/°¡°Ý2.png" alt="banner">
+              <img src="/resources/img/main/ê°€ê²©2.png" alt="banner">
               <!--  
               <div class="bottomTextArea">
-                <h3>À§Å¬¸® µ¹º½</h3>
-                <p>ÀÏÁÖÀÏ ÀÌ»ó ¸Ã±æ¶§</p>
+                <h3>ìœ„í´ë¦¬ ëŒë´„</h3>
+                <p>ì¼ì£¼ì¼ ì´ìƒ ë§¡ê¸¸ë•Œ</p>
                 <div>
                   <span class="bottomPrice">385,000</span>
-                  <span class="bottomPriceText">¿ø ºÎÅÍ!</span><br>
+                  <span class="bottomPriceText">ì› ë¶€í„°!</span><br>
                 </div>
               </div>
               <div class="bottomBtn">
-                <button type="button" class="btn btn-primary" style="border-radius: 17px; width: 100px; height: 40px; font-size: large; font-weight: 900;">¿¹¾àÇÏ±â</button>
+                <button type="button" class="btn btn-primary" style="border-radius: 17px; width: 100px; height: 40px; font-size: large; font-weight: 900;">ì˜ˆì•½í•˜ê¸°</button>
               </div>
               -->
             </div>
