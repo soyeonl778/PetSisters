@@ -1,0 +1,171 @@
+.page_aticle.aticle_type2 {
+  height: 1800px;
+}
+.titSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 700px;
+  max-height: 400px;
+  justify-content: space-between;
+}
+.titSection > h2{
+  font-size: xxx-large;
+  font-weight: bold;
+}
+.payList {
+  float: right;
+  margin-right: 27%;
+  margin-top: 20px;
+  font-weight: bold;
+}
+.titProfileImg {
+  height: 130px;
+  border-radius: 90px;
+  width: 134px;
+  box-shadow: 1px 1px 6px 1px lightgray;
+}
+.titPetsiter > h3 {
+  font-weight: 600;
+}
+.titPetsiter + button {
+  height: 50px;
+  width: 100px;
+  border-radius: 5px;
+  color: whitesmoke;
+  background-color: #0888D0;
+}
+.titPetsiter + button:hover {
+  box-shadow: 4px 6px 6px lightgray;
+}
+.leftSection {
+  width: 50%;
+  float: left;
+  margin-left: 40px;
+  display: flex;
+  justify-content: flex-end;
+  margin-left: 60px;
+  height: 900px;
+  position: relative;
+}
+.rigthSection {
+  width: 40%;
+  float: right;
+  margin-right: 40px;
+  display: flex;
+  justify-content: flex-start;
+}
+.middleSection {
+  margin-top: 80px;
+}
+.rightWrapper {
+  text-align: center;
+}
+.textContainer > div {
+  display: flex;
+  justify-content: space-around;
+}
+.leftTit {
+  width: 23%;
+  float: left;
+  font-size: larger;
+  line-height: 50px;
+  border-top: 1px solid gray;
+}
+.leftTit div {
+  font-weight: bold;
+}
+.lineMan {
+  padding-top: 35px;
+}
+.lineMan > span {
+  font-weight: bold;
+}
+.rightTit {
+  width: 63%;
+  float: right;
+  font-size: large;
+  line-height: 50px;
+  border-top: 1px solid gray;
+}
+.rightTit div {
+  font-weight: 600;
+}
+.rightTit:first-child {
+  padding-top: 35px;
+}
+.leftTitRight {
+  width: 25%;
+  float: left;
+  font-size: larger;
+  line-height: 50px;
+  border-top: 1px solid gray;
+}
+.leftTitRight div {
+  font-weight: bold;
+  color: #0888D0;
+}
+.rightTitright {
+  width: 33%;
+  float: right;
+  font-size: large;
+  line-height: 50px;
+  border-top: 1px solid gray;
+}
+.rightTitright div {
+  font-weight: 600;
+}
+.borderMaker {
+  border-top: 1px solid red;
+  margin-top: 15px;
+}
+.textArea {
+  line-height: 23px;
+}
+.blueTag {
+  color: #0888D0;
+}
+.petImg {
+  height: 50px;
+  border-radius: 30px;
+  width: 55px;
+}
+.mapClass {
+  position: absolute;
+  bottom: 50%;
+  left: 14%;
+  width: 86%;
+  display: flex;
+  font-size: large;
+}
+.carePlace {
+  margin-right: 13%;
+  font-weight: bold;
+}
+.carePlace + div {
+  font-weight: 600;
+}
+#mapContain {
+  position: absolute;
+  bottom: 6%;
+}
+.specialClass {
+  position: relative;
+}
+.danger {
+  position: absolute;
+  bottom: 3%;
+  left: 42%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;  
+}
+.danTit {
+  margin-bottom: 15px;
+  font-weight: bold;
+  font-size: xx-large;
+}
+.textZone { 
+  font-size: larger;
+  font-weight: 600;
+}
