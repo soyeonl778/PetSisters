@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "mybatis-3-config.dtd" >
+<configuration>
+
+	<settings>
+		<setting name="jdbcTypeForNull" value="NULL"></setting>
+	</settings>
+	
+	<typeAliases>
+	</typeAliases>
+	<!-- 
+		주의사항 : 별칭을 미리 등록해두려면 해당 클래스가 진짜 존재하고 있는 상태여야 함
+					또한, 해당 클래스명 기술 시 오타가 있어도 안됨
+					(ClassNotFoundException 발생)
+	-->
+	
+	<!-- 
+		environments 영역에 기술했었던 environment, dataSource 등
+		DB 연결 정보 관련은 mybatis-config.xml 파일에서 작성하지 않을 것!
+		=> DB 등록은 서버 연동과 동시에 일어나야하는 중요한 구문이기 때문에
+			서버 스타트와 동시에 두번째로 읽혀지는 파일 root-context.xml 에 기술할 예정
+	-->
+	
+	<mappers>
+		<mapper resource="mappers/board-mapper.xml" />
+		<mapper resource="mappers/member-mapper.xml" />
+		<mapper resource="mappers/noticeboard-mapper.xml" />
+		<mapper resource="mappers/petsitter-mapper.xml" />
+		<mapper resource="mappers/qnaboard-mapper.xml" />
+		<mapper resource="mappers/reservation-mapper.xml" />
+		
+	</mappers>
+	<!-- 
+		주의사항 : 매퍼파일을 미리 등록해두려면 해당 mapper 파일이 진짜 존재하고 있어야만 함
+					뿐만아니라, mapper 파일 내부의 namespace 도 등록되어있어야만 함
+					파일명도 오타가 있으면 안됨
+					(FileNotFoundException 발생)
+	-->
+
+</configuration>
