@@ -27,6 +27,9 @@
     <jsp:include page="./common/header.jsp" />	
     
       <div id="topImg" onclick="location.href='#';">
+        <video class="mainVideo" muted autoplay loop>
+          <source src="/resources/video/메인페이지-배너.mp4" type="video/mp4">
+        </video>
       </div>
       <div id="contents" class="page_aticle">
         <!-- 탑 버튼 -->
@@ -92,7 +95,8 @@
           </div>
           <div class="bottomRight">
             <div class="bottomCard" data-aos="fade-up-left">
-              <img src="/resources/img/main/그림이사진1.jpg" alt="banner">
+              <img src="/resources/img/main/가격1.png" alt="banner">
+              <!-- 
               <div class="bottomTextArea">
                 <h3>데이 돌봄</h3>
                 <p>하루 이상 맡길때</p>
@@ -104,9 +108,11 @@
               <div class="bottomBtn">
                 <button type="button" class="btn btn-primary" style="border-radius: 17px; width: 100px; height: 40px; font-size: large; font-weight: 900;">예약하기</button>
               </div>
+               -->
             </div>
             <div class="bottomCard" data-aos="fade-down-left">
-              <img src="/resources/img/main/로이-4052.jpg" alt="banner">
+              <img src="/resources/img/main/가격2.png" alt="banner">
+              <!--  
               <div class="bottomTextArea">
                 <h3>위클리 돌봄</h3>
                 <p>일주일 이상 맡길때</p>
@@ -118,6 +124,7 @@
               <div class="bottomBtn">
                 <button type="button" class="btn btn-primary" style="border-radius: 17px; width: 100px; height: 40px; font-size: large; font-weight: 900;">예약하기</button>
               </div>
+              -->
             </div>
           </div>
         </div>

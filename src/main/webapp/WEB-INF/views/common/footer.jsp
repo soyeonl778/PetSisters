@@ -20,7 +20,7 @@
               <div class="footerLink">02-1561-4463</div>
             </a>
           </div>
-          <strong class="copy">Copyright ©2023 PetSisters. All Right Reserved.</strong>
+          <strong class="copy">Copyright &copy;2023 PetSisters. All Right Reserved.</strong>
         </div>
 
         <div class="company_info">
