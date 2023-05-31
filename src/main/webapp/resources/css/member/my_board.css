@@ -1,0 +1,41 @@
+#my_contents {
+    margin-top:75px;
+    margin-left: 270px;
+    display: flex;
+}
+#main_content {
+    margin-left: 250px;
+    width: 55%;
+}
+
+.btn_bo2 {
+    height: 35px;
+    width: 130px;
+    background-color: #0888D0;
+    color:white;
+    font-size: 17px;
+    display: inline-block;
+    border-radius: 30px;
+}
+
+.btn_re2 {
+    height: 35px;
+    width: 130px;
+    background-color: #717171;
+    color:white;
+    font-size: 17px;
+    display: inline-block;
+    margin-left: 5px;
+    border-radius: 30px;
+}
+
+#boardList {
+    text-align:center;
+}
+
+
+#pagingArea {
+    width: 95%;
+    display: flex;
+    justify-content: center;
+}

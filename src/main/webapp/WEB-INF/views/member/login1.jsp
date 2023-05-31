@@ -8,13 +8,8 @@
 <link rel="stylesheet" href="/resources/css/member/login1.css">
 <jsp:include page="../common/common.jsp" />
 
-
-
   <title>로그인</title>
-
-
 </head>
-
 <body>
   <!-- 헤더 영역 시작-->
     <jsp:include page="../common/header.jsp" />	 
