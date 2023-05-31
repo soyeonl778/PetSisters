@@ -8,6 +8,7 @@
   
   <!-- header css -->
   <link rel="stylesheet" href="/resources/css/mp_profile.css">
+  <link rel="stylesheet" href="/resources/css/common/memberForm.css">
   <jsp:include page="../common/common.jsp" />
 
   <title>마이페이지_내프로필관리</title>
@@ -110,21 +111,5 @@
     <jsp:include page="../common/footer.jsp" /> 
   <!-- Footer 영역 끝 -->
 
-  <script>
-    $(document).ready(function () {
-      $(window).scroll(function () {
-        var scrollTop = $(document).scrollTop();
-        var footerOffset = $(".link_footer").offset().top;
-        var windowHeight = $(window).height();
-
-        if (scrollTop + windowHeight > footerOffset) {
-          scrollTop = footerOffset - windowHeight;
-        }
-
-        $(".snb_my").stop();
-        $(".snb_my").animate({ "top": scrollTop });
-      });
-    });
-  </script>
 </body>
 </html>

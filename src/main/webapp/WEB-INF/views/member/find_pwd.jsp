@@ -8,6 +8,7 @@
   
   <!-- header css -->
   <link rel="stylesheet" href="/resources/css/find_pwd.css">
+  <link rel="stylesheet" href="/resources/css/common/memberForm.css">
   <jsp:include page="../common/common.jsp" />
 
   <title>비밀번호찾기</title>
@@ -75,21 +76,5 @@
     <jsp:include page="../common/footer.jsp" /> 
   <!-- Footer 영역 끝 -->
 
-  <script>
-    $(document).ready(function () {
-      $(window).scroll(function () {
-        var scrollTop = $(document).scrollTop();
-        var footerOffset = $(".link_footer").offset().top;
-        var windowHeight = $(window).height();
-
-        if (scrollTop + windowHeight > footerOffset) {
-          scrollTop = footerOffset - windowHeight;
-        }
-
-        $(".snb_my").stop();
-        $(".snb_my").animate({ "top": scrollTop });
-      });
-    });
-  </script>
 </body>
 </html>
