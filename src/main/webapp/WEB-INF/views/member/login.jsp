@@ -6,6 +6,7 @@
 <head>
   <meta charset="UTF-8" />
 <link rel="stylesheet" href="/resources/css/member/login.css">
+<link rel="stylesheet" href="/resources/css/common/memberForm.css">
 <jsp:include page="../common/common.jsp" />
 
   <title>로그인</title>
