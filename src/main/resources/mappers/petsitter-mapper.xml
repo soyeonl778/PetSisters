@@ -1,8 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
-<mapper namespace="matchingMapper">
+<mapper namespace="petSitterMapper">
 
-
+	<!-- PETSITTER 객체로 가공된 resultMap -->
+	<resultMap id="petSitterResultSet" type="petSitter">
+		<result column="P_NO" property="pNo" />
+		<result column="P_TITLE" property="pTitle" />
+		<result column="P_CONTENT" property="pContent" />
+		<result column="P_SERVICE" property="pService" />
+		<result column="CARE_LIST" property="careList" />
+		<result column="P_MODE" property="pMode" />
+		<result column="USER_NO" property="userNo" />
+	</resultMap>
+	
+	<!-- 펫시터 프로필 상세 조회용 쿼리문 -->
+	<select id="selectPetSitter" parameterType="_int" resultMap="petSitterResultSet">
+		SELECT P_NO
+		     , P_TITLE
+		     , P_CONTENT
+		     , P_SERVICE
+		     , CARE_LIST
+		     , P_MODE
+		     , USER_NO
+		  FROM PETSITTER
+		 WHERE P_NO = #{pNo}
+	</select>
 
 </mapper>
 
