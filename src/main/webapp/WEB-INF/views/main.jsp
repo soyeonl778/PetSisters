@@ -4,7 +4,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="/resources/css/common/main.css">
 <jsp:include page="./common/common.jsp" />
   <!-- AOS-->
@@ -41,7 +43,7 @@
 
         <!-- 슬라이드 -->
         <div class="wrap">
-        <h3 style="text-align: center;">실제 인스타그램 후기를 확인해보세요!</h3>
+        <h3 class="reviewText" style="text-align: center;">실제 인스타그램 후기를 확인해보세요!</h3>
           <div class="slider">
 
             <div class="item">
@@ -138,8 +140,7 @@
       <div id="middelBottomImgSection" data-aos="fade-zoom-in">
       </div>
 
-      <div id="mainBottomSection" data-aos="fade-zoom-in" style="position: relative;">
-        <div id="moomyeong">
+      <div id="mainBottomSection" data-aos="fade-zoom-in">
       </div>
     </div>
     
