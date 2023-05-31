@@ -53,13 +53,13 @@
                           </span>
                         </div>
                         <div class="btn_group">
-                          <button type="submit" class="btn_log">로그인</button>
+                          <button type="submit" class="btn_log" onclick="location.href='#';">로그인</button>
                           <ul class="click1">
                             <li>
-                              <a href="">아이디 찾기</a> | 
+                              <a href="findId.me">아이디 찾기</a> | 
                             </li>
                             <li>
-                              <a href="">비밀번호 찾기</a>
+                              <a href="findPwd.me">비밀번호 찾기</a>
                             </li>
                           </ul>
                         </div>
@@ -72,7 +72,7 @@
                         <label>아직 회원이 아니신가요?</label>
                       </div>
                       <div>
-                        <button type="button" class="btn_enroll" onclick="location.href='';">회원가입 하러가기</button>
+                        <button type="button" class="btn_enroll" onclick="location.href='enrollForm.me';">회원가입 하러가기</button>
                       </div>
 
                     </div>
