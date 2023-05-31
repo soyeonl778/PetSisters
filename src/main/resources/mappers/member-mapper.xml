@@ -2,6 +2,34 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
 <mapper namespace="memberMapper">
 
+	<resultMap id="memberResultSet" type="member">
+		<result column="USER_NO" property="userNo" />
+		<result column="USER_ID" property="userId" />
+		<result column="USER_PWD" property="userPwd" />
+		<result column="USER_NAME" property="userName" />
+		<result column="USER_SSN" property="userSsn" />
+		<result column="USER_NICKNAME" property="userNickname" />
+		<result column="PHONE" property="phone" />
+		<result column="EMAIL" property="email" />
+		<result column="ADDRESS" property="address" />
+		<result column="GENDER" property="gender" />
+		<result column="SITTER_STATUS" property="sitterStatus" />
+		<result column="CA_DATE" property="caDate" />
+		<result column="CA_STATUS" property="caStatus" />
+		<result column="STATUS" property="status" />
+		<result column="FILE_PATH" property="filePath" />
+		<result column="ENROLL_DATE" property="enrollDate" />
+	</resultMap>
+	
+	<!-- 로그인 기능 -->
+	<select id="login" parameterType="member" resultMap="memberResultSet">
+		SELECT *
+		  FROM MEMBER
+		 WHERE USER_ID = #{userId}
+		   AND USER_PWD = #{userPwd}
+		   AND STATUS = 'Y'
+	</select>
+
 
 
 </mapper>
