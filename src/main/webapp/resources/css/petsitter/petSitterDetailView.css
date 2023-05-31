@@ -1,0 +1,193 @@
+div, form, img { box-sizing: border-box; }
+
+li { float: left; }
+
+#content-area { height: 100%; }
+
+#content-area>div {
+    height: 100%;
+    float: left;
+}
+
+#content1 { width: 65%; }
+
+#content2 {
+    width: 35%;
+    padding-left: 30px;
+}
+
+.viewslider {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.slider-for img {
+    display: block;
+    margin: auto;
+    width: 100%;
+    border-radius: 10px;
+}
+
+.slider-nav img {
+    width: 15%;
+    margin: 0 auto;
+    border-radius: 10px;
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+.profileImg>img {
+    width: 90px;
+    height: 90px;
+    border-radius: 10px;
+}
+
+.profileBox {
+    display: flex;
+}
+
+.profile {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 10px;
+}
+
+.dateInput {
+    display: flex;
+}
+
+.hashtag li:before {
+    content: '#';
+}
+
+#petCard img {
+    width: 150px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+#petCard { width: 250px; }
+
+#petCard div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.reviewList div { display: inline-block; }
+
+.review img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.review>div {
+    display: flex;
+}
+
+.review i {
+    width: 50px;
+    height: 50px;
+}
+
+.reviewList, .petServiceList, #petCard {
+    margin: 10px;
+}
+
+.petService img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+.petService {
+    display: flex;
+}
+
+.petService>div {
+    display: inline-block;
+}
+
+.petServiceList td {
+    width: 400px;
+}
+
+.speech-bubble {
+	position: relative;
+	background: #B9EAFF;
+	border-radius: .4em;
+    width: 670px;
+    padding: 15px;
+    margin-left: 10px;
+}
+
+.speech-bubble:after {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 50%;
+	width: 0;
+	height: 0;
+	border: 20px solid transparent;
+	border-right-color: #B9EAFF;
+	border-left: 0;
+	border-top: 0;
+	margin-top: -10px;
+	margin-left: -20px;
+}
+
+.review img {
+    margin: 10px;
+}
+
+.hashtag {
+    margin-bottom: 10px;
+}
+
+.introduction {
+    margin: 10px;
+}
+
+.slider-for {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    text-align: center;
+    font-size: 20px;
+}
+
+.slider-nav>li {
+    text-align: center;
+    box-sizing: border-box;
+    margin-top: 20px;
+}
+
+.slider-nav {
+    padding: 0;
+}
+
+.slider-nav img {
+    width: 100%;
+    margin: 5px;
+}
+
+
+
+.slick-prev:before, .slick-next:before {
+    color: black !important;
+}
+
+#map {
+    width: 100%;
+    height: 300px;
+}
+
+.card {
+    box-shadow: 2px 2px 2px 2px whitesmoke;
+}

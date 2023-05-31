@@ -1,0 +1,95 @@
+.dateInput {
+    display: flex;
+    gap: 10px;
+}
+
+.form-control {
+    width: 100%;
+}
+
+.searchForm {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.searchForm img {
+    width: 20px;
+    height: 20px;
+}
+
+.filter {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.filter img {
+    width: 20px;
+    height: 20px;
+}
+
+.filter a {
+    margin: 10px;
+    text-decoration: none;
+}
+
+.addressForm {
+    display: flex;
+    align-items: center;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+}
+
+.addressForm img {
+    height: 20px;
+    margin-left: 10px;
+    max-width: 24px;
+}
+
+#addressInput {
+    border: none;
+    width: 1000px;
+}
+
+.searchArea {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 100px;
+}
+
+#careList {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.careList button {
+    margin: 10px;
+}
+
+.col-4.addressForm {
+    width: 100%;
+}
+.addressArea {
+    width: 300px;
+}
+.addressArea > div {
+    width: 30%;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+input:focus { outline: none; }
+
+input[type='date']::before {
+    content: attr(data-placeholder);
+    width: 100%;
+  }
