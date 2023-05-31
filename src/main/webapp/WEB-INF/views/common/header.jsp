@@ -23,7 +23,7 @@
 
     <nav class="navbar navbar-expand-lg bg-light fixed-top">
       <div class="container-fluid">
-        <a class="navbar-brand" href="/mian/main.html"><img class="headerLogo" src="/resources/img/main/새로운로고.png" alt="headerLogo"></a>
+        <a class="navbar-brand" href="/"><img class="headerLogo" src="/resources/img/main/새로운로고.png" alt="headerLogo"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
           <span class="navbar-toggler-icon"></span>
         </button>
