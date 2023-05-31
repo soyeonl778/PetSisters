@@ -38,12 +38,13 @@ public class MemberController {
 	// ***************************
 	// 로그인 / 회원가입 / 마이페이지 영역 (소연)
 	
+	// 로그인 페이지 이동 영역
 	@RequestMapping("loginForm.me")
 	public String loginForm() {
 		return "/member/loginForm";
 	}
 	
-	// 로그인 영역
+	// 로그인 기능 영역
 	@RequestMapping("login.me")
 	public ModelAndView login(Member m, 
 						HttpSession session, 
@@ -86,6 +87,21 @@ public class MemberController {
 		return mv;
 	}
 	
+	// 로그아웃 기능 영역
+	@RequestMapping("logout.me")
+	public String logout(HttpSession session) {
+		
+		session.invalidate();
+		
+		return "redirect:/";
+	}
+	
+	// 회원가입 폼 이동 영역
+	@RequestMapping("enrollForm.me")
+	public String enrollForm() {
+		return "/member/enrollForm";
+	}
+	
 	// 아이디 찾기 영역
 	@RequestMapping("findId.me")
 	public String findId() {
@@ -96,12 +112,6 @@ public class MemberController {
 	@RequestMapping("findPwd.me")
 	public String findPwd() {
 		return "/member/find_pwd";
-	}
-	
-	// 회원가입 영역
-	@RequestMapping("enrollForm.me")
-	public String enrollForm() {
-		return "/member/enrollForm";
 	}
 	
 	// 마이페이지 내 프로필 영역
