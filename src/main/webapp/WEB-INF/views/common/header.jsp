@@ -26,7 +26,7 @@
               <a class="nav-link" href="#">고객센터</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">로그인</a>
+              <a class="nav-link" href="login.me">로그인</a>
             </li>
             <li class="nav-item">
               <a class="nav-link petsiter" href="supportInfo.me">펫시터지원</a>
