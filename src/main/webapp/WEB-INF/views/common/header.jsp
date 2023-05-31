@@ -48,15 +48,15 @@
             <c:choose>
             	<c:when test="${ empty loginUser }" >
 		            <li class="nav-item">
-		              <a class="nav-link" href="login.me">로그인</a>
+		              <a class="nav-link" href="loginForm.me">로그인</a>
 		            </li>
             	</c:when>
             	<c:otherwise>
 		            <li class="nav-item">
-		              <a class="nav-link" href="login.me">마이페이지</a>
+		              <a class="nav-link" href="myProfile.me">마이페이지</a>
 		            </li>
 		            <li class="nav-item">
-		              <a class="nav-link" href="login.me">로그아웃</a>
+		              <a class="nav-link" href="logout.me">로그아웃</a>
 		            </li>
             	</c:otherwise>
             </c:choose>
