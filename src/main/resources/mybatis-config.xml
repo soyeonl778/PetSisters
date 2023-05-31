@@ -23,10 +23,10 @@
 	
 	<mappers>
 		<mapper resource="mappers/board-mapper.xml" />
+		<mapper resource="mappers/inquiry-mapper.xml" />
 		<mapper resource="mappers/member-mapper.xml" />
-		<mapper resource="mappers/noticeboard-mapper.xml" />
+		<mapper resource="mappers/notice-mapper.xml" />
 		<mapper resource="mappers/petsitter-mapper.xml" />
-		<mapper resource="mappers/qnaboard-mapper.xml" />
 		<mapper resource="mappers/reservation-mapper.xml" />
 		
 	</mappers>
