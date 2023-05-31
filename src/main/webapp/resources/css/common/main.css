@@ -471,12 +471,12 @@ body #header .location_login .location_notice{  /* 안내메세지 처음에 blo
 }
 
 #middelBottomImgSection {
-  height: 970px;
+  height: 850px;
   margin-bottom: -1px;
   background-image: url(/resources/img/main/하단배너.png);
-  /* box-shadow: 0px 3px 16px -4px lightgray; */
-  box-sizing: border-box;
-  /* background-size: cover; */
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
 #backgroundImgSection {

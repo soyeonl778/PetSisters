@@ -43,7 +43,7 @@
 
         <!-- 슬라이드 -->
         <div class="wrap">
-        <h3 class="reviewText" style="text-align: center;">실제 인스타그램 후기를 확인해보세요!</h3>
+        <h3 class="reviewText" style="text-align: center;color:skyblue;font-size:50px;text-shadow:3px 3px 10px skyblue">실제 인스타그램 후기를 확인해보세요!</h3>
           <div class="slider">
 
             <div class="item">
