@@ -12,7 +12,7 @@ public class ReservationServiceImpl {
 	@Autowired
 	private ReservationDao reservationDao;
 	
-	@Autowired
-	private SqlSessionTemplate sqlSession;
+//	@Autowired
+//	private SqlSessionTemplate sqlSession;
 
 }
