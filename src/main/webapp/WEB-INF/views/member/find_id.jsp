@@ -7,7 +7,7 @@
   <meta charset="UTF-8" />
   
   <!-- header css -->
-  <link rel="stylesheet" href="/resources/css/login2.css">
+  <link rel="stylesheet" href="/resources/css/find_id.css">
   <jsp:include page="../common/common.jsp" />
 
   <title>아이디찾기</title>

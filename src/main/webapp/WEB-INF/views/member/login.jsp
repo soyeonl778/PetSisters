@@ -5,7 +5,7 @@
 
 <head>
   <meta charset="UTF-8" />
-<link rel="stylesheet" href="/resources/css/member/login1.css">
+<link rel="stylesheet" href="/resources/css/member/login.css">
 <jsp:include page="../common/common.jsp" />
 
   <title>로그인</title>

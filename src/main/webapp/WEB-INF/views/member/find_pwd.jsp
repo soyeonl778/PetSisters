@@ -7,7 +7,7 @@
   <meta charset="UTF-8" />
   
   <!-- header css -->
-  <link rel="stylesheet" href="/resources/css/login3.css">
+  <link rel="stylesheet" href="/resources/css/find_pwd.css">
   <jsp:include page="../common/common.jsp" />
 
   <title>비밀번호찾기</title>
