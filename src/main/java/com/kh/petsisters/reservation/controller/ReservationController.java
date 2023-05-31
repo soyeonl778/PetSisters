@@ -10,5 +10,10 @@ public class ReservationController {
 	
 	@Autowired
 	private ReservationService reservationService;
+	
+	
+	public String careJournalDetail() {
+		return "reservation/careJournalDetail";
+	}
 
 }

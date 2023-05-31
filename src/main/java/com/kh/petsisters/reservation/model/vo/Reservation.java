@@ -3,7 +3,12 @@ package com.kh.petsisters.reservation.model.vo;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
+/**
+ * 2023-05-31
+ * 조승호
+ * @author dkarl
+ *
+ */
 @NoArgsConstructor
 @AllArgsConstructor
 @Data

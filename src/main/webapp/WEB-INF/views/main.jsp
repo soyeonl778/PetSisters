@@ -18,6 +18,7 @@
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
+
 <script src="/resources/js/main.js"></script>
 
 
@@ -43,7 +44,7 @@
 
         <!-- 슬라이드 -->
         <div class="wrap">
-        <h3 class="reviewText" style="text-align: center;color:skyblue;font-size:50px;text-shadow:3px 3px 10px skyblue">실제 인스타그램 후기를 확인해보세요!</h3>
+        <h3 class="reviewText" style="text-align: center;">실제 인스타그램 후기를 확인해보세요!</h3>
           <div class="slider">
 
             <div class="item">
