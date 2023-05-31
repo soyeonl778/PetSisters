@@ -10,7 +10,6 @@
 		<typeAlias type="com.kh.petsisters.reservation.model.vo.Reservation" alias="reservation" />
 		<typeAlias type="com.kh.petsisters.member.model.vo.Member" alias="member" />
 		<typeAlias type="com.kh.petsisters.petsitter.model.vo.PetSitter" alias="petSitter" />
-		<typeAlias type="com.kh.petsisters.notice.model.vo.Notice" alias="notice" />
 		<typeAlias type="com.kh.petsisters.inquiry.model.vo.Inquiry" alias="inquiry" />
 	</typeAliases>
 	<!-- 
