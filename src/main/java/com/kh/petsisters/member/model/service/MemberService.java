@@ -6,5 +6,8 @@ public interface MemberService {
 	
 	// 로그인 서비스
 		Member login(Member m);
+		
+	// 회원추가 서비스
+		int insertMember(Member m);
 
 }

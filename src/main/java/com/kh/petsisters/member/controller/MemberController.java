@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -100,6 +101,21 @@ public class MemberController {
 	@RequestMapping("enrollForm.me")
 	public String enrollForm() {
 		return "/member/enrollForm";
+	}
+	
+	// 회원가입(회원추가)기능 영역
+	@RequestMapping("insert.me")
+	public String insertMember(Member m, 
+							   Model model, 
+							   HttpSession session) {
+		
+		String encPwd = bcryptPasswordEncoder.encode(m.getUserPwd());
+		
+		m.setUserPwd(encPwd);
+		
+		int result = memberService.insertMember(m);
+		
+		return "/member/loginForm";
 	}
 	
 	// 아이디 찾기 영역

@@ -29,6 +29,28 @@
 		   AND USER_PWD = #{userPwd}
 		   AND STATUS = 'Y'
 	</select>
+	
+	<!-- 회원추가 기능 -->
+	<insert id="insertMember" parameterType="member">
+	INSERT INTO MEMBER(USER_ID
+					 , USER_PWD
+					 , USER_NAME
+					 , USER_SSN
+					 , PHONE
+					 , EMAIL
+					 , ADDRESS
+					 , GENDER
+					 , AGE)
+			  VALUES(#{userId}
+				   , #{userPwd}
+				   , #{userName}
+				   , #{userSsn}
+				   , #{phone}
+				   , #{email}
+				   , #{address}
+				   , #{gender}
+				   , #{age})
+	</insert>
 
 
 
