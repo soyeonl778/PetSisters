@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -18,6 +19,9 @@ public class MemberController {
 	
 	@Autowired
 	private MemberService memberService;
+	
+	@Autowired
+	private BCryptPasswordEncoder bcryptPasswordEncoder;
 
 	
 	@RequestMapping("supportInfo.me")
@@ -34,9 +38,14 @@ public class MemberController {
 	// ***************************
 	// 로그인 / 회원가입 / 마이페이지 영역 (소연)
 	
+	@RequestMapping("loginForm.me")
+	public String loginForm() {
+		return "/member/loginForm";
+	}
+	
 	// 로그인 영역
 	@RequestMapping("login.me")
-	public String login(Member m, 
+	public ModelAndView login(Member m, 
 						HttpSession session, 
 						ModelAndView mv, 
 						String saveId,
@@ -56,7 +65,25 @@ public class MemberController {
 			response.addCookie(cookie);
 		}
 		
-		return "/member/login";
+		Member loginUser = memberService.login(m);
+		
+		
+		if(loginUser != null 
+			/*&& bcryptPasswordEncoder.matches(m.getUserPwd(), loginUser.getUserPwd())*/) { // 로그인 성공 처리
+				
+			session.setAttribute("loginUser", loginUser);
+			session.setAttribute("alertMsg", "로그인에 성공했습니다.");
+				
+			mv.setViewName("redirect:/");
+				
+		} else { // 로그인 실패 처리 
+
+			mv.addObject("alertMsg", "로그인 실패");
+				
+			mv.setViewName("member/loginForm");
+		}
+		
+		return mv;
 	}
 	
 	// 아이디 찾기 영역

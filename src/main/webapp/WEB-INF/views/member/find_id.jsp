@@ -40,10 +40,10 @@
                   </div>
                   <div class="sub2">
                     <div class="btn_id1">
-                      <button type="button" class="btn_id2">아이디 찾기</button>
+                      <button type="button" class="btn_id2" onclick="location.href='findId.me';">아이디 찾기</button>
                     </div>
                     <div class="btn_pwd1">
-                      <button type="button" class="btn_pwd2">비밀번호 찾기</button>
+                      <button type="button" class="btn_pwd2" onclick="location.href='findPwd.me';">비밀번호 찾기</button>
                     </div>
                   </div>
                   <div class="sub3">
