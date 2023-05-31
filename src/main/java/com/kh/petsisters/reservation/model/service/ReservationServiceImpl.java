@@ -7,12 +7,12 @@ import org.springframework.stereotype.Service;
 import com.kh.petsisters.reservation.model.dao.ReservationDao;
 
 @Service
-public class ReservationServiceImpl {
+public class ReservationServiceImpl implements ReservationService{
 	
 	@Autowired
 	private ReservationDao reservationDao;
 	
-//	@Autowired
-//	private SqlSessionTemplate sqlSession;
+	@Autowired
+	private SqlSessionTemplate sqlSession;
 
 }
