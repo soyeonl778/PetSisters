@@ -1,5 +1,6 @@
 package com.kh.petsisters.member.controller;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -35,8 +36,25 @@ public class MemberController {
 	
 	// 로그인 영역
 	@RequestMapping("login.me")
-	public String login(Member m, HttpSession session, ModelAndView mv, HttpServletResponse response) {
+	public String login(Member m, 
+						HttpSession session, 
+						ModelAndView mv, 
+						String saveId,
+						HttpServletResponse response) {
 		
+		// 아이디 저장 기능
+		if(saveId != null && saveId.equals("y")) {
+			Cookie cookie = new Cookie("saveId", m.getUserId());
+			cookie.setMaxAge(24 * 60 * 60 * 1); // 유효기간 1일 
+			
+			response.addCookie(cookie);
+			
+		} else {
+			Cookie cookie = new Cookie("saveId", m.getUserId());
+			cookie.setMaxAge(0);
+			
+			response.addCookie(cookie);
+		}
 		
 		return "/member/login";
 	}
