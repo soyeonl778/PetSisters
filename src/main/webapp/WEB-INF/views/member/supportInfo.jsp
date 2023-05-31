@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="/resources/css/member/supportInfo.css">
 <jsp:include page="../common/common.jsp" />
 <script src="/resources/js/main.js"></script>
-<title>Æê½Ã½ºÅÍÁî</title>
+<title>íŽ«ì‹œìŠ¤í„°ì¦ˆ</title>
 </head>
 <body>
 
@@ -18,7 +18,7 @@
     
     
     
-    <!-- º»¹® ½ÃÀÛ -->
+    <!-- ë³¸ë¬¸ ì‹œìž‘ -->
 
     <main class="supportInfoArea">
       <section class="introductionSection">
@@ -29,49 +29,49 @@
         </div>
         <div class="adArea">
           <div class="mainSentence">
-            °¡Á¤Áý Æê½ÃÅÍ ¾÷°è 1À§, <br>
-            Æê½Ã½ºÅÍÁî¿Í ÇÔ²²ÇØ¿ä <br>
+            ê°€ì •ì§‘ íŽ«ì‹œí„° ì—…ê³„ 1ìœ„, <br>
+            íŽ«ì‹œìŠ¤í„°ì¦ˆì™€ í•¨ê»˜í•´ìš” <br>
           </div>
           <div class="subSentence">
-            ¿ì¸®Áý¿¡¼­ »ç¶û½º·¯¿î °­¾ÆÁö¸¦ µ¹º¸¸ç ¼öÀÍÀ» ¹ú¾î¿ä <br>
-            È¥ÀÚ ³²°ÜÁø ¹Ý·Áµ¿¹°¿¡°Ô Çàº¹ÇÑ ½Ã°£À» ¼±¹°ÇØº¼±î¿ä? <br>
+            ìš°ë¦¬ì§‘ì—ì„œ ì‚¬ëž‘ìŠ¤ëŸ¬ìš´ ê°•ì•„ì§€ë¥¼ ëŒë³´ë©° ìˆ˜ìµì„ ë²Œì–´ìš” <br>
+            í˜¼ìž ë‚¨ê²¨ì§„ ë°˜ë ¤ë™ë¬¼ì—ê²Œ í–‰ë³µí•œ ì‹œê°„ì„ ì„ ë¬¼í•´ë³¼ê¹Œìš”? <br>
           </div>
-          <div class="support">
-            <p>Áö¿øÇÏ±â</p>
-          </div>
+          <a class="support" href="supportForm.me">
+            <p>ì§€ì›í•˜ê¸°</p>
+          </a>
         </div>
       </section>
       <section class="processSection">
         <div class="processContentArea">
           <p style="color: rgb(77, 80, 85); font-size: 35px; font-weight: 600;
           letter-spacing: -0.3px; line-height: 37px; padding: 0; margin: 0;">
-          Æê½Ã½ºÅÍÁî Æê½ÃÅÍ´Â ÀÌ·¸°Ô È°µ¿ÇØ¿ä!</p>
+          íŽ«ì‹œìŠ¤í„°ì¦ˆ íŽ«ì‹œí„°ëŠ” ì´ë ‡ê²Œ í™œë™í•´ìš”!</p>
           <div><img alt="" src="/resources/img/member/1-2-3.png" style="width: 762px;  margin-top: 50px;"></div>
           <div style="display: flex; flex-direction: row;">
             <div style="width: 364px;">
               <p style="margin-top: 50px;  font-size: 25px; 
-              letter-spacing: 0.2px; line-height: 31px; ">¿¹¾à ¼ö¶ô</p>
+              letter-spacing: 0.2px; line-height: 31px; ">ì˜ˆì•½ ìˆ˜ë½</p>
               <p style="margin-top: 24px;  font-size: 17px; 
               line-height: 30px; letter-spacing: 0.2px;">
-              ³» ¿¹¾à°ü¸®¿¡¼­ °£ÆíÇÏ°Ô<br>
-              °¡´ÉÇÑ ³¯Â¥ÀÇ ¿¹¾àÀ» ¼ö¶ôÇØº¸¼¼¿ä.</p>
+              ë‚´ ì˜ˆì•½ê´€ë¦¬ì—ì„œ ê°„íŽ¸í•˜ê²Œ<br>
+              ê°€ëŠ¥í•œ ë‚ ì§œì˜ ì˜ˆì•½ì„ ìˆ˜ë½í•´ë³´ì„¸ìš”.</p>
             </div>
             <div style="width: 364px;">
               <p style="margin-top: 50px;  font-size: 25px; 
-              letter-spacing: 0.2px; line-height: 31px; ">µ¹º½ ¹× ÀÏÁö¾²±â</p>
+              letter-spacing: 0.2px; line-height: 31px; ">ëŒë´„ ë° ì¼ì§€ì“°ê¸°</p>
               <p style="margin-top: 24px;  font-size: 17px; 
               line-height: 30px; letter-spacing: 0.2px;">
-              ¿ì¸® Áý¿¡¼­ ¹Ý·Áµ¿¹°À» µ¹º¸¸ç,<br>
-              ½Ã°£º°·Î µ¹º½ ÀÏÁö¸¦ ÀÛ¼ºÇÕ´Ï´Ù.</p>
+              ìš°ë¦¬ ì§‘ì—ì„œ ë°˜ë ¤ë™ë¬¼ì„ ëŒë³´ë©°,<br>
+              ì‹œê°„ë³„ë¡œ ëŒë´„ ì¼ì§€ë¥¼ ìž‘ì„±í•©ë‹ˆë‹¤.</p>
             </div>
             <div>
               <p style="margin-top: 50px; 
               font-size: 25px; letter-spacing: 0.2px; line-height: 31px; 
-              ">Á¤»ê ¹Þ±â</p>
+              ">ì •ì‚° ë°›ê¸°</p>
               <p style="margin-top: 24px;  font-size: 17px; 
               line-height: 30px; letter-spacing: 0.2px;">
-              ¼öÀÍÀ» ½Ç½Ã°£À¸·Î È®ÀÎÇÏ°í<br>
-              ÁÖ ´ÜÀ§·Î Á¤»êÀ» ¹Þ¾Æº¸¼¼¿ä!</p>
+              ìˆ˜ìµì„ ì‹¤ì‹œê°„ìœ¼ë¡œ í™•ì¸í•˜ê³ <br>
+              ì£¼ ë‹¨ìœ„ë¡œ ì •ì‚°ì„ ë°›ì•„ë³´ì„¸ìš”!</p>
             </div>
           </div>
         </div>
@@ -82,69 +82,69 @@
         justify-content: space-between;">
           <div style="width: 273px; align-items: center; border-bottom: 1px solid rgb(231, 231, 240); 
           padding-bottom: 70px;">
-            <img alt="" src="/resources/img/member/Æí¾ÈÇÑ±Ù¹«È¯°æ.png" style="height: 120px; 
+            <img alt="" src="/resources/img/member/íŽ¸ì•ˆí•œê·¼ë¬´í™˜ê²½.png" style="height: 120px; 
             display: block; margin-left: -15px;">
             <p style="margin-top: 21px; color: rgb(77, 80, 85); font-size: 25px; line-height: 30px; 
-            letter-spacing: -0.3px; font-weight: 500;">Æí¾ÈÇÑ ±Ù¹« È¯°æ</p>
+            letter-spacing: -0.3px; font-weight: 500;">íŽ¸ì•ˆí•œ ê·¼ë¬´ í™˜ê²½</p>
             <p style="color: rgb(77, 80, 85); font-size: 17px; line-height: 30px; margin-top: 45px; 
-            width: max-content;">Æí¾ÈÇÑ ¿ì¸® Áý¿¡¼­ »ç¶û½º·¯¿î<br>°­¾ÆÁöµé°ú Çàº¹ÇÑ ½Ã°£À» º¸³¾ ¼ö ÀÖ¾î¿ä.</p>
+            width: max-content;">íŽ¸ì•ˆí•œ ìš°ë¦¬ ì§‘ì—ì„œ ì‚¬ëž‘ìŠ¤ëŸ¬ìš´<br>ê°•ì•„ì§€ë“¤ê³¼ í–‰ë³µí•œ ì‹œê°„ì„ ë³´ë‚¼ ìˆ˜ ìžˆì–´ìš”.</p>
           </div>
           <div style="width: 273px; align-items: center; border-bottom: 1px solid rgb(231, 231, 240); 
           padding-bottom: 70px;">
-            <img alt="" src="/resources/img/member/ÀÚÀ¯·Î¿î¾÷¹«½Ã°£.png" style="height: 120px; 
+            <img alt="" src="/resources/img/member/ìžìœ ë¡œìš´ì—…ë¬´ì‹œê°„.png" style="height: 120px; 
             display: block; margin-left: -15px;">
             <p style="margin-top: 21px; color: rgb(77, 80, 85); font-size: 25px; line-height: 30px; 
-            letter-spacing: -0.3px; font-weight: 500;">ÀÚÀ¯·Î¿î ¾÷¹« ½Ã°£</p>
+            letter-spacing: -0.3px; font-weight: 500;">ìžìœ ë¡œìš´ ì—…ë¬´ ì‹œê°„</p>
             <p style="color: rgb(77, 80, 85); font-size: 17px; line-height: 30px; margin-top: 45px; 
-            width: max-content;">ÀÚÀ¯·Î¿î ÈÞ¹«ÀÏ °ü¸®·Î ¿©°¡»ýÈ°À»<br>Áñ±â¸ç ¿øÇÏ´Â ³¯¿¡¸¸ ÀÏÇÒ ¼ö ÀÖ¾î¿ä.</p>
+            width: max-content;">ìžìœ ë¡œìš´ íœ´ë¬´ì¼ ê´€ë¦¬ë¡œ ì—¬ê°€ìƒí™œì„<br>ì¦ê¸°ë©° ì›í•˜ëŠ” ë‚ ì—ë§Œ ì¼í•  ìˆ˜ ìžˆì–´ìš”.</p>
           </div>
           <div style="width: 273px; align-items: center; border-bottom: 1px solid rgb(231, 231, 240); 
           padding-bottom: 70px;">
-            <img alt="" src="/resources/img/member/¿ùÆò±Õ100¸¸¿ø¼öÀÍ.png" style="height: 120px; 
+            <img alt="" src="/resources/img/member/ì›”í‰ê· 100ë§Œì›ìˆ˜ìµ.png" style="height: 120px; 
             display: block; margin-left: -15px;">
             <p style="margin-top: 21px; color: rgb(77, 80, 85); font-size: 25px; line-height: 30px; 
-            letter-spacing: -0.3px; font-weight: 500;">¿ù Æò±Õ 100¸¸¿ø ¼öÀÍ</p>
+            letter-spacing: -0.3px; font-weight: 500;">ì›” í‰ê·  100ë§Œì› ìˆ˜ìµ</p>
             <p style="color: rgb(77, 80, 85); font-size: 17px; line-height: 30px; margin-top: 45px; 
-            width: max-content;">ÇÏ·ç Æò±Õ 50,000¿øÀ¸·Î ÇÑ ´Þ 20ÀÏ<br>µ¹º½ ÁøÇà ½Ã 100¸¸¿øÀÇ ¼öÀÍÀÌ ¹ß»ýÇØ¿ä.</p>
+            width: max-content;">í•˜ë£¨ í‰ê·  50,000ì›ìœ¼ë¡œ í•œ ë‹¬ 20ì¼<br>ëŒë´„ ì§„í–‰ ì‹œ 100ë§Œì›ì˜ ìˆ˜ìµì´ ë°œìƒí•´ìš”.</p>
           </div>
         </div>
         <div style="width: 1020px; margin: 70px auto 0px; display: flex; flex-direction: row; 
         justify-content: space-between;">
           <div style="width: 273px; align-items: center;">
-            <img alt="" src="/resources/img/member/Æê½ÃÅÍÇïÇÁ½Ã½ºÅÛ.png" style="height: 120px; 
+            <img alt="" src="/resources/img/member/íŽ«ì‹œí„°í—¬í”„ì‹œìŠ¤í…œ.png" style="height: 120px; 
             display: block; margin-left: -15px;">
             <p style="margin-top: 21px; color: rgb(77, 80, 85); font-size: 25px; line-height: 30px; 
-            letter-spacing: -0.3px; font-weight: 500;">Æê½ÃÅÍ ÇïÇÁ ½Ã½ºÅÛ</p>
+            letter-spacing: -0.3px; font-weight: 500;">íŽ«ì‹œí„° í—¬í”„ ì‹œìŠ¤í…œ</p>
             <p style="color: rgb(77, 80, 85); font-size: 17px; line-height: 30px; margin-top: 45px; 
-            width: max-content;">¼Ò¼Ó ÈÆ·Ã»ç°¡ Ç×½Ã ´ë±âÇÏ¿©, Æê½ÃÆÃ ±³À°<br>
-            ¹× À§Çè »óÈ² ¹ß»ý ½Ã ¾ðÁ¦µç »ó´ãÇØµå·Á¿ä.</p>
+            width: max-content;">ì†Œì† í›ˆë ¨ì‚¬ê°€ í•­ì‹œ ëŒ€ê¸°í•˜ì—¬, íŽ«ì‹œíŒ… êµìœ¡<br>
+            ë° ìœ„í—˜ ìƒí™© ë°œìƒ ì‹œ ì–¸ì œë“  ìƒë‹´í•´ë“œë ¤ìš”.</p>
           </div>
           <div style="width: 273px; align-items: center;">
-            <img alt="" src="/resources/img/member/°¡ÀÔºñ¿ùÈ¸ºñ¹«·á.png" style="height: 120px; 
+            <img alt="" src="/resources/img/member/ê°€ìž…ë¹„ì›”íšŒë¹„ë¬´ë£Œ.png" style="height: 120px; 
             display: block; margin-left: -15px;">
             <p style="margin-top: 21px; color: rgb(77, 80, 85); font-size: 25px; line-height: 30px; 
-            letter-spacing: -0.3px; font-weight: 500;">°¡ÀÔºñ, ¿ùÈ¸ºñ ¹«·á</p>
+            letter-spacing: -0.3px; font-weight: 500;">ê°€ìž…ë¹„, ì›”íšŒë¹„ ë¬´ë£Œ</p>
             <p style="color: rgb(77, 80, 85); font-size: 17px; line-height: 30px; margin-top: 45px; 
-            width: max-content;">Æê½Ã½ºÅÍÁî´Â º°µµÀÇ È°µ¿ ºñ¿ëÀ» ¹ÞÁö ¾Ê½À´Ï´Ù.<br>
-            ±Ý¾× ºÎ´ã ¾øÀÌ Æê½Ã½ºÅÍÁî¿¡¼­ È°µ¿ÇØ º¸¼¼¿ä.</p>
+            width: max-content;">íŽ«ì‹œìŠ¤í„°ì¦ˆëŠ” ë³„ë„ì˜ í™œë™ ë¹„ìš©ì„ ë°›ì§€ ì•ŠìŠµë‹ˆë‹¤.<br>
+            ê¸ˆì•¡ ë¶€ë‹´ ì—†ì´ íŽ«ì‹œìŠ¤í„°ì¦ˆì—ì„œ í™œë™í•´ ë³´ì„¸ìš”.</p>
           </div>
           <div style="width: 273px; align-items: center;">
-            <img alt="" src="/resources/img/member/±¹³»À¯ÀÏÆê½ÃÅÍº¸Çè.png" style="height: 120px; 
+            <img alt="" src="/resources/img/member/êµ­ë‚´ìœ ì¼íŽ«ì‹œí„°ë³´í—˜.png" style="height: 120px; 
             display: block; margin-left: -15px;">
             <p style="margin-top: 21px; color: rgb(77, 80, 85); font-size: 25px; line-height: 30px; 
-            letter-spacing: -0.3px; font-weight: 500;">±¹³» À¯ÀÏ Æê½ÃÅÍ º¸Çè</p>
+            letter-spacing: -0.3px; font-weight: 500;">êµ­ë‚´ ìœ ì¼ íŽ«ì‹œí„° ë³´í—˜</p>
             <p style="color: rgb(77, 80, 85); font-size: 17px; line-height: 30px; margin-top: 45px; 
-            width: max-content;">Æê½ÃÅÍ´Ô »óÇØ¿¡ º´¿ø Áø·áºñ ÃÖ´ë 1È¸ 10¸¸¿ø,<br>
-            ¹Ý·Áµ¿¹° »óÇØ¿¡ ÃÖ´ë 100¸¸¿øÀ» Áö¿øÇÕ´Ï´Ù.</p>
+            width: max-content;">íŽ«ì‹œí„°ë‹˜ ìƒí•´ì— ë³‘ì› ì§„ë£Œë¹„ ìµœëŒ€ 1íšŒ 10ë§Œì›,<br>
+            ë°˜ë ¤ë™ë¬¼ ìƒí•´ì— ìµœëŒ€ 100ë§Œì›ì„ ì§€ì›í•©ë‹ˆë‹¤.</p>
             <p style="margin-top: 27px; font-size: 15px; color: rgb(153, 157, 167);">
-              Æê½ÃÅÍ´Ô ±ÍÃ¥ »çÀ¯ÀÏ °æ¿ì º¸Çè Áö¿ø ºÒ°¡</p>
+              íŽ«ì‹œí„°ë‹˜ ê·€ì±… ì‚¬ìœ ì¼ ê²½ìš° ë³´í—˜ ì§€ì› ë¶ˆê°€</p>
           </div>
         </div>
       </section>
 
     </main>
 
-    <!-- º»¹® ³¡ -->
+    <!-- ë³¸ë¬¸ ë -->
     
     
     
