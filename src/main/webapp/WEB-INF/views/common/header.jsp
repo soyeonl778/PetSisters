@@ -29,7 +29,7 @@
               <a class="nav-link" href="#">로그인</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link petsiter" href="#">펫시터지원</a>
+              <a class="nav-link petsiter" href="supportInfo.me">펫시터지원</a>
             </li>
           </ul>
         </div>

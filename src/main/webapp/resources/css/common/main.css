@@ -32,6 +32,7 @@
     font-size: 0;
     line-height: 0;
     transition: background .5s;
+    background: url(https://res.kurly.com/pc/service/common/1903/btn_pagetop_v2.png) no-repeat 50% 50%;
 }
 
 /* hover시 transition 색 변경 */
@@ -571,9 +572,9 @@ body #header .location_login .location_notice{  /* 안내메세지 처음에 blo
   margin-top: 10px;
 }
 .bottomCard:hover{
-  box-shadow: 5px 5px 5px #0888D0;
+  box-shadow: 1px 1px 7px #0888D0;
   transform: translate(-5%, -5%);
-  transition-delay: 0.1s;
+  transition-delay: 0.5s;
   transition-duration: 0.6s;
 }
 #bottomImg {

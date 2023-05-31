@@ -41,10 +41,11 @@
 
         <!-- 슬라이드 -->
         <div class="wrap">
+        <h3 style="text-align: center;">실제 인스타그램 후기를 확인해보세요!</h3>
           <div class="slider">
 
             <div class="item">
-              <img src="/resources/img/main/돌봄일지_최종-011.png" alt="">
+              <img src="/resources/img/main/중간1.png" alt="">
             </div>
             <div class="item">
               <img src="/resources/img/main/중간2.png" alt="">
