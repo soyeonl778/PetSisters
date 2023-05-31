@@ -28,7 +28,7 @@
           <div class="spec_info">
             주식회사 개봐주는언니들
             <span class="bar">I</span>
-            대표 : 조승호
+            대표 : 김가현
             <br>
             사업자등록번호 : 215-15-41572
             <br>
@@ -39,7 +39,7 @@
             <br>
             사업장 소재지 : 서울특별시 영등포구 선유동2로 57 이레빌딩
             <br>
-            개인정보 보호 책임자 : 정재훈 <a href="#">jjh156@naver.com</a>
+            개인정보 보호 책임자 : 조승호 <a href="#">jjh156@naver.com</a>
             <br>
           </div>
         </div>

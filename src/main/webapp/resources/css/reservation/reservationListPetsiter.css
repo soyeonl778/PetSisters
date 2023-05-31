@@ -345,6 +345,7 @@ body #container #main .layout-pagination .pagediv span strong{
   height: 35px;
   border-radius: 3px;
   right: 1px;
+  padding-left: 30px;
 }
 .tableContainer {
   margin-top: 50px;

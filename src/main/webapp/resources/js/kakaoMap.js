@@ -8,31 +8,37 @@ var mapContainer = document.getElementById('map'), // 지도를 표시할 div
 // 지도를 생성합니다    
 var map = new kakao.maps.Map(mapContainer, mapOption);
 
-// 주소-좌표 변환 객체를 생성합니다
-var geocoder = new kakao.maps.services.Geocoder();
 
-// 주소로 좌표를 검색합니다
-geocoder.addressSearch('경기도 광명시 오리로801', function (result, status) {
+  var address = "경기도 광명시 하안동 오리로801 202동 2601호"; 
+  var geocoder = new kakao.maps.services.Geocoder();
 
-  // 정상적으로 검색이 완료됐으면 
-  if (status === kakao.maps.services.Status.OK) {
+  geocoder.addressSearch(address, function (result, status) {
+    if (status === kakao.maps.services.Status.OK) {
+      var latitude = result[0].y;
+      var longitude = result[0].x;
 
-    var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+      var container = document.getElementById('map');
+      var options = {
+        center: new kakao.maps.LatLng(latitude, longitude),
+        level: 6
+      };
 
-    // 결과값으로 받은 위치를 마커로 표시합니다
-    var marker = new kakao.maps.Marker({
-      map: map,
-      position: coords
-    });
+      var map = new kakao.maps.Map(container, options);
 
-    // 인포윈도우로 장소에 대한 설명을 표시합니다
-    var infowindow = new kakao.maps.InfoWindow({
-      content: '<div style="width:150px;text-align:center;padding:6px 0;">조승호 펫시터님</div>'
-    });
-    infowindow.open(map, marker);
+      var circle = new kakao.maps.Circle({
+        center: new kakao.maps.LatLng(latitude, longitude),  // 원의 중심 좌표
+        radius: 500,  // 원의 반지름 (단위: m)
+        strokeWeight: 2,  // 선의 두께 (단위: px)
+        strokeColor: '#0888D0',  // 선의 색상
+        strokeOpacity: 0.8,  // 선의 불투명도 (0~1 사이의 값)
+        strokeStyle: 'solid',  // 선의 스타일 ('solid', 'shortdash', 'shortdot', 'shortdashdot', 'longdash', 'longdot', 'longdashdot')
+        fillColor: '#B9EAFF',  // 채우기 색상
+        fillOpacity: 0.2  // 채우기 불투명도 (0~1 사이의 값)
+      });
 
-    // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-    map.setCenter(coords);
-  }
-})
+      circle.setMap(map);
+    }
+  });
 });    
+
+
