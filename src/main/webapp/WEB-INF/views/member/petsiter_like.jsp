@@ -7,7 +7,7 @@
   <meta charset="UTF-8" />
   
   <!-- header css -->
-  <link rel="stylesheet" href="/resources/css/petsiter_like.css">
+  <link rel="stylesheet" href="/resources/css/member/petsiter_like.css">
   <link rel="stylesheet" href="/resources/css/common/memberForm.css">
   <jsp:include page="../common/common.jsp" />
 
