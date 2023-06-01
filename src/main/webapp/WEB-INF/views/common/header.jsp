@@ -20,7 +20,7 @@
 <!-- 주의사항 : script 태그 내부에서는 custom action 태그를 사용 불가함 -->
 <c:if test="${ not empty alertMsg }">
 	<script>
-		alertify.alert('환영합니다 ${ loginUser.userName }님!', '${ alertMsg }',
+		alertify.alert('알림', '${ alertMsg }',
 				function() {
 					alertify.success('또오셨군용');
 				});

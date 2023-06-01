@@ -89,10 +89,48 @@ VALUES ( SEQ_RESERVATION.NEXTVAL,
          2,
          3);
          
-         
+--------------------------------------------------
+----------    펫시터 파일 테이블 더미    ------------
+--------------------------------------------------
+INSERT INTO P_ATTACHMENT
+VALUES ( SEQ_P_ATTACHMENT.NEXTVAL,
+         '그림이사진1.jpg',
+         '2023060154348464359.jpg',
+         'resources/upFiles/petsitter_upfiles/',
+         SYSDATE,
+         'Y',
+         1,
+         1);
          
 --------------------------------------------------
 -----------------    커밋구문    -------------------
 --------------------------------------------------
-         
+   ROLLBACK;      
  COMMIT;
+ 
+
+ 
+ 
+ 
+SELECT R.START_DATE,
+       R.END_DATE,
+       ADDRESS,
+       CA_STATUS,
+       P_TITLE,
+       CARE_LIST,
+       P_NO,
+       A.FILE_PATH AS FILE_PATH,
+       ORIGIN_NAME 
+  FROM RESERVATION R
+  LEFT JOIN MEMBER M USING (USER_NO)
+  LEFT JOIN PETSITTER P USING (USER_NO)
+  LEFT JOIN P_ATTACHMENT A ON P.P_NO = A.REF_PNO
+ WHERE USER_NO = 2;
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
