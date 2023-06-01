@@ -39,13 +39,10 @@
                     <a href="#">내 게시글 및 댓글</a>
                   </li>
                   <li class="on">
-                    <a href="#">예약 조회</a>
+                    <a href="reservationList">예약 조회</a>
                   </li>
                   <li>
-                    <a href="#">내 후기</a>
-                  </li>
-                  <li>
-                    <a href="#">돌봄 일지</a>
+                    <a href="journalList">돌봄 일지</a>
                   </li>
                 </ul>
               </div>
@@ -84,7 +81,7 @@
 
                     <div class="cardBtn">
                       <a class="cardDetail" href="">상세 조회</a>
-                      <a class="cardReview" href="">후기 작성</a>
+                      <a class="cardReview" href="review">후기 작성</a>
                       <a class="cardDelete" href="">삭제</a>
                     </div>
                   </div>
