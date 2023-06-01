@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="supportMapper">
+
+	<resultMap id="supportResultSet" type="support">
+		<result column="SUPPORT_NO" property="supportNo" />
+		<result column="ADDRESS" property="address" />
+		<result column="PYEONG" property="pyeong" />
+		<result column="SMOKE" property="smoke" />
+		<result column="MY_EXPERIENCE" property="myExperience" />
+		<result column="OTHER_EXPERIENCE" property="otherExperience" />
+		<result column="ETC_EXPERIENCE" property="etcExperience" />
+		<result column="PETSITTER_EXPERIENCE" property="petsitterExperience" />
+		<result column="USER_NO" property="userNo" />
+	</resultMap>
+	
+	
+	<!-- 지원서추가 기능 -->
+	<insert id="insertSupport" parameterType="support">
+	INSERT INTO SUPPORT(SUPPORT_NO
+									 , ADDRESS
+									 , PYEONG
+									 , SMOKE
+									 , MY_EXPERIENCE
+									 , OTHER_EXPERIENCE
+									 , ETC_EXPERIENCE
+									 , PETSITTER_EXPERIENCE
+									 , USER_NO)
+							  VALUES(SEQ_SUPPORT.NEXTVAL
+									   , #{address}
+									   , #{pyeong}
+									   , #{smoke}
+									   , #{myExperience}
+									   , #{otherExperience}
+									   , #{etcExperience}
+									   , #{petsitterExperience}
+									   , #{userNo})
+	</insert>
+
+
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
