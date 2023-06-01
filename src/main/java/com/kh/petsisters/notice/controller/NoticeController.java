@@ -2,8 +2,12 @@ package com.kh.petsisters.notice.controller;
 
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -38,6 +42,45 @@ public class NoticeController {
 		mv.addObject("pi", pi).addObject("list", list).setViewName("notice/noticeList");
 		
 		return mv;
+	}
+	
+	// faqList 화면 띄우기
+	@GetMapping("/showFaq")
+    public ModelAndView showFaq() {
+		
+        ModelAndView modelAndView = new ModelAndView();
+        
+        modelAndView.setViewName("notice/faqList");
+        
+        return modelAndView;
+    }
+	
+	// 공지사항 작성 기능
+	@RequestMapping("enrollForm.no")
+	public String enrollForm() {
+		
+		return "notice/noticeEnrollForm";
+	}
+	
+	// 공지사항 등록
+	@RequestMapping("insert.no")
+	public String insertNotice(Notice n, HttpSession session, Model model) {
+		
+		int result = noticeService.insertNotice(n);
+		
+		if(result > 0) {
+			
+			session.setAttribute("alertMsg", "성공적으로 공지사항을 등록했습니다.");
+			
+			return "redirect:/list.no";
+		
+		} else {
+			
+			model.addAttribute("errorMsg", "공지사항 등록에 실패했습니다.");
+			
+			return "redirect:/enrollForm.no";
+		}
+		
 		
 	}
 

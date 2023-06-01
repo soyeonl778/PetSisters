@@ -55,7 +55,7 @@
 
                 <br/>
                 
-                <table id="noticeTable" style="text-align: center;">
+                <table id="noticeTable" style="text-align: center;" class="table table-hover">
                   <thead>
                     <tr class="category">
                       <th width="50" height="51">번호</th>
@@ -66,40 +66,27 @@
                     </tr>
                   </thead>
                   <tbody id="noticeBody">
-				    <a class="notice" href="#">
-				      <tr>
-				        <td height="51">공지</td>
-				        <td>[안내] 펫시스터즈 서비스 이용안내</td>
-				        <td>언니들</td>
-				        <td>2023-05-24</td>
-				        <td>77</td>
-				      </tr>
-				    </a>
-				    <a class="notice" href="#">
-				      <tr>
-				        <td height="51">공지</td>
-				        <td>[안내] 펫시스터즈 서비스 이용안내</td>
-				        <td>언니들</td>
-				        <td>2023-05-24</td>
-				        <td>129</td>
-				      </tr>
-				    </a>
-				    <a class="notice" href="#">
-				      <tr>
-				        <td height="51">공지</td>
-				        <td>[안내] 펫시스터즈 서비스 이용안내</td>
-				        <td>언니들</td>
-				        <td>2023-05-24</td>
-				        <td>214</td>
-				      </tr>
-				    </a>
-				  </tbody>
+                  	<c:forEach var="n" items="${ list }">
+				        <tr>
+				          <td height="51">${n.noticeNo}</td>
+				          <td>${n.noticeTitle}</td>
+				          <td>언니들</td>
+				          <td>${n.createDate}</td>
+				          <td>${n.count}</td>
+				        </tr>
+				  	</c:forEach>
+                  </tbody>
+				    
                 </table>
 
-                <br/>
-                <div style="text-align: center;">
-                  <a href="" class="btn btn-primary">작성하기</a>
-                </div>
+				<c:choose>
+					<c:when test="${ loginUser.userName eq '관리자' }">
+						<br/>
+			            <div style="text-align: center;">
+			            	<a href="enrollForm.no" class="btn btn-primary">작성하기</a>
+			            </div>
+					</c:when>
+				</c:choose>
 
                 <br/>
 
@@ -139,6 +126,15 @@
   <!-- Footer 영역 시작 -->
   	<jsp:include page="../common/footer.jsp" />
   <!-- Footer 영역 끝 -->
+  
+  <script>
+  	$(function() {
+		$("#noticeList>tbody>tr").click(function() {
+			let nno = $(this).children(".nno").text();
+			location.href = "detail.no?nno=" + nno;
+		});
+  	});
+  </script>
   
 </body>
 </html>

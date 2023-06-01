@@ -28,6 +28,16 @@
 		 WHERE STATUS = 'Y'
 		 ORDER BY NOTICE_NO DESC
 	</select>
+	
+	<!-- 공지사항 작성용 쿼리문 -->
+	<insert id="insertNotice" parameterType="notice">
+		INSERT INTO NOTICE(NOTICE_NO
+						 , NOTICE_TITLE
+						 , NOTICE_CONTENT)
+					VALUES(SEQ_NOTICE.NEXTVAL
+						 , #{noticeTitle}
+						 , #{noticeContent})
+	</insert>
 
 </mapper>
 

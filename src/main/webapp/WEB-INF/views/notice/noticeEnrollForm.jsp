@@ -5,7 +5,7 @@
 <head>
   <meta charset="UTF-8" />
   
-  <link rel="stylesheet" href="/resources/css/noticeEnrollForm.css">
+  <link rel="stylesheet" href="/resources/css/notice/noticeEnrollForm.css">
   <link rel="stylesheet" href="/resources/css/common/form.css">
   <jsp:include page="../common/common.jsp" />
 
@@ -30,10 +30,10 @@
               <div class="inner_sub">
                 <ul class="list_menu">
                   <li class="on">
-                    <a href="#">공지사항</a>
+                    <a href="list.no">공지사항</a>
                   </li>
                   <li>
-                    <a href="#">자주하는 질문</a>
+                    <a href="/showFaq">자주하는 질문</a>
                   </li>
                   <li>
                     <a href="#">1:1 문의</a>
@@ -55,35 +55,31 @@
                 
                 <div class="noticeEnrollForm">
                   <form action="insert.no" method="post">
-                    <input type="hidden" name="memberNo">
                     <table id="noticeEnrollForm" style="text-align: center;">
                         <tr>
                             <th>제목</th>
-                            <td><input type="text" class="notice" placeholder="제목"></td>
+                            <td><input type="text" class="notice" name="noticeTitle" placeholder="제목" required></td>
                         </tr>
                         <tr>
                             <th>작성자</th>
-                            <td><input type="text" class="notice" placeholder="작성자"></td>
-                        </tr>
-                        <tr>
-                            <th>작성일</th>
-                            <td><input type="date" class="notice" placeholder="작성일"></td>
+                            <td style="text-align: left;">언니들</td>
                         </tr>
                         <tr>
                             <th>내용</th>
                             <td>
-                                <textarea class="notice noticeContent" placeholder="내용을 입력해주세요."></textarea>
+                                <textarea class="notice noticeContent" name="noticeContent" placeholder="내용을 입력해주세요." required></textarea>
                             </td>
                         </tr>
                     </table>
+                    <br/>
+	                <div align="center">
+	                  <button type="submit" class="btn btn-primary">등록하기</button>
+	                  <button type="button" onclick="history.back();" class="btn btn-outline-primary">뒤로가기</button>
+	                </div>
                   </form>
                 </div>
                 
-                <br/>
-                <div style="text-align: center;">
-                  <a href="" class="btn btn-primary">등록하기</a>
-                  <a href="" class="btn btn-outline-primary">뒤로가기</a>
-                </div>
+                
               </div>
             </div>
             <!-- 본문 영역 끝-->
@@ -97,23 +93,6 @@
   <!-- Footer 영역 시작 -->
   	<jsp:include page="../common/footer.jsp" />
   <!-- Footer 영역 끝 -->
-  
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-    <script>
-      $(document).ready(function () {
-        $(window).scroll(function () {
-          var scrollTop = $(document).scrollTop();
-          var footerOffset = $(".link_footer").offset().top;
-          var windowHeight = $(window).height();
 
-          if (scrollTop + windowHeight > footerOffset) {
-            scrollTop = footerOffset - windowHeight;
-          }
-
-          $(".snb_my").stop();
-          $(".snb_my").animate({ "top": scrollTop });
-        });
-      });
-    </script>
 </body>
 </html>

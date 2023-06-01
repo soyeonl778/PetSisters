@@ -21,20 +21,17 @@ public class NoticeServiceImpl implements NoticeService {
 
 	@Override
 	public int selectListCount() {
-		// TODO Auto-generated method stub
 		return noticeDao.selectListCount(sqlSession);
 	}
 
 	@Override
 	public ArrayList<Notice> selectList(PageInfo pi) {
-		// TODO Auto-generated method stub
-		return null;
+		return noticeDao.selectList(sqlSession, pi);
 	}
 
 	@Override
 	public int insertNotice(Notice n) {
-		// TODO Auto-generated method stub
-		return 0;
+		return noticeDao.insertNotice(sqlSession, n);
 	}
 
 	@Override
