@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page import="java.util.Date" %>
+<c:set var="now" value="<%= new java.util.Date() %>" />
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -56,8 +62,16 @@
                 <div id="bodyContentHead">
                   <h2 class="firstTit">예약 조회</h2>
                 </div>
+                
+                <c:forEach var="r" items="${list}">
                 <div class="mainBodyWrapper">
-                  <div class="cardDate">2023-05-21 ~ 2023-05-23</div>
+                 <div class="dateWorking">
+                  <div class="cardDate">
+                  ${fn:substring(r.startDate, 0, 10) } ~
+                  ${fn:substring(r.endDate, 0, 10) }
+                  </div>
+                  	<div class="workingon">진행중</div>
+                 </div>
                   <div class="cardSection">
 
                       <div class="cardContainer" onclick="location.href='#'">
@@ -78,7 +92,6 @@
                         </div>
                       </div>
 
-
                     <div class="cardBtn">
                       <a class="cardDetail" href="">상세 조회</a>
                       <a class="cardReview" href="review">후기 작성</a>
@@ -87,8 +100,14 @@
                   </div>
                 </div>
 
+				</c:forEach>
+
+
                 <div class="mainBodyWrapper">
+                 <div class="dateWorking">
                   <div class="cardDate">2023-05-21 ~ 2023-05-23</div>
+                  <div class="itsdone">진행 완료</div>
+                 </div>
                   <div class="cardSection">
                     <div class="cardContainer">
                       <div class="cardImage">

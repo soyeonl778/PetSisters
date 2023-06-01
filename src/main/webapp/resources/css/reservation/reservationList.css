@@ -191,3 +191,18 @@
   font-size: xxx-large;
   line-height: 35px;
 }
+.dateWorking {
+  display: flex;
+  justify-content: space-between;	
+  width: 74%;
+}
+.workingon {
+  color: #0888D0; 
+  font-size: large;
+  font-weight: 900;
+}
+.itsdone {
+  color: black;	
+  font-size: large;
+  font-weight: 700;
+}

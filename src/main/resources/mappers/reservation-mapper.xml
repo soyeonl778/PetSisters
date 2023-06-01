@@ -11,10 +11,41 @@
 		<result column="STATUS" property="status" />
 		<result column="USER_NO" property="userNo" />
 		<result column="REF_PNO" property="refPno" />
+		<result column="CA_STATUS" property="caStatus" />
+		<result column="P_TITLE" property="ptitle" />
+		<result column="CARE_LIST" property="pcareList" />
+		<result column="P_NO" property="pno" />
+		<result column="FILE_PATH" property="petFile" />
+		<result column="ADDRESS" property="address" />
+		<result column="ORIGIN_NAME" property="originName" />
 	</resultMap>
-
 	
-
+	<!-- 예약 리스트 총 갯수 구하는 쿼리문 -->
+	<select id="selectListCount" resultType="_int">
+	SELECT COUNT(*) 
+	  FROM RESERVATION
+	 WHERE USER_NO = #{userNo} 
+	</select>
+	
+	
+	<!-- 예약 리스트 구하는 쿼리문 -->
+	<select id="selectPetsitterList" resultMap="reservationResultSet">
+		SELECT R.START_DATE,
+		       R.END_DATE,
+		       ADDRESS,
+		       CA_STATUS,
+		       P_TITLE,
+		       CARE_LIST,
+		       P_NO,
+		       A.FILE_PATH AS FILE_PATH,
+		       ORIGIN_NAME
+		  FROM RESERVATION R
+		  LEFT JOIN MEMBER M USING (USER_NO)
+		  LEFT JOIN PETSITTER P USING (USER_NO)
+		  LEFT JOIN P_ATTACHMENT A ON P.P_NO = A.REF_PNO
+		 WHERE USER_NO = #{userNo}
+	</select>	
+	
 </mapper>
 
 
