@@ -65,18 +65,18 @@
             <div id="viewOrderList" class="page_section section_orderlist">
               <div class="page_section section_destination">
                 <!-- 이 영역 안에서 페이지 작업 하시면 됩니다 -->
-                <div style="height: 2600px;">
+                <div>
                   <div id="content-area">
                     <div id="content1">
                       <div class="viewslider_wrap">
                         <section class="slide-box">
                         <ul class="slider-for">
-                          <li><img src="/resources/img/petSitter/20220402_115732.jpg"></li>
-                          <li><img src="/resources/img/petSitter/20220917_142141.jpg"></li>
-                          <li><img src="/resources/img/petSitter/20221029_233632.jpg"></li>
-                          <li><img src="/resources/img/petSitter/20220930_121227.jpg"></li>
-                          <li><img src="/resources/img/petSitter/20221014_132826.jpg"></li>
-                          <li><img src="/resources/img/petSitter/자격증.jpg"></li>
+                          <li><img src="/resources/img/petsitter/20220402_115732.jpg"></li>
+                          <li><img src="/resources/img/petsitter/20220917_142141.jpg"></li>
+                          <li><img src="/resources/img/petsitter/20221029_233632.jpg"></li>
+                          <li><img src="/resources/img/petsitter/20220930_121227.jpg"></li>
+                          <li><img src="/resources/img/petsitter/20221014_132826.jpg"></li>
+                          <li><img src="/resources/img/petsitter/자격증.jpg"></li>
                           <!--
                           <li><img src="/resources/img/펫시터 상세페이지 img/20220917_142141.jpg"></li>
                           <li><img src="/resources/img/펫시터 상세페이지 img/20221029_233632.jpg"></li>
@@ -86,12 +86,12 @@
                           -->
                         </ul>
                         <ul class="slider-nav">
-                          <li><img src="/resources/img/petSitter/20220402_115732.jpg"></li>
-                          <li><img src="/resources/img/petSitter/20220917_142141.jpg"></li>
-                          <li><img src="/resources/img/petSitter/20221029_233632.jpg"></li>
-                          <li><img src="/resources/img/petSitter/20220930_121227.jpg"></li>
-                          <li><img src="/resources/img/petSitter/20221014_132826.jpg"></li>
-                          <li><img src="/resources/img/petSitter/자격증.jpg"></li>
+                          <li><img src="/resources/img/petsitter/20220402_115732.jpg"></li>
+                          <li><img src="/resources/img/petsitter/20220917_142141.jpg"></li>
+                          <li><img src="/resources/img/petsitter/20221029_233632.jpg"></li>
+                          <li><img src="/resources/img/petsitter/20220930_121227.jpg"></li>
+                          <li><img src="/resources/img/petsitter/20221014_132826.jpg"></li>
+                          <li><img src="/resources/img/petsitter/자격증.jpg"></li>
                         </ul>
                         </section>
                         <!-- <div class="slider-nav">
@@ -145,7 +145,7 @@
                               <td>
                                 <div class="petService">
                                   <div>
-                                    <img src="/resources/img/petSitter/집 앞 픽업.png">
+                                    <img src="/resources/img/petsitter/집 앞 픽업.png">
                                   </div>
                                   <div><p>집 앞 픽업<br>비용은 펫시터와 협의</p></div>
                                 </div>
@@ -153,7 +153,7 @@
                               <td>
                                 <div class="petService">
                                   <div>
-                                    <img src="/resources/img/petSitter/모발 관리.png">
+                                    <img src="/resources/img/petsitter/모발 관리.png">
                                   </div>
                                   <div><p>모발 관리<br>눈물 또는 빗질 관리 가능</p></div>
                                 </div>
@@ -163,7 +163,7 @@
                               <td>
                                 <div class="petService">
                                   <div>
-                                    <img src="/resources/img/petSitter/약물 복용.png">
+                                    <img src="/resources/img/petsitter/약물 복용.png">
                                   </div>
                                   <div><p>약물 복용<br>경구(입) 약물 복용 가능</p></div>
                                 </div>
@@ -171,7 +171,7 @@
                               <td>
                                 <div class="petService">
                                   <div>
-                                    <img src="/resources/img/petSitter/응급 처치.png">
+                                    <img src="/resources/img/petsitter/응급 처치.png">
                                   </div>
                                   <div><p>응급 처치<br>응급 상황 시 병원 이동 가능</p></div>
                                 </div>
@@ -181,7 +181,7 @@
                               <td>
                                 <div class="petService">
                                   <div>
-                                    <img src="/resources/img/petSitter/목욕 가능.png">
+                                    <img src="/resources/img/petsitter/목욕 가능.png">
                                   </div>
                                   <div><p>목욕 가능<br>비용은 펫시터와 협의</p></div>
                                 </div>
@@ -189,7 +189,7 @@
                               <td>
                                 <div class="petService">
                                   <div>
-                                    <img src="/resources/img/petSitter/매일 산책.png">
+                                    <img src="/resources/img/petsitter/매일 산책.png">
                                   </div>
                                   <div><p>매일 산책<br>산책 및 실외 배변 가능</p></div>
                                 </div>
@@ -199,7 +199,7 @@
                               <td>
                                 <div class="petService">
                                   <div>
-                                    <img src="/resources/img/petSitter/실내 놀이.png">
+                                    <img src="/resources/img/petsitter/실내 놀이.png">
                                   </div>
                                   <div><p>실내 놀이<br>터그 놀이, 노즈워크 등</p></div>
                                 </div>
@@ -207,7 +207,7 @@
                               <td>
                                 <div class="petService">
                                   <div>
-                                    <img src="/resources/img/petSitter/장기 예약.png">
+                                    <img src="/resources/img/petsitter/장기 예약.png">
                                   </div>
                                   <div><p>장기 예약<br>14일 이상 돌봄 가능</p></div>
                                 </div>
@@ -217,7 +217,7 @@
                               <td>
                                 <div class="petService">
                                   <div>
-                                    <img src="/resources/img/petSitter/노견 케어.png">
+                                    <img src="/resources/img/petsitter/노견 케어.png">
                                   </div>
                                   <div><p>노견 케어<br>8년 이상 노견 돌봄 가능</p></div>
                                 </div>
@@ -225,7 +225,7 @@
                               <td>
                                 <div class="petService">
                                   <div>
-                                    <img src="/resources/img/petSitter/퍼피 케어.png">
+                                    <img src="/resources/img/petsitter/퍼피 케어.png">
                                   </div>
                                   <div><p>퍼피 케어<br>1년 미만 퍼피 돌봄 가능</p></div>
                                 </div>
@@ -260,6 +260,9 @@
                       </div>
                     </div>
                     <div id="content2">
+                      <div class="updateFormBtn">
+                        <a href="updateForm.pe?pno=${pno}" class="btn btn-secondary">프로필 수정</a>
+                      </div>
                       <div class="card">
                         <div class="card-body">
                           <h5 class="card-title">언제 펫시터가 필요하신가요?</h5>
@@ -277,7 +280,7 @@
                             초과금액 0원
                           </p>
                           <p class="card-text">총 합계 55,000원</p>
-                          <div class="d-grid gap-2 mx-auto">
+                          <div class="d-grid gap-2 mx-auto" id="reservationBtn">
                             <a href="#" class="btn btn-secondary">예약 요청</a>
                           </div>
                         </div>

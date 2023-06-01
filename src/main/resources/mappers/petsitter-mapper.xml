@@ -4,12 +4,12 @@
 
 	<!-- PETSITTER 객체로 가공된 resultMap -->
 	<resultMap id="petSitterResultSet" type="petSitter">
-		<result column="P_NO" property="pNo" />
-		<result column="P_TITLE" property="pTitle" />
-		<result column="P_CONTENT" property="pContent" />
-		<result column="P_SERVICE" property="pService" />
+		<result column="P_NO" property="petSitterNo" />
+		<result column="P_TITLE" property="petSitterTitle" />
+		<result column="P_CONTENT" property="petSitterContent" />
+		<result column="P_SERVICE" property="petSitterService" />
 		<result column="CARE_LIST" property="careList" />
-		<result column="P_MODE" property="pMode" />
+		<result column="P_MODE" property="petSitterMode" />
 		<result column="USER_NO" property="userNo" />
 	</resultMap>
 	
@@ -25,6 +25,17 @@
 		  FROM PETSITTER
 		 WHERE P_NO = #{pNo}
 	</select>
+	
+	<!-- 펫시터 프로필 수정용 쿼리문 -->
+	<update id="updatePetSitter" parameterType="petSitter">
+		UPDATE PETSITTER
+		   SET P_TITLE = #{pTitle}
+		     , P_CONTENT = #{pContent}
+		     , P_SERVICE = #{pService}
+		     , CARE_LIST = #{careList}
+		     , P_MODE = #{pMode}
+		 WHERE P_NO = #{pNo}
+	</update>
 
 </mapper>
 

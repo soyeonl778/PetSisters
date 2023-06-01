@@ -1,4 +1,10 @@
+.page_section>div { height: 2800px; }
+
 div, form, img { box-sizing: border-box; }
+
+.page_aticle.aticle_type2 {
+    padding-top: 10px;
+}
 
 li { float: left; }
 
@@ -9,7 +15,10 @@ li { float: left; }
     float: left;
 }
 
-#content1 { width: 65%; }
+#content1 {
+    width: 65%;
+    margin-top: 58px;
+}
 
 #content2 {
     width: 35%;
@@ -190,4 +199,15 @@ li { float: left; }
 
 .card {
     box-shadow: 2px 2px 2px 2px whitesmoke;
+}
+
+.updateFormBtn {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.updateFormBtn .btn {
+    margin: 0 20px 20px;
+    background-color: #0888D0;
+    border: none;
 }

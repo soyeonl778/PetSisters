@@ -17,15 +17,15 @@ public class PetSitterServiceImpl implements  PetSitterService {
 	private SqlSessionTemplate sqlSession;
 	
 	@Override
-	public PetSitter selectPetSitter(int pNo) {
+	public PetSitter selectPetSitter(int pno) {
 		
-		return petSitterDao.selectPetSitter(sqlSession, pNo);
+		return petSitterDao.selectPetSitter(sqlSession, pno);
 	}
 
 	@Override
 	public int updatePetSitter(PetSitter p) {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		return petSitterDao.updatePetSitter(sqlSession, p);
 	}
 	
 	
