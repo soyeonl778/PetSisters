@@ -133,7 +133,7 @@ public class MemberController {
 	// 마이페이지 내 프로필 영역
 	@RequestMapping("myProfile.me")
 	public String myProfile() {
-		return "/member/mp_profile";
+		return "/member/my_profile";
 	}
 	
 	// 마이페이지 펫 프로필 영역
