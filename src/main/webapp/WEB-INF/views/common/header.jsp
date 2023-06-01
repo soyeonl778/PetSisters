@@ -36,9 +36,6 @@
               <a class="nav-link" href="#">커뮤니티</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">후기</a>
-            </li>
-            <li class="nav-item">
               <a class="nav-link" href="#">채팅</a>
             </li>
             <li class="nav-item">

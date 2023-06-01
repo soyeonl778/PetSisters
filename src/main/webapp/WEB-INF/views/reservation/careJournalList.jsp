@@ -38,13 +38,10 @@
                     <a href="#">내 게시글 및 댓글</a>
                   </li>
                   <li>
-                    <a href="#">예약 조회</a>
-                  </li>
-                  <li>
-                    <a href="#">내 후기</a>
+                    <a href="reservationList">예약 조회</a>
                   </li>
                   <li class="on">
-                    <a href="#">돌봄 일지</a>
+                    <a href="journalList">돌봄 일지</a>
                   </li>
                 </ul>
               </div>
