@@ -6,6 +6,7 @@
   <meta charset="UTF-8" />
   
   <link rel="stylesheet" href="/resources/css/noticeUpdate.css">
+  <link rel="stylesheet" href="/resources/css/common/form.css">
   <jsp:include page="../common/common.jsp" />
   
   <title>공지사항 수정</title>
@@ -24,7 +25,7 @@
           <div class="page_aticle aticle_type2">
             <!-- 사이드 메뉴바 -->
             <div id="snb" class="snb_my" style="position: absolute;">
-              <img src="/resources/img/사이드바이미지.png" alt="sideBarImg">
+              <img src="/resources/img/main/사이드바이미지.png" alt="sideBarImg">
               <h2 class="tit_snb">고객센터</h2>
               <div class="inner_sub">
                 <ul class="list_menu">

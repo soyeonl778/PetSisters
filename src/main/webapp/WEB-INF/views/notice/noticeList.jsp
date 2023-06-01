@@ -1,11 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   
-  <link rel="stylesheet" href="/resources/css/noticeList.css">
+  <link rel="stylesheet" href="/resources/css/notice/noticeList.css">
+  <link rel="stylesheet" href="/resources/css/common/form.css">
   <jsp:include page="../common/common.jsp" />
   
   <title>공지사항</title>
@@ -24,18 +26,18 @@
           <div class="page_aticle aticle_type2">
             <!-- 사이드 메뉴바 -->
             <div id="snb" class="snb_my" style="position: absolute;">
-              <img src="/resources/img/사이드바이미지.png" alt="sideBarImg">
+              <img src="/resources/img/main/사이드바이미지.png" alt="sideBarImg">
               <h2 class="tit_snb">고객센터</h2>
               <div class="inner_sub">
                 <ul class="list_menu">
                   <li class="on">
-                    <a href="/notice/noticeList.html">공지사항</a>
+                    <a onclick="event.preventDefault();">공지사항</a>
                   </li>
                   <li>
-                    <a href="/notice/faq.html">자주하는 질문</a>
+                    <a href="/showFaq">자주하는 질문</a>
                   </li>
                   <li>
-                    <a href="/notice/inquiryList.html">1:1 문의</a>
+                    <a href="#">1:1 문의</a>
                   </li>
                 </ul>
               </div>
@@ -56,7 +58,7 @@
                 <table id="noticeTable" style="text-align: center;">
                   <thead>
                     <tr class="category">
-                      <th width="50">번호</th>
+                      <th width="50" height="51">번호</th>
                       <th>제목</th>
                       <th width="100">작성자</th>
                       <th width="100">작성일</th>
@@ -64,34 +66,34 @@
                     </tr>
                   </thead>
                   <tbody id="noticeBody">
-                    <a class="notice" href="#">
-                      <tr>
-                        <td>공지</td>
-                        <td>[안내] 펫시스터즈 서비스 이용안내</td>
-                        <td>언니들</td>
-                        <td>2023-05-24</td>
-                        <td>77</td>
-                      </tr>
-                    </a>
-                    <a class="notice" href="#">
-                      <tr>
-                        <td>공지</td>
-                        <td>[안내] 펫시스터즈 서비스 이용안내</td>
-                        <td>언니들</td>
-                        <td>2023-05-24</td>
-                        <td>129</td>
-                      </tr>
-                    </a>
-                    <a class="notice" href="#">
-                      <tr>
-                        <td>공지</td>
-                        <td>[안내] 펫시스터즈 서비스 이용안내</td>
-                        <td>언니들</td>
-                        <td>2023-05-24</td>
-                        <td>214</td>
-                      </tr>
-                    </a>
-                  </tbody>
+				    <a class="notice" href="#">
+				      <tr>
+				        <td height="51">공지</td>
+				        <td>[안내] 펫시스터즈 서비스 이용안내</td>
+				        <td>언니들</td>
+				        <td>2023-05-24</td>
+				        <td>77</td>
+				      </tr>
+				    </a>
+				    <a class="notice" href="#">
+				      <tr>
+				        <td height="51">공지</td>
+				        <td>[안내] 펫시스터즈 서비스 이용안내</td>
+				        <td>언니들</td>
+				        <td>2023-05-24</td>
+				        <td>129</td>
+				      </tr>
+				    </a>
+				    <a class="notice" href="#">
+				      <tr>
+				        <td height="51">공지</td>
+				        <td>[안내] 펫시스터즈 서비스 이용안내</td>
+				        <td>언니들</td>
+				        <td>2023-05-24</td>
+				        <td>214</td>
+				      </tr>
+				    </a>
+				  </tbody>
                 </table>
 
                 <br/>
@@ -138,22 +140,5 @@
   	<jsp:include page="../common/footer.jsp" />
   <!-- Footer 영역 끝 -->
   
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-    <script>
-      $(document).ready(function () {
-        $(window).scroll(function () {
-          var scrollTop = $(document).scrollTop();
-          var footerOffset = $(".link_footer").offset().top;
-          var windowHeight = $(window).height();
-
-          if (scrollTop + windowHeight > footerOffset) {
-            scrollTop = footerOffset - windowHeight;
-          }
-
-          $(".snb_my").stop();
-          $(".snb_my").animate({ "top": scrollTop });
-        });
-      });
-    </script>
 </body>
 </html>

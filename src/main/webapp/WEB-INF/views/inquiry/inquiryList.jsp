@@ -29,13 +29,13 @@
               <div class="inner_sub">
                 <ul class="list_menu">
                   <li>
-                    <a href="/notice/noticeList.html">공지사항</a>
+                    <a href="list.no">공지사항</a>
                   </li>
                   <li>
-                    <a href="/notice/faq.html">자주하는 질문</a>
+                    <a href="/showFaq">자주하는 질문</a>
                   </li>
                   <li class="on">
-                    <a href="/notice/inquiryList.html">1:1 문의</a>
+                    <a onclick="event.preventDefault();">1:1 문의</a>
                   </li>
                 </ul>
               </div>
