@@ -1,5 +1,5 @@
 --------------------------------------------------
----------------    회원 테이블 더미    ---------------
+--------------    회원 테이블 더미    ---------------
 --------------------------------------------------
 INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'admin', '1234', '관리자', '1234561234567', '관리자', '01012341234', 'admin@kh.or.kr', '서울시 영등포구', 'F', 'N', 'N', NULL, 'Y', NULL, SYSDATE);
 INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user01', 'pass01', '펫시터1', '1234561234567', '펫시터1', '01011111111', 'user01@kh.or.kr', '서울시 영등포구', 'F', 'Y', 'N', NULL, 'Y', NULL, SYSDATE);
@@ -7,14 +7,27 @@ INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user02', 'pass02', '펫시터2', '1
 INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user03', 'pass03', '펫시터3', '1234561234567', '펫시터3', '01033333333', 'user03@kh.or.kr', '서울시 영등포구', 'F', 'Y', 'N', NULL, 'Y', NULL, SYSDATE);
 
 --------------------------------------------------
-------------    펫시터 프로필 테이블 더미    -----------
+-----------    펫시터 프로필 테이블 더미    -----------
 --------------------------------------------------
 INSERT INTO PETSITTER (P_NO, P_TITLE, P_CONTENT, P_SERVICE, CARE_LIST, P_MODE, USER_NO) VALUES (SEQ_PETSITTER.NEXTVAL, '안전하고 편안하게 돌봐주는 펫시팅','test', NULL, NULL, DEFAULT, 2);
 INSERT INTO PETSITTER (P_NO, P_TITLE, P_CONTENT, P_SERVICE, CARE_LIST, P_MODE, USER_NO) VALUES (SEQ_PETSITTER.NEXTVAL, 'test', 'test', NULL, NULL, DEFAULT, 3);
 INSERT INTO PETSITTER (P_NO, P_TITLE, P_CONTENT, P_SERVICE, CARE_LIST, P_MODE, USER_NO) VALUES (SEQ_PETSITTER.NEXTVAL, 'test', 'test', NULL, NULL, DEFAULT, 4);
 
 --------------------------------------------------
--------------    공지사항 테이블 더미    --------------
+-------    펫시터 프로필 첨부파일 테이블 더미    --------
+--------------------------------------------------
+INSERT INTO P_ATTACHMENT
+VALUES ( SEQ_P_ATTACHMENT.NEXTVAL,
+         '그림이사진1.jpg',
+         '2023060154348464359.jpg',
+         'resources/upFiles/petsitter_upfiles/',
+         SYSDATE,
+         'Y',
+         1,
+         1);
+
+--------------------------------------------------
+------------    공지사항 테이블 더미    --------------
 --------------------------------------------------
 INSERT INTO NOTICE VALUES (SEQ_NOTICE.NEXTVAL, '[공지] 펫시스터즈 안심보험 적용안내드립니다.', 
 '안녕하세요 펫시스터즈입니다. 항상 펫시스터즈를 이용해주시는 보호자님들께 진심으로 감사드립니다.'||CHR(10)||CHR(13)||
@@ -48,7 +61,6 @@ INSERT INTO NOTICE VALUES (SEQ_NOTICE.NEXTVAL, '[기획성] 댕댕이의 여름나기',
 '신발을 신기거나 반려인이 먼저 온도를 체크 후 밟도록 유도해주세요.'||CHR(10)||CHR(13)||
 '여름철에는 고온 다습하여 피부병에 걸리기 쉽습니다. 산책을 다녀와서 목욕 후에는 반드시 완벽하게 수분을 말려주세요.'||CHR(10)||CHR(13)||
 '더운 여름, 건강하게 즐기며 지낼 수 있도록 보호자님들이 잘 챙기시면 좋겠습니다.', SYSDATE, 0, 'Y');
-
 
 --------------------------------------------------
 ----------    펫시터 프로필 업데이트 더미    ----------
@@ -88,8 +100,6 @@ VALUES ( SEQ_RESERVATION.NEXTVAL,
          'Y',
          2,
          3);
-         
-         
          
 --------------------------------------------------
 -----------------    커밋구문    -------------------
