@@ -67,10 +67,10 @@
 	                          <button type="submit" class="btn_log" onclick="location.href='/';">로그인</button>
 	                          <ul class="click1">
 	                            <li>
-	                              <a href="findId.me">아이디 찾기</a> | 
+	                              <a href="findIdForm.me">아이디 찾기</a> | 
 	                            </li>
 	                            <li>
-	                              <a href="findPwd.me">비밀번호 찾기</a>
+	                              <a href="findPwdForm.me">비밀번호 찾기</a>
 	                            </li>
 	                          </ul>
 	                        </div>

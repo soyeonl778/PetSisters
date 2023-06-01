@@ -118,20 +118,32 @@ public class MemberController {
 		return "/member/loginForm";
 	}
 	
-	// 아이디 찾기 영역
-	@RequestMapping("findId.me")
-	public String findId() {
-		return "/member/find_id";
+	// 아이디 찾기 페이지 이동 영역
+	@RequestMapping("findIdForm.me")
+	public String findIdForm() {
+		return "/member/findIdForm";
 	}
 	
-	// 비밀번호 찾기 영역
+	// 아이디 찾기 기능 영역 
+	@RequestMapping("findId.me")
+	public String findId() {
+		return "";
+	}
+	
+	// 비밀번호 찾기 페이지 이동 영역
+	@RequestMapping("findPwdForm.me")
+	public String findPwdForm() {
+		return "/member/findPwdForm";
+	}
+	
+	// 비밀번호 찾기 기능 영역
 	@RequestMapping("findPwd.me")
 	public String findPwd() {
-		return "/member/find_pwd";
+		return "/member/findPwd";
 	}
 	
 	// 마이페이지 내 프로필 영역
-	@RequestMapping("myProfile.me")
+	@RequestMapping("myProfile.mp")
 	public String myProfile() {
 		return "/member/my_profile";
 	}

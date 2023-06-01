@@ -7,11 +7,11 @@
   <meta charset="UTF-8" />
   
   <!-- header css -->
-  <link rel="stylesheet" href="/resources/css/member/find_pwd.css">
+  <link rel="stylesheet" href="/resources/css/member/find_id.css">
   <link rel="stylesheet" href="/resources/css/common/memberForm.css">
   <jsp:include page="../common/common.jsp" />
 
-  <title>비밀번호찾기</title>
+  <title>아이디찾기</title>
 </head>
 <body>
   <!-- 헤더 영역 시작-->
@@ -40,17 +40,17 @@
                   </div>
                   <div class="sub2">
                     <div class="btn_id1">
-                      <button type="button" class="btn_id2" onclick="location.href='findId.me';">아이디 찾기</button>
+                      <button type="button" class="btn_id2" onclick="location.href='findIdForm.me';">아이디 찾기</button>
                     </div>
                     <div class="btn_pwd1">
-                      <button type="button" class="btn_pwd2" onclick="location.href='findPwd.me';">비밀번호 찾기</button>
+                      <button type="button" class="btn_pwd2" onclick="location.href='findPwdForm.me';">비밀번호 찾기</button>
                     </div>
                   </div>
                   <div class="sub3">
                     <div class="checkWrapper">
                       <p>
-                        <label for="login_id">아이디 </label>
-                        <input type="text" name="userId" maxlength="15" placeholder="가입하신 아이디를 입력해 주세요." required><br>
+                        <label for="login_id">이름 </label>
+                        <input type="text" name="userName" maxlength="15" placeholder="가입 시 등록하신 이름을 입력해 주세요." required><br>
                       </p>
                       <p class="pw01">
                         <label for="email">이메일 </label>
