@@ -5,7 +5,8 @@
 <head>
   <meta charset="UTF-8" />
   
-  <link rel="stylesheet" href="/resources/css/faq.css">
+  <link rel="stylesheet" href="/resources/css/faqList.css">
+  <link rel="stylesheet" href="/resources/css/common/form.css">
   <jsp:include page="../common/common.jsp" />
   
   <title>FAQ</title>
@@ -24,18 +25,18 @@
           <div class="page_aticle aticle_type2">
             <!-- 사이드 메뉴바 -->
             <div id="snb" class="snb_my" style="position: absolute;">
-              <img src="/resources/img/사이드바이미지.png" alt="sideBarImg">
+              <img src="/resources/img/main/사이드바이미지.png" alt="sideBarImg">
               <h2 class="tit_snb">고객센터</h2>
               <div class="inner_sub">
                 <ul class="list_menu">
                   <li>
-                    <a href="/notice/noticeList.html">공지사항</a>
+                    <a href="list.no">공지사항</a>
                   </li>
                   <li class="on">
-                    <a href="/notice/faq.html">자주하는 질문</a>
+                    <a onclick="event.preventDefault();">자주하는 질문</a>
                   </li>
                   <li>
-                    <a href="/notice/inquiryList.html">1:1 문의</a>
+                    <a href="#">1:1 문의</a>
                   </li>
                 </ul>
               </div>
@@ -202,23 +203,6 @@
   <!-- Footer 영역 시작 -->
   	<jsp:include page="../common/footer.jsp" />
   <!-- Footer 영역 끝 -->
-  
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-    <script>
-      $(document).ready(function () {
-        $(window).scroll(function () {
-          var scrollTop = $(document).scrollTop();
-          var footerOffset = $(".link_footer").offset().top;
-          var windowHeight = $(window).height();
 
-          if (scrollTop + windowHeight > footerOffset) {
-            scrollTop = footerOffset - windowHeight;
-          }
-
-          $(".snb_my").stop();
-          $(".snb_my").animate({ "top": scrollTop });
-        });
-      });
-    </script>
 </body>
 </html>

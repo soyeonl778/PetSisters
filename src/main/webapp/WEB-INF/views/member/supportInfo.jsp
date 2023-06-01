@@ -1,13 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="/resources/css/common/main.css">
 <link rel="stylesheet" href="/resources/css/member/supportInfo.css">
 <jsp:include page="../common/common.jsp" />
-<script src="/resources/js/main.js"></script>
 <title>펫시스터즈</title>
 </head>
 <body>
@@ -36,7 +35,7 @@
             우리집에서 사랑스러운 강아지를 돌보며 수익을 벌어요 <br>
             혼자 남겨진 반려동물에게 행복한 시간을 선물해볼까요? <br>
           </div>
-          <a class="support" href="supportForm.me">
+          <a class="support" href="supportForm.me" onclick="return checkLogin();">
             <p>지원하기</p>
           </a>
         </div>
@@ -143,6 +142,23 @@
       </section>
 
     </main>
+    
+    <!-- 로그인 검사 후 지원폼 포워딩 (인터셉터 등록 후 주석처리 예정) -->
+    <c:set var="isLoggedIn" value="${not empty loginUser}" scope="request" />
+    	<script>
+    	  var isLoggedIn = <c:out value="${isLoggedIn}" />;
+    	  
+    	  function checkLogin() {
+    	    if (!isLoggedIn) {
+    	      // 만약 로그인되지 않은 상태라면 경고 알림창을 띄우고 접근을 차단합니다.
+    	      alert("로그인이 필요합니다.");
+    	      return false;
+    	    }
+
+    	    // 로그인된 상태라면 정상적으로 페이지로 이동합니다.
+    	    return true;
+    	  }
+		</script>
 
     <!-- 본문 끝 -->
     
@@ -151,10 +167,5 @@
     <jsp:include page="../common/footer.jsp" />
   </div>
   
-  <script>
-  AOS.init({
-      duration: 1200,
-    });
-  </script>
 </body>
 </html>
