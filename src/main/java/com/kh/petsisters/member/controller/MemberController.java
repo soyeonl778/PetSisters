@@ -25,17 +25,6 @@ public class MemberController {
 	private BCryptPasswordEncoder bcryptPasswordEncoder;
 
 	
-	@RequestMapping("supportInfo.me")
-	public String supportInfo() {
-		return "/member/supportInfo";
-	}
-	
-	@RequestMapping("supportForm.me")
-	public String supportForm() {
-		return "/member/supportForm";
-	}
-	
-	
 	// ***************************
 	// 로그인 / 회원가입 / 마이페이지 영역 (소연)
 	
