@@ -1,24 +1,24 @@
 --------------------------------------------------
---------------    íšŒì› í…Œì´ë¸” ë”ë¯¸    ---------------
+--------------    È¸¿ø Å×ÀÌºí ´õ¹Ì    ---------------
 --------------------------------------------------
-INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'admin', '1234', 'ê´€ë¦¬ìž', '1234561234567', 'ê´€ë¦¬ìž', '01012341234', 'admin@kh.or.kr', 'ì„œìš¸ì‹œ ì˜ë“±í¬êµ¬', 'F', 'N', 'N', NULL, 'Y', NULL, SYSDATE);
-INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user01', 'pass01', 'íŽ«ì‹œí„°1', '1234561234567', 'íŽ«ì‹œí„°1', '01011111111', 'user01@kh.or.kr', 'ì„œìš¸ì‹œ ì˜ë“±í¬êµ¬', 'F', 'Y', 'N', NULL, 'Y', NULL, SYSDATE);
-INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user02', 'pass02', 'íŽ«ì‹œí„°2', '1234561234567', 'íŽ«ì‹œí„°2', '01022222222', 'user02@kh.or.kr', 'ì„œìš¸ì‹œ ì˜ë“±í¬êµ¬', 'F', 'Y', 'N', NULL, 'Y', NULL, SYSDATE);
-INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user03', 'pass03', 'íŽ«ì‹œí„°3', '1234561234567', 'íŽ«ì‹œí„°3', '01033333333', 'user03@kh.or.kr', 'ì„œìš¸ì‹œ ì˜ë“±í¬êµ¬', 'F', 'Y', 'N', NULL, 'Y', NULL, SYSDATE);
+INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'admin', '1234', '°ü¸®ÀÚ', '1234561234567', '°ü¸®ÀÚ', '01012341234', 'admin@kh.or.kr', '¼­¿ï½Ã ¿µµîÆ÷±¸', 'F', 'N', 'N', NULL, 'Y', NULL, SYSDATE);
+INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user01', 'pass01', 'Æê½ÃÅÍ1', '1234561234567', 'Æê½ÃÅÍ1', '01011111111', 'user01@kh.or.kr', '¼­¿ï½Ã ¿µµîÆ÷±¸', 'F', 'Y', 'N', NULL, 'Y', NULL, SYSDATE);
+INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user02', 'pass02', 'Æê½ÃÅÍ2', '1234561234567', 'Æê½ÃÅÍ2', '01022222222', 'user02@kh.or.kr', '¼­¿ï½Ã ¿µµîÆ÷±¸', 'F', 'Y', 'N', NULL, 'Y', NULL, SYSDATE);
+INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user03', 'pass03', 'Æê½ÃÅÍ3', '1234561234567', 'Æê½ÃÅÍ3', '01033333333', 'user03@kh.or.kr', '¼­¿ï½Ã ¿µµîÆ÷±¸', 'F', 'Y', 'N', NULL, 'Y', NULL, SYSDATE);
 
 --------------------------------------------------
------------    íŽ«ì‹œí„° í”„ë¡œí•„ í…Œì´ë¸” ë”ë¯¸    -----------
+-----------    Æê½ÃÅÍ ÇÁ·ÎÇÊ Å×ÀÌºí ´õ¹Ì    -----------
 --------------------------------------------------
-INSERT INTO PETSITTER (P_NO, P_TITLE, P_CONTENT, P_SERVICE, CARE_LIST, P_MODE, USER_NO) VALUES (SEQ_PETSITTER.NEXTVAL, 'ì•ˆì „í•˜ê³  íŽ¸ì•ˆí•˜ê²Œ ëŒë´ì£¼ëŠ” íŽ«ì‹œíŒ…','test', NULL, NULL, DEFAULT, 2);
+INSERT INTO PETSITTER (P_NO, P_TITLE, P_CONTENT, P_SERVICE, CARE_LIST, P_MODE, USER_NO) VALUES (SEQ_PETSITTER.NEXTVAL, '¾ÈÀüÇÏ°í Æí¾ÈÇÏ°Ô µ¹ºÁÁÖ´Â Æê½ÃÆÃ','test', NULL, NULL, DEFAULT, 2);
 INSERT INTO PETSITTER (P_NO, P_TITLE, P_CONTENT, P_SERVICE, CARE_LIST, P_MODE, USER_NO) VALUES (SEQ_PETSITTER.NEXTVAL, 'test', 'test', NULL, NULL, DEFAULT, 3);
 INSERT INTO PETSITTER (P_NO, P_TITLE, P_CONTENT, P_SERVICE, CARE_LIST, P_MODE, USER_NO) VALUES (SEQ_PETSITTER.NEXTVAL, 'test', 'test', NULL, NULL, DEFAULT, 4);
 
 --------------------------------------------------
--------    íŽ«ì‹œí„° í”„ë¡œí•„ ì²¨ë¶€íŒŒì¼ í…Œì´ë¸” ë”ë¯¸    --------
+-------    Æê½ÃÅÍ ÇÁ·ÎÇÊ Ã·ºÎÆÄÀÏ Å×ÀÌºí ´õ¹Ì    --------
 --------------------------------------------------
 INSERT INTO P_ATTACHMENT
 VALUES ( SEQ_P_ATTACHMENT.NEXTVAL,
-         'ê·¸ë¦¼ì´ì‚¬ì§„1.jpg',
+         '±×¸²ÀÌ»çÁø1.jpg',
          '2023060154348464359.jpg',
          'resources/upFiles/petsitter_upfiles/',
          SYSDATE,
@@ -27,57 +27,57 @@ VALUES ( SEQ_P_ATTACHMENT.NEXTVAL,
          1);
 
 --------------------------------------------------
-------------    ê³µì§€ì‚¬í•­ í…Œì´ë¸” ë”ë¯¸    --------------
+------------    °øÁö»çÇ× Å×ÀÌºí ´õ¹Ì    --------------
 --------------------------------------------------
-INSERT INTO NOTICE VALUES (SEQ_NOTICE.NEXTVAL, '[ê³µì§€] íŽ«ì‹œìŠ¤í„°ì¦ˆ ì•ˆì‹¬ë³´í—˜ ì ìš©ì•ˆë‚´ë“œë¦½ë‹ˆë‹¤.', 
-'ì•ˆë…•í•˜ì„¸ìš” íŽ«ì‹œìŠ¤í„°ì¦ˆìž…ë‹ˆë‹¤. í•­ìƒ íŽ«ì‹œìŠ¤í„°ì¦ˆë¥¼ ì´ìš©í•´ì£¼ì‹œëŠ” ë³´í˜¸ìžë‹˜ë“¤ê»˜ ì§„ì‹¬ìœ¼ë¡œ ê°ì‚¬ë“œë¦½ë‹ˆë‹¤.'||CHR(10)||CHR(13)||
-'2023ë…„ 4ì›” 1ì¼ë¶€í„°
-íŽ«ì‹œìŠ¤í„°ì¦ˆì—ì„œ ëŒë´„ ì˜ë¢° ìˆ˜í–‰ ë„ì¤‘
-ë°˜ë ¤ë™ë¬¼ì´ ì‹ ì²´ì  ì†í•´ë¥¼ ìž…ì„ ê²½ìš°ì—
-ê´€ë ¨ ë°°ìƒë¹„ìš©ì„ ì§€ì›í•˜ëŠ” íŽ«ì‹œìŠ¤í„°ì¦ˆ ì•ˆì‹¬ë³´í—˜
-(í•œí™”ì†í•´ë³´í—˜ ì „ë¬¸ì¸ë°°ìƒì±…ìž„ë³´í—˜)ì— ê°€ìž…ë˜ì—ˆìŒì„ ì•ˆë‚´ë“œë¦½ë‹ˆë‹¤.'||CHR(10)||CHR(13)||
-'íŽ«ì‹œìŠ¤í„°ì¦ˆ ì•ˆì‹¬ë³´í—˜ì€ ì—…ê³„ ìµœì´ˆì˜ íŽ«ì‹œí„° ë³´í—˜ìœ¼ë¡œ
-íŽ«ì‹œìŠ¤í„°ì¦ˆì—ì„œ ë§¤ì¹­ë˜ëŠ” ëª¨ë“  ëŒë´„ ì˜ë¢°ì— ëŒ€í•´ ì ìš©ë˜ë©°,
-ëŒë´„ ëŒ€ìƒìœ¼ë¡œ ë“±ë¡ëœ ë°˜ë ¤ë™ë¬¼ì´ ìž…ì€ ì‹ ì²´ì  ì†í•´ë¥¼ ë³´ìž¥í•©ë‹ˆë‹¤.'||CHR(10)||CHR(13)||
-'ë³´í—˜ ê°€ìž… ë¹„ìš©ì€ ì „ì•¡ íŽ«ì‹œìŠ¤í„°ì¦ˆì—ì„œ ë¶€ë‹´í•˜ë©°,
-ëŒë´„ ë¹„ìš©ì€ ê¸°ì¡´ê³¼ ë™ì¼í•©ë‹ˆë‹¤.'||CHR(10)||CHR(13)||
-'ì•žìœ¼ë¡œë„ ë”ìš± ì•ˆì „í•œ ë°˜ë ¤ë™ë¬¼ ì¼€ì–´ ì„œë¹„ìŠ¤ë¥¼ ì œê³µí•  ìˆ˜ ìžˆë„ë¡ ë…¸ë ¥í•˜ê² ìŠµë‹ˆë‹¤.'||CHR(10)||CHR(13)||
-'ê°ì‚¬í•©ë‹ˆë‹¤.', SYSDATE, 0, 'Y');
-INSERT INTO NOTICE VALUES (SEQ_NOTICE.NEXTVAL, '[ì•ˆë‚´] 6ì›” ê³ ê°ì„¼í„° íœ´ë¬´ ì¼ì • ì•ˆë‚´',
-'ì•ˆë…•í•˜ì„¸ìš” íŽ«ì‹œìŠ¤í„°ì¦ˆìž…ë‹ˆë‹¤. í•­ìƒ íŽ«ì‹œìŠ¤í„°ì¦ˆë¥¼ ì´ìš©í•´ì£¼ì‹œëŠ” ë³´í˜¸ìžë‹˜ë“¤ê»˜ ì§„ì‹¬ìœ¼ë¡œ ê°ì‚¬ë“œë¦½ë‹ˆë‹¤.'||CHR(10)||CHR(13)||
-'2023ë…„ 6ì›” ê³ ê°ì„¼í„° íœ´ë¬´ ì¼ì • ì•ˆë‚´ ë“œë¦½ë‹ˆë‹¤.'||CHR(10)||CHR(13)||
-'ë³´í˜¸ìžë‹˜ì˜ ì–‘í•´ ë¶€íƒë“œë¦¬ë©°, ì•„ëž˜ ë‚´ìš© í™•ì¸í•˜ì…”ì„œ ì´ìš©ì— ë¶ˆíŽ¸ ì—†ìœ¼ì‹œê¸°ë¥¼ ë°”ëžë‹ˆë‹¤.'||CHR(10)||CHR(13)||
-'â— í˜„ì¶©ì¼ : 2023. 06. 06(í™”) ê³ ê°ì„¼í„° íœ´ë¬´'||CHR(10)||CHR(13)||
-'ë¬¸ì˜ê¸€ì— ëŒ€í•œ ë‹µë³€ì€ 6ì›” 7ì¼(ìˆ˜)ë¶€í„° ìˆœì°¨ì ìœ¼ë¡œ ì œê³µë©ë‹ˆë‹¤.'||CHR(10)||CHR(13)||
-'ê°ì‚¬í•©ë‹ˆë‹¤.', SYSDATE, 0, 'Y');
-INSERT INTO NOTICE VALUES (SEQ_NOTICE.NEXTVAL, '[ê¸°íšì„±] ëŒ•ëŒ•ì´ì˜ ì—¬ë¦„ë‚˜ê¸°',
-'ì•ˆë…•í•˜ì„¸ìš” íŽ«ì‹œìŠ¤í„°ì¦ˆìž…ë‹ˆë‹¤. í•­ìƒ íŽ«ì‹œìŠ¤í„°ì¦ˆë¥¼ ì´ìš©í•´ì£¼ì‹œëŠ” ë³´í˜¸ìžë‹˜ë“¤ê»˜ ì§„ì‹¬ìœ¼ë¡œ ê°ì‚¬ë“œë¦½ë‹ˆë‹¤.'||CHR(10)||CHR(13)||
-'ë‹¤ê°€ì˜¤ëŠ” ë¬´ë”ìš´ ì—¬ë¦„ì„ ëŒ€ë¹„í•´ ë°˜ë ¤ì¸ê³¼ ë°˜ë ¤ê²¬ ëª¨ë‘ ì¦ê²ê²Œ ì—¬ë¦„ì²  ì‚°ì±…ì„ ì¦ê¸°ëŠ” ë°©ë²•ì„ ì¤€ë¹„í–ˆìŠµë‹ˆë‹¤.'||CHR(10)||CHR(13)||
-'í•´ì¶© ì¡°ì‹¬!'||CHR(10)||CHR(13)||
-'ê²¨ìš¸ì² ë³´ë‹¤ ê´€ë ¨ ì˜ˆë°© ì ‘ì¢…ì´ë‚˜ ê¸°ìƒì¶© ì—ë°©ì•½ ë³µìš©ì— ì‹ ê²½ì¨ì£¼ì„¸ìš”.'||CHR(10)||CHR(13)||
-'ëœ¨ê±°ìš´ ì•„ìŠ¤íŒ”íŠ¸ ì¡°ì‹¬!'||CHR(10)||CHR(13)||
-'ì•„ìŠ¤íŒ”íŠ¸ëŠ” ë‚®ì— í¡ìˆ˜í•œ ì—´ì„ í•´ê°€ ì§„ ì´í›„ê¹Œì§€ ìœ ì§€í•©ë‹ˆë‹¤.'||CHR(10)||CHR(13)||
-'ëœ¨ê²ê²Œ ë‹¬ê¶ˆì§„ ì•„ìŠ¤íŒ”íŠ¸ë¥¼ ë°˜ë ¤ê²¬ì´ ë°œë¡œ ë°ŸëŠ”ë‹¤ë©´ í™”ìƒì„ ìž…ì„ ìˆ˜ ìžˆìŠµë‹ˆë‹¤.'||CHR(10)||CHR(13)||
-'ì‹ ë°œì„ ì‹ ê¸°ê±°ë‚˜ ë°˜ë ¤ì¸ì´ ë¨¼ì € ì˜¨ë„ë¥¼ ì²´í¬ í›„ ë°Ÿë„ë¡ ìœ ë„í•´ì£¼ì„¸ìš”.'||CHR(10)||CHR(13)||
-'ì—¬ë¦„ì² ì—ëŠ” ê³ ì˜¨ ë‹¤ìŠµí•˜ì—¬ í”¼ë¶€ë³‘ì— ê±¸ë¦¬ê¸° ì‰½ìŠµë‹ˆë‹¤. ì‚°ì±…ì„ ë‹¤ë…€ì™€ì„œ ëª©ìš• í›„ì—ëŠ” ë°˜ë“œì‹œ ì™„ë²½í•˜ê²Œ ìˆ˜ë¶„ì„ ë§ë ¤ì£¼ì„¸ìš”.'||CHR(10)||CHR(13)||
-'ë”ìš´ ì—¬ë¦„, ê±´ê°•í•˜ê²Œ ì¦ê¸°ë©° ì§€ë‚¼ ìˆ˜ ìžˆë„ë¡ ë³´í˜¸ìžë‹˜ë“¤ì´ ìž˜ ì±™ê¸°ì‹œë©´ ì¢‹ê² ìŠµë‹ˆë‹¤.', SYSDATE, 0, 'Y');
+INSERT INTO NOTICE VALUES (SEQ_NOTICE.NEXTVAL, '[°øÁö] Æê½Ã½ºÅÍÁî ¾È½Éº¸Çè Àû¿ë¾È³»µå¸³´Ï´Ù.', 
+'¾È³çÇÏ¼¼¿ä Æê½Ã½ºÅÍÁîÀÔ´Ï´Ù. Ç×»ó Æê½Ã½ºÅÍÁî¸¦ ÀÌ¿ëÇØÁÖ½Ã´Â º¸È£ÀÚ´Ôµé²² Áø½ÉÀ¸·Î °¨»çµå¸³´Ï´Ù.'||CHR(10)||CHR(13)||
+'2023³â 4¿ù 1ÀÏºÎÅÍ
+Æê½Ã½ºÅÍÁî¿¡¼­ µ¹º½ ÀÇ·Ú ¼öÇà µµÁß
+¹Ý·Áµ¿¹°ÀÌ ½ÅÃ¼Àû ¼ÕÇØ¸¦ ÀÔÀ» °æ¿ì¿¡
+°ü·Ã ¹è»óºñ¿ëÀ» Áö¿øÇÏ´Â Æê½Ã½ºÅÍÁî ¾È½Éº¸Çè
+(ÇÑÈ­¼ÕÇØº¸Çè Àü¹®ÀÎ¹è»óÃ¥ÀÓº¸Çè)¿¡ °¡ÀÔµÇ¾úÀ½À» ¾È³»µå¸³´Ï´Ù.'||CHR(10)||CHR(13)||
+'Æê½Ã½ºÅÍÁî ¾È½Éº¸ÇèÀº ¾÷°è ÃÖÃÊÀÇ Æê½ÃÅÍ º¸ÇèÀ¸·Î
+Æê½Ã½ºÅÍÁî¿¡¼­ ¸ÅÄªµÇ´Â ¸ðµç µ¹º½ ÀÇ·Ú¿¡ ´ëÇØ Àû¿ëµÇ¸ç,
+µ¹º½ ´ë»óÀ¸·Î µî·ÏµÈ ¹Ý·Áµ¿¹°ÀÌ ÀÔÀº ½ÅÃ¼Àû ¼ÕÇØ¸¦ º¸ÀåÇÕ´Ï´Ù.'||CHR(10)||CHR(13)||
+'º¸Çè °¡ÀÔ ºñ¿ëÀº Àü¾× Æê½Ã½ºÅÍÁî¿¡¼­ ºÎ´ãÇÏ¸ç,
+µ¹º½ ºñ¿ëÀº ±âÁ¸°ú µ¿ÀÏÇÕ´Ï´Ù.'||CHR(10)||CHR(13)||
+'¾ÕÀ¸·Îµµ ´õ¿í ¾ÈÀüÇÑ ¹Ý·Áµ¿¹° ÄÉ¾î ¼­ºñ½º¸¦ Á¦°øÇÒ ¼ö ÀÖµµ·Ï ³ë·ÂÇÏ°Ú½À´Ï´Ù.'||CHR(10)||CHR(13)||
+'°¨»çÇÕ´Ï´Ù.', SYSDATE, 0, 'Y');
+INSERT INTO NOTICE VALUES (SEQ_NOTICE.NEXTVAL, '[¾È³»] 6¿ù °í°´¼¾ÅÍ ÈÞ¹« ÀÏÁ¤ ¾È³»',
+'¾È³çÇÏ¼¼¿ä Æê½Ã½ºÅÍÁîÀÔ´Ï´Ù. Ç×»ó Æê½Ã½ºÅÍÁî¸¦ ÀÌ¿ëÇØÁÖ½Ã´Â º¸È£ÀÚ´Ôµé²² Áø½ÉÀ¸·Î °¨»çµå¸³´Ï´Ù.'||CHR(10)||CHR(13)||
+'2023³â 6¿ù °í°´¼¾ÅÍ ÈÞ¹« ÀÏÁ¤ ¾È³» µå¸³´Ï´Ù.'||CHR(10)||CHR(13)||
+'º¸È£ÀÚ´ÔÀÇ ¾çÇØ ºÎÅ¹µå¸®¸ç, ¾Æ·¡ ³»¿ë È®ÀÎÇÏ¼Å¼­ ÀÌ¿ë¿¡ ºÒÆí ¾øÀ¸½Ã±â¸¦ ¹Ù¶ø´Ï´Ù.'||CHR(10)||CHR(13)||
+'¡Ü ÇöÃæÀÏ : 2023. 06. 06(È­) °í°´¼¾ÅÍ ÈÞ¹«'||CHR(10)||CHR(13)||
+'¹®ÀÇ±Û¿¡ ´ëÇÑ ´äº¯Àº 6¿ù 7ÀÏ(¼ö)ºÎÅÍ ¼øÂ÷ÀûÀ¸·Î Á¦°øµË´Ï´Ù.'||CHR(10)||CHR(13)||
+'°¨»çÇÕ´Ï´Ù.', SYSDATE, 0, 'Y');
+INSERT INTO NOTICE VALUES (SEQ_NOTICE.NEXTVAL, '[±âÈ¹¼º] ´ó´óÀÌÀÇ ¿©¸§³ª±â',
+'¾È³çÇÏ¼¼¿ä Æê½Ã½ºÅÍÁîÀÔ´Ï´Ù. Ç×»ó Æê½Ã½ºÅÍÁî¸¦ ÀÌ¿ëÇØÁÖ½Ã´Â º¸È£ÀÚ´Ôµé²² Áø½ÉÀ¸·Î °¨»çµå¸³´Ï´Ù.'||CHR(10)||CHR(13)||
+'´Ù°¡¿À´Â ¹«´õ¿î ¿©¸§À» ´ëºñÇØ ¹Ý·ÁÀÎ°ú ¹Ý·Á°ß ¸ðµÎ Áñ°Ì°Ô ¿©¸§Ã¶ »êÃ¥À» Áñ±â´Â ¹æ¹ýÀ» ÁØºñÇß½À´Ï´Ù.'||CHR(10)||CHR(13)||
+'ÇØÃæ Á¶½É!'||CHR(10)||CHR(13)||
+'°Ü¿ïÃ¶º¸´Ù °ü·Ã ¿¹¹æ Á¢Á¾ÀÌ³ª ±â»ýÃæ ¿¡¹æ¾à º¹¿ë¿¡ ½Å°æ½áÁÖ¼¼¿ä.'||CHR(10)||CHR(13)||
+'¶ß°Å¿î ¾Æ½ºÆÈÆ® Á¶½É!'||CHR(10)||CHR(13)||
+'¾Æ½ºÆÈÆ®´Â ³·¿¡ Èí¼öÇÑ ¿­À» ÇØ°¡ Áø ÀÌÈÄ±îÁö À¯ÁöÇÕ´Ï´Ù.'||CHR(10)||CHR(13)||
+'¶ß°Ì°Ô ´Þ±ÅÁø ¾Æ½ºÆÈÆ®¸¦ ¹Ý·Á°ßÀÌ ¹ß·Î ¹â´Â´Ù¸é È­»óÀ» ÀÔÀ» ¼ö ÀÖ½À´Ï´Ù.'||CHR(10)||CHR(13)||
+'½Å¹ßÀ» ½Å±â°Å³ª ¹Ý·ÁÀÎÀÌ ¸ÕÀú ¿Âµµ¸¦ Ã¼Å© ÈÄ ¹âµµ·Ï À¯µµÇØÁÖ¼¼¿ä.'||CHR(10)||CHR(13)||
+'¿©¸§Ã¶¿¡´Â °í¿Â ´Ù½ÀÇÏ¿© ÇÇºÎº´¿¡ °É¸®±â ½±½À´Ï´Ù. »êÃ¥À» ´Ù³à¿Í¼­ ¸ñ¿å ÈÄ¿¡´Â ¹Ýµå½Ã ¿Ïº®ÇÏ°Ô ¼öºÐÀ» ¸»·ÁÁÖ¼¼¿ä.'||CHR(10)||CHR(13)||
+'´õ¿î ¿©¸§, °Ç°­ÇÏ°Ô Áñ±â¸ç Áö³¾ ¼ö ÀÖµµ·Ï º¸È£ÀÚ´ÔµéÀÌ Àß Ã¬±â½Ã¸é ÁÁ°Ú½À´Ï´Ù.', SYSDATE, 0, 'Y');
 
 --------------------------------------------------
-----------    íŽ«ì‹œí„° í”„ë¡œí•„ ì—…ë°ì´íŠ¸ ë”ë¯¸    ----------
+----------    Æê½ÃÅÍ ÇÁ·ÎÇÊ ¾÷µ¥ÀÌÆ® ´õ¹Ì    ----------
 --------------------------------------------------
 UPDATE PETSITTER
-SET P_CONTENT = 'ë°˜ë ¤ê²¬ì„ ì €ì—ê²Œ ë§¡ê²¨ ì£¼ì‹­ì‡¼ ì–´ë¥´ì‹ ',
-    P_SERVICE = 'ì•½ë¬¼ ë³µìš© , ëª©ìš• ê°€ëŠ¥ , ë§¤ì¼ ì‚°ì±…',
-    CARE_LIST = 'ì£¼íƒ ì‚´ì•„ìš”, ì•„ì´ ì—†ì–´ìš”'
+SET P_CONTENT = '¹Ý·Á°ßÀ» Àú¿¡°Ô ¸Ã°Ü ÁÖ½Ê¼î ¾î¸£½Å',
+    P_SERVICE = '¾à¹° º¹¿ë , ¸ñ¿å °¡´É , ¸ÅÀÏ »êÃ¥',
+    CARE_LIST = 'ÁÖÅÃ »ì¾Æ¿ä, ¾ÆÀÌ ¾ø¾î¿ä'
 WHERE USER_NO = 2;
 UPDATE PETSITTER
-SET P_CONTENT = 'ë°˜ë ¤ê²¬ì„ ì €ì—ê²Œ ë§¡ê²¨ ì£¼ì‹­ì‡¼ ì–´ë¥´ì‹ ',
-    P_SERVICE = 'ì•½ë¬¼ ë³µìš© , ëª©ìš• ê°€ëŠ¥ , ë§¤ì¼ ì‚°ì±…',
-    CARE_LIST = 'ì£¼íƒ ì‚´ì•„ìš”, ì•„ì´ ì—†ì–´ìš”'
+SET P_CONTENT = '¹Ý·Á°ßÀ» Àú¿¡°Ô ¸Ã°Ü ÁÖ½Ê¼î ¾î¸£½Å',
+    P_SERVICE = '¾à¹° º¹¿ë , ¸ñ¿å °¡´É , ¸ÅÀÏ »êÃ¥',
+    CARE_LIST = 'ÁÖÅÃ »ì¾Æ¿ä, ¾ÆÀÌ ¾ø¾î¿ä'
 WHERE USER_NO = 3;
 
 --------------------------------------------------
--------------    íŽ«ì‹œí„°ì°œ í…Œì´ë¸” ë”ë¯¸    -------------
+-------------    Æê½ÃÅÍÂò Å×ÀÌºí ´õ¹Ì    -------------
 --------------------------------------------------
 INSERT INTO P_LIKE
 VALUES (3, 1);
@@ -89,48 +89,20 @@ INSERT INTO P_LIKE
 VALUES (4, 1);
 
 --------------------------------------------------
---------------    ì˜ˆì•½ í…Œì´ë¸” ë”ë¯¸    ---------------
+--------------    ¿¹¾à Å×ÀÌºí ´õ¹Ì    ---------------
 --------------------------------------------------
 INSERT INTO RESERVATION 
 VALUES ( SEQ_RESERVATION.NEXTVAL,
          '2023-05-08',
          '2023-05-11',
          '2023-04-29',
-         'ìš°ë¦¬ì§‘ ê°œëŠ” ë¬¼ì–´ìš” ìž˜í•´ë³´ì„¸ìš”',
+         '¿ì¸®Áý °³´Â ¹°¾î¿ä ÀßÇØº¸¼¼¿ä',
          'Y',
          2,
          3);
          
-
 --------------------------------------------------
------------------    ì»¤ë°‹êµ¬ë¬¸    -------------------
+-----------------    Ä¿¹Ô±¸¹®    -------------------
 --------------------------------------------------
-   ROLLBACK;      
+         
  COMMIT;
- 
-
- 
- 
- 
-SELECT R.START_DATE,
-       R.END_DATE,
-       ADDRESS,
-       CA_STATUS,
-       P_TITLE,
-       CARE_LIST,
-       P_NO,
-       A.FILE_PATH AS FILE_PATH,
-       ORIGIN_NAME 
-  FROM RESERVATION R
-  LEFT JOIN MEMBER M USING (USER_NO)
-  LEFT JOIN PETSITTER P USING (USER_NO)
-  LEFT JOIN P_ATTACHMENT A ON P.P_NO = A.REF_PNO
- WHERE USER_NO = 2;
- 
- 
- 
- 
- 
- 
- 
- 
