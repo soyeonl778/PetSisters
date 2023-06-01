@@ -691,6 +691,17 @@ input::placeholder {
   text-align: center;
   margin-left: 40px;
 }
+.nav-link.admin {
+  border: 1px solid black;
+  border-radius: 25px;
+  color: black;
+  width: 120px;
+  text-align: center;
+  margin-left: 40px;
+}
+.nav-link.admin:hover {
+  background-color: black;
+}
 .nav-link.petsiter:hover{
   color: white!important;
   background-color: #0888D0;
