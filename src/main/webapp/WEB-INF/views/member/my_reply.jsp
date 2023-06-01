@@ -46,9 +46,6 @@
                     <a href="reservationList">예약 조회</a>
                   </li>
                   <li>
-                    <a href="review">내 후기</a>
-                  </li>
-                  <li>
                     <a href="journalList">돌봄 일지</a>
                   </li>
                 </ul>
