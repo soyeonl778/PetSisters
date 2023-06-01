@@ -31,7 +31,7 @@
               <div class="inner_sub">
                 <ul class="list_menu">
                   <li class="on">
-                    <a href="myProfile.mp">내 프로필</a>
+                    <a href="myProfile.me">내 프로필</a>
                   </li>
                   <li>
                     <a href="petProfile.me">반려동물 프로필</a>
