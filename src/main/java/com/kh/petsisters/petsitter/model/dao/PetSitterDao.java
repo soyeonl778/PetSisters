@@ -17,4 +17,5 @@ public class PetSitterDao {
 		
 		return sqlSession.update("petSitterMapper.updatePetSitter", p);
 	}
+	
 }

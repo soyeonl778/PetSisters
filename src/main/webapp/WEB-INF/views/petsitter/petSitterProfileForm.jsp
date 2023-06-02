@@ -29,11 +29,7 @@
 	
 	    $(document).ready(function() {
 	    	
-	    	console.log(psServiceArr);
-	    	
 	    	for(var i = 0; i < psServiceArr.length; i++) {
-	    		
-	    		console.log(psServiceArr[i]);
 	    		
 	    		$("input:checkbox[name='petSitterService'][value='"+ psServiceArr[i] +"']").prop("checked", true);
 	    	}
@@ -65,13 +61,14 @@
                   <div class="form-group">
                     <form method="post" action="update.pe">
 	                 <div class="profileForm-area">
+	                 	<input type="hidden" value="${ p.petSitterNo }" name="petSitterNo">
 						<div class="form-check form-switch" id="pModeInput">
 							<c:choose>
 								<c:when test="${ p.petSitterMode eq 'Y' }">
-									<input class="form-check-input" type="checkbox" role="switch" id="petSitterMode" value="Y" name="petSitterMode" checked>
+									<input class="form-check-input" type="checkbox" role="switch" id="petSitterMode" value="${ p.petSitterMode }" name="petSitterMode" checked>
 								</c:when>
 								<c:otherwise>
-									<input class="form-check-input" type="checkbox" role="switch" id="petSitterMode" value="Y" name="petSitterMode">
+									<input class="form-check-input" type="checkbox" role="switch" id="petSitterMode" value="${ p.petSitterMode }" name="petSitterMode">
 								</c:otherwise>
 							</c:choose>
 							<label class="form-check-label" for="flexSwitchCheckChecked">&nbsp;펫시터 모드</label>
@@ -144,7 +141,7 @@
                               <td>
                                 <div class="petService">
                                   <div>
-                                    <input type="checkbox" id="bath" value="목욕가능 " name="petSitterService">
+                                    <input type="checkbox" id="bath" value="목욕가능" name="petSitterService">
                                     <img src="/resources/img/petsitter/목욕 가능.png">
                                   </div>
                                   <div><p>목욕 가능<br>비용은 펫시터와 협의</p></div>
