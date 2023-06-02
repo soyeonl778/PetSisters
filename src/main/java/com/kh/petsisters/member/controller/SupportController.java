@@ -31,8 +31,6 @@ public class SupportController {
 											Model model,
 											HttpSession session) {
 		
-		System.out.println(s);
-		
 		int result = supportService.insertSupport(s);
 		
 		if(result > 0) { // 성공 => 메인페이지로 url 재요청

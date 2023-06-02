@@ -34,7 +34,7 @@
                       </div>  
                       <ul class="chatList">
                         <li class="chattingArea">
-                          <a class="chatting" onclick="">
+                          <a class="chatting" onclick="connect()">
                             <div class="profileArea">
                               <img class="profileImage" src="/resources/img/chat/김제니.png" alt="profile">
                             </div>
@@ -366,7 +366,7 @@
                       </div>
                      
                       <!-- 초기화면 나중에 동적으로 처리 -->
-                      <!--
+                      
                       <div class="chatEmptyBox">
                         <svg width="96" height="81" viewBox="0 0 96 81" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <path d="M33.0004 0C15.0185 0 0 13.0729 0 29.6567C0 40.358 6.27606 49.642 15.5279 
@@ -390,7 +390,7 @@
                         </svg>
                         <div class="emptyDescription">채팅할 상대를 선택해주세요.</div>
                       </div>
-                      -->
+                      
                       
                       
                     </section>
@@ -400,11 +400,74 @@
 
     <!-- 본문 끝 -->
     
-    
         <jsp:include page="../common/footer.jsp" />
-    
 
   </div>
+
+  <script>
+    // 웹소켓
+let websocket;
+
+//입장 버튼을 눌렀을 때 호출되는 함수
+function connect() {
+    // 웹소켓 주소
+    var wsUri = "ws://${pageContext.request.serverName}:${pageContext.request.serverPort}${pageContext.request.contextPath}/websocket/echo.do";
+    console.log(wsUri);
+    // 소켓 객체 생성
+    websocket = new WebSocket(wsUri);
+    //웹 소켓에 이벤트가 발생했을 때 호출될 함수 등록
+    websocket.onopen = onOpen;
+    websocket.onmessage = onMessage;
+}
+
+//웹 소켓에 연결되었을 때 호출될 함수
+function onOpen() {
+  console.log("웹소켓 연결 성공!");
+}
+
+// * 1 메시지 전송
+function sendMessage(message){
+  if (websocket.readyState === WebSocket.OPEN) {
+    websocket.send(message);
+  } else {
+    console.log("웹소켓 연결이 닫혀 있습니다.");
+  }
+}
+
+// * 2 메세지 수신
+function onMessage(evt) {
+  console.log("메세지 수신:", evt.data);
+}
+
+$(document).ready(function() {
+  // "채팅방 나가기" 버튼 클릭 이벤트 핸들러
+  $('.optionItem').on('click', function() {
+    // chatNormalRoom 섹션을 숨기고 chatEmptyBox 섹션을 표시
+    $('.chatNormalRoom').hide();
+    $('.chatEmptyBox').css('display', 'flex');
+
+    websocket.close(); 
+    
+      // 콘솔에 WebSocket 연결 상태 출력
+  setInterval(function() {
+    console.log("WebSocket 연결 상태:", websocket.readyState);
+    if(websocket.readyState = 2) {
+      console.log("WebSocket 연결 해제 완료");
+    }
+  }, 1000);
+
+  });
+});
+
+
+
+
+
+
+
+
+  </script>
+
   <!-- JavaScript Bundle with Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
     <!-- chat.js -->
