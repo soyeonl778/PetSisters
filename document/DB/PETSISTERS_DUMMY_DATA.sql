@@ -22,8 +22,8 @@ SET P_CONTENT = '반려견을 저에게 맡겨 주십쇼 어르신',
     CARE_LIST = '주택 살아요, 아이 없어요'
 WHERE USER_NO = 2;
 UPDATE PETSITTER
-SET P_TITLE = '내 아이를 돌보듯 따뜻하고 편안하게'
-SET P_CONTENT = '사랑과 정성으로 최선을 다해 보살펴드리겠습니다.',
+SET P_TITLE = '내 아이를 돌보듯 따뜻하고 편안하게',
+    P_CONTENT = '사랑과 정성으로 최선을 다해 보살펴드리겠습니다.',
     P_SERVICE = '모발관리,응급처치,매일산책,실내놀이',
     CARE_LIST = '아파트 살아요, 반려동물 있어요'
 WHERE USER_NO = 3;

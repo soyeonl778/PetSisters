@@ -1,10 +1,12 @@
 package com.kh.petsisters.petsitter.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.petsisters.petsitter.model.service.PetSitterService;
@@ -37,9 +39,9 @@ public class PetSitterController {
 		// 펫시터 상세조회용 selectPetSitter 메소드 요청
 		PetSitter p = petSitterService.selectPetSitter(pno);
 		
-		mv.addObject("p", p).setViewName("petsitter/petSitterProfileForm");
-		
 		// System.out.println(p);
+		
+		mv.addObject("p", p).setViewName("petsitter/petSitterProfileForm");
 		
 		return mv;
 		
@@ -49,9 +51,7 @@ public class PetSitterController {
 	public void updatePetSitter(PetSitter p,
 			                    ModelAndView mv) {
 		
-		// System.out.println(p);
-		
-		
+		System.out.println(p);
 		
 	}
 	

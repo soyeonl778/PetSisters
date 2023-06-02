@@ -23,18 +23,18 @@
 		     , P_MODE
 		     , USER_NO
 		  FROM PETSITTER
-		 WHERE P_NO = #{pNo}
+		 WHERE P_NO = #{petSitterNo}
 	</select>
 	
 	<!-- 펫시터 프로필 수정용 쿼리문 -->
 	<update id="updatePetSitter" parameterType="petSitter">
 		UPDATE PETSITTER
-		   SET P_TITLE = #{pTitle}
-		     , P_CONTENT = #{pContent}
-		     , P_SERVICE = #{pService}
+		   SET P_TITLE = #{petSitterTitle}
+		     , P_CONTENT = #{petSitterContent}
+		     , P_SERVICE = #{petSitterService}
 		     , CARE_LIST = #{careList}
-		     , P_MODE = #{pMode}
-		 WHERE P_NO = #{pNo}
+		     , P_MODE = #{petSitterMode}
+		 WHERE P_NO = #{petSitterNo}
 	</update>
 
 </mapper>
