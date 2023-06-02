@@ -23,18 +23,16 @@
 	
 	<context:component-scan base-package="com.kh.petsisters" />
 	
-	<!-- 인터셉터 등록 -->
-	<!--  
+	<!-- 인터셉터 등록 --> 
 	<interceptors>
 		<interceptor>
-			<mapping path="/myPage.me" />
-			<mapping path="/update.bo" />
-			<mapping path="/update.me" />
-			<mapping path="/enrollForm.bo" />
+			<mapping path="/myProfile.me" />
+			<mapping path="/petProfile.me" />
+			<mapping path="/petsiterLike.me" />
+			<mapping path="/myBoard.me" />
+			<mapping path="/myReply.me" />
 			<beans:bean class="com.kh.petsisters.common.interceptor.LoginInterceptor" id="loginInterceptor" />
-			
 		</interceptor>
 	</interceptors>
-	-->
 	
 </beans:beans>
