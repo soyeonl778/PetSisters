@@ -76,9 +76,8 @@
 				        </tr>
 				  	</c:forEach>
                   </tbody>
-				    
                 </table>
-
+			
 				<c:choose>
 					<c:when test="${ loginUser.userName eq '관리자' }">
 						<br/>
@@ -129,12 +128,12 @@
   
   <script>
   	$(function() {
-		$("#noticeList>tbody>tr").click(function() {
-			let nno = $(this).children(".nno").text();
-			location.href = "detail.no?nno=" + nno;
+		$("#noticeTable>tbody>tr").click(function() {
+			let noticeNo = $(this).children().eq(0).text();
+			/* console.log(noticeNo); */
+			location.href = "detail.no?noticeNo=" + noticeNo;
 		});
   	});
   </script>
-  
 </body>
 </html>

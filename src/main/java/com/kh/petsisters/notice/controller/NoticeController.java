@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -27,7 +28,9 @@ public class NoticeController {
 	// 페이징바 클릭 시 => list.bo?cPage=요청하는페이지수
 	
 	@RequestMapping("list.no")
-	public ModelAndView selectList(@RequestParam(value="cPage", defaultValue="1") int currentPage, ModelAndView mv) {
+	public ModelAndView selectList(
+			@RequestParam(value="cPage", defaultValue="1") int currentPage,
+			ModelAndView mv) {
 		
 		// 페이징 처리를 위한 PageInfo 객체 얻어내기
 		int listCount = noticeService.selectListCount();
@@ -80,8 +83,79 @@ public class NoticeController {
 			
 			return "redirect:/enrollForm.no";
 		}
-		
-		
 	}
 
+	// 공지사항 상세조회
+	@RequestMapping("detail.no")
+	public ModelAndView selectNotice(ModelAndView mv, int noticeNo) {
+		
+		int result = noticeService.increaseCount(noticeNo);
+		
+		if(result > 0) {
+			
+			Notice n = noticeService.selectNotice(noticeNo);
+			
+			mv.addObject("n", n).setViewName("notice/noticeDetail");
+			
+		} else {
+			
+			System.out.println("오류다!");
+		}
+		
+		return mv;
+	}
+	
+	// 공지사항 삭제
+	
+	@RequestMapping("delete.no")
+	public String deleteNotice(int noticeNo, Model model, HttpSession session) {
+		
+		int result = noticeService.deleteNotice(noticeNo);
+		
+		if(result > 0) {
+			
+			session.setAttribute("alertMsg", "성공적으로 공지사항을 삭제했습니다.");
+			
+			return "redirect:/list.no";
+			
+		} else {
+			
+			model.addAttribute("errorMsg", "공지사항 삭제에 실패했습니다.");
+			
+			return "notice/errorPage";
+		}
+	}
+	
+	// 공지사항 수정 페이지로
+	@RequestMapping("updateForm.no")
+	public String updateForm(int noticeNo, Model model) {
+		
+		Notice n = noticeService.selectNotice(noticeNo);
+		
+		model.addAttribute("n", n);
+		
+		return "notice/noticeUpdate";
+	}
+
+	// 공지사항 수정 기능
+	@RequestMapping("update.no")
+	public String updateNotice(Notice n, HttpSession session, Model model) {
+		
+		int result = noticeService.updateNotice(n);
+		
+		if(result > 0) {
+			
+			session.setAttribute("alertMsg", "성공적으로 공지사항을 수정했습니다.");
+			
+			return "redirect:/detail.no?noticeNo=" + n.getNoticeNo();
+		
+		} else {
+			
+			model.addAttribute("errorMsg", "공지사항 수정에 실패했습니다.");
+			
+			return "notice/errorPage";
+		}
+		
+	}
+	
 }

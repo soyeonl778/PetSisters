@@ -27,5 +27,6 @@ public interface NoticeService {
 	
 	// 공지사항 수정 서비스
 	int updateNotice(Notice n);
+	
 
 }

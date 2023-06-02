@@ -36,26 +36,22 @@ public class NoticeServiceImpl implements NoticeService {
 
 	@Override
 	public int increaseCount(int noticeNo) {
-		// TODO Auto-generated method stub
-		return 0;
+		return noticeDao.increaseCount(sqlSession, noticeNo);
 	}
 
 	@Override
 	public Notice selectNotice(int noticeNo) {
-		// TODO Auto-generated method stub
-		return null;
+		return noticeDao.selectNotice(sqlSession, noticeNo);
 	}
 
 	@Override
 	public int deleteNotice(int noticeNo) {
-		// TODO Auto-generated method stub
-		return 0;
+		return noticeDao.deleteNotice(sqlSession, noticeNo);
 	}
 
 	@Override
 	public int updateNotice(Notice n) {
-		// TODO Auto-generated method stub
-		return 0;
+		return noticeDao.updateNotice(sqlSession, n);
 	}
 
 }
