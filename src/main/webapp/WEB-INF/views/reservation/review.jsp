@@ -8,6 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <jsp:include page="../common/common.jsp" />
 <link rel="stylesheet" href="/resources/css/reservation/review.css">
+<script src="/resources/js/careJournalEnrollForm.js"></script>
 <title>후기 작성</title>
 </head>
 <body>
@@ -49,14 +50,15 @@
                     <table align="center">
                       <tr>
                         <td colspan="2">
-                        <textarea id="content" class="form-control" rows="18" style="resize:none;" name="boardContent" required></textarea>
+                        <textarea id="content" class="form-control" rows="18" style="resize:none;" name="reviewContent" required></textarea>
                         </td>
                       </tr>
-                      <tr class="anotherTr">
-                        <th width="8%"><label for="upfile">첨부파일 :</label></th>
-                        <td><input type="file" id="upfile" class="form-control-file border" name="upfile" multiple="multiple"></td>
-                      </tr>
                     </table>
+                    <div class="fileSection preview">
+                      <label for="">첨부파일 : </label>
+                      <input type="file" name="reviewFiles" id="btnAtt" multiple="multiple">
+                      <div id="att_zone" data-placeholder='파일을 첨부 하려면 파일 선택 버튼을 클릭하거나 파일을 드래그앤드롭 하세요'></div>
+                    </div>
                     <br>
 
                     <div align="center" class="formBtn">

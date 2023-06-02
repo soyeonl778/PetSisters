@@ -356,9 +356,10 @@ body #container #main .layout-pagination .pagediv span strong{
 .reviewFormContainer {
   margin-top: 50px;
   box-shadow: 1px 1px 3px lightgray;
-  height: 1250px;
+  height: 100%;
   border-radius: 5px;
   border: 1px solid #B9EAFF;
+  padding-bottom: 60px;
 }
 .formWrapper {
   padding-top: 50px;
@@ -418,4 +419,24 @@ body #container #main .layout-pagination .pagediv span strong{
 }
 .formBtn {
   padding-top: 80px;
+}
+.fileSection {
+  width: 88%;
+  margin: auto;
+  margin-top: 30px;
+}
+#att_zone {
+  min-height: 160px;
+  padding: 10px;
+  border: 1px solid lightgray;
+  margin-top: 10px;
+  border-radius: 5px;
+}
+#att_zone:empty:before{
+	content : attr(data-placeholder);
+	color : #999;
+	font-size:.9em;
+}
+.formBtn {
+  margin-top: 70px;
 }

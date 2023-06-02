@@ -1,5 +1,7 @@
 package com.kh.petsisters.reservation.model.vo;
 
+import java.sql.Date;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,8 +12,8 @@ import lombok.NoArgsConstructor;
 public class Reservation {
 
 	private int resNo;  			// 예약번호 	RES_NO	NUMBER		
-	private String startDate;		// 시작일시	START_DATE	DATE
-	private String endDate;			// 종료일시 	END_DATE	DATE
+	private Date startDate;		// 시작일시	START_DATE	DATE
+	private Date endDate;			// 종료일시 	END_DATE	DATE
 	private String registerDate;	// 등록일시	REGISTER_DATE	DATE
 	private String content;			// 특이사항	CONTENT	VARCHAR2(2000 BYTE)
 	private String status;			// 최초예약시,예약취소시 N / 펫시터승인시 Y	STATUS	VARCHAR2(1 BYTE)
@@ -24,6 +26,7 @@ public class Reservation {
 	private String petFile;			// 펫시터 대표 프로필 사진
 	private String address;			// 펫시터 주소
 	private String originName;		// 펫시터 원본 대표사진명
+	private int reviewCount;		// 리뷰 갯수
 	
 	// 예약 조회시 필요한 정보
 	/*
