@@ -14,6 +14,21 @@ INSERT INTO PETSITTER (P_NO, P_TITLE, P_CONTENT, P_SERVICE, CARE_LIST, P_MODE, U
 INSERT INTO PETSITTER (P_NO, P_TITLE, P_CONTENT, P_SERVICE, CARE_LIST, P_MODE, USER_NO) VALUES (SEQ_PETSITTER.NEXTVAL, 'test', 'test', NULL, NULL, DEFAULT, 4);
 
 --------------------------------------------------
+----------    펫시터 프로필 업데이트 더미    ----------
+--------------------------------------------------
+UPDATE PETSITTER
+SET P_CONTENT = '반려견을 저에게 맡겨 주십쇼 어르신',
+    P_SERVICE = '약물복용,목욕가능,매일산책',
+    CARE_LIST = '주택 살아요, 아이 없어요'
+WHERE USER_NO = 2;
+UPDATE PETSITTER
+SET P_TITLE = '내 아이를 돌보듯 따뜻하고 편안하게'
+SET P_CONTENT = '사랑과 정성으로 최선을 다해 보살펴드리겠습니다.',
+    P_SERVICE = '모발관리,응급처치,매일산책,실내놀이',
+    CARE_LIST = '아파트 살아요, 반려동물 있어요'
+WHERE USER_NO = 3;
+
+--------------------------------------------------
 -------    펫시터 프로필 첨부파일 테이블 더미    --------
 --------------------------------------------------
 INSERT INTO P_ATTACHMENT
@@ -61,20 +76,6 @@ INSERT INTO NOTICE VALUES (SEQ_NOTICE.NEXTVAL, '[기획성] 댕댕이의 여름나기',
 '신발을 신기거나 반려인이 먼저 온도를 체크 후 밟도록 유도해주세요.'||CHR(10)||CHR(13)||
 '여름철에는 고온 다습하여 피부병에 걸리기 쉽습니다. 산책을 다녀와서 목욕 후에는 반드시 완벽하게 수분을 말려주세요.'||CHR(10)||CHR(13)||
 '더운 여름, 건강하게 즐기며 지낼 수 있도록 보호자님들이 잘 챙기시면 좋겠습니다.', SYSDATE, 0, 'Y');
-
---------------------------------------------------
-----------    펫시터 프로필 업데이트 더미    ----------
---------------------------------------------------
-UPDATE PETSITTER
-SET P_CONTENT = '반려견을 저에게 맡겨 주십쇼 어르신',
-    P_SERVICE = '약물 복용 , 목욕 가능 , 매일 산책',
-    CARE_LIST = '주택 살아요, 아이 없어요'
-WHERE USER_NO = 2;
-UPDATE PETSITTER
-SET P_CONTENT = '반려견을 저에게 맡겨 주십쇼 어르신',
-    P_SERVICE = '약물 복용 , 목욕 가능 , 매일 산책',
-    CARE_LIST = '주택 살아요, 아이 없어요'
-WHERE USER_NO = 3;
 
 --------------------------------------------------
 -------------    펫시터찜 테이블 더미    -------------
