@@ -1,6 +1,7 @@
 package com.kh.petsisters.member.controller;
 
 import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -9,6 +10,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.petsisters.member.model.service.MemberService;
@@ -98,13 +101,27 @@ public class MemberController {
 							   Model model, 
 							   HttpSession session) {
 		
+		System.out.println(m);
+		
 		String encPwd = bcryptPasswordEncoder.encode(m.getUserPwd());
 		
 		m.setUserPwd(encPwd);
 		
 		int result = memberService.insertMember(m);
 		
-		return "/member/loginForm";
+		if(result > 0) {
+			
+			session.setAttribute("alertMsg", "회원가입 되셨습니다. 로그인을 해주세요.");
+			
+			return "redirect:/";
+			
+		} else {
+			
+			model.addAttribute("errorMsg", "잘못 입력 하셨습니다. 다시 회원가입을 진행해주세요.");
+			
+			return "/member/enrollForm";
+			
+		}
 	}
 	
 	// 아이디 찾기 페이지 이동 영역
@@ -114,9 +131,22 @@ public class MemberController {
 	}
 	
 	// 아이디 찾기 기능 영역 
-	@RequestMapping("findId.me")
-	public String findId() {
-		return "";
+	@RequestMapping("foundId.me")
+	public String foundId(HttpServletRequest request, 
+						 Model model,
+						 @RequestParam(required = true, value = "userName") String userName,
+						 @RequestParam(required = true, value = "email") String email,
+						 Member m) {
+		
+			System.out.println(m);
+		
+			m.setUserName(userName);
+			m.setEmail(email);
+			Member memberSearch = memberService.foundId(m);
+			
+			model.addAttribute("m", memberSearch);
+		
+		return "/member/foundId";
 	}
 	
 	// 비밀번호 찾기 페이지 이동 영역
@@ -126,9 +156,11 @@ public class MemberController {
 	}
 	
 	// 비밀번호 찾기 기능 영역
-	@RequestMapping("findPwd.me")
-	public String findPwd() {
-		return "/member/findPwd";
+	@RequestMapping("foundPwd.me")
+	public String foundPwd() {
+		
+		
+		return "/member/foundPwd";
 	}
 	
 	// 마이페이지 내 프로필 영역
@@ -160,5 +192,26 @@ public class MemberController {
 	public String myReply() {
 		return "/member/my_reply";
 	}
+	
+	// 아이디 중복 체크 기능 영역
+	@ResponseBody
+	@RequestMapping(value = "idCheck.me", produces = "text/html; charset=UTF-8")
+	public String idCheck(String checkId) {
+		
+		// System.out.println(checkId);
+		
+		int count = memberService.idCheck(checkId);
+		
+		/*
+		if(count > 0) { // 이미 존재하는 아이디 => 사용 불가능 ("NNNNN")
+			return "NNNNN";
+		} else { // 사용 가능한 아이디 ("NNNNY")
+			return "NNNNY";
+		}
+		*/
+		
+		return (count > 0) ? "NNNNN" : "NNNNY";
+	}
+	
 	
 }

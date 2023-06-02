@@ -7,7 +7,7 @@
   <meta charset="UTF-8" />
   
   <!-- header css -->
-  <link rel="stylesheet" href="/resources/css/member/find_pwd.css">
+  <link rel="stylesheet" href="/resources/css/member/findPwdForm.css">
   <link rel="stylesheet" href="/resources/css/common/memberForm.css">
   <jsp:include page="../common/common.jsp" />
 
@@ -29,7 +29,7 @@
             <div id="viewOrderList" class="page_section section_orderlist">
               <div class="page_section section_destination">
                 <!-- 이 영역 안에서 페이지 작업 하시면 됩니다 -->
-                <div id="mainContent">
+                <form id="mainContent" action="foundPwd.me" method="get">
                   <div class="sub1">
                     <div class="title1">
                       <h1>아이디/비밀번호 찾기</h1>
@@ -61,7 +61,7 @@
                       </div>
                     </div>
                   </div>
-                </div>
+                </form>
                 <!-- 이 영역 안에서 페이지 작업 하시면 됩니다 -->
               </div>
             </div>

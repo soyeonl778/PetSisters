@@ -32,25 +32,40 @@
 	
 	<!-- 회원추가 기능 -->
 	<insert id="insertMember" parameterType="member">
-	INSERT INTO MEMBER(USER_ID
+	INSERT INTO MEMBER(USER_NO
+					 , USER_ID
 					 , USER_PWD
 					 , USER_NAME
 					 , USER_SSN
 					 , PHONE
 					 , EMAIL
 					 , ADDRESS
-					 , GENDER
-					 , AGE)
-			  VALUES(#{userId}
+					 , GENDER)
+			  VALUES(SEQ_MEMBER.NEXTVAL
+			  	   , #{userId}
 				   , #{userPwd}
 				   , #{userName}
 				   , #{userSsn}
 				   , #{phone}
 				   , #{email}
 				   , #{address}
-				   , #{gender}
-				   , #{age})
+				   , #{gender})
 	</insert>
+	
+	<!-- 아이디 중복체크용 쿼리문 -->
+	<select id="idCheck" parameterType="string" resultType="_int">
+		SELECT COUNT(*)
+		  FROM MEMBER
+		WHERE USER_ID = #{checkId}
+	</select>
+	
+	<!-- 아이디 찾기 쿼리문 -->
+	<select id="foundId" parameterType="string" resultMap="memberResultSet">
+		SELECT *
+		  FROM MEMBER
+		WHERE USER_NAME = #{userName}
+		  AND EMAIL = #{email}
+	</select>
 
 
 
