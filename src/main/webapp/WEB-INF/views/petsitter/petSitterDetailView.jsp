@@ -261,7 +261,7 @@
                     </div>
                     <div id="content2">
                       <div class="updateFormBtn">
-                        <a href="updateForm.pe?pno=${pno}" class="btn btn-secondary">프로필 수정</a>
+                        <a href="updateForm.pe?pno=${p.petSitterNo}" class="btn btn-secondary">프로필 수정</a>
                       </div>
                       <div class="card">
                         <div class="card-body">
