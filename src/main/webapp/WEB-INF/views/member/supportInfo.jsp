@@ -152,6 +152,7 @@
     	    if (!isLoggedIn) {
     	      // 만약 로그인되지 않은 상태라면 경고 알림창을 띄우고 접근을 차단합니다.
     	      alert("로그인이 필요합니다.");
+    	      window.location.href = "loginForm.me";
     	      return false;
     	    }
 

@@ -1,0 +1,467 @@
+.chatArea {
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    flex-direction: column;
+    height: calc(100vh - 180px);
+    margin-top: 30px;
+}
+
+.chatBody {
+    display: flex;
+    overflow-x: auto;
+    position: relative;
+    margin: 0px auto;
+    height: 100%;
+    border-top: 1px solid rgb(235, 235, 235);
+    border-right: 1px solid rgb(235, 235, 235);
+    border-bottom: 1px solid rgb(235, 235, 235);
+}
+
+.chatLeftArea {
+    display: flex;
+    width: 312px;
+    min-width: 312px;
+    border-left: 1px solid rgb(235, 235, 235);
+    border-right: 1px solid rgb(235, 235, 235);
+    flex-direction: column;
+}
+
+.chatMyNameArea {
+    position: relative;
+    display: flex;
+    height: 110px;
+    min-height: 110px;
+    border-bottom: 1px solid rgb(235, 235, 235);
+    padding: 0px 20px;
+    -webkit-box-align: center;
+    align-items: center;
+}
+
+.chatMyName {
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 150%;
+}
+
+.chatList {
+    position: relative;
+    margin: 0px;
+    padding: 0px;
+    height: calc(100% - 56px);
+    list-style: none;
+    overflow: hidden auto;
+}
+
+.chattingArea {
+    position: relative;
+    display: list-item;
+}
+
+.chatting {
+    display: flex;
+    padding: 16px;
+    height: 72px;
+    border-bottom: 1px solid rgb(235, 235, 235);
+    -webkit-box-align: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    transition: background-color 0.6s ease 0s, background-size 0.6s ease 0s;
+    background-position: center center;
+    contain: content;
+    color: inherit;
+    text-decoration: none;
+}
+
+.chatting:hover {
+    background-color: rgb(235, 235, 235);
+    cursor: pointer;
+    color: inherit;
+    text-decoration: none;
+}
+
+.myProfileArea {
+    margin-right: 8px;
+}
+
+.myProfileImage {
+    width: 65px;
+    max-width: 65px;
+    min-height: 65px;
+    height: 65px;
+    border-radius: 50%;
+}
+
+
+.profileArea {
+    margin-right: 8px;
+    height: 40px;
+}
+
+.profileImage {
+    width: 40px;
+    max-width: 40px;
+    min-height: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.previewArea {
+    flex: 100%;
+    width: 0px;
+}
+
+.previewTitleArea {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+}
+
+.previewNickname {
+    height: 20px;
+    font-weight: bold;
+    font-size: 13px;
+    letter-spacing: -0.02em;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.subText {
+    margin-left: 5px;
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+.previewDescription {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    height: 20px;
+    font-size: 13px;
+}
+
+.descriptionText {
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.chatRightArea {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 635px;
+    max-width: 635px;
+}
+
+.chatEmptyBox {
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+}
+
+.emptyDescription {
+    margin-top: 34px;
+    font-size: 14px;
+    line-height: 150%;
+    letter-spacing: -0.02em;
+}
+
+.chatNormalRoom {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.chatNormalTop {
+    position: relative;
+    display: flex;
+    flex: 110px;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.chatNormalBottom {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin: 16px;
+    border: 1px solid rgb(155, 155, 155);
+    border-radius: 8px;
+    height: 125px;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+}
+
+.chatInput {
+    margin: 12px 12px 0px;
+    width: calc(100% - 24px);
+    height: 63px;
+    line-height: 150%;
+    padding: 0px;
+    resize: none;
+    font-size: 14px;
+    border: none;
+    outline: none;
+}
+
+.chatFormOptionArea {
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    margin: 8px 10px;
+}
+
+.chatFormSubmenu {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    column-gap: 12px;
+}
+
+.optionWrapper {
+    display: inline-flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+}
+
+.chatNormalBottom input[type="file"] {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    opacity: 0;
+}
+
+.send.disable {
+    background-color: rgb(235, 235, 235);
+    color: rgb(255, 255, 255);
+}
+.send.disable:hover {
+    cursor: default;
+}
+
+
+.send {
+    border-radius: 4px;
+    width: 64px;
+    height: 32px;
+    line-height: 150%;
+    font-weight: bold;
+    font-size: 14px;
+    background-color: #0888D0;
+    color: rgb(255, 255, 255);
+    transition: background-color 0.5s ease 0s, color 0.5s ease 0s;
+}
+
+.textLength {
+    position: absolute;
+    right: 84px;
+    bottom: 11px;
+    font-size: 12px;
+    line-height: 150%;
+    color: lightgray;
+}
+
+.chatOpponentArea {
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    align-items: center;
+    height: 64px;
+    min-height: 64px;
+    border-bottom: 1px solid rgb(235, 235, 235);
+    padding: 0px 20px;
+}
+
+.OpponentImage {
+    margin-right: 12px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.OpponentInfo {
+    display: inline-flex;
+    -webkit-box-align: center;
+    align-items: center;
+}
+
+.proPetsitter {
+    margin-left: 5px;
+    border: 1px solid #0888D0;
+    border-radius: 1000px;
+    padding: 0px 5px;
+    font-size: 11px;
+    color: #0888D0;
+}
+
+.chatMore {
+    display: inline-flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    border-radius: 4px;
+    width: 24px;
+    height: 24px;
+    transition: background-color 0.6s ease 0s, background-size 0.6s ease 0s;
+}
+
+.chatMore:hover {
+    background-color: rgb(235, 235, 235);
+    cursor: pointer;
+}
+
+.moreOption {
+    position: absolute;
+    right: 24px;
+    top: 53px;
+    width: 200px;
+    border: 1px solid rgb(200, 200, 200);
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 14px;
+    line-height: 150%;
+    background-color: rgb(250, 250, 250);
+    will-change: opacity;
+    animation: 0.3s ease-in 0s 1 normal none running fadeIn;
+    z-index: 999;
+}
+
+.optionItem {
+    transition: background-color 0.6s ease 0s, background-size 0.6s ease 0s;
+    border-radius: 6px;
+    padding: 10px;
+}
+
+.optionItem:hover {
+    background-color: rgb(235, 235, 235);
+    cursor: pointer;
+}
+
+.chatContentArea {
+    overflow: hidden auto;
+    padding: 0px 20px;
+}
+
+.dayArea {
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    margin: 20px 0px;
+}
+
+.dateText {
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    height: 28px;
+    border: 1px solid rgb(235, 235, 235);
+    box-sizing: border-box;
+    border-radius: 14px;
+    padding: 0px 12px;
+    font-size: 12px;
+}
+
+.containment {
+    contain: content;
+}
+
+.lineWrapperLeft {
+    display: flex;
+    -webkit-box-pack: start;
+    justify-content: start;
+    padding: 4px;
+}
+
+.messageProfileArea {
+    margin-right: 8px;
+}
+
+.messageProfileImage{
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+}
+
+.messageWrapper {
+    position: relative;
+}
+
+/* 나중에 img 사이즈 조절 해야함 */
+.messageWrapper img {
+    max-width: 400px;
+    max-height: 400px;
+    object-fit: contain;
+}
+
+.messageDateArea {
+    display: flex;
+    flex-direction: column;
+    -webkit-box-pack: end;
+    justify-content: flex-end;
+    padding: 0px 4px;
+    margin-left: 4px;
+    margin-right: 4px;
+
+}
+
+.messageDate {
+    font-size: 12px;
+    line-height: 150%;
+    letter-spacing: -0.02em;
+}
+
+.lineWrapperRight {
+    display: flex;
+    -webkit-box-pack: end;
+    justify-content: flex-end;
+    padding: 4px;
+}
+
+.myMessageBox {
+    display: inline-flex;
+    margin: 0px;
+    padding: 10px 14px;
+    max-width: 484px;
+    word-break: break-word;
+    white-space: pre-wrap;
+    font-size: 14px;
+    line-height: 150%;
+    letter-spacing: -0.02em;
+    border-radius: 20px 2px 20px 20px;
+    background-color: #0888D0;
+    color: rgb(255, 255, 255);
+}
+
+.opMessageBox {
+    display: inline-flex;
+    margin: 0px;
+    padding: 10px 14px;
+    max-width: 484px;
+    word-break: break-word;
+    white-space: pre-wrap;
+    font-size: 14px;
+    line-height: 150%;
+    letter-spacing: -0.02em;
+    border-radius: 2px 20px 20px;
+    background-color: rgb(235, 235, 235);
+}
