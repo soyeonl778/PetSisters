@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.kh.petsisters.common.model.vo.PageInfo;
 import com.kh.petsisters.reservation.model.vo.Reservation;
+import com.kh.petsisters.reservation.model.vo.Review;
 
 @Repository
 public class ReservationDao {
@@ -30,6 +31,15 @@ public class ReservationDao {
 		RowBounds rowBounds = new RowBounds(offset, limit);
 		
 		return (ArrayList)sqlSession.selectList("reservationMapper.selectPetsitterList", parameters, rowBounds);
+	}
+
+	public Reservation selectReview(SqlSessionTemplate sqlSession, int writeReviewNo) {
+		return sqlSession.selectOne("reservationMapper.selectReview", writeReviewNo);
+	}
+
+
+	public int insertReview(SqlSessionTemplate sqlSession, Review r) {
+		return sqlSession.insert("reservationMapper.insertReview", r);
 	}
 
 

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.kh.petsisters.common.model.vo.PageInfo;
 import com.kh.petsisters.reservation.model.dao.ReservationDao;
 import com.kh.petsisters.reservation.model.vo.Reservation;
+import com.kh.petsisters.reservation.model.vo.Review;
 
 @Service
 public class ReservationServiceImpl implements ReservationService{
@@ -29,7 +30,15 @@ public class ReservationServiceImpl implements ReservationService{
 		return reservationDao.selectPetsitterList(sqlSession, pi, userNo, checkReview);
 	}
 
+	@Override
+	public Reservation selectReview(int writeReviewNo) {
+		return reservationDao.selectReview(sqlSession, writeReviewNo);
+	}
 
+	@Override
+	public int insertReview(Review r) {
+		return reservationDao.insertReview(sqlSession, r);
+	}
 
 
 }

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.kh.petsisters.common.model.vo.PageInfo;
 import com.kh.petsisters.reservation.model.vo.Reservation;
+import com.kh.petsisters.reservation.model.vo.Review;
 
 public interface ReservationService {
 	
@@ -12,5 +13,13 @@ public interface ReservationService {
 	
 	// 내 예약 펫시터 리스트 조회 (select)
 	ArrayList<Reservation> selectPetsitterList(PageInfo pi, int userNo, Integer checkReview);
+
+	// 후기 작성시 날짜 조회용
+	Reservation selectReview(int writeReviewNo);
+
+	// 후기 작성
+	int insertReview(Review r);
+
+	
 
 }

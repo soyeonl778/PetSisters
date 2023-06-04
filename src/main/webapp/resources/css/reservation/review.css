@@ -440,3 +440,21 @@ body #container #main .layout-pagination .pagediv span strong{
 .formBtn {
   margin-top: 70px;
 }
+.inputTitText {
+  width: 88%;
+  height: 47px;
+  border-radius: 5px;
+  border: 1px solid lightgray;
+  padding-left: 8px;	
+}
+.inputTitText:focus{
+  color: #212529;
+  background-color: #fff;
+  border-color: #86b7fe;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem rgba(13,110,253,.25);	
+}
+.inputWrap {
+  text-align: center;
+  margin: 33px 0;	
+}

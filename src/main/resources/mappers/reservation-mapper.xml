@@ -22,6 +22,19 @@
 		<result column="REVIEW_STATUS" property="checkReview" />
 	</resultMap>
 	
+	<resultMap id="reviewResultSet" type="review">
+		<result column="REV_NO" property="revNo" />
+		<result column="REV_TITLE" property="revTitle" />
+		<result column="REV_CONTENT" property="revContent" />
+		<result column="CREATE_DATE" property="createDate" />
+		<result column="A_CONTENT" property="acontent" />
+		<result column="A_DATE" property="adate" />
+		<result column="STATUS" property="status" />
+		<result column="FILE_PATH" property="filePath" />
+		<result column="REF_RESNO" property="refResNo" />
+		<result column="CHANGE_NAME" property="changeName" />
+	</resultMap>
+	
 	<!-- 예약 리스트 총 갯수 구하는 쿼리문 -->
 	<select id="selectListCount" resultType="_int">
 	SELECT COUNT(*) 
@@ -32,7 +45,8 @@
 	
 	<!-- 예약 리스트 구하는 쿼리문 -->
 	<select id="selectPetsitterList" resultMap="reservationResultSet">
-		SELECT R.START_DATE,
+		SELECT R.RES_NO,
+			   R.START_DATE,
 		       R.END_DATE,
 		       M.ADDRESS,
 		       M.CA_STATUS,
@@ -51,8 +65,34 @@
 		WHERE R.USER_NO = #{userNo}
 		ORDER BY R.START_DATE DESC
 	</select>	
+	
+	
+	<!-- 후기 작성폼 초기 정보 조회용 쿼리문 -->
+	<select id="selectReview" resultMap="reservationResultSet">
+		SELECT * 
+		FROM
+		RESERVATION
+		WHERE RES_NO = #{writeReviewNo}
+	</select>
 
 	
+	<!-- 후기 작성용 쿼리문 -->
+	<insert id="insertReview" parameterType="review">
+		INSERT INTO REVIEW(REV_NO,
+		                   REV_TITLE,
+		                   REV_CONTENT,
+		                   CREATE_DATE,
+		                   STATUS,
+		                   FILE_PATH,
+		                   REF_RESNO)
+					VALUES(SEQ_REVIEW.NEXTVAL,
+					       #{revTitle},
+					       #{revContent},
+					       SYSDATE,
+					       DEFAULT,
+					       #{filePath},
+					       #{rNo})
+	</insert>
 </mapper>
 
 

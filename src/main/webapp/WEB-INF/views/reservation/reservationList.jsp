@@ -89,9 +89,10 @@
 											</div>
 
 											<div class="cardBtn">
+											<input class="writeReviewNo" type="hidden" value="${r.resNo}">
 												<a class="cardDetail" href="#">상세 조회</a> 
 												<c:if test="${ r.checkReview == 0 }">
-												<a class="cardReview" href="review">후기 작성</a> 
+												<a class="cardReview" href="getReviewDate?rNo=${ r.resNo }">후기 작성</a> 
 												</c:if>
 												<c:if test="${ r.checkReview == 1 }">
 												<a class="checkReview" href="updateReview">후기 수정</a> 
@@ -148,7 +149,9 @@
 
 	<jsp:include page="../common/footer.jsp" />
 	<script>
-		$(document).ready(function() {
+		$(document).ready(function() { 
+			  
+			// 게시글 카드 클릭하면 해당 펫시터 번호 추출함	  
 		  $(document).on('click', '.cardContainer', function() {
 		    var sv = $(this).find('.selectPno').val();
 		    let selectPnoValue = Number(sv);
