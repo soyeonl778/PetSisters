@@ -1,5 +1,5 @@
 --------------------------------------------------
---------------    회원 테이블 더미    ---------------
+--------------    회원 테이블 더미    --------------
 --------------------------------------------------
 INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'admin', '1234', '관리자', '1234561234567', '관리자', '01012341234', 'admin@kh.or.kr', '서울시 영등포구', 'F', 'N', 'N', NULL, 'Y', NULL, SYSDATE);
 INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user01', 'pass01', '펫시터1', '1234561234567', '펫시터1', '01011111111', 'user01@kh.or.kr', '서울시 영등포구', 'F', 'Y', 'N', NULL, 'Y', NULL, SYSDATE);
@@ -7,11 +7,12 @@ INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user02', 'pass02', '펫시터2', '1
 INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user03', 'pass03', '펫시터3', '1234561234567', '펫시터3', '01033333333', 'user03@kh.or.kr', '서울시 영등포구', 'F', 'Y', 'N', NULL, 'Y', NULL, SYSDATE);
 
 --------------------------------------------------
------------    펫시터 프로필 테이블 더미    -----------
+----------    펫시터 프로필 테이블 더미    ----------
 --------------------------------------------------
 INSERT INTO PETSITTER (P_NO, P_TITLE, P_CONTENT, P_SERVICE, CARE_LIST, P_MODE, USER_NO) VALUES (SEQ_PETSITTER.NEXTVAL, '안전하고 편안하게 돌봐주는 펫시팅','test', NULL, NULL, DEFAULT, 2);
 INSERT INTO PETSITTER (P_NO, P_TITLE, P_CONTENT, P_SERVICE, CARE_LIST, P_MODE, USER_NO) VALUES (SEQ_PETSITTER.NEXTVAL, 'test', 'test', NULL, NULL, DEFAULT, 3);
 INSERT INTO PETSITTER (P_NO, P_TITLE, P_CONTENT, P_SERVICE, CARE_LIST, P_MODE, USER_NO) VALUES (SEQ_PETSITTER.NEXTVAL, 'test', 'test', NULL, NULL, DEFAULT, 4);
+
 INSERT INTO PETSITTER (P_NO, P_TITLE, P_CONTENT, P_SERVICE, CARE_LIST, P_MODE, USER_NO) VALUES (SEQ_PETSITTER.NEXTVAL, '안전하고 편안하게 돌봐주는 펫시팅','호박고구마, 힘드졍', '흡연자, 힘들당', '어디에 쓰는고', DEFAULT, 2);
 INSERT INTO PETSITTER (P_NO, P_TITLE, P_CONTENT, P_SERVICE, CARE_LIST, P_MODE, USER_NO) VALUES (SEQ_PETSITTER.NEXTVAL, '나는 곤쥬님','호박고구마, 힘드졍', '흡연자, 힘들당', '어디에 쓰는고', DEFAULT, 2);
 INSERT INTO PETSITTER (P_NO, P_TITLE, P_CONTENT, P_SERVICE, CARE_LIST, P_MODE, USER_NO) VALUES (SEQ_PETSITTER.NEXTVAL, '나는 곤쥬님','호박고구마, 힘드졍', '흡연자, 힘들당', '어디에 쓰는고', DEFAULT, 2);
@@ -19,7 +20,7 @@ INSERT INTO PETSITTER (P_NO, P_TITLE, P_CONTENT, P_SERVICE, CARE_LIST, P_MODE, U
 INSERT INTO PETSITTER (P_NO, P_TITLE, P_CONTENT, P_SERVICE, CARE_LIST, P_MODE, USER_NO) VALUES (SEQ_PETSITTER.NEXTVAL, '나는 곤쥬님','호박고구마, 힘드졍', '흡연자, 힘들당', '어디에 쓰는고', DEFAULT, 2);
 
 --------------------------------------------------
-----------    펫시터 프로필 업데이트 더미    ----------
+---------    펫시터 프로필 업데이트 더미    ---------
 --------------------------------------------------
 UPDATE PETSITTER
 SET P_CONTENT = '반려견을 저에게 맡겨 주십쇼 어르신',
@@ -34,7 +35,7 @@ SET P_TITLE = '내 아이를 돌보듯 따뜻하고 편안하게',
 WHERE USER_NO = 3;
 
 --------------------------------------------------
--------    펫시터 프로필 첨부파일 테이블 더미    --------
+------    펫시터 프로필 첨부파일 테이블 더미    ------
 --------------------------------------------------
 INSERT INTO P_ATTACHMENT
 VALUES ( SEQ_P_ATTACHMENT.NEXTVAL,
@@ -44,28 +45,10 @@ VALUES ( SEQ_P_ATTACHMENT.NEXTVAL,
          SYSDATE,
          'Y',
          1,
-         4);
-INSERT INTO P_ATTACHMENT
-VALUES ( SEQ_P_ATTACHMENT.NEXTVAL,
-         '그림이사진2.jpg',
-         '2023060454348464669.jpg',
-         'resources/upFiles/petsitter_upfiles/',
-         SYSDATE,
-         'Y',
-         1,
-         5);
-INSERT INTO P_ATTACHMENT
-VALUES ( SEQ_P_ATTACHMENT.NEXTVAL,
-         '개1.jpg',
-         '2023060494348464342.jpg',
-         'resources/upFiles/petsitter_upfiles/',
-         SYSDATE,
-         'Y',
-         1,
-         1);         
+         1);
 
 --------------------------------------------------
-------------    공지사항 테이블 더미    --------------
+-----------    공지사항 테이블 더미    -------------
 --------------------------------------------------
 INSERT INTO NOTICE VALUES (SEQ_NOTICE.NEXTVAL, '[공지] 펫시스터즈 안심보험 적용안내드립니다.', 
 '안녕하세요 펫시스터즈입니다. 항상 펫시스터즈를 이용해주시는 보호자님들께 진심으로 감사드립니다.'||CHR(10)||CHR(13)||
@@ -101,7 +84,7 @@ INSERT INTO NOTICE VALUES (SEQ_NOTICE.NEXTVAL, '[기획성] 댕댕이의 여름나기',
 '더운 여름, 건강하게 즐기며 지낼 수 있도록 보호자님들이 잘 챙기시면 좋겠습니다.', SYSDATE, 0, 'Y');
 
 --------------------------------------------------
--------------    펫시터찜 테이블 더미    -------------
+------------    펫시터찜 테이블 더미    ------------
 --------------------------------------------------
 INSERT INTO P_LIKE
 VALUES (3, 1);
@@ -113,13 +96,13 @@ INSERT INTO P_LIKE
 VALUES (4, 1);
 
 --------------------------------------------------
---------------    예약 테이블 더미    ---------------
+-------------    예약 테이블 더미    --------------
 --------------------------------------------------
 INSERT INTO RESERVATION 
 VALUES ( SEQ_RESERVATION.NEXTVAL,
-         '2023-05-08',
-         '2023-05-11',
-         '2023-04-29',
+         '2023-06-02',
+         '2023-06-11',
+         '2023-06-29',
          '우리집 개는 물어요 잘해보세요',
          'Y',
          2,
@@ -135,15 +118,79 @@ VALUES ( SEQ_RESERVATION.NEXTVAL,
          5);
 INSERT INTO RESERVATION 
 VALUES ( SEQ_RESERVATION.NEXTVAL,
+         '2023-06-02',
+         '2023-06-10',
          '2023-06-01',
-         '2023-06-03',
-         '2023-05-30',
          '뭉뭉',
          'Y',
          2,
-         1);         
+         1);
+INSERT INTO RESERVATION 
+VALUES ( SEQ_RESERVATION.NEXTVAL,
+         '2023-06-02',
+         '2023-06-11',
+         '2023-06-29',
+         '우리집 개는 물어요 잘해보세요',
+         'Y',
+         2,
+         4);
+INSERT INTO RESERVATION 
+VALUES ( SEQ_RESERVATION.NEXTVAL,
+         '2023-06-02',
+         '2023-06-11',
+         '2023-06-29',
+         '우리집 개는 물어요 잘해보세요',
+         'Y',
+         2,
+         4);
+INSERT INTO RESERVATION 
+VALUES ( SEQ_RESERVATION.NEXTVAL,
+         '2023-06-02',
+         '2023-06-11',
+         '2023-06-29',
+         '우리집 개는 물어요 잘해보세요',
+         'Y',
+         2,
+         4);
+INSERT INTO RESERVATION 
+VALUES ( SEQ_RESERVATION.NEXTVAL,
+         '2023-06-02',
+         '2023-06-11',
+         '2023-06-29',
+         '우리집 개는 물어요 잘해보세요',
+         'Y',
+         2,
+         4);
+INSERT INTO RESERVATION 
+VALUES ( SEQ_RESERVATION.NEXTVAL,
+         '2023-06-02',
+         '2023-06-11',
+         '2023-06-29',
+         '우리집 개는 물어요 잘해보세요',
+         'Y',
+         2,
+         4);
+INSERT INTO P_ATTACHMENT
+VALUES ( SEQ_P_ATTACHMENT.NEXTVAL,
+         '그림이사진2.jpg',
+         '2023060454348464669.jpg',
+         'resources/upFiles/petsitter_upfiles/',
+         SYSDATE,
+         'Y',
+         1,
+         5);
+INSERT INTO P_ATTACHMENT
+VALUES ( SEQ_P_ATTACHMENT.NEXTVAL,
+         '개1.jpg',
+         '2023060494348464342.jpg',
+         'resources/upFiles/petsitter_upfiles/',
+         SYSDATE,
+         'Y',
+         1,
+         1);     
+         
 --------------------------------------------------
------------------    후기 테이블    ----------------
+----------------    후기 테이블    ----------------
 --------------------------------------------------
 INSERT INTO REVIEW
 VALUES(SEQ_REVIEW.NEXTVAL,
@@ -157,7 +204,7 @@ VALUES(SEQ_REVIEW.NEXTVAL,
        1);
        
 --------------------------------------------------
------------------    커밋구문    -------------------
+-----------------    커밋구문    ------------------
 --------------------------------------------------
          
  COMMIT;
