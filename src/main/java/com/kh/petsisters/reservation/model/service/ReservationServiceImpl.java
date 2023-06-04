@@ -25,8 +25,11 @@ public class ReservationServiceImpl implements ReservationService{
 	}
 
 	@Override
-	public ArrayList<Reservation> selectPetsitterList(PageInfo pi, int userNo) {
-		return reservationDao.selectPetsitterList(sqlSession, pi, userNo);
+	public ArrayList<Reservation> selectPetsitterList(PageInfo pi, int userNo, Integer checkReview) {
+		return reservationDao.selectPetsitterList(sqlSession, pi, userNo, checkReview);
 	}
+
+
+
 
 }

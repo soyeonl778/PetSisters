@@ -11,7 +11,6 @@ public interface ReservationService {
 	public abstract int selectListCount(int userNo);
 	
 	// 내 예약 펫시터 리스트 조회 (select)
-	ArrayList<Reservation> selectPetsitterList(PageInfo pi, int userNo);
-	
+	ArrayList<Reservation> selectPetsitterList(PageInfo pi, int userNo, Integer checkReview);
 
 }

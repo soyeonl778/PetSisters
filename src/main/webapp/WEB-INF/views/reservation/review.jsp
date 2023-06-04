@@ -32,7 +32,7 @@
                       <div class="reviewerInfo">
                         <div class="textAreaTit">
                           <div class="titPt">펫시터</div>
-                          <div class="titDesc">김다은</div>
+                          <div class="titDesc">${ loginUser.userName }</div>
                         </div>
                         <div class="textAreaTit">
                           <div class="titPt">체크인</div>

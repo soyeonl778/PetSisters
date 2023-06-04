@@ -66,8 +66,8 @@
 											</c:if>
 										</div>
 										<div class="cardSection">
-
 											<div class="cardContainer" onclick="location.href='#'">
+										  <input class="selectPno" type="hidden" value="${ r.pno }">	
 												<div class="cardImage">
 													<img src="${r.petFile.concat(r.originName) }" alt="coshong"
 														class="cardMainImg">
@@ -89,9 +89,14 @@
 											</div>
 
 											<div class="cardBtn">
-												<a class="cardDetail" href="">상세 조회</a> <a
-													class="cardReview" href="review">후기 작성</a> <a
-													class="cardDelete" href="">삭제</a>
+												<a class="cardDetail" href="#">상세 조회</a> 
+												<c:if test="${ r.checkReview == 0 }">
+												<a class="cardReview" href="review">후기 작성</a> 
+												</c:if>
+												<c:if test="${ r.checkReview == 1 }">
+												<a class="checkReview" href="updateReview">후기 수정</a> 
+												</c:if>
+												<a class="cardDelete" href="">삭제</a>
 											</div>
 										</div>
 									</div>
@@ -99,157 +104,32 @@
 								</c:forEach>
 
 
-								<div class="mainBodyWrapper">
-									<div class="dateWorking">
-										<div class="cardDate">2023-05-21 ~ 2023-05-23</div>
-										<div class="itsdone">진행 완료</div>
-									</div>
-									<div class="cardSection">
-										<div class="cardContainer">
-											<div class="cardImage">
-												<img src="/resources/img/main/코송-040.jpg" alt="coshong"
-													class="cardMainImg">
-											</div>
-											<div class="cardTextContainer">
-												<div class="cardTitDesc">
-													<h4>서울 서대문구 홍은동</h4>
-													<p class="proPet">* 프로펫시터</p>
-												</div>
-												<h3 class="cardTitContent">정성스럽게 돌봐드립니다.</h3>
-												<div class="borderLine"></div>
-												<p class="cardHash">빌라 * 산책로 있어요 * 3인가구 * 반려동물 없어요</p>
-												<div class="linkRe">
-													<a href="" class="reviewLink">후기 214개</a>
-												</div>
-											</div>
-										</div>
-										<div class="cardBtn">
-											<a class="cardDetail" href="">상세 조회</a> <a class="cardReview"
-												href="">후기 작성</a> <a class="cardDelete" href="">삭제</a>
-										</div>
-									</div>
-								</div>
-								<div class="mainBodyWrapper">
-									<div class="cardDate">2023-05-21 ~ 2023-05-23</div>
-									<div class="cardSection">
-										<div class="cardContainer">
-											<div class="cardImage">
-												<img src="/resources/img/main/코송-040.jpg" alt="coshong"
-													class="cardMainImg">
-											</div>
-											<div class="cardTextContainer">
-												<div class="cardTitDesc">
-													<h4>서울 서대문구 홍은동</h4>
-													<p class="proPet">* 프로펫시터</p>
-												</div>
-												<h3 class="cardTitContent">정성스럽게 돌봐드립니다.</h3>
-												<div class="borderLine"></div>
-												<p class="cardHash">빌라 * 산책로 있어요 * 3인가구 * 반려동물 없어요</p>
-												<div class="linkRe">
-													<a href="" class="reviewLink">후기 214개</a>
-												</div>
-											</div>
-										</div>
-										<div class="cardBtn">
-											<a class="cardDetail" href="">상세 조회</a> <a class="cardReview"
-												href="">후기 작성</a> <a class="cardDelete" href="">삭제</a>
-										</div>
-									</div>
-								</div>
-								<div class="mainBodyWrapper">
-									<div class="cardDate">2023-05-21 ~ 2023-05-23</div>
-									<div class="cardSection">
-										<div class="cardContainer">
-											<div class="cardImage">
-												<img src="/resources/img/main/코송-040.jpg" alt="coshong"
-													class="cardMainImg">
-											</div>
-											<div class="cardTextContainer">
-												<div class="cardTitDesc">
-													<h4>서울 서대문구 홍은동</h4>
-													<p class="proPet">* 프로펫시터</p>
-												</div>
-												<h3 class="cardTitContent">정성스럽게 돌봐드립니다.</h3>
-												<div class="borderLine"></div>
-												<p class="cardHash">빌라 * 산책로 있어요 * 3인가구 * 반려동물 없어요</p>
-												<div class="linkRe">
-													<a href="" class="reviewLink">후기 214개</a>
-												</div>
-											</div>
-										</div>
-										<div class="cardBtn">
-											<a class="cardDetail" href="">상세 조회</a> <a class="cardReview"
-												href="">후기 작성</a> <a class="cardDelete" href="">삭제</a>
-										</div>
-									</div>
-								</div>
-								<div class="mainBodyWrapper">
-									<div class="cardDate">2023-05-21 ~ 2023-05-23</div>
-									<div class="cardSection">
-										<div class="cardContainer">
-											<div class="cardImage">
-												<img src="/resources/img/main/코송-040.jpg" alt="coshong"
-													class="cardMainImg">
-											</div>
-											<div class="cardTextContainer">
-												<div class="cardTitDesc">
-													<h4>서울 서대문구 홍은동</h4>
-													<p class="proPet">* 프로펫시터</p>
-												</div>
-												<h3 class="cardTitContent">정성스럽게 돌봐드립니다.</h3>
-												<div class="borderLine"></div>
-												<p class="cardHash">빌라 * 산책로 있어요 * 3인가구 * 반려동물 없어요</p>
-												<div class="linkRe">
-													<a href="" class="reviewLink">후기 214개</a>
-												</div>
-											</div>
-										</div>
-										<div class="cardBtn">
-											<a class="cardDetail" href="">상세 조회</a> <a class="cardReview"
-												href="">후기 작성</a> <a class="cardDelete" href="">삭제</a>
-										</div>
-									</div>
-								</div>
-								<div class="mainBodyWrapper">
-									<div class="cardDate">2023-05-21 ~ 2023-05-23</div>
-									<div class="cardSection">
-										<div class="cardContainer">
-											<div class="cardImage">
-												<img src="/resources/img/main/코송-040.jpg" alt="coshong"
-													class="cardMainImg">
-											</div>
-											<div class="cardTextContainer">
-												<div class="cardTitDesc">
-													<h4>서울 서대문구 홍은동</h4>
-													<p class="proPet">* 프로펫시터</p>
-												</div>
-												<h3 class="cardTitContent">정성스럽게 돌봐드립니다.</h3>
-												<div class="borderLine"></div>
-												<p class="cardHash">빌라 * 산책로 있어요 * 3인가구 * 반려동물 없어요</p>
-												<div class="linkRe">
-													<a href="" class="reviewLink">후기 214개</a>
-												</div>
-											</div>
-										</div>
-										<div class="cardBtn">
-											<a class="cardDetail" href="">상세 조회</a> <a class="cardReview"
-												href="">후기 작성</a> <a class="cardDelete" href="">삭제</a>
-										</div>
-									</div>
-								</div>
-
 								<!-- 페이지네이션-->
 								<div id="pagination">
 									<nav aria-label="Page navigation example">
 										<ul id="pagiUl" class="pagination paginationUlTag">
-											<li class="arrowTag"><a href="">&lsaquo;</a></li>
-											<li class="page-item active"><a class="page-link"
-												href="#">1</a></li>
-											<li class="page-item"><a class="page-link" href="#">2</a>
-											</li>
-											<li class="page-item"><a class="page-link" href="#">3</a>
-											</li>
-											<li class="arrowTag"><a href="">&rsaquo;</a></li>
+										
+										<c:choose>
+										  <c:when  test="${ pi.currentPage eq 1 }">
+											<li class="arrowTag disabled"><a href="">&lsaquo;</a></li>
+										  </c:when>
+										  <c:otherwise>
+											<li class="arrowTag"><a href="reservationList?rPage=${ pi.currentPage - 1 }">&lsaquo;</a></li>
+										  </c:otherwise>
+									    </c:choose>
+										  
+										<c:forEach var="p" begin="${ pi.startPage }" end="${ pi.endPage }" step="1">  
+											<li class="page-item active"><a class="page-link" href="reservationList?rPage=${p }">${ p }</a></li>
+										</c:forEach>		
+										
+										<c:choose>	
+											<c:when test="${ pi.currentPage eq pi.maxPage }">
+												<li class="arrowTag disabled"><a href="javascript:void(0)">&rsaquo;</a></li>
+											</c:when>
+											<c:otherwise>
+												<li class="arrowTag"><a href="reservationList?rPage=${pi.currentPage + 1}">&rsaquo;</a></li>
+											</c:otherwise>
+										</c:choose>	
 										</ul>
 									</nav>
 								</div>
@@ -267,5 +147,15 @@
 	</div>
 
 	<jsp:include page="../common/footer.jsp" />
+	<script>
+		$(document).ready(function() {
+		  $(document).on('click', '.cardContainer', function() {
+		    var sv = $(this).find('.selectPno').val();
+		    let selectPnoValue = Number(sv);
+			console.log(selectPnoValue);
+		  });
+		});
+		
+	</script>
 </body>
 </html>

@@ -19,6 +19,7 @@
 		<result column="ADDRESS" property="address" />
 		<result column="ORIGIN_NAME" property="originName" />
 		<result column="REVIEW_COUNT" property="reviewCount" />
+		<result column="REVIEW_STATUS" property="checkReview" />
 	</resultMap>
 	
 	<!-- 예약 리스트 총 갯수 구하는 쿼리문 -->
@@ -33,20 +34,24 @@
 	<select id="selectPetsitterList" resultMap="reservationResultSet">
 		SELECT R.START_DATE,
 		       R.END_DATE,
-		       ADDRESS,
-		       CA_STATUS,
-		       P_TITLE,
-		       CARE_LIST,
-		       P_NO,
+		       M.ADDRESS,
+		       M.CA_STATUS,
+		       P.P_TITLE,
+		       P.CARE_LIST,
+		       P.P_NO,
 		       A.FILE_PATH AS FILE_PATH,
-		       ORIGIN_NAME,
-		       (SELECT COUNT(*) FROM REVIEW) AS REVIEW_COUNT
-		  FROM RESERVATION R
-		  LEFT JOIN MEMBER M USING (USER_NO)
-		  LEFT JOIN PETSITTER P USING (USER_NO)
-		  LEFT JOIN P_ATTACHMENT A ON P.P_NO = A.REF_PNO
-		 WHERE USER_NO = #{userNo}
+		       A.ORIGIN_NAME,
+		       (SELECT COUNT(*) FROM REVIEW WHERE REF_RESNO = R.RES_NO) AS REVIEW_COUNT,
+		        CASE WHEN REV.REV_NO IS NOT NULL THEN 1 ELSE 0 END AS REVIEW_STATUS
+		FROM RESERVATION R
+		JOIN MEMBER M ON R.USER_NO = M.USER_NO
+		JOIN PETSITTER P ON R.REF_PNO = P.P_NO
+		JOIN P_ATTACHMENT A ON P.P_NO = A.REF_PNO
+		LEFT JOIN REVIEW REV ON R.RES_NO = REV.REF_RESNO
+		WHERE R.USER_NO = #{userNo}
+		ORDER BY R.START_DATE DESC
 	</select>	
+
 	
 </mapper>
 

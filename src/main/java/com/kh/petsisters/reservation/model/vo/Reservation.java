@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 public class Reservation {
 
 	private int resNo;  			// 예약번호 	RES_NO	NUMBER		
-	private Date startDate;		// 시작일시	START_DATE	DATE
+	private Date startDate;			// 시작일시	START_DATE	DATE
 	private Date endDate;			// 종료일시 	END_DATE	DATE
 	private String registerDate;	// 등록일시	REGISTER_DATE	DATE
 	private String content;			// 특이사항	CONTENT	VARCHAR2(2000 BYTE)
@@ -27,6 +27,7 @@ public class Reservation {
 	private String address;			// 펫시터 주소
 	private String originName;		// 펫시터 원본 대표사진명
 	private int reviewCount;		// 리뷰 갯수
+	private int checkReview;		// 리뷰 작성 여부
 	
 	// 예약 조회시 필요한 정보
 	/*

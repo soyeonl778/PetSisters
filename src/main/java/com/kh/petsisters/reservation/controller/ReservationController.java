@@ -27,8 +27,10 @@ public class ReservationController {
 	 * @return
 	 */
 	@RequestMapping(value="reservationList")
-	public String selectPetsitterList(@RequestParam(value="s", defaultValue="1") 
-									  int currentPage, Model model, HttpSession session) {
+	public String selectPetsitterList(@RequestParam(value="rPage", defaultValue="1") 
+									  int currentPage,
+									  @RequestParam(value="checkReview", required=false) Integer checkReview,
+									  Model model, HttpSession session) {
 		
 		
 		int userNo = ((Member)(session.getAttribute("loginUser"))).getUserNo();
@@ -36,14 +38,17 @@ public class ReservationController {
 		int listCount = reservationService.selectListCount(userNo);
 		
 		int pageLimit = 10;
-		int boardLimit = 5;
+		int boardLimit = 6;
 		
 		PageInfo pi = Pagination.getPageInfo(listCount, currentPage, pageLimit, boardLimit);
 		
-		ArrayList<Reservation> list = reservationService.selectPetsitterList(pi, userNo);
+		ArrayList<Reservation> list = reservationService.selectPetsitterList(pi, userNo, checkReview);
 
+		
 		model.addAttribute("pi", pi);
 		model.addAttribute("list", list);
+		System.out.println(list);
+		System.out.println(checkReview);
 		
 		return "reservation/reservationList";
 	}
@@ -54,6 +59,7 @@ public class ReservationController {
 	 */
 	@RequestMapping(value="review")
 	public String review() {
+		
 		
 		return "reservation/review";
 	}
