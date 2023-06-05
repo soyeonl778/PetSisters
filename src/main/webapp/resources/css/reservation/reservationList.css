@@ -19,7 +19,7 @@
   margin-left: 20px;
 }
 .cardContainer {
-  border: 1px solid black;
+  border: 1px solid lightgray;
   box-shadow: 3px 4px 5px lightgray;
   width: 73%;
   height: 100%;
@@ -112,8 +112,7 @@
 }
 .cardImage {
   width: 30%;
-  height: 90%;
-  margin-left: 10px;
+  height: 100%;
   margin-right: 40px;
 }
 .cardTextContainer {
@@ -123,7 +122,7 @@
 }
 .cardMainImg {
   height: 100%;
-  border-radius: 5px;
+  /*border-radius: 5px;*/
   width: 100%;
 }
 .cardTitDesc {

@@ -29,7 +29,11 @@ public class ReservationController {
 	private ReservationService reservationService;
 	
 	/**
-	 * 예약 리스트조회
+	 * 예약 리스트 조회
+	 * @param currentPage
+	 * @param checkReview
+	 * @param model
+	 * @param session
 	 * @return
 	 */
 	@RequestMapping(value="reservationList")
@@ -58,8 +62,11 @@ public class ReservationController {
 		return "reservation/reservationList";
 	}
 	
+	
 	/**
-	 * 후기 작성시 날짜 불러오기
+	 * 후기 작성 시 기본 정보 불러오기
+	 * @param model
+	 * @param writeReviewNo
 	 * @return
 	 */
 	@RequestMapping(value="getReviewDate")
@@ -76,11 +83,17 @@ public class ReservationController {
 	}
 	
 	
+	/**
+	 * 후기 작성
+	 * @param upfile
+	 * @param session
+	 * @param model
+	 * @param r
+	 * @return
+	 */
 	@RequestMapping("reviewInsert")
-	public String insertReview(MultipartFile upfile, HttpSession session, Model model, Review r, 
-			@RequestParam(value = "rNo") int rNo) {
-		System.out.println(rNo);
-		System.out.println(r);
+	public String insertReview(MultipartFile upfile, HttpSession session, Model model, Review r) {
+		// System.out.println(r);
 		
 		if(!upfile.getOriginalFilename().equals("")) {
 			
@@ -104,6 +117,80 @@ public class ReservationController {
 	}
 	
 	
+	/**
+	 * 후기 수정시 기본 정보 불러오기
+	 * @param model
+	 * @param rNo
+	 * @return
+	 */
+	@RequestMapping("reviewUpdate")
+	public String updateReview(Model model, @RequestParam(value = "rNo") int rNo) {
+		
+		// System.out.println(rNo);
+		
+		Review r = reservationService.updateReview(rNo);
+		
+		// System.out.println(r);
+		
+		model.addAttribute("r", r);
+		
+		return "reservation/reviewUpdate";
+	}
+	
+	
+	/**
+	 * 후기 수정
+	 * @param model
+	 * @param reupfile
+	 * @param session
+	 * @param r
+	 * @return
+	 */
+	@RequestMapping("updateReviewForm")
+	public String updateForm(Model model, MultipartFile reupfile,
+							HttpSession session, Review r) {
+		
+		
+		// System.out.println(r);
+		if(!reupfile.getOriginalFilename().contentEquals("")) {
+			
+			String changeName = saveFile(reupfile, session);
+			
+			r.setFilePath(reupfile.getOriginalFilename());
+			r.setChangeName("resources/upFiles/review_upfiles/" + changeName);
+		}
+		
+		int result = reservationService.updateForm(r);
+		// System.out.println(result);
+		if(result > 0) {
+			return "redirect:/reservationList";
+		} else {
+			
+			//TODO 에러페이지 완성시 포워딩 변경할 것
+			return null;
+		}
+		
+	}
+	
+	
+	
+	@RequestMapping("deleteReservation")
+	public String deleteReservation(Model model, HttpSession session, @RequestParam(value = "rNo") int rNo) {
+		
+		
+		int result = reservationService.deleteReservation(rNo);
+		System.out.println(rNo);
+		
+		System.out.println(result);
+		if(result > 0) {
+			
+			return "redirect:/reservationList";
+		} else {
+			
+			//TODO 에러페이지 완성 시 포워딩 바꿔줄 것
+			return null;
+		}
+	}
 	
 	/**
 	 * 파일 저장 메소드

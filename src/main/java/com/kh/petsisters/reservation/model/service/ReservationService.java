@@ -20,6 +20,15 @@ public interface ReservationService {
 	// 후기 작성
 	int insertReview(Review r);
 
+	// 후기 수정시 기본정보 조회용
+	Review updateReview(int rNo);
+
+	// 후기 수정 업데이트
+	int updateForm(Review r);
+
+	// 예약 리스트 삭제용
+	int deleteReservation(int rNo);
+
 	
 
 }

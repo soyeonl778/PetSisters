@@ -89,15 +89,15 @@
 											</div>
 
 											<div class="cardBtn">
-											<input class="writeReviewNo" type="hidden" value="${r.resNo}">
+											<input class="writeReviewNo" name="revNo" type="hidden" value="${r.resNo}">
 												<a class="cardDetail" href="#">상세 조회</a> 
 												<c:if test="${ r.checkReview == 0 }">
 												<a class="cardReview" href="getReviewDate?rNo=${ r.resNo }">후기 작성</a> 
 												</c:if>
 												<c:if test="${ r.checkReview == 1 }">
-												<a class="checkReview" href="updateReview">후기 수정</a> 
+												<a class="checkReview" href="reviewUpdate?rNo=${ r.resNo }">후기 수정</a> 
 												</c:if>
-												<a class="cardDelete" href="">삭제</a>
+												<a class="cardDelete" href="deleteReservation?rNo=${ r.resNo }">삭제</a>
 											</div>
 										</div>
 									</div>

@@ -33,6 +33,8 @@
 		<result column="FILE_PATH" property="filePath" />
 		<result column="REF_RESNO" property="refResNo" />
 		<result column="CHANGE_NAME" property="changeName" />
+		<result column="START_DATE" property="revStartDate" />
+		<result column="END_DATE" property="revEndDate" />
 	</resultMap>
 	
 	<!-- 예약 리스트 총 갯수 구하는 쿼리문 -->
@@ -60,10 +62,11 @@
 		FROM RESERVATION R
 		JOIN MEMBER M ON R.USER_NO = M.USER_NO
 		JOIN PETSITTER P ON R.REF_PNO = P.P_NO
-		JOIN P_ATTACHMENT A ON P.P_NO = A.REF_PNO
+		LEFT JOIN P_ATTACHMENT A ON P.P_NO = A.REF_PNO
 		LEFT JOIN REVIEW REV ON R.RES_NO = REV.REF_RESNO
-		WHERE R.USER_NO = #{userNo}
-		ORDER BY R.START_DATE DESC
+	   WHERE R.USER_NO = #{userNo}
+		 AND R.STATUS = 'Y' 
+	   ORDER BY R.START_DATE DESC
 	</select>	
 	
 	
@@ -93,6 +96,37 @@
 					       #{filePath},
 					       #{rNo})
 	</insert>
+	
+	
+	<!-- 후기작성 초기 정보 불러오는 쿼리문 -->
+	<select id="updateReview" parameterType="_int" resultMap="reviewResultSet">
+		SELECT REV_TITLE, REV_CONTENT, FILE_PATH, REF_RESNO, START_DATE, END_DATE
+		  FROM REVIEW 
+		  JOIN RESERVATION ON RES_NO = REF_RESNO
+		 WHERE REF_RESNO = #{rNo}	
+	</select>
+	
+	
+	<!-- 후기 수정 업데이트용 쿼리문 -->
+	<update id="updateForm" parameterType="review">
+		UPDATE REVIEW
+		   SET REV_TITLE = #{revTitle},
+		       REV_CONTENT = #{revContent},
+		       CREATE_DATE = SYSDATE,
+		       FILE_PATH = #{filePath}
+		 WHERE REF_RESNO = #{rNo}
+		   AND STATUS = 'Y'	
+	</update>
+	
+	
+	<!-- 예약 리스트 삭제용 쿼리문 -->
+	<update id="deleteReservation" parameterType="_int">
+		UPDATE RESERVATION   
+		   SET STATUS = 'N'
+		 WHERE RES_NO = #{rNo}
+	</update>
+	
+	
 </mapper>
 
 

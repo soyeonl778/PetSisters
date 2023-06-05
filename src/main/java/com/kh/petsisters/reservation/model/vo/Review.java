@@ -22,5 +22,7 @@ public class Review {
 	private int refResNo;		//	참조예약번호   REF_RESNO	NUMBER
 	private String changeName;	// 	변경된 파일 경로
 	private int rNo;			//  제발 등록되라 고유번호
+	private Date revStartDate;	//  예약 시작일
+	private Date revEndDate;	//  예약 종료일
 	
 }
