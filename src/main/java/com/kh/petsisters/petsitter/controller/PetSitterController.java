@@ -1,13 +1,18 @@
 package com.kh.petsisters.petsitter.controller;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.kh.petsisters.common.model.vo.PageInfo;
+import com.kh.petsisters.common.template.Pagination;
 import com.kh.petsisters.petsitter.model.service.PetSitterService;
 import com.kh.petsisters.petsitter.model.vo.PetSitter;
 
@@ -67,8 +72,32 @@ public class PetSitterController {
 		}
 	}
 	
-	
+	@RequestMapping("list.pe")
+	public ModelAndView selectList(
+			@RequestParam(value="cPage", defaultValue="1") int currentPage,
+			ModelAndView mv) {
+		
+		// PageInfo 객체 얻어내기
+		int listCount = petSitterService.selectListCount();
+		
+		int pageLimit = 10;
+		int boardLimit = 5;
+		
+		PageInfo pi = Pagination.getPageInfo(listCount, currentPage, pageLimit, boardLimit);
+		
+		ArrayList<PetSitter> list = petSitterService.selectList(pi);
+		
+		mv.addObject("pi", pi)
+		  .addObject("list", list)
+		  .setViewName("petsitter/petSitterListView");
+		
+		return mv;
+	}
 	
 	
 	
 }
+
+
+
+
