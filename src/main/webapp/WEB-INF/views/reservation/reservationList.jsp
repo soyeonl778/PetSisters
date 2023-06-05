@@ -90,7 +90,7 @@
 
 											<div class="cardBtn">
 											<input class="writeReviewNo" name="revNo" type="hidden" value="${r.resNo}">
-												<a class="cardDetail" href="#">상세 조회</a> 
+												<a class="cardDetail" href="reservationDetail?rNo=${r.resNo}">상세 조회</a> 
 												<c:if test="${ r.checkReview == 0 }">
 												<a class="cardReview" href="getReviewDate?rNo=${ r.resNo }">후기 작성</a> 
 												</c:if>
