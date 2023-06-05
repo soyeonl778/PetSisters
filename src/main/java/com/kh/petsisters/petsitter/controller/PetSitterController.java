@@ -88,8 +88,6 @@ public class PetSitterController {
 		
 		ArrayList<PetSitter> list = petSitterService.selectList(pi);
 		
-		System.out.println(list);
-		
 		mv.addObject("pi", pi)
 		  .addObject("list", list)
 		  .setViewName("petsitter/petSitterListView");

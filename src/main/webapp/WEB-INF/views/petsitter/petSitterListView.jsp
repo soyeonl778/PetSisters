@@ -99,8 +99,6 @@
                           $(".content>div").click(function() {
                             let pno = $(this).find(".pno").text();
                             location.href = "detail.pe?pno=" + pno;
-
-                            console.log(pno);
                           });
                         });
 
