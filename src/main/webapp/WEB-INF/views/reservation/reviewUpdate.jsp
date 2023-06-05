@@ -69,7 +69,7 @@
                     <div align="center" class="formBtn">
                       <input type="hidden" name="rNo" value="${ r.refResNo }">
                       <button type="submit" class="btn btn-primary">수정완료</button>
-                      <button type="reset" class="btn btn-danger">취소하기</button>
+                      <button type="reset" class="btn btn-danger" onclick="history.back()">취소하기</button>
                     </div>
 
                   </form>

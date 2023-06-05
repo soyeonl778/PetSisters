@@ -26,16 +26,16 @@
               <div class="inner_sub">
                 <ul class="list_menu">
                   <li>
-                    <a href="#">내 프로필</a>
+                    <a href="myProfile.me">내 프로필</a>
                   </li>
                   <li>
-                    <a href="#">반려동물 프로필</a>
+                    <a href="petProfile.me">반려동물 프로필</a>
                   </li>
                   <li>
-                    <a href="#">펫시터 찜</a>
+                    <a href="petsiterLike.me">펫시터 찜</a>
                   </li>
                   <li>
-                    <a href="#">내 게시글 및 댓글</a>
+                    <a href="myBoard.me">내 게시글 및 댓글</a>
                   </li>
                   <li>
                     <a href="reservationList">예약 조회</a>
