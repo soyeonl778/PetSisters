@@ -61,7 +61,7 @@
 }
 
 input, textarea {
-    border-radius: 3px;
+    border-radius: 5px;
     border-width: 2px;
     border-color: lightgray;
     padding-left: 3px;

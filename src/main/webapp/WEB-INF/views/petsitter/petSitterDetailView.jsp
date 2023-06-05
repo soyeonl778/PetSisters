@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -260,7 +261,7 @@
                     </div>
                     <div id="content2">
                       <div class="updateFormBtn">
-                        <a href="updateForm.pe?pno=${p.petSitterNo}" class="btn btn-secondary">프로필 수정</a>
+                        <a href="updateForm.pe?pno=${ p.petSitterNo }" class="btn btn-secondary">프로필 수정</a>
                       </div>
                       <div class="card">
                         <div class="card-body">
@@ -273,10 +274,13 @@
                           <h5 class="card-title">맡기시는 반려동물</h5>
                           <button type="button" class="btn">-</button>0<button type="button" class="btn">+</button>
                           <hr>
+                          <h5 class="card-title">요청사항</h5>
+                          <textarea placeholder="요청사항을 입력해주세요"></textarea>
+                          <hr>
                           <h5 class="card-title">이용요금</h5>
                           <p class="card-text">
                             1박 55,000원 <br>
-                            초과금액 0원
+                                                              초과금액 0원
                           </p>
                           <p class="card-text">총 합계 55,000원</p>
                           <div class="d-grid gap-2 mx-auto" id="reservationBtn">

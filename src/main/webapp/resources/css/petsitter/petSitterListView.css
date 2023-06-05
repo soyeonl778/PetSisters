@@ -7,6 +7,11 @@
     width: 100%;
 }
 
+.searchArea {
+    justify-content: space-around;
+    margin-bottom: 50px;
+}
+
 .searchForm {
     display: flex;
     justify-content: space-between;
@@ -18,11 +23,16 @@
     height: 20px;
 }
 
+.searchForm label {
+    margin-bottom: 20px;
+}
+
 .filter {
     display: flex;
     justify-content: flex-end;
     align-items: center;
     margin-bottom: 10px;
+    margin-right: 100px;
 }
 
 .filter img {
@@ -55,7 +65,7 @@
 
 .searchArea {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     gap: 100px;
 }
@@ -66,8 +76,24 @@
     align-items: center;
 }
 
-.careList button {
-    margin: 10px;
+.careListBtn {
+    margin-bottom: 10px;
+    margin-left: 200px;
+}
+
+.careListBtn button {
+    margin-right: 20px;
+    border: 1px solid #0888D0;
+    border-radius: 20px;
+    color: #0888D0;
+    background-color: unset;
+
+}
+
+.careListBtn button:hover {
+    cursor: pointer;
+    border: none;
+    background-color: #0888D0;
 }
 
 .col-4.addressForm {
@@ -103,4 +129,27 @@ input[type='date']::before {
 .card img {
     margin: 5px;
     border-radius: 5px;
+}
+
+.card-body {
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.careList {
+    margin-bottom: 10px;
+}
+
+.careList li:before {
+    content: '#';
+}
+
+.careList li {
+    float: left;
+    margin-right: 10px;
+}
+
+.careList ul {
+    padding-left: 0;
 }

@@ -43,13 +43,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="careList">
+                <div class="careListBtn">
                     <label class="form-label">원하시는 조건을 선택하세요</label>
                     <div>
-                        <button class="btn btn-secondary" type="button">반려동물 없음</button>
-                        <button class="btn btn-secondary" type="button">픽업 가능</button>
-                        <button class="btn btn-secondary" type="button">대형견 가능</button>
-                        <button class="btn btn-secondary" type="button">마당 있음</button>
+                        <button class="btn btn-outline-secondary" type="button">반려동물 없음</button>
+                        <button class="btn btn-outline-secondary" type="button">픽업 가능</button>
+                        <button class="btn btn-outline-secondary" type="button">대형견 가능</button>
+                        <button class="btn btn-outline-secondary" type="button">마당 있음</button>
                         <button class="btn btn-secondary" type="button">노견 케어</button>
                     </div>
                 </div>
@@ -82,8 +82,15 @@
                                 <p class="card-text">${ p.address }</p>
                                 <h5 class="card-title">${ p.petSitterTitle }</h5>
                                 <hr>
-                                <div>
+                                <div class="careList">
                                   <ul>
+                                    <c:choose>
+                                      <c:when test="${ not empty p.careList }">
+                                        <c:forEach var="item" items="${ p.careList }">
+                                          <li><c:out value="${ item }"/></li>
+                                        </c:forEach>
+                                      </c:when>
+                                    </c:choose> 
                                   </ul>
                                 </div>
                                 <p class="card-text"><small class="text-muted">후기 ${ p.reviewCount }개</small></p>
@@ -96,10 +103,12 @@
                       <script>
 
                         $(function() {
+
                           $(".content>div").click(function() {
                             let pno = $(this).find(".pno").text();
                             location.href = "detail.pe?pno=" + pno;
                           });
+
                         });
 
                       </script>
@@ -112,21 +121,39 @@
                   <div id="pagination">
                     <nav aria-label="Page navigation example">
                       <ul id="pagiUl" class="pagination paginationUlTag">
-                        <li class="arrowTag">
-                          <a href="">&lsaquo;</a>
-                        </li>
-                        <li class="page-item active">
-                          <a class="page-link" href="#">1</a>
-                        </li>
-                        <li class="page-item">
-                          <a class="page-link" href="#">2</a>
-                        </li>
-                        <li class="page-item">
-                          <a class="page-link" href="#">3</a>
-                        </li>
-                        <li class="arrowTag">
-                          <a href="">&rsaquo;</a>
-                        </li>
+                      
+                      	<c:choose>
+		             		<c:when test="${ pi.currentPage eq 1 }">
+				             	<li class="arrowTag disabled">
+		                          <a href="#">&lsaquo;</a>
+		                        </li>
+		             		</c:when>
+                    		<c:otherwise>
+                    			<li class="arrowTag">
+		                          <a href="list.pe?cPage=${ pi.currentPage - 1 }">&lsaquo;</a>
+		                        </li>
+                    		</c:otherwise>
+                    	</c:choose>
+                      
+                      	<c:forEach var="pi" begin="${ pi.startPage }" end="${ pi.endPage }" step="1">
+	                      	<li class="page-item active">
+	                          <a class="page-link" href="list.pe?cPage=${ pi }">${ pi }</a>
+	                        </li>
+                      	</c:forEach>
+
+						<c:choose>
+							<c:when test="${ pi.currentPage eq pi.maxPage }">
+								<li class="arrowTag disabled">
+		                          <a href="#">&rsaquo;</a>
+		                        </li>
+							</c:when>
+							<c:otherwise>
+								<li class="arrowTag">
+		                          <a href="list.pe?cPage=${ pi.currentPage + 1 }">&rsaquo;</a>
+		                        </li>
+							</c:otherwise>
+						</c:choose>
+
                       </ul>
                     </nav>
                   </div>

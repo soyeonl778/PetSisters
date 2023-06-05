@@ -61,10 +61,9 @@
              , RS.END_DATE
              , RS.REF_PNO
              , (SELECT COUNT(*)
-				 FROM REVIEW R
-				 JOIN RESERVATION RS ON R.REF_RESNO = RS.RES_NO
-				WHERE RS.REF_PNO = #{refPno}
-				  AND R.STATUS = 'Y') REVIEW_COUNT
+                  FROM REVIEW R
+                 WHERE REF_RESNO = RS.RES_NO
+                   AND R.STATUS = 'Y') REVIEW_COUNT
 		  FROM PETSITTER P
      LEFT JOIN MEMBER M USING (USER_NO)
      LEFT JOIN RESERVATION RS USING (USER_NO)

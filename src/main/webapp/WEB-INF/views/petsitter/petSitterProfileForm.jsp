@@ -25,16 +25,16 @@
 	<script>
 	
 		var psService = "<c:out value='${p.petSitterService}'/>"; // 값을 JavaScript 변수에 할당
-	  var psServiceArr = psService.split(","); // 쉼표(,)로 분할하여 배열로 변환
-	
-    $(document).ready(function() {
-      
-      for(var i = 0; i < psServiceArr.length; i++) {
-        
-        $("input:checkbox[name='petSitterService'][value='"+ psServiceArr[i] +"']").prop("checked", true);
-      }
-      
-    });
+		var psServiceArr = psService.split(","); // 쉼표(,)로 분할하여 배열로 변환
+		
+	    $(document).ready(function() {
+	      
+	      for(var i = 0; i < psServiceArr.length; i++) {
+	        
+	        $("input:checkbox[name='petSitterService'][value='"+ psServiceArr[i] +"']").prop("checked", true);
+	      }
+	      
+	    });
 	    
 	</script>
 
