@@ -192,6 +192,21 @@ public class ReservationController {
 		}
 	}
 	
+	
+//	@RequestMapping("deleteReservation")
+//	public String deleteReservation(Model model, 
+//			@RequestParam(value = "rNo") int rNo) {
+//		
+//		
+//		
+//		
+//		return "reservation/reservationDetail";
+//	}
+//	
+	
+	
+	
+	
 	/**
 	 * 파일 저장 메소드
 	 * @param upfile
