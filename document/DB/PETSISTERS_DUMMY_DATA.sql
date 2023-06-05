@@ -212,7 +212,7 @@ VALUES(SEQ_DOG.NEXTVAL,
        12,
        'N',
        NULL,
-       '스크린샷 2023-03-22 170409.png',
+       'resources/upFiles/dog_profiles/로이.jpg',
        'Y',
        2);
 INSERT INTO DOG
@@ -224,7 +224,7 @@ VALUES(SEQ_DOG.NEXTVAL,
        18,
        'Y',
        NULL,
-       '스크린샷 2023-03-22 170409.png',
+       'resources/upFiles/dog_profiles/로이.jpg',
        'Y',
        3);
 INSERT INTO DOG
@@ -236,9 +236,9 @@ VALUES(SEQ_DOG.NEXTVAL,
        21,
        'Y',
        NULL,
-       '스크린샷 2023-03-22 170409.png',
+       'resources/upFiles/dog_profiles/로이.jpg',
        'Y',
-       4);    
+       4); 
        
 --------------------------------------------------
 --------------    채팅방 테이블 더미    --------------
