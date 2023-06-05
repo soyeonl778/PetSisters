@@ -123,6 +123,9 @@
 
 
           </div>
+          <div class="backBtn">
+			<button type="button" class="btn btn-secondary" onclick="history.back()">뒤로가기</button>
+			</div>
         </div>
       </div>
     </div>
