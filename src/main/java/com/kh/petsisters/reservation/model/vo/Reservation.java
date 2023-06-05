@@ -17,15 +17,15 @@ public class Reservation {
 	private String registerDate;	// 등록일시	REGISTER_DATE	DATE
 	private String content;			// 특이사항	CONTENT	VARCHAR2(2000 BYTE)
 	private String status;			// 최초예약시,예약취소시 N / 펫시터승인시 Y	STATUS	VARCHAR2(1 BYTE)
-	private int userNo;				// 회원번호	USER_NO	NUMBER
-	private int refPno;				// 참조펫시터프로필번호  	REF_PNO	NUMBER
+	private int userNo;				// 회원번호	&  상세페이지에서도 사용
+	private int refPno;				// 참조펫시터프로필번호     &  상세페이지에서도 사용
 	private String caStatus;		// 자격증 여부 (Y 면 프로펫시터)
 	private String ptitle;			// 펫시터 프로필 제목
  	private String pcareList;		// 펫시터 돌봄 환경
 	private int pno;				// 펫시터 고유 번호
-	private String petFile;			// 펫시터 대표 프로필 사진
+	private String petFile;			// 펫시터 대표 프로필 사진 & 상세페이지에서 펫시터 대표사진
 	private String address;			// 펫시터 주소
-	private String originName;		// 펫시터 원본 대표사진명
+	private String originName;		// 펫시터 원본 대표사진명  & 상세페이지에서 펫시터 대표사진
 	private int reviewCount;		// 리뷰 갯수
 	private int checkReview;		// 리뷰 작성 여부
 	
@@ -40,4 +40,11 @@ public class Reservation {
 	 * 7. 펫시터 프로필 사진			<- 펫시터 첨부파일테이블 (파일레벨1번 골라와서 대표사진으로)
 	 */
 	
+	// 예약 상세 페이지를 위한 추가 변수
+	private String dfilePath;	//	강아지 파일 경로
+	private String dogGender;	//  강아지 성별
+	private String dogName;		//  강아지 이름
+	private String dogBreed;	//  강아지 견종
+	private String userName;	//  펫시터 이름
+	private String userFile;	//  유저 프로필 사진(처음 회원가입 할 때 사람 프로필임)	
 }

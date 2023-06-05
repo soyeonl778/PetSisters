@@ -173,15 +173,21 @@ public class ReservationController {
 	}
 	
 	
-	
+	/**
+	 * 예약 리스트 삭제
+	 * @param model
+	 * @param session
+	 * @param rNo
+	 * @return
+	 */
 	@RequestMapping("deleteReservation")
 	public String deleteReservation(Model model, HttpSession session, @RequestParam(value = "rNo") int rNo) {
 		
 		
 		int result = reservationService.deleteReservation(rNo);
-		System.out.println(rNo);
+		// System.out.println(rNo);
 		
-		System.out.println(result);
+		// System.out.println(result);
 		if(result > 0) {
 			
 			return "redirect:/reservationList";
@@ -192,19 +198,33 @@ public class ReservationController {
 		}
 	}
 	
+	/**
+	 * 예약페이지 상세 보기
+	 * @param model
+	 * @param rNo
+	 * @return
+	 */
+	@RequestMapping("reservationDetail")
+	public String reservationDetail(Model model, 
+			@RequestParam(value = "rNo") int rNo) {
+		
+		// System.out.println(rNo);
+		Reservation rev = reservationService.reservationDetail(rNo);
+		
+		System.out.println(rev);
+		
+		model.addAttribute("rev", rev);
+		
+		return "reservation/reservationDetail";
+	}
 	
-//	@RequestMapping("deleteReservation")
-//	public String deleteReservation(Model model, 
-//			@RequestParam(value = "rNo") int rNo) {
-//		
-//		
-//		
-//		
-//		return "reservation/reservationDetail";
-//	}
-//	
 	
-	
+	@RequestMapping("journalList")
+	public String journalList() {
+		
+		
+		return "reservation/careJournalList";
+	}
 	
 	
 	/**
@@ -237,15 +257,6 @@ public class ReservationController {
 	}
 	
 	
-	/**
-	 * 돌봄 일지
-	 * @return
-	 */
-	@RequestMapping(value="journalList")
-	public String CareJournalList() {
-		
-		return "reservation/careJournalList";
-	}
 	
 	
 	

@@ -55,5 +55,10 @@ public class ReservationServiceImpl implements ReservationService{
 		return reservationDao.deleteReservation(sqlSession, rNo);
 	}
 
+	@Override
+	public Reservation reservationDetail(int rNo) {
+		return reservationDao.reservationDetail(sqlSession, rNo);
+	}
+
 
 }
