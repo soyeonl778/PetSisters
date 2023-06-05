@@ -5,7 +5,7 @@
 <head>
   <meta charset="UTF-8" />
   
-  <link rel="stylesheet" href="/resources/css/inquiryDetail.css">
+  <link rel="stylesheet" href="/resources/css/inquiry/inquiryDetail.css">
   <jsp:include page="../common/common.jsp" />
   
   <title>1:1 문의 상세</title>
@@ -93,7 +93,7 @@
                         <tr>
                             <th>답변상태</th>
                             <td style="text-align: left;">
-                                답변대기
+                               	 답변대기
                             </td>
                         </tr>
                     </table>
@@ -118,22 +118,5 @@
   	<jsp:include page="../common/footer.jsp" />
   <!-- Footer 영역 끝 -->
   
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-    <script>
-      $(document).ready(function () {
-        $(window).scroll(function () {
-          var scrollTop = $(document).scrollTop();
-          var footerOffset = $(".link_footer").offset().top;
-          var windowHeight = $(window).height();
-
-          if (scrollTop + windowHeight > footerOffset) {
-            scrollTop = footerOffset - windowHeight;
-          }
-
-          $(".snb_my").stop();
-          $(".snb_my").animate({ "top": scrollTop });
-        });
-      });
-    </script>
 </body>
 </html>

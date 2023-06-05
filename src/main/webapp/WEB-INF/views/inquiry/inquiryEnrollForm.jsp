@@ -5,7 +5,7 @@
 <head>
   <meta charset="UTF-8" />
   
-  <link rel="stylesheet" href="/resources/css/inquiryEnrollForm.css">
+  <link rel="stylesheet" href="/resources/css/inquiry/inquiryEnrollForm.css">
   <jsp:include page="../common/common.jsp" />
   
   <script src="/resources/js/inquiryEnrollForm.js"></script>
@@ -119,23 +119,6 @@
   	<jsp:include page="../common/footer.jsp" />
   <!-- Footer 영역 끝 -->
   
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-    <script>
-      $(document).ready(function () {
-        $(window).scroll(function () {
-          var scrollTop = $(document).scrollTop();
-          var footerOffset = $(".link_footer").offset().top;
-          var windowHeight = $(window).height();
-
-          if (scrollTop + windowHeight > footerOffset) {
-            scrollTop = footerOffset - windowHeight;
-          }
-
-          $(".snb_my").stop();
-          $(".snb_my").animate({ "top": scrollTop });
-        });
-      });
-    </script>
     <script>
         $('#target_img').click(function (e) {
             document.signform.target_url.value = document.getElementById( 'target_img' ).src;
