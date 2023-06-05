@@ -42,6 +42,18 @@ public class ReservationDao {
 		return sqlSession.insert("reservationMapper.insertReview", r);
 	}
 
+	public Review updateReview(SqlSessionTemplate sqlSession, int rNo) {
+		return sqlSession.selectOne("reservationMapper.updateReview", rNo);
+	}
+
+	public int updateForm(SqlSessionTemplate sqlSession, Review r) {
+		return sqlSession.update("reservationMapper.updateForm", r);
+	}
+
+	public int deleteReservation(SqlSessionTemplate sqlSession, int rNo) {
+		return sqlSession.update("reservationMapper.deleteReservation", rNo);
+	}
+
 
 
 }

@@ -40,5 +40,20 @@ public class ReservationServiceImpl implements ReservationService{
 		return reservationDao.insertReview(sqlSession, r);
 	}
 
+	@Override
+	public Review updateReview(int rNo) {
+		return reservationDao.updateReview(sqlSession, rNo);
+	}
+
+	@Override
+	public int updateForm(Review r) {
+		return reservationDao.updateForm(sqlSession, r);
+	}
+
+	@Override
+	public int deleteReservation(int rNo) {
+		return reservationDao.deleteReservation(sqlSession, rNo);
+	}
+
 
 }
