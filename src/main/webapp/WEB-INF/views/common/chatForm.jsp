@@ -8,12 +8,15 @@
     <!-- 폰트어썸 아이콘 적용 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <jsp:include page="../common/common.jsp" />
-  <title>펫시터지원폼</title>
+  <title>채팅</title>
   <style>
   .fixed-top {
     position: static !important;
   }
   </style>
+
+  <!-- jQuery 라이브러리 -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -34,7 +37,7 @@
                       </div>  
                       <ul class="chatList">
                         <li class="chattingArea">
-                          <a class="chatting" onclick="connect()">
+                          <a class="chatting" onclick="enterRoom(this)">
                             <div class="profileArea">
                               <img class="profileImage" src="/resources/img/chat/김제니.png" alt="profile">
                             </div>
@@ -404,59 +407,144 @@
 
   </div>
 
-  <script>
-    // 웹소켓
-let websocket;
-
-//입장 버튼을 눌렀을 때 호출되는 함수
-function connect() {
-    // 웹소켓 주소
-    var wsUri = "ws://${pageContext.request.serverName}:${pageContext.request.serverPort}${pageContext.request.contextPath}/websocket/echo.do";
-    console.log(wsUri);
-    // 소켓 객체 생성
-    websocket = new WebSocket(wsUri);
-    //웹 소켓에 이벤트가 발생했을 때 호출될 함수 등록
-    websocket.onopen = onOpen;
-    websocket.onmessage = onMessage;
-}
-
-//웹 소켓에 연결되었을 때 호출될 함수
-function onOpen() {
-  console.log("웹소켓 연결 성공!");
-}
-
-// * 1 메시지 전송
-function sendMessage(message){
-  if (websocket.readyState === WebSocket.OPEN) {
-    websocket.send(message);
-  } else {
-    console.log("웹소켓 연결이 닫혀 있습니다.");
-  }
-}
-
-// * 2 메세지 수신
-function onMessage(evt) {
-  console.log("메세지 수신:", evt.data);
-}
-
-$(document).ready(function() {
-  // "채팅방 나가기" 버튼 클릭 이벤트 핸들러
-  $('.optionItem').on('click', function() {
-    // chatNormalRoom 섹션을 숨기고 chatEmptyBox 섹션을 표시
-    $('.chatNormalRoom').hide();
-    $('.chatEmptyBox').css('display', 'flex');
-
-    websocket.close(); 
-    
-      // 콘솔에 WebSocket 연결 상태 출력
-  setInterval(function() {
-    console.log("WebSocket 연결 상태:", websocket.readyState);
-    if(websocket.readyState = 2) {
-      console.log("WebSocket 연결 해제 완료");
+<script>
+  // 더보기 클릭 이벤트
+  $(document).ready(function() {
+    var chatMore = $('.chatMore');
+    var moreOption = $('.moreOption');
+    var isOptionVisible = false;
+  
+    function handleClick() {
+      if (isOptionVisible) {
+        moreOption.hide();
+        isOptionVisible = false;
+      } else {
+        moreOption.show();
+        isOptionVisible = true;
+      }
     }
-  }, 1000);
-
+  
+    function handleOutsideClick(event) {
+      if (!$(event.target).closest('.chatMoreArea').length) {
+        moreOption.hide();
+        isOptionVisible = false;
+      }
+    }
+  
+    chatMore.click(handleClick);
+    $(document).click(handleOutsideClick);
   });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 웹소켓 관련 -->
+<script>
+
+// 메세지 보내기 이벤트
+$(document).ready(function() {
+  
+  $('.chatContentArea').scrollTop($('.chatContentArea')[0].scrollHeight);
+
+
+  // 채팅 내용 입력 이벤트
+  function updateSubmitButtonState() {
+      const textarea = $('.chatInput');
+      const submitButton = $('#submitButton');
+      const textLength = $('.textLength');
+      const length = textarea.val().trim().length;
+  
+      submitButton.prop('disabled', length === 0 || length > 1000);
+      submitButton.toggleClass('disable', length === 0 || length > 1000);
+  
+      textLength.text(length + '/1000');
+  }
+  
+  function checkTextareaLength() {
+      // textarea 값이 변경될 때마다 실행되는 이벤트 핸들러
+      updateSubmitButtonState();
+  }
+  
+  // submitButton 클릭 이벤트 핸들러를 추가합니다.
+  $('#submitButton').click(function(event) {
+      event.preventDefault(); // 폼의 기본 동작을 막습니다.
+      sendMessage();
+      updateSubmitButtonState();
+  });
+
+  // textarea keydown 이벤트 핸들러를 추가합니다.
+  $('.chatInput').keydown(function(event) {
+      if (event.keyCode === 13 && !event.shiftKey) {
+          event.preventDefault(); // 엔터 키의 기본 동작을 막습니다.
+          sendMessage();
+          updateSubmitButtonState();
+      }
+  });
+
+  // 메시지 전송 함수
+  function sendMessage() {
+
+      // textarea의 내용을 가져옵니다.
+      var messageText = $('.chatInput').val();
+      
+
+      if (messageText === '') {
+          return; // 빈 메시지이면 함수를 종료합니다.
+      }
+
+      const data = {
+          "roomNo" : 1,
+          "userName" : "${ loginUser.userName }",
+          "userNo" : "${ loginUser.userNo }",
+          "message"   : messageText 
+      };
+
+      let jsonData = JSON.stringify(data);
+
+      if (websocket.readyState === WebSocket.OPEN) {
+        websocket.send(jsonData);
+      } else {
+        console.log("웹소켓 연결이 닫혀 있습니다.");
+      }
+  
+      // 새로운 채팅 메시지를 생성합니다.
+      var newChatMessage = '<div class="lineWrapperRight">' +
+                     '<div class="messageDateArea">' +
+                     '<div class="messageDate"></div>' +
+                     '</div>' +
+                     '<div class="messageWrapper">' +
+                     '<div>' +
+                     '<p class="myMessageBox">' + messageText + '</p>' +
+                     '</div>' +
+                     '</div>' +
+                     '</div>';
+
+      // chatContentArea에 새로운 채팅 메시지 추가
+      $('.chatContentArea').append(newChatMessage);
+  
+      // textarea 비우기
+      $('.chatInput').val('');
+      $('.textLength').text('0/1000');
+
+      // 스크롤 맨 아래로 이동
+      var element = $('.chatContentArea')[0];
+      element.scrollTop = element.scrollHeight;
+
+  }
+
+  // 채팅 내용 입력 이벤트 호출
+  $('.chatInput').keyup(checkTextareaLength);
+
 });
 
 
@@ -466,7 +554,92 @@ $(document).ready(function() {
 
 
 
-  </script>
+  // 웹소켓 전역변수
+  let websocket;
+
+  //입장 버튼을 눌렀을 때 호출되는 함수
+  function connect() {
+      // 웹소켓 주소
+      var wsUri = "ws://${pageContext.request.serverName}:${pageContext.request.serverPort}${pageContext.request.contextPath}/websocket/echo.do";
+      console.log(wsUri);
+      // 소켓 객체 생성
+      websocket = new WebSocket(wsUri);
+      //웹 소켓에 이벤트가 발생했을 때 호출될 함수 등록
+      websocket.onopen = onOpen;
+      websocket.onmessage = onMessage;
+  }
+
+  //웹 소켓에 연결되었을 때 호출될 함수
+  function onOpen() {
+
+    console.log("웹소켓 연결 성공!");
+
+    // ENTER-CHAT 이라는 메세지를 보내어, Java Map에 session 추가
+    const data = {
+      // "roomNo": 1,
+      // "userName" : "${ loginUser.userName }",
+      // "userNo" : "${ loginUser.userNo }",
+      "message" : "ENTER-CHAT"
+    };
+    let jsonData = JSON.stringify(data);
+    websocket.send(jsonData);
+
+  }
+
+
+  // * 2 메세지 수신
+  function onMessage(evt) {
+    console.log("메세지 수신:", evt.data);
+  }
+
+  $(document).ready(function() {
+    // "채팅방 나가기" 버튼 클릭 이벤트 핸들러
+    $('.optionItem').on('click', function() {
+      // chatNormalRoom 섹션을 숨기고 chatEmptyBox 섹션을 표시
+      $('.chatNormalRoom').hide();
+      $('.chatEmptyBox').css('display', 'flex');
+
+      websocket.close(); 
+      
+        // 콘솔에 WebSocket 연결 상태 출력
+    setInterval(function() {
+      console.log("WebSocket 연결 상태:", websocket.readyState);
+      if(websocket.readyState = 2) {
+        console.log("WebSocket 연결 해제 완료");
+      }
+    }, 1000);
+
+    });
+  });
+</script>
+
+<!-- 채팅방 관련 -->
+<script>
+  
+  let roomNo;
+
+  function enterRoom(obj) {
+    
+    roomNo = 1;
+    // $.ajax({
+    //   url: roomNo + ".do",
+    //   data: {
+    //     userNo:1
+    //   },
+    //   async:false,
+    //   success:function(data){
+    //     for(var i = 0; i < data.length; i++){
+    //         // 채팅 목록 동적 추가
+    //         CheckLR(data[i]);
+    //     }
+    //   }
+    // });
+    // 웹소켓 연결
+    connect();
+    console.log("enterRoom");
+  }
+
+</script>
 
   <!-- JavaScript Bundle with Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>

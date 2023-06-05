@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="chatMapper">
+
+	<resultMap id="chatMessageResultSet" type="chatMessage">
+		<result column="M_NO" property="messageNo" />
+		<result column="M_CONTENT" property="message" />
+		<result column="CREATE_DATE" property="createDate" />
+		<result column="USER_NO" property="userNo" />
+		<result column="USER_NAME" property="userName" />
+		<result column="ROOM_NO" property="roomNo" />
+	</resultMap>
+	
+	
+	<!-- 메세지 DB 저장 -->
+	<insert id="insertMessage" parameterType="chatMessage">
+	INSERT INTO MESSAGE(M_NO
+									 , M_CONTENT
+									 , CREATE_DATE
+									 , USER_NO
+									 , ROOM_NO)
+							  VALUES(SEQ_MESSAGE.NEXTVAL
+									   , #{message}
+									   , DEFAULT
+									   , #{userNo}
+									   , #{roomNo})
+	</insert>
+
+
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+

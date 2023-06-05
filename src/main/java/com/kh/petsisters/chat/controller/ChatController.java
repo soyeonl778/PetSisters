@@ -8,11 +8,9 @@ public class ChatController {
 	
 	@RequestMapping("chatForm.ch")
 	public String chatForm() {
-		
-		// 회원가입 페이지 포워딩
-		// /WEB-INF/views/member/memberEnrollForm.jsp
 		return "/common/chatForm";
 	}
+	
 	
 	
 

@@ -14,7 +14,7 @@
 		<typeAlias type="com.kh.petsisters.inquiry.model.vo.Inquiry" alias="inquiry" />
 		<typeAlias type="com.kh.petsisters.notice.model.vo.Notice" alias="notice" />
 		<typeAlias type="com.kh.petsisters.member.model.vo.Support" alias="support" />
-		
+		<typeAlias type="com.kh.petsisters.chat.model.vo.ChatMessage" alias="chatMessage" />
 	</typeAliases>
 	<!-- 
 		주의사항 : 별칭을 미리 등록해두려면 해당 클래스가 진짜 존재하고 있는 상태여야 함
@@ -37,7 +37,7 @@
 		<mapper resource="mappers/petsitter-mapper.xml" />
 		<mapper resource="mappers/reservation-mapper.xml" />
 		<mapper resource="mappers/support-mapper.xml" />
-		
+		<mapper resource="mappers/chat-mapper.xml" />
 	</mappers>
 	<!-- 
 		주의사항 : 매퍼파일을 미리 등록해두려면 해당 mapper 파일이 진짜 존재하고 있어야만 함
