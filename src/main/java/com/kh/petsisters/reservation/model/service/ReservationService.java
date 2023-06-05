@@ -29,6 +29,9 @@ public interface ReservationService {
 	// 예약 리스트 삭제용
 	int deleteReservation(int rNo);
 
+	// 예약 상세페이지 조회
+	Reservation reservationDetail(int rNo);
+
 	
 
 }

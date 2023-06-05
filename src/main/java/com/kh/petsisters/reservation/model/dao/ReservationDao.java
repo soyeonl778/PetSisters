@@ -54,6 +54,10 @@ public class ReservationDao {
 		return sqlSession.update("reservationMapper.deleteReservation", rNo);
 	}
 
+	public Reservation reservationDetail(SqlSessionTemplate sqlSession, int rNo) {
+		return sqlSession.selectOne("reservationMapper.reservationDetail", rNo);
+	}
+
 
 
 }

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,7 +10,6 @@
 <jsp:include page="../common/common.jsp" />
 <link rel="stylesheet" href="/resources/css/common/form.css">
 <link rel="stylesheet" href="/resources/css/reservation/reservationDetail.css">
-<script src="/resources/js/kakaoMap.js"></script>
 <title>예약 상세페이지</title>
 </head>
 <body>
@@ -29,14 +29,14 @@
               </h2>
 
               <div class="titProfile">
-                <img class="titProfileImg" src="/resources/img/트포-96974.jpg" alt="profile">
+                <img class="titProfileImg" src="${ rev.userFile }" alt="profile">
               </div>
 
               <div class="titPetsiter">
-                <h3>조승호 시터님</h3>
+                <h3>${ rev.userName } 시터님</h3>
               </div>
 
-              <button>채팅 문의</button>
+              <button onclick="location.href='chatForm.ch'">채팅 문의</button>
             </div>
 
             <h2 class="payList">결제정보</h2>
@@ -48,26 +48,30 @@
                   <div class="blueTag">예약일</div>
                   <div>예약 번호</div>
                   <div>아이 정보</div>
-                  <div>원하는 활동</div>
                   <div>특이사항</div>
                 </div>
 
                 <div class="rightTit">
-                  <div class="lineMan">2023-05-19</div>
-                  <div>2023-05-23</div>
-                  <div>2023-05-15</div>
-                  <div>6118</div>
+                  <div class="lineMan">${ rev.startDate }</div>
+                  <div>${ rev.endDate }</div>
+                  <div>${ rev.registerDate.substring(0, 10) }</div>
+                  <div>${ rev.resNo }</div>
                   <div>
-                    <img class="petImg" src="/resources/img/로이-4052.jpg" alt="roy">
-                    <span>여아 3세 쪼꼬미(셰퍼드)</span>
+                    <img class="petImg" src="${ rev.dfilePath }" alt="roy">
+                    <c:if test="${ rev.dogGender eq 'F' }">
+                    <span>${ rev.dogName }(${ rev.dogBreed }) 여아</span>
+                    </c:if>
+                    <c:if test="${ rev.dogGender eq 'M' }">
+                    <span>${ rev.dogName }(${ rev.dogBreed }) 남아</span>
+                    </c:if>
+                    
                   </div>
-                  <div>실내놀이, 터그놀이</div>
-                  <div class="textArea">하루 두번 쉬 소독, 외로움 만히 탐, 배고픔을 못견딤, 운동은 하루 3번 이상, 자주 짖음, 사람 뭄</div>
+                  <div class="textArea">${ rev.content }</div>
                 </div>
 
                 <div class="mapClass">
                   <div class="carePlace">돌봄 장소</div>
-                  <div>경기도 광명시 하안동 오리로801
+                  <div class="petsitterAddress">${ rev.address }
 
                   </div>
                 </div>
@@ -110,10 +114,10 @@
             <div class="danger">
               <div class="danTit">잠깐! 주의해주세요!</div>
               <ul class="textZone">
-                <li>* 정재훈을 조심하세요</li>
-                <li>* 세경씨 그렇게 안봤는데</li>
-                <li>* 무서운 사람이였네</li>
-                <li>* 호박고구마!!</li>
+                <li>* 하네스(가슴줄)을 보유하고 있지 않은 경우 안전상의 문제로 실내돌봄으로 대체될 수 있습니다.</li>
+                <li>* 산책을 희망하는 경우 꼭 고객센터 또는 채팅상담을 통해 문의해주세요!</li>
+                <li>* 방문시간은 요청한 시간대 내에 방문하며 기본 돌봄 시간은 24시간 입니다.</li>
+                <li>* 개물림 사고 혹은 사람에게 위해를 가한적이 있다면 꼭 사전에 고지해주셔야 합니다.</li>
               </ul>
             </div>
 
@@ -126,5 +130,51 @@
   </div>
 
 <jsp:include page="../common/footer.jsp" />
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=2a6a9b34b7a3cf7a7b68ec7c64c444a3&libraries=services"></script>
+<script>
+$(document).ready(function () {
+	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+	  mapOption = {
+	    center: new kakao.maps.LatLng(37.53420144526709, 126.8973809043428), // 지도의 중심좌표
+	    level: 3 // 지도의 확대 레벨
+	  };
+
+	// 지도를 생성합니다    
+	var map = new kakao.maps.Map(mapContainer, mapOption);
+
+
+	  var address = "${rev.address}"; 
+	  var geocoder = new kakao.maps.services.Geocoder();
+
+	  geocoder.addressSearch(address, function (result, status) {
+	    if (status === kakao.maps.services.Status.OK) {
+	      var latitude = result[0].y;
+	      var longitude = result[0].x;
+
+	      var container = document.getElementById('map');
+	      var options = {
+	        center: new kakao.maps.LatLng(latitude, longitude),
+	        level: 6
+	      };
+
+	      var map = new kakao.maps.Map(container, options);
+
+	      var circle = new kakao.maps.Circle({
+	        center: new kakao.maps.LatLng(latitude, longitude),  // 원의 중심 좌표
+	        radius: 500,  // 원의 반지름 (단위: m)
+	        strokeWeight: 2,  // 선의 두께 (단위: px)
+	        strokeColor: '#0888D0',  // 선의 색상
+	        strokeOpacity: 0.8,  // 선의 불투명도 (0~1 사이의 값)
+	        strokeStyle: 'solid',  // 선의 스타일 ('solid', 'shortdash', 'shortdot', 'shortdashdot', 'longdash', 'longdot', 'longdashdot')
+	        fillColor: '#B9EAFF',  // 채우기 색상
+	        fillOpacity: 0.2  // 채우기 불투명도 (0~1 사이의 값)
+	      });
+
+	      circle.setMap(map);
+	    }
+	  });
+	});    
+
+</script>
 </body>
 </html>
