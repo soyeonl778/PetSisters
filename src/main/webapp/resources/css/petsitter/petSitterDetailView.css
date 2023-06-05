@@ -186,8 +186,6 @@ li { float: left; }
     margin: 5px;
 }
 
-
-
 .slick-prev:before, .slick-next:before {
     color: black !important;
 }
@@ -198,7 +196,8 @@ li { float: left; }
 }
 
 .card {
-    box-shadow: 2px 2px 2px 2px whitesmoke;
+    box-shadow: 5px 5px 10px 0px whitesmoke;
+    margin-bottom: 19px;
 }
 
 .updateFormBtn {

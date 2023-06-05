@@ -71,37 +71,37 @@
                     <div class="content">
 
                       <c:forEach var="p" items="${ list }">
-                        <div class="card mb-3" style="width: 800px;">
-                            <div class="row g-0">
-                              <div class="col-md-4">
-                                <img src="/resources/img/petsitter/상세페이지예시.jpg" class="img-fluid rounded-start">
-                              </div>
-                              <div class="col-md-8">
-                                <div class="card-body">
-                                  <p class="pno" style="display: none;">${ p.petSitterNo }</p>
-                                  <p class="card-text">서대문구 홍은동</p>
-                                  <h5 class="card-title">${ p.petSitterTitle }</h5>
-                                  <div>
-                                    <ul>
-                                    </ul>
-                                  </div>
-                                  <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                        <div class="card mb-3">
+                          <div class="row g-0">
+                            <div class="col-md-4">
+                              <img src="/resources/img/petsitter/상세페이지예시.jpg">
+                            </div>
+                            <div class="col-md-8">
+                              <div class="card-body">
+                                <p class="pno" style="display: none;">${ p.petSitterNo }</p>
+                                <p class="card-text">${ p.address }</p>
+                                <h5 class="card-title">${ p.petSitterTitle }</h5>
+                                <hr>
+                                <div>
+                                  <ul>
+                                  </ul>
                                 </div>
+                                <p class="card-text"><small class="text-muted">후기 ${ p.reviewCount }개</small></p>
                               </div>
-                            </div>               
+                            </div>
+                          </div>
                         </div>
                       </c:forEach>
 
                       <script>
 
                         $(function() {
-
                           $(".content>div").click(function() {
-                            const pno = $(this).children(".pno").text();
+                            let pno = $(this).find(".pno").text();
                             location.href = "detail.pe?pno=" + pno;
-                            
-                          });
 
+                            console.log(pno);
+                          });
                         });
 
                       </script>

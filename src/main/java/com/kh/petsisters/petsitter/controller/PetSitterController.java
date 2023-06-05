@@ -79,6 +79,7 @@ public class PetSitterController {
 		
 		// PageInfo 객체 얻어내기
 		int listCount = petSitterService.selectListCount();
+        // int reviewCount = petSitterService.selectReviewCount();
 		
 		int pageLimit = 10;
 		int boardLimit = 5;
@@ -86,6 +87,8 @@ public class PetSitterController {
 		PageInfo pi = Pagination.getPageInfo(listCount, currentPage, pageLimit, boardLimit);
 		
 		ArrayList<PetSitter> list = petSitterService.selectList(pi);
+		
+		System.out.println(list);
 		
 		mv.addObject("pi", pi)
 		  .addObject("list", list)
