@@ -90,7 +90,7 @@
                                           <li><c:out value="${ item }"/></li>
                                         </c:forEach>
                                       </c:when>
-                                    </c:choose> 
+                                    </c:choose>
                                   </ul>
                                 </div>
                                 <p class="card-text"><small class="text-muted">후기 ${ p.reviewCount }개</small></p>

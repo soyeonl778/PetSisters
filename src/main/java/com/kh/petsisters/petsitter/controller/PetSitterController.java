@@ -15,6 +15,7 @@ import com.kh.petsisters.common.model.vo.PageInfo;
 import com.kh.petsisters.common.template.Pagination;
 import com.kh.petsisters.petsitter.model.service.PetSitterService;
 import com.kh.petsisters.petsitter.model.vo.PetSitter;
+import com.kh.petsisters.reservation.model.vo.Review;
 
 @Controller
 public class PetSitterController {
@@ -26,8 +27,9 @@ public class PetSitterController {
 	public ModelAndView selectPetSitter(ModelAndView mv,
 			                            int pno) {
 		
-		// 상세조회용 응답데이터 조회
+		// 프로필 상세조회용 응답데이터 조회
 		PetSitter p = petSitterService.selectPetSitter(pno);
+		// Review r = petSitterService.selectReview(pno);
 		
 		// 조회된 데이터를 mv 에 담아서 포워딩 페이지 경로를 잡아주기
 		mv.addObject("p", p).setViewName("petsitter/petSitterDetailView");
@@ -41,8 +43,6 @@ public class PetSitterController {
 		
 		// 펫시터 상세조회용 selectPetSitter 메소드 요청
 		PetSitter p = petSitterService.selectPetSitter(pno);
-		
-		// System.out.println(p);
 		
 		mv.addObject("p", p).setViewName("petsitter/petSitterProfileForm");
 		

@@ -6,8 +6,6 @@ div, form, img { box-sizing: border-box; }
     padding-top: 10px;
 }
 
-li { float: left; }
-
 #content-area { height: 100%; }
 
 #content-area>div {
@@ -88,21 +86,10 @@ li { float: left; }
     align-items: center;
 }
 
-.reviewList div { display: inline-block; }
-
 .review img {
     width: 50px;
     height: 50px;
     border-radius: 50%;
-}
-
-.review>div {
-    display: flex;
-}
-
-.review i {
-    width: 50px;
-    height: 50px;
 }
 
 .petService img {
@@ -111,23 +98,20 @@ li { float: left; }
     margin-right: 10px;
 }
 
-.petService {
-    display: flex;
+#petServiceList {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }
 
-.petService>div {
-    display: inline-block;
-}
-
-.petServiceList td {
-    width: 400px;
+.petServiceList {
+    margin-bottom: 50px;
 }
 
 .speech-bubble {
 	position: relative;
 	background: #B9EAFF;
 	border-radius: .4em;
-    width: 670px;
+    width: 700px;
     padding: 15px;
     margin-left: 10px;
 }
@@ -157,6 +141,11 @@ li { float: left; }
 
 .hashtag>ul {
     padding-left: 0;
+}
+
+.hashtag li {
+    float: left;
+    margin-right: 10px;
 }
 
 .introduction {
@@ -219,4 +208,36 @@ li { float: left; }
     height: 100px;
     resize: none;
     padding: 5px;
+}
+
+.review input {
+    width: 50px;
+    height: 30px;
+}
+
+.review p {
+    margin: 3px;
+}
+
+.userReview {
+    display: flex;
+    align-items: center;
+}
+
+.userReview .btn {
+    margin-left: 465px;
+    border: none;
+    background-color: #0888D0;
+}
+
+.comment {
+    display: flex;
+    margin-top: 20px;
+}
+
+.speech-bubble .btn {
+    border: none;
+    background-color: #0888D0;
+    float: right;
+    margin-left: 10px;
 }

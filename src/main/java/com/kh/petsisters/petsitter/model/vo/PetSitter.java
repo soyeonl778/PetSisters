@@ -22,10 +22,12 @@ public class PetSitter {
 	private String careList;     		 //	CARE_LIST	VARCHAR2(1000 BYTE)
 	private String petSitterMode;        //	P_MODE	VARCHAR2(1 BYTE)
 	private int userNo;                  //	USER_NO	NUMBER
+	private String userName;             // USER_NAME VARCHAR2(10 BYTE)
 	
 	// MEMBER
 	private String address;              // ADDRESS 주소
 	private String caStatus;             // CA_STATUS 펫시터자격증여부
+	private String filePath;             // FILE_PATH	VARCHAR2(1000 BYTE)
 	
 	// RESERVATION
 	private Date startDate;			     // 시작일시	START_DATE	DATE
