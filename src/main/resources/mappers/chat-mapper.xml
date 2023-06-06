@@ -11,20 +11,41 @@
 		<result column="ROOM_NO" property="roomNo" />
 	</resultMap>
 	
+	<resultMap id="chatRoomResultSet" type="chatRoom">
+		<result column="ROOM_NO" property="roomNo" />
+		<result column="USER_NO" property="userNo" />
+		<result column="" property="userName" />
+		<result column="" property="userPic" />
+		<result column="" property="userPet" />
+		<result column="" property="userPro" />
+		<result column="MASTER_NO" property="masterNo" />
+		<result column="" property="masterName" />
+		<result column="" property="masterPic" />
+		<result column="" property="masterPet" />
+		<result column="" property="masterPro" />
+	</resultMap>
+	
 	
 	<!-- 메세지 DB 저장 -->
 	<insert id="insertMessage" parameterType="chatMessage">
-	INSERT INTO MESSAGE(M_NO
-									 , M_CONTENT
-									 , CREATE_DATE
-									 , USER_NO
-									 , ROOM_NO)
-							  VALUES(SEQ_MESSAGE.NEXTVAL
-									   , #{message}
-									   , DEFAULT
-									   , #{userNo}
-									   , #{roomNo})
+		INSERT INTO MESSAGE(M_NO
+										 , M_CONTENT
+										 , CREATE_DATE
+										 , USER_NO
+										 , ROOM_NO)
+								  VALUES(SEQ_MESSAGE.NEXTVAL
+										   , #{message}
+										   , DEFAULT
+										   , #{userNo}
+										   , #{roomNo})
 	</insert>
+	
+	<select id="selectChatRoom" parameterType="_int" resultMap="chatRoomResultSet">
+		SELECT *
+		  FROM CHAT_ROOM
+		WHERE ROOM_NO = #{roomNo}
+	
+	</select>
 
 
 

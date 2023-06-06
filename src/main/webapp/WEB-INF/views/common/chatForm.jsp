@@ -408,8 +408,9 @@
   </div>
 
 <script>
-  // 더보기 클릭 이벤트
+  
   $(document).ready(function() {
+    // 더보기 클릭 이벤트
     var chatMore = $('.chatMore');
     var moreOption = $('.moreOption');
     var isOptionVisible = false;
@@ -433,7 +434,26 @@
   
     chatMore.click(handleClick);
     $(document).click(handleOutsideClick);
+
+    // "채팅방 나가기" 버튼 클릭 시 이벤트 핸들러
+    $('.optionItem').on('click', function() {
+      // chatNormalRoom 섹션을 숨기고 chatEmptyBox 섹션을 표시
+      $('.chatNormalRoom').hide();
+      $('.chatEmptyBox').css('display', 'flex');
+
+      // 웹소켓 닫기
+      websocket.close(); 
+
+      // 콘솔에 WebSocket 연결 상태 출력
+      if(websocket.readyState = 2) {
+        console.log("WebSocket 연결 해제 완료");
+      }
+
+    });
+
   });
+
+
 </script>
 
 
@@ -450,6 +470,94 @@
 
 <!-- 웹소켓 관련 -->
 <script>
+
+
+
+
+
+
+
+
+
+  // 웹소켓 전역변수
+  let websocket;
+
+  //입장 버튼을 눌렀을 때 호출되는 함수
+  function connect() {
+      // 웹소켓 주소
+      var wsUri = "ws://${pageContext.request.serverName}:${pageContext.request.serverPort}${pageContext.request.contextPath}/websocket/echo.do";
+      console.log(wsUri);
+      // 소켓 객체 생성
+      websocket = new WebSocket(wsUri);
+      //웹 소켓에 이벤트가 발생했을 때 호출될 함수 등록
+      websocket.onopen = onOpen;
+      websocket.onmessage = onMessage;
+  }
+
+  //웹 소켓에 연결되었을 때 호출될 함수
+  function onOpen() {
+
+    console.log("웹소켓 연결 성공!");
+
+    // ENTER-CHAT 이라는 메세지를 보내어, Java Map에 session 추가
+    const data = {
+      // "roomNo": 1,
+      // "userName" : "${ loginUser.userName }",
+      // "userNo" : "${ loginUser.userNo }",
+      "message" : "ENTER-CHAT"
+    };
+    let jsonData = JSON.stringify(data);
+    websocket.send(jsonData);
+
+  }
+
+
+  // * 2 메세지 수신
+  function onMessage(evt) {
+    console.log("메세지 수신:", evt.data);
+  }
+
+
+</script>
+
+
+
+
+
+
+<!-- 채팅방 관련 -->
+<script>
+  
+  let roomNo;
+
+  function enterRoom(obj) {
+    
+    $('.chatEmptyBox').css('display', 'none');
+    $('.chatNormalRoom').css('display', 'flex');
+
+    roomNo = 1;
+    // $.ajax({
+    //   url: roomNo + ".do",
+    //   data: {
+    //     userNo:1
+    //   },
+    //   async:false,
+    //   success:function(data){
+    //     for(var i = 0; i < data.length; i++){
+    //         // 채팅 목록 동적 추가
+    //         CheckLR(data[i]);
+    //     }
+    //   }
+    // });
+    // 웹소켓 연결
+    connect();
+    console.log("enterRoom");
+  }
+
+
+
+
+
 
 // 메세지 보내기 이벤트
 $(document).ready(function() {
@@ -554,90 +662,7 @@ $(document).ready(function() {
 
 
 
-  // 웹소켓 전역변수
-  let websocket;
 
-  //입장 버튼을 눌렀을 때 호출되는 함수
-  function connect() {
-      // 웹소켓 주소
-      var wsUri = "ws://${pageContext.request.serverName}:${pageContext.request.serverPort}${pageContext.request.contextPath}/websocket/echo.do";
-      console.log(wsUri);
-      // 소켓 객체 생성
-      websocket = new WebSocket(wsUri);
-      //웹 소켓에 이벤트가 발생했을 때 호출될 함수 등록
-      websocket.onopen = onOpen;
-      websocket.onmessage = onMessage;
-  }
-
-  //웹 소켓에 연결되었을 때 호출될 함수
-  function onOpen() {
-
-    console.log("웹소켓 연결 성공!");
-
-    // ENTER-CHAT 이라는 메세지를 보내어, Java Map에 session 추가
-    const data = {
-      // "roomNo": 1,
-      // "userName" : "${ loginUser.userName }",
-      // "userNo" : "${ loginUser.userNo }",
-      "message" : "ENTER-CHAT"
-    };
-    let jsonData = JSON.stringify(data);
-    websocket.send(jsonData);
-
-  }
-
-
-  // * 2 메세지 수신
-  function onMessage(evt) {
-    console.log("메세지 수신:", evt.data);
-  }
-
-  $(document).ready(function() {
-    // "채팅방 나가기" 버튼 클릭 이벤트 핸들러
-    $('.optionItem').on('click', function() {
-      // chatNormalRoom 섹션을 숨기고 chatEmptyBox 섹션을 표시
-      $('.chatNormalRoom').hide();
-      $('.chatEmptyBox').css('display', 'flex');
-
-      websocket.close(); 
-      
-        // 콘솔에 WebSocket 연결 상태 출력
-    setInterval(function() {
-      console.log("WebSocket 연결 상태:", websocket.readyState);
-      if(websocket.readyState = 2) {
-        console.log("WebSocket 연결 해제 완료");
-      }
-    }, 1000);
-
-    });
-  });
-</script>
-
-<!-- 채팅방 관련 -->
-<script>
-  
-  let roomNo;
-
-  function enterRoom(obj) {
-    
-    roomNo = 1;
-    // $.ajax({
-    //   url: roomNo + ".do",
-    //   data: {
-    //     userNo:1
-    //   },
-    //   async:false,
-    //   success:function(data){
-    //     for(var i = 0; i < data.length; i++){
-    //         // 채팅 목록 동적 추가
-    //         CheckLR(data[i]);
-    //     }
-    //   }
-    // });
-    // 웹소켓 연결
-    connect();
-    console.log("enterRoom");
-  }
 
 </script>
 

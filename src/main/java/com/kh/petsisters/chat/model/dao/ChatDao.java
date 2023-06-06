@@ -1,18 +1,24 @@
 package com.kh.petsisters.chat.model.dao;
 
 import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.kh.petsisters.chat.model.vo.ChatMessage;
+import com.kh.petsisters.chat.model.vo.ChatRoom;
 
 @Repository
 public class ChatDao {
 	
-//    public ChatRoom selectChatRoom(String roomId) {
-//        return sqlSession.selectOne("chatMapper.selectChatRoom", roomId);
-//    }
-//    
-    public int insertMessage(SqlSessionTemplate sqlSession, ChatMessage chatMessage) {
+	@Autowired
+    SqlSessionTemplate sqlSession;
+	
+    public ChatRoom selectChatRoom(int roomNo) {
+    	System.out.println(roomNo);
+        return sqlSession.selectOne("chatMapper.selectChatRoom", roomNo);
+    }
+    
+    public int insertMessage(ChatMessage chatMessage) {
         return sqlSession.insert("chatMapper.insertMessage", chatMessage);
     }
 //    
