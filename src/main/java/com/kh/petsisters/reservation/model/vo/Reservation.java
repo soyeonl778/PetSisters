@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 public class Reservation {
+	
 
 	private int resNo;  			// 예약번호 	RES_NO	NUMBER		
 	private Date startDate;			// 시작일시	START_DATE	DATE
@@ -47,4 +48,5 @@ public class Reservation {
 	private String dogBreed;	//  강아지 견종
 	private String userName;	//  펫시터 이름
 	private String userFile;	//  유저 프로필 사진(처음 회원가입 할 때 사람 프로필임)	
+	
 }

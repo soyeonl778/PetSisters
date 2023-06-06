@@ -40,7 +40,7 @@
 			id="collapsibleNavbar">
 			<ul class="navbar-nav">
 				<li class="nav-item"><a class="nav-link" href="list.pe">펫시터 찾기</a></li>
-				<li class="nav-item"><a class="nav-link" href="#">커뮤니티</a></li>
+				<li class="nav-item"><a class="nav-link" href="board.main">커뮤니티</a></li>
 				<li class="nav-item"><a class="nav-link" href="chatForm.ch">채팅</a></li>
 				<li class="nav-item"><a class="nav-link" href="list.no">고객센터</a></li>
 
