@@ -11,8 +11,10 @@
 		<result column="CARE_LIST" property="careList" />
 		<result column="P_MODE" property="petSitterMode" />
 		<result column="USER_NO" property="userNo" />
+		<result column="USER_NAME" property="userName" />
 		<result column="ADDRESS" property="address" />
 		<result column="CA_STATUS" property="caStatus" />
+		<result column="FILE_PATH" property="filePath" />
 		<result column="START_DATE" property="startDate" />
 		<result column="END_DATE" property="endDate" />
 		<result column="REF_PNO" property="refPno" />
@@ -21,15 +23,22 @@
 	
 	<!-- 펫시터 프로필 상세 조회용 쿼리문 -->
 	<select id="selectPetSitter" parameterType="_int" resultMap="petSitterResultSet">
-		SELECT P_NO
+       	SELECT P_NO
 		     , P_TITLE
 		     , P_CONTENT
 		     , P_SERVICE
 		     , CARE_LIST
 		     , P_MODE
-		     , USER_NO
-		  FROM PETSITTER
-		 WHERE P_NO = #{petSitterNo}
+		     , M.USER_NO
+             , USER_NAME
+             , ADDRESS
+             , CA_STATUS
+             , FILE_PATH
+		  FROM PETSITTER P
+          JOIN MEMBER M ON (M.USER_NO = P.USER_NO)
+		 WHERE M.STATUS = 'Y'
+           AND P.USER_NO = M.USER_NO
+           AND P_NO = #{petSitterNo}
 	</select>
 	
 	<!-- 펫시터 프로필 수정용 쿼리문 -->

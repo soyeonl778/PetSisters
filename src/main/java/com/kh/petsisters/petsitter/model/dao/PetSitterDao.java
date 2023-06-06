@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.kh.petsisters.common.model.vo.PageInfo;
 import com.kh.petsisters.petsitter.model.vo.PetSitter;
+import com.kh.petsisters.reservation.model.vo.Review;
 
 @Repository
 public class PetSitterDao {
@@ -36,6 +37,11 @@ public class PetSitterDao {
 		
 		return (ArrayList)sqlSession.selectList("petSitterMapper.selectList", null, rowBounds);
 	}
+	
+//	public Review selectReview(SqlSessionTemplate sqlSession, int pno) {
+//		
+//		return sqlSession.selectOne("");
+//	}
 }
 
 

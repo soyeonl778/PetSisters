@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.kh.petsisters.common.model.vo.PageInfo;
 import com.kh.petsisters.petsitter.model.dao.PetSitterDao;
 import com.kh.petsisters.petsitter.model.vo.PetSitter;
+import com.kh.petsisters.reservation.model.vo.Review;
 
 @Service
 public class PetSitterServiceImpl implements  PetSitterService {
@@ -42,6 +43,12 @@ public class PetSitterServiceImpl implements  PetSitterService {
 		
 		return petSitterDao.selectList(sqlSession, pi);
 	}
+
+//	@Override
+//	public Review selectReview(int pno) {
+//		
+//		return petSitterDao.selectReview(sqlSession, pno);
+//	}
 
 
 	
