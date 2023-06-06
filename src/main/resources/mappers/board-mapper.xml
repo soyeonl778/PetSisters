@@ -2,7 +2,15 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
 <mapper namespace="dogboardMapper">
 
-
+	<resultMap id="boardResultSet" type="board">
+		<result column="B_NO" property="boardNo" />
+		<result column="B_TITLE" property="boardTitle" />
+		<result column="B_CONTENT" property="boardContent" />
+		<result column="CREATE_DATE" property="createDate" />
+		<result column="STATUS" property="status" />
+		<result column="COUNT" property="count" />
+		<result column="USER_NO" property="userNo" />
+	</resultMap>
 
 </mapper>
 
