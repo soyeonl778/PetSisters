@@ -1,0 +1,303 @@
+.petsister-input {
+    padding: 12px;
+    width: 500px;
+    height: 200px;
+    border: 0 solid black;
+    background-color: rgb(250, 250, 252);
+    resize: none;
+}
+.petsister-input:focus {
+    outline: none;
+}
+body {
+    line-height: 1.5;
+}
+a {
+    touch-action: manipulation;
+}
+button {
+    overflow: visible;
+}
+.content-section {
+    width: 100%;
+}
+.content-section {
+    padding-top: 164px;
+    margin: 85px auto 100px;
+    width: 1080px;
+}
+.content-header-sub {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 100px;
+}
+.content-header-sub-a {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.header-img {
+    width: 57px;
+    height: 57px;
+}
+.header-title {
+    font-size: 39px;
+    color: rgb(85, 85, 85);
+    font-weight: 600;
+}
+
+/*게시글 영역CSS시작*/
+.main-card {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 120px;
+}
+.main-card-region {
+    display: flex;
+}
+.main-card-bottom-button {
+    margin-top: 60px;
+    width: 210px;
+    height: 59px;
+    background-color: #e9ecef78;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    /*승호언니*/
+    text-decoration: none;
+    color: black;
+    font-weight: 700;
+    font-size: large;
+}
+
+.main-card-bottom-button:hover {
+    background-color: #0888D0;
+    color: whitesmoke;
+}
+
+.btn-delete-update {
+    display: flex;
+}
+#update-btn {
+    margin-right: 20px;
+}
+
+
+/*게시글본문CSS시작*/
+.community-detail-board {
+    display: flex;
+    flex-direction: column;
+    vertical-align: top;
+    border-radius: 3px;
+    box-shadow: rgb(235, 235, 235) 1px 1px 12px 0px;
+    /* align-items: center; */
+    border: 1px solid rgb(235, 235, 235);
+    padding: 50px 5px 50px;
+}
+
+
+
+.slick-initialized .slick-slide {
+    position: relative;
+}
+.slick-initialized .slick-slide {
+    display: block;
+}
+.slick-slide {
+    float: left;
+    height: 100%;
+    min-height: 1px;
+    width: 640px;
+}
+.slick-trace:nth-child(2) {
+    background-color: red;
+    outline: none;
+    width: 640px;
+}
+.slick-trace:nth-child(3) {
+    outline: none;
+    width: 640px;
+}
+#insurance-container .desktop .slick-list {
+    height: 360px;
+}
+.slick-track:after {
+    clear: both;
+}
+.dot-slide-img {
+    position: absolute;
+    display: flex;
+    bottom: 15px;
+    left: 0px;
+    right: 0px;
+    text-align: center;
+    z-index: 999;
+    justify-content: center;
+}
+.dot-1 {
+    display: flex;
+    width: 19px;
+    height: 19px;
+}
+.dot-2 {
+    display: flex;
+    width: 19px;
+    height: 19px;
+}
+.dot-1 img {
+    width: 19px;
+    height: 19px;
+}
+.dot-2 img {
+    width: 19px;
+    height: 19px;
+}
+.board-img-arrow {
+    display: block;
+}
+.slick-prev {
+    left: -25px;
+    position: absolute;
+}
+.slick-next, .slick-prev {
+    font-size: 0;
+    line-height: 0;
+    top: 50%;
+    width: 20px;
+    height: 20px;
+    -ms-transform: translate(0,-50%);
+    transform: translate(0,-50%);
+    cursor: pointer;
+    color: transparent;
+    border: none;
+    outline: 0;
+    background: 0 0;
+}
+.slick-prev:before {
+    content: '←';
+}
+.slick-next:before, .slick-prev:before {
+    font-size: 20px;
+    line-height: 1;
+    opacity: .75;
+    color: #fff;
+}
+.slick-dots li button:before, .slick-next:before, .slick-prev:before {
+    font-family: slick;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+.all-community {
+    color: rgb(57, 60, 71);
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 40px;
+    margin-bottom: 0px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 500;
+}
+
+img {
+    vertical-align: middle;
+    border-style: none;
+}
+
+/*하단CSS*/
+.community-card-petsister-a {
+    border-top: 1px solid rgb(235, 235, 235);
+    margin-top: 38px;
+    margin-left: 24px;
+    padding-top: 31px;
+    width: 540px;
+    text-align: left;
+}
+.community-card-petsister {
+    margin-left: 5px;
+    font-weight: 800;
+    font-size: 16px;
+    color: rgb(57, 60, 71);
+}
+.petsister-a {
+    width: 515px;
+    height: 200px;
+    border-radius: 15px;
+    background-color: rgb(250, 250, 252);
+    margin-top: 12px;
+    margin-left: 24px;
+    padding-left: 0;
+    text-decoration: none;
+}
+.petsister {
+    align-items: center;
+    padding-left: 24px;
+    padding-right: 24px;
+    flex: 1 1 0%;
+}
+
+/*본문CSS*/
+.good-icon {
+    padding-left: 24px;
+    display: flex;
+}
+.good-icon-under {
+    padding-right: 10px;
+    font-weight: 600;
+}
+.quick-community {
+    padding-left: 10px;
+    color: rgb(171 177 187);
+}
+.text-review {
+    margin-left: 24px;
+    margin-top: 30px;
+    font-weight: 800;
+    font-size: 20px;
+}
+.photo-img {
+    margin-top: 40px;
+    margin-left: 24px;
+    font-weight: 800;
+    font-size: 18px;
+}
+.file-upload-form {
+    margin-left: 24px;
+}
+.btn-upload {
+    width: 150px;
+    height: 30px;
+    background: #fff;
+    border: 1px solid rgb(77,77,77);
+    border-radius: 10px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &:hover {
+      background: rgb(77,77,77);
+      color: #fff;
+    }
+  }
+  
+#file {
+display: none;
+}
+.fa-solid {
+    margin-top: 5px;
+}
+.file-upload-top {
+    margin-bottom: 14px;
+}

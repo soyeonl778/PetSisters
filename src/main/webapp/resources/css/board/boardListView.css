@@ -1,0 +1,24 @@
+.search-section {
+    display: flex;
+    padding: 10px;
+    padding-top: 30px;
+}
+
+form.search-form {
+    display: inline-block;
+    width: 100%;
+}
+
+.search-field {
+    padding: 8px 15px;
+    float: left!important;
+    width: 93%!important;
+}
+
+input#s {
+    padding-left: 20px;
+    height: 61px;
+    font-size: 18px;
+}
+
+
