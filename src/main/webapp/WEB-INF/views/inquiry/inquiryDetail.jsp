@@ -1,11 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   
   <link rel="stylesheet" href="/resources/css/inquiry/inquiryDetail.css">
+  <link rel="stylesheet" href="/resources/css/common/form.css">
   <jsp:include page="../common/common.jsp" />
   
   <title>1:1 문의 상세</title>
@@ -24,18 +26,18 @@
           <div class="page_aticle aticle_type2">
             <!-- 사이드 메뉴바 -->
             <div id="snb" class="snb_my" style="position: absolute;">
-              <img src="/resources/img/사이드바이미지.png" alt="sideBarImg">
+              <img src="/resources/img/main/사이드바이미지.png" alt="sideBarImg">
               <h2 class="tit_snb">고객센터</h2>
               <div class="inner_sub">
                 <ul class="list_menu">
                   <li>
-                    <a href="/notice/noticeList.html">공지사항</a>
+                    <a href="list.no">공지사항</a>
                   </li>
                   <li>
-                    <a href="/notice/faq.html">자주하는 질문</a>
+                    <a href="/showFaq">자주하는 질문</a>
                   </li>
                   <li class="on">
-                    <a href="/notice/inquiryList.html">1:1 문의</a>
+                    <a href="event.preventDefault();">1:1 문의</a>
                   </li>
                 </ul>
               </div>
@@ -49,15 +51,20 @@
                     <h2>1:1 문의</h2>
                     <hr/>
                 </div>
-                <div style="text-align: right;">
-                    <a href="" class="btn btn-outline-primary">수정하기</a>
-                    <a href="" class="btn btn-outline-danger">삭제하기</a>
-                </div>
                 
-                <br/>
+                <c:if test="${ not empty loginUser }">
+                	<div align="right">
+	                    <a class="btn btn-primary" onclick="postFormSubmit(1);">수정하기</a>
+	                    <a class="btn btn-danger" onclick="postFormSubmit(2);">삭제하기</a>
+                	</div>
+                	<br/>
+                	
+                	<form id="postForm" action="" method="post">
+		            	<input type="hidden" name="inquiryNo" value="${ i.inquiryNo }">
+		            </form>
+                </c:if>
                 
                 <div class="inquiryDetail">
-                    <input type="hidden" name="memberNo">
                     <table id="inquiryDetail" style="text-align: center;">
                         <tr>
                             <th>제목</th>
@@ -75,8 +82,8 @@
                             <th>내용</th>
                             <td>
                                 <div class="inquiry inquiryContent">
-                                    저번 주말에 펫시팅을 맡겼었는데 오늘 확인해보니 아이에게 생긴지 얼마 안 된 상처가 발견됐습니다. <br/>
-                                    펫시터에겐 이와 관련해서 전달받은 내용이 없었고요... 확인 부탁드립니다.
+					                                    저번 주말에 펫시팅을 맡겼었는데 오늘 확인해보니 아이에게 생긴지 얼마 안 된 상처가 발견됐습니다. <br/>
+					                                    펫시터에겐 이와 관련해서 전달받은 내용이 없었고요... 확인 부탁드립니다.
                                 </div>
                             </td>
                         </tr>
@@ -101,7 +108,7 @@
                 
                 <br/>
                 <div style="text-align: right;">
-                  <a href="">목록으로</a>
+                  <a href="list.in" class="btn btn-outline-primary">목록으로</a>
                 </div>
                 
               </div>

@@ -36,7 +36,7 @@
                     <a href="/showFaq">자주하는 질문</a>
                   </li>
                   <li>
-                    <a href="#">1:1 문의</a>
+                    <a href="list.in">1:1 문의</a>
                   </li>
                 </ul>
               </div>

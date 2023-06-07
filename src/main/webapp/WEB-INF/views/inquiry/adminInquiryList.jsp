@@ -5,7 +5,7 @@
 <head>
   <meta charset="UTF-8" />
   
-  <link rel="stylesheet" href="/resources/css/adminInquiryList.css">
+  <link rel="stylesheet" href="/resources/css/inquiry/adminInquiryList.css">
   <jsp:include page="../common/common.jsp" />
   
   <title>1:1 문의 / 관리자</title>
@@ -29,13 +29,13 @@
               <div class="inner_sub">
                 <ul class="list_menu">
                   <li>
-                    <a href="/notice/noticeList.html">공지사항</a>
+                    <a href="list.no">공지사항</a>
                   </li>
                   <li>
-                    <a href="/notice/faq.html">자주하는 질문</a>
+                    <a href="/showFaq">자주하는 질문</a>
                   </li>
                   <li class="on">
-                    <a href="/notice/inquiryList.html">1:1 문의 관리</a>
+                    <a href="event.preventDefault();">1:1 문의 관리</a>
                   </li>
                 </ul>
               </div>
@@ -68,6 +68,14 @@
                         <td>이주흔</td>
                         <td>2023-05-29</td>
                         <td>답변대기</td>
+                        <%-- <c:choose>
+								<c:when test="답변내용이있음">
+									답변완료
+								</c:when>
+								<c:otherwise>
+									답변대기
+								</c:otherwise>
+							</c:choose> --%>
                       </tr>
                     </a>
                     <a class="inquiry" href="#">
@@ -127,22 +135,5 @@
   	<jsp:include page="../common/footer.jsp" />
   <!-- Footer 영역 끝 -->
   
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-    <script>
-      $(document).ready(function () {
-        $(window).scroll(function () {
-          var scrollTop = $(document).scrollTop();
-          var footerOffset = $(".link_footer").offset().top;
-          var windowHeight = $(window).height();
-
-          if (scrollTop + windowHeight > footerOffset) {
-            scrollTop = footerOffset - windowHeight;
-          }
-
-          $(".snb_my").stop();
-          $(".snb_my").animate({ "top": scrollTop });
-        });
-      });
-    </script>
 </body>
 </html>

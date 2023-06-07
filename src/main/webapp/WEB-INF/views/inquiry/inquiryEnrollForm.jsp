@@ -31,13 +31,13 @@
               <div class="inner_sub">
                 <ul class="list_menu">
                   <li>
-                    <a href="#">공지사항</a>
+                    <a href="list.no">공지사항</a>
                   </li>
                   <li>
-                    <a href="#">자주하는 질문</a>
+                    <a href="/showFaq">자주하는 질문</a>
                   </li>
                   <li class="on">
-                    <a href="#">1:1 문의</a>
+                    <a href="list.in">1:1 문의</a>
                   </li>
                 </ul>
               </div>
@@ -91,8 +91,7 @@
                             <div id="att_zone" data-placeholder='파일을 첨부 하려면 파일 선택 버튼을 클릭하거나 파일을 드래그앤드롭 하세요'></div>
                             <span>
                               · 30MB 이하의 이미지만 업로드 가능합니다. <br/>
-                              · 문의와 무관한 내용이거나 음란 및 불법적인 내용은
-                                통보없이 삭제 될 수 있습니다. <br/>
+                              · 문의와 무관한 내용이거나 음란 및 불법적인 내용은 통보없이 삭제 될 수 있습니다. <br/>
                             </span>
                             </div>
                           </td>

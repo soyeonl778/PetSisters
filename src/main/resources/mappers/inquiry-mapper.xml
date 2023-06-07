@@ -2,8 +2,44 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
 <mapper namespace="inquiryMapper">
 
-	
+	<!-- Inquiry 테이블로부터 조회된 ResultSet을 Inquiry 객체로 가공해주는 resultMap -->
+	<resultMap id="inquiryResultSet" type="inquiry">
+		<result column="I_NO" property="inquiryNo" />
+		<result column="I_TITLE" property="inquiryTitle" />
+		<result column="I_CONTENT" property="inquiryContent" />
+		<result column="CREATE_DATE" property="createDate" />
+		<result column="STATUS" property="status" />
+		<result column="REPLY_STATUS" property="replyStatus" />
+		<result column="USER_NO" property="userNo" />
+	</resultMap>
 
+	<resultMap id="csreplyResultSet" type="csReply">
+		<result column="REP_INO" property="repIno" />
+		<result column="REP_ICONTENT" property="repIcontent" />
+		<result column="CREATE_DATE" property="createDate" />
+		<result column="STATUS" property="status" />
+		<result column="USER_NO" property="userNo" />
+		<result column="REF_INO" property="refIno" />
+	</resultMap>
+
+	<!-- 1:1 문의글 총 개수 구하는 쿼리문 -->
+	<select id="selectListCount" resultType="_int">
+		SELECT COUNT(*)
+		  FROM INQUIRY
+		 WHERE STATUS = 'Y'
+	</select>
+	
+	<!-- 1:1 문의글 리스트를 구해주는 쿼리문 -->
+	<select id="selectList" resultMap="inquiryResultSet">
+		SELECT I_TITLE
+			 , TO_CHAR(CREATE_DATE, 'YYYY-MM-DD') AS "CREATE_DATE"
+			 , REPLY_STATUS
+			 , USER_NO
+	 	  FROM INQUIRY
+	 	 WHERE STATUS = 'Y'
+	 	   AND USER_NO = #{userNo}
+	</select>
+	
 </mapper>
 
 

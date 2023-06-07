@@ -1,11 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   
   <link rel="stylesheet" href="/resources/css/inquiry/inquiryList.css">
+  <link rel="stylesheet" href="/resources/css/common/form.css">
   <jsp:include page="../common/common.jsp" />
   
   <title>1:1 문의</title>
@@ -24,7 +26,7 @@
           <div class="page_aticle aticle_type2">
             <!-- 사이드 메뉴바 -->
             <div id="snb" class="snb_my" style="position: absolute;">
-              <img src="/resources/img/사이드바이미지.png" alt="sideBarImg">
+              <img src="/resources/img/main/사이드바이미지.png" alt="sideBarImg">
               <h2 class="tit_snb">고객센터</h2>
               <div class="inner_sub">
                 <ul class="list_menu">
@@ -51,43 +53,43 @@
                 </div>
 
                 <br/>
-                
-                <table id="inquiryTable" style="text-align: center;">
+                <form id="postForm" action="/submit-form" method="post">
+		          	<input type="hidden" name="userNo" value="${i.userNo}">
+		          </form>
+		          
+                <table id="inquiryTable" style="text-align: center;" class="table table-hover">
+                  
                   <thead>
                     <tr class="category">
-                        <th>제목</th>
+                        <th height="51">제목</th>
                         <th width="100">작성일</th>
                         <th width="100">답변상태</th>
                     </tr>
                   </thead>
-                  <tbody id="inquiryBody">
-                    <a class="inquiry" href="#">
-                      <tr>
-                        <td>우리 강아지에게 없던 상처가 생겼어요..</td>
-                        <td>2023-05-29</td>
-                        <td>답변대기</td>
-                      </tr>
-                    </a>
-                    <a class="inquiry" href="#">
-                      <tr>
-                        <td>생후 몇개월부터 맡길 수 있나요?</td>
-                        <td>2023-05-28</td>
-                        <td>답변완료</td>
-                      </tr>
-                    </a>
-                    <a class="inquiry" href="#">
-                      <tr>
-                        <td>펫시팅 서비스가 불만족스러워요.</td>
-                        <td>2023-05-27</td>
-                        <td>답변완료</td>
-                      </tr>
-                    </a>
-                  </tbody>
+                  <c:choose>
+						<c:when test="${not empty loginUser}">
+							<tbody id="inquiryBody">
+			                  	<c:forEach var="i" items="${list}">
+			                  		<tr>
+			                  			<td height="51">${i.inquiryTitle}</td>
+			                  			<td>${i.createDate}</td>
+			                  			<td>${i.replyStatus}</td>
+			                  		</tr>
+			                  	</c:forEach>
+	                  		</tbody>							
+						</c:when>
+						<c:otherwise>
+							<script>
+								alert("로그인이 필요한 서비스입니다.");
+								location.href = "/list.no";
+							</script>
+						</c:otherwise>
+					</c:choose>
                 </table>
-
+				
                 <br/>
                 <div style="text-align: center;">
-                  <a href="" class="btn btn-primary">작성하기</a>
+                  <a href="enrollForm.in" class="btn btn-primary">작성하기</a>
                 </div>
                 
                 <br/>
@@ -128,5 +130,14 @@
   	<jsp:include page="../common/footer.jsp" />
   <!-- Footer 영역 끝 -->
   
+  <script>
+  	$(function() {
+		$("#inquiryTable>tbody>tr").click(function() {
+			let inquiryNo = $(this).children().eq(0).text();
+			/* console.log(inquiryNo); */
+			location.href = "detail.no?inquiryNo=" + inquiryNo;
+		});
+  	});
+  </script>
 </body>
 </html>
