@@ -21,7 +21,7 @@
 		<result column="ENROLL_DATE" property="enrollDate" />
 	</resultMap>
 	
-	<resultMap id="petResultSet" type="pet">
+	<resultMap id="dogResultSet" type="dog">
 		<result column="DOG_NO" property="dogNo" />
 		<result column="DOG_NAME" property="dogName" />
 		<result column="DOG_GENDER" property="dogGender" />
@@ -97,17 +97,6 @@
 		UPDATE MEMBER
 			  SET STATUS = 'N'
 		WHERE USER_ID = #{userId}
-	</update>
-	
-	<!-- 펫 정보 수정용 쿼리문 -->
-	<update id="petUpdate" parameterType="pet">
-		UPDATE PET
-		   SET USER_PWD = #{userPwd}
-			 , USER_NICKNAME = #{userNickname}
-			 , EMAIL = #{email}
-			 , PHONE = #{phone}
-			 , ADDRESS = #{address}
-		 WHERE USER_ID = #{userId}
 	</update>
 	
 	<!-- 아이디 중복체크용 쿼리문 -->

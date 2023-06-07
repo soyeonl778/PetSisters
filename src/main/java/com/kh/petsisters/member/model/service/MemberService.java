@@ -1,7 +1,7 @@
 package com.kh.petsisters.member.model.service;
 
+import com.kh.petsisters.member.model.vo.Dog;
 import com.kh.petsisters.member.model.vo.Member;
-import com.kh.petsisters.member.model.vo.Pet;
 
 public interface MemberService {
 	
@@ -24,7 +24,7 @@ public interface MemberService {
 		int deleteMember(String userId);
 		
 	// 펫 정보 수정 서비스
-		int petUpdate(Pet p);
+		int petUpdate(Dog d);
 	
 	// 아이디중복체크 서비스 (select)
 		int idCheck(String checkId);

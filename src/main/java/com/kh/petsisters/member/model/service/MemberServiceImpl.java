@@ -5,8 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kh.petsisters.member.model.dao.MemberDao;
+import com.kh.petsisters.member.model.vo.Dog;
 import com.kh.petsisters.member.model.vo.Member;
-import com.kh.petsisters.member.model.vo.Pet;
 
 @Service
 public class MemberServiceImpl implements MemberService{
@@ -54,8 +54,8 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
-	public int petUpdate(Pet p) {
-		return memberDao.petUpdate(sqlSession, p);
+	public int petUpdate(Dog d) {
+		return memberDao.petUpdate(sqlSession, d);
 	}
 
 }

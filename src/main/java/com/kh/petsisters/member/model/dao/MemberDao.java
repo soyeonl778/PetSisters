@@ -3,8 +3,8 @@ package com.kh.petsisters.member.model.dao;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.kh.petsisters.member.model.vo.Dog;
 import com.kh.petsisters.member.model.vo.Member;
-import com.kh.petsisters.member.model.vo.Pet;
 
 @Repository
 public class MemberDao {
@@ -37,9 +37,9 @@ public class MemberDao {
 		return sqlSession.update("memberMapper.deleteMember", userId);
 	}
 	
-	public int petUpdate(SqlSessionTemplate sqlSession, Pet p) {
+	public int petUpdate(SqlSessionTemplate sqlSession, Dog d) {
 		
-		return sqlSession.update("memberMapper.petUpdate", p);
+		return sqlSession.update("memberMapper.petUpdate", d);
 	}
 	
 	public int idCheck(SqlSessionTemplate sqlSession, String checkId) {

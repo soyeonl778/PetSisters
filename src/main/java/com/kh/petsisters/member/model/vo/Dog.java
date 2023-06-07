@@ -13,7 +13,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class Pet {
+public class Dog {
 	
 	private int dogNo;	
 	private String dogName;
@@ -25,4 +25,5 @@ public class Pet {
 	private String dogNote;
 	private String filePath;
 	private String status;
+	private int userNo;
 }

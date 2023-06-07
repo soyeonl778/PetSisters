@@ -16,9 +16,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.petsisters.member.model.service.MemberService;
+import com.kh.petsisters.member.model.vo.Dog;
 import com.kh.petsisters.member.model.vo.Member;
-import com.kh.petsisters.member.model.vo.Pet;
-
 
 @Controller
 public class MemberController {
@@ -257,11 +256,11 @@ public class MemberController {
 	
 	// 펫정보 수정 기능 영역
 	@RequestMapping("petUpdate.me")
-	public void petUpdate(Pet p,
+	public void petUpdate(Dog d,
 			   			  HttpSession session,
 			   			  Model model) {
 		
-		int result = memberService.petUpdate(p);
+		int result = memberService.petUpdate(d);
 		
 		
 		
