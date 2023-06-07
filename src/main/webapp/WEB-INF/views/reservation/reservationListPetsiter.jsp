@@ -75,7 +75,7 @@
 													조회 기간 선택 : <input id="datepicker1" type="text" name="searchDate">
 												</div>
 												<div class="searchTag">
-													<input type="text" name="keyword" placeholder="고객명으로 검색" value="${ keyword }" required>
+													<input type="text" name="keyword" placeholder="고객명을 입력해주세요" value="${ keyword }" required>
 													<button id="search_icon" type="submit">
 														<i class="fa-solid fa-magnifying-glass"
 															style="color: #0888D0"></i>
@@ -198,5 +198,16 @@
 	</div>
 
 	<jsp:include page="../common/footer.jsp" />
+	<script>
+	$('#datepicker1').on('click', function(e) {
+		console.log($('#datepicker1').val());
+		console.log(e);
+		let a = $('#datepicker1').val().slice(0, 10);
+		let b = $('#datepicker1').val().slice(-10);
+		console.log(a);
+		console.log(b);
+
+	});
+	</script>
 </body>
 </html>

@@ -321,12 +321,18 @@ body #container #main .layout-pagination .pagediv span strong{
   border: none;
   border-bottom: 1px solid black;
 }
+#datepicker1:hover {
+	cursor: pointer;
+}
 .dateSection {
   font-weight: 700;
   font-size: large;
 }
 .searchTag {
   position: relative;
+}
+.searchTag:hover {
+	cursor: pointer;
 }
 .searchTag input {
   width: 200px;
