@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.kh.petsisters.member.model.dao.MemberDao;
 import com.kh.petsisters.member.model.vo.Member;
+import com.kh.petsisters.member.model.vo.Pet;
 
 @Service
 public class MemberServiceImpl implements MemberService{
@@ -17,8 +18,8 @@ public class MemberServiceImpl implements MemberService{
 	private MemberDao memberDao;
 
 	@Override
-	public Member login(Member m) {
-		Member loginUser = memberDao.login(sqlSession, m);
+	public Member loginMember(Member m) {
+		Member loginUser = memberDao.loginMember(sqlSession, m);
 		return loginUser;
 	}
 
@@ -35,6 +36,26 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public Member foundId(Member m) {
 		return memberDao.foundId(sqlSession, m);
+	}
+
+	@Override
+	public Member foundPwd(Member m) {
+		return memberDao.foundPwd(sqlSession, m);
+	}
+
+	@Override
+	public int updateMember(Member m) {
+		return memberDao.updateMember(sqlSession, m);
+	}
+
+	@Override
+	public int deleteMember(String userId) {
+		return memberDao.deleteMember(sqlSession, userId);
+	}
+
+	@Override
+	public int petUpdate(Pet p) {
+		return memberDao.petUpdate(sqlSession, p);
 	}
 
 }

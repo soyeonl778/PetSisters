@@ -1,5 +1,7 @@
 package com.kh.petsisters.member.controller;
 
+import java.util.UUID;
+
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -10,12 +12,12 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.petsisters.member.model.service.MemberService;
 import com.kh.petsisters.member.model.vo.Member;
+import com.kh.petsisters.member.model.vo.Pet;
 
 
 @Controller
@@ -39,7 +41,7 @@ public class MemberController {
 	
 	// 로그인 기능 영역
 	@RequestMapping("login.me")
-	public ModelAndView login(Member m, 
+	public ModelAndView loginMember(Member m, 
 						HttpSession session, 
 						ModelAndView mv, 
 						String saveId,
@@ -59,7 +61,7 @@ public class MemberController {
 			response.addCookie(cookie);
 		}
 		
-		Member loginUser = memberService.login(m);
+		Member loginUser = memberService.loginMember(m);
 		
 		
 		if(loginUser != null 
@@ -134,17 +136,13 @@ public class MemberController {
 	@RequestMapping("foundId.me")
 	public String foundId(HttpServletRequest request, 
 						 Model model,
-						 @RequestParam(required = true, value = "userName") String userName,
-						 @RequestParam(required = true, value = "email") String email,
 						 Member m) {
 		
 			System.out.println(m);
 		
-			m.setUserName(userName);
-			m.setEmail(email);
-			Member memberSearch = memberService.foundId(m);
+			Member idSearch = memberService.foundId(m);
 			
-			model.addAttribute("m", memberSearch);
+			model.addAttribute("m", idSearch);
 		
 		return "/member/foundId";
 	}
@@ -157,37 +155,131 @@ public class MemberController {
 	
 	// 비밀번호 찾기 기능 영역
 	@RequestMapping("foundPwd.me")
-	public String foundPwd() {
+	public String foundPwd(HttpServletRequest request, 
+			 			   Model model,
+			 			   Member m) throws Exception {
 		
 		
+		Member pwdSearch = memberService.foundPwd(m);
+		
+		System.out.println(pwdSearch);
+		
+		if(pwdSearch != null) {
+			
+			//임시 비밀번호 생성(UUID이용)
+			String tempPw = UUID.randomUUID().toString().replace("-", "");//-를 제거
+			tempPw = tempPw.substring(0,10);//tempPw를 앞에서부터 10자리 잘라줌
+			
+			pwdSearch.setUserPwd(tempPw);
+			
+			MailUtil mail = new MailUtil();
+			mail.sendEmail(pwdSearch);
+			
+			memberService.updateMember(pwdSearch);
+		}
+		model.addAttribute("m", pwdSearch);
 		return "/member/foundPwd";
 	}
 	
-	// 마이페이지 내 프로필 영역
+	// 마이페이지 내 프로필 조회 영역
 	@RequestMapping("myProfile.me")
 	public String myProfile() {
 		return "/member/my_profile";
 	}
 	
-	// 마이페이지 펫 프로필 영역
+	// 회원 수정 기능 영역
+	@RequestMapping("update.me")
+	public String updateMember(Member m,
+							   HttpSession session,
+							   Model model) {
+		
+		int result = memberService.updateMember(m);
+		
+		if(result > 0) {
+		
+			Member updateMem = memberService.loginMember(m);
+			
+			session.setAttribute("loginUser", updateMem);
+			
+			session.setAttribute("alertMsg", "성공적으로 회원정보가 변경되었습니다.");
+			
+			return "redirect:/myProfile.me";
+			
+		} else {
+			
+			model.addAttribute("errorMsg", "회원정보 변경 실패");
+			
+			return "redirect:/myProfile.me";
+			
+		}
+	}
+	
+	// 회원 탈퇴 기능 영역
+	@RequestMapping("delete.me")
+	public String deleteMember(String userId,
+							   String userPwd,
+							   HttpSession session,
+							   Model model) {
+		
+		String encPwd = ((Member)session.getAttribute("loginUser")).getUserPwd();
+		
+		if(bcryptPasswordEncoder.matches(userPwd, encPwd)) {
+			
+			int result = memberService.deleteMember(userId);
+			
+			if(result > 0) {
+				
+				session.removeAttribute("loginUser");
+				
+				session.setAttribute("alertMsg", "정상적으로 탈퇴되었습니다. 펫시스터즈를 이용해주셔서 감사합니다.");
+				
+				return "redirect:/";
+			} else {
+				
+				model.addAttribute("errorMsg", "정보가 일치하지 않습니다.");
+				
+				return "redirect:/myProfile.me";
+			}
+		} else {
+			
+			session.setAttribute("alertMsg", "비밀번호를 잘못 입력했습니다. 다시 확인해주세요.");
+			
+			return "redirect:/myProfile.me";
+			
+		}
+	}
+	
+	// 마이페이지 펫 프로필 조회 영역
 	@RequestMapping("petProfile.me")
 	public String petProfile() {
 		return "/member/pet_profile";
 	}
 	
-	// 마이페이지 펫시터 찜 영역
+	// 펫정보 수정 기능 영역
+	@RequestMapping("petUpdate.me")
+	public void petUpdate(Pet p,
+			   			  HttpSession session,
+			   			  Model model) {
+		
+		int result = memberService.petUpdate(p);
+		
+		
+		
+	}
+	
+	// 마이페이지 펫시터 찜 조회 영역
 	@RequestMapping("petsiterLike.me")
 	public String petsiterLike() {
 		return "/member/petsiter_like";
 	}
 	
-	// 마이페이지 내 게시글 영역
+	// 마이페이지 내 게시글 조회 영역
 	@RequestMapping("myBoard.me")
 	public String myBoard() {
 		return "/member/my_board";
 	}
 	
-	// 마이페이지 내 댓글 영역
+	// 마이페이지 내 댓글 조회 영역
 	@RequestMapping("myReply.me")
 	public String myReply() {
 		return "/member/my_reply";

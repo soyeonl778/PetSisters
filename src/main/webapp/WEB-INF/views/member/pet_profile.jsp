@@ -61,7 +61,7 @@
                 <div id="titleWrapper">
                   <h3 class="title_11">내 프로필 정보</h3>
                 </div>
-                <div id="profileWrapper">
+                <form id="profileWrapper">
                   <hr>
                     <div class="file_main">
                       <label>사진</label>
@@ -76,31 +76,29 @@
                   <hr>
                   <label>이름</label>
                   <input class="pet_name" placeholder="찰스" />
-                  <button type="button" class="pwd_btn">이름 변경</button>
                   <hr>
                   <label>성별</label>
-                  <input class="pet_gender" placeholder="남자" />
-                  <button type="button" class="pwd_btn">성별 변경</button>
+                  <input type="checkbox" id="Male" value="M" name="gender"> 남
+                  <input type="checkbox" id="Female" value="F" name="gender"> 여
                   <hr>
                   <label>견종</label>
-                  <input class="pet_type" placeholder="개나고양이나" />
-                  <button type="button" class="nick_btn">견종 변경</button>
+                  <input class="pet_type" placeholder="슈나우저" />
                   <hr>
                   <label>생일</label>
-                  <input class="pet_birth" placeholder="sy@naver.com" />
-                  <button type="button" class="email_btn">생일 변경</button>
+                  <input class="pet_birth" placeholder="220506" />
                   <hr>
                   <label>몸무게</label>
-                  <input class="pet_kg" placeholder="010-7777-8888" />
-                  <button type="button" class="phone_btn">몸무게 변경</button>
+                  <input class="pet_kg" placeholder="5kg" />
                   <hr>
                   <span class="fix checkbox">
                     <label>중성화</label><br>
                     <input type="checkbox" name="yes" id="yes" value="Y"> Yes
                     <input type="checkbox" name="no" id="no" value="N"> No <br>
                   </span>
+                  <br>
+                  <button type="submit" class="update_btn">수정하기</button>
 
-                </div>
+                </form>
                 <!-- 이 영역 안에서 페이지 작업 하시면 됩니다 -->
               </div>
             </div>

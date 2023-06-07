@@ -61,39 +61,39 @@
                 <div id="titleWrapper">
                   <h3 class="title_11">내 프로필 정보</h3>
                 </div>
-                <div id="profileWrapper">
+                <form id="profileWrapper" action="update.me" method="get">
                   <hr>
                     <div class="file_main">
                       <label>사진</label>
                       <div class="file_change">
-                        <img class="profile_img" src="/resources/img/그림이사진2.jpg" />
+                        <img class="profile_img" src="/resources/upFiles/member_profiles/user01.jpg" />
                         <div class="profile_con">
-                          <button type="button" class="img_btn">사진변경</button>
                           <p>등록된 사진은 회원님의 게시물이나 댓글들에 사용됩니다.</p>
                         </div>
                       </div>
                     </div>
                   <hr>
                   <label>아이디</label>
-                  <input class="default_id" placeholder="soyeon91" readonly />
+                  <input class="default_id" id="userId" placeholder="${ loginUser.userId }" readonly />
                   <hr>
                   <label>비밀번호</label>
-                  <input class="change_pwd" placeholder="*********" />
-                  <button type="button" class="pwd_btn">비밀번호변경</button>
+                  <input class="change_pwd" id="userPwd" placeholder="${ loginUser.userPwd }" />
                   <hr>
                   <label>닉네임</label>
-                  <input class="change_nick" placeholder="개나고양이나" />
-                  <button type="button" class="nick_btn">닉네임변경</button>
+                  <input class="change_nick" id="userNickname" placeholder="${ loginUser.userNickname }" />
                   <hr>
                   <label>이메일</label>
-                  <input class="change_email" placeholder="sy@naver.com" />
-                  <button type="button" class="email_btn">이메일변경</button>
+                  <input class="change_email" id="email" placeholder="${ loginUser.email }" />
                   <hr>
                   <label>휴대전화</label>
-                  <input class="change_phone" placeholder="010-7777-8888" />
-                  <button type="button" class="phone_btn">휴대전화변경</button>
-                  
-                </div>
+                  <input class="change_phone" id="phone" placeholder="${ loginUser.phone }" />
+                  <hr>
+                  <label>주소</label>
+                  <input class="change_address" id="address" placeholder="${ loginUser.address }" />
+                  <br>
+                  <button type="submit" class="update_btn">수정하기</button>
+                  <button type="submit" class="delete_btn" data-toggle="modal" data-target="#deleteForm">탈퇴하기</button>
+                </form>
                 <!-- 이 영역 안에서 페이지 작업 하시면 됩니다 -->
               </div>
             </div>
@@ -101,9 +101,41 @@
           </div>
         </div>
       </div>
-
     </div>
   </div>
+  
+  <!-- 회원탈퇴 버튼 클릭 시 보여질 Modal -->
+    <div class="modal fade" id="deleteForm">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">회원탈퇴</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <form action="delete.me" method="post">
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <div align="center">
+                            탈퇴 후 복구가 불가능합니다. <br>
+                            정말로 탈퇴 하시겠습니까? <br>
+                        </div>
+                        <br>
+                            <label for="userPwd" class="mr-sm-2">Password : </label>
+                            <input type="password" class="form-control mb-2 mr-sm-2" placeholder="Enter Password" id="userPwd" name="userPwd"> <br>
+                            <input type="hidden" name="userId" value="${ loginUser.userId }">
+                    </div>
+                    <!-- Modal footer -->
+                    <div class="modal-footer" align="center">
+                        <button type="submit" class="btn btn-danger">탈퇴하기</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
   <!-- Footer 영역 시작 -->
     <jsp:include page="../common/footer.jsp" /> 
   <!-- Footer 영역 끝 -->

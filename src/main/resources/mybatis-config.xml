@@ -10,6 +10,7 @@
 		<typeAlias type="com.kh.petsisters.reservation.model.vo.Reservation" alias="reservation" />
 		<typeAlias type="com.kh.petsisters.reservation.model.vo.Review" alias="review" />
 		<typeAlias type="com.kh.petsisters.member.model.vo.Member" alias="member" />
+		<typeAlias type="com.kh.petsisters.member.model.vo.Pet" alias="pet" />
 		<typeAlias type="com.kh.petsisters.petsitter.model.vo.PetSitter" alias="petSitter" />
 		<typeAlias type="com.kh.petsisters.inquiry.model.vo.Inquiry" alias="inquiry" />
 		<typeAlias type="com.kh.petsisters.notice.model.vo.Notice" alias="notice" />
@@ -18,6 +19,7 @@
 		<typeAlias type="com.kh.petsisters.chat.model.vo.ChatRoom" alias="chatRoom" />
 		<typeAlias type="com.kh.petsisters.inquiry.model.vo.CSReply" alias="csReply" />
 		<typeAlias type="com.kh.petsisters.board.model.vo.Board" alias="board" />
+		
 	</typeAliases>
 	<!-- 
 		주의사항 : 별칭을 미리 등록해두려면 해당 클래스가 진짜 존재하고 있는 상태여야 함
