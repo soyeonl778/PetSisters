@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
   // 예약상태에 따라 색상 변경
-  $("td.specialTd:contains('예약완료')").css("color", "#0888D0");
+  $("td.specialTd:contains('예약진행중')").css("color", "#0888D0");
   $("td.specialTd:contains('예약종료')").css("color", "green");
 
   // 예약번호 뽑아오기

@@ -64,8 +64,16 @@
 						</li>
 						<li class="nav-item"><a class="nav-link" href="logout.me">로그아웃</a>
 						</li>
+						<c:if test="${loginUser.sitterStatus eq 'Y'}">
 						<li class="nav-item"><a class="nav-link petsiter"
-							href="supportInfo.me">펫시터지원</a></li>
+							href="petsitterRev">펫시터 설정</a>
+						</li>
+						</c:if>
+						<c:if test="${loginUser.sitterStatus eq 'N'}">
+						<li class="nav-item"><a class="nav-link petsiter"
+							href="supportInfo.me">펫시터 지원</a>
+						</li>
+						</c:if>
 					</c:otherwise>
 				</c:choose>
 

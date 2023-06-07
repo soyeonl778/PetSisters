@@ -57,7 +57,6 @@ public class ReservationController {
 		
 		model.addAttribute("pi", pi);
 		model.addAttribute("list", list);
-//		System.out.println(list);
 		
 		return "reservation/reservationList";
 	}
@@ -72,12 +71,9 @@ public class ReservationController {
 	@RequestMapping(value="getReviewDate")
 	public String selectReview(Model model, @RequestParam(value="rNo") int writeReviewNo) {
 		
-//		System.out.println(writeReviewNo);
 		Reservation rev = reservationService.selectReview(writeReviewNo);
 		
 		model.addAttribute("rev", rev);
-		
-//		System.out.println(rev);
 		
 		return "reservation/review";
 	}
@@ -93,7 +89,6 @@ public class ReservationController {
 	 */
 	@RequestMapping("reviewInsert")
 	public String insertReview(MultipartFile upfile, HttpSession session, Model model, Review r) {
-		// System.out.println(r);
 		
 		if(!upfile.getOriginalFilename().equals("")) {
 			
@@ -126,11 +121,7 @@ public class ReservationController {
 	@RequestMapping("reviewUpdate")
 	public String updateReview(Model model, @RequestParam(value = "rNo") int rNo) {
 		
-		// System.out.println(rNo);
-		
 		Review r = reservationService.updateReview(rNo);
-		
-		// System.out.println(r);
 		
 		model.addAttribute("r", r);
 		
@@ -150,8 +141,6 @@ public class ReservationController {
 	public String updateForm(Model model, MultipartFile reupfile,
 							HttpSession session, Review r) {
 		
-		
-		// System.out.println(r);
 		if(!reupfile.getOriginalFilename().contentEquals("")) {
 			
 			String changeName = saveFile(reupfile, session);
@@ -161,7 +150,7 @@ public class ReservationController {
 		}
 		
 		int result = reservationService.updateForm(r);
-		// System.out.println(result);
+		
 		if(result > 0) {
 			return "redirect:/reservationList";
 		} else {
@@ -185,9 +174,7 @@ public class ReservationController {
 		
 		
 		int result = reservationService.deleteReservation(rNo);
-		// System.out.println(rNo);
 		
-		// System.out.println(result);
 		if(result > 0) {
 			
 			return "redirect:/reservationList";
@@ -225,6 +212,74 @@ public class ReservationController {
 		
 		return "reservation/careJournalList";
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	// 여기서 부터 펫시터 관련 컨트롤
+	/**
+	 * 펫시터 예약 리스트
+	 * @param session
+	 * @param model
+	 * @param currentPage
+	 * @return
+	 */
+	@RequestMapping("petsitterRev")
+	public String petsitterRevList(HttpSession session, Model model,
+			@RequestParam(value="pPage", defaultValue="1") int currentPage) {
+		
+		int userNo = ((Member)(session.getAttribute("loginUser"))).getUserNo();
+		
+		int listCount = reservationService.selectListPetsitterRev(userNo);
+		
+		int pageLimit = 10;
+		int boardLimit = 10;
+		
+		PageInfo pi = Pagination.getPageInfo(listCount, currentPage, pageLimit, boardLimit);
+		
+		ArrayList<Reservation> rev = reservationService.petsitterRevList(userNo, pi);
+		
+		model.addAttribute("rev", rev);
+		model.addAttribute("pi", pi);
+		
+		return "reservation/reservationListPetsiter";
+	}
+	
+	
+	
+	@RequestMapping("searchKeyword")
+	public String searchKeyword(Model model, HttpSession session, 
+			@RequestParam(value="keyword") String keyword) {
+		
+//		System.out.println(keyword);
+		
+		ArrayList<Reservation> word = reservationService.searchKeyword(keyword);
+//		System.out.println(word);
+		
+		model.addAttribute("keyword", keyword);
+		model.addAttribute("word", word);
+		
+		return "reservation/reservationListPetsiter";
+	}
+	
+	
+	
+	
+	
 	
 	
 	/**

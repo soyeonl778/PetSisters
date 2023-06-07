@@ -41,6 +41,7 @@ DROP SEQUENCE SEQ_JOURNAL;           -- 돌봄일지 번호를 발생시킬 시퀀스
 DROP SEQUENCE SEQ_J_ATTACHMENT;      -- 돌봄일지 첨부파일 번호를 발생시킬 시퀀스
 DROP SEQUENCE SEQ_CHAT_ROOM;         -- 채팅방 번호를 발생시킬 시퀀스
 DROP SEQUENCE SEQ_MESSAGE;           -- 채팅메세지 번호를 발생시킬 시퀀스
+DROP SEQUENCE SEQ_PAYMENT;           -- 결제 번호를 발생시킬 시퀀스
 
 CREATE SEQUENCE SEQ_MEMBER NOCACHE;
 CREATE SEQUENCE SEQ_INQUIRY NOCACHE;
@@ -60,6 +61,7 @@ CREATE SEQUENCE SEQ_JOURNAL NOCACHE;
 CREATE SEQUENCE SEQ_J_ATTACHMENT NOCACHE;
 CREATE SEQUENCE SEQ_CHAT_ROOM NOCACHE;
 CREATE SEQUENCE SEQ_MESSAGE NOCACHE;
+CREATE SEQUENCE SEQ_PAYMENT NOCACHE;
 
 --------------------------------------------------
 ----------------    회원 테이블    -----------------

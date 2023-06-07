@@ -58,6 +58,24 @@ public class ReservationDao {
 		return sqlSession.selectOne("reservationMapper.reservationDetail", rNo);
 	}
 
+	public ArrayList<Reservation> petsitterRevList(SqlSessionTemplate sqlSession, int userNo, PageInfo pi) {
+		
+		int offset = (pi.getCurrentPage() - 1) * pi.getBoardLimit();	// 건너뛸 숫자
+		int limit = pi.getBoardLimit();		// 조회할 갯수
+		
+		RowBounds rowBounds = new RowBounds(offset, limit);
+		
+		return (ArrayList)sqlSession.selectList("reservationMapper.petsitterRevList", userNo, rowBounds);
+	}
+
+	public int selectListPetsitterRev(SqlSessionTemplate sqlSession, int userNo) {
+		return sqlSession.selectOne("reservationMapper.selectListPetsitterRev", userNo);
+	}
+
+	public ArrayList<Reservation> searchKeyword(SqlSessionTemplate sqlSession, String keyword) {
+		return (ArrayList)sqlSession.selectList("reservationMapper.searchKeyword", keyword);
+	}
+
 
 
 }

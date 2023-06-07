@@ -186,6 +186,96 @@ VALUES ( SEQ_RESERVATION.NEXTVAL,
          2,
          4);
          
+INSERT INTO RESERVATION 
+VALUES ( SEQ_RESERVATION.NEXTVAL,
+         '2023-06-01',
+         '2023-06-20',
+         '2023-05-29',
+         '¸Þ¼¼ÁöÀÔ´Ï´Ù',
+         'Y',
+         3,
+         4);        
+         
+INSERT INTO RESERVATION 
+VALUES ( SEQ_RESERVATION.NEXTVAL,
+         '2023-06-10',
+         '2023-06-11',
+         '2023-05-30',
+         '¿©±âºÎÅÍ½ÃÀÛ',
+         'Y',
+         3,
+         4);  
+         
+INSERT INTO RESERVATION 
+VALUES ( SEQ_RESERVATION.NEXTVAL,
+         '2023-06-08',
+         '2023-06-09',
+         '2023-06-01',
+         'Çò°¥¸°´Ù',
+         'Y',
+         3,
+         4);  
+         
+INSERT INTO RESERVATION 
+VALUES ( SEQ_RESERVATION.NEXTVAL,
+         '2023-06-15',
+         '2023-06-29',
+         '2023-06-03',
+         '¹ú½á¾îÁö·¯¿ö',
+         'Y',
+         3,
+         4);  
+         
+INSERT INTO RESERVATION 
+VALUES ( SEQ_RESERVATION.NEXTVAL,
+         '2023-06-01',
+         '2023-06-30',
+         '2023-06-04',
+         '¸î°³³²¾ÒÁö',
+         'Y',
+         3,
+         4);  
+         
+INSERT INTO RESERVATION 
+VALUES ( SEQ_RESERVATION.NEXTVAL,
+         '2023-06-11',
+         '2023-06-29',
+         '2023-06-05',
+         '¾îµð°¡³¡ÀÌ¾ß',
+         'Y',
+         3,
+         4);  
+         
+INSERT INTO RESERVATION 
+VALUES ( SEQ_RESERVATION.NEXTVAL,
+         '2023-06-29',
+         '2023-07-01',
+         '2023-06-07',
+         'ÀÌÁ¦±×¸¸Á¦¹ß',
+         'Y',
+         3,
+         4);  
+         
+INSERT INTO RESERVATION 
+VALUES ( SEQ_RESERVATION.NEXTVAL,
+         '2023-06-10',
+         '2023-06-20',
+         '2023-06-08',
+         'µµ¿ò!',
+         'Y',
+         3,
+         4);  
+         
+INSERT INTO RESERVATION 
+VALUES ( SEQ_RESERVATION.NEXTVAL,
+         '2023-07-01',
+         '2023-07-20',
+         '2023-06-10',
+         '½Ã¸¶ÀÌµ¥¾²',
+         'Y',
+         3,
+         4);           
+         
 --------------------------------------------------
 ---------------    ÈÄ±â Å×ÀÌºí ´õ¹Ì    --------------
 --------------------------------------------------
@@ -244,6 +334,138 @@ VALUES(SEQ_DOG.NEXTVAL,
 --------------    Ã¤ÆÃ¹æ Å×ÀÌºí ´õ¹Ì    --------------
 --------------------------------------------------
 INSERT INTO CHAT_ROOM VALUES(1,1,2);
+
+
+--------------------------------------------------
+--------------    °áÁ¦ Å×ÀÌºí ´õ¹Ì    --------------
+--------------------------------------------------
+INSERT INTO PAYMENT       
+VALUES(SEQ_PAYMENT.NEXTVAL,
+       SYSDATE,
+       'ÀÏÁÖÀÏ µ¥½¹',
+       165000,
+       DEFAULT,
+       1);
+
+INSERT INTO PAYMENT       
+VALUES(SEQ_PAYMENT.NEXTVAL,
+       SYSDATE,
+       '°­¾ÆÁö¾²',
+       300000,
+       DEFAULT,
+       2);
+       
+INSERT INTO PAYMENT       
+VALUES(SEQ_PAYMENT.NEXTVAL,
+       SYSDATE,
+       '°»¾óÁã',
+       550000,
+       DEFAULT,
+       3);
+       
+INSERT INTO PAYMENT       
+VALUES(SEQ_PAYMENT.NEXTVAL,
+       SYSDATE,
+       '¸¹´Ù',
+       55000,
+       DEFAULT,
+       4);
+       
+INSERT INTO PAYMENT       
+VALUES(SEQ_PAYMENT.NEXTVAL,
+       SYSDATE,
+       '³Ñ¸¹¾î',
+       110000,
+       DEFAULT,
+       5);
+       
+INSERT INTO PAYMENT       
+VALUES(SEQ_PAYMENT.NEXTVAL,
+       SYSDATE,
+       'ÇÏ·ç´ÙÀÓ¸¶',
+       55000,
+       DEFAULT,
+       6);
+       
+INSERT INTO PAYMENT       
+VALUES(SEQ_PAYMENT.NEXTVAL,
+       SYSDATE,
+       '¾¾´Ù¾¾',
+       165000,
+       DEFAULT,
+       7);       
+       
+INSERT INTO PAYMENT       
+VALUES(SEQ_PAYMENT.NEXTVAL,
+       SYSDATE,
+       'ÆÈºìÂ°',
+       220000,
+       DEFAULT,
+       8);
+       
+INSERT INTO PAYMENT       
+VALUES(SEQ_PAYMENT.NEXTVAL,
+       SYSDATE,
+       '±¸¹øÂ°',
+       55000,
+       DEFAULT,
+       9); 
+       
+INSERT INTO PAYMENT       
+VALUES(SEQ_PAYMENT.NEXTVAL,
+       SYSDATE,
+       '¸¶Áö¸·',
+       1100000,
+       DEFAULT,
+       10);       
+       
+INSERT INTO PAYMENT       
+VALUES(SEQ_PAYMENT.NEXTVAL,
+       SYSDATE,
+       'ÀÌ°Ô¹¹³Æ¸»ÀÔ´Ï´Ù',
+       110000,
+       DEFAULT,
+       11);  
+       
+INSERT INTO PAYMENT       
+VALUES(SEQ_PAYMENT.NEXTVAL,
+       SYSDATE,
+       'ÀÌ°Ô¸Â³ª',
+       550000,
+       DEFAULT,
+       12);  
+       
+INSERT INTO PAYMENT       
+VALUES(SEQ_PAYMENT.NEXTVAL,
+       SYSDATE,
+       '¸ð¸£°Î´Ù',
+       55000,
+       DEFAULT,
+       13);  
+       
+INSERT INTO PAYMENT       
+VALUES(SEQ_PAYMENT.NEXTVAL,
+       SYSDATE,
+       '¾Æ¸ô¶û',
+       165000,
+       DEFAULT,
+       14);  
+       
+INSERT INTO PAYMENT       
+VALUES(SEQ_PAYMENT.NEXTVAL,
+       SYSDATE,
+       'ÆRÃP',
+       1100000,
+       DEFAULT,
+       15);  
+       
+INSERT INTO PAYMENT       
+VALUES(SEQ_PAYMENT.NEXTVAL,
+       SYSDATE,
+       'Èå¾ÆµÎ¿ìÀÚ',
+       1100000,
+       DEFAULT,
+       16);         
        
 --------------------------------------------------
 -----------------    Ä¿¹Ô±¸¹®    ------------------

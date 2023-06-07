@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Data
 public class Reservation {
 	
-
+	private int rowNum;
 	private int resNo;  			// 예약번호 	RES_NO	NUMBER		
 	private Date startDate;			// 시작일시	START_DATE	DATE
 	private Date endDate;			// 종료일시 	END_DATE	DATE
@@ -48,5 +48,14 @@ public class Reservation {
 	private String dogBreed;	//  강아지 견종
 	private String userName;	//  펫시터 이름
 	private String userFile;	//  유저 프로필 사진(처음 회원가입 할 때 사람 프로필임)	
+	
+	// ============ 펫시터 관련 =============
+	
+	// 펫시터 예약 목록 조회시 필요한 정보
+	private int payPrice;		//  예약 고객의 결제 금액
+	
+	
+	
+	
 	
 }

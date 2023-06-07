@@ -60,5 +60,22 @@ public class ReservationServiceImpl implements ReservationService{
 		return reservationDao.reservationDetail(sqlSession, rNo);
 	}
 
+	@Override
+	public int selectListPetsitterRev(int userNo) {
+		return reservationDao.selectListPetsitterRev(sqlSession, userNo);
+	}
+
+	@Override
+	public ArrayList<Reservation> petsitterRevList(int userNo, PageInfo pi) {
+		return reservationDao.petsitterRevList(sqlSession, userNo, pi);
+	}
+
+	@Override
+	public ArrayList<Reservation> searchKeyword(String keyword) {
+		return reservationDao.searchKeyword(sqlSession, keyword);
+	}
+
+	
+
 
 }

@@ -3,6 +3,7 @@
 <mapper namespace="reservationMapper">
 
 	<resultMap id="reservationResultSet" type="reservation">
+		<result column="ROWNUM" property="rowNum" />
 		<result column="RES_NO" property="resNo" />
 		<result column="START_DATE" property="startDate" />
 		<result column="END_DATE" property="endDate" />
@@ -26,6 +27,7 @@
 		<result column="D_BREED" property="dogBreed" />
 		<result column="USER_NAME" property="userName" />
 		<result column="USER_FILE" property="userFile" />
+		<result column="PAY_PRICE" property="payPrice" />
 	</resultMap>
 	
 	<resultMap id="reviewResultSet" type="review">
@@ -160,6 +162,59 @@
 		 WHERE R.RES_NO = #{rNo}	
 	</select>
 	
+	
+	
+	
+	
+	<!-- 여기서부터 펫시터 전용 쿼리문 -->
+	
+	<!-- 펫시터 예약 리스트 조회용 쿼리문 -->
+	<select id="petsitterRevList" parameterType="_int" resultMap="reservationResultSet">
+       SELECT ROWNUM, A.*
+         FROM (SELECT RES_NO,
+		       R.STATUS STATUS,
+		       M.USER_NAME USER_NAME,  
+		       R.START_DATE START_DATE,
+		       R.END_DATE END_DATE,
+		       R.REGISTER_DATE REGISTER_DATE,
+		       PAY_PRICE
+		  FROM RESERVATION R
+		  JOIN MEMBER M ON R.USER_NO = M.USER_NO
+		  LEFT JOIN PAYMENT P ON R.RES_NO = P.REF_RESNO
+		  JOIN PETSITTER PT ON R.REF_PNO = PT.P_NO
+		 WHERE PT.USER_NO = #{userNo}
+		   AND R.STATUS = 'Y'
+		 ORDER BY R.REGISTER_DATE DESC) A
+	</select>
+	
+	
+	<!-- 펫시터 예약 갯수 조회용 쿼리문 -->
+	<select id="selectListPetsitterRev" resultType="_int">
+		SELECT COUNT(*)
+		FROM RESERVATION
+		WHERE REF_PNO = #{userNo}	
+	</select>
+	
+	
+	<!-- 펫시터 예약 검색 기능용 쿼리문 -->
+	<select id="searchKeyword" resultMap="reservationResultSet" parameterType="string">
+       SELECT ROWNUM, A.*
+         FROM (SELECT RES_NO,
+		       R.STATUS STATUS,
+		       M.USER_NAME USER_NAME,  
+		       R.START_DATE START_DATE,
+		       R.END_DATE END_DATE,
+		       R.REGISTER_DATE REGISTER_DATE,
+		       PAY_PRICE
+		  FROM RESERVATION R
+		  JOIN MEMBER M ON R.USER_NO = M.USER_NO
+		  LEFT JOIN PAYMENT P ON R.RES_NO = P.REF_RESNO
+		  JOIN PETSITTER PT ON R.REF_PNO = PT.P_NO
+		 WHERE PT.USER_NO = 4
+		   AND R.STATUS = 'Y'
+           AND USER_NAME LIKE '%' || #{keyword} || '%'
+		 ORDER BY R.REGISTER_DATE DESC) A	
+	</select>
 	
 </mapper>
 
