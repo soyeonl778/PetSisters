@@ -26,14 +26,13 @@ public class InquiryServiceImpl implements InquiryService {
 	}
 
 	@Override
-	public List<Inquiry> selectList(PageInfo pi, int userNo) {
-		return inquiryDao.selectList(sqlSession, pi, userNo);
+	public List<Inquiry> selectList(PageInfo pi) {
+		return inquiryDao.selectList(sqlSession, pi);
 	}
 
 	@Override
 	public int insertInquiry(Inquiry i) {
-		// TODO Auto-generated method stub
-		return 0;
+		return inquiryDao.insertInquiry(sqlSession, i);
 	}
 
 	@Override

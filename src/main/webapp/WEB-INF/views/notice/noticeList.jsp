@@ -36,7 +36,7 @@
                   <li>
                     <a href="/showFaq">자주하는 질문</a>
                   </li>
-                  <li>
+                  <li class="inquiry">
                     <a href="list.in">1:1 문의</a>
                   </li>
                 </ul>
@@ -133,6 +133,17 @@
 			/* console.log(noticeNo); */
 			location.href = "detail.no?noticeNo=" + noticeNo;
 		});
+  	});
+  </script>
+  <script>
+  	$(function() {
+  		$("li.inquiry > a").click(function(e) {
+  			e.preventDefault();
+  			
+  			let userNo = "${loginUser.userNo}";
+  			let url = "list.in?userNo=" + userNo;
+  			location.href = url;
+  		});
   	});
   </script>
 </body>

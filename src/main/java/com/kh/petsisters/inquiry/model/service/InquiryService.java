@@ -12,7 +12,7 @@ public interface InquiryService {
 	// 1:1문의 게시글의 총 개수 조회
 	int selectListCount();
 	// 1:1문의 리스트 조회
-	List<Inquiry> selectList(PageInfo pi, int userNo);
+	List<Inquiry> selectList(PageInfo pi);
 	
 	// 1:1문의 작성하기 서비스
 	int insertInquiry(Inquiry i);

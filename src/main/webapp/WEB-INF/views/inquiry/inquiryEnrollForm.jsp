@@ -6,6 +6,7 @@
   <meta charset="UTF-8" />
   
   <link rel="stylesheet" href="/resources/css/inquiry/inquiryEnrollForm.css">
+  <link rel="stylesheet" href="/resources/css/common/form.css">
   <jsp:include page="../common/common.jsp" />
   
   <script src="/resources/js/inquiryEnrollForm.js"></script>
@@ -26,7 +27,7 @@
           <div class="page_aticle aticle_type2">
             <!-- 사이드 메뉴바 -->
             <div id="snb" class="snb_my" style="position: absolute;">
-              <img src="/resources/img/사이드바이미지.png" alt="sideBarImg">
+              <img src="/resources/img/main/사이드바이미지.png" alt="sideBarImg">
               <h2 class="tit_snb">고객센터</h2>
               <div class="inner_sub">
                 <ul class="list_menu">
@@ -48,39 +49,23 @@
             <div id="viewOrderList" class="page_section section_orderlist">
               <div class="page_section section_destination">
                 <div class="title">
-                    <h2>1:1 문의</h2>
-                    <hr/>
+                  <h2>1:1 문의</h2>
+                  <hr/>
                 </div>
 
                 <br/>
                 
                 <div class="inquiryEnrollForm">
                   <form action="insert.in" method="post" enctype="multipart/form-data">
-                    <input type="hidden" name="memberNo">
                     <table id="inquiryEnrollForm" style="text-align: center;">
                         <tr>
-                            <th>유형*</th>
-                            <td>
-                                <div class="selectBox">
-                                    <label for="in_select">문의유형을 선택해주세요</label>
-                                    <select id="in_select" required>
-                                        <option value="order">주문/결제문의</option>
-                                        <option value="coupon">이벤트/쿠폰문의</option>
-                                        <option value="reserved">예약문의</option>
-                                        <option value="service">서비스문의</option>
-                                        <option value="etc">기타문의</option>
-                                    </select>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
                             <th>제목*</th>
-                            <td><input type="text" class="inquiry" placeholder="제목을 입력해주세요." required></td>
+                            <td><input type="text" class="inquiry" name="inquiryTitle" placeholder="제목" required></td>
                         </tr>
                         <tr>
                             <th>내용*</th>
                             <td>
-                              <textarea class="inquiry inquiryContent" placeholder="내용을 입력해주세요."></textarea>
+                                <textarea class="inquiry inquiryContent" name="inquiryContent" placeholder="내용을 입력해주세요." required></textarea>
                             </td>
                         </tr>
                         <tr>
@@ -97,13 +82,15 @@
                           </td>
                         </tr>
                     </table>
+                    <br/>
+	                <div align="center">
+	                  <button type="submit" class="btn btn-primary">등록하기</button>
+	                  <button type="button" onclick="history.back();" class="btn btn-outline-primary">뒤로가기</button>
+	                </div>
                   </form>
                 </div>
                 
-                <br/>
-                <div style="text-align: center;">
-                  <a href="" class="btn btn-primary">등록하기</a>
-                </div>
+                
               </div>
             </div>
             <!-- 본문 영역 끝-->
@@ -128,5 +115,31 @@
             document.signform.submit();
         }
     </script>
+    <script>
+	  $(function() {
+	    $("#in_select").change(function() {
+	      var selectedOption = $(this).val();
+	      switch (selectedOption) {
+	        case "order":
+	          $("label[for='in_select']").text("주문/결제문의");
+	          break;
+	        case "coupon":
+	          $("label[for='in_select']").text("이벤트/쿠폰문의");
+	          break;
+	        case "reserved":
+	          $("label[for='in_select']").text("예약문의");
+	          break;
+	        case "service":
+	          $("label[for='in_select']").text("서비스문의");
+	          break;
+	        case "etc":
+	          $("label[for='in_select']").text("기타문의");
+	          break;
+	        default:
+	          $("label[for='in_select']").text("문의유형을 선택해주세요");
+	      }
+	    });
+	  });
+	</script>
 </body>
 </html>

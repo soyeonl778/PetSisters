@@ -13,6 +13,7 @@
 		<typeAlias type="com.kh.petsisters.member.model.vo.Dog" alias="dog" />
 		<typeAlias type="com.kh.petsisters.petsitter.model.vo.PetSitter" alias="petSitter" />
 		<typeAlias type="com.kh.petsisters.inquiry.model.vo.Inquiry" alias="inquiry" />
+		<typeAlias type="com.kh.petsisters.inquiry.model.vo.CSAttachment" alias="csAttachment" />
 		<typeAlias type="com.kh.petsisters.notice.model.vo.Notice" alias="notice" />
 		<typeAlias type="com.kh.petsisters.member.model.vo.Support" alias="support" />
 		<typeAlias type="com.kh.petsisters.chat.model.vo.ChatMessage" alias="chatMessage" />
