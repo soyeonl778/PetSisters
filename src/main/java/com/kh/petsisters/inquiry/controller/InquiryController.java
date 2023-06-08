@@ -13,12 +13,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.gson.Gson;
 import com.kh.petsisters.common.model.vo.PageInfo;
 import com.kh.petsisters.common.template.Pagination;
 import com.kh.petsisters.inquiry.model.service.InquiryService;
+import com.kh.petsisters.inquiry.model.vo.CSReply;
 import com.kh.petsisters.inquiry.model.vo.Inquiry;
 import com.kh.petsisters.member.model.vo.Member;
 
@@ -57,13 +60,13 @@ public class InquiryController {
 	}
 	
 	@RequestMapping("insert.in")
-	public String insertInquiry(Inquiry i, MultipartFile upfile, HttpSession session, Model model) {
+	public String insertInquiry(Inquiry i, HttpSession session, Model model) {
 		
-		if(!upfile.getOriginalFilename().equals("")) {
+		if(!getOriginalFilename().equals("")) {
 			
-			String changeName = saveFile(upfile, session);
+			String changeName = saveFile(session);
 			
-			i.setOriginName(upfile.getOriginalFilename());
+			i.setOriginName(getOriginalFilename());
 			i.setChangeName("resources/upFiles/inquiry_upfiles/" + changeName);
 		}
 		
@@ -83,7 +86,7 @@ public class InquiryController {
 			return "notice/errorPage";
 		}
 	}
-	
+
 	@RequestMapping("detail.in")
 	public ModelAndView selectInquiry(ModelAndView mv, int inquiryNo) {
 		
@@ -103,31 +106,47 @@ public class InquiryController {
 		return mv;
 	}
 	
-	
-	// 현재 넘어온 첨부파일 그 자체를 파일명 수정 후 서버의 폴더에 저장시키는 일반 메소드 작성
-	private String saveFile(MultipartFile upfile, HttpSession session) {
+	@RequestMapping("delete.in")
+	public String deleteInquiry(int inquiryNo, Model model, String filePath, HttpSession session, Member loginUser) {
 		
-		String originName = upfile.getOriginalFilename();
+		int result = inquiryService.deleteInquiry(inquiryNo);
 		
-		String currentTime = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
-		// import java.util.Date
-		
-		int ranNum = (int)(Math.random() * 90000 + 10000);
-		
-		String ext = originName.substring(originName.lastIndexOf(".")); // ".jpg"
-		
-		String changeName = currentTime + ranNum + ext;
-		
-		String savePath = session.getServletContext().getRealPath("/resources/upFiles/inquiry_upfiles/");
-	
-		try {
-			upfile.transferTo(new File(savePath + changeName));
-		} catch (IOException e) {
-			e.printStackTrace();
+		if(result > 0) {
+			
+			if(!filePath.contentEquals("")) {
+				String realPath = session.getServletContext().getRealPath(filePath);
+				new File(realPath).delete();
+			}
+			
+			session.setAttribute("alertMsg", "성공적으로 문의글을 삭제하였습니다.");
+			
+			return "redirect:/list.in?userNo=" + loginUser.getUserNo();
+			
+		} else {
+			
+			model.addAttribute("errorMsg", "문의글 삭제 실패");
+			
+			return "notice/errorPage";
 		}
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="rlist.in", produces="application/json; charset=UTF-8")
+	public String ajaxSelectReplyList(int inquiryNo) {
 		
-		return changeName;
+		List<CSReply> list = inquiryService.selectReplyList(inquiryNo);
+
+		return new Gson().toJson(list);
 		
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="rinsert.in", produces="text/html; charset=UTF-8")
+	public String ajaxInsertReply(CSReply r) {
+		
+		int result = inquiryService.insertReply(r);
+		
+		return (result > 0) ? "success" : "fail"; // 무조건 문자열 타입으로 응답데이터 리턴
 	}
 	
 }

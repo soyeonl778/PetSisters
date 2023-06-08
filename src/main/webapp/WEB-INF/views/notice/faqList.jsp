@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,7 +36,7 @@
                   <li class="on">
                     <a onclick="event.preventDefault();">자주하는 질문</a>
                   </li>
-                  <li>
+                  <li class="inquiry">
                     <a href="list.in">1:1 문의</a>
                   </li>
                 </ul>
@@ -203,6 +204,18 @@
   <!-- Footer 영역 시작 -->
   	<jsp:include page="../common/footer.jsp" />
   <!-- Footer 영역 끝 -->
+  
+  <script>
+  	$(function() {
+  		$("li.inquiry > a").click(function(e) {
+  			e.preventDefault();
+  			
+  			let userNo = "${loginUser.userNo}";
+  			let url = "list.in?userNo=" + userNo;
+  			location.href = url;
+  		});
+  	});
+  </script>
 
 </body>
 </html>

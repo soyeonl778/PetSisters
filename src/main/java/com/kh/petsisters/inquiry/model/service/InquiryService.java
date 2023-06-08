@@ -19,20 +19,15 @@ public interface InquiryService {
 	int insertInquiry(Inquiry i);
 	
 	// 1:1문의 상세조회 서비스
-	// 1:1문의 조회수 증가
-	int increaseCount(int inquiryNo);
 	// 1:1문의 상세 조회
 	Inquiry selectInquiry(int inquiryNo);
 	
 	// 1:1문의 삭제 서비스
 	int deleteInquiry(int inquiryNo);
 	
-	// 1:1문의 수정 서비스
-	int updateInquiry(Inquiry i);
-	
 	// 댓글 리스트 조회 서비스 (Ajax)
 	List<CSReply> selectReplyList(int inquiryNo);
 	
 	// 댓글 작성 서비스 (Ajax)
-	int insertCSReply(CSReply r);
+	int insertReply(CSReply r);
 }

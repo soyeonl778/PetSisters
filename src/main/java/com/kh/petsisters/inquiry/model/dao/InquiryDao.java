@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.kh.petsisters.common.model.vo.PageInfo;
+import com.kh.petsisters.inquiry.model.vo.CSReply;
 import com.kh.petsisters.inquiry.model.vo.Inquiry;
 import com.kh.petsisters.member.model.vo.Member;
 
@@ -36,12 +37,19 @@ public class InquiryDao {
 		return sqlSession.insert("inquiryMapper.insertInquiry", i);
 	}
 	
-	public int increaseCount(SqlSessionTemplate sqlSession, int inquiryNo) {
-		return sqlSession.update("inquiryMapper.increaseCount", inquiryNo);
-	}
-	
 	public Inquiry selectInquiry(SqlSessionTemplate sqlSession, int inquiryNo) {
 		return sqlSession.selectOne("inquiryMapper.selectInquiry", inquiryNo);
 	}
 	
+	public int deleteInquiry(SqlSessionTemplate sqlSession, int inquiryNo) {
+		return sqlSession.selectOne("inquiryMapper.deleteInquiry", inquiryNo);
+	}
+	
+	public List<CSReply> selectReplyList(SqlSessionTemplate sqlSession, int inquiryNo) {
+		return sqlSession.selectList("inquiryMapper.selectReplyList", inquiryNo);
+	}
+
+	public int insertReply(SqlSessionTemplate sqlSession, CSReply r) {
+		return sqlSession.insert("inquiryMapper.insertReply", r);
+	}
 }

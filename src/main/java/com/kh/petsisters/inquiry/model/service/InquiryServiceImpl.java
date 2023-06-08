@@ -37,36 +37,22 @@ public class InquiryServiceImpl implements InquiryService {
 	}
 
 	@Override
-	public int increaseCount(int inquiryNo) {
-		return inquiryDao.increaseCount(sqlSession, inquiryNo);
-	}
-
-	@Override
 	public Inquiry selectInquiry(int inquiryNo) {
 		return inquiryDao.selectInquiry(sqlSession, inquiryNo);
 	}
 
 	@Override
 	public int deleteInquiry(int inquiryNo) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int updateInquiry(Inquiry i) {
-		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.delete("inquiryMapper.deleteInquiry", inquiryNo);
 	}
 
 	@Override
 	public List<CSReply> selectReplyList(int inquiryNo) {
-		// TODO Auto-generated method stub
-		return null;
+		return sqlSession.selectList("inquiryMapper.selectReplyList", inquiryNo);
 	}
 
 	@Override
-	public int insertCSReply(CSReply r) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int insertReply(CSReply r) {
+		return sqlSession.insert("inquiryMapper.insertReply", r);
 	}
 }

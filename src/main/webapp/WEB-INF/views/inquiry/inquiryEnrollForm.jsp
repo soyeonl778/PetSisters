@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%> 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html lang="en">
@@ -38,8 +38,8 @@
                   <li>
                     <a href="/showFaq">자주하는 질문</a>
                   </li>
-                  <li class="inquiry on">
-                    <a href="list.in">1:1 문의</a>
+                  <li class="on">
+                    <a href="event.preventDefault();">1:1 문의</a>
                   </li>
                 </ul>
               </div>
@@ -57,7 +57,7 @@
                 <br/>
                 
                 <div class="inquiryEnrollForm">
-                  <form action="insert.in" method="post" enctype="multipart/form-data">
+                  <form action="insert.in" method="post">
                     <table id="inquiryEnrollForm" style="text-align: center;">
                         <tr>
                             <th>제목*</th>
@@ -142,16 +142,5 @@
 	    });
 	  });
 	</script>
-	<script>
-	  	$(function() {
-	  		$("li.inquiry > a").click(function(e) {
-	  			e.preventDefault();
-	  			
-	  			let userNo = "${loginUser.userNo}";
-	  			let url = "list.in?userNo=" + userNo;
-	  			location.href = url;
-	  		});
-	  	});
-	 </script>
 </body>
 </html>

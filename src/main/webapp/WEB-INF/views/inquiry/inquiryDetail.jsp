@@ -52,7 +52,7 @@
                     <hr/>
                 </div>
                 
-                <c:if test="${ not empty loginUser }">
+                <c:if test="${ (not empty loginUser) and (loginUser.userNo eq i.userNo) }">
                 	<div align="right">
 	                    <a class="btn btn-primary" onclick="postFormSubmit(1);">수정하기</a>
 	                    <a class="btn btn-danger" onclick="postFormSubmit(2);">삭제하기</a>
@@ -60,8 +60,17 @@
                 	<br/>
                 	
                 	<form id="postForm" action="" method="post">
-		            	<input type="hidden" name="inquiryNo" value="${ i.inquiryNo }">
+		            	<input type="hidden" name="inquiryNo" value="${i.inquiryNo}">
 		            </form>
+		            <script>
+						function postFormSubmit(num) {
+							if(num == 1) { // 수정하기 버튼을 클릭했을 경우
+								$("#postForm").attr("action", "updateForm.in").submit();
+							} else { // 삭제하기 버튼을 클릭했을 경우
+								$("#postForm").attr("action", "delete.in").submit();
+							}
+						}
+		            </script>
                 </c:if>
                 
                 <div class="inquiryDetail">
@@ -69,46 +78,42 @@
                         <tr>
                             <th>제목</th>
                             <td>
-                                <div class="inquiry">우리 강아지에게 없던 상처가 생겼어요..</div>
+                                <div class="inquiry">${i.inquiryTitle}</div>
                             </td>
                         </tr>
                         <tr>
                             <th>작성일</th>
                             <td>
-                                <div class="inquiry">2023-05-29</div>
+                                <div class="inquiry">${i.createDate}</div>
                             </td>
                         </tr>
                         <tr>
                             <th>내용</th>
                             <td>
                                 <div class="inquiry inquiryContent">
-					                                    저번 주말에 펫시팅을 맡겼었는데 오늘 확인해보니 아이에게 생긴지 얼마 안 된 상처가 발견됐습니다. <br/>
-					                                    펫시터에겐 이와 관련해서 전달받은 내용이 없었고요... 확인 부탁드립니다.
+									${i.inquiryContent}
                                 </div>
                             </td>
                         </tr>
                         <tr>
                           <th>첨부파일</th>
-                          <td>
-                            <div class="attZone">
-                              <div class="items">
-                                <img src="/resources/img/두부02-0107.jpg">
-                              </div>
-                            </div>
+                          <td class="attZone items">
+                          	<c:choose>
+	                    		<c:when test="${ empty i.filePath }">
+	                    			첨부파일이 없습니다.
+	                    		</c:when>
+	                    		<c:otherwise>
+	                    			${i.filePath}
+	                    		</c:otherwise>
+                    		</c:choose>
                           </td>
-                        </tr>
-                        <tr>
-                            <th>답변상태</th>
-                            <td style="text-align: left;">
-                               	 답변대기
-                            </td>
                         </tr>
                     </table>
                 </div>
                 
                 <br/>
                 <div style="text-align: right;">
-                  <a href="list.in" class="btn btn-outline-primary">목록으로</a>
+                  <button type="button" onclick="history.back();" class="btn btn-outline-primary">목록으로</button>
                 </div>
                 
               </div>

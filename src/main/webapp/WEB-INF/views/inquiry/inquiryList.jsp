@@ -63,7 +63,6 @@
                     <tr class="category">
                         <th height="51">제목</th>
                         <th width="100">작성일</th>
-                        <th width="100">답변상태</th>
                     </tr>
                   </thead>
                   <c:choose>
@@ -73,7 +72,6 @@
 			                  		<tr>
 			                  			<td height="51">${i.inquiryTitle}</td>
 			                  			<td>${i.createDate}</td>
-			                  			<td>${i.replyStatus}</td>
 			                  		</tr>
 			                  	</c:forEach>
 	                  		</tbody>							
