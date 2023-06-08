@@ -11,8 +11,8 @@ import lombok.ToString;
 @ToString
 public class CSReply {
 	
-	private int repIno;
-	private String repIcontent;
+	private int repNo;
+	private String repContent;
 	private String createDate;
 	private String status;
 	private int userNo;

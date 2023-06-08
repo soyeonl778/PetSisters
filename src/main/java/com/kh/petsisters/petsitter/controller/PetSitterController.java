@@ -25,11 +25,14 @@ public class PetSitterController {
 
 	@RequestMapping("detail.pe")
 	public ModelAndView selectPetSitter(ModelAndView mv,
+										HttpSession session,
 			                            int pno) {
 		
 		// 프로필 상세조회용 응답데이터 조회
 		PetSitter p = petSitterService.selectPetSitter(pno);
-		// Review r = petSitterService.selectReview(pno);
+		
+		// 프로필 상세페이지 후기 리스트 조회
+		ArrayList<Review> revList = petSitterService.selectReviewList();
 		
 		// 조회된 데이터를 mv 에 담아서 포워딩 페이지 경로를 잡아주기
 		mv.addObject("p", p).setViewName("petsitter/petSitterDetailView");

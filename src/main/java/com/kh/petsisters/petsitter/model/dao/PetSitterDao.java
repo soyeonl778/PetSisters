@@ -38,10 +38,10 @@ public class PetSitterDao {
 		return (ArrayList)sqlSession.selectList("petSitterMapper.selectList", null, rowBounds);
 	}
 	
-//	public Review selectReview(SqlSessionTemplate sqlSession, int pno) {
-//		
-//		return sqlSession.selectOne("");
-//	}
+	public ArrayList<Review> selectReviewList(SqlSessionTemplate sqlSession) {
+		
+		return (ArrayList)sqlSession.selectList("petSitterMapper.selectReviewList");
+	}
 }
 
 

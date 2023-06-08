@@ -15,20 +15,13 @@
 	</resultMap>
 
 	<resultMap id="csreplyResultSet" type="csReply">
-		<result column="REP_INO" property="repIno" />
-		<result column="REP_ICONTENT" property="repIcontent" />
+		<result column="REP_NO" property="repNo" />
+		<result column="REP_CONTENT" property="repContent" />
 		<result column="CREATE_DATE" property="createDate" />
 		<result column="STATUS" property="status" />
 		<result column="USER_NO" property="userNo" />
 		<result column="REF_INO" property="refIno" />
 	</resultMap>
-
-	<!-- 1:1 문의글 총 개수 구하는 쿼리문 -->
-	<select id="selectListCount" resultType="_int">
-		SELECT COUNT(*)
-		  FROM INQUIRY
-		 WHERE STATUS = 'Y'
-	</select>
 	
 	<!-- 1:1 문의글 리스트를 구해주는 쿼리문 -->
 	<select id="selectList" resultMap="inquiryResultSet" parameterType="member">
@@ -41,7 +34,7 @@
 	</select>
 	
 	<!-- 1:1문의글 작성용 쿼리문 -->
-	<insert id="insertInquiry" parameterType="Inquiry">
+	<insert id="insertInquiry" parameterType="inquiry">
 		INSERT INTO INQUIRY(I_NO
 						  , I_TITLE		
 						  , I_CONTENT
@@ -59,6 +52,35 @@
 		  FROM INQUIRY
 		 WHERE I_NO = #{inquiryNo}
 	</select>
+	
+	<!-- 게시글 삭제용 쿼리문 -->
+	<update id="deleteBoard" parameterType="_int">
+		UPDATE BOARD
+		   SET STATUS = 'N'
+		 WHERE BOARD_NO = #{boardNo}
+	</update>
+	
+	<!-- 댓글 리스트 조회용 쿼리문 -->
+	<select id="selectReplyList" parameterType="_int" resultMap="csreplyResultSet">
+		SELECT
+		REP_NO, REP_CONTENT, TO_CHAR(CREATE_DATE, 'YYYY-MM-DD') AS "CREATE_DATE", REF_INO
+		  FROM CS_REPLY
+		 WHERE STATUS = 'Y'
+		   AND REF_INO = #{inquiryNo}
+		 ORDER BY REP_NO DESC
+	</select>
+	
+	<!-- 댓글 작성용 쿼리문 -->
+	<insert id="insertReply" parameterType="csReply">
+		INSERT INTO CS_REPLY(REP_NO
+						, REP_CONTENT
+						, REF_INO
+						, CREATE_DATE)
+		  		   VALUES(SEQ_CS_REPLY.NEXTVAL
+		  		   		, #{repContent}
+		  		   		, #{inquiryNo}
+		  		   		, #{createDate})
+	</insert>
 	
 </mapper>
 
