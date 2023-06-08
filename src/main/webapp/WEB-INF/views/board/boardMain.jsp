@@ -42,7 +42,7 @@
                   <div class="search-section">
                     <div class="search-title">
                       <h4 id="tagline">반려동물 커뮤니티 채널</h4>
-                      <h3 id="brand">펫시스터즈<img src="../resources/img/ex3.png"></h3>
+                      <h3 id="brand">펫시스터즈<img id="smallLogoImg" src="/resources/img/main/푸터로고.png"></h3>
                     </div>
                     <div class="search-form-section">
                       <form role="search" method="get" id="searchform" class="search-form" action="">
@@ -59,9 +59,9 @@
                     <div class="popular-post-subsection">
                       <div class="popular-post-meta">
                           <span class="category">&nbsp;🐶강아지</span>
-                          <a href="">
+                          <a href="list.bo">
                             <span class="see-more">
-                              더보기<i class="fa-solid fa-chevron-right"></i>
+                                                                      더보기<i class="fa-solid fa-chevron-right"></i>
                             </span>
                           </a>
                       </div>
@@ -169,7 +169,7 @@
                       <div class="popular-post-subsection">
                         <div class="popular-post-meta">
                             <span class="category">&nbsp;🐶 강아지 케어 관련</span>
-                            <a href="">
+                            <a href="list.bo">
                               <span class="see-more">
                                 더보기<i class="fa-solid fa-chevron-right"></i>
                               </span>

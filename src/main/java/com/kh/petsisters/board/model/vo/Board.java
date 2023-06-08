@@ -1,11 +1,14 @@
 package com.kh.petsisters.board.model.vo;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 @NoArgsConstructor
-@Data
+@Setter
+@Getter
+@ToString
 public class Board {
 	
 	
@@ -16,4 +19,7 @@ public class Board {
 	private String status; 
 	private int count; 
 	private String userNo; 
+	
+	private String dogName;
+	private String dogImg;
 }

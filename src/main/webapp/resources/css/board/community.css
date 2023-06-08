@@ -59,6 +59,9 @@ h3#brand {
     font-size: 2.0vw;
     font-weight: 800;
 }
+#smallLogoImg {
+	width: 150px;
+}
 h3.front-page {
     /* display: flex; */
     text-align: center;

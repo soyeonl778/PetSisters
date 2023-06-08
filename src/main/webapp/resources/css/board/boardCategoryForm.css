@@ -245,5 +245,9 @@ button.search-submit {
 #dog-foot-icon {
     padding-top: 8px;
 }
+#review-list-desktop {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
 
 
