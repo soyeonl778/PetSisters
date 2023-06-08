@@ -5,6 +5,8 @@ INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'admin', '1234', '관리자', '12345
 INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user01', 'pass01', '펫시터1', '1234561234567', '펫시터1', '01011111111', 'user01@kh.or.kr', '서울시 영등포구', 'F', 'Y', 'N', NULL, 'Y', NULL, SYSDATE);
 INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user02', 'pass02', '펫시터2', '1234561234567', '펫시터2', '01022222222', 'user02@kh.or.kr', '서울시 영등포구', 'F', 'Y', 'N', NULL, 'Y', NULL, SYSDATE);
 INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user03', 'pass03', '펫시터3', '1234561234567', '펫시터3', '01033333333', 'user03@kh.or.kr', '서울시 영등포구', 'F', 'Y', 'N', NULL, 'Y', NULL, SYSDATE);
+INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user04', 'pass04', '고객4', '1234561234567', '고객4', '01044444444', 'user04@kh.or.kr', '서울시 영등포구', 'F', 'N', 'N', NULL, 'Y', NULL, SYSDATE);
+INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user05', 'pass05', '고객5', '1234561234567', '고객5', '01055555555', 'user05@kh.or.kr', '서울시 영등포구', 'F', 'N', 'N', NULL, 'Y', NULL, SYSDATE);
 
 --------------------------------------------------
 ----------    펫시터 프로필 테이블 더미    ----------
