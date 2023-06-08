@@ -60,13 +60,20 @@
 							href="member.da">관리자 메뉴</a></li>
 					</c:when>
 					<c:otherwise>
+						<c:if test="${loginUser.sitterStatus eq 'Y'}">
+						<li class="nav-item"><a class="nav-link" href="petsitterRev">예약관리</a>
+						</li>
+						<li class="nav-item"><a class="nav-link" href="myProfile.me">마이페이지</a></li>
+						</c:if>
+						<c:if test="${loginUser.sitterStatus eq 'N'}">
 						<li class="nav-item"><a class="nav-link" href="myProfile.me">마이페이지</a>
 						</li>
+						</c:if>
 						<li class="nav-item"><a class="nav-link" href="logout.me">로그아웃</a>
 						</li>
 						<c:if test="${loginUser.sitterStatus eq 'Y'}">
 						<li class="nav-item"><a class="nav-link petsiter"
-							href="petsitterRev">펫시터 설정</a>
+							href="detail.pe?pno=${ loginUser.userNo - 1 }">펫시터 설정</a>
 						</li>
 						</c:if>
 						<c:if test="${loginUser.sitterStatus eq 'N'}">

@@ -1,6 +1,7 @@
 package com.kh.petsisters.reservation.model.service;
 
 import java.util.ArrayList;
+import java.sql.Date;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,19 +62,17 @@ public class ReservationServiceImpl implements ReservationService{
 	}
 
 	@Override
-	public int selectListPetsitterRev(int userNo) {
-		return reservationDao.selectListPetsitterRev(sqlSession, userNo);
+	public int selectListPetsitterRev(int userNo, String keyword, Date startDate, Date endDate) {
+		return reservationDao.selectListPetsitterRev(sqlSession, userNo, keyword, startDate, endDate);
 	}
 
 	@Override
-	public ArrayList<Reservation> petsitterRevList(int userNo, PageInfo pi) {
-		return reservationDao.petsitterRevList(sqlSession, userNo, pi);
+	public ArrayList<Reservation> petsitterRevList(int userNo, PageInfo pi, String keyword, Date startDate, Date endDate) {
+		return reservationDao.petsitterRevList(sqlSession, userNo, pi, keyword, startDate, endDate);
 	}
+	
 
-	@Override
-	public ArrayList<Reservation> searchKeyword(String keyword) {
-		return reservationDao.searchKeyword(sqlSession, keyword);
-	}
+
 
 	
 

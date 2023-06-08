@@ -1,5 +1,6 @@
 package com.kh.petsisters.reservation.model.dao;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -58,24 +59,32 @@ public class ReservationDao {
 		return sqlSession.selectOne("reservationMapper.reservationDetail", rNo);
 	}
 
-	public ArrayList<Reservation> petsitterRevList(SqlSessionTemplate sqlSession, int userNo, PageInfo pi) {
+	public ArrayList<Reservation> petsitterRevList(SqlSessionTemplate sqlSession, int userNo, PageInfo pi, String keyword, java.sql.Date startDate, java.sql.Date endDate) {
 		
 		int offset = (pi.getCurrentPage() - 1) * pi.getBoardLimit();	// 건너뛸 숫자
 		int limit = pi.getBoardLimit();		// 조회할 갯수
 		
+		Map<String, Object> parameters = new HashMap<>();
+        parameters.put("userNo", userNo);
+        parameters.put("keyword", keyword);
+        parameters.put("startDate", startDate);
+        parameters.put("endDate", endDate);
+		
 		RowBounds rowBounds = new RowBounds(offset, limit);
 		
-		return (ArrayList)sqlSession.selectList("reservationMapper.petsitterRevList", userNo, rowBounds);
-	}
-
-	public int selectListPetsitterRev(SqlSessionTemplate sqlSession, int userNo) {
-		return sqlSession.selectOne("reservationMapper.selectListPetsitterRev", userNo);
-	}
-
-	public ArrayList<Reservation> searchKeyword(SqlSessionTemplate sqlSession, String keyword) {
-		return (ArrayList)sqlSession.selectList("reservationMapper.searchKeyword", keyword);
+		return (ArrayList)sqlSession.selectList("reservationMapper.petsitterRevList", parameters, rowBounds);
 	}
 
 
+	public int selectListPetsitterRev(SqlSessionTemplate sqlSession, int userNo, String keyword, java.sql.Date startDate, java.sql.Date endDate) {
+		
+		Map<String, Object> parameter = new HashMap<>();
+		parameter.put("userNo", userNo);
+		parameter.put("keyword", keyword);
+		parameter.put("startDate", startDate);
+		parameter.put("endDate", endDate);
+		
+		return sqlSession.selectOne("reservationMapper.selectListPetsitterRev", parameter);
+	}
 
 }

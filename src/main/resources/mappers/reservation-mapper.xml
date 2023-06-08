@@ -169,7 +169,7 @@
 	<!-- 여기서부터 펫시터 전용 쿼리문 -->
 	
 	<!-- 펫시터 예약 리스트 조회용 쿼리문 -->
-	<select id="petsitterRevList" parameterType="_int" resultMap="reservationResultSet">
+	<select id="petsitterRevList" resultMap="reservationResultSet">
        SELECT ROWNUM, A.*
          FROM (SELECT RES_NO,
 		       R.STATUS STATUS,
@@ -184,6 +184,12 @@
 		  JOIN PETSITTER PT ON R.REF_PNO = PT.P_NO
 		 WHERE PT.USER_NO = #{userNo}
 		   AND R.STATUS = 'Y'
+		   <if test="keyword != null">
+		    AND USER_NAME LIKE '%' || #{keyword} || '%'	
+		   </if>
+		   <if test="startDate != null">
+		    AND R.START_DATE &gt;= #{startDate} AND R.END_DATE &lt;= #{endDate}
+		   </if>
 		 ORDER BY R.REGISTER_DATE DESC) A
 	</select>
 	
@@ -191,12 +197,21 @@
 	<!-- 펫시터 예약 갯수 조회용 쿼리문 -->
 	<select id="selectListPetsitterRev" resultType="_int">
 		SELECT COUNT(*)
-		FROM RESERVATION
+		FROM RESERVATION R
+		JOIN PETSITTER PT ON R.REF_PNO = PT.P_NO
+		JOIN MEMBER M ON R.USER_NO = M.USER_NO
 		WHERE REF_PNO = #{userNo}	
+		<if test="keyword != null">
+		  AND USER_NAME LIKE '%' || #{keyword} || '%'	
+		</if>
+		<if test="startDate != null">
+		  AND START_DATE &gt;= #{startDate} AND END_DATE &lt;= #{endDate}	
+		</if>
 	</select>
 	
 	
 	<!-- 펫시터 예약 검색 기능용 쿼리문 -->
+	<!-- 
 	<select id="searchKeyword" resultMap="reservationResultSet" parameterType="string">
        SELECT ROWNUM, A.*
          FROM (SELECT RES_NO,
@@ -210,12 +225,12 @@
 		  JOIN MEMBER M ON R.USER_NO = M.USER_NO
 		  LEFT JOIN PAYMENT P ON R.RES_NO = P.REF_RESNO
 		  JOIN PETSITTER PT ON R.REF_PNO = PT.P_NO
-		 WHERE PT.USER_NO = 4
+		 WHERE PT.USER_NO = 2
 		   AND R.STATUS = 'Y'
            AND USER_NAME LIKE '%' || #{keyword} || '%'
 		 ORDER BY R.REGISTER_DATE DESC) A	
 	</select>
-	
+	 -->
 </mapper>
 
 

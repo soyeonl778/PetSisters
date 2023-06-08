@@ -120,7 +120,9 @@
 									    </c:choose>
 										  
 										<c:forEach var="p" begin="${ pi.startPage }" end="${ pi.endPage }" step="1">  
-											<li class="page-item active"><a class="page-link" href="reservationList?rPage=${p }">${ p }</a></li>
+											<li class="page-item active">
+												<a class="page-link" href="reservationList?rPage=${p }">${ p }</a>
+											</li>
 										</c:forEach>		
 										
 										<c:choose>	

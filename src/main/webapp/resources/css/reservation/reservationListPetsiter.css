@@ -364,3 +364,13 @@ body #container #main .layout-pagination .pagediv span strong{
 .ranges ul li:last-child {
 	display: none;
 }
+.dateWrapper {
+	display: flex;
+	justify-content: center;
+    align-items: center;
+}
+.dateBtn {
+	margin-left: 15px;
+    width: 85px;
+}	
+}

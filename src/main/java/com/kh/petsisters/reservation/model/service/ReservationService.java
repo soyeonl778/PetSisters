@@ -1,6 +1,7 @@
 package com.kh.petsisters.reservation.model.service;
 
 import java.util.ArrayList;
+import java.sql.Date;
 
 import com.kh.petsisters.common.model.vo.PageInfo;
 import com.kh.petsisters.reservation.model.vo.Reservation;
@@ -36,14 +37,14 @@ public interface ReservationService {
 	
 	// ======== 펫시터 관련 =========
 	// 펫시터 예약 화면 조회용
-	ArrayList<Reservation> petsitterRevList(int userNo, PageInfo pi);
+	// ArrayList<Reservation> petsitterRevList(int userNo, PageInfo pi, String keyword, String startDate, String endDate);
+	ArrayList<Reservation> petsitterRevList(int userNo, PageInfo pi, String keyword, Date startDate, Date endDate);
 
 	// 펫시터 예약 화면 갯수 (페이지네이션)
-	int selectListPetsitterRev(int userNo);
+	// int selectListPetsitterRev(int userNo, String keyword, String startDate, String endDate);
+	int selectListPetsitterRev(int userNo, String keyword, Date startDate, Date endDate);
 
-	// 펫시터 예약 화면 검색어 입력
-	ArrayList<Reservation> searchKeyword(String keyword);
 
-	
+
 
 }

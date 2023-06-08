@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page import="java.util.Date"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <c:set var="now" value="<%=new java.util.Date()%>" />
 <c:set var="nowDate">
 	<fmt:formatDate value="${now}" pattern="yyyy-MM-dd" />
@@ -31,7 +32,6 @@
 <script src="https://kit.fontawesome.com/bbeda4c5cf.js"
 	crossorigin="anonymous"></script>
 
-<script src="/resources/js/reservationListPetsiter.js"></script>
 <title>내 예약 목록 조회</title>
 </head>
 <body>
@@ -49,9 +49,8 @@
 							<h2 class="tit_snb">My Page</h2>
 							<div class="inner_sub">
 								<ul class="list_menu">
-									<li><a href="#">내 프로필 관리</a></li>
-									<li><a href="#">정산 조회</a></li>
 									<li class="on"><a href="petsitterRev">내 예약 관리</a></li>
+									<li><a href="#">정산 조회</a></li>
 									<li><a href="#">돌봄 일지 관리</a></li>
 								</ul>
 							</div>
@@ -69,20 +68,24 @@
 											<h1 class="titTag">내 예약 목록</h1>
 										</div>
 
-										<form action="searchKeyword" method="post">
+										<form action="petsitterRev" method="post">
 											<div class="payWrapper">
-												<div class="dateSection">
-													조회 기간 선택 : <input id="datepicker1" type="text" name="searchDate">
+												<div class="dateWrapper">
+													<div class="dateSection">
+														조회 기간 선택 : <input id="datepicker1" type="text" name="searchDate"> 
+													</div>
+													<button class="dateBtn btn btn-primary" type="button">조회</button>
 												</div>
 												<div class="searchTag">
-													<input type="text" name="keyword" placeholder="고객명을 입력해주세요" value="${ keyword }" required>
+													<input type="text" name="keyword" placeholder="고객명을 입력해주세요" value="${ keyword }">
 													<button id="search_icon" type="submit">
-														<i class="fa-solid fa-magnifying-glass"
-															style="color: #0888D0"></i>
+														<i class="fa-solid fa-magnifying-glass" style="color: #0888D0"></i>
 													</button>
 												</div>
+												
 											</div>
 										</form>
+										
 										<div class="tableContainer">
 											<table class="table table-hover">
 												<thead>
@@ -97,6 +100,9 @@
 													</tr>
 												</thead>
 												<tbody>
+												
+													${ rev.size() }
+													${ startDate }
 													<c:forEach var="r" items="${ rev }">
 														<tr>
 															<th scope="row">${ r.rowNum }</th>
@@ -121,30 +127,7 @@
 															</c:if>
 														</tr>
 													</c:forEach>
-													<c:forEach var="w" items="${ word }">
-														<tr>
-															<th scope="row">${ w.rowNum }</th>
-															<td class="uniqeNo">${ w.resNo }</td>
-															<c:choose>
-																<c:when
-																	test="${ w.status eq 'Y' and w.endDate > nowDate }">
-																	<td class="specialTd">예약진행중</td>
-																</c:when>
-																<c:otherwise>
-																	<td class="specialTd">예약종료</td>
-																</c:otherwise>
-															</c:choose>
-															<td>${ w.userName }</td>
-															<td class="spcDate" width="120">${ w.startDate } ${ w.endDate }</td>
-															<td width="150" class="reserDate">${ w.registerDate.substring(0, 10) }</td>
-															<c:if test="${ w.payPrice != 0 }">
-																<td class="reserMonye">${ w.payPrice }</td>
-															</c:if>
-															<c:if test="${ w.payPrice == 0 }">
-																<td class="reserMonye">결제대기중</td>
-															</c:if>
-														</tr>
-													</c:forEach>
+	
 												</tbody>
 											</table>
 										</div>
@@ -165,10 +148,10 @@
 												</c:otherwise>
 											</c:choose>
 
-											<c:forEach var="p" begin="${ pi.startPage }"
-												end="${ pi.endPage }" step="1">
-												<li class="page-item active"><a class="page-link"
-													href="petsitterRev?pPage=${p }">${ p }</a></li>
+											<c:forEach var="p" begin="${ pi.startPage }" end="${ pi.endPage }" step="1">
+												<li class="page-item active">
+													<a class="page-link" href="petsitterRev?pPage=${ p }">${ p }</a>
+												</li>
 											</c:forEach>
 
 											<c:choose>
@@ -199,15 +182,94 @@
 
 	<jsp:include page="../common/footer.jsp" />
 	<script>
-	$('#datepicker1').on('click', function(e) {
-		console.log($('#datepicker1').val());
-		console.log(e);
-		let a = $('#datepicker1').val().slice(0, 10);
-		let b = $('#datepicker1').val().slice(-10);
-		console.log(a);
-		console.log(b);
+	$(document).ready(function () {
 
-	});
+		  // 예약상태에 따라 색상 변경
+		  $("td.specialTd:contains('예약진행중')").css("color", "#0888D0");
+		  $("td.specialTd:contains('예약종료')").css("color", "green");
+
+		  // 예약번호 뽑아오기
+		  $('tbody tr').click(function () {
+		    var uniqeNo = $(this).find('.uniqeNo').text();
+		    console.log(uniqeNo);
+		  });
+
+		  $(function () {
+		    $('#datepicker1').daterangepicker({
+		      beforeShowDay: function (date) {
+		        return [(date.getDate() != 1)]
+		      },
+		      locale: {
+		        "separator": " ~ ",
+		        "format": 'YYYY-MM-DD',
+		        "applyLabel": "확인",
+		        "cancelLabel": "취소",
+		        "weekLabel": "주",
+		        "daysOfWeek": ["일", "월", "화", "수", "목", "금", "토"],
+		        "monthNames": ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"],
+		        "cancelLabel": "삭제"
+		      },
+		      ranges: {
+		        '오늘': [moment(), moment()],
+		        '어제': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+		        '지난 1주일': [moment().subtract(6, 'days'), moment()],
+		        '최근 30일': [moment().subtract(29, 'days'), moment()],
+		        '이번달': [moment().startOf('month'), moment().endOf('month')],
+		        '저번달': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+		      },
+		      "alwaysShowCalendars": true,
+		      showDropdowns: true,
+		      autoApply: true,
+		      singleDatePicker: false,
+
+		    }).on('cancel.daterangepicker', function (ev, picker) {
+		      $(ev.currentTarget).val('');
+		    });
+
+		  });
+
+
+		  $(document).on('focusout', '#datepicker1', function() {
+			    var selectedDate = $(this).val();
+			    // let startDate = selectedDate.slice(0, 10);
+			    // let endDate = selectedDate.slice(-10);
+			    // let startDate = new Date(date.substr(0, 10)).toLocaleDateString('en-CA');
+    			// let endDate = new Date(date.slice(-10)).toLocaleDateString('en-CA');
+			    console.log('변경된 날짜:', selectedDate);
+			    // console.log('시작 날짜:', startDate);
+			    // console.log('종료 날짜:', endDate);
+			    
+			  });
+		  
+		  $('.dateBtn').on('click', function () {
+			    let date = $('#datepicker1').val();
+			    let startDateStr = date.substr(0, 10);
+			    let endDateStr = date.slice(-10);
+			    console.log(startDateStr);
+			    console.log(endDateStr);
+			    console.log(typeof startDateStr);
+			    console.log(typeof endDateStr);
+			    
+			    let dateData = {
+			        startDate: startDateStr,
+			        endDate: endDateStr
+			    };
+			    
+			    $.ajax({
+			        url: "petsitterRev",
+			        type: "POST",
+			        data: dateData, // 객체를 직렬화하지 않고 전송
+			        success: function(e) {
+			            // console.log('ht', e);
+			        },
+			        error: function(e) {
+			            console.log(e);
+			        }
+			    });
+			});
+
+		  
+		});
 	</script>
 </body>
 </html>
