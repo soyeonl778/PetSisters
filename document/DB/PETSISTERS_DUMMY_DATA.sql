@@ -468,6 +468,58 @@ VALUES(SEQ_PAYMENT.NEXTVAL,
        16);         
        
 --------------------------------------------------
+------------    1:1문의 테이블 더미    ------------
+--------------------------------------------------
+INSERT INTO INQUIRY
+(I_NO, I_TITLE, I_CONTENT, CREATE_DATE, STATUS, USER_NO)
+VALUES (SEQ_INQUIRY.NEXTVAL
+           , '흥칫뿡야'
+           , '나 완전 흥칫뿡야'
+           , SYSDATE
+           , 'Y'
+           , 2);
+INSERT INTO INQUIRY
+(I_NO, I_TITLE, I_CONTENT, CREATE_DATE, STATUS, USER_NO)
+VALUES (SEQ_INQUIRY.NEXTVAL
+           , '1:1문의 게시판이 이렇게 어려웠어요?'
+           , '아니면 내가 바보인거예요?'
+           , SYSDATE
+           , 'Y'
+           , 2);
+INSERT INTO INQUIRY
+(I_NO, I_TITLE, I_CONTENT, CREATE_DATE, STATUS, USER_NO)
+VALUES (SEQ_INQUIRY.NEXTVAL
+           , '너 완전 짜증나'
+           , '어쩔저쩔요'
+           , SYSDATE
+           , 'Y'
+           , 2);
+INSERT INTO INQUIRY
+(I_NO, I_TITLE, I_CONTENT, CREATE_DATE, STATUS, USER_NO)
+VALUES (SEQ_INQUIRY.NEXTVAL
+           , '흥칫뿡야'
+           , '나 완전 흥칫뿡야'
+           , SYSDATE
+           , 'Y'
+           , 3);
+INSERT INTO INQUIRY
+(I_NO, I_TITLE, I_CONTENT, CREATE_DATE, STATUS, USER_NO)
+VALUES (SEQ_INQUIRY.NEXTVAL
+           , '1:1문의 게시판이 이렇게 어려웠어요?'
+           , '아니면 내가 바보인거예요?'
+           , SYSDATE
+           , 'Y'
+           , 3);
+INSERT INTO INQUIRY
+(I_NO, I_TITLE, I_CONTENT, CREATE_DATE, STATUS, USER_NO)
+VALUES (SEQ_INQUIRY.NEXTVAL
+           , '너 완전 짜증나'
+           , '어쩔저쩔요'
+           , SYSDATE
+           , 'Y'
+           , 3);
+       
+--------------------------------------------------
 -----------------    커밋구문    ------------------
 --------------------------------------------------
          
