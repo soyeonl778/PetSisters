@@ -44,12 +44,13 @@ public class PetSitterServiceImpl implements  PetSitterService {
 		return petSitterDao.selectList(sqlSession, pi);
 	}
 
-//	@Override
-//	public Review selectReview(int pno) {
-//		
-//		return petSitterDao.selectReview(sqlSession, pno);
-//	}
+	@Override
+	public ArrayList<Review> selectReviewList() {
+		
+		return petSitterDao.selectReviewList(sqlSession);
+	}
 
+	
 
 	
 	

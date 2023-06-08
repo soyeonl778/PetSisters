@@ -10,15 +10,32 @@
 		<result column="P_SERVICE" property="petSitterService" />
 		<result column="CARE_LIST" property="careList" />
 		<result column="P_MODE" property="petSitterMode" />
-		<result column="USER_NO" property="userNo" />
+		<result column="USER_NO" property="userNo" />		<!-- member -->
 		<result column="USER_NAME" property="userName" />
 		<result column="ADDRESS" property="address" />
 		<result column="CA_STATUS" property="caStatus" />
-		<result column="FILE_PATH" property="filePath" />
-		<result column="START_DATE" property="startDate" />
+		<result column="FILE_PATH" property="userFilePath" />
+		<result column="START_DATE" property="startDate" />		<!-- reservation -->
 		<result column="END_DATE" property="endDate" />
 		<result column="REF_PNO" property="refPno" />
+		<result column="REV_NO" property="revNo" />		<!-- review -->
+		<result column="REV_CONTENT" property="revContent" />
+		<result column="CREATE_DATE" property="createDate" />
+		<result column="FILE_PATH" property="revFilePath" />
 		<result column="REVIEW_COUNT" property="reviewCount" />
+		<result column="DOG_NO" property="dogNo" />		<!-- dog -->
+		<result column="DOG_NAME" property="dogName" />
+		<result column="DOG_GENDER" property="dogGender" />
+		<result column="DOG_BREED" property="dogBreed" />
+		<result column="DOG_BIRTHDAY" property="dogBirthday" />
+		<result column="FILE_PATH" property="dogFilePath" />
+	</resultMap>
+	
+	<resultMap id="reviewResultSet" type="review">
+		<result column="REV_NO" property="revNo" />
+		<result column="REV_CONTENT" property="revContent" />
+		<result column="CREATE_DATE" property="createDate" />
+		<result column="FILE_PATH" property="revFilePath" />
 	</resultMap>
 	
 	<!-- 펫시터 프로필 상세 조회용 쿼리문 -->
@@ -79,6 +96,20 @@
      LEFT JOIN REVIEW R ON (R.REF_RESNO = RS.RES_NO)
 		 WHERE P.P_MODE = 'Y'
       ORDER BY P.P_NO DESC
+	</select>
+	
+	<!-- 펫시터 상세페이지 후기 리스트 조회용 쿼리문 -->
+	<select id="selectReviewList" resultMap="reviewResultSet">
+	   SELECT REV_NO
+	        , REV_CONTENT
+	        , CREATE_DATE
+	        , R.FILE_PATH
+	        , M.USER_NAME
+	     FROM REVIEW R
+	     JOIN RESERVATION RS ON (RS.RES_NO = R.REF_RESNO)
+	LEFT JOIN MEMBER M ON (M.USER_NO = RS.USER_NO)
+	    WHERE R.STATUS = 'Y'
+	 ORDER BY REV_NO DESC
 	</select>
 
 </mapper>
