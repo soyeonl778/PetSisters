@@ -20,6 +20,7 @@ import com.kh.petsisters.common.model.vo.PageInfo;
 import com.kh.petsisters.common.template.Pagination;
 import com.kh.petsisters.inquiry.model.service.InquiryService;
 import com.kh.petsisters.inquiry.model.vo.Inquiry;
+import com.kh.petsisters.member.model.vo.Member;
 
 @Controller
 public class InquiryController {
@@ -30,7 +31,8 @@ public class InquiryController {
 	@RequestMapping("list.in")
 	public ModelAndView selectList(
 			@RequestParam(value="cPage", defaultValue="1") int currentPage,
-			ModelAndView mv) {
+			ModelAndView mv
+			, Member m) {
 		
 		int listCount = inquiryService.selectListCount();
 		
@@ -39,7 +41,7 @@ public class InquiryController {
 		
 		PageInfo pi = Pagination.getPageInfo(listCount, currentPage, pageLimit, boardLimit);
 		
-		List<Inquiry> list = inquiryService.selectList(pi);
+		List<Inquiry> list = inquiryService.selectList(pi, m);
 		
 		mv.addObject("pi", pi)
 		  .addObject("list", list)
@@ -80,6 +82,25 @@ public class InquiryController {
 			
 			return "notice/errorPage";
 		}
+	}
+	
+	@RequestMapping("detail.in")
+	public ModelAndView selectInquiry(ModelAndView mv, int inquiryNo) {
+		
+		int result = inquiryService.increaseCount(inquiryNo);
+		
+		if(result > 0) {
+			
+			Inquiry i = inquiryService.selectInquiry(inquiryNo);
+			
+			mv.addObject("i", i).setViewName("inquiry/inquiryDetail");
+			
+		} else {
+			
+			mv.addObject("errorMsg", "상세조회 실패").setViewName("notice/errorPage");
+		}
+		
+		return mv;
 	}
 	
 	

@@ -11,8 +11,6 @@ import lombok.ToString;
 @ToString
 public class Inquiry {
 	
-	private CSAttachment csAttachment;
-	
 	private int inquiryNo;
 	private String inquiryTitle; // 문의글 제목
 	private String inquiryContent; // 문의글 내용
@@ -22,5 +20,5 @@ public class Inquiry {
 	private int userNo;
 	private String originName;
 	private String changeName;
-	
+	private int count;
 }

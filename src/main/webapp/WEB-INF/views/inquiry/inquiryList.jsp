@@ -53,7 +53,7 @@
                 </div>
 
                 <br/>
-                <form id="postForm" action="/submit-form" method="post">
+                <form id="postForm" action="/list.in" method="post">
 		          	<input type="hidden" name="userNo" value="${i.userNo}">
 		          </form>
 		          
@@ -135,7 +135,7 @@
 		$("#inquiryTable>tbody>tr").click(function() {
 			let inquiryNo = $(this).children().eq(0).text();
 			/* console.log(inquiryNo); */
-			location.href = "detail.no?inquiryNo=" + inquiryNo;
+			location.href = "detail.in?inquiryNo=" + inquiryNo;
 		});
   	});
   </script>

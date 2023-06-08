@@ -10,6 +10,7 @@ import com.kh.petsisters.common.model.vo.PageInfo;
 import com.kh.petsisters.inquiry.model.dao.InquiryDao;
 import com.kh.petsisters.inquiry.model.vo.CSReply;
 import com.kh.petsisters.inquiry.model.vo.Inquiry;
+import com.kh.petsisters.member.model.vo.Member;
 
 @Service
 public class InquiryServiceImpl implements InquiryService {
@@ -26,8 +27,8 @@ public class InquiryServiceImpl implements InquiryService {
 	}
 
 	@Override
-	public List<Inquiry> selectList(PageInfo pi) {
-		return inquiryDao.selectList(sqlSession, pi);
+	public List<Inquiry> selectList(PageInfo pi, Member m) {
+		return inquiryDao.selectList(sqlSession, pi, m);
 	}
 
 	@Override
@@ -37,14 +38,12 @@ public class InquiryServiceImpl implements InquiryService {
 
 	@Override
 	public int increaseCount(int inquiryNo) {
-		// TODO Auto-generated method stub
-		return 0;
+		return inquiryDao.increaseCount(sqlSession, inquiryNo);
 	}
 
 	@Override
 	public Inquiry selectInquiry(int inquiryNo) {
-		// TODO Auto-generated method stub
-		return null;
+		return inquiryDao.selectInquiry(sqlSession, inquiryNo);
 	}
 
 	@Override

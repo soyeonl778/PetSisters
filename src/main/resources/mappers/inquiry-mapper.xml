@@ -9,20 +9,9 @@
 		<result column="I_CONTENT" property="inquiryContent" />
 		<result column="CREATE_DATE" property="createDate" />
 		<result column="STATUS" property="status" />
-		<result column="REPLY_STATUS" property="replyStatus" />
 		<result column="USER_NO" property="userNo" />
 		
-		<result column="ORIGIN_NAME" property="originName" />
-		<result column="CHANGE_NAME" property="changeName" />
-	</resultMap>
-	
-	<resultMap id="attachmentResultSet" type="csAttachment">
-	    <result property="originName" column="ORIGIN_NAME"/>
-	    <result property="changeName" column="CHANGE_NAME"/>
-	    <result property="filePath" column="FILE_PATH"/>
-	    <result property="createDate" column="CREATE_DATE"/>
-	    <result property="status" column="STATUS"/>
-	    <result property="refIno" column="REF_INO"/>
+		<result column="FILE_PATH" property="filePath" />
 	</resultMap>
 
 	<resultMap id="csreplyResultSet" type="csReply">
@@ -42,10 +31,10 @@
 	</select>
 	
 	<!-- 1:1 문의글 리스트를 구해주는 쿼리문 -->
-	<select id="selectList" resultMap="inquiryResultSet">
+	<select id="selectList" resultMap="inquiryResultSet" parameterType="member">
 		SELECT I_TITLE
 			 , TO_CHAR(CREATE_DATE, 'YYYY-MM-DD') AS "CREATE_DATE"
-			 , REPLY_STATUS
+			 , USER_NO
 	 	  FROM INQUIRY
 	 	 WHERE STATUS = 'Y'
 	 	   AND USER_NO = #{userNo}
@@ -53,16 +42,23 @@
 	
 	<!-- 1:1문의글 작성용 쿼리문 -->
 	<insert id="insertInquiry" parameterType="Inquiry">
-		INSERT INTO INQUIRY(I_TITLE
+		INSERT INTO INQUIRY(I_NO
+						  , I_TITLE		
 						  , I_CONTENT
-						  , ORIGIN_NAME
-						  , CHANGE_NAME)
+						  , FILE_PATH)
 					 VALUES(SEQ_INQUIRY.NEXTVAL
 						  , #{inquiryTitle}
 						  , #{inquiryContent}
-						  , #{originName}
-						  , #{changeName})
+						  , #{filePath})
 	</insert>
+	
+	<!-- 1:1문의글 상세조회용 쿼리문 -->
+	<select id="selectInquiry" parameterType="_int"	resultMap="inquiryResultSet">
+		SELECT
+		I_NO, I_TITLE, TO_CHAR(CREATE_DATE, 'YYYY-MM-DD') AS "CREATE_DATE", I_CONTENT, FILE_PATH
+		  FROM INQUIRY
+		 WHERE I_NO = #{inquiryNo}
+	</select>
 	
 </mapper>
 
