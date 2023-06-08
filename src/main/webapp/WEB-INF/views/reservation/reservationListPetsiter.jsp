@@ -260,7 +260,7 @@
 			        type: "POST",
 			        data: dateData, // 객체를 직렬화하지 않고 전송
 			        success: function(e) {
-			            // console.log('ht', e);
+			            console.log('ht', e);
 			        },
 			        error: function(e) {
 			            console.log(e);
