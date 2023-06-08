@@ -5,8 +5,10 @@ INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'admin', '1234', '관리자', '12345
 INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user01', 'pass01', '펫시터1', '1234561234567', '펫시터1', '01011111111', 'user01@kh.or.kr', '서울시 영등포구', 'F', 'Y', 'N', NULL, 'Y', NULL, SYSDATE);
 INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user02', 'pass02', '펫시터2', '1234561234567', '펫시터2', '01022222222', 'user02@kh.or.kr', '서울시 영등포구', 'F', 'Y', 'N', NULL, 'Y', NULL, SYSDATE);
 INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user03', 'pass03', '펫시터3', '1234561234567', '펫시터3', '01033333333', 'user03@kh.or.kr', '서울시 영등포구', 'F', 'Y', 'N', NULL, 'Y', NULL, SYSDATE);
-INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user04', 'pass04', '고객4', '1234561234567', '고객4', '01044444444', 'user04@kh.or.kr', '서울시 영등포구', 'F', 'N', 'N', NULL, 'Y', NULL, SYSDATE);
-INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user05', 'pass05', '고객5', '1234561234567', '고객5', '01055555555', 'user05@kh.or.kr', '서울시 영등포구', 'F', 'N', 'N', NULL, 'Y', NULL, SYSDATE);
+INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user04', 'pass04', '펫시터4', '1234561234567', '펫시터4', '01044444444', 'user04@kh.or.kr', '서울시 영등포구', 'F', 'Y', 'Y', '2023-05-01', 'Y', NULL, SYSDATE);
+INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user05', 'pass05', '펫시터5', '1234561234567', '펫시터5', '01055555555', 'user05@kh.or.kr', '서울시 영등포구', 'F', 'Y', 'Y', '2023-06-01', 'Y', NULL, SYSDATE);
+INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user06', 'pass06', '고객6', '1234561234567', '고객6', '01066666666', 'user06@kh.or.kr', '서울시 영등포구', 'F', 'N', 'N', NULL, 'Y', NULL, SYSDATE);
+INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user07', 'pass07', '고객7', '1234561234567', '고객7', '01077777777', 'user07@kh.or.kr', '서울시 영등포구', 'F', 'N', 'N', NULL, 'Y', NULL, SYSDATE);
 
 --------------------------------------------------
 -----------    펫시터 프로필 테이블 더미    -----------
@@ -14,6 +16,8 @@ INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user05', 'pass05', '고객5', '123
 INSERT INTO PETSITTER (P_NO, P_TITLE, P_CONTENT, P_SERVICE, CARE_LIST, P_MODE, USER_NO) VALUES (SEQ_PETSITTER.NEXTVAL, '안전하고 편안하게 돌봐주는 펫시팅','test', NULL, NULL, DEFAULT, 2);
 INSERT INTO PETSITTER (P_NO, P_TITLE, P_CONTENT, P_SERVICE, CARE_LIST, P_MODE, USER_NO) VALUES (SEQ_PETSITTER.NEXTVAL, 'test', 'test', NULL, NULL, DEFAULT, 3);
 INSERT INTO PETSITTER (P_NO, P_TITLE, P_CONTENT, P_SERVICE, CARE_LIST, P_MODE, USER_NO) VALUES (SEQ_PETSITTER.NEXTVAL, '안전하고 편안하게 돌봐주는 펫시팅','호박고구마, 힘드졍', '흡연자, 힘들당', '어디에 쓰는고', DEFAULT, 4);
+INSERT INTO PETSITTER (P_NO, P_TITLE, P_CONTENT, P_SERVICE, CARE_LIST, P_MODE, USER_NO) VALUES (SEQ_PETSITTER.NEXTVAL, '저는 4번 펫시터입니다.','어머니 호구마요?', '흡연자, 힘들당', '어디에 쓰는고', DEFAULT, 5);
+INSERT INTO PETSITTER (P_NO, P_TITLE, P_CONTENT, P_SERVICE, CARE_LIST, P_MODE, USER_NO) VALUES (SEQ_PETSITTER.NEXTVAL, '저는 5번 펫시터입니다.','아니 호박고구마 호!박!고!구!마!!!!', '흡연자, 힘들당', '어디에 쓰는고', DEFAULT, 6);
 
 --------------------------------------------------
 ---------    펫시터 프로필 업데이트 더미    ---------
