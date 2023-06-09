@@ -25,5 +25,6 @@ public class Review {
 	private Date revStartDate;	//  예약 시작일
 	private Date revEndDate;	//  예약 종료일
 	private String userName;	// 	유저 이름
+	private int reviewCount;	//  리뷰 갯수
 	
 }

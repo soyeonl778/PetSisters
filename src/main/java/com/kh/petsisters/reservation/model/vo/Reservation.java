@@ -54,6 +54,9 @@ public class Reservation {
 	// 펫시터 예약 목록 조회시 필요한 정보
 	private int payPrice;		//  예약 고객의 결제 금액
 	
+	// 돌봄일지 작성을 위한 년월일시 날짜 정보
+	private String careTime;	//  돌봄일지 작성 시간
+	
 	
 	
 	

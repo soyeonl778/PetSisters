@@ -28,6 +28,7 @@
 		<result column="USER_NAME" property="userName" />
 		<result column="USER_FILE" property="userFile" />
 		<result column="PAY_PRICE" property="payPrice" />
+		<result column="" property="careTime" />
 	</resultMap>
 	
 	<resultMap id="reviewResultSet" type="review">
