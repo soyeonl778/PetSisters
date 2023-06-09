@@ -230,6 +230,23 @@
 		   </if>
 		 ORDER BY R.REGISTER_DATE DESC) A
 	</select>
+	
+	
+	<!-- 펫시터 예약 상세 화면 조회용 쿼리문 -->			  
+	<select id="petsitterRevDetail" parameterType="_int" resultMap="reservationResultSet">
+		SELECT R.RES_NO,
+		       R.STATUS,
+		       R.START_DATE,
+		       R.END_DATE,
+		       R.REGISTER_DATE,
+		       R.CONTENT,
+		       M.USER_NAME,
+		       P.PAY_PRICE
+		  FROM RESERVATION R
+		  JOIN MEMBER M ON R.USER_NO = M.USER_NO
+		  JOIN PAYMENT P ON P.REF_RESNO = R.RES_NO
+		 WHERE RES_NO = #{rNo} 	
+	</select>
 
 </mapper>
 

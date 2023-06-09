@@ -94,4 +94,8 @@ public class ReservationDao {
 		return (ArrayList)sqlSession.selectList("reservationMapper.dateSelect", parameter);
 	}
 
+	public Reservation petsitterRevDetail(SqlSessionTemplate sqlSession, int rNo) {
+		return sqlSession.selectOne("reservationMapper.petsitterRevDetail", rNo);
+	}
+
 }

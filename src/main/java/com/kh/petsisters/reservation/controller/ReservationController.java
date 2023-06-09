@@ -237,10 +237,11 @@ public class ReservationController {
 	
 	// 여기서 부터 펫시터 관련 컨트롤
 	/**
-	 * 펫시터 예약 리스트
+	 * 펫시터 예약 리스트 조회
 	 * @param session
 	 * @param model
 	 * @param currentPage
+	 * @param keyword
 	 * @return
 	 */
 	@RequestMapping(value="petsitterRev", produces = "application/json; charset=UTF-8")
@@ -271,6 +272,13 @@ public class ReservationController {
 	}
 
 
+	/**
+	 * 펫시터 예약 리스트 날짜 조회
+	 * @param startDate
+	 * @param endDate
+	 * @param session
+	 * @return
+	 */
 	@ResponseBody
 	@RequestMapping(value="dateFilter", produces = "application/json; charset=UTF-8")
 	public String dateFilter(String startDate, String endDate, HttpSession session) {
@@ -286,10 +294,25 @@ public class ReservationController {
 		System.out.println(rev);
 		
 		
-		
 		return new Gson().toJson(rev);
 	}
 
+	
+	@RequestMapping("petsitterRevDetail")
+	public String petsitterRevDetail(Model model, int rNo) {
+		
+		System.out.println(rNo);
+		
+		Reservation r = reservationService.petsitterRevDetail(rNo);
+		
+		System.out.println(r);
+		
+		model.addAttribute("r", r);
+		
+		return "reservation/reservationDetailPetsiter";
+	}
+	
+	
 	
 	
 	/**

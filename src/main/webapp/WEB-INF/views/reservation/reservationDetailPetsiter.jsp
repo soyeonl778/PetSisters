@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,7 +27,7 @@
               <div class="page_section section_destination">
                 <!-- 이 영역 안에서 페이지 작업 하시면 됩니다 -->
                 <div>
-
+				  <form action="" method="post">
                   <div class="bodyContainer">
 
                     <h1>예약 상세 조회</h1>
@@ -34,50 +36,55 @@
                       <div class="gridSec">
                         <div class="oneSec">
                           <div class="onTit">예약번호</div>
-                          <div class="oneNo">61875</div>
+                          <div class="oneNo">${ r.resNo }</div>
                         </div>
                         <div class="oneSec">
                           <div class="onTit">예약상태</div>
+                          
+                          <c:if test="${ r.status == 'N' }">
                           <div class="oneNo">예약종료</div>
+                          </c:if>
+                          <c:if test="${ r.status == 'Y' }">
+                          <div class="oneNo">예약진행중</div>
+                          </c:if>
                         </div>
                       </div>
 
                       <div class="gridSec">
                         <div class="oneSec">
                           <div class="onTit">예약일시</div>
-                          <div class="onedesc">2023-05-01/2023-05-10</div>
+                          <div class="onedesc">${ r.startDate } / ${ r.endDate }</div>
                         </div>
                         <div class="oneSec">
                           <div class="onTit">신청일</div>
-                          <div class="onedesc">2023-04-28</div>
+                          <div class="onedesc">${ r.registerDate.substring(0, 10) }</div>
                         </div>
                       </div>
 
                       <div class="gridSec">
                         <div class="oneSec">
                           <div class="onTit">예약자명</div>
-                          <div class="onedesc">조승호</div>
+                          <div class="onedesc">${ r.userName }</div>
                         </div>
                         <div class="oneSec">
                           <div class="onTit">총 금액</div>
-                          <div class="onedesc">400,000원</div>
+                          <div class="onedesc"><fmt:formatNumber value="${r.payPrice}" pattern="#,###,###"/>원</div>
                         </div>
                       </div>
 
                       <div class="requestThing">요청 사항</div>
                       <div class="oneTextArea">
-                        <textarea class="resTextArea" name="" id="">There is a house way down in New Orleans They call the Rising Sun And it's been the ruin of many a poor boy And God I know I'm one Mother was a tailor, yeah, yeah
-                        Sewed my Levi jeans My father was a gamblin' man, yeah, yeah Down, way down in New Orleans
-                        Now the only thing a gamblin' man ever needs Is a suitcase, Lord, and a trunk And the only time a fool like him is satisfied Is when he's all stone cold drunk</textarea>
+                        <textarea class="resTextArea" name="" id="">${ r.content }</textarea>
                       </div>
 
                     </div>
                   </div>
 
                   <div align="center" class="formBtn">
+                    <button id="careBtn" class="btn btn-success btn-lg">돌봄일지 작성</button>
                     <button type="button" onclick="history.back()" class="btn btn-info btn-lg">뒤로가기</button>
                   </div>
-
+				 </form>
                 </div>
                 <!-- 이 영역 안에서 페이지 작업 하시면 됩니다 -->
               </div>

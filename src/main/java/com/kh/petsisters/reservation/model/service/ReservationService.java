@@ -45,6 +45,9 @@ public interface ReservationService {
 	// 펫시터 예약 화면 날짜 조회
 	ArrayList<Reservation> dateSelect(int userNo, String startDate, String endDate);
 
+	// 펫시터 예약 상세화면 조회용
+	Reservation petsitterRevDetail(int rNo);
+
 
 
 

@@ -195,7 +195,7 @@
 		  // 예약번호 뽑아오기
 		  $('tbody tr').click(function () {
 		    var uniqeNo = $(this).find('.uniqeNo').text();
-		    console.log(uniqeNo);
+		    // console.log(uniqeNo);
 		  });
 
 		  $(function () {
@@ -231,29 +231,10 @@
 		    });
 
 		  });
-
-
-		  $(document).on('focusout', '#datepicker1', function() {
-			    var selectedDate = $(this).val();
-			    let startDate = selectedDate.slice(0, 10);
-			    let endDate = selectedDate.slice(-10);
-			    console.log('변경된 날짜:', selectedDate);
-			    
-			  });
 		  
+		  
+		  // 날짜 조회용
 		  $('.dateBtn').on('click', function () {
-			  
-			// String 타입의 값
-			  var dateString = '6월 5, 2023';
-
-			  // String을 Date 객체로 변환
-			  var datee = new Date(dateString.replace(/(\d{1,2})월 (\d{1,2}), (\d{4})/, '$3-$1-$2'));
-
-			  // Date 객체를 원하는 형식으로 포맷팅
-			  var formattedDate = datee.toISOString().slice(0, 10); // '2023-06-05'
-
-			  // 포맷팅된 값을 출력
-			  console.log('이거맞아?', formattedDate);
 			  
 			    let date = $('#datepicker1').val();
 			    let startDateStr = date.substr(0, 10);
@@ -312,7 +293,10 @@
 			            	}		
 			            }
 			            $('.table>tbody').html(result);
-			            
+			  		  $('.table>tbody>tr').on('click', function(e) {
+			 			 let rNo = $(this).children(".uniqeNo").text();
+			 			 location.href = "petsitterRevDetail?rNo=" + rNo;
+			 		  });
 			        },
 			        error: function(e) {
 			            console.log(e);
@@ -320,6 +304,16 @@
 			    });
 			});
 
+		  
+		  // 펫시터 예약 상세페이지 이동
+		  $('.table>tbody>tr').on('click', function(e) {
+			 let rNo = $(this).children(".uniqeNo").text();
+			 console.log(rNo, '1');
+			 console.log(e);
+			 console.log($(this).find('.uniqueNo').text());
+			 location.href = "petsitterRevDetail?rNo=" + rNo;
+		  });
+		  
 		  
 		});
 	</script>

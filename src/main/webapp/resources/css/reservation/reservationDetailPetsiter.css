@@ -380,3 +380,6 @@ body #container #main .layout-pagination .pagediv span strong{
 .btn.btn-info.btn-lg {
   color: whitesmoke;
 }
+#careBtn {
+	margin-right: 35px;
+}
