@@ -59,7 +59,7 @@ public class ReservationDao {
 		return sqlSession.selectOne("reservationMapper.reservationDetail", rNo);
 	}
 
-	public ArrayList<Reservation> petsitterRevList(SqlSessionTemplate sqlSession, int userNo, PageInfo pi, String keyword, java.sql.Date startDate, java.sql.Date endDate) {
+	public ArrayList<Reservation> petsitterRevList(SqlSessionTemplate sqlSession, int userNo, PageInfo pi, String keyword) {
 		
 		int offset = (pi.getCurrentPage() - 1) * pi.getBoardLimit();	// 건너뛸 숫자
 		int limit = pi.getBoardLimit();		// 조회할 갯수
@@ -67,8 +67,6 @@ public class ReservationDao {
 		Map<String, Object> parameters = new HashMap<>();
         parameters.put("userNo", userNo);
         parameters.put("keyword", keyword);
-        parameters.put("startDate", startDate);
-        parameters.put("endDate", endDate);
 		
 		RowBounds rowBounds = new RowBounds(offset, limit);
 		
@@ -76,15 +74,24 @@ public class ReservationDao {
 	}
 
 
-	public int selectListPetsitterRev(SqlSessionTemplate sqlSession, int userNo, String keyword, java.sql.Date startDate, java.sql.Date endDate) {
+	public int selectListPetsitterRev(SqlSessionTemplate sqlSession, int userNo, String keyword) {
 		
 		Map<String, Object> parameter = new HashMap<>();
 		parameter.put("userNo", userNo);
 		parameter.put("keyword", keyword);
+		
+		return sqlSession.selectOne("reservationMapper.selectListPetsitterRev", parameter);
+	}
+
+	public ArrayList<Reservation> dateSelect(SqlSessionTemplate sqlSession, int userNo, String startDate,
+			String endDate) {
+		
+		Map<String, Object> parameter = new HashMap<>();
+		parameter.put("userNo", userNo);
 		parameter.put("startDate", startDate);
 		parameter.put("endDate", endDate);
 		
-		return sqlSession.selectOne("reservationMapper.selectListPetsitterRev", parameter);
+		return (ArrayList)sqlSession.selectList("reservationMapper.dateSelect", parameter);
 	}
 
 }

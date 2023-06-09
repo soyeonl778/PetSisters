@@ -62,13 +62,18 @@ public class ReservationServiceImpl implements ReservationService{
 	}
 
 	@Override
-	public int selectListPetsitterRev(int userNo, String keyword, Date startDate, Date endDate) {
-		return reservationDao.selectListPetsitterRev(sqlSession, userNo, keyword, startDate, endDate);
+	public int selectListPetsitterRev(int userNo, String keyword) {
+		return reservationDao.selectListPetsitterRev(sqlSession, userNo, keyword);
 	}
 
 	@Override
-	public ArrayList<Reservation> petsitterRevList(int userNo, PageInfo pi, String keyword, Date startDate, Date endDate) {
-		return reservationDao.petsitterRevList(sqlSession, userNo, pi, keyword, startDate, endDate);
+	public ArrayList<Reservation> petsitterRevList(int userNo, PageInfo pi, String keyword) {
+		return reservationDao.petsitterRevList(sqlSession, userNo, pi, keyword);
+	}
+
+	@Override
+	public ArrayList<Reservation> dateSelect(int userNo, String startDate, String endDate) {
+		return reservationDao.dateSelect(sqlSession, userNo, startDate, endDate);
 	}
 	
 

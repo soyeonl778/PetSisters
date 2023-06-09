@@ -17,8 +17,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.ModelAndView;
 
+import com.google.gson.Gson;
 import com.kh.petsisters.common.model.vo.PageInfo;
 import com.kh.petsisters.common.template.Pagination;
 import com.kh.petsisters.member.model.vo.Member;
@@ -245,78 +245,16 @@ public class ReservationController {
 	@RequestMapping(value="petsitterRev", produces = "application/json; charset=UTF-8")
 	public String petsitterRevList(HttpSession session, Model model,
 			@RequestParam(value="pPage", defaultValue="1") int currentPage,
-			@RequestParam(value="keyword", required=false) String keyword,
-			@RequestParam(value="startDate", required=false) String startDateStr,
-			@RequestParam(value="endDate", required=false) String endDateStr
+			@RequestParam(value="keyword", required=false) String keyword
 			) {
+//		@RequestParam(value="startDate", required=false) String startDateStr,
+//		@RequestParam(value="endDate", required=false) String endDateStr
 		
 		int userNo = ((Member)(session.getAttribute("loginUser"))).getUserNo();
 		
-	    java.sql.Date startDate = null;
-	    java.sql.Date endDate = null;
-	    
-	    if (startDateStr != null && !startDateStr.isEmpty()) {
-	        LocalDate localStartDate = LocalDate.parse(startDateStr, DateTimeFormatter.ISO_DATE);
-	        startDate = java.sql.Date.valueOf(localStartDate);
-	    } else {
-	        LocalDate defaultStartDate = LocalDate.of(2022, 1, 1);
-	        startDate = java.sql.Date.valueOf(defaultStartDate);
-	    }
-	    
-	    if (endDateStr != null && !endDateStr.isEmpty()) {
-	        LocalDate localEndDate = LocalDate.parse(endDateStr, DateTimeFormatter.ISO_DATE);
-	        endDate = java.sql.Date.valueOf(localEndDate);
-	    } else {
-	        LocalDate today = LocalDate.of(2024, 1, 1);
-	        endDate = java.sql.Date.valueOf(today);
-	    }
-		
-		
-		int listCount = reservationService.selectListPetsitterRev(userNo,keyword, startDate, endDate);
-		
-		int pageLimit = 10;
-		int boardLimit = 10;
-		
-		PageInfo pi = Pagination.getPageInfo(listCount, currentPage, pageLimit, boardLimit);
-		
-		ArrayList<Reservation> rev = reservationService.petsitterRevList(userNo, pi, keyword, startDate, endDate);
-		
-		
-		model.addAttribute("rev", rev);
-		model.addAttribute("pi", pi);
-		model.addAttribute("keyword", keyword);
-		model.addAttribute("startDate", startDate);
-		model.addAttribute("endDate", endDate);
-		System.out.println(rev);
-		System.out.println(pi);
-		System.out.println(keyword);
-		System.out.println(userNo);
-		System.out.println(startDate);
-		System.out.println(endDate);
-		System.out.println(startDateStr);
-		System.out.println(endDateStr);
-		
-		
-		
-		return "reservation/reservationListPetsiter";
-	}
-
-
-
-
-//	@RequestMapping(value = "petsitterRev", produces = "application/json; charset=UTF-8")
-//	public String petsitterRevList(
-//	        HttpSession session, Model model,
-//	        @RequestParam(value = "pPage", defaultValue = "1") int currentPage,
-//	        @RequestParam(value = "keyword", required = false) String keyword,
-//	        @RequestParam(value = "startDate", required = false) String startDateStr,
-//	        @RequestParam(value = "endDate", required = false) String endDateStr) {
-//
-//	    int userNo = ((Member) session.getAttribute("loginUser")).getUserNo();
-//
 //	    java.sql.Date startDate = null;
 //	    java.sql.Date endDate = null;
-//
+//	    
 //	    if (startDateStr != null && !startDateStr.isEmpty()) {
 //	        LocalDate localStartDate = LocalDate.parse(startDateStr, DateTimeFormatter.ISO_DATE);
 //	        startDate = java.sql.Date.valueOf(localStartDate);
@@ -324,7 +262,7 @@ public class ReservationController {
 //	        LocalDate defaultStartDate = LocalDate.of(2022, 1, 1);
 //	        startDate = java.sql.Date.valueOf(defaultStartDate);
 //	    }
-//
+//	    
 //	    if (endDateStr != null && !endDateStr.isEmpty()) {
 //	        LocalDate localEndDate = LocalDate.parse(endDateStr, DateTimeFormatter.ISO_DATE);
 //	        endDate = java.sql.Date.valueOf(localEndDate);
@@ -332,33 +270,49 @@ public class ReservationController {
 //	        LocalDate today = LocalDate.of(2024, 1, 1);
 //	        endDate = java.sql.Date.valueOf(today);
 //	    }
-//
-//	    int listCount = reservationService.selectListPetsitterRev(userNo, keyword, startDate, endDate);
-//
-//	    int pageLimit = 10;
-//	    int boardLimit = 10;
-//
-//	    PageInfo pi = Pagination.getPageInfo(listCount, currentPage, pageLimit, boardLimit);
-//
-//	    ArrayList<Reservation> rev = reservationService.petsitterRevList(userNo, pi, keyword, startDate, endDate);
-//
-//	    model.addAttribute("rev", rev);
-//	    model.addAttribute("pi", pi);
-//	    model.addAttribute("keyword", keyword);
-//	    model.addAttribute("startDate", startDate);
-//	    model.addAttribute("endDate", endDate);
-//
-//	    if (isAjaxRequest()) {
-//	        return "success";
-//	    } else {
-//	        return "reservation/reservationListPetsiter";
-//	    }
-//	}
-//
-//	private boolean isAjaxRequest() {
 //		
-//	    return false;
-//	}
+		
+		int listCount = reservationService.selectListPetsitterRev(userNo,keyword);
+		
+		int pageLimit = 10;
+		int boardLimit = 10;
+		
+		PageInfo pi = Pagination.getPageInfo(listCount, currentPage, pageLimit, boardLimit);
+		
+		ArrayList<Reservation> rev = reservationService.petsitterRevList(userNo, pi, keyword);
+		
+		
+		model.addAttribute("rev", rev);
+		model.addAttribute("pi", pi);
+		model.addAttribute("keyword", keyword);
+		// System.out.println(rev);
+		// System.out.println(pi);
+		// System.out.println(keyword);
+		// System.out.println(userNo);
+		
+		
+		return "reservation/reservationListPetsiter";
+	}
+
+
+	@ResponseBody
+	@RequestMapping(value="dateFilter", produces = "application/json; charset=UTF-8")
+	public String dateFilter(String startDate, String endDate, HttpSession session) {
+		
+		int userNo = ((Member)(session.getAttribute("loginUser"))).getUserNo();
+		
+		System.out.println(startDate);
+		System.out.println(endDate);
+		System.out.println(userNo);
+		
+		ArrayList<Reservation> rev = reservationService.dateSelect(userNo, startDate, endDate);
+		
+		System.out.println(rev);
+		
+		
+		
+		return new Gson().toJson(rev);
+	}
 
 	
 	

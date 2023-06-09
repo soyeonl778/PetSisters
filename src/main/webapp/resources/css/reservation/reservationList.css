@@ -221,3 +221,9 @@
   font-size: large;
   font-weight: 700;
 }
+.emptyData {
+    text-align: center;
+    font-size: larger;
+    font-weight: 700;
+    margin-top: 200px;	
+}

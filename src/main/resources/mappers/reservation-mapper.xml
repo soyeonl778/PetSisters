@@ -187,32 +187,30 @@
 		   <if test="keyword != null">
 		    AND USER_NAME LIKE '%' || #{keyword} || '%'	
 		   </if>
-		   <if test="startDate != null">
-		    AND R.START_DATE &gt;= #{startDate} AND R.END_DATE &lt;= #{endDate}
-		   </if>
 		 ORDER BY R.REGISTER_DATE DESC) A
 	</select>
 	
-	
+	<!-- 
+		   <if test="startDate != null">
+		    AND R.START_DATE &gt;= #{startDate} AND R.END_DATE &lt;= #{endDate}
+		   </if>
+	 -->
+	 
 	<!-- 펫시터 예약 갯수 조회용 쿼리문 -->
 	<select id="selectListPetsitterRev" resultType="_int">
 		SELECT COUNT(*)
 		FROM RESERVATION R
-		JOIN PETSITTER PT ON R.REF_PNO = PT.P_NO
 		JOIN MEMBER M ON R.USER_NO = M.USER_NO
-		WHERE REF_PNO = #{userNo}	
+		JOIN PETSITTER PT ON R.REF_PNO = PT.P_NO
+		WHERE PT.USER_NO = #{userNo}	
 		<if test="keyword != null">
 		  AND USER_NAME LIKE '%' || #{keyword} || '%'	
-		</if>
-		<if test="startDate != null">
-		  AND START_DATE &gt;= #{startDate} AND END_DATE &lt;= #{endDate}	
 		</if>
 	</select>
 	
 	
-	<!-- 펫시터 예약 검색 기능용 쿼리문 -->
-	<!-- 
-	<select id="searchKeyword" resultMap="reservationResultSet" parameterType="string">
+	<!-- 펫시터 예약화면 날짜 조회 쿼리문 -->
+	<select id="dateSelect" resultMap="reservationResultSet">
        SELECT ROWNUM, A.*
          FROM (SELECT RES_NO,
 		       R.STATUS STATUS,
@@ -225,12 +223,14 @@
 		  JOIN MEMBER M ON R.USER_NO = M.USER_NO
 		  LEFT JOIN PAYMENT P ON R.RES_NO = P.REF_RESNO
 		  JOIN PETSITTER PT ON R.REF_PNO = PT.P_NO
-		 WHERE PT.USER_NO = 2
-		   AND R.STATUS = 'Y'
-           AND USER_NAME LIKE '%' || #{keyword} || '%'
-		 ORDER BY R.REGISTER_DATE DESC) A	
+		 WHERE PT.USER_NO = #{userNo}
+		   AND R.STATUS = 'Y'   
+		   <if test="startDate != null">
+		    AND R.START_DATE &gt;= #{startDate} AND R.END_DATE &lt;= #{endDate}
+		   </if>
+		 ORDER BY R.REGISTER_DATE DESC) A
 	</select>
-	 -->
+
 </mapper>
 
 

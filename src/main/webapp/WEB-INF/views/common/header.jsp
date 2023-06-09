@@ -73,7 +73,7 @@
 						</li>
 						<c:if test="${loginUser.sitterStatus eq 'Y'}">
 						<li class="nav-item"><a class="nav-link petsiter"
-							href="detail.pe?pno=${ loginUser.userNo - 1 }">펫시터 설정</a>
+							href="detail.pe?pno=${loginUser.petsitterNo}">펫시터 설정</a>
 						</li>
 						</c:if>
 						<c:if test="${loginUser.sitterStatus eq 'N'}">

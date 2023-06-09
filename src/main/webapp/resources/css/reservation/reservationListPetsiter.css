@@ -373,4 +373,22 @@ body #container #main .layout-pagination .pagediv span strong{
 	margin-left: 15px;
     width: 85px;
 }	
+.emptyData {
+    text-align: center;
+    font-size: larger;
+    font-weight: 700;	
+    margin-top: 200px;
+}
+.liner {
+	line-height: 40px;
+}
+.checkIn {
+	width: 115px;
+}
+.revDates {
+    text-align: center;
+    line-height: 40px;	
+}
+.revTh {
+    width: 80px;
 }

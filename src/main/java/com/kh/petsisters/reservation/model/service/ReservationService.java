@@ -37,12 +37,13 @@ public interface ReservationService {
 	
 	// ======== 펫시터 관련 =========
 	// 펫시터 예약 화면 조회용
-	// ArrayList<Reservation> petsitterRevList(int userNo, PageInfo pi, String keyword, String startDate, String endDate);
-	ArrayList<Reservation> petsitterRevList(int userNo, PageInfo pi, String keyword, Date startDate, Date endDate);
+	ArrayList<Reservation> petsitterRevList(int userNo, PageInfo pi, String keyword);
 
 	// 펫시터 예약 화면 갯수 (페이지네이션)
-	// int selectListPetsitterRev(int userNo, String keyword, String startDate, String endDate);
-	int selectListPetsitterRev(int userNo, String keyword, Date startDate, Date endDate);
+	int selectListPetsitterRev(int userNo, String keyword);
+
+	// 펫시터 예약 화면 날짜 조회
+	ArrayList<Reservation> dateSelect(int userNo, String startDate, String endDate);
 
 
 

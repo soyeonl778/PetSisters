@@ -53,7 +53,11 @@
 								<div id="bodyContentHead">
 									<h2 class="firstTit">예약 조회</h2>
 								</div>
-
+								<c:if test="${list.isEmpty()}">
+								<div class="emptyData">
+									아직 예약이 없으시네요!
+								</div>
+								</c:if>
 								<c:forEach var="r" items="${list}">
 									<div class="mainBodyWrapper">
 										<div class="dateWorking">
@@ -108,6 +112,7 @@
 								<!-- 페이지네이션-->
 								<div id="pagination">
 									<nav aria-label="Page navigation example">
+									<c:if test="${ pi.listCount != 0 }">
 										<ul id="pagiUl" class="pagination paginationUlTag">
 										
 										<c:choose>
@@ -134,6 +139,7 @@
 											</c:otherwise>
 										</c:choose>	
 										</ul>
+										</c:if>
 									</nav>
 								</div>
 								<!-- 페이지네이션-->

@@ -100,23 +100,20 @@
 													</tr>
 												</thead>
 												<tbody>
-												
-													${ rev.size() }
-													${ startDate }
 													<c:forEach var="r" items="${ rev }">
 														<tr>
-															<th scope="row">${ r.rowNum }</th>
-															<td class="uniqeNo">${ r.resNo }</td>
+															<th scope="row" class="liner">${ r.rowNum }</th>
+															<td class="uniqeNo liner">${ r.resNo }</td>
 															<c:choose>
 																<c:when
 																	test="${ r.status eq 'Y' and r.endDate > nowDate }">
-																	<td class="specialTd">예약진행중</td>
+																	<td class="specialTd liner">예약진행중</td>
 																</c:when>
 																<c:otherwise>
-																	<td class="specialTd">예약종료</td>
+																	<td class="specialTd liner">예약종료</td>
 																</c:otherwise>
 															</c:choose>
-															<td>${ r.userName }</td>
+															<td class="liner">${ r.userName }</td>
 															<td class="spcDate" width="120">${ r.startDate } ${ r.endDate }</td>
 															<td width="150" class="reserDate">${ r.registerDate.substring(0, 10) }</td>
 															<c:if test="${ r.payPrice != 0 }">
@@ -127,15 +124,20 @@
 															</c:if>
 														</tr>
 													</c:forEach>
-	
 												</tbody>
 											</table>
+												<c:if test="${ rev.isEmpty() }">
+													<div class="emptyData">
+														아직 예약이 없어요..ㅠㅠ
+													</div>
+												</c:if>
 										</div>
 									</div>
 								</div>
 								<!-- 페이지네이션-->
 								<div id="pagination">
 									<nav aria-label="Page navigation example">
+										<c:if test="${ pi.listCount != 0 }">
 										<ul id="pagiUl" class="pagination paginationUlTag">
 
 											<c:choose>
@@ -161,11 +163,13 @@
 												</c:when>
 												<c:otherwise>
 													<li class="arrowTag"><a
-														href="petsitterRev?pPage=${pi.currentPage + 1}">&rsaquo;</a></li>
+														href="petsitterRev?pPage=${pi.currentPage + 1}">&rsaquo;</a>
+														</li>
 												</c:otherwise>
 											</c:choose>
 
 										</ul>
+									</c:if>
 									</nav>
 								</div>
 								<!-- 페이지네이션-->
@@ -231,24 +235,29 @@
 
 		  $(document).on('focusout', '#datepicker1', function() {
 			    var selectedDate = $(this).val();
-			    // let startDate = selectedDate.slice(0, 10);
-			    // let endDate = selectedDate.slice(-10);
-			    // let startDate = new Date(date.substr(0, 10)).toLocaleDateString('en-CA');
-    			// let endDate = new Date(date.slice(-10)).toLocaleDateString('en-CA');
+			    let startDate = selectedDate.slice(0, 10);
+			    let endDate = selectedDate.slice(-10);
 			    console.log('변경된 날짜:', selectedDate);
-			    // console.log('시작 날짜:', startDate);
-			    // console.log('종료 날짜:', endDate);
 			    
 			  });
 		  
 		  $('.dateBtn').on('click', function () {
+			  
+			// String 타입의 값
+			  var dateString = '6월 5, 2023';
+
+			  // String을 Date 객체로 변환
+			  var datee = new Date(dateString.replace(/(\d{1,2})월 (\d{1,2}), (\d{4})/, '$3-$1-$2'));
+
+			  // Date 객체를 원하는 형식으로 포맷팅
+			  var formattedDate = datee.toISOString().slice(0, 10); // '2023-06-05'
+
+			  // 포맷팅된 값을 출력
+			  console.log('이거맞아?', formattedDate);
+			  
 			    let date = $('#datepicker1').val();
 			    let startDateStr = date.substr(0, 10);
 			    let endDateStr = date.slice(-10);
-			    console.log(startDateStr);
-			    console.log(endDateStr);
-			    console.log(typeof startDateStr);
-			    console.log(typeof endDateStr);
 			    
 			    let dateData = {
 			        startDate: startDateStr,
@@ -256,11 +265,63 @@
 			    };
 			    
 			    $.ajax({
-			        url: "petsitterRev",
+			        url: "dateFilter",
 			        type: "POST",
-			        data: dateData, // 객체를 직렬화하지 않고 전송
-			        success: function(e) {
-			            console.log('ht', e);
+			        data: dateData, 
+			        success: function(res) {
+			        	
+			        	
+			            let nowDate = new Date().toISOString().slice(0, 10);
+			            console.log(res);
+			            let rere = "";
+			            let result = "";
+			            $('.table>tbody').html(rere);
+			            $('#pagiUl').css("display", "none");
+			            
+			            for(let i = 0; i < res.length; i++) {
+			            	
+			  			  
+			    			// String 타입의 값
+			    			  var startDate = res[i].startDate;
+			    			  var endDate = res[i].endDate;
+
+			    			  // String을 Date 객체로 변환
+			    			  var startDate = new Date(startDate.replace(/(\d{1,2})월 (\d{1,2}), (\d{4})/, '$3-$1-$2'));
+			    			  var endDate = new Date(endDate.replace(/(\d{1,2})월 (\d{1,2}), (\d{4})/, '$3-$1-$2'));
+
+			    			  // Date 객체를 원하는 형식으로 포맷팅
+			    			  var start = startDate.toISOString().slice(0, 10); 
+			    			  var end = endDate.toISOString().slice(0, 10);
+			    			  console.log(startDate);
+			    			  console.log(endDate);
+			    			  console.log(start);
+			    			  console.log(end);
+			            	
+			            	if(res[i].status === 'Y' && end >= nowDate) {
+			            	
+			            	result += "<tr>"
+			            			+ "<th class='liner'>" + res[i].rowNum + "</th>"
+			            			+ "<td class='liner revTh'>" + res[i].resNo + "</td>"
+			            			+ "<td class='specialTd liner' style='color: #0888D0'>예약진행중</td>"
+			            			+ "<td class='liner'>" + res[i].userName + "</td>"
+			            			+ "<td class='checkIn'>" + start + "<br>" +  end + "</td>"
+			            			+ "<td class='revDates'>" + res[i].registerDate.substring(0, 10) + "</td>"
+			            			+ "<td class='revDates'>" + res[i].payPrice + "</td>"
+			            			+ "</tr>"	
+			            	} else {
+				            	result += "<tr>"
+			            			+ "<th class='liner'>" + res[i].rowNum + "</th>"
+			            			+ "<td class='liner revTh'>" + res[i].resNo + "</td>"
+			            			+ "<td class='specialTd liner' style='color: green'>예약종료</td>"
+			            			+ "<td class='liner'>" + res[i].userName + "</td>"
+			            			+ "<td class='checkIn'>" + start + "<br>" +  end + "</td>"
+			            			+ "<td class='revDates'>" + res[i].registerDate.substring(0, 10) + "</td>"
+			            			+ "<td class='revDates'>" + res[i].payPrice + "</td>"
+			            			+ "</tr>"	
+			            	}		
+			            }
+			            $('.table>tbody').html(result);
+			            
 			        },
 			        error: function(e) {
 			            console.log(e);
