@@ -280,20 +280,20 @@
                         <a href="updateForm.pe?pno=${ p.petSitterNo }" class="btn btn-secondary">프로필 수정</a>
                       </div>
                       <div class="card">
-                        <form action="#" method="get" id="reserveForm">
+                        <form action="/pay" method="get" id="reserveForm">
                           <input type="hidden" name="userNo" value="${ loginUser.userNo }">
                           <input type="hidden" name="pno" value="${ p.petSitterNo }">
-                          
+                          <input type="hidden" id="payPrice" name="payPrice" value="">
                           <div class="card-body">
                             <h5 class="card-title">언제 펫시터가 필요하신가요?</h5>
                             <div class="dateInput">
-                              <input type="date" class="form-control" id="startDate" name="startDate" data-placeholder="체크인 날짜" min="2023-01-01">&nbsp;&nbsp;
-                              <input type="date" class="form-control" id="endDate" name="endDate" data-placeholder="체크아웃 날짜" min="2023-01-01">
+                              <input type="date" class="form-control" id="startDate" name="startDate" data-placehoder="체크인 날짜" required>&nbsp;&nbsp;
+                              <input type="date" class="form-control" id="endDate" name="endDate" data-placehoder="체크아웃 날짜" required>
                             </div>
                             <hr>
                             <h5 class="card-title">맡기시는 반려동물</h5>
                             <div class="petCount">
-                              <input class="Btn" type="button" onclick='count("minus")' value="-" />&nbsp;&nbsp;<div id="petCount">1</div>&nbsp;마리&nbsp;&nbsp;<input class="Btn" type="button" onclick='count("plus")' value="+" />
+                              <button type="button" value="-">-</button>&nbsp;&nbsp;<div id="petCount">0</div>마리&nbsp;&nbsp;<button type="button" value="+">+</button>
                             </div>
                             <hr>
                             <h5 class="petMsg">요청사항</h5>
@@ -302,7 +302,7 @@
                             <h5>이용요금</h5>
                             <p class="card-text">
                               <div class="day">
-                                <div id="payDscpt" name="payDscpt"><div id="day"></div>박 돌봄</div> <div id="petCharge"></div>&nbsp;원
+                                <div id="payDscpt"><div id="day"></div>박 돌봄<div id="slash">/</div><div id="petCount2"></div>마리</div>&nbsp;<div id="total"></div>원
                               </div>
                             </p>
                             <input type="hidden" id="price" value="55000">
@@ -315,80 +315,98 @@
 
                         <script>
 
-                          // 수량을 표시할 element
-                          const resultElement = document.getElementById("petCount");
+                          $('#petCount').text(0);
+                          $('#petCount2').text(0);
 
-                          // 현재 화면에 표시된 값
-                          let num = resultElement.innerText;
+                          // HTML 요소 가져오기
+                          const petCountElement = document.getElementById('petCount');
+                          const priceElement = document.getElementById('price');
+                          const dayElement = document.getElementById('day');
 
-                          // 총 가격 변경 시키기
-                          // 가격 정보
-                          const price = document.querySelector("#price").value;
+                          // + 버튼 클릭 시 이벤트 처리
+                          function increaseCount() {
+                            let petCount = parseInt($('#petCount').text());
+                            petCount++;
+                            $('#petCount').text(petCount);
 
-                          // 계산된 일수
-                          var resultDay = document.querySelector("#day").innerText;
+                            updateTotal();
+                          }
 
-                          // 수량
-                          const countNum = document.querySelector("#petCount").innerText;
-
-                          // 부가세
-                          const vat = document.querySelector("#vat").innerText;
-
-                          // 총 가격
-                          const total = document.querySelector('#total').innerText;
-
-                          // 0으로 초기화
-                          let result = 0;
-
-                          function count(type) {
-
-                            // 더하기 / 빼기
-                            if (type === 'plus') {
-                                num = parseInt(num) + 1;
-                                result += price * (Number(countNum) + 1);
-                                
-                            } else if (type === 'minus') {
-                              if (num <= 1) {
-                                num = parseInt(num) - 0;
-                              } else {
-                                num = parseInt(num) - 1;
-                                result = Number(result) - price;
-                              }
+                          // - 버튼 클릭 시 이벤트 처리
+                          function decreaseCount() {
+                            let petCount = parseInt($('#petCount').text());
+                            if (petCount > 1) {
+                              petCount--;
+                              $('#petCount').text(petCount);
                             }
 
-                            // 수량 출력
-                            resultElement.innerText = num;
+                            updateTotal();
                           }
+
+                          // 이용요금 업데이트 함수
+                          function updateTotal() {
+                            let petCount = parseInt($('#petCount').text());
+                            let price = parseInt($('#price').val());
+                            let day = parseInt($('#day').text());
+
+                            let total = petCount * price * day;
+
+                            // 결과를 #petCount2 요소에 출력
+                            $('#petCount2').text(petCount);
+
+                            // 천단위 콤마 추가
+                            let formattedTotal = total.toLocaleString();
+
+                            $('#total').text(formattedTotal);
+                            $('#payPrice').val(formattedTotal);
+
+                            console.log($('#payPrice').val());
+                          }
+
+                          // + 버튼 클릭 시 이벤트 연결
+                          const plusButton = document.querySelector('button[value="+"]');
+                          plusButton.addEventListener('click', increaseCount);
+
+                          // - 버튼 클릭 시 이벤트 연결
+                          const minusButton = document.querySelector('button[value="-"]');
+                          minusButton.addEventListener('click', decreaseCount);
+
 
                           $(document).ready(function() {
 
                             $('#day').text(0);
 
-                            // startDate와 endDate 입력 요소의 값이 변경될 때마다 날짜 차이를 계산하는 함수를 실행합니다.
                             $('#startDate, #endDate').on('change', function() {
 
                               // 시작일, 종료일
                               var startDate = Date.parse($('#startDate').val());
                               var endDate = Date.parse($('#endDate').val());
 
+                              resetValues();
+
                               if (startDate && endDate) {
                                 calculateDateDifference();
+                                updateTotal();
                               }
 
                               function calculateDateDifference() {
   
-                                // 날짜 차이를 계산합니다. 결과는 밀리초로 반환되므로 일 단위로 변환합니다.
-                                var dateDifference = Math.ceil((endDate - startDate) / (1000 * 60 * 60 * 24));
-  
-                                // 결과를 #day 요소에 출력합니다.
-                                $('#day').text(dateDifference + 1);
+                                if (endDate < startDate) {
+                                  $('#endDate').val('');
+                                  $('#day').text(0); // endDate가 startDate보다 이전인 경우 0으로 설정
+                                } else {
+                                  // 날짜 차이를 계산(결과는 밀리초로 반환되므로 일 단위로 변환)
+                                  var dateDifference = Math.ceil((endDate - startDate) / (1000 * 60 * 60 * 24));
+    
+                                  // 결과를 #day 요소에 출력
+                                  $('#day').text(dateDifference + 1);
 
+                                  // #payDscpt 요소의 값을 가져오기
+                                  var payDscptValue = $('#payDscpt').text();
+                                  addHiddenInput('payDscpt', payDscptValue);
 
-                                // #payDscpt 요소의 값을 가져옵니다.
-                                var payDscptValue = $('#payDscpt').text();
-                                addHiddenInput('payDscpt', payDscptValue);
-                                result *= Number(payDscptValue)
-                                calculateTotalPrice();
+                                  console.log(payDscptValue);
+                                }
                               }
 
                               function addHiddenInput(name, value) {
@@ -398,18 +416,19 @@
                                   value: value
                                 });
                                 $('#reserveForm').append(input);
-
-                                console.log(input);
                               }
 
-                              function calculateTotalPrice() {
-                                // 총 가격 출력
-                                document.querySelector('#total').innerText = result;
+                              // 값 초기화 함수
+                              function resetValues() {
+                                $('#petCount').text(0);
+                                $('#petCount2').text(0);
+                                $('#day').text(0);
+                                $('#total').val('');
+                                $('#reserveForm').find('input[name="payDscpt"]').remove();
                               }
+
                             });
                           });
-
-
 
                         </script>
 
