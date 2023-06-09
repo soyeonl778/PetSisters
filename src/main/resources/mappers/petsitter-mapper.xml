@@ -35,7 +35,7 @@
 		<result column="DOG_NAME" property="dogName" />
 		<result column="DOG_GENDER" property="dogGender" />
 		<result column="DOG_BREED" property="dogBreed" />
-		<result column="DOG_BIRTHDAY" property="dogBirth" />
+		<result column="DOG_AGE" property="dogAge" />
 		<result column="DOG_WEIGHT" property="dogWeight" />
 		<result column="FILE_PATH" property="filePath" />
 	</resultMap>
@@ -122,7 +122,7 @@
 		     , DOG_NAME
 		     , DOG_GENDER
 		     , DOG_BREED
-		     , DOG_BIRTHDAY
+		     , EXTRACT(YEAR FROM SYSDATE) - EXTRACT(YEAR FROM DOG_BIRTHDAY) + 1 AS DOG_AGE
 		     , DOG_WEIGHT
 		     , FILE_PATH
 		     , P_NO
