@@ -16,9 +16,6 @@ public class Inquiry {
 	private String inquiryContent; // 문의글 내용
 	private String createDate; // 문의글 작성일
 	private String status;
-	private String replyStatus; // 답변 상태
+	private String filePath;
 	private int userNo;
-	private String originName;
-	private String changeName;
-	private int count;
 }

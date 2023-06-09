@@ -10,8 +10,6 @@
   <link rel="stylesheet" href="/resources/css/common/form.css">
   <jsp:include page="../common/common.jsp" />
   
-  <script src="/resources/js/inquiryEnrollForm.js"></script>
-  
   <title>1:1 문의 작성</title>
 </head>
 
@@ -39,7 +37,7 @@
                     <a href="/showFaq">자주하는 질문</a>
                   </li>
                   <li class="on">
-                    <a href="event.preventDefault();">1:1 문의</a>
+                    <a href="#">1:1 문의</a>
                   </li>
                 </ul>
               </div>
@@ -58,6 +56,7 @@
                 
                 <div class="inquiryEnrollForm">
                   <form action="insert.in" method="post">
+                  	<input type="hidden" name="userNo" value="${loginUser.userNo}">
                     <table id="inquiryEnrollForm" style="text-align: center;">
                         <tr>
                             <th>제목*</th>
@@ -73,12 +72,12 @@
                           <th>첨부파일</th>
                           <td>
                             <div class="fileSection preview" style="text-align: left;">
-                              <input type="file" name="" id="btnAtt" multiple="multiple">
-                            <div id="att_zone" data-placeholder='파일을 첨부 하려면 파일 선택 버튼을 클릭하거나 파일을 드래그앤드롭 하세요'></div>
-                            <span>
-                              · 30MB 이하의 이미지만 업로드 가능합니다. <br/>
-                              · 문의와 무관한 내용이거나 음란 및 불법적인 내용은 통보없이 삭제 될 수 있습니다. <br/>
-                            </span>
+                              	<input type="file" name="file" id="btnAtt">
+                            	<div id="att_zone"></div>
+	                            <span>
+	                              · 30MB 이하의 이미지만 업로드 가능합니다. <br/>
+	                              · 문의와 무관한 내용이거나 음란 및 불법적인 내용은 통보없이 삭제 될 수 있습니다. <br/>
+	                            </span>
                             </div>
                           </td>
                         </tr>
@@ -105,17 +104,7 @@
   <!-- Footer 영역 시작 -->
   	<jsp:include page="../common/footer.jsp" />
   <!-- Footer 영역 끝 -->
-  
-    <script>
-        $('#target_img').click(function (e) {
-            document.signform.target_url.value = document.getElementById( 'target_img' ).src;
-            e.preventDefault();
-            $('#file').click();
-        }); 
-        function changeValue(obj) {
-            document.signform.submit();
-        }
-    </script>
+
     <script>
 	  $(function() {
 	    $("#in_select").change(function() {

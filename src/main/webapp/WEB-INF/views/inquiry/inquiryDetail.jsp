@@ -37,7 +37,7 @@
                     <a href="/showFaq">자주하는 질문</a>
                   </li>
                   <li class="on">
-                    <a href="event.preventDefault();">1:1 문의</a>
+                    <a href="#">1:1 문의</a>
                   </li>
                 </ul>
               </div>
@@ -54,21 +54,17 @@
                 
                 <c:if test="${ (not empty loginUser) and (loginUser.userNo eq i.userNo) }">
                 	<div align="right">
-	                    <a class="btn btn-primary" onclick="postFormSubmit(1);">수정하기</a>
-	                    <a class="btn btn-danger" onclick="postFormSubmit(2);">삭제하기</a>
+	                    <a class="btn btn-danger" onclick="postFormSubmit();">삭제하기</a>
                 	</div>
                 	<br/>
                 	
                 	<form id="postForm" action="" method="post">
+                		<input type="hidden" name="userNo" value="${i.userNo}">
 		            	<input type="hidden" name="inquiryNo" value="${i.inquiryNo}">
 		            </form>
 		            <script>
-						function postFormSubmit(num) {
-							if(num == 1) { // 수정하기 버튼을 클릭했을 경우
-								$("#postForm").attr("action", "updateForm.in").submit();
-							} else { // 삭제하기 버튼을 클릭했을 경우
-								$("#postForm").attr("action", "delete.in").submit();
-							}
+						function postFormSubmit() {
+							$("#postForm").attr("action", "delete.in").submit();
 						}
 		            </script>
                 </c:if>
@@ -96,18 +92,16 @@
                             </td>
                         </tr>
                         <tr>
-                          <th>첨부파일</th>
-                          <td class="attZone items">
-                          	<c:choose>
-	                    		<c:when test="${ empty i.filePath }">
-	                    			첨부파일이 없습니다.
-	                    		</c:when>
-	                    		<c:otherwise>
-	                    			${i.filePath}
-	                    		</c:otherwise>
-                    		</c:choose>
-                          </td>
-                        </tr>
+						    <th>첨부파일</th>
+						    <td class="attZone items">
+						        <c:if test="${empty i.filePath}">
+						            	첨부파일이 없습니다.
+						        </c:if>
+						        <c:if test="${not empty i.filePath}">
+						            <a href="${i.filePath}">${i.filePath}</a>
+						        </c:if>
+						    </td>
+						</tr>
                     </table>
                 </div>
                 

@@ -34,7 +34,10 @@ public class InquiryDao {
 	}
 	
 	public int insertInquiry(SqlSessionTemplate sqlSession, Inquiry i) {
-		return sqlSession.insert("inquiryMapper.insertInquiry", i);
+		
+		int result = sqlSession.insert("inquiryMapper.insertInquiry", i);
+		i.setInquiryNo(sqlSession.selectOne("inquiryMapper.selectInquiryNo"));
+		return result;
 	}
 	
 	public Inquiry selectInquiry(SqlSessionTemplate sqlSession, int inquiryNo) {

@@ -2,8 +2,6 @@ package com.kh.petsisters.inquiry.controller;
 
 import java.io.File;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -58,69 +56,65 @@ public class InquiryController {
 		
 		return "inquiry/inquiryEnrollForm";
 	}
-	
+		
 	@RequestMapping("insert.in")
-	public String insertInquiry(Inquiry i, HttpSession session, Model model) {
+	public String insertInquiry(Inquiry i, MultipartFile upfile, HttpSession session, Model model) {
 		
-		if(!getOriginalFilename().equals("")) {
-			
-			String changeName = saveFile(session);
-			
-			i.setOriginName(getOriginalFilename());
-			i.setChangeName("resources/upFiles/inquiry_upfiles/" + changeName);
-		}
-		
-		int result = inquiryService.insertInquiry(i);
-		
-		if(result > 0) {
-			
-			System.out.println(i);
-			session.setAttribute("alertMsg", "1:1 문의글 등록에 성공하였습니다.");
-			
-			return "redirect:/list.in";
-			
-		} else {
-			System.out.println(i);
-			model.addAttribute("errorMsg", "1:1 문의글 등록 실패");
-			
-			return "notice/errorPage";
-		}
+	    try {
+	    	
+	        if (upfile != null && !upfile.isEmpty()) {
+	        	
+	            String filePath = session.getServletContext().getRealPath("/resources/upFiles/inquiry_upfiles/") + upfile.getOriginalFilename();
+	            upfile.transferTo(new File(filePath));
+	            
+	        }
+	        
+	        int result = inquiryService.insertInquiry(i);
+	        
+	        if (result > 0) {
+	        	
+	            session.setAttribute("alertMsg", "성공적으로 문의글을 등록했습니다.");
+	            
+	            return "redirect:/detail.in?inquiryNo=" + i.getInquiryNo();
+	            
+	        } else {
+	        	
+	            model.addAttribute("errorMsg", "문의글 등록에 실패했습니다.");
+	            
+	            return "notice/errorPage";
+	        }
+	        
+	    } catch (IOException e) {
+	    	
+	        model.addAttribute("i", i);
+	        model.addAttribute("errorMsg", "업로드 실패");
+	        
+	        return "inquiry/inquiryEnrollForm";
+	    }
 	}
-
+	
 	@RequestMapping("detail.in")
 	public ModelAndView selectInquiry(ModelAndView mv, int inquiryNo) {
 		
-		int result = inquiryService.increaseCount(inquiryNo);
-		
-		if(result > 0) {
-			
 			Inquiry i = inquiryService.selectInquiry(inquiryNo);
 			
 			mv.addObject("i", i).setViewName("inquiry/inquiryDetail");
 			
-		} else {
-			
-			mv.addObject("errorMsg", "상세조회 실패").setViewName("notice/errorPage");
-		}
+			// mv.addObject("errorMsg", "상세조회 실패").setViewName("notice/errorPage");
 		
 		return mv;
 	}
 	
 	@RequestMapping("delete.in")
-	public String deleteInquiry(int inquiryNo, Model model, String filePath, HttpSession session, Member loginUser) {
+	public String deleteInquiry(int inquiryNo, Model model, String filePath, HttpSession session) {
 		
 		int result = inquiryService.deleteInquiry(inquiryNo);
 		
 		if(result > 0) {
 			
-			if(!filePath.contentEquals("")) {
-				String realPath = session.getServletContext().getRealPath(filePath);
-				new File(realPath).delete();
-			}
-			
 			session.setAttribute("alertMsg", "성공적으로 문의글을 삭제하였습니다.");
 			
-			return "redirect:/list.in?userNo=" + loginUser.getUserNo();
+			return "redirect:/list.no";
 			
 		} else {
 			

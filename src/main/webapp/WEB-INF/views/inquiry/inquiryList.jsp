@@ -37,7 +37,7 @@
                     <a href="/showFaq">자주하는 질문</a>
                   </li>
                   <li class="on">
-                    <a onclick="event.preventDefault();">1:1 문의</a>
+                    <a onclick="#">1:1 문의</a>
                   </li>
                 </ul>
               </div>
@@ -61,7 +61,8 @@
                   
                   <thead>
                     <tr class="category">
-                        <th height="51">제목</th>
+                    	<th height="51">번호</th>
+                        <th>제목</th>
                         <th width="100">작성일</th>
                     </tr>
                   </thead>
@@ -70,7 +71,8 @@
 							<tbody id="inquiryBody">
 			                  	<c:forEach var="i" items="${list}">
 			                  		<tr>
-			                  			<td height="51">${i.inquiryTitle}</td>
+			                  			<td height="51">${i.inquiryNo}</td>
+			                  			<td>${i.inquiryTitle}</td>
 			                  			<td>${i.createDate}</td>
 			                  		</tr>
 			                  	</c:forEach>
