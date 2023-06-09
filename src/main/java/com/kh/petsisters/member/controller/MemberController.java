@@ -254,6 +254,12 @@ public class MemberController {
 		return "/member/pet_profile";
 	}
 	
+	// 마이페이지 펫 프로필 등록 영역
+	@RequestMapping("petInsert.me")
+	public String petInsert() {
+		return "/member/pet_profile";
+	}
+	
 	// 펫정보 수정 기능 영역
 	@RequestMapping("petUpdate.me")
 	public void petUpdate(Dog d,

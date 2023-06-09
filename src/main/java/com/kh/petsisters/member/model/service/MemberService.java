@@ -24,6 +24,9 @@ public interface MemberService {
 		int deleteMember(String userId);
 		
 	// 펫 정보 수정 서비스
+		int petInsert(Dog d);
+		
+	// 펫 정보 수정 서비스
 		int petUpdate(Dog d);
 	
 	// 아이디중복체크 서비스 (select)

@@ -37,6 +37,11 @@ public class MemberDao {
 		return sqlSession.update("memberMapper.deleteMember", userId);
 	}
 	
+	public int petInsert(SqlSessionTemplate sqlSession, Dog d) {
+		
+		return sqlSession.insert("memberMapper.petInsert", d);
+	}
+	
 	public int petUpdate(SqlSessionTemplate sqlSession, Dog d) {
 		
 		return sqlSession.update("memberMapper.petUpdate", d);

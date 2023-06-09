@@ -59,14 +59,14 @@
                 <!-- 이 영역 안에서 페이지 작업 하시면 됩니다 -->
                 <!--<div style="height: 1000px; background-color: beige;"></div> -->
                 <div id="titleWrapper">
-                  <h3 class="title_11">내 프로필 정보</h3>
+                  <h3 class="title_11">펫 프로필 정보</h3>
                 </div>
                 <form id="profileWrapper">
                   <hr>
                     <div class="file_main">
                       <label>사진</label>
                       <div class="file_change">
-                        <img class="profile_img" src="/resources/main/img/로이-4052.jpg" />
+                        <img class="profile_img" src="/resources/img/main/로이-4052.jpg" />
                         <div class="profile_con">
                           <button type="button" class="img_btn">사진변경</button>
                           <p>등록된 사진은 반려견의 프로필입니다.</p>

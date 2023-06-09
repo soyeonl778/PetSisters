@@ -52,6 +52,11 @@ public class MemberServiceImpl implements MemberService{
 	public int deleteMember(String userId) {
 		return memberDao.deleteMember(sqlSession, userId);
 	}
+	
+	@Override
+	public int petInsert(Dog d) {
+		return memberDao.petInsert(sqlSession, d);
+	}
 
 	@Override
 	public int petUpdate(Dog d) {
