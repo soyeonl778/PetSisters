@@ -27,7 +27,7 @@
               <div class="page_section section_destination">
                 <!-- 이 영역 안에서 페이지 작업 하시면 됩니다 -->
                 <div>
-				  <form action="" method="post">
+				  <form action="journalEnroll?cNo=${ r.resNo }" method="post">
                   <div class="bodyContainer">
 
                     <h1>예약 상세 조회</h1>

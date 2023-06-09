@@ -24,6 +24,6 @@ public class Review {
 	private int rNo;			//  제발 등록되라 고유번호
 	private Date revStartDate;	//  예약 시작일
 	private Date revEndDate;	//  예약 종료일
-	private String revFilePath;	// 	리뷰 테이블 후기 파일경로
+	private String userName;	// 	유저 이름
 	
 }

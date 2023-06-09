@@ -285,27 +285,22 @@ public class ReservationController {
 		
 		int userNo = ((Member)(session.getAttribute("loginUser"))).getUserNo();
 		
-		System.out.println(startDate);
-		System.out.println(endDate);
-		System.out.println(userNo);
-		
 		ArrayList<Reservation> rev = reservationService.dateSelect(userNo, startDate, endDate);
-		
-		System.out.println(rev);
-		
 		
 		return new Gson().toJson(rev);
 	}
 
 	
+	/**
+	 * 펫시터 예약 상세페이지
+	 * @param model
+	 * @param rNo
+	 * @return
+	 */
 	@RequestMapping("petsitterRevDetail")
 	public String petsitterRevDetail(Model model, int rNo) {
 		
-		System.out.println(rNo);
-		
 		Reservation r = reservationService.petsitterRevDetail(rNo);
-		
-		System.out.println(r);
 		
 		model.addAttribute("r", r);
 		
@@ -313,6 +308,14 @@ public class ReservationController {
 	}
 	
 	
+	@RequestMapping("journalEnroll")
+	public String carejournalEnrollForm(Model model, int cNo) {
+		
+		System.out.println(cNo);
+		
+		
+		return "reservation/carejournalEnrollForm";
+	}
 	
 	
 	/**

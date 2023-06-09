@@ -28,7 +28,7 @@
                 <!-- 이 영역 안에서 페이지 작업 하시면 됩니다 -->
                 <div>
                   <h1 class="hTitle" align="center">돌봄 일지 작성</h1>
-                  <form id="imForm" action="" method="" enctype="multipart/form-data">
+                  <form id="imForm" action="" method="post" enctype="multipart/form-data">
                     <div>
                       <div class="titleSection">
                         <div class="titleText">제목</div>
