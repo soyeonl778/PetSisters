@@ -44,16 +44,21 @@
                     <div class="enrollWrapper">
                       <p>
                         <label for="userId">● 아이디 </label><br>
-                        <input type="text" id="userId" name="userId" maxlength="15" placeholder="아이디를 입력해주세요." required>
+                        <input type="text" id="userId" name="userId" maxlength="15" placeholder="아이디를 입력해주세요." style="width:230px" required>
                         <div id="checkResult" style="font-size : 0.8em; display : none"></div>
                       </p>
                       <p>
+                        <label for="userNickname">● 닉네임 </label><br>
+                        <input type="text" id="userNickname" name="userNickname" maxlength="15" placeholder="나만의 닉네임을 지어주세요." style="width:230px" required>
+                      </p>
+                      <p>
                         <label for="userPwd">● 비밀번호 </label><br>
-                        <input type="text" name="userPwd" maxlength="15" placeholder="영문+숫자+특수문자 조합 8~16자리" required><br>
+                        <input type="password" name="userPwd" id="userPwd" maxlength="15" placeholder="영문+숫자+특수문자 조합 8~16자리" style="width:300px" required><br>
                       </p>
                       <p>
                         <label for="">● 비밀번호 확인 </label><br>
-                        <input type="text" name="checkPwd" maxlength="15" placeholder="정확히 기입해주세요" required><br>
+                        <input type="password" name="checkPwd" id="checkPwd" maxlength="15" placeholder="정확히 기입해주세요." style="width:300px" onkeyup="passConfirm()" required>
+                        <div id="confirmMsg" style="font-size : 0.8em; display : block"></div>
                       </p>
                       <p>
                         <label for="userName">● 이름 </label><br>
@@ -65,20 +70,20 @@
                       </p>
                       <p>
                         <label for="phone">● 휴대폰 번호 </label><br>
-                        <input type="text" name="phone" maxlength="11" placeholder="(-) 제외하고 숫자  ex)01012349876" required><br>
+                        <input type="text" name="phone" maxlength="11" placeholder="(-) 제외하고 숫자  ex)01012349876" style="width:300px" required><br>
                       </p>
                       <p>
                         <label for="email">● 이메일 </label><br>
-                        <input type="email" name="email" maxlength="30" placeholder="@ 까지 정확한 이메일 형식을 입력해주세요." required><br>
+                        <input type="email" name="email" maxlength="30" placeholder="@ 까지 정확한 이메일 형식을 입력해주세요." style="width:350px" required><br>
                       </p>
                       <p>
                         <label for="address">● 거주지 주소 </label><br>
-                        <input type="text" name="address" maxlength="30" placeholder="상세 주소를 입력해주세요." required><br>
+                        <input type="text" name="address" maxlength="30" placeholder="상세 주소를 입력해주세요." style="width:500px" required><br>
                       </p>
                       <span class="input_btn checkbox">
                         <label>● 성별</label><br>
-                        <input type="checkbox" id="Male" value="M" name="gender"> 남
-                        <input type="checkbox" id="Female" value="F" name="gender"> 여 <br>
+                        <input type="checkbox" id="Male" value="M" name="gender"> <b>남</b>
+                        <input type="checkbox" id="Female" value="F" name="gender"> <b>여</b> <br>
                       </span>
                       <span class="input_btn checkbox">
                         <input type="checkbox" name="checkbox" id="checkEmail" value="Y">
@@ -101,7 +106,8 @@
       </div>
     </div>
     
-    <script>
+    	<!-- 아이디 중복체크 -->
+    	<script>
         	$(function() {
         		
         		// 아이디를 입력받을 수 있는 input 요소 객체 자체를 변수에 담아두기
@@ -135,7 +141,7 @@
 									console.log("사용가능");
 									// 초록색 메세지로 (사용가능함) 출력
 									$("#checkResult").show();
-									$("#checkResult").css("color", "green").text("멋진 아이디군요!");
+									$("#checkResult").css("color", "green").text("사용 가능한 아이디 입니다!");
 									
 									// 버튼 활성화
 									$("#enrollForm button[type=submit]").attr("disabled", false);
@@ -153,6 +159,25 @@
         			}
         		});
         	});
+        </script>
+        
+        <script type="text/javascript">
+        	function passConfirm() {
+        		
+        		var userPwd = document.getElementById('userPwd');
+        		var checkPwd = document.getElementById('checkPwd');
+        		var confirmMsg = document.getElementById('confirmMsg');
+        		var correctColor = "#2B8D0B";
+        		var wrongColor = "#992A2A";
+        		
+        		if(userPwd.value == checkPwd.value) {
+        			confirmMsg.style.color = correctColor;
+        			confirmMsg.innerHTML = "비밀번호 일치";
+        		} else {
+        			confirmMsg.style.color = wrongColor;
+        			confirmMsg.innerHTML = "비밀번호 불일치";
+        		}
+        	}
         </script>
   </div>
   <!-- Footer 영역 시작 -->

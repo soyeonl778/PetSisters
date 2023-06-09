@@ -101,12 +101,6 @@ public class MemberController {
 							   Model model, 
 							   HttpSession session) {
 		
-		System.out.println(m);
-		
-		String encPwd = bcryptPasswordEncoder.encode(m.getUserPwd());
-		
-		m.setUserPwd(encPwd);
-		
 		int result = memberService.insertMember(m);
 		
 		if(result > 0) {
@@ -247,15 +241,45 @@ public class MemberController {
 		}
 	}
 	
-	// 마이페이지 펫 프로필 조회 영역
-	@RequestMapping("petProfile.me")
-	public String petProfile() {
-		return "/member/pet_profile";
+	// 마이페이지 나의펫 전체조회 영역
+	@RequestMapping("petList.me")
+	public String petListView() {
+		return "/member/petList";
 	}
+	
+	// 펫 등록하기 페이지 영역
+	@RequestMapping("petEnrollForm.me")
+	public String petEnrollForm() {
+		return "/member/petEnrollForm";
+	}
+	
 	
 	// 마이페이지 펫 프로필 등록 영역
 	@RequestMapping("petInsert.me")
-	public String petInsert() {
+	public String petInsert(Dog d,
+			   				Model model, 
+			   				HttpSession session) {
+		
+		int result = memberService.petInsert(d);
+		
+		if(result > 0) {
+			
+			session.setAttribute("alertMsg", "정상적으로 나의 펫이 등록되었습니다.");
+			
+			return "redirect:/";
+			
+		} else {
+			
+			model.addAttribute("errorMsg", "잘못된 입력입니다. 다시 진행해주세요.");
+			
+			return "/member/enrollForm";
+			
+		}
+	}
+	
+	// 마이페이지 나의펫 상세조회 영역
+	@RequestMapping("petProfile.me")
+	public String petDetailView() {
 		return "/member/pet_profile";
 	}
 	
@@ -266,9 +290,12 @@ public class MemberController {
 			   			  Model model) {
 		
 		int result = memberService.petUpdate(d);
-		
-		
-		
+			
+	}
+	
+	@RequestMapping("petDelete.me")
+	public String petDelete() {
+		return "/member/pet_profile";
 	}
 	
 	// 마이페이지 펫시터 찜 조회 영역

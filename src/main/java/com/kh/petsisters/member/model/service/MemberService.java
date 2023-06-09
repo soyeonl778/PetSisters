@@ -23,7 +23,7 @@ public interface MemberService {
 	// 회원 탈퇴 서비스
 		int deleteMember(String userId);
 		
-	// 펫 정보 수정 서비스
+	// 펫 정보 등록 서비스
 		int petInsert(Dog d);
 		
 	// 펫 정보 수정 서비스

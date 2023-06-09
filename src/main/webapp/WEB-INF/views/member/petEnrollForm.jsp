@@ -59,46 +59,44 @@
                 <!-- 이 영역 안에서 페이지 작업 하시면 됩니다 -->
                 <!--<div style="height: 1000px; background-color: beige;"></div> -->
                 <div id="titleWrapper">
-                  <h3 class="title_11">펫 프로필 상세정보</h3>
+                  <h3 class="title_11">펫 정보 등록하기</h3>
                 </div>
-                <form id="profileWrapper">
-                  <hr>
-                    <div class="file_main">
-                      <label>사진</label>
-                      <div class="file_change">
-                        <img class="profile_img" src="/resources/img/main/로이-4052.jpg" />
-                        <div class="profile_con">
-                          <button type="button" class="img_btn">사진변경</button>
-                          <p>등록된 사진은 반려견의 프로필입니다.</p>
-                        </div>
-                      </div>
+                <form action="insert.me" method="post" id="petEnrollForm">
+                  <div class="sub2">
+                    <div class="enrollWrapper">
+                      <p>
+                        <label for="userId">● 이름 </label><br>
+                        <input type="text" id="userId" name="userId" maxlength="15" placeholder="아이디를 입력해주세요." style="width:230px" required>
+                      </p>
+                      <span class="input_btn checkbox">
+                        <label>● 성별</label><br>
+                        <input type="checkbox" id="Male" value="M" name="gender"> <b>남</b>
+                        <input type="checkbox" id="Female" value="F" name="gender"> <b>여</b> <br>
+                      </span>
+                      <p>
+                        <label for="userNickname">● 견종 </label><br>
+                        <input type="text" id="userNickname" name="userNickname" maxlength="15" placeholder="나만의 닉네임을 지어주세요." style="width:230px" required>
+                      </p>
+                      <p>
+                        <label for="userPwd">● 생일 </label><br>
+                        <input type="password" name="userPwd" id="userPwd" maxlength="15" placeholder="영문+숫자+특수문자 조합 8~16자리" style="width:300px" required><br>
+                      </p>
+                      <p>
+                        <label for="">● 몸무게 </label><br>
+                        <input type="password" name="checkPwd" id="checkPwd" maxlength="15" placeholder="정확히 기입해주세요." style="width:300px" onkeyup="passConfirm()" required>
+                      </p>
+                      <span class="input_btn checkbox">
+                        <label>● 중성화여부 </label><br>
+                        <input type="checkbox" name="yes" id="yes" value="Y"> <b>yes</b>
+                        <input type="checkbox" name="no" id="no" value="N"> <b>no</b> <br>
+                      </span>
                     </div>
-                  <hr>
-                  <label>이름</label>
-                  <input class="pet_name" placeholder="찰스" />
-                  <hr>
-                  <label>성별</label>
-                  <input type="checkbox" id="Male" value="M" name="gender"> 남
-                  <input type="checkbox" id="Female" value="F" name="gender"> 여
-                  <hr>
-                  <label>견종</label>
-                  <input class="pet_type" placeholder="슈나우저" />
-                  <hr>
-                  <label>생일</label>
-                  <input class="pet_birth" placeholder="220506" />
-                  <hr>
-                  <label>몸무게</label>
-                  <input class="pet_kg" placeholder="5kg" />
-                  <hr>
-                  <span class="fix checkbox">
-                    <label>중성화</label><br>
-                    <input type="checkbox" name="yes" id="yes" value="Y"> Yes
-                    <input type="checkbox" name="no" id="no" value="N"> No <br>
-                  </span>
-                  <br>
-                  <button type="submit" class="update_btn">수정하기</button>
-
-                </form>
+                    <div class="btnWrapper">
+                      <button type="reset" class="btn_reset">재입력</button>
+                      <button type="submit" class="btn_submit" disabled>등록하기</button>
+                    </div>
+                  </div>
+                  </form>
                 <!-- 이 영역 안에서 페이지 작업 하시면 됩니다 -->
               </div>
             </div>

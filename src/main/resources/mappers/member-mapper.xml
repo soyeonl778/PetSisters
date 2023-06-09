@@ -27,7 +27,7 @@
 		<result column="DOG_NAME" property="dogName" />
 		<result column="DOG_GENDER" property="dogGender" />
 		<result column="DOG_BREED" property="dogBreed" />
-		<result column="DOG_BIRTH" property="dogBirth" />
+		<result column="DOG_BIRTHDAY" property="dogBirthday" />
 		<result column="DOG_WEIGHT" property="dogWeight" />
 		<result column="NEUTRALIZATION_STATUS" property="neutralizationStatus" />
 		<result column="DOG_NOTE" property="dogNote" />
@@ -49,6 +49,7 @@
 	<insert id="insertMember" parameterType="member">
 	INSERT INTO MEMBER(USER_NO
 					 , USER_ID
+					 , USER_NICKNAME
 					 , USER_PWD
 					 , USER_NAME
 					 , USER_SSN
@@ -58,6 +59,7 @@
 					 , GENDER)
 			  VALUES(SEQ_MEMBER.NEXTVAL
 			  	   , #{userId}
+			  	   , #{userNickname}
 				   , #{userPwd}
 				   , #{userName}
 				   , #{userSsn}
@@ -100,6 +102,30 @@
 			  SET STATUS = 'N'
 		WHERE USER_ID = #{userId}
 	</update>
+	
+	<!-- 펫추가 기능 -->
+	<insert id="petInsert" parameterType="dog">
+	INSERT INTO DOG(DOG_NO
+				  , DOG_NAME
+				  , DOG_GENDER
+				  , DOG_BREED
+				  , DOG_BIRTHDAY
+				  , DOG_WEIGHT
+				  , NEUTRALIZATION_STATUS
+				  , DOG_NOTE
+				  , FILE_PATH
+				  , USER_NO)
+			  VALUES(SEQ_DOG.NEXTVAL
+			  	   , #{dogName}
+			  	   , #{dogGender}
+				   , #{dogBreed}
+				   , #{dogBirthday}
+				   , #{dogWeight}
+				   , #{neutralizationStatus}
+				   , #{dogNote}
+				   , #{filePath}
+				   , #{userNo})
+	</insert>
 	
 	<!-- 아이디 중복체크용 쿼리문 -->
 	<select id="idCheck" parameterType="string" resultType="_int">

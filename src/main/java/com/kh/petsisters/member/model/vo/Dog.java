@@ -19,7 +19,7 @@ public class Dog {
 	private String dogName;
 	private String dogGender;
 	private String dogBreed;		
-	private Date dogBirth;		
+	private Date dogBirthday;		
 	private int dogWeight;
 	private String neutralizationStatus;
 	private String dogNote;
