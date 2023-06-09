@@ -19,6 +19,7 @@
 		<result column="STATUS" property="status" />
 		<result column="FILE_PATH" property="filePath" />
 		<result column="ENROLL_DATE" property="enrollDate" />
+		<result column="P_NO" property="petsitterNo" />
 	</resultMap>
 	
 	<resultMap id="dogResultSet" type="dog">
@@ -36,11 +37,12 @@
 	
 	<!-- 로그인 기능 -->
 	<select id="loginMember" parameterType="member" resultMap="memberResultSet">
-		SELECT *
-		  FROM MEMBER
-		 WHERE USER_ID = #{userId}
-		   AND USER_PWD = #{userPwd}
-		   AND STATUS = 'Y'
+		SELECT M.*, P.P_NO
+		    FROM MEMBER M
+		    LEFT JOIN PETSITTER P ON M.USER_NO = P.USER_NO
+	    WHERE M.USER_ID = #{userId}
+	        AND M.USER_PWD = #{userPwd}
+	        AND M.STATUS = 'Y'
 	</select>
 	
 	<!-- 회원추가 기능 -->

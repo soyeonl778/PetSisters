@@ -61,8 +61,7 @@ public class MemberController {
 		}
 		
 		Member loginUser = memberService.loginMember(m);
-		
-		
+				
 		if(loginUser != null 
 			/*&& bcryptPasswordEncoder.matches(m.getUserPwd(), loginUser.getUserPwd())*/) { // 로그인 성공 처리
 				

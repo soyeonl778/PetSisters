@@ -31,6 +31,7 @@ public class Member {
 	private String status;
 	private String filePath;
 	private Date enrollDate;
+	private int petsitterNo;
 	
 	
 }
