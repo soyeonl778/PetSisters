@@ -42,7 +42,7 @@
 
                     <div class="fileSection preview">
                       <label for="">첨부파일 : </label>
-                      <input type="file" name="careFiles" id="btnAtt" multiple="multiple">
+                      <input type="file" name="attachments" id="btnAtt" multiple="multiple">
                       <div id="att_zone" data-placeholder='파일을 첨부 하려면 파일 선택 버튼을 클릭하거나 파일을 드래그앤드롭 하세요'></div>
                     </div>
 
@@ -160,42 +160,47 @@
 	        }
 	        div.appendChild(img)
 	        div.appendChild(btn)
-	        return div
+	        return div;
 	      }
 	    }
 	  )('att_zone', 'btnAtt')
 	  
 	  
-	  function submitForm() {
-		  
-		  let fileNames = [];
-		  let careFiles = document.getElementById('btnAtt').files;
-		  for(let i = 0; i < careFiles.length; i++) {
-			  fileNames.push(careFiles[i].name);
-		  }
-		  
-		  // 서버로 전송할 데이터 생성
-		  var formData = new FormData();
-		  for (var i = 0; i < careFiles.length; i++) {
-		    formData.append('files[]', careFiles[i]);
-		  }
-
-		  // 서버로 데이터 전송
-		  var xhr = new XMLHttpRequest();
-		  xhr.open('POST', '서버 URL');
-		  xhr.onreadystatechange = function() {
-		    if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
-		      // 요청이 성공적으로 완료됨
-		      console.log('파일 업로드 성공');
-		    }
-		  };
-		  xhr.send(formData);
-		  
-		  // 선택한 파일 이름 출력
-		  console.log(fileNames);
-		  
-	  }
 	} 
+
+
+ function submitForm() {
+	  // 선택한 파일의 이름을 배열로 저장
+	  var fileNames = [];
+	  var sel_files = document.getElementById('btnAtt').files;
+	  for (var i = 0; i < sel_files.length; i++) {
+	    fileNames.push(sel_files[i].name);
+	  }
+
+	  // 서버로 전송할 데이터 생성
+	  var formData = new FormData();
+	  for (var i = 0; i < sel_files.length; i++) {
+	    formData.append('files[]', sel_files[i]);
+	  }
+
+	  // 서버로 데이터 전송
+	  var xhr = new XMLHttpRequest();
+	  xhr.open('POST', '서버 URL');
+	  xhr.onreadystatechange = function() {
+	    if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+	      // 요청이 성공적으로 완료됨
+	      console.log('파일 업로드 성공');
+	    }
+	  };
+	  xhr.send(formData);
+	  
+	  // 선택한 파일 이름 출력
+	  console.log(fileNames);
+	  console.log(delfile);
+	  $('#att_zone>div>img').find('')
+	}
+
+
  </script>
 </body>
 </html>

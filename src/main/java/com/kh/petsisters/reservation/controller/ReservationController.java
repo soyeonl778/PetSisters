@@ -351,5 +351,14 @@ public class ReservationController {
 	
 	
 	
+	
+	// 에러페이지 포워딩 테스트
+	@RequestMapping("errorPage")
+	public String error() {
+		
+		return "common/errorPage";
+	}
+	
+	
 
 }
