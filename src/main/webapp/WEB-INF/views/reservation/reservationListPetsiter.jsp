@@ -270,7 +270,6 @@
 			        data: dateData, 
 			        success: function(res) {
 			        	
-			        	
 			            let nowDate = new Date().toISOString().slice(0, 10);
 			            console.log(res);
 			            let rere = "";
@@ -279,29 +278,21 @@
 			            $('#pagiUl').css("display", "none");
 			            
 			            for(let i = 0; i < res.length; i++) {
-			            	
 			  			  
-			    			// String 타입의 값
 			    			  var startDate = res[i].startDate;
 			    			  var endDate = res[i].endDate;
 
-			    			  // String을 Date 객체로 변환
 			    			  var startDate = new Date(startDate.replace(/(\d{1,2})월 (\d{1,2}), (\d{4})/, '$3-$1-$2'));
 			    			  var endDate = new Date(endDate.replace(/(\d{1,2})월 (\d{1,2}), (\d{4})/, '$3-$1-$2'));
 
-			    			  // Date 객체를 원하는 형식으로 포맷팅
 			    			  var start = startDate.toISOString().slice(0, 10); 
 			    			  var end = endDate.toISOString().slice(0, 10);
-			    			  console.log(startDate);
-			    			  console.log(endDate);
-			    			  console.log(start);
-			    			  console.log(end);
 			            	
 			            	if(res[i].status === 'Y' && end >= nowDate) {
 			            	
 			            	result += "<tr>"
 			            			+ "<th class='liner'>" + res[i].rowNum + "</th>"
-			            			+ "<td class='liner revTh'>" + res[i].resNo + "</td>"
+			            			+ "<td class='liner revTh uniqeNo'>" + res[i].resNo + "</td>"
 			            			+ "<td class='specialTd liner' style='color: #0888D0'>예약진행중</td>"
 			            			+ "<td class='liner'>" + res[i].userName + "</td>"
 			            			+ "<td class='checkIn'>" + start + "<br>" +  end + "</td>"
@@ -311,7 +302,7 @@
 			            	} else {
 				            	result += "<tr>"
 			            			+ "<th class='liner'>" + res[i].rowNum + "</th>"
-			            			+ "<td class='liner revTh'>" + res[i].resNo + "</td>"
+			            			+ "<td class='liner revTh uniqeNo'>" + res[i].resNo + "</td>"
 			            			+ "<td class='specialTd liner' style='color: green'>예약종료</td>"
 			            			+ "<td class='liner'>" + res[i].userName + "</td>"
 			            			+ "<td class='checkIn'>" + start + "<br>" +  end + "</td>"

@@ -62,6 +62,7 @@ public class ReservationController {
 		model.addAttribute("pi", pi);
 		model.addAttribute("list", list);
 		System.out.println(pi);
+		System.out.println(list);
 		return "reservation/reservationList";
 	}
 	
@@ -252,26 +253,6 @@ public class ReservationController {
 		
 		int userNo = ((Member)(session.getAttribute("loginUser"))).getUserNo();
 		
-//	    java.sql.Date startDate = null;
-//	    java.sql.Date endDate = null;
-//	    
-//	    if (startDateStr != null && !startDateStr.isEmpty()) {
-//	        LocalDate localStartDate = LocalDate.parse(startDateStr, DateTimeFormatter.ISO_DATE);
-//	        startDate = java.sql.Date.valueOf(localStartDate);
-//	    } else {
-//	        LocalDate defaultStartDate = LocalDate.of(2022, 1, 1);
-//	        startDate = java.sql.Date.valueOf(defaultStartDate);
-//	    }
-//	    
-//	    if (endDateStr != null && !endDateStr.isEmpty()) {
-//	        LocalDate localEndDate = LocalDate.parse(endDateStr, DateTimeFormatter.ISO_DATE);
-//	        endDate = java.sql.Date.valueOf(localEndDate);
-//	    } else {
-//	        LocalDate today = LocalDate.of(2024, 1, 1);
-//	        endDate = java.sql.Date.valueOf(today);
-//	    }
-//		
-		
 		int listCount = reservationService.selectListPetsitterRev(userNo,keyword);
 		
 		int pageLimit = 10;
@@ -285,11 +266,6 @@ public class ReservationController {
 		model.addAttribute("rev", rev);
 		model.addAttribute("pi", pi);
 		model.addAttribute("keyword", keyword);
-		// System.out.println(rev);
-		// System.out.println(pi);
-		// System.out.println(keyword);
-		// System.out.println(userNo);
-		
 		
 		return "reservation/reservationListPetsiter";
 	}
