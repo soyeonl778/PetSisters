@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kh.petsisters.common.model.vo.PageInfo;
+import com.kh.petsisters.member.model.vo.Dog;
 import com.kh.petsisters.petsitter.model.dao.PetSitterDao;
 import com.kh.petsisters.petsitter.model.vo.PetSitter;
 import com.kh.petsisters.reservation.model.vo.Review;
@@ -45,14 +46,17 @@ public class PetSitterServiceImpl implements  PetSitterService {
 	}
 
 	@Override
-	public ArrayList<Review> selectReviewList() {
+	public ArrayList<Review> selectReviewList(int pno) {
 		
-		return petSitterDao.selectReviewList(sqlSession);
+		return petSitterDao.selectReviewList(sqlSession, pno);
 	}
 
-	
+	@Override
+	public ArrayList<Dog> selectDogList(int pno) {
+		
+		return petSitterDao.selectDogList(sqlSession, pno);
+	}
 
-	
 	
 
 }

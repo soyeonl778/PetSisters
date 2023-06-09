@@ -128,15 +128,17 @@
                         </p>
                         <br>
                       </div>
-                      <div id="petCard">
-                        <div class="card">
-                          <div class="card-body">
-                            <h5 class="card-title">함께 사는 반려동물</h5>
-                            <img src="/resources/img/main/로이-4052.jpg">
-                            <p class="card-text">로이 소형/남/5살</p>
+                      <c:forEach var="d" items="${ dogList }">
+                        <div id="petCard">
+                          <div class="card">
+                            <div class="card-body">
+                              <h5 class="card-title">함께 사는 반려동물</h5>
+                              <img src="${ d.filePath }">
+                              <p class="card-text">${ d.dogName } ${ d.dogBreed } / ${ d.dogGender } / 5살</p>
+                            </div>
                           </div>
                         </div>
-                      </div>
+                      </c:forEach>
                       <br>
                       <div>
                         <div class="petServiceList">
@@ -239,40 +241,47 @@
                       <br>
                       <div class="reviewList">
                         <div>
-                          <h5>펫시터 후기 10개</h5>
+                          <h5>펫시터 후기 ${ reviewCount }개</h5>
                         </div>
                         <hr>
-                        <div class="review">
-                          <form>
-                            <div class="userReview">
-                              <div>
-                                <img src="/resources/img/main/그림이사진1.jpg">
-                              </div>
-                              <div>
-                                <p>${ p.userName }님</p>
-                                <p>2023년 06월 05일</p>
-                              </div>
-                              <button class="btn btn-secondary">답글 작성</button>
-                            </div>
-                            <p>${ p.revContent }</p>
-                            <div class="comment">
-                              <img src="/resources/img/main/그림이사진1.jpg">
-                              <div class="speech-bubble">
-                                <div>
-                                  <div>
-                                    <p>펫시터님 답글</p>
+                          <c:forEach var="r" items="${ revList }">
+                          		
+                            <div class="review">
+                                <div class="userReview">
+                                  <div value="${ r.revNo }"></div>
+                                  <div class="revContent">
+                                    <div>
+                                      <img src="${ r.filePath }">
+                                    </div>
+                                    <div>
+                                      <p>${ r.userName }님</p>
+                                      <p>${ r.createDate }</p>
+                                    </div>
+                                    <button class="btn btn-secondary">답글 작성</button>
                                   </div>
-                                  <div class="commentBtn">
-                                    <button type="button" class="btn btn-secondary">수정</button><button type="button" class="btn btn-secondary">삭제</button>
+                                  <p>${ r.revContent }</p>
+                                </div>
+                                
+                                <div class="comment">
+                                  <img src="/resources/img/main/그림이사진1.jpg">
+                                  <div class="speech-bubble">
+                                    <div>
+                                      <div>
+                                        <p>펫시터님 답글</p>
+                                      </div>
+                                      <div class="commentBtn">
+                                        <button type="button" class="btn btn-secondary">수정</button><button type="button" class="btn btn-secondary">삭제</button>
+                                      </div>
+                                    </div>
+                                    <div>
+                                      <textarea>보호자님이 밝고 친절하셨는데 그런 분의 사랑을 가득 받고 자란 뽀꾸도 사랑스럽기 그지 없었어요!! 아이가 똑똑하고 온순하며, 예민한데도 티내지 않는 모습이 정말 인상적이네요~~♡ 함께하는 내내 너무 착하고 예뻐서 뭐라도 하나 더 해주고 싶었던 아이였어요! 곧 돌아오는 따님과 뽀꾸가 함께하는 행복한 날들 보내세요~~</textarea>
+                                    </div>
                                   </div>
                                 </div>
-                                <div>
-                                  <textarea>보호자님이 밝고 친절하셨는데 그런 분의 사랑을 가득 받고 자란 뽀꾸도 사랑스럽기 그지 없었어요!! 아이가 똑똑하고 온순하며, 예민한데도 티내지 않는 모습이 정말 인상적이네요~~♡ 함께하는 내내 너무 착하고 예뻐서 뭐라도 하나 더 해주고 싶었던 아이였어요! 곧 돌아오는 따님과 뽀꾸가 함께하는 행복한 날들 보내세요~~</textarea>
-                                </div>
                               </div>
-                            </div>
-                          </form>
-                        </div>
+                          		
+                          	</c:forEach>
+
                       </div>
                     </div>
                     <div id="content2">

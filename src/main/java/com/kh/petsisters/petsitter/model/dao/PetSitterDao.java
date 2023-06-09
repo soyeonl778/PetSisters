@@ -7,6 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.kh.petsisters.common.model.vo.PageInfo;
+import com.kh.petsisters.member.model.vo.Dog;
 import com.kh.petsisters.petsitter.model.vo.PetSitter;
 import com.kh.petsisters.reservation.model.vo.Review;
 
@@ -38,9 +39,14 @@ public class PetSitterDao {
 		return (ArrayList)sqlSession.selectList("petSitterMapper.selectList", null, rowBounds);
 	}
 	
-	public ArrayList<Review> selectReviewList(SqlSessionTemplate sqlSession) {
+	public ArrayList<Review> selectReviewList(SqlSessionTemplate sqlSession, int pno) {
+
+		return (ArrayList)sqlSession.selectList("petSitterMapper.selectReviewList", pno);
+	}
+	
+	public ArrayList<Dog> selectDogList(SqlSessionTemplate sqlSession, int pno) {
 		
-		return (ArrayList)sqlSession.selectList("petSitterMapper.selectReviewList");
+		return (ArrayList)sqlSession.selectList("petSitterMapper.selectDogList", pno);
 	}
 }
 

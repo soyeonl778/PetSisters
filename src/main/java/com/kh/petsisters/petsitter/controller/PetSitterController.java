@@ -1,5 +1,7 @@
 package com.kh.petsisters.petsitter.controller;
 
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpSession;
@@ -13,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.petsisters.common.model.vo.PageInfo;
 import com.kh.petsisters.common.template.Pagination;
+import com.kh.petsisters.member.model.vo.Dog;
 import com.kh.petsisters.petsitter.model.service.PetSitterService;
 import com.kh.petsisters.petsitter.model.vo.PetSitter;
 import com.kh.petsisters.reservation.model.vo.Review;
@@ -32,11 +35,21 @@ public class PetSitterController {
 		PetSitter p = petSitterService.selectPetSitter(pno);
 		
 		// 프로필 상세페이지 후기 리스트 조회
-		ArrayList<Review> revList = petSitterService.selectReviewList();
+		ArrayList<Review> revList = petSitterService.selectReviewList(pno);
+		
+		// 프로필 상세페이지 후기 갯수 조회
+		int reviewCount = revList.size();
+		
+		// 프로필 상세페이지 반려동물 조회
+		ArrayList<Dog> dogList = petSitterService.selectDogList(pno);
 		
 		// 조회된 데이터를 mv 에 담아서 포워딩 페이지 경로를 잡아주기
-		mv.addObject("p", p).setViewName("petsitter/petSitterDetailView");
-		
+		mv.addObject("p", p);
+		mv.addObject("revList", revList);
+		mv.addObject("reviewCount", reviewCount);
+		mv.addObject("dogList", dogList);
+		mv.setViewName("petsitter/petSitterDetailView");
+
 		return mv;
 	}
 	

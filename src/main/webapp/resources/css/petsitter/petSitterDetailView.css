@@ -78,7 +78,10 @@ div, form, img { box-sizing: border-box; }
     margin-bottom: 10px;
 }
 
-#petCard { width: 250px; }
+#petCard {
+    width: 250px;
+    display: flex;
+}
 
 #petCard div {
     display: flex;
@@ -240,12 +243,12 @@ div, form, img { box-sizing: border-box; }
     margin: 10px 0 10px 0;
 }
 
-.userReview {
+.revContent {
     display: flex;
     align-items: center;
 }
 
-.userReview .btn {
+.revContent .btn {
     margin-left: 455px;
     border: none;
     background-color: #0888D0;

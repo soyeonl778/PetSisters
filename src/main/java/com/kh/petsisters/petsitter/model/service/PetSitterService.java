@@ -3,6 +3,7 @@ package com.kh.petsisters.petsitter.model.service;
 import java.util.ArrayList;
 
 import com.kh.petsisters.common.model.vo.PageInfo;
+import com.kh.petsisters.member.model.vo.Dog;
 import com.kh.petsisters.petsitter.model.vo.PetSitter;
 import com.kh.petsisters.reservation.model.vo.Review;
 
@@ -22,5 +23,8 @@ public interface PetSitterService {
 	ArrayList<PetSitter> selectList(PageInfo pi);
 	
 	// 펫시터 상세페이지 후기 리스트 조회
-	ArrayList<Review> selectReviewList();
+	ArrayList<Review> selectReviewList(int pno);
+	
+	// 펫시터 반려동물 조회
+	ArrayList<Dog> selectDogList(int pno);
 }

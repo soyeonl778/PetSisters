@@ -35,10 +35,6 @@ public class PetSitter {
 	private int refPno;				     // 참조펫시터프로필번호  	REF_PNO	NUMBER
 	
 	// REVIEW
-	private int revNo;                   // REV_NO 후기 번호
-	private String revContent;           // REV_CONTENT 후기 내용
-	private Date createDate;             // CREATE_DATE 후기 작성일
-	private String revFilePath;          // FILE_PATH 후기 파일 경로
 	private int reviewCount;			 // REVIEW_COUNT 후기 총갯수
 	
 	// DOG

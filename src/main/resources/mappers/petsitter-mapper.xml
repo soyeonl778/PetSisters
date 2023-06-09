@@ -18,24 +18,26 @@
 		<result column="START_DATE" property="startDate" />		<!-- reservation -->
 		<result column="END_DATE" property="endDate" />
 		<result column="REF_PNO" property="refPno" />
-		<result column="REV_NO" property="revNo" />		<!-- review -->
-		<result column="REV_CONTENT" property="revContent" />
-		<result column="CREATE_DATE" property="createDate" />
-		<result column="FILE_PATH" property="revFilePath" />
-		<result column="REVIEW_COUNT" property="reviewCount" />
-		<result column="DOG_NO" property="dogNo" />		<!-- dog -->
-		<result column="DOG_NAME" property="dogName" />
-		<result column="DOG_GENDER" property="dogGender" />
-		<result column="DOG_BREED" property="dogBreed" />
-		<result column="DOG_BIRTHDAY" property="dogBirthday" />
-		<result column="FILE_PATH" property="dogFilePath" />
+		<result column="REVIEW_COUNT" property="reviewCount" />		<!-- review -->
 	</resultMap>
 	
 	<resultMap id="reviewResultSet" type="review">
 		<result column="REV_NO" property="revNo" />
 		<result column="REV_CONTENT" property="revContent" />
 		<result column="CREATE_DATE" property="createDate" />
-		<result column="FILE_PATH" property="revFilePath" />
+		<result column="FILE_PATH" property="filePath" />
+		<result column="USER_NAME" property="userName" />
+		<result column="REVIEW_COUNT" property="reviewCount" />
+	</resultMap>
+	
+	<resultMap id="dogResultSet" type="dog">
+		<result column="DOG_NO" property="dogNo" />
+		<result column="DOG_NAME" property="dogName" />
+		<result column="DOG_GENDER" property="dogGender" />
+		<result column="DOG_BREED" property="dogBreed" />
+		<result column="DOG_BIRTHDAY" property="dogBirth" />
+		<result column="DOG_WEIGHT" property="dogWeight" />
+		<result column="FILE_PATH" property="filePath" />
 	</resultMap>
 	
 	<!-- 펫시터 프로필 상세 조회용 쿼리문 -->
@@ -55,7 +57,7 @@
           JOIN MEMBER M ON (M.USER_NO = P.USER_NO)
 		 WHERE M.STATUS = 'Y'
            AND P.USER_NO = M.USER_NO
-           AND P_NO = #{petSitterNo}
+           AND P_NO = #{pno}
 	</select>
 	
 	<!-- 펫시터 프로필 수정용 쿼리문 -->
@@ -77,7 +79,7 @@
 	</select>
 	
 	<!-- 게시글 리스트 조회용 쿼리문 -->
-	<select id="selectList" parameterType="_int" resultMap="petSitterResultSet">
+	<select id="selectList" resultMap="petSitterResultSet">
         SELECT P.P_NO
 		     , P.P_TITLE
 		     , P.CARE_LIST
@@ -99,7 +101,7 @@
 	</select>
 	
 	<!-- 펫시터 상세페이지 후기 리스트 조회용 쿼리문 -->
-	<select id="selectReviewList" resultMap="reviewResultSet">
+	<select id="selectReviewList" parameterType="_int" resultMap="reviewResultSet">
 	   SELECT REV_NO
 	        , REV_CONTENT
 	        , CREATE_DATE
@@ -108,8 +110,26 @@
 	     FROM REVIEW R
 	     JOIN RESERVATION RS ON (RS.RES_NO = R.REF_RESNO)
 	LEFT JOIN MEMBER M ON (M.USER_NO = RS.USER_NO)
+	LEFT JOIN PETSITTER P ON (P.P_NO = RS.REF_PNO)
 	    WHERE R.STATUS = 'Y'
+	      AND P_NO = ${pno}
 	 ORDER BY REV_NO DESC
+	</select>
+	
+	<!-- 펫시터 반려동물 조회용 쿼리문 -->
+	<select id="selectDogList" parameterType="_int" resultMap="dogResultSet">
+		SELECT DOG_NO
+		     , DOG_NAME
+		     , DOG_GENDER
+		     , DOG_BREED
+		     , DOG_BIRTHDAY
+		     , DOG_WEIGHT
+		     , FILE_PATH
+		     , P_NO
+		  FROM DOG D
+		  JOIN PETSITTER P USING (USER_NO)
+		 WHERE D.STATUS = 'Y'
+		   AND P_NO = ${pno}
 	</select>
 
 </mapper>
