@@ -17,4 +17,6 @@ public interface BoardService {
 	// 게시글 상세조회
 	Board selectBoard(int boardNo);
 	
+	// 게시글 작성하기 서비스
+	int insertBoard(Board b);
 }

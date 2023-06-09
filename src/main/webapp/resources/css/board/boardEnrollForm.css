@@ -233,14 +233,11 @@ img {
 }
 
 /*본문CSS*/
-.good-icon {
+.selectCategory {
     padding-left: 24px;
     display: flex;
 }
-.good-icon-under {
-    padding-right: 10px;
-    font-weight: 600;
-}
+
 .quick-community {
     padding-left: 10px;
     color: rgb(171 177 187);

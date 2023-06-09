@@ -63,7 +63,16 @@
 		WHERE B.STATUS = 'Y'
           AND B.B_NO = #{boardNo}
 	</select>
-				  
+		
+	<!-- 게시글 작성용 쿼리문 -->
+	<insert id="insertBoard" parameterType="board">
+		INSERT INTO BOARD(BOARD_NO
+						, BOARD_CONTENT)
+			VALUES(SEQ_BOARD.NEXTVAL
+			     , #{boardContent})
+	</insert>
+	
+			  
 				  
 				  
 				  

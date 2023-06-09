@@ -51,19 +51,26 @@
                                 <a class="arrow-left" href="">
                                   <img class="arrow-left-img" src="https://petplanet.co/static/images/common/arrow.png">
                                 </a>
+                                
+                                
                                 <!--게시글 메인페이지 시작-->
                                 <div class="community-detail-board">
                                   <!--안됨-->
                                   <div class="board-img">
+                                    
+                                    <!-- <div class="community-detail-board-img-a">
+                                      <img class="community-detail-board-img" src="${ b.dogImg }" alt="test">
+                                    </div> -->
+
+                                    
                                     <div class="slick-slider slick-initialized">
-                                      <button type="button" data-role="none" class="slick-arrow slick-prev" style="display:block;">
-                                        <!-- Previous -->
-                                      </button>
+                                      <button type="button" data-role="none" class="slick-arrow slick-prev" style="display:block;"></button>
+                                      
                                       <div class="slick-list">
                                         <div class="slick-trace">
                                           <div data-index="-1" tabindex="-1" class="slick-slide slick-cloned" aria-hidden="true"><img src="/resources/img/강아지발판.jpg" alt=""></div>
                                           <div data-index="0" tabindex="-1" class="slick-slide slick-actice slick-current" aria-hidden="false"><img src="/resources/img/갈색포매라니안.jpg" alt=""></div>
-                                          <div data-index="1" tabindex="-1" class="slick-slide" aria-hidden="true"><img src="/resources/img/그림이사진5.jpg" alt=""></div>
+                                          <div data-index="1" tabindex="-1" class="slick-slide" aria-hidden="true"><img src="${ b.dogImg }" alt=""></div>
                                           <div data-index="2" tabindex="-1" class="slick-slide slick-cloned" aria-hidden="true"><img src="/resources/img/강아지2.png" alt=""></div>
                                           <div data-index="3" tabindex="-1" class="slick-slide slick-cloned" aria-hidden="true"><img src="/resources/img/갈색포매라니안.jpg" alt=""></div>
                                         </div>
@@ -71,6 +78,9 @@
                                       <button type="button" data-role="none" class="slick-arrow slick-next" style="display:block;">
                                       </button>
                                     </div>
+                                    
+
+
                                     <!--동그라미미니버튼-->
                                     <div class="dot-slide-img">
                                       <div class="dot-1"><img src="https://petplanet.co/static/images/common/dot_active.png" alt=""></div>
@@ -81,7 +91,7 @@
     
                                   <div class="board-writer-a">
                                     <div class="board-writer-top">
-                                      <p class="board-writer">또야 보호자님</p>
+                                      <p class="board-writer">${ b.dogName } 보호자님</p>
                                       <div class="board-star-area">
                                         <img src="https://petplanet.co/static/images/common/star_1.png">
                                         <img src="https://petplanet.co/static/images/common/star_1.png">
@@ -96,12 +106,7 @@
                                   </div>
                                   
                                   <p class="board-content">
-                                    저희가 펫시터분께는 처음이라 또야가 잘적을할까 걱정을 많이했거든요ㅠㅠ 근데 박◯연 펫시터님께서 하루일지를 시간날때마다 
-                                    작성해주시고 사진 영상 보내주시고 가끔 채팅을 통해서 저희와 소통하면서 주의할점도 여쭈어봐주시고 덕분에 또야가 처음으로 
-                                    흥미를 가진 장난감 종류에 대해서도 알아서 행복합니다 :) 또야를 보호소에서 데리고온지 이제 1년이지만 여지껏 삑삑이, 
-                                    터그 전혀 관심이 없었는데 펫시터님께서 강아지용 뼈다귀 장난감으로 흥미를 찾아주셨네요ㅎㅎㅎ 그리고 너무너무너무너무 
-                                    친절하시고 밤송이 현관 두드리면 왈왈짖지만 막상 마주치면 쭈구리되서 귀여워요ㅠ 밤송아 또야랑 잘지내줘서 고마워🤍
-                                    다음에 또 이용할게요!!!!!!!!!! 무조건ㅎㅎ 강추입니다 열허븐
+                                  	${ b.boardContent }
                                   </p>
     
                                   <p class="shop-1">
@@ -120,7 +125,7 @@
                                   
                                   <a class="petsister-a">
                                     <div class="petsister">
-                                        <img class="petsister-img" src="../resources/img/그림이사진1.jpg" alt="그림이사진">
+                                        <img class="petsister-img" src="${ b.dogImg }" alt="그림이사진">
                                         <div class="petsister-img-left">
                                             <p style="margin-top: 0; margin-bottom: 0; font-size: 15px; color:rgb(56, 60, 71);">박◯연 펫시터*인천 부평구 부개동</p>
                                             <p style="margin-bottom: 0; margin-top: 9px; font-size: 13px; color: rgb(56, 60, 72);">밤송이네 아늑한 힐링공간</p>
@@ -129,6 +134,8 @@
                                   </a>
                                 
                                 </div>
+                                
+                                <!-- 여기까지 임보영 -->
     
                                 <a class="arrow-right" href="javascript:void(0)">
                                   <img class="arrow-right-img" src="https://petplanet.co/static/images/common/arrow.png" alt="">

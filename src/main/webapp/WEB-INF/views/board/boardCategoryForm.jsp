@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -18,41 +19,8 @@
     
     <body>
 
-        <jsp:include page="../common/header.jsp" />
+      <jsp:include page="../common/header.jsp" />
 
-        <!-- 헤더 영역 시작-->
-        <nav class="navbar navbar-expand-lg bg-light fixed-top">
-          <div class="container-fluid">
-            <a class="navbar-brand" href="/mian/main.html"><img class="headerLogo" src="/resources/img/main/헤더로고.png" alt="headerLogo"></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
-              <ul class="navbar-nav">
-                <li class="nav-item">
-                  <a class="nav-link" href="#">커뮤니티</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">채팅상담</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">펫시터찾기</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">이용후기</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">로그인</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link petsiter" href="#">펫시터지원</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </nav>
-        <!-- 헤더 영역 끝-->
-    
       <div id="Container-Wrapper">
         <!-- 페이지 영역 시작 -->
         <div id="container">
@@ -141,6 +109,14 @@
                             <h1 class="content-header-title">펫시스터 인기커뮤니티</h1>
                           </div>
                         </div>
+    					
+    					<c:if test="${ not empty loginUser }">
+    					<div class="writeBoarder">
+    						<a href="enrollForm.bo">
+    							+ 글작성
+    						</a>
+    					</div>
+    					</c:if>
     
                         <div>
                           <div class="card-llist-parent">
@@ -150,13 +126,13 @@
                                 <c:forEach var="b" items="${ list }">
                                   <div class="community-card">
                                     <div class="community-card-img-a">
-                                        <img class="community-card-img" src="/resources/img/board/비숑두마리.jpg" alt="test">
+                                        <img class="community-card-img" src="${ b.dogImg }" alt="test">
                                     </div>
             
                                     <div class="community-card-title">
                                         <p class="community-card-writer">
-                                          포도
-                                          보호자님
+						                    ${ b.dogName }
+						                	보호자님
                                         </p>
                                         <div class="community-card-star">
                                           <img width="9" height="9" src="https://petplanet.co/static/images/common/star_1.png" alt="">
@@ -177,12 +153,12 @@
             
                                     
                                     <div class="community-card-see-petsister-a">
-                                      <p class="community-card-see-petsister">이 후기의 펫시터가 궁금하다면?</p>
+                                      <p class="community-card-see-petsister">이 커뮤니티의 강아지가 궁금하다면?</p>
                                     </div>
                                     
                                     <a class="petsister-a">
                                       <div class="petsister">
-                                          <img class="petsister-img" src="../resources/img/board/그림이사진1.jpg" alt="그림이사진">
+                                          <img class="petsister-img" src="/resources/upFiles/dog_profiles/로이.jpg" alt="그림이사진">
                                           <div class="petsister-img-left">
                                               <p style="margin-top: 0; margin-bottom: 0; font-size: 15px; color:rgb(56, 60, 71);">박◯연 펫시터*인천 부평구 부개동</p>
                                               <p style="margin-bottom: 0; margin-top: 9px; font-size: 13px; color: rgb(56, 60, 72);">밤송이네 아늑한 힐링공간</p>
@@ -190,6 +166,9 @@
                                       </div>
                                     </a>
                                   </div>
+                                  
+                                   
+                                   
                               </c:forEach>
                             </div>
                           </div>
@@ -198,7 +177,32 @@
     
                       
                       <!--페이지네이션 시작-->
-                      
+                      <div id="pagingArea">
+               		  	<ul class="pagination">
+		                	<c:choose>
+		                		<c:when test="${ pi.currentPage eq 1 }">
+		                    		<li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
+		                		</c:when>
+		                		<c:otherwise>
+				                    <li class="page-item"><a class="page-link" href="list.bo?cPage=${ pi.currentPage - 1 }">Previous</a></li>
+		                		</c:otherwise>
+		                	</c:choose>
+		                    
+		                    
+		                    <c:forEach var="p" begin="${ pi.startPage }" end="${ pi.endPage }" step="1">
+		                    	<li class="page-item"><a class="page-link" href="list.bo?cPage=${ p }">${ p }</a></li>
+		                    </c:forEach>
+		                    
+		                    <c:choose>
+		                    	<c:when test="${ pi.currentPage eq pi.maxPage }">
+		                    		<li class="page-item disabled"><a class="page-link" href="#">Next</a></li>
+		                    	</c:when>
+		                    	<c:otherwise>
+		                    		<li class="page-item"><a class="page-link" href="list.bo?cPage=${ pi.currentPage + 1 }">Next</a></li>
+		                    	</c:otherwise>
+		                    </c:choose>
+               		 	</ul>
+            		 </div>
                       <!--페이지네이션 끝-->
 
 
