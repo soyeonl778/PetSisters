@@ -14,6 +14,7 @@ public class MailUtil {
 	
 	public void sendEmail(Member m) throws Exception{
 		
+		
 		//Mail Server 설정
 		String charSet="utf-8";
 		String hostSMTP="smtp.gmail.com";
