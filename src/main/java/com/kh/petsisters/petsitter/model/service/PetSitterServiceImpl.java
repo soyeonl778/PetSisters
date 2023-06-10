@@ -57,6 +57,12 @@ public class PetSitterServiceImpl implements  PetSitterService {
 		return petSitterDao.selectDogList(sqlSession, pno);
 	}
 
+	@Override
+	public int updateComment(Review r) {
+		
+		return petSitterDao.updateComment(sqlSession, r);
+	}
+
 	
 
 }

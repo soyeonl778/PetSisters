@@ -73,26 +73,25 @@ div, form, img { box-sizing: border-box; }
 }
 
 #petCard img {
-    width: 150px;
+    width: 120px;
     border-radius: 10px;
     margin-bottom: 10px;
 }
 
 #petCard {
-    width: 250px;
+    width: 800px;
     display: flex;
+}
+
+#petCard>div {
+    margin-right: 30px;
+    margin-top: 10px;
 }
 
 #petCard div {
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-.review img {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
 }
 
 .psDiv {
@@ -117,7 +116,7 @@ div, form, img { box-sizing: border-box; }
 
 .speech-bubble {
 	position: relative;
-	background: #B9EAFF;
+	background: #F6F6F6;
 	border-radius: .4em;
     width: 700px;
     padding: 20px;
@@ -132,7 +131,7 @@ div, form, img { box-sizing: border-box; }
 	width: 0;
 	height: 0;
 	border: 20px solid transparent;
-	border-right-color: #B9EAFF;
+	border-right-color: #F6F6F6;
 	border-left: 0;
 	border-top: 0;
 	margin-top: -10px;
@@ -151,12 +150,8 @@ div, form, img { box-sizing: border-box; }
     align-items: center;
 }
 
-.commentBtn {
+.updateBtn {
     margin-left: 430px;
-}
-
-.review img {
-    margin: 10px;
 }
 
 .hashtag {
@@ -192,11 +187,12 @@ div, form, img { box-sizing: border-box; }
 
 .slider-nav {
     padding: 0;
+    box-sizing: border-box;
 }
 
 .slider-nav img {
-    width: 100%;
-    margin: 5px;
+    width: 95%;
+    margin-top: 1px;
 }
 
 .slick-prev:before, .slick-next:before {
@@ -243,15 +239,42 @@ div, form, img { box-sizing: border-box; }
     margin: 10px 0 10px 0;
 }
 
+.review {
+    margin-bottom: 30px;
+}
+
+.userProfile {
+    display: flex;
+    align-items: center;
+}
+
+.userProfile button {
+    width: 90px;
+    height: 40px;
+    border: none;
+    background-color: #0888D0;
+    margin-left: 495px;
+}
+
+.userProfile img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin: 10px;
+}
+
+.revImg>img{
+    width: 100px;
+    height: 100px;
+}
+
 .revContent {
     display: flex;
     align-items: center;
 }
 
-.revContent .btn {
-    margin-left: 455px;
-    border: none;
-    background-color: #0888D0;
+.insertBtn>.btn {
+    margin-left: 600px;
 }
 
 .comment {
@@ -259,11 +282,18 @@ div, form, img { box-sizing: border-box; }
     margin-top: 20px;
 }
 
+.comment>img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin: 10px;
+}
+
 .comment textarea {
     width: 100%;
     height: 100px;
-    border: none;
     background-color: transparent;
+    padding: 5px;
 }
 
 .petCount {

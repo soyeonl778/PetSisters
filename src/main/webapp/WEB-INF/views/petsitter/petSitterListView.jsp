@@ -38,8 +38,8 @@
                     <div class="col-4">
                         <label class="form-label">언제 맡기시나요?</label>
                         <div class="dateInput">
-                            <input type="date" class="form-control" id="startDate" name="startDate" data-placeholder="체크인 날짜" min="2023-01-01" max="2023-12-31">
-                            <input type="date" class="form-control" id="endDate" name="endDate" data-placeholder="체크아웃 날짜" min="2023-01-01" max="2023-12-31">
+                            <input type="date" class="form-control" id="startDate" name="startDate" data-placeholder="체크인 날짜">
+                            <input type="date" class="form-control" id="endDate" name="endDate" data-placeholder="체크아웃 날짜">
                         </div>
                     </div>
                 </div>
@@ -122,12 +122,12 @@
                     <nav aria-label="Page navigation example">
                       <ul id="pagiUl" class="pagination paginationUlTag">
                       
-                      	<c:choose>
-		             		<c:when test="${ pi.currentPage eq 1 }">
-				             	<li class="arrowTag disabled">
-		                          <a href="#">&lsaquo;</a>
-		                        </li>
-		             		</c:when>
+                      <c:choose>
+                        <c:when test="${ pi.currentPage eq 1 }">
+                          <li class="arrowTag disabled">
+                                  <a href="#">&lsaquo;</a>
+                                </li>
+                        </c:when>
                     		<c:otherwise>
                     			<li class="arrowTag">
 		                          <a href="list.pe?cPage=${ pi.currentPage - 1 }">&lsaquo;</a>
@@ -141,18 +141,18 @@
 	                        </li>
                       	</c:forEach>
 
-						<c:choose>
-							<c:when test="${ pi.currentPage eq pi.maxPage }">
-								<li class="arrowTag disabled">
-		                          <a href="#">&rsaquo;</a>
-		                        </li>
-							</c:when>
-							<c:otherwise>
-								<li class="arrowTag">
-		                          <a href="list.pe?cPage=${ pi.currentPage + 1 }">&rsaquo;</a>
-		                        </li>
-							</c:otherwise>
-						</c:choose>
+                      <c:choose>
+                        <c:when test="${ pi.currentPage eq pi.maxPage }">
+                          <li class="arrowTag disabled">
+                                        <a href="#">&rsaquo;</a>
+                                      </li>
+                        </c:when>
+                        <c:otherwise>
+                          <li class="arrowTag">
+                                        <a href="list.pe?cPage=${ pi.currentPage + 1 }">&rsaquo;</a>
+                                      </li>
+                        </c:otherwise>
+                      </c:choose>
 
                       </ul>
                     </nav>

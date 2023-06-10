@@ -27,4 +27,7 @@ public interface PetSitterService {
 	
 	// 펫시터 반려동물 조회
 	ArrayList<Dog> selectDogList(int pno);
+	
+	// 펫시터 답글 작성
+	int updateComment(Review r);
 }

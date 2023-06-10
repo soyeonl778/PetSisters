@@ -48,6 +48,11 @@ public class PetSitterDao {
 		
 		return (ArrayList)sqlSession.selectList("petSitterMapper.selectDogList", pno);
 	}
+	
+	public int updateComment(SqlSessionTemplate sqlSession, Review r) {
+		
+		return sqlSession.update("petSitterMapper.updateComment", r);
+	}
 }
 
 

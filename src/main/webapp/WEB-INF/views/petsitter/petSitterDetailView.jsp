@@ -11,6 +11,8 @@
   <link rel="stylesheet" href="/resources/css/petsitter/petSitterDetailView.css">
   <jsp:include page="../common/common.jsp" />
 
+  
+
   <!-- 폰트어썸 아이콘 적용 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   
@@ -128,17 +130,19 @@
                         </p>
                         <br>
                       </div>
-                      <c:forEach var="d" items="${ dogList }">
+                      <div id="petList">
+                        <h5>함께 사는 반려동물</h5>
                         <div id="petCard">
-                          <div class="card">
-                            <div class="card-body">
-                              <h5 class="card-title">함께 사는 반려동물</h5>
-                              <img src="${ d.filePath }">
-                              <p class="card-text">${ d.dogName } ${ d.dogBreed } / ${ d.dogGender } / 5살</p>
+                          <c:forEach var="d" items="${ dogList }">
+                            <div class="card">
+                              <div class="card-body">
+                                <img src="${ d.filePath }">
+                                <p class="card-text">${ d.dogName } ${ d.dogBreed } / ${ d.dogGender } / ${ d.dogAge }살</p>
+                              </div>
                             </div>
-                          </div>
+                          </c:forEach>
                         </div>
-                      </c:forEach>
+                      </div>
                       <br>
                       <div>
                         <div class="petServiceList">
@@ -244,50 +248,136 @@
                           <h5>펫시터 후기 ${ reviewCount }개</h5>
                         </div>
                         <hr>
-                          <c:forEach var="r" items="${ revList }">
-                          		
-                            <div class="review">
-                                <div class="userReview">
-                                  <div value="${ r.revNo }"></div>
-                                  <div class="revContent">
-                                    <div>
-                                      <img src="${ r.filePath }">
-                                    </div>
-                                    <div>
-                                      <p>${ r.userName }님</p>
-                                      <p>${ r.createDate }</p>
-                                    </div>
-                                    <button class="btn btn-secondary">답글 작성</button>
-                                  </div>
-                                  <p>${ r.revContent }</p>
+                        <c:forEach var="r" items="${ revList }">
+                            
+                          <div class="review">
+                            <div class="userReview">
+                              <div value="${ r.revNo }"></div>
+                              <div class="userProfile">
+                                <div>
+                                  <img src="/resources/img/main/두부02-0107.jpg">
                                 </div>
-                                
+                                <div>
+                                  <p>${ r.userName }님</p>
+                                  <p>${ r.createDate }</p>
+                                </div>
+                                <c:if test="${ (empty r.acontent) and (loginUser.petsitterNo eq p.petSitterNo) }">
+                                  <button id="commentBtn" onclick="showCommentForm(this)" class="btn btn-secondary">답글 작성</button>
+                                </c:if>
+                              </div>
+                              <div class="revContent">
+                                <p>${ r.revContent }</p>
+                              </div>
+                              <div class="revImg">
+                                <img src="${ r.filePath }">
+                              </div>
+                            </div>
+                              <c:if test="${ (empty r.acontent) and (loginUser.petsitterNo eq p.petSitterNo) }">
+                                <div id="comment" class="comment" style="display: none;">
+                                  <img src="/resources/img/main/그림이사진1.jpg">
+                                  <div class="speech-bubble">
+                                    <div>
+                                      <div>
+                                        <p>펫시터님 답글</p><p name="adate"></p>
+                                      </div>
+                                      <div class="updateBtn">
+                                        <button onclick="updateComment(${r.revNo})" type="button" class="btn btn-secondary">등록</button><button type="button" class="btn btn-secondary">삭제</button>
+                                      </div>
+                                    </div>
+                                    <div id="commentForm">
+                                      <textarea class="acontent" name="acontent"></textarea>
+                                    </div>
+                                  </div>
+                                </div>
+                              </c:if>
+                              
+                              <c:if test="${ not empty r.acontent }">
                                 <div class="comment">
                                   <img src="/resources/img/main/그림이사진1.jpg">
                                   <div class="speech-bubble">
                                     <div>
                                       <div>
-                                        <p>펫시터님 답글</p>
+                                        <p>펫시터님 답글</p><p name="adate">${ r.adate }</p>
                                       </div>
-                                      <div class="commentBtn">
-                                        <button type="button" class="btn btn-secondary">수정</button><button type="button" class="btn btn-secondary">삭제</button>
+                                      <c:if test="${ loginUser.petsitterNo eq p.petSitterNo }">
+                                      <div class="updateBtn">
+                                          <button onclick="updateComment(${r.revNo})" type="button" class="btn btn-secondary">수정</button><button type="button" class="btn btn-secondary">삭제</button>
                                       </div>
+                                      </c:if>
                                     </div>
-                                    <div>
-                                      <textarea>보호자님이 밝고 친절하셨는데 그런 분의 사랑을 가득 받고 자란 뽀꾸도 사랑스럽기 그지 없었어요!! 아이가 똑똑하고 온순하며, 예민한데도 티내지 않는 모습이 정말 인상적이네요~~♡ 함께하는 내내 너무 착하고 예뻐서 뭐라도 하나 더 해주고 싶었던 아이였어요! 곧 돌아오는 따님과 뽀꾸가 함께하는 행복한 날들 보내세요~~</textarea>
-                                    </div>
+                                    <c:choose>
+                                      <c:when test="${ loginUser.petsitterNo eq p.petSitterNo }">
+                                        <div id="commentForm">
+                                          <textarea class="acontent" name="acontent">${ r.acontent }</textarea>
+                                        </div>
+                                      </c:when>
+                                      <c:otherwise>
+                                        <div id="commentForm">
+                                          <textarea name="acontent" style="border: none; resize: none;" disabled>${ r.acontent }</textarea>
+                                        </div>
+                                      </c:otherwise>
+                                    </c:choose>
                                   </div>
                                 </div>
-                              </div>
-                          		
-                          	</c:forEach>
+                              </c:if>
+                              
+                          </div>
 
+                        </c:forEach>
                       </div>
                     </div>
+
+                    <script>
+                      // 답글 작성 버튼 클릭 시 동작하는 함수
+                      function showCommentForm(button) {
+                        var commentSection = button.closest('.review').querySelector('#comment');
+                        commentSection.style.display = commentSection.style.display === 'none' ? 'flex' : 'none';
+                      }
+
+
+                      function updateComment(revNo) { // 댓글 작성용 ajax
+                        
+                        if($(".acontent").val().trim().length != 0) {
+                          // 즉, 유효한 내용이 한 글자라도 있을 경우
+                          $.ajax({
+                            url : "updateComment.pe",
+                            data : {
+                              revNo : revNo,
+                              acontent : $(".acontent").val()
+                            },
+                            type : "post",
+                            success : function(result) {
+                              
+                              if(result == "success") {
+                                alertify.alert("알림", "답글 등록 완료").set({onok: function(){ location.reload(); }});
+                              }
+
+                            },
+                            error : function() {
+                              console.log("답글 작성용 ajax 통신 실패!");
+                            }
+                          });
+                          
+                        } else {
+                          alertify.alert("알림", "답글 작성 후 등록 요청해주세요.");
+                        }
+                      }
+
+                    </script>
+
                     <div id="content2">
-                      <div class="updateFormBtn">
-                        <a href="updateForm.pe?pno=${ p.petSitterNo }" class="btn btn-secondary">프로필 수정</a>
-                      </div>
+                      <c:choose>
+                        <c:when test="${ (not empty loginUser) and (loginUser.petsitterNo eq p.petSitterNo) }">
+                          <div class="updateFormBtn">
+                            <a href="updateForm.pe?pno=${ p.petSitterNo }" class="btn btn-secondary">프로필 수정</a>
+                          </div>
+                        </c:when>
+                        <c:otherwise>
+                          <div class="updateFormBtn">
+                            <a href="#" class="btn btn-secondary">펫시터찜 ♥</a>
+                          </div>
+                        </c:otherwise>
+                      </c:choose>
                       <div class="card">
                         <form action="/pay" method="get" id="reserveForm">
                           <input type="hidden" name="userNo" value="${ loginUser.userNo }">
@@ -296,8 +386,8 @@
                           <div class="card-body">
                             <h5 class="card-title">언제 펫시터가 필요하신가요?</h5>
                             <div class="dateInput">
-                              <input type="date" class="form-control" id="startDate" name="startDate" data-placehoder="체크인 날짜" required>&nbsp;&nbsp;
-                              <input type="date" class="form-control" id="endDate" name="endDate" data-placehoder="체크아웃 날짜" required>
+                              <input type="date" class="form-control" id="startDate" name="startDate" data-placeholder="체크인 날짜" required>&nbsp;&nbsp;
+                              <input type="date" class="form-control" id="endDate" name="endDate" data-placeholder="체크아웃 날짜" required>
                             </div>
                             <hr>
                             <h5 class="card-title">맡기시는 반려동물</h5>

@@ -1,7 +1,5 @@
 package com.kh.petsisters.petsitter.controller;
 
-import java.time.LocalDate;
-import java.time.Period;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpSession;
@@ -11,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.petsisters.common.model.vo.PageInfo;
@@ -95,7 +94,6 @@ public class PetSitterController {
 		
 		// PageInfo 객체 얻어내기
 		int listCount = petSitterService.selectListCount();
-        // int reviewCount = petSitterService.selectReviewCount();
 		
 		int pageLimit = 10;
 		int boardLimit = 5;
@@ -104,6 +102,8 @@ public class PetSitterController {
 		
 		ArrayList<PetSitter> list = petSitterService.selectList(pi);
 		
+		// System.out.println(list);
+		
 		mv.addObject("pi", pi)
 		  .addObject("list", list)
 		  .setViewName("petsitter/petSitterListView");
@@ -111,6 +111,14 @@ public class PetSitterController {
 		return mv;
 	}
 	
+	@ResponseBody
+	@RequestMapping(value="updateComment.pe", produces="text/html; charset=UTF-8")
+	public String ajaxUpdateComment(Review r) {
+		
+		int result = petSitterService.updateComment(r);
+		
+		return (result > 0) ? "success" : "fail"; // 무조건 문자열 타입으로 응답데이터 리턴
+	}
 	
 	
 }

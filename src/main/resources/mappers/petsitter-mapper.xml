@@ -25,6 +25,8 @@
 		<result column="REV_NO" property="revNo" />
 		<result column="REV_CONTENT" property="revContent" />
 		<result column="CREATE_DATE" property="createDate" />
+		<result column="A_CONTENT" property="acontent" />
+		<result column="A_DATE" property="adate" />
 		<result column="FILE_PATH" property="filePath" />
 		<result column="USER_NAME" property="userName" />
 		<result column="REVIEW_COUNT" property="reviewCount" />
@@ -80,24 +82,19 @@
 	
 	<!-- 게시글 리스트 조회용 쿼리문 -->
 	<select id="selectList" resultMap="petSitterResultSet">
-        SELECT P.P_NO
-		     , P.P_TITLE
-		     , P.CARE_LIST
-             , M.ADDRESS
-             , M.CA_STATUS
-             , RS.START_DATE
-             , RS.END_DATE
-             , RS.REF_PNO
-             , (SELECT COUNT(*)
-                  FROM REVIEW R
-                 WHERE REF_RESNO = RS.RES_NO
-                   AND R.STATUS = 'Y') REVIEW_COUNT
-		  FROM PETSITTER P
-     LEFT JOIN MEMBER M USING (USER_NO)
-     LEFT JOIN RESERVATION RS USING (USER_NO)
-     LEFT JOIN REVIEW R ON (R.REF_RESNO = RS.RES_NO)
-		 WHERE P.P_MODE = 'Y'
-      ORDER BY P.P_NO DESC
+		SELECT P.P_NO,
+		       P.P_TITLE,
+		       P.CARE_LIST,
+		       M.ADDRESS,
+		       M.CA_STATUS,
+		       COUNT(R.REV_NO) AS REVIEW_COUNT
+		FROM PETSITTER P
+		LEFT JOIN MEMBER M ON P.USER_NO = M.USER_NO
+		LEFT JOIN RESERVATION RS ON P.P_NO = RS.REF_PNO
+		LEFT JOIN REVIEW R ON RS.RES_NO = R.REF_RESNO
+		WHERE P.P_MODE = 'Y'
+		GROUP BY P.P_NO, P.P_TITLE, P.CARE_LIST, M.ADDRESS, M.CA_STATUS
+		ORDER BY P.P_NO DESC
 	</select>
 	
 	<!-- 펫시터 상세페이지 후기 리스트 조회용 쿼리문 -->
@@ -105,6 +102,8 @@
 	   SELECT REV_NO
 	        , REV_CONTENT
 	        , CREATE_DATE
+	        , A_CONTENT
+        	, A_DATE
 	        , R.FILE_PATH
 	        , M.USER_NAME
 	     FROM REVIEW R
@@ -131,6 +130,14 @@
 		 WHERE D.STATUS = 'Y'
 		   AND P_NO = ${pno}
 	</select>
+	
+	<!-- 펫시터 상세페이지 후기 답글 작성용 쿼리문 -->
+	<update id="updateComment" parameterType="review">
+		UPDATE REVIEW
+		   SET A_CONTENT = #{acontent}
+		     , A_DATE = SYSDATE
+		 WHERE REV_NO = #{revNo}
+	</update>
 
 </mapper>
 
