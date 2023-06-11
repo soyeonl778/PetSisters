@@ -1,6 +1,7 @@
 package com.kh.petsisters.reservation.model.service;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.sql.Date;
 
 import com.kh.petsisters.common.model.vo.PageInfo;
@@ -47,6 +48,12 @@ public interface ReservationService {
 
 	// 펫시터 예약 상세화면 조회용
 	Reservation petsitterRevDetail(int rNo);
+
+	// 펫시터 돌봄일지 추가
+	int insertJournal(int cNo, String careTitle, String careDesc);
+
+	// 펫시터 돌봄일지에 파일 있을경우 파일 추가
+	int insertJournalFile(List<String> delFile, List<String> savedFileNames);
 
 
 

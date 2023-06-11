@@ -3,6 +3,7 @@ package com.kh.petsisters.reservation.model.dao;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.RowBounds;
@@ -96,6 +97,27 @@ public class ReservationDao {
 
 	public Reservation petsitterRevDetail(SqlSessionTemplate sqlSession, int rNo) {
 		return sqlSession.selectOne("reservationMapper.petsitterRevDetail", rNo);
+	}
+
+	public int insertJournal(SqlSessionTemplate sqlSession, int cNo, String careTitle, String careDesc) {
+		
+		Map<String, Object> parameter = new HashMap<>();
+		parameter.put("cNo", cNo);
+		parameter.put("careTitle", careTitle);
+		parameter.put("careDesc", careDesc);
+		
+		return sqlSession.insert("reservationMapper.insertJournal", parameter);
+	}
+
+	public int insertJournalFile(SqlSessionTemplate sqlSession, List<String> delFile, List<String> savedFileNames) {
+		
+		String fileNames = String.join(",", savedFileNames);
+		
+		Map<String, Object> parameter = new HashMap<>();
+		parameter.put("delFile", delFile);
+		parameter.put("savedFileNames", savedFileNames);
+		
+		return sqlSession.insert("reservationMapper.insertJournalFile", parameter);
 	}
 
 }

@@ -250,9 +250,34 @@
 	</select>
 	
 	
+	<!-- 펫시터 돌봄일지 내용 추가용 쿼리문 -->
+	<insert id="insertJournal">
+	 	INSERT INTO JOURNAL (J_NO, J_TITLE, J_CONTENT, CREATE_DATE, STATUS, REF_RESNO)
+		VALUES (SEQ_JOURNAL.NEXTVAL, #{careTitle}, #{careDesc}, SYSDATE, 'Y', #{cNo})    	
+	</insert>
 	
 	
-	
+	<!-- 펫시터 돌봄일지 작성시 파일이 있을경우 파일 추가용 쿼리문 -->
+	<insert id="insertJournalFile" parameterType="java.util.Map">
+	  <foreach item="item" collection="delFile">
+	  INSERT INTO J_ATTACHMENT (FILE_NO, 
+	  							ORIGIN_NAME, 
+	  							CHANGE_NAME, 
+	  							FILE_PATH, 
+	  							CREATE_DATE, 
+	  							STATUS, 
+	  							FILE_LEVEL, 
+	  							REF_RESNO)
+	  					 VALUES(SEQ_J_ATTACHMENT.NEXTVAL, 
+	  					 		#{item}, 
+	  					 		#{savedFileNames}, 
+	  					 		'resources/upFiles/care_upfiles/' ,
+	  					 		SYSDATE, 
+	  					 		'Y', 
+	  					 		1, 
+	  					 		SEQ_JOURNAL.CURRVAL)
+	  </foreach>	
+	</insert>
 	
 	
 	

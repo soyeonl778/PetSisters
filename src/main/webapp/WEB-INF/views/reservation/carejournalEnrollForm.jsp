@@ -32,6 +32,7 @@
 									<form id="imForm" action="" method="post"
 										enctype="multipart/form-data">
 										<div>
+										<input type="hidden" id="cNo" value="${cNo}">
 											<div class="titleSection">
 												<div class="titleText">제목</div>
 												<input type="text" name="" id="careTitle"
@@ -189,6 +190,7 @@
 	  var delFile = [];
 	  var careTitle = $('#careTitle').val();
 	  var careDesc = $('#careDesc').val();
+	  var cNo = $('#cNo').val();
 	  var attZone = document.getElementById('att_zone');
 	  var inputs = attZone.getElementsByTagName('input');
 		  
@@ -216,6 +218,7 @@
 		    }
 		    formData.append('careTitle', careTitle);
 		    formData.append('careDesc', careDesc);
+		    formData.append('cNo', cNo);
 		    
 		    /*
 		    for (var i = 0; i < fileNames.length; i++) {

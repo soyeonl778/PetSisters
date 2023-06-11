@@ -322,7 +322,7 @@ public class ReservationController {
 	@RequestMapping("journalEnroll")
 	public String carejournalEnrollForm(Model model, int cNo) {
 		
-		System.out.println(cNo);
+		model.addAttribute("cNo", cNo);
 		
 		return "reservation/carejournalEnrollForm";
 	}
@@ -337,28 +337,42 @@ public class ReservationController {
     public String insertJournal(@RequestParam(required = false, name = "delFile") List<String> delFile,
                                 @RequestParam String careTitle,
                                 @RequestParam String careDesc,
+                                @RequestParam int cNo,
                                 HttpSession session) {
 		
 	    // 파일 저장용
 	    List<String> savedFileNames = new ArrayList<>();
-	    for (String fileName : delFile) {
-	        String savedFileName = saveFiless(fileName, session);
-	        if (savedFileName != null) {
-	            savedFileNames.add(savedFileName);
-	        }
-	    }
-		
+	    if(delFile != null) {
+		    for (String fileName : delFile) {
+		        String savedFileName = saveFiless(fileName, session);
+		        if (savedFileName != null) {
+		            savedFileNames.add(savedFileName);
+		        }
+		    }
+	    } 
 	    
 	    // 저장된 파일 확인용
 	    for (String fileName : savedFileNames) {
 	        System.out.println("Saved File: " + fileName);
 	    }
 		
+	    int result = reservationService.insertJournal(cNo, careTitle, careDesc);
+	    
+	    /*
+	    if(delFile != null && result == 1) {
+	    	
+	    	int res = reservationService.insertJournalFile(delFile, savedFileNames);
+	    	System.out.println(res);
+	    	
+	    }
+	    */
 		
 	    System.out.println("Care Title: " + careTitle);
 	    System.out.println("Care Description: " + careDesc);
+	    System.out.println("cNo: " + cNo);
 	    System.out.println("파일 원본명: " + delFile);
 	    System.out.println("변경된 파일명: " + savedFileNames);
+	    System.out.println("처리결과: " + result);
 
 
         return "";

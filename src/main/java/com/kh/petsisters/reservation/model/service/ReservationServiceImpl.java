@@ -1,6 +1,7 @@
 package com.kh.petsisters.reservation.model.service;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.sql.Date;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -79,6 +80,16 @@ public class ReservationServiceImpl implements ReservationService{
 	@Override
 	public Reservation petsitterRevDetail(int rNo) {
 		return reservationDao.petsitterRevDetail(sqlSession, rNo);
+	}
+
+	@Override
+	public int insertJournal(int cNo, String careTitle, String careDesc) {
+		return reservationDao.insertJournal(sqlSession, cNo, careTitle, careDesc);
+	}
+
+	@Override
+	public int insertJournalFile(List<String> delFile, List<String> savedFileNames) {
+		return reservationDao.insertJournalFile(sqlSession, delFile, savedFileNames);
 	}
 	
 
