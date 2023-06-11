@@ -1,19 +1,24 @@
 package com.kh.petsisters.reservation.controller;
 
+import java.io.BufferedOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
@@ -308,13 +313,92 @@ public class ReservationController {
 	}
 	
 	
+	/**
+	 * 돌봄일지 작성 폼
+	 * @param model
+	 * @param cNo
+	 * @return
+	 */
 	@RequestMapping("journalEnroll")
 	public String carejournalEnrollForm(Model model, int cNo) {
 		
 		System.out.println(cNo);
 		
-		
 		return "reservation/carejournalEnrollForm";
+	}
+	
+	
+	
+	
+	
+	
+	@ResponseBody
+    @RequestMapping(value = "insertJournal", method = RequestMethod.POST)
+    public String insertJournal(@RequestParam(required = false, name = "delFile") List<String> delFile,
+                                @RequestParam String careTitle,
+                                @RequestParam String careDesc,
+                                HttpSession session) {
+		
+	    // 파일 저장용
+	    List<String> savedFileNames = new ArrayList<>();
+	    for (String fileName : delFile) {
+	        String savedFileName = saveFiless(fileName, session);
+	        if (savedFileName != null) {
+	            savedFileNames.add(savedFileName);
+	        }
+	    }
+		
+	    
+	    // 저장된 파일 확인용
+	    for (String fileName : savedFileNames) {
+	        System.out.println("Saved File: " + fileName);
+	    }
+		
+		
+	    System.out.println("Care Title: " + careTitle);
+	    System.out.println("Care Description: " + careDesc);
+	    System.out.println("파일 원본명: " + delFile);
+	    System.out.println("변경된 파일명: " + savedFileNames);
+
+
+        return "";
+    }
+	
+
+
+	
+	
+	
+	
+	/**
+	 * 다중 파일 업로드 메소드
+	 * @param fileName
+	 * @param session
+	 * @return
+	 */
+	public String saveFiless(String fileName, HttpSession session) {
+		try {
+	        String currentTime = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
+	        int ranNum = (int)(Math.random() * 90000 + 10000);
+	        String ext = fileName.substring(fileName.lastIndexOf("."));
+	        String savedFileName = currentTime + ranNum + ext;
+
+	        String savePath = session.getServletContext().getRealPath("resources/upFiles/care_upfiles/");
+	        File saveDir = new File(savePath);
+	        if (!saveDir.exists()) {
+	            saveDir.mkdirs();
+	        }
+
+	        File targetFile = new File(saveDir, savedFileName);
+
+	        targetFile.createNewFile();
+
+	        return savedFileName;
+	    } catch(IOException e) {
+	        e.printStackTrace();
+	    }
+
+	    return null;
 	}
 	
 	

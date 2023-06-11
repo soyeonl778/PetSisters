@@ -245,9 +245,50 @@
 		       P.PAY_PRICE
 		  FROM RESERVATION R
 		  JOIN MEMBER M ON R.USER_NO = M.USER_NO
-		  JOIN PAYMENT P ON P.REF_RESNO = R.RES_NO
+		  LEFT JOIN PAYMENT P ON P.REF_RESNO = R.RES_NO
 		 WHERE RES_NO = #{rNo} 	
 	</select>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<!-- 
+	INSERT INTO JOURNAL (J_NO, J_TITLE, J_CONTENT, CREATE_DATE, STATUS, REF_RESNO)
+	VALUES (SEQ_JOURNAL.nextval, 'title', 'content', SYSDATE, 'Y', 17); 
+	
+	타이틀, 컨텐츠, 현재 에약번호 수정할 것
+	
+	====
+	
+	SELECT TO_CHAR(CREATE_DATE, 'YYYY-MM-DD HH24:MI:SS') FROM JOURNAL;
+	조회할 땐 포맷 맞춰서 불러올 것
+	
+	====
+	
+	DECLARE
+	  TYPE origin_names_type IS TABLE OF VARCHAR2(100);
+	  TYPE change_names_type IS TABLE OF VARCHAR2(100);
+	  TYPE file_paths_type IS TABLE OF VARCHAR2(1000);
+	  
+	  origin_names origin_names_type := origin_names_type('스크린샷 2023-05-20 174343.png', 'no3.png');
+	  change_names change_names_type := change_names_type('2023061123182138056.png', '2023061123182140472.png');
+	  file_paths file_paths_type := file_paths_type('resources/upFiles/care_upfiles/', 'resources/upFiles/care_upfiles/');
+	BEGIN
+	  FOR i IN 1..origin_names.COUNT LOOP
+	    INSERT INTO J_ATTACHMENT (FILE_NO, ORIGIN_NAME, CHANGE_NAME, FILE_PATH, CREATE_DATE, STATUS, FILE_LEVEL, REF_JNO)
+	    VALUES (SEQ_J_ATTACHMENT.nextval, origin_names(i), change_names(i), file_paths(i), SYSDATE, 'Y', 1, SEQ_JOURNAL.CURRVAL);
+  END LOOP;
+	프로시저로 들어가는데 원인 찾아낼 것
+	
+	
+	 -->
 
 </mapper>
 

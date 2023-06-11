@@ -117,7 +117,9 @@
 															<td class="spcDate" width="120">${ r.startDate } ${ r.endDate }</td>
 															<td width="150" class="reserDate">${ r.registerDate.substring(0, 10) }</td>
 															<c:if test="${ r.payPrice != 0 }">
-																<td class="reserMonye">${ r.payPrice }</td>
+																<td class="reserMonye">
+																<fmt:formatNumber value="${r.payPrice}" pattern="#,###,###"/>원
+																</td>
 															</c:if>
 															<c:if test="${ r.payPrice == 0 }">
 																<td class="reserMonye">결제대기중</td>
@@ -278,7 +280,7 @@
 			            			+ "<td class='liner'>" + res[i].userName + "</td>"
 			            			+ "<td class='checkIn'>" + start + "<br>" +  end + "</td>"
 			            			+ "<td class='revDates'>" + res[i].registerDate.substring(0, 10) + "</td>"
-			            			+ "<td class='revDates'>" + res[i].payPrice + "</td>"
+			            			+ "<td class='revDates'>" + res[i].payPrice.toLocaleString('ko-KR') + '원' + "</td>"
 			            			+ "</tr>"	
 			            	} else {
 				            	result += "<tr>"
@@ -288,7 +290,7 @@
 			            			+ "<td class='liner'>" + res[i].userName + "</td>"
 			            			+ "<td class='checkIn'>" + start + "<br>" +  end + "</td>"
 			            			+ "<td class='revDates'>" + res[i].registerDate.substring(0, 10) + "</td>"
-			            			+ "<td class='revDates'>" + res[i].payPrice + "</td>"
+			            			+ "<td class='revDates'>" + res[i].payPrice.toLocaleString('ko-KR') + '원' + "</td>"
 			            			+ "</tr>"	
 			            	}		
 			            }
