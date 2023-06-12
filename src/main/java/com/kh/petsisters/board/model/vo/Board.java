@@ -18,7 +18,10 @@ public class Board {
 	private String createDate; 
 	private String status; 
 	private int count; 
-	private String userNo; 
+	private String userNo;
+	// 카테고리
+	private int categoryMain;
+	private int categorySub;
 	
 	private String dogName;
 	private String dogImg;

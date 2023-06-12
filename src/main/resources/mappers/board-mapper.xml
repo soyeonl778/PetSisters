@@ -15,6 +15,7 @@
 		<result column="DOG_NAME" property="dogName" />
 		<result column="FILE_PATH" property="dogImg" />
 	</resultMap>
+	
 
 
 	<!-- 게시글 총 갯수 구하는 쿼리문 -->
@@ -72,8 +73,60 @@
 			     , #{boardContent})
 	</insert>
 	
-			  
-				  
+	<!-- 첨부파일 작성용 쿼리문 -->
+	<insert id="insertAttachment" parameterType="">
+		INSERT INTO B_ATTACHMEN(FILE_NO
+							  , ORIGIN_NAME
+							  , CHANGE_NAME
+							  , FILE_PATH
+							  , FILE_LEVEL
+							  , REF_BNO)
+					VALUES (SEQ_B_ATTACHMENT.NEXTVAL
+						  , #{originName}
+						  , #{changeName}
+						  , #{filePath}
+						  , #{fileLevel}
+						  , SEQ_B_ATTACHMENT.CURRVAL)
+	</insert>
+	
+	<!-- 게시글 "자유게시판" 리스트를 구해주는 쿼리문 -->
+	<select id="selectFreeList" resultMap="boardResultSet">
+		SELECT BOARD_NO
+			 , BOARD_TITLE
+			 , BOARD_WRITER
+			 , COUNT
+			 , TO_CHAR(CREATE_DATE, 'YYYY-MM-DD') AS "CREATE_DATE"
+		  FROM BOARD
+		 WHERE STATUS = 'Y'
+		 ORDER BY BOARD_NO DESC
+	</select>
+	
+	<select id="selectAttachment" parameterType="_int" resultMap="board">
+		SELECT ORIGIN_NAME
+		     , CHANGE_NAME
+		  FROM B_ATTACHMENT
+		 WHERE STATUS = 'Y'
+		   AND REF_BNO = #{boardNo}
+	</select>	
+	
+	<!--  
+	<insert id="insertAttachmentList" parameterType="">
+		INSERT INTO B_ATTACHMENT(FILE_NO,
+							   , ORIGIN_NAME
+							   , CHANGE_NAME
+							   , FILE_PATH
+							   , DEFAULT
+							   , DEFAULT
+							   , FILE_LEVEL
+							   , REF_BNO)
+					VALUES(SEQ_B_ATTACHMENT.NEXTVAL
+					     , #{}
+					     , #{}
+					     , #{}
+					     , #{}
+					     , SEQ_B_ATTACHMENT.CURRVAL)
+	</insert>	  
+	-->		  
 				  
 				  
 		
