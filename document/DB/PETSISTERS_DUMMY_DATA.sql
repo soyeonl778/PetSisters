@@ -518,7 +518,14 @@ VALUES (SEQ_INQUIRY.NEXTVAL
            , SYSDATE
            , 'Y'
            , 3);
-       
+
+--------------------------------------------------
+--------------    메세지 테이블 더미    --------------
+--------------------------------------------------
+INSERT INTO MESSAGE VALUES(SEQ_MESSAGE.NEXTVAL, '메세지내용1', DEFAULT, 1, 1, DEFAULT);
+INSERT INTO MESSAGE VALUES(SEQ_MESSAGE.NEXTVAL, '메세지내용2', DEFAULT, 1, 1, DEFAULT);
+INSERT INTO MESSAGE VALUES(SEQ_MESSAGE.NEXTVAL, '메세지내용3', DEFAULT, 1, 1, DEFAULT);
+
 --------------------------------------------------
 -----------------    커밋구문    ------------------
 --------------------------------------------------
