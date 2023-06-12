@@ -752,3 +752,41 @@ input::placeholder {
 .navbar-nav {
 	gap: 11px!important;
 }
+.navbar-nav > li {
+	position:relative;
+	float:left; 
+	margin-right:5px;
+}
+.navbar-nav > li:hover .toggle {
+	display: block;
+	width: max-content;
+	line-height: 27px;
+}
+.navbar-nav .toggle {
+	display:none; 
+	position:absolute; 
+	left: -8px; 
+	right: 0; 
+	text-align:center;
+	padding: 0;
+	height: 75px;
+}
+.selectToggle {
+	text-decoration: none;
+	color: #0A89D0;
+	padding: 5px;
+    border: 1px solid lightgray;
+    border-radius: 18px;
+    box-shadow: 1px 1px 3px lightgray;
+}
+.selectToggle:hover {
+	color: #blue;
+	box-shadow: 3px 3px 3px lightgray;
+    background-color: #F7F7F7;
+}
+.poppy {
+	line-height: 50px;
+}
+.freeBoard {
+	padding: 6px 8px;
+}
