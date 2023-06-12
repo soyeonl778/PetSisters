@@ -7,11 +7,11 @@
   <meta charset="UTF-8" />
   
   <!-- header css -->
-  <link rel="stylesheet" href="/resources/css/member/pet_profile.css">
+  <link rel="stylesheet" href="/resources/css/member/petEnrollForm.css">
   <link rel="stylesheet" href="/resources/css/common/memberForm.css">
   <jsp:include page="../common/common.jsp" />
 
-  <title>마이페이지_펫프로필관리</title>
+  <title>마이페이지_펫등록하기</title>
 </head>
 <body>
   <!-- 헤더 영역 시작-->
@@ -34,7 +34,7 @@
                     <a href="myProfile.me">내 프로필</a>
                   </li>
                   <li>
-                    <a href="petProfile.me">반려동물 프로필</a>
+                    <a href="petList.me?userNo=${ loginUser.userNo }">반려동물 프로필</a>
                   </li>
                   <li>
                     <a href="petsiterLike.me">펫시터 찜</a>
@@ -61,39 +61,40 @@
                 <div id="titleWrapper">
                   <h3 class="title_11">펫 정보 등록하기</h3>
                 </div>
-                <form action="insert.me" method="post" id="petEnrollForm">
+                <form action="petInsert.me" method="post" id="petEnrollForm">
+	               <hr class="hrhr">
                   <div class="sub2">
                     <div class="enrollWrapper">
                       <p>
-                        <label for="userId">● 이름 </label><br>
-                        <input type="text" id="userId" name="userId" maxlength="15" placeholder="아이디를 입력해주세요." style="width:230px" required>
+                        <label for="dogName">● 이름 </label><br>
+                        <input type="text" id="dogName" name="dogName" maxlength="15" placeholder="반려견 이름을 입력해주세요." style="width:240px" required>
                       </p>
-                      <span class="input_btn checkbox">
-                        <label>● 성별</label><br>
-                        <input type="checkbox" id="Male" value="M" name="gender"> <b>남</b>
-                        <input type="checkbox" id="Female" value="F" name="gender"> <b>여</b> <br>
-                      </span>
-                      <p>
-                        <label for="userNickname">● 견종 </label><br>
-                        <input type="text" id="userNickname" name="userNickname" maxlength="15" placeholder="나만의 닉네임을 지어주세요." style="width:230px" required>
+                      <p class="input_btn checkbox">
+                        <label for="dogGender">● 성별</label><br>
+                        <input type="checkbox" id="Male" value="M" name="dogGender"> <b>남</b>
+                        <input type="checkbox" id="Female" value="F" name="dogGender"> <b>여</b> <br>
                       </p>
                       <p>
-                        <label for="userPwd">● 생일 </label><br>
-                        <input type="password" name="userPwd" id="userPwd" maxlength="15" placeholder="영문+숫자+특수문자 조합 8~16자리" style="width:300px" required><br>
+                        <label for="dogBreed">● 견종 </label><br>
+                        <input type="text" id="dogBreed" name="dogBreed" maxlength="15" placeholder="ex)골든리트리버" style="width:230px" required>
                       </p>
                       <p>
-                        <label for="">● 몸무게 </label><br>
-                        <input type="password" name="checkPwd" id="checkPwd" maxlength="15" placeholder="정확히 기입해주세요." style="width:300px" onkeyup="passConfirm()" required>
+                        <label for="dogBirthday">● 생일 </label><br>
+                        <input type="text" name="dogBirthday" id="dogBirthday" maxlength="15" placeholder="ex)2023-06-06" style="width:300px" required><br>
                       </p>
-                      <span class="input_btn checkbox">
+                      <p>
+                        <label for="dogWeight">● 몸무게 </label><br>
+                        <input type="text" name="dogWeight" id="dogWeight" maxlength="15" placeholder="ex)4" style="width:80px" onkeyup="passConfirm()" required>  kg
+                      </p>
+                      <p class="input_btn checkbox">
                         <label>● 중성화여부 </label><br>
-                        <input type="checkbox" name="yes" id="yes" value="Y"> <b>yes</b>
-                        <input type="checkbox" name="no" id="no" value="N"> <b>no</b> <br>
-                      </span>
+                        <input type="checkbox" name="neutralizationStatus" id="Y" value="Y"> <b>yes</b>
+                        <input type="checkbox" name="neutralizationStatus" id="N" value="N"> <b>no</b> <br>
+                      </p>
                     </div>
                     <div class="btnWrapper">
                       <button type="reset" class="btn_reset">재입력</button>
-                      <button type="submit" class="btn_submit" disabled>등록하기</button>
+                      <button type="submit" class="btn_submit">등록하기</button>
                     </div>
                   </div>
                   </form>

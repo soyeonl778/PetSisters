@@ -1,8 +1,12 @@
 package com.kh.petsisters.member.model.dao;
 
+import java.util.ArrayList;
+
+import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.kh.petsisters.common.model.vo.PageInfo;
 import com.kh.petsisters.member.model.vo.Dog;
 import com.kh.petsisters.member.model.vo.Member;
 
@@ -35,6 +39,23 @@ public class MemberDao {
 	public int deleteMember(SqlSessionTemplate sqlSession, String userId) {
 		
 		return sqlSession.update("memberMapper.deleteMember", userId);
+	}
+	
+	public int selectListCount(SqlSessionTemplate sqlSession, int userNo) {
+		return sqlSession.selectOne("memberMapper.selectListCount", userNo);
+	}
+	
+	public ArrayList<Dog> petListView(SqlSessionTemplate sqlSession, PageInfo pi) {
+		int offset = (pi.getCurrentPage() -1) * pi.getBoardLimit();
+		int limit = pi.getBoardLimit();
+		
+		RowBounds rowBounds = new RowBounds(offset, limit);
+		
+		return (ArrayList)sqlSession.selectList("memberMapper.petListView", null, rowBounds);
+	}
+	
+	public Dog petDetailView(SqlSessionTemplate sqlSession, int dno) {
+		return sqlSession.selectOne("memberMapper.petDetailView", dno);
 	}
 	
 	public int petInsert(SqlSessionTemplate sqlSession, Dog d) {

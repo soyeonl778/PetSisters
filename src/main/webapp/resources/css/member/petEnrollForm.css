@@ -1,17 +1,24 @@
-.sub1 {
-    margin-left: 250px;
-    margin-top: 50px;
-    margin-bottom: 60px;
+#titleWrapper {
+    margin-top:75px;
+    margin-left: 300px;
 }
 
-.title1 h1 {
-    font-size: 60px;
+.title_11 {
     color: #484848;
-    font-weight: 900;
+    font-weight: 900px;
 }
 
+.hrhr {
+	margin-left: 250px;
+}
+
+#enrollWrapper {
+    margin-left: 250px;
+    width: 55%;
+}
 .sub2 {
-    height: 2000px;
+	height: 900px;
+    margin-left: 250px;
     background-color: rgba(245, 245, 245, 0.524);
     display: flex;
     margin-bottom: 10px;
@@ -20,7 +27,7 @@
     flex-direction: column;
 }
 .enrollWrapper {
-    height: 1500px;
+    height: 700px;
     width: 700px;
     background-color: white;
     padding: 3%;

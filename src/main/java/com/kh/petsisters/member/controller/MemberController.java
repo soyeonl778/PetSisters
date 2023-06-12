@@ -1,5 +1,6 @@
 package com.kh.petsisters.member.controller;
 
+import java.util.ArrayList;
 import java.util.UUID;
 
 import javax.servlet.http.Cookie;
@@ -12,9 +13,12 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.kh.petsisters.common.model.vo.PageInfo;
+import com.kh.petsisters.common.template.Pagination;
 import com.kh.petsisters.member.model.service.MemberService;
 import com.kh.petsisters.member.model.vo.Dog;
 import com.kh.petsisters.member.model.vo.Member;
@@ -243,8 +247,25 @@ public class MemberController {
 	
 	// 마이페이지 나의펫 전체조회 영역
 	@RequestMapping("petList.me")
-	public String petListView() {
-		return "/member/petList";
+	public ModelAndView petListView(@RequestParam(value="cPage", defaultValue="1")int currentPage,
+							  ModelAndView mv,
+							  int userNo) {
+		
+		int listCount = memberService.selectListCount(userNo);
+		
+		int pageLimit = 10;
+		int boardLimit = 5;
+		
+		PageInfo pi = Pagination.getPageInfo(listCount, currentPage, pageLimit, boardLimit);
+		
+		ArrayList<Dog> list = memberService.petListView(pi);
+		
+		System.out.println(list);
+		mv.addObject("pi", pi)
+		  .addObject("list", list)
+		  .setViewName("member/petList");
+		
+		return mv;
 	}
 	
 	// 펫 등록하기 페이지 영역
@@ -279,8 +300,14 @@ public class MemberController {
 	
 	// 마이페이지 나의펫 상세조회 영역
 	@RequestMapping("petProfile.me")
-	public String petDetailView() {
-		return "/member/pet_profile";
+	public ModelAndView petDetailView(ModelAndView mv,
+								int dno) {
+		
+		Dog d = memberService.petDetailView(dno);
+		
+		mv.addObject("d", d).setViewName("member/pet_profile");
+		
+		return mv;
 	}
 	
 	// 펫정보 수정 기능 영역

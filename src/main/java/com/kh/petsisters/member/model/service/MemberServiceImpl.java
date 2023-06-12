@@ -1,9 +1,12 @@
 package com.kh.petsisters.member.model.service;
 
+import java.util.ArrayList;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.kh.petsisters.common.model.vo.PageInfo;
 import com.kh.petsisters.member.model.dao.MemberDao;
 import com.kh.petsisters.member.model.vo.Dog;
 import com.kh.petsisters.member.model.vo.Member;
@@ -62,5 +65,20 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public int idCheck(String checkId) {
 		return memberDao.idCheck(sqlSession, checkId);
+	}
+
+	@Override
+	public int selectListCount(int userNo) {
+		return memberDao.selectListCount(sqlSession, userNo);
+	}
+
+	@Override
+	public ArrayList<Dog> petListView(PageInfo pi) {
+		return memberDao.petListView(sqlSession, pi);
+	}
+
+	@Override
+	public Dog petDetailView(int dno) {
+		return memberDao.petDetailView(sqlSession, dno);
 	}
 }

@@ -80,15 +80,15 @@
                         <label for="address">● 거주지 주소 </label><br>
                         <input type="text" name="address" maxlength="30" placeholder="상세 주소를 입력해주세요." style="width:500px" required><br>
                       </p>
-                      <span class="input_btn checkbox">
+                      <p class="input_btn checkbox">
                         <label>● 성별</label><br>
                         <input type="checkbox" id="Male" value="M" name="gender"> <b>남</b>
                         <input type="checkbox" id="Female" value="F" name="gender"> <b>여</b> <br>
-                      </span>
-                      <span class="input_btn checkbox">
+                      </p>
+                      <p class="input_btn checkbox">
                         <input type="checkbox" name="checkbox" id="checkEmail" value="Y">
                         <label>이메일수신동의 여부(선택)</label>
-                      </span>
+                      </p>
                     </div>
                     <div class="btnWrapper">
                       <button type="reset" class="btn_reset">재입력</button>

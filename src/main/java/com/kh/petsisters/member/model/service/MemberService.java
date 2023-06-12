@@ -1,5 +1,8 @@
 package com.kh.petsisters.member.model.service;
 
+import java.util.ArrayList;
+
+import com.kh.petsisters.common.model.vo.PageInfo;
 import com.kh.petsisters.member.model.vo.Dog;
 import com.kh.petsisters.member.model.vo.Member;
 
@@ -20,8 +23,17 @@ public interface MemberService {
 	// 회원 수정 서비스
 		int updateMember(Member m);
 	
-	// 회원 탈퇴 서비스
+	// 회원 탈퇴 서비스 
 		int deleteMember(String userId);
+		
+	// 펫 총 개수 조회
+		int selectListCount(int userNo);
+	
+	// 펫 전체 리스트 조회
+		ArrayList<Dog> petListView(PageInfo pi);
+		
+	// 펫 상세 조회
+		Dog petDetailView(int dno);
 		
 	// 펫 정보 등록 서비스
 		int petInsert(Dog d);

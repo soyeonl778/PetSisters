@@ -127,6 +127,38 @@
 				   , #{userNo})
 	</insert>
 	
+	<!-- 펫 총 개수 구하는 쿼리문 -->
+	<select id="selectListCount" resultType="_int">
+		SELECT COUNT(*)
+		   FROM DOG
+		WHERE STATUS = 'Y'
+		  AND USER_NO = #{userNo}
+	</select>
+	
+	<!-- 펫 전체리스트 쿼리문 -->
+	<select id="petListView" resultMap="dogResultSet">
+		SELECT	DOG_NO
+			  , DOG_NAME
+			  , DOG_GENDER
+			  , DOG_WEIGHT
+			  , DOG_BIRTHDAY
+			  , FILE_PATH
+		  FROM DOG
+		WHERE STATUS = 'Y'
+		ORDER BY DOG_NO DESC
+	</select>
+	
+	<select id="petDetailView" parameterType="_int" resultMap="dogResultSet">
+		SELECT	DOG_NO
+			  , DOG_NAME
+			  , DOG_GENDER
+			  , DOG_WEIGHT
+			  , DOG_BIRTHDAY
+			  , FILE_PATH
+		   FROM DOG
+		  WHERE DOG_NO = #{dogNo}
+	</select>
+	
 	<!-- 아이디 중복체크용 쿼리문 -->
 	<select id="idCheck" parameterType="string" resultType="_int">
 		SELECT COUNT(*)

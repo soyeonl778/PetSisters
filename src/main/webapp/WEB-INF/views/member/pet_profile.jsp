@@ -34,7 +34,7 @@
                     <a href="myProfile.me">내 프로필</a>
                   </li>
                   <li>
-                    <a href="petProfile.me">반려동물 프로필</a>
+                    <a href="petList.me?userNo=${ loginUser.userNo }">반려동물 프로필</a>
                   </li>
                   <li>
                     <a href="petsiterLike.me">펫시터 찜</a>
@@ -75,7 +75,7 @@
                     </div>
                   <hr>
                   <label>이름</label>
-                  <input class="pet_name" placeholder="찰스" />
+                  <input class="pet_name" placeholder="${ d.dogName }" />
                   <hr>
                   <label>성별</label>
                   <input type="checkbox" id="Male" value="M" name="gender"> 남
