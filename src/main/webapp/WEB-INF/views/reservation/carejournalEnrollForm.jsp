@@ -223,14 +223,16 @@
 		    /*
 		    for (var i = 0; i < fileNames.length; i++) {
 		        formData.append('fileNames[]', fileNames[i]);
+		        console.log('6');
 		      }
 		    */
 		    // 파일명 배열을 FormData에 추가
 		    for (var i = 0; i < fileNames.length; i++) {
-		      formData.append('fileNames', fileNames[i]);
+		      formData.append('fileNames', sel_files[i]);
 		    }
 		    
 		    console.log(formData);
+		    console.log(fileNames, '3');
 		    
 		    $.ajax({
 		        url: 'insertJournal',
@@ -239,9 +241,10 @@
 		        data: formData,
 		        contentType: false,
 		        processData: false,
-		        success: function(response) {
-		          console.log('success');
+		        success: function(res) {
+		          console.log(res);
 		          alert('업로드 성공!!!');
+		          window.location.href = '/petsitterRev';
 		        },
 		        error: function(error) {
 		          console.log('error', error);

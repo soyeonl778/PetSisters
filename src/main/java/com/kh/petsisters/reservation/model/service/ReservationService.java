@@ -5,6 +5,7 @@ import java.util.List;
 import java.sql.Date;
 
 import com.kh.petsisters.common.model.vo.PageInfo;
+import com.kh.petsisters.reservation.model.vo.CareJournal;
 import com.kh.petsisters.reservation.model.vo.Reservation;
 import com.kh.petsisters.reservation.model.vo.Review;
 
@@ -53,7 +54,7 @@ public interface ReservationService {
 	int insertJournal(int cNo, String careTitle, String careDesc);
 
 	// 펫시터 돌봄일지에 파일 있을경우 파일 추가
-	int insertJournalFile(List<String> delFile, List<String> savedFileNames);
+	int insertJournalFile(ArrayList<CareJournal> list);
 
 
 

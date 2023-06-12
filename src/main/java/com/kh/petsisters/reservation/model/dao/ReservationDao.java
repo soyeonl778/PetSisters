@@ -11,6 +11,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.kh.petsisters.common.model.vo.PageInfo;
+import com.kh.petsisters.reservation.model.vo.CareJournal;
 import com.kh.petsisters.reservation.model.vo.Reservation;
 import com.kh.petsisters.reservation.model.vo.Review;
 
@@ -109,15 +110,13 @@ public class ReservationDao {
 		return sqlSession.insert("reservationMapper.insertJournal", parameter);
 	}
 
-	public int insertJournalFile(SqlSessionTemplate sqlSession, List<String> delFile, List<String> savedFileNames) {
+	public int insertJournalFile(SqlSessionTemplate sqlSession, ArrayList<CareJournal> list) {
 		
-		String fileNames = String.join(",", savedFileNames);
-		
-		Map<String, Object> parameter = new HashMap<>();
-		parameter.put("delFile", delFile);
-		parameter.put("savedFileNames", savedFileNames);
-		
-		return sqlSession.insert("reservationMapper.insertJournalFile", parameter);
+	    int result = 0;
+	    for (CareJournal item : list) {
+	        result += sqlSession.insert("reservationMapper.insertJournalFile", item);
+	    }
+	    return result;
 	}
 
 }

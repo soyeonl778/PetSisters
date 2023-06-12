@@ -46,6 +46,23 @@
 		<result column="END_DATE" property="revEndDate" />
 	</resultMap>
 	
+	<resultMap id="careResultSet" type="care">
+		<result column="J_NO" property="jNo" />
+		<result column="J_TITLE" property="jtitle" />
+		<result column="J_CONTENT" property="jcontent" />
+		<result column="CREATE_DATE" property="create_date" />
+		<result column="STATUS" property="status" />
+		<result column="REF_RESNO" property="refResNo" />
+		<result column="FILE_NO" property="fileNo" />
+		<result column="ORIGIN_NAME" property="originName" />
+		<result column="CHANGE_NAME" property="changeName" />
+		<result column="FILE_PATH" property="filePath" />
+		<result column="CREATE_DATE" property="createDate" />
+		<result column="ATTACH_STATUS" property="attachStatus" />
+		<result column="FILE_LEVEL" property="fileLevel" />
+		<result column="REF_JNO" property="refJno" />
+	</resultMap>
+	
 	<!-- 예약 리스트 총 갯수 구하는 쿼리문 -->
 	<select id="selectListCount" resultType="_int">
 	SELECT COUNT(*) 
@@ -258,26 +275,13 @@
 	
 	
 	<!-- 펫시터 돌봄일지 작성시 파일이 있을경우 파일 추가용 쿼리문 -->
-	<insert id="insertJournalFile" parameterType="java.util.Map">
-	  <foreach item="item" collection="delFile">
-	  INSERT INTO J_ATTACHMENT (FILE_NO, 
-	  							ORIGIN_NAME, 
-	  							CHANGE_NAME, 
-	  							FILE_PATH, 
-	  							CREATE_DATE, 
-	  							STATUS, 
-	  							FILE_LEVEL, 
-	  							REF_RESNO)
-	  					 VALUES(SEQ_J_ATTACHMENT.NEXTVAL, 
-	  					 		#{item}, 
-	  					 		#{savedFileNames}, 
-	  					 		'resources/upFiles/care_upfiles/' ,
-	  					 		SYSDATE, 
-	  					 		'Y', 
-	  					 		1, 
-	  					 		SEQ_JOURNAL.CURRVAL)
-	  </foreach>	
-	</insert>
+<insert id="insertJournalFile" parameterType="java.util.List">
+    INSERT INTO J_ATTACHMENT (FILE_NO, ORIGIN_NAME, 
+    CHANGE_NAME, FILE_PATH, CREATE_DATE, STATUS, FILE_LEVEL, REF_JNO)
+    VALUES
+	    (SEQ_J_ATTACHMENT.NEXTVAL, #{originName}, #{changeName}, 
+	    'resources/upFiles/care_upfiles/', SYSDATE, 'Y', 1, SEQ_JOURNAL.CURRVAL)
+</insert>
 	
 	
 	

@@ -9,6 +9,7 @@
 	<typeAliases>
 		<typeAlias type="com.kh.petsisters.reservation.model.vo.Reservation" alias="reservation" />
 		<typeAlias type="com.kh.petsisters.reservation.model.vo.Review" alias="review" />
+		<typeAlias type="com.kh.petsisters.reservation.model.vo.CareJournal" alias="care" />
 		<typeAlias type="com.kh.petsisters.member.model.vo.Member" alias="member" />
 		<typeAlias type="com.kh.petsisters.member.model.vo.Dog" alias="dog" />
 		<typeAlias type="com.kh.petsisters.petsitter.model.vo.PetSitter" alias="petSitter" />

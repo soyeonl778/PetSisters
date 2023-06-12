@@ -1,11 +1,7 @@
 package com.kh.petsisters.reservation.controller;
 
-import java.io.BufferedOutputStream;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -13,7 +9,6 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
-import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,6 +23,7 @@ import com.kh.petsisters.common.model.vo.PageInfo;
 import com.kh.petsisters.common.template.Pagination;
 import com.kh.petsisters.member.model.vo.Member;
 import com.kh.petsisters.reservation.model.service.ReservationService;
+import com.kh.petsisters.reservation.model.vo.CareJournal;
 import com.kh.petsisters.reservation.model.vo.Reservation;
 import com.kh.petsisters.reservation.model.vo.Review;
 
@@ -335,11 +331,17 @@ public class ReservationController {
 	@ResponseBody
     @RequestMapping(value = "insertJournal", method = RequestMethod.POST)
     public String insertJournal(@RequestParam(required = false, name = "delFile") List<String> delFile,
+    							@RequestParam(required = false, name = "fileNames") List<MultipartFile> fileNames,
                                 @RequestParam String careTitle,
                                 @RequestParam String careDesc,
                                 @RequestParam int cNo,
                                 HttpSession session) {
 		
+		// saveFile 메소드 (수정파일명 생성 + 서버에 파일 저장 + 수정파일명을 리턴)
+		// => 다중파일업로드를 하려면?? => fileNames 리스트의 사이즈만큼 반복을 돌리면서 saveFile 호출
+		
+		
+		/*
 	    // 파일 저장용
 	    List<String> savedFileNames = new ArrayList<>();
 	    if(delFile != null) {
@@ -355,26 +357,38 @@ public class ReservationController {
 	    for (String fileName : savedFileNames) {
 	        System.out.println("Saved File: " + fileName);
 	    }
-		
-	    int result = reservationService.insertJournal(cNo, careTitle, careDesc);
 	    
-	    /*
-	    if(delFile != null && result == 1) {
-	    	
-	    	int res = reservationService.insertJournalFile(delFile, savedFileNames);
-	    	System.out.println(res);
-	    	
-	    }
-	    */
+	    String 으로 받아온 단순 경로는 파일 저장시 용량이 0 이므로 무용지물이다
+		*/
 		
-	    System.out.println("Care Title: " + careTitle);
-	    System.out.println("Care Description: " + careDesc);
-	    System.out.println("cNo: " + cNo);
-	    System.out.println("파일 원본명: " + delFile);
-	    System.out.println("변경된 파일명: " + savedFileNames);
-	    System.out.println("처리결과: " + result);
+		
+	    // 파일 업로드
+	    // List<String> uploadedFileNames = new ArrayList<>();
+	    
+		int result = reservationService.insertJournal(cNo, careTitle, careDesc);
 
-
+	    ArrayList<CareJournal> list = new ArrayList<>();
+	    if (fileNames != null) {
+	    							// List<MultipartFile> => 0 번째방부터 마지막방까지 MultipartFile 객체가 담겨잇음
+	        for (MultipartFile file : fileNames) {
+	            String originalFileName = file.getOriginalFilename();
+	            String savedFileName = saveFile(file, session);
+	            
+	            // 넘어온 첨부파일만큼 마이바티스의 파라미터로 넘기게 가공 (여기서부터 고민)
+	            CareJournal cj = new CareJournal();
+		        cj.setOriginName(originalFileName);
+		        cj.setChangeName(savedFileName);
+		        list.add(cj);
+		        // System.out.println("originalFileName: " + originalFileName);
+		        // System.out.println("savedFileName: " + savedFileName);
+	        }
+	        
+	        // System.out.println("list: " + list);
+	        if(result > 0) {
+	        	
+	        	int res = reservationService.insertJournalFile(list);
+	        }
+	    }
         return "";
     }
 	
@@ -396,6 +410,7 @@ public class ReservationController {
 	        int ranNum = (int)(Math.random() * 90000 + 10000);
 	        String ext = fileName.substring(fileName.lastIndexOf("."));
 	        String savedFileName = currentTime + ranNum + ext;
+	        //String savedFileName = fileName;
 
 	        String savePath = session.getServletContext().getRealPath("resources/upFiles/care_upfiles/");
 	        File saveDir = new File(savePath);

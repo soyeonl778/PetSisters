@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.kh.petsisters.common.model.vo.PageInfo;
 import com.kh.petsisters.reservation.model.dao.ReservationDao;
+import com.kh.petsisters.reservation.model.vo.CareJournal;
 import com.kh.petsisters.reservation.model.vo.Reservation;
 import com.kh.petsisters.reservation.model.vo.Review;
 
@@ -88,8 +89,8 @@ public class ReservationServiceImpl implements ReservationService{
 	}
 
 	@Override
-	public int insertJournalFile(List<String> delFile, List<String> savedFileNames) {
-		return reservationDao.insertJournalFile(sqlSession, delFile, savedFileNames);
+	public int insertJournalFile(ArrayList<CareJournal> list) {
+		return reservationDao.insertJournalFile(sqlSession, list);
 	}
 	
 
