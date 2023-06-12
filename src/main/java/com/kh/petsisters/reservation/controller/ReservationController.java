@@ -212,6 +212,7 @@ public class ReservationController {
 	}
 	
 	
+	
 	@RequestMapping("journalList")
 	public String journalList() {
 		
@@ -327,7 +328,16 @@ public class ReservationController {
 	
 	
 	
-	
+	/**
+	 * 돌봄일지 다중 파일 업로드 
+	 * @param delFile
+	 * @param fileNames
+	 * @param careTitle
+	 * @param careDesc
+	 * @param cNo
+	 * @param session
+	 * @return
+	 */
 	@ResponseBody
     @RequestMapping(value = "insertJournal", method = RequestMethod.POST)
     public String insertJournal(@RequestParam(required = false, name = "delFile") List<String> delFile,
@@ -352,11 +362,6 @@ public class ReservationController {
 		        }
 		    }
 	    } 
-	    
-	    // 저장된 파일 확인용
-	    for (String fileName : savedFileNames) {
-	        System.out.println("Saved File: " + fileName);
-	    }
 	    
 	    String 으로 받아온 단순 경로는 파일 저장시 용량이 0 이므로 무용지물이다
 		*/

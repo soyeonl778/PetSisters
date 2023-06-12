@@ -43,7 +43,13 @@
 				<li class="nav-item"><a class="nav-link" href="errorPage">dpdp</a></li>
 			 -->	
 				<li class="nav-item"><a class="nav-link" href="list.pe">펫시터 찾기</a></li>
-				<li class="nav-item"><a class="nav-link" href="main.bo">커뮤니티</a></li>
+				<li class="nav-item">
+					<a class="nav-link" href="main.bo">커뮤니티</a>
+					<ul class="toggle">
+						<li><a class="freeBoard selectToggle" href="freelist.bo">자유게시판</a></li>
+						<li class="poppy"><a class="selectToggle" href="mypetlist.bo">강아지 자랑</a></li>
+					</ul>
+				</li>
 				<li class="nav-item"><a class="nav-link" href="chatForm.ch">채팅</a></li>
 				<li class="nav-item"><a class="nav-link" href="list.no">고객센터</a></li>
 
