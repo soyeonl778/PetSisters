@@ -42,6 +42,17 @@
 		<result column="FILE_PATH" property="filePath" />
 	</resultMap>
 	
+	<resultMap id="petSitterImgSet" type="petSitterImg">
+		<result column="FILE_NO" property="fileNo" />
+		<result column="ORIGIN_NAME" property="originName" />
+		<result column="CHANGE_NAME" property="changeName" />
+		<result column="FILE_PATH" property="filePath" />
+		<result column="CREATE_DATE" property="createDate" />
+		<result column="STATUS" property="status" />
+		<result column="FILE_LEVEL" property="fileLevel" />
+		<result column="REF_PNO" property="refPno" />
+	</resultMap>
+	
 	<!-- 펫시터 프로필 상세 조회용 쿼리문 -->
 	<select id="selectPetSitter" parameterType="_int" resultMap="petSitterResultSet">
        	SELECT P_NO
@@ -131,13 +142,50 @@
 		   AND P_NO = ${pno}
 	</select>
 	
-	<!-- 펫시터 상세페이지 후기 답글 작성용 쿼리문 -->
+	<!-- 펫시터 상세페이지 후기 답글 작성/수정용 쿼리문 -->
 	<update id="updateComment" parameterType="review">
 		UPDATE REVIEW
 		   SET A_CONTENT = #{acontent}
 		     , A_DATE = SYSDATE
 		 WHERE REV_NO = #{revNo}
 	</update>
+	
+	<!-- 펫시터 상세페이지 후기 답글 삭제용 쿼리문 -->
+	<delete id="deleteComment" parameterType="review">
+		UPDATE REVIEW
+		   SET A_CONTENT = NULL
+		     , A_DATE = NULL
+		 WHERE REV_NO = #{revNo}
+	</delete>
+	
+	<!-- 펫시터 프로필 이미지 등록용 쿼리문 -->
+	<insert id="insertPetSitterImg" parameterType="petSitterImg">
+		INSERT INTO P_ATTACHMENT(FILE_NO
+		                       , ORIGIN_NAME
+		                       , CHANGE_NAME
+		                       , FILE_PATH
+		                       , CREATE_DATE
+		                       , STATUS
+		                       , FILE_LEVEL
+		                       , REF_PNO)
+		                  VALUES(SEQ_P_ATTACHMENT.NEXTVAL
+		                       , #{originName}
+		                       , #{changeName}
+		                       , #{filePath}
+		                       , DEFAULT
+		                       , DEFAULT
+		                       , #{fileLevel}
+		                       , #{refPno})
+	</insert>
+	
+	<!-- 펫시터 프로필 이미지 조회용 쿼리문 -->
+	<select id="selectPetSitterImg" parameterType="_int" resultMap="petSitterImgSet">
+		SELECT P_ATTACHMENT.*
+		  FROM P_ATTACHMENT
+		  JOIN PETSITTER P ON (P_NO = REF_PNO)
+		 WHERE STATUS = 'Y'
+		   AND P_NO = #{pno}
+	</select>
 
 </mapper>
 

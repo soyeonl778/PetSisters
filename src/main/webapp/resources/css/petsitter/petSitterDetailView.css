@@ -192,7 +192,7 @@ div, form, img { box-sizing: border-box; }
 
 .slider-nav img {
     width: 95%;
-    margin-top: 1px;
+    margin-top: 15px;
 }
 
 .slick-prev:before, .slick-next:before {

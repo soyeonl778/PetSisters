@@ -15,7 +15,8 @@
   <!-- <script src="jquery-1.7.1.min.js"></script> -->
 
   <!-- 파일 첨부 -->
-  <script src="/resources/js/petSitterProfileForm.js"></script>
+  <!-- <script src="/resources/js/petSitterProfileForm.js"></script> -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
   <title>펫시터 프로필 수정</title>
 </head>
@@ -55,22 +56,22 @@
                   </div>
                   <br>
                   <div class="form-group">
-                    <form method="post" action="update.pe">
-	                 <div class="profileForm-area">
-	                 	<input type="hidden" value="${ p.petSitterNo }" name="petSitterNo">
-						<div class="form-check form-switch" id="pModeInput">
-							<c:choose>
-								<c:when test="${ p.petSitterMode eq 'Y' }">
-									<input class="form-check-input" type="checkbox" role="switch" id="petSitterMode" value="${ p.petSitterMode }" name="petSitterMode" checked>
-								</c:when>
-								<c:otherwise>
-									<input class="form-check-input" type="checkbox" role="switch" id="petSitterMode" value="${ p.petSitterMode }" name="petSitterMode">
-								</c:otherwise>
-							</c:choose>
-							<label class="form-check-label" for="flexSwitchCheckChecked">&nbsp;펫시터 모드</label>
-						</div>
-	                 </div>
-					<div class="formTitle">
+                    <form method="post" action="update.pe" enctype="multipart/form-data">
+                      <div class="profileForm-area">
+                      <input type="hidden" value="${ p.petSitterNo }" name="petSitterNo">
+                        <div class="form-check form-switch" id="pModeInput">
+                          <c:choose>
+                            <c:when test="${ p.petSitterMode eq 'Y' }">
+                              <input class="form-check-input" type="checkbox" role="switch" id="petSitterMode" value="${ p.petSitterMode }" name="petSitterMode" checked>
+                            </c:when>
+                            <c:otherwise>
+                              <input class="form-check-input" type="checkbox" role="switch" id="petSitterMode" value="${ p.petSitterMode }" name="petSitterMode">
+                            </c:otherwise>
+                          </c:choose>
+                          <label class="form-check-label" for="flexSwitchCheckChecked">&nbsp;펫시터 모드</label>
+                        </div>
+                      </div>
+                      <div class="formTitle">
                         <h5>제목</h5>
                         <input type="text" id="petSitterTitle" value="${ p.petSitterTitle }" name="petSitterTitle" maxlength="100" required>
                       </div>
@@ -199,9 +200,12 @@
                       <br>
                       <div class="fileSection preview">
                         <h5>사진 첨부</h5>
-                        <input type="file" name="" id="btnAtt" multiple="multiple">
-                        <!-- 사진 미리보기 영역 -->
-                        <div id="att_zone" data-placeholder='파일을 첨부 하려면 파일 선택 버튼을 클릭하거나 파일을 드래그앤드롭 하세요'></div>
+                        <ul class="addList"> 
+                          <li>
+                           <input type="file" id="QnA03" name="upfile" class="files" style="width: 231px; height: 46px;">
+                           <button  type="button"class="add" style="vertical-align: sub">추가</button>
+                          </li> 
+                        </ul>
                       </div>
                       <br>
                       <div class="dateInput">
@@ -228,6 +232,28 @@
 	<jsp:include page="../common/footer.jsp" />
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+
+  <script>
+
+    var maxAppend = 1;
+
+    $('.addList .add').on('click',function(){ 
+      if(maxAppend >= 10){
+          alert("파일 업로드 최대 개수는 10개 입니다.");
+          return;
+      }else{
+          $('.addList').append('<li><input type="file"name="upfile" class="files"> <button type="button" class="add" onclick="addDel(this);">삭제</button></li>'); 
+          maxAppend ++;
+      }
+      
+    });
+    
+    function addDel(a){ 
+        $(a).closest('li').remove(); 
+        maxAppend --;
+    }
+
+  </script>
 
 </body>
 </html>

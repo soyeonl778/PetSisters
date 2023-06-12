@@ -285,7 +285,7 @@
                                       </div>
                                     </div>
                                     <div id="commentForm">
-                                      <textarea class="acontent" name="acontent"></textarea>
+                                      <textarea id="acontent"></textarea>
                                     </div>
                                   </div>
                                 </div>
@@ -308,7 +308,7 @@
                                     <c:choose>
                                       <c:when test="${ loginUser.petsitterNo eq p.petSitterNo }">
                                         <div id="commentForm">
-                                          <textarea class="acontent" name="acontent">${ r.acontent }</textarea>
+                                          <textarea id="acontent">${ r.acontent }</textarea>
                                         </div>
                                       </c:when>
                                       <c:otherwise>
@@ -334,16 +334,15 @@
                         commentSection.style.display = commentSection.style.display === 'none' ? 'flex' : 'none';
                       }
 
-
-                      function updateComment(revNo) { // 댓글 작성용 ajax
+                      function updateComment(revNo) { // 답글 작성용 ajax
                         
-                        if($(".acontent").val().trim().length != 0) {
+                        if($("#acontent").val().trim().length != 0) {
                           // 즉, 유효한 내용이 한 글자라도 있을 경우
                           $.ajax({
                             url : "updateComment.pe",
                             data : {
                               revNo : revNo,
-                              acontent : $(".acontent").val()
+                              acontent : $("#acontent").val()
                             },
                             type : "post",
                             success : function(result) {

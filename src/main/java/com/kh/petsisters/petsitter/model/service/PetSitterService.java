@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import com.kh.petsisters.common.model.vo.PageInfo;
 import com.kh.petsisters.member.model.vo.Dog;
 import com.kh.petsisters.petsitter.model.vo.PetSitter;
+import com.kh.petsisters.petsitter.model.vo.PetSitterImg;
 import com.kh.petsisters.reservation.model.vo.Review;
 
 public interface PetSitterService {
@@ -28,6 +29,20 @@ public interface PetSitterService {
 	// 펫시터 반려동물 조회
 	ArrayList<Dog> selectDogList(int pno);
 	
-	// 펫시터 답글 작성
+	// 펫시터 답글 작성, 수정
 	int updateComment(Review r);
+	
+	// 펫시터 답글 삭제
+	int deleteComment(Review r);
+	
+	// 펫시터 프로필 이미지 등록
+	int insertPetSitterImg(PetSitterImg psImg);
+	
+	// 펫시터 프로필 이미지 조회
+	ArrayList<PetSitterImg> selectPetSitterImg(int pno);
 }
+
+
+
+
+

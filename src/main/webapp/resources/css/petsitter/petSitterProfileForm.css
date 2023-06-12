@@ -16,26 +16,30 @@
 .formTitle>input {
     width: 900px;
     height: 35px;
+    padding: 3px;
 }
 
 .introduction>textarea {
     width: 900px;
+    padding: 3px;
 }
 
 .careList input[type=text] {
     width: 900px;
     height: 35px;
+    padding: 3px;
 }
 
-.careList input[type=button] {
+/* .careList input[type=button] {
     width: 45px;
     height: 35px;
-}
+} */
 
 .petService img {
     width: 50px;
     height: 50px;
     margin-right: 10px;
+    margin-bottom: 10px;
 }
 
 .petService>div {
@@ -64,7 +68,6 @@ input, textarea {
     border-radius: 5px;
     border-width: 2px;
     border-color: lightgray;
-    padding-left: 3px;
 }
 
 .dateInput>input {
@@ -79,7 +82,7 @@ input, textarea {
     margin-top: 30px;
 }
 
-#att_zone {
+/* #att_zone {
     min-height: 160px;
     padding: 10px;
     border: 1px solid lightgray;
@@ -92,7 +95,7 @@ input, textarea {
     content : attr(data-placeholder);
     color : #999;
     font-size:.9em;
-}
+} */
 
 .formBtn {
     margin-top: 70px;

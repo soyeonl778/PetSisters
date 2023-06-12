@@ -1,11 +1,11 @@
 window.onload = function () {
-  ( /* att_zone : 이미지들이 들어갈 위치 id, btn : file tag id */
-    imageView = function imageView(att_zone, btn) {
+    /* att_zone : 이미지들이 들어갈 위치 id, btn : file tag id */
+    var imageView = function imageView(att_zone, btn) {
 
       var attZone = document.getElementById(att_zone);
       var btnAtt = document.getElementById(btn)
       var sel_files = [];
-
+      
       // 이미지와 체크 박스를 감싸고 있는 div 속성
       var div_style = 'display:inline-block;position:relative;'
         + 'width:150px;height:150px;margin:5px;z-index:1';
@@ -18,8 +18,8 @@ window.onload = function () {
       btnAtt.onchange = function (e) {
         var files = e.target.files;
         var fileArr = Array.prototype.slice.call(files)
-        for (f of fileArr) {
-          imageLoader(f);
+        for(var i = 0; i < fileArr.length; i++) {
+          imageLoader(fileArr[i]);
         }
       }
 
@@ -37,13 +37,12 @@ window.onload = function () {
       }, false)
 
       attZone.addEventListener('drop', function (e) {
-        var files = {};
         e.preventDefault();
         e.stopPropagation();
         var dt = e.dataTransfer;
         files = dt.files;
-        for (f of files) {
-          imageLoader(f);
+        for (var i = 0; i < files.length; i++) {
+          imageLoader(files[i]);
         }
 
       }, false)
@@ -65,9 +64,9 @@ window.onload = function () {
       }
 
       /*첨부된 파일이 있는 경우 checkbox와 함께 attZone에 추가할 div를 만들어 반환 */
-      makeDiv = function (img, file) {
-        var div = document.createElement('div')
-        div.setAttribute('style', div_style)
+      var makeDiv = function (img, file) {
+        var div = document.createElement('div');
+        div.setAttribute('style', div_style);
 
         var btn = document.createElement('input')
         btn.setAttribute('type', 'button')
@@ -83,19 +82,39 @@ window.onload = function () {
             }
           }
 
-          dt = new DataTransfer();
-          for (f in sel_files) {
-            var file = sel_files[f];
+          var dt = new DataTransfer();
+          for (var i = 0; i < sel_files.length; i++) {
+            var file = sel_files[i];
             dt.items.add(file);
           }
           btnAtt.files = dt.files;
           var p = ele.parentNode;
           attZone.removeChild(p)
-        }
+        };
+
         div.appendChild(img)
         div.appendChild(btn)
         return div
-      }
+      };
+
+      // 파일 선택 버튼이 클릭될 때마다 숨겨진 파일 입력 요소(hidden file input element) 생성
+      btnAtt.onclick = function () {
+        var hiddenInput = document.createElement('input');
+        hiddenInput.setAttribute('type', 'file');
+        hiddenInput.setAttribute('hidden', 'true');
+        hiddenInput.setAttribute('multiple', 'true');
+        hiddenInput.onchange = function (e) {
+          var files = e.target.files;
+          var fileArr = Array.prototype.slice.call(files);
+          for (var i = 0; i < fileArr.length; i++) {
+            imageLoader(fileArr[i]);
+          }
+          hiddenInput.value = ""; // 파일 입력 값 초기화하여 동일한 파일을 선택할 수 있도록 함
+        }
+        attZone.appendChild(hiddenInput);
+        hiddenInput.click();
+      };
     }
-  )('att_zone', 'btnAtt')
+
+  imageView('att_zone', 'btnAtt');
 }

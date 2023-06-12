@@ -10,6 +10,7 @@ import com.kh.petsisters.common.model.vo.PageInfo;
 import com.kh.petsisters.member.model.vo.Dog;
 import com.kh.petsisters.petsitter.model.dao.PetSitterDao;
 import com.kh.petsisters.petsitter.model.vo.PetSitter;
+import com.kh.petsisters.petsitter.model.vo.PetSitterImg;
 import com.kh.petsisters.reservation.model.vo.Review;
 
 @Service
@@ -62,6 +63,32 @@ public class PetSitterServiceImpl implements  PetSitterService {
 		
 		return petSitterDao.updateComment(sqlSession, r);
 	}
+
+	@Override
+	public int deleteComment(Review r) {
+
+		return petSitterDao.deleteComment(sqlSession, r);
+	}
+	
+	@Override
+	public int insertPetSitterImg(PetSitterImg psImg) {
+		
+		return petSitterDao.insertPetSitterImg(sqlSession, psImg);
+	}
+	
+	@Override
+	public ArrayList<PetSitterImg> selectPetSitterImg(int pno) {
+		
+		return petSitterDao.selectPetSitterImg(sqlSession, pno);
+	}
+
+//	@Override
+//	public int updatePetSitterImg(PetSitterImg petSitterImg) {
+//		
+//		return petSitterDao.updatePetSitterImg(sqlSession, petSitterImg);
+//	}
+
+
 
 	
 

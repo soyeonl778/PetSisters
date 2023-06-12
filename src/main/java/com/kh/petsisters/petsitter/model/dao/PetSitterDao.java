@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.kh.petsisters.common.model.vo.PageInfo;
 import com.kh.petsisters.member.model.vo.Dog;
 import com.kh.petsisters.petsitter.model.vo.PetSitter;
+import com.kh.petsisters.petsitter.model.vo.PetSitterImg;
 import com.kh.petsisters.reservation.model.vo.Review;
 
 @Repository
@@ -52,6 +53,21 @@ public class PetSitterDao {
 	public int updateComment(SqlSessionTemplate sqlSession, Review r) {
 		
 		return sqlSession.update("petSitterMapper.updateComment", r);
+	}
+	
+	public int deleteComment(SqlSessionTemplate sqlSession, Review r) {
+		
+		return sqlSession.delete("petSitterMapper.deleteComment", r);
+	}
+	
+	public int insertPetSitterImg(SqlSessionTemplate sqlSession, PetSitterImg psImg) {
+		
+		return sqlSession.insert("petSitterMapper.insertPetSitterImg", psImg);
+	}
+	
+	public ArrayList<PetSitterImg> selectPetSitterImg(SqlSessionTemplate sqlSession, int pno) {
+		
+		return (ArrayList)sqlSession.selectList("petSitterMapper.selectPetSitterImg", pno);
 	}
 }
 
