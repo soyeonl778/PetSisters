@@ -15,7 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.petsisters.board.model.service.BoardService;
 import com.kh.petsisters.board.model.vo.Board;
-import com.kh.petsisters.common.controller.FileController;
+
 
 @Controller
 public class BoardController {
@@ -26,8 +26,7 @@ public class BoardController {
 	//@Autowired
 	// private Attachment at;
 	
-	@Autowired
-	private FileController fileController;
+
 	/*
 	// 내강아지자랑 게시판 : 사진게시판 (사진형식, 다중파일)
 	@RequestMapping("list.bo")

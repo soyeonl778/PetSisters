@@ -73,7 +73,9 @@
 			     , #{boardContent})
 	</insert>
 	
+	
 	<!-- 첨부파일 작성용 쿼리문 -->
+	<!--  
 	<insert id="insertAttachment" parameterType="">
 		INSERT INTO B_ATTACHMEN(FILE_NO
 							  , ORIGIN_NAME
@@ -88,7 +90,7 @@
 						  , #{fileLevel}
 						  , SEQ_B_ATTACHMENT.CURRVAL)
 	</insert>
-	
+	-->
 	<!-- 게시글 "자유게시판" 리스트를 구해주는 쿼리문 -->
 	<select id="selectFreeList" resultMap="boardResultSet">
 		SELECT BOARD_NO
