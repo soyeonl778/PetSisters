@@ -144,6 +144,10 @@ public class ReservationDao {
 		return (ArrayList)sqlSession.selectList("reservationMapper.journalList", parameter, rowBounds);
 	}
 
+	public ArrayList<CareJournal> careDetail(SqlSessionTemplate sqlSession, int jno) {
+		return (ArrayList)sqlSession.selectList("reservationMapper.careDetail", jno);
+	}
+
 
 
 }

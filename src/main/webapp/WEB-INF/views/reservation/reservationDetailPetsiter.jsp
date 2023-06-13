@@ -10,7 +10,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <jsp:include page="../common/common.jsp" />
 <link rel="stylesheet" href="/resources/css/reservation/reservationDetailPetsiter.css">
-<title>예약 내용 작성</title>
+<title>예약 상세조회</title>
 </head>
 <body>
 <jsp:include page="../common/header.jsp" />	

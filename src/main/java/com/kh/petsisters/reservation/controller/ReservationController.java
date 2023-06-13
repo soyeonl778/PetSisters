@@ -212,7 +212,15 @@ public class ReservationController {
 	}
 	
 	
-	
+	/**
+	 * 돌봄일지 목록 조회
+	 * @param model
+	 * @param session
+	 * @param currentPage
+	 * @param keyword
+	 * @param options
+	 * @return
+	 */
 	@RequestMapping("journalList")
 	public String journalList(Model model, HttpSession session,
 			@RequestParam(value="cPage", defaultValue="1") int currentPage,
@@ -226,8 +234,6 @@ public class ReservationController {
 		int pageLimit = 10;
 		int boardLimit = 6;
 		
-		int option = 0;
-		
 		PageInfo pi = Pagination.getPageInfo(listCount, currentPage, pageLimit, boardLimit);
 		
 		ArrayList<CareJournal> list = reservationService.journalList(pi, userNo, keyword, options);
@@ -239,15 +245,21 @@ public class ReservationController {
 		model.addAttribute("options", options);
 		model.addAttribute("keyword", keyword);
 		
-		System.out.println(keyword);
-		System.out.println(options);
-		System.out.println(option);
-		
 		return "reservation/careJournalList";
 	}
 	
 	
-	
+	@RequestMapping("careDetail")
+	public String careDetail(@RequestParam(value="jno") int jno) {
+		
+		System.out.println(jno);
+		
+		ArrayList<CareJournal> list = reservationService.careDetail(jno);
+		
+		System.out.println(list);
+		
+		return "reservation/careJournalDetail";
+	}
 	
 	
 	

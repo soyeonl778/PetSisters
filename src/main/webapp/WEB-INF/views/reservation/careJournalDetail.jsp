@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,8 +25,10 @@
               <div class="page_section section_destination">
                 <!-- 이 영역 안에서 페이지 작업 하시면 됩니다 -->
                 <div>
-                  <div class="contentContainer">
-                    <!-- 카드 하나 영역-->
+                  <div class="contentContainer accordion accordion-flush" id="accordionPanelsStayOpenExample">
+                  
+                  <!-- 여긴 for 문 말고 받아온 값만 쓸 것 -->
+                  
                     <div class="whoCareArea">
                       <div class="whoCare">
                         <span class="itsme">조승호</span>
@@ -33,8 +36,20 @@
                       </div>
                       <div class="careJournal">돌봄 일지</div>
                     </div>
-                    <div class="contentDate">5월 4일</div>
-                    <div class="contentMain">
+                    
+                    
+                    
+                    <!-- 카드 하나 영역-->
+                    
+                    <div class="accordion-item">
+                    <div class="contentDate accordion-header" id="panelsStayOpen-headingOne">
+                    <button id="accoBtn" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                    5월 4일
+                    </button>
+                    </div>
+                    
+                    <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingOne">
+                    <div class="contentMain accordion-body">
                       <div class="contentHour">오후 7시 14분</div>
                       <div class="imgSections">
                         <img src="/resources/img/main/트포-96974.jpg" alt="">
@@ -44,6 +59,7 @@
                       <div class="contentDesc">옷을 위하여서 미인을 구하기 위하여서 그리하였는가? 아니다 그들은 커다란 이상 곧 만천하의 대중을 품에 안고 그들에게 밝은 길을 찾아 주며 그들을 행복스럽고 평화스러운 곳으로 인도하겠다는 커다란 이상을 품었기 때문이다 그러므로 그들은 길지 있을 뿐이다 그들에게 생명을 불어 넣는 것은 따뜻한 봄바람이다 풀밭에 속잎나고 가지에 싹이 트고 꽃 피고 새 우는 봄날의 천지는 얼마나 기쁘며 얼마나 아름다우냐? 이것을 얼음 속에서 불러 내는 것이 따뜻한
                         봄바람이다</div>
                     </div>
+                    
                     <div class="contentMain">
                       <div class="contentHour">오전 11시 14분</div>
                       <div class="imgSections">
@@ -52,7 +68,24 @@
                       <div class="contentDesc">옷을 위하여서 미인을 구하기 위하여서 그리하였는가? 아니다 그들은 커다란 이상 곧 만천하의 대중을 품에 안고 그들에게 밝은 길을 찾아 주며 그들을 행복스럽고 평화스러운 곳으로 인도하겠다는 커다란 이상을 품었기 때문이다 그러므로 그들은 길지 있을 뿐이다 그들에게 생명을 불어 넣는 것은 따뜻한 봄바람이다 풀밭에 속잎나고 가지에 싹이 트고 꽃 피고 새 우는 봄날의 천지는 얼마나 기쁘며 얼마나 아름다우냐? 이것을 얼음 속에서 불러 내는 것이 따뜻한
                         봄바람이다</div>
                     </div>
+
+
+                    
+                    </div>
+                    </div>
+                    
+                    
                     <!-- 카드 하나 영역-->
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
 
                     <div class="contentDate">5월 2일</div>
                     <div class="contentMain">

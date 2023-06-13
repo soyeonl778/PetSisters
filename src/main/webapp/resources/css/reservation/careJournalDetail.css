@@ -307,7 +307,6 @@ body #container #main .layout-pagination .pagediv span strong{
   color: #0888D0;
   font-weight: bold;
   font-size: xx-large;
-  border-bottom: 1px solid gray;
   padding-bottom: 15px;
   margin-bottom: 30px;
 }
@@ -362,4 +361,13 @@ body #container #main .layout-pagination .pagediv span strong{
 }
 .careJournal {
   font-size: xx-large;
+}
+#accoBtn {
+	padding: 0 21px;
+    height: 65px;
+    font-size: smaller;
+    font-weight: 600;	
+}
+.accordion-item {
+	margin-bottom: 25px;
 }
