@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.kh.petsisters.chat.model.vo.ChatSession;
 import com.kh.petsisters.common.model.vo.PageInfo;
 import com.kh.petsisters.common.template.Pagination;
 import com.kh.petsisters.member.model.service.MemberService;
@@ -25,6 +26,9 @@ import com.kh.petsisters.member.model.vo.Member;
 
 @Controller
 public class MemberController {
+	
+	@Autowired
+	private ChatSession chatSession;
 	
 	@Autowired
 	private MemberService memberService;
@@ -69,6 +73,9 @@ public class MemberController {
 		if(loginUser != null 
 			/*&& bcryptPasswordEncoder.matches(m.getUserPwd(), loginUser.getUserPwd())*/) { // 로그인 성공 처리
 				
+		    // ChatSession에 사용자 추가
+		    chatSession.addLoginUser(loginUser.getUserNo());
+		    
 			session.setAttribute("loginUser", loginUser);
 			session.setAttribute("alertMsg", "로그인에 성공했습니다.");
 				
@@ -87,6 +94,14 @@ public class MemberController {
 	// 로그아웃 기능 영역
 	@RequestMapping("logout.me")
 	public String logout(HttpSession session) {
+		
+	    // 현재 로그인된 사용자의 정보를 가져옴
+	    Member loginUser = (Member) session.getAttribute("loginUser");
+	    
+	    if (loginUser != null) {
+	        // ChatSession에서 사용자 제거
+	        chatSession.removeLoginUser(loginUser.getUserNo());
+	    }
 		
 		session.invalidate();
 		
