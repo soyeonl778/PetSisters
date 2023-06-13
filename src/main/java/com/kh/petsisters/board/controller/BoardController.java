@@ -69,14 +69,14 @@ public class BoardController {
 	}
 	*/
 	
-	/*
+	
 	@RequestMapping("freelist.bo")
 	public String selectFreeList() {
 		
 		// imsiBoardMain
-		return "board/boardMain";
+		return "board/boardEnrollForm";
 	}
-	*/
+	
 	
 	@RequestMapping("mypetlist.bo")
 	public String selectList() {
@@ -85,7 +85,7 @@ public class BoardController {
 		return "board/boardMain";
 	}
 	
-	
+	/*
 	// 자유게시판 : 일반게시판(목록형식)
 	@RequestMapping("freelist.bo")
 	public ModelAndView selectFreeList(
@@ -112,7 +112,7 @@ public class BoardController {
 		
 		return mv;
 	}
-	
+	*/
 
 	@RequestMapping("freeEnrollForm.bo")
 	public String FreeEnrollForm() {

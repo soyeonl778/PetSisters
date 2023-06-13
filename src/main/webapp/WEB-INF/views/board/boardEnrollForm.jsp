@@ -72,14 +72,14 @@
 	                                    </div>
 	                                  </a>
 	    								
-	    							  <!-- 사진 -->
+	    							                <!-- 사진 -->
 	                                  <p class="photo-img">
 	                                    	사진
 	                                  </p>
 	    
 	                                  <div class="file-upload-form">
 	                                    <div class="file-upload-top">
-	                                      <i class="fa-solid fa-square-plus fa-9x" style="color: #e6e6eb;" ></i>
+	                                      <i style="display: hidden;" id="plusIcon" class="fa-solid fa-square-plus fa-9x" style="color: #e6e6eb;" ></i>
 	                                    </div>
 	    
                                       
@@ -88,17 +88,38 @@
 	                                   	<input type="file" id="upfile" class="" name="upfile">
 	                                    -->
 	                                    
-	                                    <div class="fileSection preview">
-					                      <label for="">첨부파일 : </label>
-					                      <input type="file" name="" id="btnAtt" multiple="multiple" required>
-					                      <div id="att_zone" data-placeholder='파일을 첨부 하려면 파일 선택 버튼을 클릭하거나 파일을 드래그앤드롭 하세요'></div>
-					                    </div> 
+                                      <div class="fileSection preview">
+                                        <label for="btnAtt">첨부파일 : </label>
+                                        <input type="file" name="" id="btnAtt" multiple="multiple" required>
+                                        <div id="att_zone" data-placeholder='파일을 첨부 하려면 파일 선택 버튼을 클릭하거나 파일을 드래그앤드롭 하세요'></div>
+                                      </div> 
 	                                     
 	                                  </div>
 	                                  
-	                                  
+	                                  <script>
+                                      $(function() {
+                                        var fileInput = document.getElementById('btnAtt');
+                                        var fileSection = document.querySelector('.file-upload-top');
+                                        var plusIcon = document.getElementById('plusIcon');
+
+                                        fileInput.addEventListener('change', function() {
+                                          var files = fileInput.files;
+                                          
+                                          for (var i = 0; i < files.length; i++) {
+                                              var file = files[i];
+                                              var img = document.createElement('img');
+                                              img.src = URL.createObjectURL(file);
+                                              /*img.attr('src', )*/
+                                              fileSection.appendChild(img);
+                                            }
+
+                                            plusIcon.style.display = 'none';
+
+                                        });
+                                      });
+                                    </script>
+
                                 	</form>
-                                  
                                 </div>
                                 
                                 

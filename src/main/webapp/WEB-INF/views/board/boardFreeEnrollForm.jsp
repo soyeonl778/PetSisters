@@ -19,6 +19,8 @@
     #enrollForm>table label { width: 70px; }
     #enrollbutton { margin-left: 70px; }
     .innerOuter { margin-top: 70px; }
+   
+	
 </style>
 </head>
 <body>
@@ -36,22 +38,112 @@
                 <table algin="center">
                     <tr>
                         <th><label for="title">제목</label></th>
-                        <td><input type="text" id="title" class="form-control" name="boardTitle" required></td>
+                        <td colspan="3"><input type="text" id="title" class="form-control" name="boardTitle" required></td>
                     </tr>
                     <tr>
                         <th><label for="writer">작성자</label></th>
-                        <td><input type="text" id="writer" class="form-control" value="${ loginUser.userId }" name="boardWriter" readonly></td>
+                        <td colspan="3"><input type="text" id="writer" class="form-control" value="${ loginUser.userId }" name="boardWriter" readonly></td>
                     </tr>
                     <tr>
-                        <th><label for="upfile">첨부파일</label></th>
-                        <td><input type="file" id="upfile" class="form-control-file border" name="upfile"></td>
+                        <th>대표이미지</th>
+                        <td colspan="3">
+                            <img id="titleImg" width="250" height="170">
+                        </td>
+                    </tr>
+                    <tr class="multImg-section">
+                        <th>상세이미지</th>
+                        <td>
+                            <img id="contentImg1" width="150" height="120">
+                        </td>
+                        <td>
+                            <img id="contentImg2" width="150" height="120">
+                        </td>
+                        <td>
+                            <img id="contentImg3" width="150" height="120">
+                        </td>
                     </tr>
                     <tr>
                         <th><label for="content">내용</label></th>
                         <td><textarea id="content" class="form-control" rows="10" style="resize:none;" name="boardContent" required></textarea></td>
                     </tr>
+                    
+                    <!-- <tr>
+                        <th><label for="upfile">첨부파일</label></th>
+                        <td><input type="file" id="upfile" class="form-control-file border" name="upfile"></td>
+                    </tr> -->
+                    
                 </table>
                 <br>
+
+                <div id="file-area">
+                    <input type="file" id="file1" name="file1" onchange="loadImg(this, 1);" required>
+                    <input type="file" id="file2" name="file2" onchange="loadImg(this, 2);">
+                    <input type="file" id="file3" name="file3" onchange="loadImg(this, 3);">
+                    <input type="file" id="file4" name="file4" onchange="loadImg(this, 4);">
+                </div>
+
+                <script>
+                    $(function() {
+
+                        $("#file-area").hide();  // input type="file" 요소들 숨김처리
+
+                        $("#titleImg").click(function() {
+                            $("#file1").click();
+                        });
+
+                        $("#contentImg1").click(function() {
+                            $("#file2").click();
+                        });
+
+                        $("#contentImg2").click(function() {
+                            $("#file3").click();
+                        });
+
+                        $("#contentImg3").click(function() {
+                            $("#file4").click();
+                        });
+                    });
+
+
+                    // 이미지 미리보기 기능
+                    function loadImg(inputFile, num) {
+
+                        if(inputFile.files.length == 1) { // 선택된 파일이 있을 경우
+
+                            // 파일을 읽어들일 FileReader 객체 생성
+                            let reader = new FileReader();
+
+                            reader.readAsDataURL(inputFile.files[0]);
+
+                            // 파일 읽기가 완료되었을 때 실행하게끔 처리
+                            reader.onload = function(e) {
+                                
+
+                                // e 의 target.result 에 각 파일의 url 주소가 담겨있음
+							    // e.target == this == reader
+
+                                switch(num) {
+                                    case 1 : $("#titleImg").attr("src", e.target.result); break;
+                                    case 2 : $("#contentImg1").attr("src", e.target.result); break;
+                                    case 3 : $("#contentImg2").attr("src", e.target.result); break;
+                                    case 4 : 4("#contentImg3").attr("src", e.target.result); break;
+                                }
+
+                            };
+                        } else { // 선택된 파일이 사라졌을 경우
+
+                            // 미리보기 사라지게 하기
+                            switch(num) {
+                                    case 1 : $("#titleImg").attr("src", null); break;
+                                    case 2 : $("#contentImg1").attr("src", null); break;
+                                    case 3 : $("#contentImg2").attr("src", null); break;
+                                    case 4 : 4("#contentImg3").attr("src", null); break;
+                           } 
+                        }
+                    }
+                </script>
+
+
 
                 <div align="center">
                     <button type="submit" class="btn btn-primary" id="enrollbutton">등록하기</button>
