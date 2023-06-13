@@ -214,8 +214,34 @@ public class ReservationController {
 	
 	
 	@RequestMapping("journalList")
-	public String journalList() {
+	public String journalList(Model model, HttpSession session,
+			@RequestParam(value="cPage", defaultValue="1") int currentPage,
+			@RequestParam(value="keyword", required=false) String keyword,
+			@RequestParam(value="options", required=false) String options) {
 		
+		int userNo = ((Member)(session.getAttribute("loginUser"))).getUserNo();
+		
+		int listCount = reservationService.selectCareCount(userNo, keyword);
+		
+		int pageLimit = 10;
+		int boardLimit = 6;
+		
+		int option = 0;
+		
+		PageInfo pi = Pagination.getPageInfo(listCount, currentPage, pageLimit, boardLimit);
+		
+		ArrayList<CareJournal> list = reservationService.journalList(pi, userNo, keyword, options);
+		
+		System.out.println(list);
+		
+		model.addAttribute("list", list);
+		model.addAttribute("pi", pi);
+		model.addAttribute("options", options);
+		model.addAttribute("keyword", keyword);
+		
+		System.out.println(keyword);
+		System.out.println(options);
+		System.out.println(option);
 		
 		return "reservation/careJournalList";
 	}
@@ -377,7 +403,7 @@ public class ReservationController {
 	    							// List<MultipartFile> => 0 번째방부터 마지막방까지 MultipartFile 객체가 담겨잇음
 	        for (MultipartFile file : fileNames) {
 	            String originalFileName = file.getOriginalFilename();
-	            String savedFileName = saveFile(file, session);
+	            String savedFileName = saveFiles(file, session);
 	            
 	            // 넘어온 첨부파일만큼 마이바티스의 파라미터로 넘기게 가공 (여기서부터 고민)
 	            CareJournal cj = new CareJournal();
@@ -409,30 +435,27 @@ public class ReservationController {
 	 * @param session
 	 * @return
 	 */
-	public String saveFiless(String fileName, HttpSession session) {
+	public String saveFiles(MultipartFile upfile, HttpSession session) {
+		
+		String originName = upfile.getOriginalFilename();
+		System.out.println(originName);
+		String currentTime = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
+		
+		int ranNum = (int)(Math.random() * 90000 + 10000);
+		
+		String ext = originName.substring(originName.lastIndexOf("."));
+		
+		String changeName = currentTime + ranNum + ext;
+		
+		String savePath = session.getServletContext().getRealPath("resources/upFiles/care_upfiles/");
+		
 		try {
-	        String currentTime = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
-	        int ranNum = (int)(Math.random() * 90000 + 10000);
-	        String ext = fileName.substring(fileName.lastIndexOf("."));
-	        String savedFileName = currentTime + ranNum + ext;
-	        //String savedFileName = fileName;
-
-	        String savePath = session.getServletContext().getRealPath("resources/upFiles/care_upfiles/");
-	        File saveDir = new File(savePath);
-	        if (!saveDir.exists()) {
-	            saveDir.mkdirs();
-	        }
-
-	        File targetFile = new File(saveDir, savedFileName);
-
-	        targetFile.createNewFile();
-
-	        return savedFileName;
-	    } catch(IOException e) {
-	        e.printStackTrace();
-	    }
-
-	    return null;
+			upfile.transferTo(new File(savePath + changeName));
+		} catch(IOException e) {
+			e.printStackTrace();
+		}
+		
+		return changeName;
 	}
 	
 	

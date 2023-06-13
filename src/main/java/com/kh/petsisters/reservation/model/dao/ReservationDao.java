@@ -119,4 +119,31 @@ public class ReservationDao {
 	    return result;
 	}
 
+	public int selectCareCount(SqlSessionTemplate sqlSession, int userNo, String keyword) {
+		
+		Map<String, Object> parameter = new HashMap<>();
+		parameter.put("userNo", userNo);
+		parameter.put("keyword", keyword);
+		
+		return sqlSession.selectOne("reservationMapper.selectCareCount", parameter);
+	}
+
+	public ArrayList<CareJournal> journalList(SqlSessionTemplate sqlSession, PageInfo pi, int userNo
+			, String keyword, String options) {
+		
+		Map<String, Object> parameter = new HashMap<>();
+		parameter.put("userNo", userNo);
+		parameter.put("keyword", keyword);
+		parameter.put("options", options);
+		
+		int offset = (pi.getCurrentPage() - 1) * pi.getBoardLimit();
+		int limit = pi.getBoardLimit();
+		
+		RowBounds rowBounds = new RowBounds(offset, limit);
+		
+		return (ArrayList)sqlSession.selectList("reservationMapper.journalList", parameter, rowBounds);
+	}
+
+
+
 }

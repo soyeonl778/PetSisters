@@ -92,6 +92,17 @@ public class ReservationServiceImpl implements ReservationService{
 	public int insertJournalFile(ArrayList<CareJournal> list) {
 		return reservationDao.insertJournalFile(sqlSession, list);
 	}
+
+	@Override
+	public int selectCareCount(int userNo, String keyword) {
+		return reservationDao.selectCareCount(sqlSession, userNo, keyword);
+	}
+	
+	@Override
+	public ArrayList<CareJournal> journalList(PageInfo pi, int userNo, String keyword, String options) {
+		return reservationDao.journalList(sqlSession, pi, userNo, keyword, options);
+	}
+
 	
 
 

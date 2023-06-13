@@ -35,6 +35,12 @@ public interface ReservationService {
 	// 예약 상세페이지 조회
 	Reservation reservationDetail(int rNo);
 
+	// 돌봄일지 페이지네이션 용
+	int selectCareCount(int userNo, String keyword);
+	
+	// 돌봄일지 목록 조외
+	ArrayList<CareJournal> journalList(PageInfo pi, int userNo, String keyword, String options);
+	
 	
 	
 	// ======== 펫시터 관련 =========
@@ -55,6 +61,7 @@ public interface ReservationService {
 
 	// 펫시터 돌봄일지에 파일 있을경우 파일 추가
 	int insertJournalFile(ArrayList<CareJournal> list);
+
 
 
 
