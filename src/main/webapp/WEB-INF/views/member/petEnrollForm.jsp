@@ -62,6 +62,7 @@
                   <h3 class="title_11">펫 정보 등록하기</h3>
                 </div>
                 <form action="petInsert.me" method="post" id="petEnrollForm">
+                	<input type="hidden" name="userNo" value="${ loginUser.userNo }">
 	               <hr class="hrhr">
                   <div class="sub2">
                     <div class="enrollWrapper">

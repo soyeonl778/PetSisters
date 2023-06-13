@@ -45,13 +45,13 @@ public class MemberDao {
 		return sqlSession.selectOne("memberMapper.selectListCount", userNo);
 	}
 	
-	public ArrayList<Dog> petListView(SqlSessionTemplate sqlSession, PageInfo pi) {
+	public ArrayList<Dog> petListView(SqlSessionTemplate sqlSession, PageInfo pi, int userNo) {
 		int offset = (pi.getCurrentPage() -1) * pi.getBoardLimit();
 		int limit = pi.getBoardLimit();
 		
 		RowBounds rowBounds = new RowBounds(offset, limit);
 		
-		return (ArrayList)sqlSession.selectList("memberMapper.petListView", null, rowBounds);
+		return (ArrayList)sqlSession.selectList("memberMapper.petListView", userNo, rowBounds);
 	}
 	
 	public Dog petDetailView(SqlSessionTemplate sqlSession, int dno) {

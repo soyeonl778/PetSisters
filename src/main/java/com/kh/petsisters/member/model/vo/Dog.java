@@ -26,5 +26,4 @@ public class Dog {
 	private String filePath;
 	private String status;
 	private int userNo;
-	private int dogAge;
 }

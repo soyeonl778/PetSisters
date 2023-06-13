@@ -30,7 +30,7 @@ public interface MemberService {
 		int selectListCount(int userNo);
 	
 	// 펫 전체 리스트 조회
-		ArrayList<Dog> petListView(PageInfo pi);
+		ArrayList<Dog> petListView(PageInfo pi, int userNo);
 		
 	// 펫 상세 조회
 		Dog petDetailView(int dno);

@@ -249,8 +249,9 @@ public class MemberController {
 	@RequestMapping("petList.me")
 	public ModelAndView petListView(@RequestParam(value="cPage", defaultValue="1")int currentPage,
 							  ModelAndView mv,
-							  int userNo) {
-		
+							  HttpSession session) {
+		int userNo = ((Member)session.getAttribute("loginUser")).getUserNo();
+		System.out.println(userNo);
 		int listCount = memberService.selectListCount(userNo);
 		
 		int pageLimit = 10;
@@ -258,7 +259,7 @@ public class MemberController {
 		
 		PageInfo pi = Pagination.getPageInfo(listCount, currentPage, pageLimit, boardLimit);
 		
-		ArrayList<Dog> list = memberService.petListView(pi);
+		ArrayList<Dog> list = memberService.petListView(pi, userNo);
 		
 		System.out.println(list);
 		mv.addObject("pi", pi)
@@ -287,7 +288,7 @@ public class MemberController {
 			
 			session.setAttribute("alertMsg", "정상적으로 나의 펫이 등록되었습니다.");
 			
-			return "redirect:/";
+			return "redirect:/petList.me";
 			
 		} else {
 			

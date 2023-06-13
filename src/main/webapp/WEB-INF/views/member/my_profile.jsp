@@ -34,7 +34,7 @@
                     <a href="myProfile.me">내 프로필</a>
                   </li>
                   <li>
-                    <a href="petList.me?userNo=${ loginUser.userNo }">반려동물 프로필</a>
+                    <a href="petList.me">반려동물 프로필</a>
                   </li>
                   <li>
                     <a href="petsiterLike.me">펫시터 찜</a>

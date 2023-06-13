@@ -145,6 +145,7 @@
 			  , FILE_PATH
 		  FROM DOG
 		WHERE STATUS = 'Y'
+		  AND USER_NO = #{userNo}
 		ORDER BY DOG_NO DESC
 	</select>
 	

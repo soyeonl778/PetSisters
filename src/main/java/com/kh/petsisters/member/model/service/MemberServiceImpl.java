@@ -73,8 +73,8 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
-	public ArrayList<Dog> petListView(PageInfo pi) {
-		return memberDao.petListView(sqlSession, pi);
+	public ArrayList<Dog> petListView(PageInfo pi, int userNo) {
+		return memberDao.petListView(sqlSession, pi, userNo);
 	}
 
 	@Override
