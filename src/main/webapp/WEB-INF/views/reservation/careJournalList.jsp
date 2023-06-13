@@ -90,7 +90,7 @@
 												value="${ fn:indexOf(l.filePath.concat(l.changeName), ',')}" />
 
 											<div class="col">
-												<div class="card">
+												<div class="card" onclick="careDetail(${l.refResNo})">
 													<c:if test="${ fileName != -1 }">
 														<img
 															src="${ l.filePath.concat(l.changeName).substring(0, fileName) }"
@@ -165,13 +165,19 @@
 
 	<jsp:include page="../common/footer.jsp" />
 	<script>
+	
 	document.getElementById("ex_select").addEventListener("change", function() {
 		  document.getElementById("journalForm").submit();
 		});
+	
 	function petsitterLink(pno) {
 		
 		location.href = 'detail.pe?pno=' + pno;
+	}
+	
+	function careDetail(jno) {
 		
+		location.href = 'careDetail?jno=' + jno;
 	}
 	</script>
 </body>

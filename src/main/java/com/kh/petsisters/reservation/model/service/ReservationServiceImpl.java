@@ -103,6 +103,11 @@ public class ReservationServiceImpl implements ReservationService{
 		return reservationDao.journalList(sqlSession, pi, userNo, keyword, options);
 	}
 
+	@Override
+	public ArrayList<CareJournal> careDetail(int jno) {
+		return reservationDao.careDetail(sqlSession, jno);
+	}
+
 	
 
 

@@ -13,12 +13,13 @@ import lombok.NoArgsConstructor;
 public class CareJournal {
 
 		// JOURNAL 테이블	
-		private int jNo;			//	돌봄일지 번호
+		private int jno;			//	돌봄일지 번호
 		private String jtitle;		//	돌봄일지 제목
 		private String jcontent;	//	돌봄일지 내용
 		private String create_date;	//	게시일
+		private String days;		//  작성 시간
 		private String status;		//	삭제여부 'Y' 는 유지중
-		private int refResNo;		//	참조에약번호 (예약테이블)
+		private int refResNo;		//	참조예약번호 (예약테이블)
 		
 		
 		// J_ATTACHMENT 테이블
@@ -35,7 +36,7 @@ public class CareJournal {
 		// 돌봄일지 조회용 추가
 		private Date startDate;			//  예약 시작일
 		private Date endDate;			//  예약 종료일
-		private String revStatus;		//  예약 상
+		private String revStatus;		//  예약 상태
 		private String userName;		//  담당 펫시터 이름
 		private int pno;				//  담당 펫시터 번호
 		private String petistterName; 	//  펫시터 이름

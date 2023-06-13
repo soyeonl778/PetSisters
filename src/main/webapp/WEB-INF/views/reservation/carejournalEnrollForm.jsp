@@ -243,7 +243,7 @@
 		        processData: false,
 		        success: function(res) {
 		          console.log(res);
-		          alert('업로드 성공!!!');
+		          alert('돌봄일지 작성 성공');
 		          window.location.href = '/petsitterRev';
 		        },
 		        error: function(error) {
