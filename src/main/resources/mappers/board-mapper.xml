@@ -14,6 +14,7 @@
 		
 		<result column="DOG_NAME" property="dogName" />
 		<result column="FILE_PATH" property="dogImg" />
+		<result column="ORIGIN_NAME" property="originName" />
 	</resultMap>
 	
 	<resultMap id="attachmentResultSet" type="attachment">
@@ -29,14 +30,24 @@
 	
 
 
-	<!-- 게시글 총 갯수 구하는 쿼리문 -->
+	<!-- 일반게시글 총 갯수 구하는 쿼리문 -->
+	<select id="selectFreeListCount" resultType="_int">
+		SELECT COUNT(*)
+		  FROM BOARD
+		 WHERE STATUS = 'Y'
+		   AND CATEGORY_MAIN = '1' 
+	</select>
+	
+	<!-- 사진게시글 총 갯수 구하는 쿼리문 -->
 	<select id="selectListCount" resultType="_int">
 		SELECT COUNT(*)
 		  FROM BOARD
-		WHERE STATUS = 'Y'
+		 WHERE STATUS = 'Y'
+		   AND CATEGORY_MAIN = '2' 
 	</select>
 	
 	<!-- 게시글 리스트 구해주는 쿼리문 -->
+	<!--  
 	<select id="selectList" resultMap="boardResultSet">
 		SELECT B.B_NO
 		     , B.B_CONTENT
@@ -55,9 +66,11 @@
 		WHERE B.STATUS = 'Y'
 		ORDER BY B.B_NO DESC
 	</select>
+	-->
 	
 	<!-- 게시글 상세 조회용 쿼리문 -->
-	<select id="selectBoard" parameterType="_int" resultMap="boardResultSet">
+	<!--  
+	<select id="selectBoard"  >
 		SELECT B.B_NO
 		     , B.B_CONTENT
 		     , B.USER_NO
@@ -75,15 +88,52 @@
 		WHERE B.STATUS = 'Y'
           AND B.B_NO = #{boardNo}
 	</select>
+	-->
+	
+	
+	<!-- 일반게시글 리스트 조회 -->
+	<select id="selectFreeList" resultMap="boardResultSet">
+		SELECT B.B_NO
+		     , B.B_TITLE
+		     , B.USER_NO
+		     , B.COUNT 
+			 , TO_CHAR(B.CREATE_DATE, 'YYYY-MM-DD') AS "CREATE_DATE"
+			 , A.ORIGIN_NAME
+		 FROM BOARD B
+         LEFT JOIN B_ATTACHMENT A ON (B.B_NO = A.REF_BNO) 	
+        WHERE B.STATUS = 'Y'
+		  AND CATEGORY_MAIN = '1'
+        ORDER BY B.B_NO DESC
+        		
+	</select>	
+
+	<!-- 사진게시글 리스트 조회 -->
+	<!--  
+	<select id="" parameterType="_int" resultMap="boardResultSet">
+		SELECT B.B_NO
+		     , B.B_TITLE
+		     , B.USER_NO
+		     , B.COUNT 
+			 , TO_CHAR(B.CREATE_DATE, 'YYYY-MM-DD') AS "CREATE_DATE"
+			 , A.REF_BNO
+		FROM BOARD B
+		LEFT JOIN B_ATTACHMENT A ON (B.B_NO = A.REF_BNO)
+		ORDER BY BOARD_NO DESC
+		WHERE STATUS = 'Y'
+		   AND CATEGORY_MAIN = '1' 		
+	</select>		
+	-->
+		
 		
 	<!-- 게시글 작성용 쿼리문 -->
+	<!--  
 	<insert id="insertBoard" parameterType="board">
 		INSERT INTO BOARD(BOARD_NO
 						, BOARD_CONTENT)
 			VALUES(SEQ_BOARD.NEXTVAL
 			     , #{boardContent})
 	</insert>
-	
+	-->
 	
 	<!-- 첨부파일 작성용 쿼리문 -->
 	<!--  
@@ -102,7 +152,25 @@
 						  , SEQ_B_ATTACHMENT.CURRVAL)
 	</insert>
 	-->
+	<!-- 글번호 제목 작성자 조회수 작성일 첨부파일 -->
+	
 	<!-- 게시글 "자유게시판" 리스트를 구해주는 쿼리문 -->
+	<!--  
+	<select id="selectFreeList" resultMap="boardResultSet">
+		SELECT B_NO // 글번호
+			 , B_TITLE // 제목
+			 , USER_NO // 작성자
+			 , COUNT // 조회수
+			 , TO_CHAR(CREATE_DATE, 'YYYY-MM-DD') AS "CREATE_DATE" // 작성일 //첨부파일
+		  FROM BOARD
+		 WHERE STATUS = 'Y'
+		 ORDER BY BOARD_NO DESC
+	</select>
+	-->
+	
+	
+	<!-- 게시글 "사진게시판" 리스트를 구해주는 쿼리문 -->
+	<!--  
 	<select id="selectFreeList" resultMap="boardResultSet">
 		SELECT BOARD_NO
 			 , BOARD_TITLE
@@ -113,8 +181,9 @@
 		 WHERE STATUS = 'Y'
 		 ORDER BY BOARD_NO DESC
 	</select>
+	-->
 	
-	
+	 <!--   
 	<select id="selectAttachment" parameterType="_int" resultMap="attachmentResultSet">
 		SELECT ORIGIN_NAME
 		     , CHANGE_NAME
@@ -122,6 +191,8 @@
 		 WHERE STATUS = 'Y'
 		   AND REF_BNO = #{boardNo}
 	</select>	
+	-->
+	
 	
 	<!--  
 	<insert id="insertAttachmentList" parameterType="">

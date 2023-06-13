@@ -19,8 +19,6 @@
       <!--폰트어썸-->
       <script src="https://kit.fontawesome.com/d3eb8276e5.js" crossorigin="anonymous"></script>
       <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> -->
-    
-    
     </head>
     
     <body>
@@ -92,7 +90,7 @@
 	                                    
 	                                    <div class="fileSection preview">
 					                      <label for="">첨부파일 : </label>
-					                      <input type="file" name="" id="btnAtt" multiple="multiple">
+					                      <input type="file" name="" id="btnAtt" multiple="multiple" required>
 					                      <div id="att_zone" data-placeholder='파일을 첨부 하려면 파일 선택 버튼을 클릭하거나 파일을 드래그앤드롭 하세요'></div>
 					                    </div> 
 	                                     

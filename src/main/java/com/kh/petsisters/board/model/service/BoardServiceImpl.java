@@ -26,6 +26,11 @@ public class BoardServiceImpl implements BoardService {
 		return boardDao.selectListCount(sqlSession);
 	}
 	
+	@Override
+	public int selectFreeListCount() {
+		return boardDao.selectListCount(sqlSession);
+	}
+	
 
 	@Override
 	public ArrayList<Board> selectList(PageInfo pi) {

@@ -12,7 +12,9 @@ public interface BoardService {
 	// 게시글 총 갯수 조회
 	int selectListCount();
 	
-	// 커뮤니티 게시글 리스트 조회
+	int selectFreeListCount();
+	
+	// 커뮤니티 일반게시글 리스트 조회
 	ArrayList<Board> selectList(PageInfo pi);
 	
 	

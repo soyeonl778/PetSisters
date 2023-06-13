@@ -25,4 +25,30 @@ public class Board {
 	
 	private String dogName;
 	private String dogImg;
+	
+	private String originName;
+
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

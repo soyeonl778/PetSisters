@@ -16,11 +16,14 @@ public class BoardDao {
 		return sqlSession.selectOne("boardMapper.selectListCount");
 	}
 	
+	public int selectFreeListCount(SqlSessionTemplate sqlSession) {
+		return sqlSession.selectOne("boardMapper.selectFreeListCount");
+	}
 	
 	public ArrayList<Board> selectList(SqlSessionTemplate sqlSession, PageInfo pi) {
 		
-		int offset = (pi.getCurrentPage() - 1) * pi.getBoardLimit(); // 건너뛸 숫자
-		int limit = pi.getBoardLimit(); // 조회할 갯수
+		int offset = (pi.getCurrentPage() - 1) * pi.getBoardLimit(); 
+		int limit = pi.getBoardLimit(); 
 		
 		RowBounds rowBounds = new RowBounds(offset, limit);
 		
