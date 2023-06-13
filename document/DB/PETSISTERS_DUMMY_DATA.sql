@@ -594,6 +594,39 @@ INSERT INTO MESSAGE VALUES(SEQ_MESSAGE.NEXTVAL, '메세지내용1', DEFAULT, 1, 1, DE
 INSERT INTO MESSAGE VALUES(SEQ_MESSAGE.NEXTVAL, '메세지내용2', DEFAULT, 1, 1, DEFAULT);
 INSERT INTO MESSAGE VALUES(SEQ_MESSAGE.NEXTVAL, '메세지내용3', DEFAULT, 1, 1, DEFAULT);
 
+----------------------------------------------------------------
+--------------    커뮤니티 (일반게시판) 테이블 더미    --------------
+----------------------------------------------------------------
+INSERT INTO BOARD VALUES (SEQ_BOARD.NEXTVAL, '제목1', '강아지산책 다녀왔어요!!', SYSDATE, DEFAULT, DEFAULT, 1, 1, 1);
+INSERT INTO BOARD VALUES (SEQ_BOARD.NEXTVAL, '제목2', '강아지산책 간식추천이요!!', SYSDATE, DEFAULT, DEFAULT, 2, 1, 1);
+INSERT INTO BOARD VALUES (SEQ_BOARD.NEXTVAL, '제목3', '강아지 입양했어요!!', SYSDATE, DEFAULT, DEFAULT, 3, 1, 1);
+INSERT INTO BOARD VALUES (SEQ_BOARD.NEXTVAL, '제목4', '강아지 가족이 생겼어요!!', SYSDATE, DEFAULT, DEFAULT, 4, 1, 1);
+INSERT INTO BOARD VALUES (SEQ_BOARD.NEXTVAL, '제목5', '돌돌이랑 산책 다녀왔어요!!', SYSDATE, DEFAULT, DEFAULT, 5, 1, 1);
+INSERT INTO BOARD VALUES (SEQ_BOARD.NEXTVAL, '제목6', '강아지 간식 만들어봐요!!', SYSDATE, DEFAULT, DEFAULT, 6, 1, 1);
+INSERT INTO BOARD VALUES (SEQ_BOARD.NEXTVAL, '제목7', '강아지 건강식 자랑해요!!', SYSDATE, DEFAULT, DEFAULT, 7, 1, 1);
+INSERT INTO BOARD VALUES (SEQ_BOARD.NEXTVAL, '제목8', '우리 강아지들이 좋아하는 간식들 추천!!', SYSDATE, DEFAULT, DEFAULT, 8, 1, 1);
+INSERT INTO BOARD VALUES (SEQ_BOARD.NEXTVAL, '제목9', '오늘도 즐거운하루!!', SYSDATE, DEFAULT, DEFAULT, 1, 1, 1);
+INSERT INTO BOARD VALUES (SEQ_BOARD.NEXTVAL, '제목10', '비오는 날은 강아지와 함께!!', SYSDATE, DEFAULT, DEFAULT, 2, 1, 1);
+INSERT INTO BOARD VALUES (SEQ_BOARD.NEXTVAL, '제목11', '새로운 가족이 생겼어요!!', SYSDATE, DEFAULT, DEFAULT, 8, 1, 1);
+INSERT INTO BOARD VALUES (SEQ_BOARD.NEXTVAL, '제목12', '강아지와 동거하는 고양이!!', SYSDATE, DEFAULT, DEFAULT, 7, 1, 1);
+
+----------------------------------------------------------------
+--------------    커뮤니티 (사진게시판) 테이블 더미    --------------
+----------------------------------------------------------------
+INSERT INTO BOARD VALUES (SEQ_BOARD.NEXTVAL, '제목1', '비오는날 강아지 사진!!', SYSDATE, DEFAULT, DEFAULT, 5, 2, 1);
+INSERT INTO BOARD VALUES (SEQ_BOARD.NEXTVAL, '제목2', '강아지와 나의 추억!!', SYSDATE, DEFAULT, DEFAULT, 6, 2, 1);
+INSERT INTO BOARD VALUES (SEQ_BOARD.NEXTVAL, '제목3', '등산셀카 자랑해요!!', SYSDATE, DEFAULT, DEFAULT, 7, 2, 1);
+INSERT INTO BOARD VALUES (SEQ_BOARD.NEXTVAL, '제목4', '강아지 증명사진 찍었어요!!', SYSDATE, DEFAULT, DEFAULT, 8, 2, 1);
+INSERT INTO BOARD VALUES (SEQ_BOARD.NEXTVAL, '제목5', '강아지 산책모임에서 인증샷!!', SYSDATE, DEFAULT, DEFAULT, 3, 2, 1);
+INSERT INTO BOARD VALUES (SEQ_BOARD.NEXTVAL, '제목6', '여름에 강아지 간식으로 수박추천!!', SYSDATE, DEFAULT, DEFAULT, 6, 2, 1);
+INSERT INTO BOARD VALUES (SEQ_BOARD.NEXTVAL, '제목7', '우리 강아지 애기사진!!', SYSDATE, DEFAULT, DEFAULT, 7, 2, 1);
+INSERT INTO BOARD VALUES (SEQ_BOARD.NEXTVAL, '제목8', '우리 강아지들이 좋아하는 간식들 추천!!', SYSDATE, DEFAULT, DEFAULT, 4, 2, 1);
+INSERT INTO BOARD VALUES (SEQ_BOARD.NEXTVAL, '제목9', '오늘도 즐거운하루!!', SYSDATE, DEFAULT, DEFAULT, 8, 2, 1);
+INSERT INTO BOARD VALUES (SEQ_BOARD.NEXTVAL, '제목10', '고양이와 강아지!!', SYSDATE, DEFAULT, DEFAULT, 2, 2, 1);
+INSERT INTO BOARD VALUES (SEQ_BOARD.NEXTVAL, '제목11', '강아지 영양식 인증샷!!', SYSDATE, DEFAULT, DEFAULT, 3, 2, 1);
+INSERT INTO BOARD VALUES (SEQ_BOARD.NEXTVAL, '제목12', '여름에 강아지 보양식 만들었어요!!', SYSDATE, DEFAULT, DEFAULT, 1, 2, 1);
+
+
 --------------------------------------------------
 -----------------    커밋구문    ------------------
 --------------------------------------------------
