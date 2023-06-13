@@ -277,6 +277,75 @@ VALUES ( SEQ_RESERVATION.NEXTVAL,
          4);           
          
 --------------------------------------------------
+-----------    돌봄일지 테이블 더미    -------------
+--------------------------------------------------
+INSERT INTO JOURNAL (J_NO, J_TITLE, J_CONTENT, CREATE_DATE, STATUS, REF_RESNO)
+VALUES (SEQ_JOURNAL.NEXTVAL, '돌봄테스트1', '돌봄테스트내용1', SYSDATE, 'Y', 1);	 	    	
+
+INSERT INTO JOURNAL (J_NO, J_TITLE, J_CONTENT, CREATE_DATE, STATUS, REF_RESNO)
+VALUES (SEQ_JOURNAL.NEXTVAL, '돌봄테스트1', '돌봄테스트내용1', SYSDATE, 'Y', 4); 
+
+INSERT INTO JOURNAL (J_NO, J_TITLE, J_CONTENT, CREATE_DATE, STATUS, REF_RESNO)
+VALUES (SEQ_JOURNAL.NEXTVAL, '돌봄테스트1', '돌봄테스트내용1', SYSDATE, 'Y', 5);	 
+
+INSERT INTO JOURNAL (J_NO, J_TITLE, J_CONTENT, CREATE_DATE, STATUS, REF_RESNO)
+VALUES (SEQ_JOURNAL.NEXTVAL, '돌봄테스트1', '돌봄테스트내용1', SYSDATE, 'Y', 6);	 
+
+INSERT INTO JOURNAL (J_NO, J_TITLE, J_CONTENT, CREATE_DATE, STATUS, REF_RESNO)
+VALUES (SEQ_JOURNAL.NEXTVAL, '돌봄테스트1', '돌봄테스트내용1', SYSDATE, 'Y', 7);	 
+
+INSERT INTO JOURNAL (J_NO, J_TITLE, J_CONTENT, CREATE_DATE, STATUS, REF_RESNO)
+VALUES (SEQ_JOURNAL.NEXTVAL, '돌봄테스트1', '돌봄테스트내용1', SYSDATE, 'Y', 8);	 
+
+INSERT INTO JOURNAL (J_NO, J_TITLE, J_CONTENT, CREATE_DATE, STATUS, REF_RESNO)
+VALUES (SEQ_JOURNAL.NEXTVAL, '돌봄테스트1', '돌봄테스트내용1', SYSDATE, 'Y', 17);	 
+
+INSERT INTO JOURNAL (J_NO, J_TITLE, J_CONTENT, CREATE_DATE, STATUS, REF_RESNO)
+VALUES (SEQ_JOURNAL.NEXTVAL, '돌봄테스트1', '돌봄테스트내용1', SYSDATE, 'Y', 16);	 
+
+INSERT INTO JOURNAL (J_NO, J_TITLE, J_CONTENT, CREATE_DATE, STATUS, REF_RESNO)
+VALUES (SEQ_JOURNAL.NEXTVAL, '돌봄테스트1', '돌봄테스트내용1', SYSDATE, 'Y', 15);	 
+
+INSERT INTO JOURNAL (J_NO, J_TITLE, J_CONTENT, CREATE_DATE, STATUS, REF_RESNO)
+VALUES (SEQ_JOURNAL.NEXTVAL, '돌봄테스트1', '돌봄테스트내용1', SYSDATE, 'Y', 14);	 
+
+INSERT INTO JOURNAL (J_NO, J_TITLE, J_CONTENT, CREATE_DATE, STATUS, REF_RESNO)
+VALUES (SEQ_JOURNAL.NEXTVAL, '돌봄테스트1', '돌봄테스트내용1', SYSDATE, 'Y', 13);	 
+
+INSERT INTO JOURNAL (J_NO, J_TITLE, J_CONTENT, CREATE_DATE, STATUS, REF_RESNO)
+VALUES (SEQ_JOURNAL.NEXTVAL, '돌봄테스트1', '돌봄테스트내용1', '2023-06-12', 'Y', 12);	 
+
+INSERT INTO JOURNAL (J_NO, J_TITLE, J_CONTENT, CREATE_DATE, STATUS, REF_RESNO)
+VALUES (SEQ_JOURNAL.NEXTVAL, '돌봄테스트1', '돌봄테스트내용1', '2023-06-11', 'Y', 11);	 
+
+INSERT INTO JOURNAL (J_NO, J_TITLE, J_CONTENT, CREATE_DATE, STATUS, REF_RESNO)
+VALUES (SEQ_JOURNAL.NEXTVAL, '돌봄테스트1', '돌봄테스트내용1', '2023-06-10', 'Y', 10);	 
+
+INSERT INTO JOURNAL (J_NO, J_TITLE, J_CONTENT, CREATE_DATE, STATUS, REF_RESNO)
+VALUES (SEQ_JOURNAL.NEXTVAL, '돌봄테스트1', '돌봄테스트내용1', '2023-06-10', 'Y', 9);	 
+
+
+--------------------------------------------------
+---------    돌봄일지 파일 테이블 더미    -----------
+--------------------------------------------------
+    INSERT INTO J_ATTACHMENT (FILE_NO, 
+                              ORIGIN_NAME, 
+                              CHANGE_NAME, 
+                              FILE_PATH, 
+                              CREATE_DATE,
+                              STATUS, 
+                              FILE_LEVEL, 
+                              REF_JNO)
+                        VALUES(SEQ_J_ATTACHMENT.NEXTVAL, 
+                        '스크린샷 2023-03-16 100627.png', 
+                        '2023061309592568786.png', 
+                        'resources/upFiles/care_upfiles/', 
+                        SYSDATE, 
+                        'Y', 
+                        1, 
+                        SEQ_JOURNAL.CURRVAL);
+         
+--------------------------------------------------
 ---------------    후기 테이블 더미    --------------
 --------------------------------------------------
 INSERT INTO REVIEW
@@ -330,12 +399,6 @@ VALUES(SEQ_DOG.NEXTVAL,
        'Y',
        4); 
        
---------------------------------------------------
---------------    채팅방 테이블 더미    --------------
---------------------------------------------------
-INSERT INTO CHAT_ROOM VALUES(1,1,2);
-
-
 --------------------------------------------------
 --------------    결제 테이블 더미    --------------
 --------------------------------------------------
@@ -518,6 +581,11 @@ VALUES (SEQ_INQUIRY.NEXTVAL
            , SYSDATE
            , 'Y'
            , 3);
+           
+--------------------------------------------------
+--------------    채팅방 테이블 더미    --------------
+--------------------------------------------------
+INSERT INTO CHAT_ROOM VALUES(SEQ_CHAT_ROOM.NEXTVAL,1,'아발',null,2,'김제니',null);
 
 --------------------------------------------------
 --------------    메세지 테이블 더미    --------------
