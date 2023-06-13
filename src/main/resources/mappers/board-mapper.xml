@@ -16,6 +16,17 @@
 		<result column="FILE_PATH" property="dogImg" />
 	</resultMap>
 	
+	<resultMap id="attachmentResultSet" type="attachment">
+		<result column="FILE_NO" property="fileNo" />
+		<result column="ORIGIN_NAME" property="originName" />
+		<result column="CHANGE_NAME" property="changeName" />
+		<result column="FILE_PATH" property="filePath" />
+		<result column="CREATE_DATE" property="createDate" />
+		<result column="STATUS" property="status" />
+		<result column="FILE_LEVEL" property="fileLevel" />
+		<result column="REF_BNO" property="ref_bno" />
+	</resultMap>
+	
 
 
 	<!-- 게시글 총 갯수 구하는 쿼리문 -->
@@ -103,7 +114,8 @@
 		 ORDER BY BOARD_NO DESC
 	</select>
 	
-	<select id="selectAttachment" parameterType="_int" resultMap="board">
+	
+	<select id="selectAttachment" parameterType="_int" resultMap="attachmentResultSet">
 		SELECT ORIGIN_NAME
 		     , CHANGE_NAME
 		  FROM B_ATTACHMENT
