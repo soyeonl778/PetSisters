@@ -307,30 +307,41 @@ body #container #main .layout-pagination .pagediv span strong{
   color: #0888D0;
   font-weight: bold;
   font-size: xx-large;
-  padding-bottom: 15px;
-  margin-bottom: 30px;
 }
 .contentHour {
   font-weight: 600;
   font-size: larger;
+  margin-bottom: 20px;
 }
 .imgSections {
   margin-bottom: 30px;
+  margin-top: 60px;
+    text-align: center;
+    height: 100%;
+    line-height: 100%;
+    border-radius: 20px;
+    box-shadow: inset 1px 0px 20px 0px #B9EAFF;
 }
 .imgSections img {
-  width: 15%;
+  width: 20%;
   border-radius: 17px;
   box-shadow: 1px 2px 3px lightgray;
+  margin: 30px 20px 30px 20px;
 }
 /* 초콜릿 #484848 */
 .contentDesc {
   font-weight: 600;
   display: block;
-  background: #B9EAFF;
+  background: #F1FBFF;
   color: #484848;
-	position: relative;
-	border-radius: .4em;
-  padding: 15px;
+  position: relative;
+  border-radius: .4em;
+  padding: 50px;
+  width: 90%;
+  margin: 0 auto;
+  font-size: x-large;
+  line-height: 40px;
+  box-shadow: 2px 2px 7px 0px lightgray;
 }
 .contentDesc:after {
 	content: '';
@@ -340,7 +351,7 @@ body #container #main .layout-pagination .pagediv span strong{
 	width: 0;
 	height: 0;
 	border: 17px solid transparent;
-	border-right-color: #B9EAFF;
+	border-right-color: #F1FBFF;
 	border-left: 0;
 	border-top: 0;
 	margin-top: -8.5px;
@@ -355,6 +366,7 @@ body #container #main .layout-pagination .pagediv span strong{
 }
 .whoCareArea {
   text-align: center;
+  margin-bottom: 60px;
 }
 .whoCare {
   font-size: xx-large;
@@ -362,12 +374,23 @@ body #container #main .layout-pagination .pagediv span strong{
 .careJournal {
   font-size: xx-large;
 }
-#accoBtn {
-	padding: 0 21px;
-    height: 65px;
-    font-size: smaller;
-    font-weight: 600;	
+.careJournal {
+      display: inline-flex;  
 }
-.accordion-item {
-	margin-bottom: 25px;
+.fimg {
+    text-align: center;
+    margin-bottom: 50px;
+}
+.fimg img{
+    border-radius: 18px;
+    box-shadow: inset 1px 1px 20px 0px #F7F7F7;
+    width: 70%;
+    margin: 60px;
+}
+.tetego {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    border-radius: 8px;
+    box-shadow: inset 1px 1px 20px 0px #B9EAFF;
 }

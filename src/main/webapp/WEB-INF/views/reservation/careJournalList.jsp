@@ -90,21 +90,25 @@
 												value="${ fn:indexOf(l.filePath.concat(l.changeName), ',')}" />
 
 											<div class="col">
-												<div class="card" onclick="careDetail(${l.refResNo})">
+												<div class="card">
 													<c:if test="${ fileName != -1 }">
+													<div onclick="careDetail(${l.jno})">
 														<img
 															src="${ l.filePath.concat(l.changeName).substring(0, fileName) }"
 															class="card-img-top" alt="...">
+													</div>
 													</c:if>
 
 													<c:if test="${fileName == -1 }">
-														<img src="${ l.filePath.concat(l.changeName) }"
-															class="card-img-top" alt="...">
+														<img src="/resources/img/main/첨부파일없음.png"
+															class="card-img-top" alt="..." onclick="careDetail(${l.jno})">
 
 													</c:if>
-													<div class="card-body">
-														<h5 class="card-title">${ l.startDate }~${ l.endDate }</h5>
-														<p class="card-text" onclick="petsitterLink(${l.pno})">${ l.petistterName }</p>
+													<div class="card-body" onclick="petsitterLink(${l.pno})">
+														<h5 class="card-title">일지 작성일 : ${ l.create_date.substring(0, 10) }</h5>
+														<h5 class="card-titles">${ l.startDate }~${ l.endDate }</h5>
+														<input type="hidden" id="hiddenName" value="${l.petistterName}">
+														<p class="card-text">${ l.petistterName }</p>
 													</div>
 												</div>
 											</div>
@@ -173,11 +177,13 @@
 	function petsitterLink(pno) {
 		
 		location.href = 'detail.pe?pno=' + pno;
+
 	}
 	
 	function careDetail(jno) {
 		
 		location.href = 'careDetail?jno=' + jno;
+
 	}
 	</script>
 </body>

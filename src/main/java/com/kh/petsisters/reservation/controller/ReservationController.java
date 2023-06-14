@@ -250,13 +250,16 @@ public class ReservationController {
 	
 	
 	@RequestMapping("careDetail")
-	public String careDetail(@RequestParam(value="jno") int jno) {
+	public String careDetail(@RequestParam(value="jno") int jno, Model model) {
 		
+		// jno = 돌봄일지 고유번호
 		System.out.println(jno);
 		
 		ArrayList<CareJournal> list = reservationService.careDetail(jno);
 		
 		System.out.println(list);
+		
+		model.addAttribute("list", list);
 		
 		return "reservation/careJournalDetail";
 	}

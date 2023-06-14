@@ -208,6 +208,7 @@
 		       R.STATUS,
 		       R.START_DATE,
 		       R.END_DATE,
+		       J.CREATE_DATE,
 		       M.USER_NAME,
 		       P.P_NO,
 		       M2.USER_NAME AS PETSITTER_NAME,
@@ -232,12 +233,13 @@
 		 	   M.USER_NAME, 
 		 	   P.P_NO, 
 		 	   M2.USER_NAME,
-		 	   REF_RESNO
+		 	   REF_RESNO,
+		 	   J.CREATE_DATE
 		 <if test="options == 'new' or options == null">
-		 ORDER BY START_DATE DESC
+		 ORDER BY J.CREATE_DATE DESC
 		 </if>
 		 <if test="options == 'old'">
-		 ORDER BY START_DATE ASC
+		 ORDER BY J.CREATE_DATE ASC
 		 </if>
 	</select>
 	
@@ -245,25 +247,30 @@
 	
 	<!-- 돌봄일지 상세페이지 조회용 쿼리문 -->
 	<select id="careDetail" resultMap="careResultSet">
-	SELECT J_NO, 
+    	SELECT J_NO, 
 	       J_TITLE, 
 	       J_CONTENT, 
 	       TO_CHAR(J.CREATE_DATE, 'YYYY-MM-DD') AS CREATE_DATE,
 	       TO_CHAR(J.CREATE_DATE, 'AM HH:MI:SS') AS DAYS, 
-	       FILE_PATH, 
+	       JA.FILE_PATH, 
 	       LISTAGG(ORIGIN_NAME, ', ') WITHIN GROUP (ORDER BY ORIGIN_NAME) AS ORIGIN_NAME,
 	       LISTAGG(CHANGE_NAME, ', ') WITHIN GROUP (ORDER BY CHANGE_NAME) AS CHANGE_NAME,
-	       REF_RESNO
+	       REF_RESNO,
+           USER_NAME
 	  FROM JOURNAL J
- LEFT JOIN J_ATTACHMENT ON J_NO = REF_JNO
-	 WHERE REF_RESNO = #{jno} 
+ LEFT JOIN J_ATTACHMENT JA ON J_NO = REF_JNO
+      JOIN RESERVATION R ON REF_RESNO = RES_NO
+      JOIN PETSITTER P ON R.REF_PNO = P.P_NO
+      JOIN MEMBER M ON P.USER_NO = M.USER_NO
+	 WHERE J_NO = #{jno}
   GROUP BY J_NO, 
            J_TITLE, 
 		   J_CONTENT, 
    TO_CHAR(J.CREATE_DATE, 'YYYY/MM/DD HH24:MI:SS'), 
-		   FILE_PATH,
+		   JA.FILE_PATH,
 		   REF_RESNO,
-		   J.CREATE_DATE
+		   J.CREATE_DATE,
+           USER_NAME
   ORDER BY J.CREATE_DATE DESC	
 	</select>
 	
