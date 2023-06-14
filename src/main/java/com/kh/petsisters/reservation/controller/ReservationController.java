@@ -252,6 +252,12 @@ public class ReservationController {
 	}
 	
 	
+	/**
+	 * 돌봄일지 상세보기
+	 * @param jno
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping("careDetail")
 	public String careDetail(@RequestParam(value="jno") int jno, Model model) {
 		
@@ -263,7 +269,12 @@ public class ReservationController {
 	}
 	
 	
-	
+	/**
+	 * 정산조회 목록
+	 * @param session
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping("payList")
 	public String patList(HttpSession session, Model model) {
 		
@@ -323,7 +334,13 @@ public class ReservationController {
 	}
 	
 	
-	
+	/**
+	 * 정산조회 ajax 요청 처리
+	 * @param session
+	 * @param startDate
+	 * @param endDate
+	 * @return
+	 */
 	@ResponseBody
 	@RequestMapping(value="searchPay", produces = "application/json; charset=UTF-8")
 	public String searchPay(HttpSession session, String startDate, String endDate) {

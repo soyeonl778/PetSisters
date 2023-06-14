@@ -18,7 +18,7 @@
 <link rel="stylesheet" href="/resources/css/common/form.css">
 <link rel="stylesheet"
 	href="/resources/css/reservation/reservationList.css">
-<title>예약조회 목록</title>
+<title>예약목록 조회</title>
 </head>
 <body>
 	<jsp:include page="../common/header.jsp" />
@@ -70,7 +70,7 @@
 											</c:if>
 										</div>
 										<div class="cardSection">
-											<div class="cardContainer" onclick="location.href='#'">
+											<div class="cardContainer" onclick="petsitterLink(${ r.pno })">
 										  <input class="selectPno" type="hidden" value="${ r.pno }">	
 												<div class="cardImage">
 													<img src="${r.petFile.concat(r.originName) }" alt="coshong"
@@ -165,7 +165,11 @@
 		    let selectPnoValue = Number(sv);
 			console.log(selectPnoValue);
 		  });
+			
 		});
+		  function petsitterLink(pno) {
+			  location.href = 'detail.pe?pno=' + pno;
+		  }
 		
 	</script>
 </body>
