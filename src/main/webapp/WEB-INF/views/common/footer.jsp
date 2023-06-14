@@ -11,7 +11,7 @@
             <a href="#" class="footerTag">
               <div class="footerLink">1:1 카톡상담</div>
             </a>
-            <a href="#" class="footerTag">
+            <a href="/showFaq" class="footerTag">
               <div class="footerLink">자주묻는질문</div>
             </a>
             <a href="#" class="footerTag">

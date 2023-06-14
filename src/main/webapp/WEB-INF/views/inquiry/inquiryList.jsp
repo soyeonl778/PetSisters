@@ -69,13 +69,18 @@
                   <c:choose>
 						<c:when test="${not empty loginUser}">
 							<tbody id="inquiryBody">
-			                  	<c:forEach var="i" items="${list}">
+								<c:if test="${not empty list}">
+									<c:forEach var="i" items="${list}">
 			                  		<tr>
 			                  			<td height="51">${i.inquiryNo}</td>
 			                  			<td>${i.inquiryTitle}</td>
 			                  			<td>${i.createDate}</td>
 			                  		</tr>
-			                  	</c:forEach>
+			                  		</c:forEach>
+								</c:if>
+			                  	<c:if test="${empty list}">
+			                  		등록된 1:1 문의글이 존재하지 않습니다.
+			                  	</c:if>
 	                  		</tbody>							
 						</c:when>
 						<c:otherwise>

@@ -376,7 +376,7 @@
                         </c:otherwise>
                       </c:choose>
                       <div class="card">
-                        <form action="/pay" method="get" id="reserveForm">
+                        <form action="/pay" method="post" id="reserveForm">
                           <input type="hidden" name="userNo" value="${ loginUser.userNo }">
                           <input type="hidden" name="pno" value="${ p.petSitterNo }">
                           <input type="hidden" id="payPrice" name="payPrice" value="">

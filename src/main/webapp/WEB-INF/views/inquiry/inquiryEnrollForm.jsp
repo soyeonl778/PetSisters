@@ -105,31 +105,5 @@
   	<jsp:include page="../common/footer.jsp" />
   <!-- Footer 영역 끝 -->
 
-    <script>
-	  $(function() {
-	    $("#in_select").change(function() {
-	      var selectedOption = $(this).val();
-	      switch (selectedOption) {
-	        case "order":
-	          $("label[for='in_select']").text("주문/결제문의");
-	          break;
-	        case "coupon":
-	          $("label[for='in_select']").text("이벤트/쿠폰문의");
-	          break;
-	        case "reserved":
-	          $("label[for='in_select']").text("예약문의");
-	          break;
-	        case "service":
-	          $("label[for='in_select']").text("서비스문의");
-	          break;
-	        case "etc":
-	          $("label[for='in_select']").text("기타문의");
-	          break;
-	        default:
-	          $("label[for='in_select']").text("문의유형을 선택해주세요");
-	      }
-	    });
-	  });
-	</script>
 </body>
 </html>

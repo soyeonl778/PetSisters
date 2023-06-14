@@ -76,14 +76,16 @@ INSERT INTO NOTICE VALUES (SEQ_NOTICE.NEXTVAL, '[공지] 펫시스터즈 안심보험 적용�
 돌봄 대상으로 등록된 반려동물이 입은 신체적 손해를 보장합니다. <br/><br/>
 보험 가입 비용은 전액 펫시스터즈에서 부담하며, 돌봄 비용은 기존과 동일합니다. <br/><br/>
 앞으로도 더욱 안전한 반려동물 케어 서비스를 제공할 수 있도록 노력하겠습니다. <br/><br/>
-감사합니다.', SYSDATE, 0, 'Y');
+감사합니다.', '2023-06-01', 0, 'Y');
 INSERT INTO NOTICE VALUES (SEQ_NOTICE.NEXTVAL, '[안내] 6월 고객센터 휴무 일정 안내',
 '안녕하세요 펫시스터즈입니다. <br/> 항상 펫시스터즈를 이용해주시는 보호자님들께 진심으로 감사드립니다. <br/><br/>
 2023년 6월 고객센터 휴무 일정 안내 드립니다. <br/>
 보호자님의 양해 부탁드리며, 아래 내용 확인하셔서 이용에 불편 없으시기를 바랍니다. <br/><br/>
 ● 현충일 : 2023. 06. 06(화) 고객센터 휴무 <br/><br/>
 문의글에 대한 답변은 6월 7일(수)부터 순차적으로 제공됩니다. <br/><br/>
-감사합니다.', SYSDATE, 0, 'Y');
+감사합니다.', '2023-06-05', 0, 'Y');
+INSERT INTO NOTICE VALUES (SEQ_NOTICE.NEXTVAL, '[정보] 오늘은 반려동물의 날',
+'오늘은 반려동물의 날이에요. 이름부터 귀엽지 않나요? <br/> 안 귀엽다고? 그럴리가 없는데... <br/><br/>', '2023-06-06', 0, 'Y');
 INSERT INTO NOTICE VALUES (SEQ_NOTICE.NEXTVAL, '[기획성] 댕댕이의 여름나기',
 '안녕하세요 펫시스터즈입니다. 항상 펫시스터즈를 이용해주시는 보호자님들께 진심으로 감사드립니다. <br/>
 다가오는 무더운 여름을 대비해 반려인과 반려견 모두 즐겁게 여름철 산책을 즐기는 방법을 준비했습니다. <br/><br/>
@@ -94,9 +96,67 @@ INSERT INTO NOTICE VALUES (SEQ_NOTICE.NEXTVAL, '[기획성] 댕댕이의 여름나기',
 뜨겁게 달궈진 아스팔트를 반려견이 발로 밟는다면 화상을 입을 수 있습니다. <br/>
 신발을 신기거나 반려인이 먼저 온도를 체크 후 밟도록 유도해주세요. <br/><br/>
 여름철에는 고온 다습하여 피부병에 걸리기 쉽습니다. 산책을 다녀와서 목욕 후에는 반드시 완벽하게 수분을 말려주세요. <br/>
-더운 여름, 건강하게 즐기며 지낼 수 있도록 보호자님들이 잘 챙기시면 좋겠습니다.', SYSDATE, 0, 'Y');
-INSERT INTO NOTICE VALUES (SEQ_NOTICE.NEXTVAL, '[정보] 오늘은 반려동물의 날',
-'오늘은 반려동물의 날이에요. 이름부터 귀엽지 않나요? <br/> 안 귀엽다고? 그럴리가 없는데... <br/><br/>', SYSDATE, 0, 'Y');
+더운 여름, 건강하게 즐기며 지낼 수 있도록 보호자님들이 잘 챙기시면 좋겠습니다.', '2023-06-10', 0, 'Y');
+
+--------------------------------------------------
+------------    1:1문의 테이블 더미    ------------
+--------------------------------------------------
+INSERT INTO INQUIRY
+(I_NO, I_TITLE, I_CONTENT, CREATE_DATE, STATUS, USER_NO)
+VALUES (SEQ_INQUIRY.NEXTVAL
+           , '펫시팅 이후에 없던 상처가 생겼어요'
+           , '제일 최근에 맡긴 펫시팅 이후로 안 보이던 상처를 발견했어요. <br/>
+             펫시터 분께 전달받은 내용은 없었고요. <br/>
+             병원에 가볼 정도는 아니지만 케어하시면서 알아채지 못할 정도는 아니었을 것 같은데 무슨 일이었는지 좀 알고 싶어요.'
+           , '2023-06-07'
+           , 'Y'
+           , 7);
+INSERT INTO INQUIRY
+(I_NO, I_TITLE, I_CONTENT, CREATE_DATE, STATUS, USER_NO)
+VALUES (SEQ_INQUIRY.NEXTVAL
+           , '예약 일정을 하루씩 미룰 수 있을까요?'
+           , '일정이 바뀌어서 체크인, 체크아웃 날짜를 하루씩 미루고 싶은데요. <br/>
+             혹시 예약을 취소하지 않고 펫시터 재량으로 날짜만 미룰 수 있을까요?'
+           , '2023-06-14'
+           , 'Y'
+           , 7);
+INSERT INTO INQUIRY
+(I_NO, I_TITLE, I_CONTENT, CREATE_DATE, STATUS, USER_NO)
+VALUES (SEQ_INQUIRY.NEXTVAL
+           , '아이 하네스 줄이 바뀐 것 같아요.'
+           , '펫시팅 맡기면서 같이 드렸던 하네스줄이 있었는데, 원래 쓰던 게 아니라서요. <br/>
+             두 개 색깔이 같아서 헷갈리신 것 같은데 펫시터 분께 개인적으로 연락 드릴 방법이 있을까요?'
+           , SYSDATE
+           , 'Y'
+           , 7);
+INSERT INTO INQUIRY
+(I_NO, I_TITLE, I_CONTENT, CREATE_DATE, STATUS, USER_NO)
+VALUES (SEQ_INQUIRY.NEXTVAL
+           , '펫시팅 이후에 없던 상처가 생겼어요'
+           , '제일 최근에 맡긴 펫시팅 이후로 안 보이던 상처를 발견했어요. <br/>
+             펫시터 분께 전달받은 내용은 없었고요. <br/>
+             병원에 가볼 정도는 아니지만 케어하시면서 알아채지 못할 정도는 아니었을 것 같은데 무슨 일이었는지 좀 알고 싶어요.'
+           , '2023-06-07'
+           , 'Y'
+           , 8);
+INSERT INTO INQUIRY
+(I_NO, I_TITLE, I_CONTENT, CREATE_DATE, STATUS, USER_NO)
+VALUES (SEQ_INQUIRY.NEXTVAL
+           , '예약 일정을 하루씩 미룰 수 있을까요?'
+           , '일정이 바뀌어서 체크인, 체크아웃 날짜를 하루씩 미루고 싶은데요. <br/>
+             혹시 예약을 취소하지 않고 펫시터 재량으로 날짜만 미룰 수 있을까요?'
+           , '2023-06-14'
+           , 'Y'
+           , 8);
+INSERT INTO INQUIRY
+(I_NO, I_TITLE, I_CONTENT, CREATE_DATE, STATUS, USER_NO)
+VALUES (SEQ_INQUIRY.NEXTVAL
+           , '아이 하네스 줄이 바뀐 것 같아요.'
+           , '펫시팅 맡기면서 같이 드렸던 하네스줄이 있었는데, 원래 쓰던 게 아니라서요. <br/>
+             두 개 색깔이 같아서 헷갈리신 것 같은데 펫시터 분께 개인적으로 연락 드릴 방법이 있을까요?'
+           , SYSDATE
+           , 'Y'
+           , 8);
  
 --------------------------------------------------
 ------------    펫시터찜 테이블 더미    ------------
@@ -529,58 +589,6 @@ VALUES(SEQ_PAYMENT.NEXTVAL,
        1100000,
        DEFAULT,
        16);         
-       
---------------------------------------------------
-------------    1:1문의 테이블 더미    ------------
---------------------------------------------------
-INSERT INTO INQUIRY
-(I_NO, I_TITLE, I_CONTENT, CREATE_DATE, STATUS, USER_NO)
-VALUES (SEQ_INQUIRY.NEXTVAL
-           , '흥칫뿡야'
-           , '나 완전 흥칫뿡야'
-           , SYSDATE
-           , 'Y'
-           , 2);
-INSERT INTO INQUIRY
-(I_NO, I_TITLE, I_CONTENT, CREATE_DATE, STATUS, USER_NO)
-VALUES (SEQ_INQUIRY.NEXTVAL
-           , '1:1문의 게시판이 이렇게 어려웠어요?'
-           , '아니면 내가 바보인거예요?'
-           , SYSDATE
-           , 'Y'
-           , 2);
-INSERT INTO INQUIRY
-(I_NO, I_TITLE, I_CONTENT, CREATE_DATE, STATUS, USER_NO)
-VALUES (SEQ_INQUIRY.NEXTVAL
-           , '너 완전 짜증나'
-           , '어쩔저쩔요'
-           , SYSDATE
-           , 'Y'
-           , 2);
-INSERT INTO INQUIRY
-(I_NO, I_TITLE, I_CONTENT, CREATE_DATE, STATUS, USER_NO)
-VALUES (SEQ_INQUIRY.NEXTVAL
-           , '흥칫뿡야'
-           , '나 완전 흥칫뿡야'
-           , SYSDATE
-           , 'Y'
-           , 3);
-INSERT INTO INQUIRY
-(I_NO, I_TITLE, I_CONTENT, CREATE_DATE, STATUS, USER_NO)
-VALUES (SEQ_INQUIRY.NEXTVAL
-           , '1:1문의 게시판이 이렇게 어려웠어요?'
-           , '아니면 내가 바보인거예요?'
-           , SYSDATE
-           , 'Y'
-           , 3);
-INSERT INTO INQUIRY
-(I_NO, I_TITLE, I_CONTENT, CREATE_DATE, STATUS, USER_NO)
-VALUES (SEQ_INQUIRY.NEXTVAL
-           , '너 완전 짜증나'
-           , '어쩔저쩔요'
-           , SYSDATE
-           , 'Y'
-           , 3);
            
 --------------------------------------------------
 --------------    채팅방 테이블 더미    --------------
