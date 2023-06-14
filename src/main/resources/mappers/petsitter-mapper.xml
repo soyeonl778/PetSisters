@@ -19,6 +19,8 @@
 		<result column="END_DATE" property="endDate" />
 		<result column="REF_PNO" property="refPno" />
 		<result column="REVIEW_COUNT" property="reviewCount" />		<!-- review -->
+		<result column="CHANGE_NAME" property="changeName" />		<!-- pAttachment -->
+		<result column="FILE_PATH" property="paFilePath" />
 	</resultMap>
 	
 	<resultMap id="reviewResultSet" type="review">
@@ -98,13 +100,17 @@
 		       P.CARE_LIST,
 		       M.ADDRESS,
 		       M.CA_STATUS,
+		       MIN(PA.CHANGE_NAME) AS CHANGE_NAME,
+		       PA.FILE_PATH,
 		       COUNT(R.REV_NO) AS REVIEW_COUNT
 		FROM PETSITTER P
 		LEFT JOIN MEMBER M ON P.USER_NO = M.USER_NO
 		LEFT JOIN RESERVATION RS ON P.P_NO = RS.REF_PNO
 		LEFT JOIN REVIEW R ON RS.RES_NO = R.REF_RESNO
+		LEFT JOIN P_ATTACHMENT PA ON P.P_NO = PA.REF_PNO
 		WHERE P.P_MODE = 'Y'
-		GROUP BY P.P_NO, P.P_TITLE, P.CARE_LIST, M.ADDRESS, M.CA_STATUS
+		  AND PA.STATUS = 'Y'
+		GROUP BY P.P_NO, P.P_TITLE, P.CARE_LIST, M.ADDRESS, M.CA_STATUS, PA.FILE_PATH
 		ORDER BY P.P_NO DESC
 	</select>
 	
@@ -186,6 +192,13 @@
 		 WHERE STATUS = 'Y'
 		   AND P_NO = #{pno}
 	</select>
+	
+	<!-- 펫시터 프로필 이미지 삭제용 쿼리문 -->
+	<update id="deletePetSitterImg" parameterType="_int">
+		UPDATE P_ATTACHMENT
+		   SET STATUS = 'N'
+		 WHERE FILE_NO = #{fileNo}
+	</update>
 
 </mapper>
 

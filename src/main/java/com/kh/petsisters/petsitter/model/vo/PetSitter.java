@@ -31,6 +31,10 @@ public class PetSitter {
 	
 	// REVIEW
 	private int reviewCount;			 // REVIEW_COUNT 후기 총갯수
+	
+	// P_ATTACHMENT
+	private String changeName;           //	CHANGE_NAME
+	private String paFilePath;           //	FILE_PATH
 }
 
 

@@ -11,10 +11,11 @@
   <link rel="stylesheet" href="/resources/css/petsitter/petSitterDetailView.css">
   <jsp:include page="../common/common.jsp" />
 
-  
-
   <!-- 폰트어썸 아이콘 적용 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+  <!-- 부트스트랩 아이콘 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
   
   <!-- 캘린더 -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js" integrity="sha512-T/tUfKSV1bihCnd+MxKD0Hm1uBBroVYBOYSk1knyvQ9VyZJpc/ALb4P0r6ubwVPSGB2GvjeoMAJJImBG12TiaQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -29,6 +30,7 @@
   <script>
     $( document ).ready( function() {
       
+      // 슬라이더
       $('.slider-for').slick({
         slidesToShow: 1,
         slidesToScroll: 1,
@@ -45,6 +47,7 @@
         focusOnSelect: true
       });
 
+      // 상세페이지 이용 가능 서비스 표시
       var psService = "<c:out value='${p.petSitterService}'/>"; // 값을 JavaScript 변수에 할당
 		  var psServiceArr = psService.split(","); // 쉼표(,)로 분할하여 배열로 변환
 
@@ -57,10 +60,11 @@
 	    }
       
     });
+
   </script>
 
-    <!-- 카카오맵 API -->
-    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=0f876d0e519ec1bc91c1da0c5e2829c7"></script>
+  <!-- 카카오맵 API -->
+  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=0f876d0e519ec1bc91c1da0c5e2829c7"></script>
   
   <title>펫시터 상세페이지</title>
 </head>
@@ -84,22 +88,16 @@
                     <div id="content1">
                       <div class="viewslider_wrap">
                         <section class="slide-box">
-                        <ul class="slider-for">
-                          <li><img src="/resources/img/petsitter/20220402_115732.jpg"></li>
-                          <li><img src="/resources/img/petsitter/20220917_142141.jpg"></li>
-                          <li><img src="/resources/img/petsitter/20221029_233632.jpg"></li>
-                          <li><img src="/resources/img/petsitter/20220930_121227.jpg"></li>
-                          <li><img src="/resources/img/petsitter/20221014_132826.jpg"></li>
-                          <li><img src="/resources/img/petsitter/자격증.jpg"></li>
-                        </ul>
-                        <ul class="slider-nav">
-                          <li><img src="/resources/img/petsitter/20220402_115732.jpg"></li>
-                          <li><img src="/resources/img/petsitter/20220917_142141.jpg"></li>
-                          <li><img src="/resources/img/petsitter/20221029_233632.jpg"></li>
-                          <li><img src="/resources/img/petsitter/20220930_121227.jpg"></li>
-                          <li><img src="/resources/img/petsitter/20221014_132826.jpg"></li>
-                          <li><img src="/resources/img/petsitter/자격증.jpg"></li>
-                        </ul>
+                          <ul class="slider-for">
+                            <c:forEach var="psImg" items="${ psImgList }">
+                              <li><img src="${ psImg.filePath }${ psImg.changeName }"></li>
+                            </c:forEach>
+                          </ul>
+                          <ul class="slider-nav">
+                            <c:forEach var="psImg" items="${ psImgList }">
+                              <li><img src="${ psImg.filePath }${ psImg.changeName }"></li>
+                            </c:forEach>
+                          </ul>
                         </section>
                       </div>
                       <div class="profileBox">
@@ -372,8 +370,8 @@
                           </div>
                         </c:when>
                         <c:otherwise>
-                          <div class="updateFormBtn">
-                            <a href="#" class="btn btn-secondary">펫시터찜 ♥</a>
+                          <div class="likeBtn">
+                            <i class="bi bi-heart"></i><p>찜 갯수</p>
                           </div>
                         </c:otherwise>
                       </c:choose>
@@ -413,6 +411,22 @@
 
                         <script>
 
+                          // 찜 버튼 클릭 이벤트
+                          var i = 0;
+                          $('.bi-heart').on('click', function() {
+                              if(i == 0) {
+                                  $(this).removeClass('bi-heart');
+                                  $(this).addClass('bi-heart-fill');
+                                  i++;
+                              } else if(i == 1){
+                                  $(this).removeClass('bi-heart-fill');
+                                  $(this).addClass('bi-heart');
+                                  i--;
+                              }
+                          });
+
+
+                          // 예약 요청 반려동물 마릿수 증감 이벤트
                           $('#petCount').text(0);
                           $('#petCount2').text(0);
 
@@ -457,8 +471,6 @@
 
                             $('#total').text(formattedTotal);
                             $('#payPrice').val(formattedTotal);
-
-                            console.log($('#payPrice').val());
                           }
 
                           // + 버튼 클릭 시 이벤트 연결

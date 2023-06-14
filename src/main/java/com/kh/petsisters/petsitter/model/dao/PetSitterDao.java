@@ -60,14 +60,31 @@ public class PetSitterDao {
 		return sqlSession.delete("petSitterMapper.deleteComment", r);
 	}
 	
-	public int insertPetSitterImg(SqlSessionTemplate sqlSession, PetSitterImg psImg) {
+	public int insertPetSitterImg(SqlSessionTemplate sqlSession, ArrayList<PetSitterImg> newList) {
 		
-		return sqlSession.insert("petSitterMapper.insertPetSitterImg", psImg);
+		int result = 1;
+		
+		for(PetSitterImg psImg : newList) {
+			result *= sqlSession.insert("petSitterMapper.insertPetSitterImg", psImg);
+		}
+		
+		return result;
 	}
 	
 	public ArrayList<PetSitterImg> selectPetSitterImg(SqlSessionTemplate sqlSession, int pno) {
 		
 		return (ArrayList)sqlSession.selectList("petSitterMapper.selectPetSitterImg", pno);
+	}
+	
+	public int deletePetSitterImg(SqlSessionTemplate sqlSession, ArrayList<Integer> deleteList) {
+		
+		int result = 0;
+		
+		for(Integer fileNo : deleteList) {
+			result *= sqlSession.update("petSitterMapper.deletePetSitterImg", fileNo);
+		}
+		
+		return result;
 	}
 }
 

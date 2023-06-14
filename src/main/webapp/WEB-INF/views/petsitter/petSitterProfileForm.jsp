@@ -11,12 +11,11 @@
   <link rel="stylesheet" href="/resources/css/petsitter/petSitterProfileForm.css">
   <jsp:include page="../common/common.jsp" />
 
-  <!-- input 항목 추가 -->
-  <!-- <script src="jquery-1.7.1.min.js"></script> -->
-
   <!-- 파일 첨부 -->
-  <!-- <script src="/resources/js/petSitterProfileForm.js"></script> -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <!-- 폰트어썸 아이콘 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
   <title>펫시터 프로필 수정</title>
 </head>
@@ -200,10 +199,21 @@
                       <br>
                       <div class="fileSection preview">
                         <h5>사진 첨부</h5>
-                        <ul class="addList"> 
+                        <div id="preview">
+                          <c:forEach var="psImg" items="${ psImgList }">
+                            <div>
+                              <div style="position: relative;">
+                                <img src="${ psImg.filePath }${ psImg.changeName }"><br>
+                                ${ psImg.originName }
+                                <i class="close-icon fa fa-times-circle" onclick="removeImage(this.parentNode, '${ psImg.fileNo }')" aria-hidden="true"></i>
+                              </div>
+                            </div>
+                          </c:forEach>
+                        </div>
+                        <ul id="addList"> 
                           <li>
-                           <input type="file" id="QnA03" name="upfile" class="files" style="width: 231px; height: 46px;">
-                           <button  type="button"class="add" style="vertical-align: sub">추가</button>
+                           <input type="file" id="QnA03" name="upfile" class="files">
+                           <button  type="button" class="btn btn-secondary add" style="vertical-align: sub">추가</button>
                           </li> 
                         </ul>
                       </div>
@@ -237,20 +247,38 @@
 
     var maxAppend = 1;
 
-    $('.addList .add').on('click',function(){ 
-      if(maxAppend >= 10){
-          alert("파일 업로드 최대 개수는 10개 입니다.");
+    $('#addList .add').on('click',function(){ 
+      if(maxAppend >= 5){
+          alert("파일 업로드 최대 개수는 5개 입니다.");
           return;
       }else{
-          $('.addList').append('<li><input type="file"name="upfile" class="files"> <button type="button" class="add" onclick="addDel(this);">삭제</button></li>'); 
+          $('#addList').append('<li><input type="file" name="upfile" class="files"> <button type="button" class="btn btn-secondary add" onclick="addDel(this);">삭제</button></li>'); 
           maxAppend ++;
       }
-      
+
     });
     
     function addDel(a){ 
         $(a).closest('li').remove(); 
         maxAppend --;
+    }
+
+    // X 버튼 클릭 시 이미지 지워지는 함수
+    function removeImage(parentNode, fileNo) {
+      
+      // input hidden 으로 생성 후 fileNo 값 담기
+      const fileInput = document.createElement('input');
+      fileInput.type = 'hidden';
+      fileInput.name = 'delete';
+      fileInput.value = fileNo;
+      
+      // 동적으로 생성된 input 요소를 form에 추가
+      const form = document.getElementById('addList');
+      form.appendChild(fileInput);
+
+      // 이미지 미리보기 영역에서 삭제
+      parentNode.parentNode.removeChild(parentNode);
+
     }
 
   </script>

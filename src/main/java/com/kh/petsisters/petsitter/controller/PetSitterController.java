@@ -50,7 +50,7 @@ public class PetSitterController {
 		
 		// 프로필 상세페이지 이미지 리스트 조회
 		ArrayList<PetSitterImg> psImgList = petSitterService.selectPetSitterImg(pno);
-		
+
 		// 조회된 데이터를 mv 에 담아서 포워딩 페이지 경로를 잡아주기
 		mv.addObject("p", p);
 		mv.addObject("revList", revList);
@@ -81,69 +81,52 @@ public class PetSitterController {
 	
 	@RequestMapping("update.pe")
 	public String updatePetSitter(PetSitter p,
-								  ArrayList<PetSitterImg> psImgList,
 		  @RequestParam("upfile") ArrayList<MultipartFile> upfileList,
+		  @RequestParam(value="delete", required = false) ArrayList<Integer> deleteList,
 								  HttpSession session,
-			                      Model model) {
+			                      ModelAndView mv) {
 		
-		System.out.println(upfileList);
-		
-		int fileLevel = 0;
 	    int result2 = 1;
-		
-		// 기존 첨부파일 또는 새로운 첨부파일이 있을 경우
-	    if (psImgList != null || upfileList.size() > 0) {
+	    String filePath = "/resources/upFiles/petsitter_upfiles/";
+    		
+	    // 프로필폼에서 기존 이미지 파일을 삭제할 경우
+	    if(deleteList != null) {
 	    	
-	    	// 새로운 첨부파일 ArrayList의 크기 만큼 반복문 실행
-	        for (int i = 0; i < upfileList.size(); i++) {
-	        	
-	        	// 새로운 첨부파일이 있을 경우
-	        	if(upfileList.size() > 0) {
-	            	
-	    			// 새로운 첨부파일은 서버에 업로드 시키기
-	    			String changeName = saveFile(upfileList.get(i), session);
-    				PetSitterImg psImg = new PetSitterImg();
-	    			
-	    			// 1. 기존 첨부파일이 있을 경우
-	    			if(psImgList != null) {
-	    				
-	    				// 기존 첨부파일은 삭제
-	    				String realPath = session.getServletContext().getRealPath(psImg.getChangeName());
-	    				System.out.println(psImg.getChangeName());
-	    				System.out.println(realPath);
-	    				System.out.println("-------");
-	    				
-	    				new File(realPath).delete();
-	    				
-	    				// 새로운 첨부파일의 원본명, 수정파일명을 update (UPDATE)
-	    				psImg.setOriginName(upfileList.get(i).getOriginalFilename());
-	    				psImg.setChangeName(changeName);
-	    				psImg.setFilePath("/resources/upFiles/petsitter_upfiles/");
-	    				
-	    				System.out.println(psImg);
-	    				
-	    				// result2 = petSitterService.updatePetSitterImg(psImg);
-	    				
-	    			} else {
-	    				// 2. 기존 첨부파일이 없을 경우 (INSERT)
-	    				psImg.setOriginName(upfileList.get(i).getOriginalFilename());
-	    				psImg.setChangeName(changeName);
-	    				psImg.setFilePath("/resources/upFiles/petsitter_upfiles/");
-	    				psImg.setRefPno(p.getPetSitterNo());
-	    				result2 = petSitterService.insertPetSitterImg(psImg);
-	    			}
-	    			
-	    			// 파일 레벨 설정 (대표이미지는 1, 아닐 경우 2)
-	    			if(fileLevel == i) {
-	    				psImg.setFileLevel(i);
-	    			}
-	    			
-	    			// PetSitterImg 객체에 값을 설정하고 리스트에 추가
-	                psImgList.add(psImg);
-	            }
+		    // 삭제할 fileNo 이 담긴 리스트를 보내면서 삭제 요청
+		    result2 = petSitterService.deletePetSitterImg(deleteList);
+	    }
+
+		// ------------ 새로운 첨부파일 -------------
+
+    	// 펫시터 이미지 배열 생성
+	    ArrayList<PetSitterImg> newList = new ArrayList<>();
+
+	    // 새로 넘어온 첨부파일이 존재할 경우
+	    if(upfileList.get(0).getSize() > 0) {
+	    	
+		    // upfileList의 크기 만큼 반복문 실행
+	    	for(int i = 0; i < upfileList.size(); i++) {
+	    		
+	    		// 펫시터 이미지 객체 생성
+	    		PetSitterImg psImg = new PetSitterImg();
+	    		
+	    		// 서버에 업로드 시키기
+	    		String changeName = saveFile(upfileList.get(i), session);
+	    		
+	    		// 펫시터 이미지 객체에 담기
+				psImg.setOriginName(upfileList.get(i).getOriginalFilename());
+				psImg.setChangeName(changeName);
+				psImg.setFilePath(filePath);
+				psImg.setRefPno(p.getPetSitterNo());
+				
+				// 리스트에 담기
+				newList.add(psImg);
 	    	}
+	    	// 펫시터 프로필 다중파일 등록 요청
+	    	result2 = petSitterService.insertPetSitterImg(newList);
 	    }
 	    
+	    // 펫시터 프로필 수정용 펫시터 객체 UPDATE 요청
 		int result1 = petSitterService.updatePetSitter(p);
 		
 		int result = result1 * result2; // 1 또는 0
@@ -162,7 +145,6 @@ public class PetSitterController {
 		
 			return "redirect:/updateForm.pe?pno=" + p.getPetSitterNo();
 		}
-
 	}
 	
 	@RequestMapping("list.pe")
@@ -170,14 +152,16 @@ public class PetSitterController {
 			@RequestParam(value="cPage", defaultValue="1") int currentPage,
 			ModelAndView mv) {
 		
-		// PageInfo 객체 얻어내기
+		// 펫시터 리스트 총 갯수 조회
 		int listCount = petSitterService.selectListCount();
 		
 		int pageLimit = 10;
 		int boardLimit = 5;
 		
+		// PageInfo 객체 얻어내기
 		PageInfo pi = Pagination.getPageInfo(listCount, currentPage, pageLimit, boardLimit);
 		
+		// 펫시터 리스트 전체 조회
 		ArrayList<PetSitter> list = petSitterService.selectList(pi);
 		
 		mv.addObject("pi", pi)
@@ -191,6 +175,7 @@ public class PetSitterController {
 	@RequestMapping(value="updateComment.pe", produces="text/html; charset=UTF-8")
 	public String ajaxUpdateComment(Review r) {
 		
+		// 펫시터 후기 답글 수정
 		int result = petSitterService.updateComment(r);
 		
 		return (result > 0) ? "success" : "fail"; // 무조건 문자열 타입으로 응답데이터 리턴
@@ -200,10 +185,14 @@ public class PetSitterController {
 	@RequestMapping(value="deleteComment.pe", produces="text/html; charset=UTF-8")
 	public String ajaxDeleteComment(Review r) {
 		
+		// 펫시터 후기 답글 삭제
 		int result = petSitterService.deleteComment(r);
 		
 		return (result > 0) ? "success" : "fail";
 	}
+	
+	
+	
 	
 	// 현재 넘어온 첨부파일 그 자체를 파일명 수정 후 서버의 폴더에 저장시키는 일반 메소드
 	public String saveFile(MultipartFile upfile, HttpSession session) {
@@ -236,14 +225,6 @@ public class PetSitterController {
 		}
 		
 		return changeName;
-	}
-	
-	// 펫시터 프로필 이미지 조회용 일반 메소드
-	public ArrayList<PetSitterImg> selectPetSitterImg(int pno) {
-		
-		ArrayList<PetSitterImg> psImgList = petSitterService.selectPetSitterImg(pno);
-		
-		return psImgList;
 	}
 	
 }
