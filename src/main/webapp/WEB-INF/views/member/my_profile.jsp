@@ -61,13 +61,14 @@
                 <div id="titleWrapper">
                   <h3 class="title_11">내 프로필 정보</h3>
                 </div>
-                <form id="profileWrapper" action="update.me" method="get">
+                <form id="profileWrapper" action="update.me" method="post">
                   <hr>
                     <div class="file_main">
                       <label>사진</label>
                       <div class="file_change">
                         <img class="profile_img" src="/resources/upFiles/member_profiles/user01.png" />
                         <div class="profile_con">
+                        	<button type="button" class="img_btn">사진변경</button>
                           <p>등록된 사진은 회원님의 게시물이나 댓글들에 사용됩니다.</p>
                         </div>
                       </div>
@@ -91,8 +92,10 @@
                   <label>주소</label>
                   <input class="change_address" id="address" placeholder="${ loginUser.address }" />
                   <br>
-                  <button type="submit" class="update_btn">수정하기</button>
-                  <button type="submit" class="delete_btn" data-toggle="modal" data-target="#deleteForm">탈퇴하기</button>
+                  <div class="btnArea">
+	                  <button type="submit" class="update_btn">수정하기</button>
+	                  <button type="submit" class="delete_btn" data-toggle="modal" data-target="#deleteForm">탈퇴하기</button>
+                  </div>
                 </form>
                 <!-- 이 영역 안에서 페이지 작업 하시면 됩니다 -->
               </div>

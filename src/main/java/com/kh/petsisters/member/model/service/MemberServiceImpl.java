@@ -62,10 +62,6 @@ public class MemberServiceImpl implements MemberService{
 		return memberDao.petUpdate(sqlSession, d);
 	}
 
-	@Override
-	public int idCheck(String checkId) {
-		return memberDao.idCheck(sqlSession, checkId);
-	}
 
 	@Override
 	public int selectListCount(int userNo) {
@@ -80,5 +76,10 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public Dog petDetailView(int dno) {
 		return memberDao.petDetailView(sqlSession, dno);
+	}
+	
+	@Override
+	public int idCheck(String checkId) {
+		return memberDao.idCheck(sqlSession, checkId);
 	}
 }

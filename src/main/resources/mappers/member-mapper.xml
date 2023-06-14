@@ -149,16 +149,34 @@
 		ORDER BY DOG_NO DESC
 	</select>
 	
+	<!-- 펫 상세조회 쿼리문 -->
 	<select id="petDetailView" parameterType="_int" resultMap="dogResultSet">
 		SELECT	DOG_NO
 			  , DOG_NAME
 			  , DOG_GENDER
-			  , DOG_WEIGHT
+			  , DOG_BREED
 			  , DOG_BIRTHDAY
+			  , DOG_WEIGHT
+			  , NEUTRALIZATION_STATUS
 			  , FILE_PATH
+			  , DOG_NOTE
 		   FROM DOG
 		  WHERE DOG_NO = #{dogNo}
 	</select>
+	
+	<!-- 펫 정보 수정용 쿼리문 -->
+	<update id="petUpdate" parameterType="dog">
+		UPDATE DOG
+		   SET DOG_NAME = #{dogName}
+			 , DOG_GENDER = #{dogGender}
+			 , DOG_BREED = #{dogBreed}
+			 , DOG_BIRTHDAY = #{dogBirthday}
+			 , DOG_WEIGHT = #{dogWeight}
+			 , NEUTRALIZATION_STATUS = #{neutralizationStatus}
+			 , DOG_NOTE = #{dogNote}
+			 , FILE_PATH = #{filePath}
+		 WHERE USER_ID = #{userId}
+	</update>
 	
 	<!-- 아이디 중복체크용 쿼리문 -->
 	<select id="idCheck" parameterType="string" resultType="_int">

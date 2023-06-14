@@ -17,7 +17,7 @@
     width: 55%;
 }
 .sub2 {
-	height: 900px;
+	height: 1100px;
     margin-left: 250px;
     background-color: rgba(245, 245, 245, 0.524);
     display: flex;
@@ -27,7 +27,7 @@
     flex-direction: column;
 }
 .enrollWrapper {
-    height: 700px;
+    height: 900px;
     width: 700px;
     background-color: white;
     padding: 3%;
@@ -53,6 +53,21 @@
     border: 1px solid #c8c8c8;
     border-radius: 5px;
 }
+
+.note_main {
+    margin-bottom: 30px;
+    margin-left: 20px;
+}
+
+.dog_note {
+    padding: 10px;
+	resize: none;
+	border: 1px solid lightgray;
+	color: rgb(100, 100, 100);
+	border-radius: 5px;
+	outline: 0;
+}
+
 
 .btn_reset {
     height: 60px;

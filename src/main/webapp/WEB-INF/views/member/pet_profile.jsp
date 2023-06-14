@@ -5,13 +5,17 @@
 
 <head>
   <meta charset="UTF-8" />
+  <!--제이쿼리-->    
   
   <!-- header css -->
   <link rel="stylesheet" href="/resources/css/member/pet_profile.css">
   <link rel="stylesheet" href="/resources/css/common/memberForm.css">
   <jsp:include page="../common/common.jsp" />
+  
+  <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 
   <title>마이페이지_펫프로필관리</title>
+  
 </head>
 <body>
   <!-- 헤더 영역 시작-->
@@ -61,7 +65,7 @@
                 <div id="titleWrapper">
                   <h3 class="title_11">펫 프로필 상세정보</h3>
                 </div>
-                <form id="profileWrapper">
+                <form id="profileWrapper" action="petUpdate.me" method="post">
                   <hr>
                     <div class="file_main">
                       <label>사진</label>
@@ -78,26 +82,35 @@
                   <input class="pet_name" placeholder="${ d.dogName }" />
                   <hr>
                   <label>성별</label>
-                  <input type="checkbox" id="Male" value="M" name="gender"> 남
-                  <input type="checkbox" id="Female" value="F" name="gender"> 여
+                  <input type="radio" id="Male" value="M" name="dogGender"> 남
+                  <input type="radio" id="Female" value="F" name="dogGender"> 여
                   <hr>
                   <label>견종</label>
-                  <input class="pet_type" placeholder="슈나우저" />
+                  <input class="pet_type" placeholder="${ d.dogBreed }" />
                   <hr>
                   <label>생일</label>
-                  <input class="pet_birth" placeholder="220506" />
+                  <input class="pet_birth" placeholder="${ d.dogBirthday }" />
                   <hr>
                   <label>몸무게</label>
-                  <input class="pet_kg" placeholder="5kg" />
+                  <input class="pet_kg" placeholder="${ d.dogWeight }" /> kg
                   <hr>
-                  <span class="fix checkbox">
-                    <label>중성화</label><br>
-                    <input type="checkbox" name="yes" id="yes" value="Y"> Yes
-                    <input type="checkbox" name="no" id="no" value="N"> No <br>
-                  </span>
+                  <label>중성화</label>
+                  <input type="radio" name="neutralizationStatus" id="Yes" value="Y"> Yes
+                  <input type="radio" name="neutralizationStatus" id="No" value="N"> No
+                  <hr>
+                  <div class="note_main">
+	                  <div class="note1">
+		                  <label>돌봄시 <br>참고사항</label>
+		              </div>
+	                  <div class="noteArea">
+			              <textarea class="dog_note" cols="50" rows="5" placeholder="${ d.dogNote }"></textarea><br>
+			              <div class="count"><span>0</span>/100</div>
+	                  </div>
+                  </div>
+                  <div class="btnArea">
+                  	<button type="submit" class="update_btn">수정하기</button>
+                  </div>
                   <br>
-                  <button type="submit" class="update_btn">수정하기</button>
-
                 </form>
                 <!-- 이 영역 안에서 페이지 작업 하시면 됩니다 -->
               </div>
@@ -106,8 +119,41 @@
           </div>
         </div>
       </div>
-
     </div>
+    
+    <script>
+       $(function() {
+                    		
+		  if("${ d.dogGender }" != "")
+		              			
+		   $("input[value=${ d.dogGender }]").attr("checked", true);
+                    		
+         });
+    </script>
+    
+    <script>
+       $(function() {
+                    		
+		 if("${ d.neutralizationStatus }" != "")
+		              			
+		  $("input[value=${ d.neutralizationStatus }]").attr("checked", true);
+                    		
+      });
+     </script>
+    
+    <!-- textarea 글자수 제한 -->
+    <script>
+	    $('.noteArea textarea').keyup(function(){
+	    	  var content = $(this).val();
+	    	  $('.noteArea .count span').html(content.length);
+	    	  if (content.length > 100){
+	    	    alert("최대 100자까지 입력 가능합니다.");
+	    	    $(this).val(content.substring(0, 100));
+	    	    $('.text_box .count span').html(100);
+	    	  }
+	    	});
+    </script>
+    
   </div>
   <!-- Footer 영역 시작 -->
     <jsp:include page="../common/footer.jsp" /> 

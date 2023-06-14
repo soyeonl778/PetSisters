@@ -328,12 +328,22 @@ public class MemberController {
 	
 	// 펫정보 수정 기능 영역
 	@RequestMapping("petUpdate.me")
-	public void petUpdate(Dog d,
+	public String petUpdate(Dog d,
 			   			  HttpSession session,
 			   			  Model model) {
 		
 		int result = memberService.petUpdate(d);
+		
+		if(result > 0) {
 			
+			session.setAttribute("alertMsg", "성공적으로 펫정보가 수정되었습니다.");
+			
+			return "redirect:/petProfile.me?dno=" + d.getDogNo();
+		} else {
+			
+			model.addAttribute("errorMsg", "펫 정보 수정 실패");
+			return "member/pet_profile";
+		}
 	}
 	
 	@RequestMapping("petDelete.me")
@@ -364,20 +374,11 @@ public class MemberController {
 	@RequestMapping(value = "idCheck.me", produces = "text/html; charset=UTF-8")
 	public String idCheck(String checkId) {
 		
-		// System.out.println(checkId);
-		
 		int count = memberService.idCheck(checkId);
-		
-		/*
-		if(count > 0) { // 이미 존재하는 아이디 => 사용 불가능 ("NNNNN")
-			return "NNNNN";
-		} else { // 사용 가능한 아이디 ("NNNNY")
-			return "NNNNY";
-		}
-		*/
 		
 		return (count > 0) ? "NNNNN" : "NNNNY";
 	}
+	
 	
 	
 }

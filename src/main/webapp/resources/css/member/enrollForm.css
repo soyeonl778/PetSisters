@@ -11,7 +11,7 @@
 }
 
 .sub2 {
-    height: 2000px;
+    height: 1400px;
     background-color: rgba(245, 245, 245, 0.524);
     display: flex;
     margin-bottom: 10px;
@@ -20,7 +20,7 @@
     flex-direction: column;
 }
 .enrollWrapper {
-    height: 1500px;
+    height: 1200px;
     width: 700px;
     background-color: white;
     padding: 3%;

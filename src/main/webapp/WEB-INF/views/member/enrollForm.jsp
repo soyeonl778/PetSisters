@@ -5,6 +5,8 @@
 
 <head>
   <meta charset="UTF-8" />
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
   
   <!-- header css -->
   <link rel="stylesheet" href="/resources/css/member/enrollForm.css">
@@ -12,6 +14,7 @@
   <jsp:include page="../common/common.jsp" />
 
   <title>회원가입</title>
+  
 </head>
 <body>
   <!-- 헤더 영역 시작-->
@@ -78,7 +81,7 @@
                       </p>
                       <p>
                         <label for="address">● 거주지 주소 </label><br>
-                        <input type="text" name="address" maxlength="30" placeholder="상세 주소를 입력해주세요." style="width:500px" required><br>
+                        <input type="text" id="address_kakao" name="address" maxlength="30" placeholder="상세 주소를 입력해주세요." style="width:500px" required><br>
                       </p>
                       <p class="input_btn checkbox">
                         <label>● 성별</label><br>
@@ -106,8 +109,10 @@
       </div>
     </div>
     
-    	<!-- 아이디 중복체크 -->
     	<script>
+    	$(document).ready(function() {
+    	
+    	<!-- 아이디 중복체크 & 아이디 정규식 검사-->
         	$(function() {
         		
         		// 아이디를 입력받을 수 있는 input 요소 객체 자체를 변수에 담아두기
@@ -115,11 +120,8 @@
         		
         		$idInput.keyup(function() {
         			
-        			// console.log("keyup 이벤트 발생!");
-        			// console.log($idInput.val());
-        			
         			// 우선 최소 5글자 이상으로 입력되어 있을 경우에만 ajax 를 요청해서 중복체크 하기
-        			if($idInput.val().length >= 5) {
+        			if($idInput.val().length >= 6 && /^(?=.*[a-z])(?=.*\d)[a-z\d]{6,16}$/i.test($idInput.val())) {
         				
         				// 아이디 중복체크 요청 보내기
         				$.ajax({
@@ -159,9 +161,9 @@
         			}
         		});
         	});
-        </script>
-        
-        <script type="text/javascript">
+        	
+        	
+        	<!-- 비밀번호 일치 -->
         	function passConfirm() {
         		
         		var userPwd = document.getElementById('userPwd');
@@ -178,7 +180,28 @@
         			confirmMsg.innerHTML = "비밀번호 불일치";
         		}
         	}
+        	
+        	
+        	<!-- 주소 검색용 -->
+        	$('#address_kakao').click(function() {
+        		
+            new daum.Postcode({
+		        oncomplete: function(data) {
+		        	document.getElementById("address_kakao").value = data.address; // 주소 넣기
+	                // document.querySelector("input[name=address_detail]").focus(); //상세입력 포커싱
+		        }
+		    }).open();
+        		
+        	})
+        	
+        	
+        	<!-- 신규 추가 영역 -->
+        	
+        	
+    	});
         </script>
+    	
+        
   </div>
   <!-- Footer 영역 시작 -->
     <jsp:include page="../common/footer.jsp" /> 

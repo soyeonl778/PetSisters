@@ -74,7 +74,7 @@
 					<c:forEach var="d" items="${list}">
                       <div class="content" onclick="location.href='petProfile.me?dno=${ d.dogNo }'">
                       	<div class="pet_no">
-                      	  <b class="dno">${ d.dogNo }</b>
+                      	  <input type="hidden" name="pet_no" value="${d.dogNo}" />
                       	</div>
                         <div class="pet_img">
                           <img class="p_img" src="${ d.filePath }">

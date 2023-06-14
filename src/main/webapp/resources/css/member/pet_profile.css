@@ -83,6 +83,46 @@ input:focus {
     cursor: pointer;
 }
 
+.img_btn {
+	background-color: #EAEAEA;
+}
+
+.btnArea {
+	margin-top: 50px;
+}
+
+.note_main {
+	display: flex;
+}
+
+.noteArea {
+	display: flex;
+	align-items: flex-start;
+    flex-direction: column;
+}
+
+.note1 {
+	display: flex;
+}
+
+.dog_note {
+    padding: 10px;
+	resize: none;
+	border: 1px solid lightgray;
+	color: rgb(100, 100, 100);
+	border-radius: 5px;
+	outline: 0;
+}
+
+.update_btn {
+	height: 60px;
+    width: 200px;
+    background-color: #0888D0;
+    color:white;
+    font-size: 20px;
+    border-radius: 4px;
+}
+
 .fix {
     display: flex;
 }
