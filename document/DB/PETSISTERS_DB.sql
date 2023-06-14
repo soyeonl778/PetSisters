@@ -121,7 +121,7 @@ COMMENT ON COLUMN INQUIRY.FILE_PATH IS '사진경로';
 COMMENT ON COLUMN INQUIRY.USER_NO IS '회원번호';
 
 --------------------------------------------------
------------    1:1 게시판 댓글 테이블    -----------
+-----------    1:1 문의 댓글 테이블    -----------
 --------------------------------------------------
 CREATE TABLE CS_REPLY (
 	REP_NO NUMBER PRIMARY KEY,
@@ -191,7 +191,7 @@ COMMENT ON COLUMN DOG.STATUS IS '강아지등록상태 유지중=Y / 삭제됨=N';
 COMMENT ON COLUMN DOG.USER_NO IS '강아지주인';
 
 --------------------------------------------------
--------------    강아지 게시판 테이블    -------------
+----------------    게시판 테이블    ----------------
 --------------------------------------------------
 CREATE TABLE BOARD (
 	B_NO NUMBER PRIMARY KEY,
@@ -230,7 +230,7 @@ COMMENT ON COLUMN B_LIKE.USER_NO IS '회원번호';
 COMMENT ON COLUMN B_LIKE.REF_BNO IS '참조게시글번호';
 
 --------------------------------------------------
------------    강아지 게시판 댓글 테이블    -----------
+-------------     게시판 댓글 테이블    --------------
 --------------------------------------------------
 CREATE TABLE REPLY (
 	REP_NO NUMBER PRIMARY KEY,
@@ -264,7 +264,7 @@ COMMENT ON COLUMN R_LIKE.USER_NO IS '회원번호';
 COMMENT ON COLUMN R_LIKE.REF_REPNO IS '참조댓글번호';
 
 --------------------------------------------------
----------    강아지 게시판 첨부파일 테이블    ----------
+------------    게시판 첨부파일 테이블    -------------
 --------------------------------------------------
 CREATE TABLE B_ATTACHMENT (
 	FILE_NO NUMBER PRIMARY KEY,
@@ -508,9 +508,13 @@ CREATE TABLE CHAT_ROOM (
 	USER_NO NUMBER NOT NULL,
     USER_NICKNAME VARCHAR2(30 BYTE) NOT NULL,
     USER_PIC VARCHAR2(1000 BYTE),
+    USER_PET VARCHAR2(1) CHECK (USER_PET IN('Y', 'N')),
+    USER_PRO VARCHAR2(1) CHECK (USER_PRO IN('Y', 'N')),
 	MASTER_NO NUMBER NOT NULL,
     MASTER_NICKNAME VARCHAR2(30 BYTE) NOT NULL,
     MASTER_PIC VARCHAR2(1000 BYTE),
+    MASTER_PET VARCHAR2(1) CHECK (MASTER_PET IN('Y', 'N')),
+    MASTER_PRO VARCHAR2(1) CHECK (MASTER_PRO IN('Y', 'N')),
     FOREIGN KEY (USER_NO) REFERENCES MEMBER (USER_NO),
     FOREIGN KEY (MASTER_NO) REFERENCES MEMBER (USER_NO)
 );
@@ -519,10 +523,13 @@ COMMENT ON COLUMN CHAT_ROOM.ROOM_NO IS '채팅방번호';
 COMMENT ON COLUMN CHAT_ROOM.USER_NO IS '요청자';
 COMMENT ON COLUMN CHAT_ROOM.USER_NICKNAME IS '요청자 닉네임';
 COMMENT ON COLUMN CHAT_ROOM.USER_PIC IS '요청자 사진';
+COMMENT ON COLUMN CHAT_ROOM.USER_PET IS '요청자 펫시터여부';
+COMMENT ON COLUMN CHAT_ROOM.USER_PRO IS '요청자 프로펫시터여부';
 COMMENT ON COLUMN CHAT_ROOM.MASTER_NO IS '상대방';
 COMMENT ON COLUMN CHAT_ROOM.MASTER_NICKNAME IS '상대방 닉네임';
 COMMENT ON COLUMN CHAT_ROOM.MASTER_PIC IS '상대방 사진';
-
+COMMENT ON COLUMN CHAT_ROOM.MASTER_PET IS '상대방 펫시터여부';
+COMMENT ON COLUMN CHAT_ROOM.MASTER_PRO IS '상대방 프로펫시터여부';
 
 --------------------------------------------------
 ----------------    메세지 테이블    ----------------
@@ -544,7 +551,9 @@ COMMENT ON COLUMN MESSAGE.CREATE_DATE IS '전송일시';
 COMMENT ON COLUMN MESSAGE.ROOM_NO IS '채팅방번호';
 COMMENT ON COLUMN MESSAGE.USER_NO IS '회원번호';
 
-
+--------------------------------------------------
+-----------------    커밋 구문    ------------------
+--------------------------------------------------
 
 COMMIT;
 

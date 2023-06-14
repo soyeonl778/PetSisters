@@ -585,7 +585,8 @@ VALUES (SEQ_INQUIRY.NEXTVAL
 --------------------------------------------------
 --------------    채팅방 테이블 더미    --------------
 --------------------------------------------------
-INSERT INTO CHAT_ROOM VALUES(SEQ_CHAT_ROOM.NEXTVAL,1,'아발',null,2,'김제니',null);
+INSERT INTO CHAT_ROOM VALUES(SEQ_CHAT_ROOM.NEXTVAL,1,'아발',null, 'N', 'N', 2,'김제니', '/resources/img/chat/김제니.png', 'Y', 'Y');
+INSERT INTO CHAT_ROOM VALUES(SEQ_CHAT_ROOM.NEXTVAL,3,'소연','/resources/img/chat/하두리.png', 'N', 'N', 1,'아발', '', 'Y', 'Y');
 
 --------------------------------------------------
 --------------    메세지 테이블 더미    --------------
