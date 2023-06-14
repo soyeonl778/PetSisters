@@ -34,20 +34,6 @@
                     
                       <div class="gridSec">
                         <div class="oneSec">
-                          <div class="onTit">예약번호</div>
-                          <div class="oneNo">3</div>
-                        </div>
-                        <div class="oneSec">
-                          <div class="onTit">맡기실 반려견 정보</div>
-                          <div class="oneNo">
-                          	쪼꼬미
-                          	<span>진돗개/남아/3세/12.8kg</span>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="gridSec">
-                        <div class="oneSec">
                           <div class="onTit">신청일</div>
                           <div class="onedesc">2023-06-01</div>
                         </div>
@@ -64,6 +50,17 @@
                           	이주흔
                           	<span>서울 구로구 신도림동</span>
                           </div>
+                        </div>
+                        <div class="oneSec">
+                          <div class="onTit">맡기실 반려견 수</div>
+                          <div class="onedesc">1마리</div>
+                        </div>
+                      </div>
+
+                      <div class="gridSec">
+                        <div class="oneSec">
+                          <div class="onTit">요청사항</div>
+                          <div class="onedesc">살이 쪄서 간식은 조금만 주세요 감사합니다!</div>
                         </div>
                         <div class="oneSec">
                           <div class="onTit">결제 금액</div>
