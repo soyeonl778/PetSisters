@@ -23,27 +23,22 @@ div, form, img { box-sizing: border-box; }
     padding-left: 30px;
 }
 
-.viewslider {
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    flex-wrap: nowrap;
-    justify-content: center;
-    align-items: center;
-}
-
 .slider-for img {
     display: block;
     margin: auto;
-    width: 100%;
+    width: 780px;
+    height: 585px;
+    object-fit: cover;
     border-radius: 10px;
 }
 
 .slider-nav img {
-    width: 15%;
-    margin: 0 auto;
+    width: 95%;
+    height: 25%;
+    object-fit: cover;
     border-radius: 10px;
     display: inline-block;
+    margin-top: 15px;
     margin-bottom: 15px;
 }
 
@@ -190,11 +185,6 @@ div, form, img { box-sizing: border-box; }
     box-sizing: border-box;
 }
 
-.slider-nav img {
-    width: 95%;
-    margin-top: 15px;
-}
-
 .slick-prev:before, .slick-next:before {
     color: black !important;
 }
@@ -209,7 +199,7 @@ div, form, img { box-sizing: border-box; }
     margin-bottom: 20px;
 }
 
-.updateFormBtn {
+.updateFormBtn, .likeBtn {
     display: flex;
     flex-direction: row-reverse;
 }
@@ -218,6 +208,28 @@ div, form, img { box-sizing: border-box; }
     margin: 0 20px 21px;
     background-color: #0888D0;
     border: none;
+}
+
+.likeBtn i {
+    margin: 5px 40px 20px;
+    text-decoration: none;
+    text-decoration-line: none;
+}
+
+.bi-heart {
+    font-size: 30px;
+    line-height: 30px;
+    color:crimson;
+}
+
+.bi-heart-fill {
+    font-size: 30px;
+    line-height: 30px;
+    color:crimson;
+}
+
+.bi-heart:hover {
+    cursor: pointer;
 }
 
 #content2 textarea {

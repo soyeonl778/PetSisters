@@ -36,10 +36,13 @@ public interface PetSitterService {
 	int deleteComment(Review r);
 	
 	// 펫시터 프로필 이미지 등록
-	int insertPetSitterImg(PetSitterImg psImg);
+	int insertPetSitterImg(ArrayList<PetSitterImg> newList);
 	
 	// 펫시터 프로필 이미지 조회
 	ArrayList<PetSitterImg> selectPetSitterImg(int pno);
+	
+	// 펫시터 프로필 이미지 삭제
+	int deletePetSitterImg(ArrayList<Integer> deleteList);
 }
 
 

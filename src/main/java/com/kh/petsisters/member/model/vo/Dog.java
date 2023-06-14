@@ -26,4 +26,7 @@ public class Dog {
 	private String filePath;
 	private String status;
 	private int userNo;
+	
+	// 펫시터 프로필 상세페이지 반려동물 나이 조회용
+	private int dogAge;
 }

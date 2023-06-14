@@ -71,15 +71,21 @@ public class PetSitterServiceImpl implements  PetSitterService {
 	}
 	
 	@Override
-	public int insertPetSitterImg(PetSitterImg psImg) {
+	public int insertPetSitterImg(ArrayList<PetSitterImg> newList) {
 		
-		return petSitterDao.insertPetSitterImg(sqlSession, psImg);
+		return petSitterDao.insertPetSitterImg(sqlSession, newList);
 	}
 	
 	@Override
 	public ArrayList<PetSitterImg> selectPetSitterImg(int pno) {
 		
 		return petSitterDao.selectPetSitterImg(sqlSession, pno);
+	}
+
+	@Override
+	public int deletePetSitterImg(ArrayList<Integer> deleteList) {
+		
+		return petSitterDao.deletePetSitterImg(sqlSession, deleteList);
 	}
 
 //	@Override

@@ -129,6 +129,9 @@ input[type='date']::before {
 .card img {
     margin: 5px;
     border-radius: 5px;
+    width: 329px;
+    height: 231px;
+    object-fit: cover;
 }
 
 .card-body {
