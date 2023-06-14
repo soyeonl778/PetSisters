@@ -43,6 +43,10 @@ public class BoardServiceImpl implements BoardService {
 		return boardDao.selectFreeList(sqlSession, pi);
 	}
 	
+	@Override
+	public int increaseCount(int boardNo) {
+		return boardDao.increaseCount(sqlSession, boardNo);
+	}
 	
 	@Override
 	public Board selectBoard(int boardNo) {
@@ -51,8 +55,8 @@ public class BoardServiceImpl implements BoardService {
 	
 	
 	@Override
-	public int insertBoard(Board b) {
-		return boardDao.insertBoard(sqlSession, b);
+	public int insertFreeBoard(Board b) {
+		return boardDao.insertFreeBoard(sqlSession, b);
 	}
 
 
@@ -61,6 +65,8 @@ public class BoardServiceImpl implements BoardService {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
+	
 
 /*
 	@Override

@@ -32,7 +32,7 @@
 <script src="https://kit.fontawesome.com/bbeda4c5cf.js"
 	crossorigin="anonymous"></script>
 
-<title>내 예약 목록 조회</title>
+<title>임보영 졸림</title>
 </head>
 <body>
 	<jsp:include page="../common/header.jsp" />
@@ -64,9 +64,9 @@
 									<div class="contentWrap">
 
 										<div class="titleWrap">
-											<h1 class="titTag">내 예약 목록</h1>
+											<h1 class="titTag">자유게시판</h1>
 										</div>
-
+										<!--
 										<form action="#" method="post">
 											<div class="payWrapper">
 												<div class="dateWrapper">
@@ -84,11 +84,12 @@
 												
 											</div>
 										</form>
-										
+										-->
+
 										<div class="tableContainer">
 
                                             <c:if test="${ not empty loginUser }">
-                                                <a id="writing-icon" class="btn btn-secondary" style="float:right;" href="freeEnrollForm.bo">글쓰기</a>
+                                                <a id="writing-icon" class="btn btn-secondary" style="float:right;" href="freeEnrollForm.bo?categoryMain=1&categorySub=1">글쓰기</a>
                                             </c:if>
 
 											<table id="boardList" class="table table-hover" align="center">
@@ -112,9 +113,24 @@
                                                             <td>${ b.userNo }</td>
                                                             <td>${ b.count }</td>
                                                             <td>${ b.createDate }</td>
-                                                            <td>
+                                                            <td> 
+                                                            	<!--  
                                                                 <c:if test="${ not empty b.originName }">
                                                                                                                                                                                                             ★
+																 <div><img src="${ b.atFilePath.concat(changeName) }" >here</div>		                                                                                                                                                                                                            
+                                                                </c:if>
+                                                                -->
+                                                                 
+                                                                 
+                                                                 <!--  
+                                                                <c:if test="${ not empty b.originName }">
+                                                                                                                                                                                                            ★
+																 <div><img src="${ b.originName.toLowerCase() }" >here</div>		                                                                                                                                                                                                            
+                                                                </c:if>
+                                                                --> 
+                                                                <c:if test="${ not empty b.originName }">
+                                                                                                                                                                                                            ★
+																 <div><img src="#" >here</div>		                                                                                                                                                                                                            
                                                                 </c:if>
                                                             </td>
                                                         </tr>
@@ -122,17 +138,7 @@
 												</tbody>
 											</table>
 
-                                            <script>
-                                                $(function() {
-                                                    $("#boardList>tbody>tr").click(function() {
-                                                        let bno = $(this).children(".bno").text();
-                                                        location.href = "detail.bo?bno=" + bno;
-                                                    })
-                                                });
-                                            </script>
-
-
-
+            
 										</div>
 									</div>
 								</div>
@@ -188,136 +194,14 @@
 
 	<jsp:include page="../common/footer.jsp" />
 	<script>
-	$(document).ready(function () {
-
-		  // 예약상태에 따라 색상 변경
-		  $("td.specialTd:contains('예약진행중')").css("color", "#0888D0");
-		  $("td.specialTd:contains('예약종료')").css("color", "green");
-
-		  // 예약번호 뽑아오기
-		  $('tbody tr').click(function () {
-		    var uniqeNo = $(this).find('.uniqeNo').text();
-		    // console.log(uniqeNo);
-		  });
-
-		  $(function () {
-		    $('#datepicker1').daterangepicker({
-		      beforeShowDay: function (date) {
-		        return [(date.getDate() != 1)]
-		      },
-		      locale: {
-		        "separator": " ~ ",
-		        "format": 'YYYY-MM-DD',
-		        "applyLabel": "확인",
-		        "cancelLabel": "취소",
-		        "weekLabel": "주",
-		        "daysOfWeek": ["일", "월", "화", "수", "목", "금", "토"],
-		        "monthNames": ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"],
-		        "cancelLabel": "삭제"
-		      },
-		      ranges: {
-		        '오늘': [moment(), moment()],
-		        '어제': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-		        '지난 1주일': [moment().subtract(6, 'days'), moment()],
-		        '최근 30일': [moment().subtract(29, 'days'), moment()],
-		        '이번달': [moment().startOf('month'), moment().endOf('month')],
-		        '저번달': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-		      },
-		      "alwaysShowCalendars": true,
-		      showDropdowns: true,
-		      autoApply: true,
-		      singleDatePicker: false,
-
-		    }).on('cancel.daterangepicker', function (ev, picker) {
-		      $(ev.currentTarget).val('');
-		    });
-
-		  });
-		  
-		  
-		  // 날짜 조회용
-		  $('.dateBtn').on('click', function () {
-			  
-			    let date = $('#datepicker1').val();
-			    let startDateStr = date.substr(0, 10);
-			    let endDateStr = date.slice(-10);
-			    
-			    let dateData = {
-			        startDate: startDateStr,
-			        endDate: endDateStr
-			    };
-			    
-			    $.ajax({
-			        url: "dateFilter",
-			        type: "POST",
-			        data: dateData, 
-			        success: function(res) {
-			        	
-			            let nowDate = new Date().toISOString().slice(0, 10);
-			            console.log(res);
-			            let rere = "";
-			            let result = "";
-			            $('.table>tbody').html(rere);
-			            $('#pagiUl').css("display", "none");
-			            
-			            for(let i = 0; i < res.length; i++) {
-			  			  
-			    			  var startDate = res[i].startDate;
-			    			  var endDate = res[i].endDate;
-
-			    			  var startDate = new Date(startDate.replace(/(\d{1,2})월 (\d{1,2}), (\d{4})/, '$3-$1-$2'));
-			    			  var endDate = new Date(endDate.replace(/(\d{1,2})월 (\d{1,2}), (\d{4})/, '$3-$1-$2'));
-
-			    			  var start = startDate.toISOString().slice(0, 10); 
-			    			  var end = endDate.toISOString().slice(0, 10);
-			            	
-			            	if(res[i].status === 'Y' && end >= nowDate) {
-			            	
-			            	result += "<tr>"
-			            			+ "<th class='liner'>" + res[i].rowNum + "</th>"
-			            			+ "<td class='liner revTh uniqeNo'>" + res[i].resNo + "</td>"
-			            			+ "<td class='specialTd liner' style='color: #0888D0'>예약진행중</td>"
-			            			+ "<td class='liner'>" + res[i].userName + "</td>"
-			            			+ "<td class='checkIn'>" + start + "<br>" +  end + "</td>"
-			            			+ "<td class='revDates'>" + res[i].registerDate.substring(0, 10) + "</td>"
-			            			+ "<td class='revDates'>" + res[i].payPrice.toLocaleString('ko-KR') + '원' + "</td>"
-			            			+ "</tr>"	
-			            	} else {
-				            	result += "<tr>"
-			            			+ "<th class='liner'>" + res[i].rowNum + "</th>"
-			            			+ "<td class='liner revTh uniqeNo'>" + res[i].resNo + "</td>"
-			            			+ "<td class='specialTd liner' style='color: green'>예약종료</td>"
-			            			+ "<td class='liner'>" + res[i].userName + "</td>"
-			            			+ "<td class='checkIn'>" + start + "<br>" +  end + "</td>"
-			            			+ "<td class='revDates'>" + res[i].registerDate.substring(0, 10) + "</td>"
-			            			+ "<td class='revDates'>" + res[i].payPrice.toLocaleString('ko-KR') + '원' + "</td>"
-			            			+ "</tr>"	
-			            	}		
-			            }
-			            $('.table>tbody').html(result);
-			  		  $('.table>tbody>tr').on('click', function(e) {
-			 			 let rNo = $(this).children(".uniqeNo").text();
-			 			 location.href = "petsitterRevDetail?rNo=" + rNo;
-			 		  });
-			        },
-			        error: function(e) {
-			            console.log(e);
-			        }
-			    });
-			});
-
-		  
-		  // 펫시터 예약 상세페이지 이동
-		  $('.table>tbody>tr').on('click', function(e) {
-			 let rNo = $(this).children(".uniqeNo").text();
-			 console.log(rNo, '1');
-			 console.log(e);
-			 console.log($(this).find('.uniqueNo').text());
-			 location.href = "petsitterRevDetail?rNo=" + rNo;
-		  });
-		  
-		  
+		$(function() {
+			$("#boardList>tbody>tr").click(function() {
+				//let bno = $(this).children(".bno").text();
+				//location.href = "detail.bo?bno=" + bno;
+				location.href = "detail.bo";
+			})
 		});
-	</script>
+
+	</script>	
 </body>
 </html>

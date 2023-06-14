@@ -42,14 +42,21 @@ public class BoardDao {
 	}
 	
 	
+	public int increaseCount(SqlSessionTemplate sqlSession, int boardNo) {
+		return sqlSession.update("boardMapper.increaseCount", boardNo);
+	}
+	
 	public Board selectBoard(SqlSessionTemplate sqlSession, int boardNo) {
 		return sqlSession.selectOne("boardMapper.selectBoard", boardNo);
 	}
 	
 	
-	public int insertBoard(SqlSessionTemplate sqlSession, Board b) {
-		return sqlSession.insert("boardMapper.insertBoard", b);
+	public int insertFreeBoard(SqlSessionTemplate sqlSession, Board b) {
+		return sqlSession.insert("boardMapper.insertFreeBoard", b);
 	}
+	
+
+	
 	
 	/*
 	public int insertAttachmentList(SqlSessionTemplate sqlSession, ArrayList<Attachment> list) {

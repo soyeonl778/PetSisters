@@ -18,7 +18,7 @@ public class Board {
 	private String createDate; 
 	private String status; 
 	private int count; 
-	private String userNo;
+	private int userNo;
 	// 카테고리
 	private int categoryMain;
 	private int categorySub;
@@ -27,6 +27,10 @@ public class Board {
 	private String dogImg;
 	
 	private String originName;
+	private String changeName;
+	private String atFilePath;		// 보드 조회용 게시글 사진
+	
+
 
 	
 }

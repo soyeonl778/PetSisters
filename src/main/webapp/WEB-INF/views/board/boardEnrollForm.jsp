@@ -55,6 +55,7 @@
                                 <div class="community-detail-board">
                                   
                                   <form id="enrollForm" method="post" action="insert.bo" enctype="multipart/form-data">
+                                    <!--
 	                                  <div class="selectCategory">
 	                                    <label for="category">카테고리 :&nbsp;</label>
                                       <select id="category" name="category">
@@ -63,7 +64,8 @@
                                         <option value="option3">반려견 정보</option>
                                       </select>
 	                                  </div>
-	                                  
+	                                  -->
+
 	                                  <!-- 내용 -->
 	                                  <p class="text-review">내용</p>
 	                                  <a class="petsister-a">
@@ -79,46 +81,20 @@
 	    
 	                                  <div class="file-upload-form">
 	                                    <div class="file-upload-top">
-	                                      <i style="display: hidden;" id="plusIcon" class="fa-solid fa-square-plus fa-9x" style="color: #e6e6eb;" ></i>
+	                                      <i id="plusIcon" class="fa-solid fa-square-plus fa-9x" style="color: #e6e6eb;" ></i>
 	                                    </div>
-	    
-                                      
-	                                    <!--   
-	                                   	<label for="upfile">첨부파일</label>
-	                                   	<input type="file" id="upfile" class="" name="upfile">
-	                                    -->
 	                                    
                                       <div class="fileSection preview">
                                         <label for="btnAtt">첨부파일 : </label>
-                                        <input type="file" name="" id="btnAtt" multiple="multiple" required>
-                                        <div id="att_zone" data-placeholder='파일을 첨부 하려면 파일 선택 버튼을 클릭하거나 파일을 드래그앤드롭 하세요'></div>
+                                        <input type="file" name="upfileList" id="btnAtt" onchange="loadImg(this, 1);" required> <br>
+                                        <label for="btnAtt">첨부파일 : </label>
+                                        <input type="file" name="upfileList" id="btnAtt" onchange="loadImg(this, 2);" > <br>
+                                        <label for="btnAtt">첨부파일 : </label>
+                                        <input type="file" name="upfileList" id="btnAtt" onchange="loadImg(this, 3);" >
                                       </div> 
 	                                     
 	                                  </div>
 	                                  
-	                                  <script>
-                                      $(function() {
-                                        var fileInput = document.getElementById('btnAtt');
-                                        var fileSection = document.querySelector('.file-upload-top');
-                                        var plusIcon = document.getElementById('plusIcon');
-
-                                        fileInput.addEventListener('change', function() {
-                                          var files = fileInput.files;
-                                          
-                                          for (var i = 0; i < files.length; i++) {
-                                              var file = files[i];
-                                              var img = document.createElement('img');
-                                              img.src = URL.createObjectURL(file);
-                                              /*img.attr('src', )*/
-                                              fileSection.appendChild(img);
-                                            }
-
-                                            plusIcon.style.display = 'none';
-
-                                        });
-                                      });
-                                    </script>
-
                                 	</form>
                                 </div>
                                 
@@ -153,5 +129,45 @@
       <!-- Footer 영역 시작 -->
       <jsp:include page="../common/footer.jsp" />
       <!-- Footer 영역 끝 -->
+       <script>
+    $(function() {
+      var fileInput = document.getElementById('btnAtt'); // input 태그
+      var fileSection = document.querySelector('.file-upload-top'); // 이미지가 위치할 부모태그
+      var plusIcon = document.getElementById('plusIcon'); // 아이콘을 의미하는 태그
+
+      fileInput.addEventListener('change', function() {
+        var files = fileInput.files;
+        
+        for (var i = 0; i < files.length; i++) {
+            var file = files[i];
+            var img = document.createElement('img');
+            img.src = URL.createObjectURL(file);
+            /*img.attr('src', )*/
+            fileSection.appendChild(img);
+          }
+
+          plusIcon.style.display = 'none';
+
+      });
+    });
+
+    /*
+    function loadImg(inputFile, num) {
+      
+      if(inputFile.files.length == 1) {
+        
+        let reader = new FileReader();
+
+        reader.readAsDataURL(inputFile.files[0]);
+
+
+
+      }
+      
+    }
+    */
+
+
+  </script>
     </body>
     </html>
