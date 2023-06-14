@@ -17,7 +17,6 @@
   <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
   
-  <script src="/resources/js/settlementInquiry.js"></script>
 <title>정산 조회</title>
 </head>
 <body>
@@ -30,26 +29,17 @@
         <div id="content">
           <div class="page_aticle aticle_type2">
             <!-- 사이드 메뉴바 -->
-            <div id="snb" class="snb_my" style="position: absolute;">
-              <img src="/resources/img/main/사이드바이미지.png" alt="sideBarImg">
-              <h2 class="tit_snb">My Page</h2>
-              <div class="inner_sub">
-                <ul class="list_menu">
-                  <li>
-                    <a href="#">펫시터 프로필 관리</a>
-                  </li>
-                  <li class="on">
-                    <a href="#">정산 조회</a>
-                  </li>
-                  <li>
-                    <a href="#">내 예약 관리</a>
-                  </li>
-                  <li>
-                    <a href="#">돌봄 일지 관리</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
+						<div id="snb" class="snb_my" style="position: absolute;">
+							<img src="/resources/img/main/사이드바이미지.png" alt="sideBarImg">
+							<h2 class="tit_snb">예약 관리</h2>
+							<div class="inner_sub">
+								<ul class="list_menu">
+									<li><a href="petsitterRev">내 예약 관리</a></li>
+									<li class="on"><a href="payList">정산 조회</a></li>
+									<li><a href="#">돌봄 일지 관리</a></li>
+								</ul>
+							</div>
+						</div>
             <!-- 사이드 메뉴바 끝 -->
 
             <!-- 본문 영역-->
@@ -61,14 +51,17 @@
                   <div class="payContainer">
 
                     <h1 class="payTitTag">정산 조회</h1>
-
+					
+					<form action="searchPay" method="post">
                     <div class="payWrapper">
-                      <div class="dateSection">
-                        기간 조회 <input id="datepicker1" type="text" name="">
-                      </div>
-                      <button class="dateBtn">조회</button>
+						<div class="dateWrapper">
+							<div class="dateSection">
+								조회 기간 선택 <input id="datepicker1" type="text" name="searchDate"> 
+							</div>
+							<button class="dateBtn btn btn-primary" type="submit">조회</button>
+						</div>
                     </div>
-
+					</form>
 
                     <div class="monthWrapper">
                       <h2 class="monthTitle">5월</h2>
@@ -126,5 +119,52 @@
   </div>
 
 <jsp:include page="../common/footer.jsp" />
+<script>
+$(document).ready(function () { 
+	  $(function () {
+	    $('#datepicker1').daterangepicker({
+	      beforeShowDay: function (date) {
+	        return [(date.getDate() != 1)]
+	      },
+	      locale: {
+	        "separator": " ~ ",                    
+	        "format": 'YYYY-MM-DD',     
+	        "applyLabel": "확인",                    
+	        "cancelLabel": "취소",                   
+	        "weekLabel": "주",
+	        "daysOfWeek": ["일", "월", "화", "수", "목", "금", "토"],
+	        "monthNames": ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"],
+	        "cancelLabel": "삭제"
+	      },
+	      ranges: {
+	        '오늘': [moment(), moment()],
+	        '어제': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+	        '지난 1주일': [moment().subtract(6, 'days'), moment()],
+	        '최근 30일': [moment().subtract(29, 'days'), moment()],
+	        '이번달': [moment().startOf('month'), moment().endOf('month')],
+	        '저번달': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+	      },
+	      "alwaysShowCalendars": true,
+	      "maxDate": new Date(),
+	      showDropdowns: true,                     
+	      autoApply: true,                        
+	      singleDatePicker: false,
+
+	    }).on('cancel.daterangepicker', function (ev, picker) {
+	      $(ev.currentTarget).val('');
+	    });
+	    
+	  });
+
+	  
+	  $('.dateBtn').on('click', function () {
+	    let date = $('#datepicker1').val();
+	    let startDate = date.substr(0, 10);
+	    let endDate = date.slice(-10);
+	    console.log(date.substr(0, 10));
+	    console.log(date.slice(-10));
+	  });
+	})
+</script>
 </body>
 </html>

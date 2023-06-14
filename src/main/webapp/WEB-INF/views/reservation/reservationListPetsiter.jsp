@@ -46,11 +46,11 @@
 						<!-- 사이드 메뉴바 -->
 						<div id="snb" class="snb_my" style="position: absolute;">
 							<img src="/resources/img/main/사이드바이미지.png" alt="sideBarImg">
-							<h2 class="tit_snb">My Page</h2>
+							<h2 class="tit_snb">예약 관리</h2>
 							<div class="inner_sub">
 								<ul class="list_menu">
 									<li class="on"><a href="petsitterRev">내 예약 관리</a></li>
-									<li><a href="#">정산 조회</a></li>
+									<li><a href="payList">정산 조회</a></li>
 									<li><a href="#">돌봄 일지 관리</a></li>
 								</ul>
 							</div>

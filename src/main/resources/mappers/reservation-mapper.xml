@@ -70,6 +70,17 @@
 		<result column="PETSITTER_NAME" property="petistterName" />
 	</resultMap>
 	
+	
+	<resultMap id="paymentResultSet" type="payment">
+		<result column="PAY_NO" property="payNo" />
+		<result column="PAY_DATE" property="payDate" />
+		<result column="PAY_DESCRIPTION" property="payDesc" />
+		<result column="PAY_PRICE" property="payPrice" />
+		<result column="STATUS" property="status" />
+		<result column="REF_RESNO" property="refResno" />
+		<result column="WEEKEND_PAY" property="weekendPay" />
+		<result column="TOTAL_PAY" property="totalPay" />
+	</resultMap>
 	<!-- 예약 리스트 총 갯수 구하는 쿼리문 -->
 	<select id="selectListCount" resultType="_int">
 	SELECT COUNT(*) 
@@ -276,9 +287,32 @@
 	
 	
 	
+	<!-- 정산금 총액 구하는 쿼리문 -->
+	<!-- 
+	<select id="totalPay">
+		SELECT SUM(PAY_PRICE)
+		  FROM PAYMENT P
+		  JOIN RESERVATION R ON REF_RESNO = RES_NO
+		  JOIN PETSITTER PT ON REF_PNO = P_NO 
+		  JOIN MEMBER M ON PT.USER_NO = M.USER_NO
+		 WHERE M.USER_NO = #{userNo}
+	</select>
+	 -->
 	
 	
-	
+	<!-- 이번주 정산금 구하는 쿼리문 -->
+	<!-- 
+	<select id="weekendPay">
+		SELECT SUM(P.PAY_PRICE)
+		FROM PAYMENT P
+		JOIN RESERVATION R ON P.REF_RESNO = R.RES_NO
+		JOIN PETSITTER PT ON R.REF_PNO = PT.P_NO
+		JOIN MEMBER M ON PT.USER_NO = M.USER_NO
+	   WHERE M.USER_NO = #{userNo}
+		 AND P.PAY_DATE >= TRUNC(SYSDATE, 'IW') 
+		 AND P.PAY_DATE < TRUNC(SYSDATE, 'IW') + 7 	
+	</select>
+		  -->
 	
 	
 	
