@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ page import="java.util.Date"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -46,6 +50,14 @@
             <div id="viewOrderList" class="page_section section_orderlist">
               <div class="page_section section_destination">
                 <!-- 이 영역 안에서 페이지 작업 하시면 됩니다 -->
+                
+                
+                
+                
+                
+                
+                
+                
                 <div>
 
                   <div class="payContainer">
@@ -58,7 +70,7 @@
 							<div class="dateSection">
 								조회 기간 선택 <input id="datepicker1" type="text" name="searchDate"> 
 							</div>
-							<button class="dateBtn btn btn-primary" type="submit">조회</button>
+							<button class="dateBtn btn btn-primary" type="button">조회</button>
 						</div>
                     </div>
 					</form>
@@ -161,8 +173,9 @@ $(document).ready(function () {
 	    let date = $('#datepicker1').val();
 	    let startDate = date.substr(0, 10);
 	    let endDate = date.slice(-10);
-	    console.log(date.substr(0, 10));
-	    console.log(date.slice(-10));
+	    
+	    console.log(startDate);
+	    console.log(endDate);
 	  });
 	})
 </script>

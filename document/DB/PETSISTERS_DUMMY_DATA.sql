@@ -464,7 +464,7 @@ VALUES(SEQ_DOG.NEXTVAL,
 --------------------------------------------------
 INSERT INTO PAYMENT       
 VALUES(SEQ_PAYMENT.NEXTVAL,
-       SYSDATE,
+       '2023-02-01',
        '일주일 데슝',
        165000,
        DEFAULT,
@@ -472,7 +472,7 @@ VALUES(SEQ_PAYMENT.NEXTVAL,
 
 INSERT INTO PAYMENT       
 VALUES(SEQ_PAYMENT.NEXTVAL,
-       SYSDATE,
+       '2023-03-06',
        '강아지쓰',
        300000,
        DEFAULT,
@@ -480,7 +480,7 @@ VALUES(SEQ_PAYMENT.NEXTVAL,
        
 INSERT INTO PAYMENT       
 VALUES(SEQ_PAYMENT.NEXTVAL,
-       SYSDATE,
+       '2023-03-27',
        '갱얼쥐',
        550000,
        DEFAULT,
@@ -488,7 +488,7 @@ VALUES(SEQ_PAYMENT.NEXTVAL,
        
 INSERT INTO PAYMENT       
 VALUES(SEQ_PAYMENT.NEXTVAL,
-       SYSDATE,
+       '2023-04-15',
        '많다',
        55000,
        DEFAULT,
@@ -496,7 +496,7 @@ VALUES(SEQ_PAYMENT.NEXTVAL,
        
 INSERT INTO PAYMENT       
 VALUES(SEQ_PAYMENT.NEXTVAL,
-       SYSDATE,
+       '2023-04-20',
        '넘많어',
        110000,
        DEFAULT,
@@ -504,7 +504,7 @@ VALUES(SEQ_PAYMENT.NEXTVAL,
        
 INSERT INTO PAYMENT       
 VALUES(SEQ_PAYMENT.NEXTVAL,
-       SYSDATE,
+       '2023-05-15',
        '하루다임마',
        55000,
        DEFAULT,

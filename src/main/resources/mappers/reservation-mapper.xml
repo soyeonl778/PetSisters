@@ -286,23 +286,9 @@
 	</select>
 	
 	
-	
-	<!-- 정산금 총액 구하는 쿼리문 -->
-	<!-- 
-	<select id="totalPay">
-		SELECT SUM(PAY_PRICE)
-		  FROM PAYMENT P
-		  JOIN RESERVATION R ON REF_RESNO = RES_NO
-		  JOIN PETSITTER PT ON REF_PNO = P_NO 
-		  JOIN MEMBER M ON PT.USER_NO = M.USER_NO
-		 WHERE M.USER_NO = #{userNo}
-	</select>
-	 -->
-	
-	
 	<!-- 이번주 정산금 구하는 쿼리문 -->
-	<!-- 
-	<select id="weekendPay">
+	<select id="weekPay" resultType="_int">
+	<![CDATA[
 		SELECT SUM(P.PAY_PRICE)
 		FROM PAYMENT P
 		JOIN RESERVATION R ON P.REF_RESNO = R.RES_NO
@@ -311,8 +297,36 @@
 	   WHERE M.USER_NO = #{userNo}
 		 AND P.PAY_DATE >= TRUNC(SYSDATE, 'IW') 
 		 AND P.PAY_DATE < TRUNC(SYSDATE, 'IW') + 7 	
+	]]>	 
 	</select>
-		  -->
+	
+	
+	<!-- 정산금 총액 구하는 쿼리문 -->
+	<select id="totalPay" resultType="_int">
+		SELECT SUM(PAY_PRICE)
+		  FROM PAYMENT P
+		  JOIN RESERVATION R ON REF_RESNO = RES_NO
+		  JOIN PETSITTER PT ON REF_PNO = P_NO 
+		  JOIN MEMBER M ON PT.USER_NO = M.USER_NO
+		 WHERE M.USER_NO = #{userNo}
+	</select>
+	
+	
+	<!-- 정산 내역 조회용 쿼리문 -->
+	<select id="payList" resultMap="paymentResultSet">
+		SELECT PAY_NO,
+		       PAY_DATE,
+		       PAY_DESCRIPTION,
+		       PAY_PRICE,
+		       P.STATUS
+		  FROM PAYMENT P
+		  JOIN RESERVATION R ON REF_RESNO = RES_NO
+		  JOIN PETSITTER PT ON REF_PNO = P_NO 
+		  JOIN MEMBER M ON PT.USER_NO = M.USER_NO
+		  WHERE M.USER_NO = #{userNo}
+		    AND P.STATUS = 'Y'
+		  ORDER BY PAY_DATE DESC	
+	</select>
 	
 	
 	
