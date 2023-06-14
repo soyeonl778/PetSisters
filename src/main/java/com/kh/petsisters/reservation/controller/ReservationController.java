@@ -266,7 +266,12 @@ public class ReservationController {
 	
 	
 	
-	
+	@RequestMapping("payList")
+	public String patList() {
+		
+		
+		return "notice/settlementinquiry";
+	}
 	
 	
 	

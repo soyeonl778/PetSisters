@@ -317,9 +317,10 @@ body #container #main .layout-pagination .pagediv span strong{
 .dateSection {
   display: flex;
   flex-direction: column;
-  margin-left: 80px;
   font-weight: 800;
   font-size: larger;
+  height: 80px;
+  justify-content: space-between;
 }
 .dateBtn {
   border-radius: 5px;
@@ -337,6 +338,8 @@ body #container #main .layout-pagination .pagediv span strong{
 #datepicker1:hover{
   cursor: pointer;
   box-shadow: 1px 1px 5px #0888D0;
+  border-radius: 6px;
+  height: 45%;
 }
 .payContainer {
   padding-top: 55px;
@@ -385,4 +388,11 @@ body #container #main .layout-pagination .pagediv span strong{
   font-size: xx-large;
   line-height: 34px;
   padding-left: 27px;  
+}
+.dateWrapper{
+	display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    width: 46%;
+	
 }
