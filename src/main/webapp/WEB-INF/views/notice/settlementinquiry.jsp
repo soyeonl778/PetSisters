@@ -52,7 +52,16 @@
                 <!-- 이 영역 안에서 페이지 작업 하시면 됩니다 -->
                 
                 
-                
+                <c:forEach var="payment" items="${list}">
+				  <c:set var="paymentDate" value="${payment.payDate}" />
+				  <c:set var="month" value="${fn:substring(paymentDate, 5, 7)}" />
+				  <div>월: ${month}</div>
+				  <div>=========</div>
+				  <c:set var="day" value="${fn:substring(paymentDate, 8, 10)}" />
+				
+				  <div>일자: ${month}-${day}</div>
+				  <hr>
+				</c:forEach>
                 
                 
                 
