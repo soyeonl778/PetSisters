@@ -124,6 +124,11 @@ public class ReservationServiceImpl implements ReservationService{
 		return reservationDao.payList(sqlSession, userNo);
 	}
 
+	@Override
+	public ArrayList<Payment> searchPay(int userNo, String startDate, String endDate) {
+		return reservationDao.searchPay(sqlSession, userNo, startDate, endDate);
+	}
+
 	
 
 

@@ -161,6 +161,16 @@ public class ReservationDao {
 		return (ArrayList)sqlSession.selectList("reservationMapper.payList", userNo);
 	}
 
+	public ArrayList<Payment> searchPay(SqlSessionTemplate sqlSession, int userNo, String startDate, String endDate) {
+		
+		Map<String, Object> parameter = new HashMap<>();
+		parameter.put("userNo", userNo);
+		parameter.put("startDate", startDate);
+		parameter.put("endDate", endDate);
+		
+		return (ArrayList)sqlSession.selectList("reservationMapper.searchPay", parameter);
+	}
+
 
 
 }

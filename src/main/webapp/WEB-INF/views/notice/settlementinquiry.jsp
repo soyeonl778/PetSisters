@@ -33,47 +33,28 @@
         <div id="content">
           <div class="page_aticle aticle_type2">
             <!-- 사이드 메뉴바 -->
-						<div id="snb" class="snb_my" style="position: absolute;">
-							<img src="/resources/img/main/사이드바이미지.png" alt="sideBarImg">
-							<h2 class="tit_snb">예약 관리</h2>
-							<div class="inner_sub">
-								<ul class="list_menu">
-									<li><a href="petsitterRev">내 예약 관리</a></li>
-									<li class="on"><a href="payList">정산 조회</a></li>
-									<li><a href="#">돌봄 일지 관리</a></li>
-								</ul>
-							</div>
-						</div>
+			<div id="snb" class="snb_my" style="position: absolute;">
+				<img src="/resources/img/main/사이드바이미지.png" alt="sideBarImg">
+				<h2 class="tit_snb">예약 관리</h2>
+				<div class="inner_sub">
+					<ul class="list_menu">
+						<li><a href="petsitterRev">내 예약 관리</a></li>
+						<li class="on"><a href="payList">정산 조회</a></li>
+						<li><a href="#">돌봄 일지 관리</a></li>
+					</ul>
+				</div>
+			</div>
             <!-- 사이드 메뉴바 끝 -->
 
             <!-- 본문 영역-->
             <div id="viewOrderList" class="page_section section_orderlist">
               <div class="page_section section_destination">
                 <!-- 이 영역 안에서 페이지 작업 하시면 됩니다 -->
-                
-                
-                <c:forEach var="payment" items="${list}">
-				  <c:set var="paymentDate" value="${payment.payDate}" />
-				  <c:set var="month" value="${fn:substring(paymentDate, 5, 7)}" />
-				  <div>월: ${month}</div>
-				  <div>=========</div>
-				  <c:set var="day" value="${fn:substring(paymentDate, 8, 10)}" />
-				
-				  <div>일자: ${month}-${day}</div>
-				  <hr>
-				</c:forEach>
-                
-                
-                
-                
-                
+
                 <div>
-
                   <div class="payContainer">
-
                     <h1 class="payTitTag">정산 조회</h1>
-					
-					<form action="searchPay" method="post">
+					<form action="" method="post">
                     <div class="payWrapper">
 						<div class="dateWrapper">
 							<div class="dateSection">
@@ -84,46 +65,38 @@
                     </div>
 					</form>
 
+
+
                     <div class="monthWrapper">
-                      <h2 class="monthTitle">5월</h2>
-                      <div class="monthInfo">
-                        <div class="monthDate monthThing">5월 12일 ~ 5월 19일</div>
-                        <div class="monthPay monthThing">444,000원</div>
+                    
+                    <c:forEach var="payment" items="${list}">
+					  <c:set var="paymentDate" value="${payment.payDate}" />
+					  <c:set var="month" value="${fn:substring(paymentDate, 5, 7)}" />
+					  <c:set var="day" value="${fn:substring(paymentDate, 8, 10)}" />
+					
+					  <c:if test="${not month.equals(prevMonth)}">
+					    <c:if test="${not empty prevMonth}">
+					      <hr>
+					    </c:if>
+	                      <h2 class="monthTitle">${month} 월</h2>
+					    <c:set var="prevMonth" value="${month}" />
+					  </c:if>
+					   <div class="monthInfo">
+                        <div class="monthDate monthThing">예약일: ${month}월 ${day}일</div>
+                        <div class="monthPay monthThing"><fmt:formatNumber value="${ payment.payPrice }" pattern="#,###,###"/>원</div>
                       </div>
-                      <div class="monthInfo">
-                        <div class="monthDate monthThing">5월 12일 ~ 5월 19일</div>
-                        <div class="monthPay monthThing">444,000원</div>
-                      </div>
-
-                      <h2 class="monthTitle">4월</h2>
-                      <div class="monthInfo">
-                        <div class="monthDate monthThing">4월 12일 ~ 4월 19일</div>
-                        <div class="monthPay monthThing">444,000원</div>
-                      </div>
-                      <div class="monthInfo">
-                        <div class="monthDate monthThing">5월 12일 ~ 5월 19일</div>
-                        <div class="monthPay monthThing">444,000원</div>
-                      </div>
-
-                      <h2 class="monthTitle">3월</h2>
-                      <div class="monthInfo">
-                        <div class="monthDate monthThing">3월 12일 ~ 3월 19일</div>
-                        <div class="monthPay monthThing">444,000원</div>
-                      </div>
-                      <div class="monthInfo">
-                        <div class="monthDate monthThing">5월 12일 ~ 5월 19일</div>
-                        <div class="monthPay monthThing">444,000원</div>
-                      </div>
+					</c:forEach>
 
                     </div>
+                    
                     <div class="allMoney">
                       <div class="moneyGood">
                         <h3>이번주 정산금: </h3>
-                        <div class="goodMoney">385.000원</div>
+                        <div class="goodMoney"><fmt:formatNumber value="${ weekPay }" pattern="#,###,###"/>원</div>
                       </div>
                       <div class="moneyGood">
                         <h3>총 누적 정산금: </h3>
-                        <div class="goodMoney">876,595,000원</div>
+                        <div class="goodMoney"><fmt:formatNumber value="${ totalPay }" pattern="###,###,###,###"/>원</div>
                       </div>
                     </div>
                   </div>
@@ -183,8 +156,53 @@ $(document).ready(function () {
 	    let startDate = date.substr(0, 10);
 	    let endDate = date.slice(-10);
 	    
-	    console.log(startDate);
-	    console.log(endDate);
+	    let dateData = {
+		        startDate: startDate,
+		        endDate: endDate
+		    };
+	    
+	    $.ajax({
+	    	url: "searchPay",
+	    	method: "post",
+	    	data: dateData,
+	    	success: function(res) {
+	    		
+	    		var inner = '';
+	    		
+	    		var prevMonth = '';
+	    		
+	    		let reset = "";
+	    		$('.monthWrapper').html(reset);
+	    		
+	    		for(let i = 0; i < res.length; i++) {
+	    			
+	    		    var payment = res[i];
+	    		    var month = payment.payDate.substring(0, 1);
+	    		    var day = payment.payDate.substring(3, 5);
+	    		    
+	    		    if (month !== prevMonth) {
+	    		        if (prevMonth !== '') {
+	    		        	inner += '<hr>';
+	    		        }
+	    		        inner += '<h2 class="monthTitle">' + month + ' 월</h2>';
+	    		        prevMonth = month;
+	    		      }
+	    		    
+	    		    inner += '<div class="monthInfo">';
+	    		    inner += '  <div class="monthDate monthThing">예약일: ' + month + '월 ' + day + '일</div>';
+	    		    inner += '  <div class="monthPay monthThing">' + formatNumber(payment.payPrice) + '원</div>';
+	    		    inner += '</div>';
+	    		}
+	    		$('.monthWrapper').html(inner);
+	    	},
+	    	error: function(e) {
+	    		console.log(e);
+	    	}
+	    });
+	    
+	    function formatNumber(number) {
+	    	  return number.toLocaleString();
+	    	}
 	  });
 	})
 </script>

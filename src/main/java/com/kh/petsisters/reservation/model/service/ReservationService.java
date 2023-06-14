@@ -54,7 +54,8 @@ public interface ReservationService {
 	// 결제 내역 조회
 	ArrayList<Payment> payList(int userNo);
 	
-	
+	// 결제내역 ajax용
+	ArrayList<Payment> searchPay(int userNo, String startDate, String endDate);
 	
 	
 	// ======== 펫시터 관련 =========
@@ -75,6 +76,7 @@ public interface ReservationService {
 
 	// 펫시터 돌봄일지에 파일 있을경우 파일 추가
 	int insertJournalFile(ArrayList<CareJournal> list);
+
 
 
 

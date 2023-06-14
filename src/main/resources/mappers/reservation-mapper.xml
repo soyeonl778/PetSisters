@@ -329,8 +329,25 @@
 	</select>
 	
 	
-	
-	
+	<!-- 정산 내역 ajax 요청용 쿼리 -->
+	<select id="searchPay" resultMap="paymentResultSet">
+		SELECT PAY_NO,
+		       PAY_DATE,
+		       PAY_DESCRIPTION,
+		       PAY_PRICE,
+		       P.STATUS
+		  FROM PAYMENT P
+		  JOIN RESERVATION R ON REF_RESNO = RES_NO
+		  JOIN PETSITTER PT ON REF_PNO = P_NO 
+		  JOIN MEMBER M ON PT.USER_NO = M.USER_NO
+		 WHERE M.USER_NO = #{userNo}
+		   AND P.STATUS = 'Y'
+		 <if test="startDate != null">
+		   AND P.PAY_DATE &gt;= TO_DATE(#{startDate}, 'YYYY-MM-DD')
+		   AND P.PAY_DATE &lt;= TO_DATE(#{endDate}, 'YYYY-MM-DD')+1
+		 </if>
+		 ORDER BY PAY_DATE DESC
+	</select>
 	
 	
 	

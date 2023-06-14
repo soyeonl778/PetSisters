@@ -319,20 +319,24 @@ public class ReservationController {
 		    System.out.println("===================");
 		}
 		
-		
-		
-		
-		
-		
-		
-		System.out.println("weekPay: " + weekPay);
-		System.out.println("totalPay: " + totalPay);
-		System.out.println("list: " + list);
-		
 		return "notice/settlementinquiry";
 	}
 	
 	
+	
+	@ResponseBody
+	@RequestMapping(value="searchPay", produces = "application/json; charset=UTF-8")
+	public String searchPay(HttpSession session, String startDate, String endDate) {
+		
+		int userNo = ((Member)(session.getAttribute("loginUser"))).getUserNo();
+		
+		ArrayList<Payment> list = reservationService.searchPay(userNo, startDate, endDate);
+		
+		System.out.println(list);
+		
+		return new Gson().toJson(list);
+		
+	}
 	
 	
 	
