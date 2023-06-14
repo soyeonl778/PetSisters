@@ -11,6 +11,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.kh.petsisters.common.model.vo.PageInfo;
+import com.kh.petsisters.payment.model.vo.Payment;
 import com.kh.petsisters.reservation.model.vo.CareJournal;
 import com.kh.petsisters.reservation.model.vo.Reservation;
 import com.kh.petsisters.reservation.model.vo.Review;
@@ -146,6 +147,18 @@ public class ReservationDao {
 
 	public ArrayList<CareJournal> careDetail(SqlSessionTemplate sqlSession, int jno) {
 		return (ArrayList)sqlSession.selectList("reservationMapper.careDetail", jno);
+	}
+
+	public int weekPay(SqlSessionTemplate sqlSession, int userNo) {
+		return sqlSession.selectOne("reservationMapper.weekPay", userNo);
+	}
+
+	public int totalPay(SqlSessionTemplate sqlSession, int userNo) {
+		return sqlSession.selectOne("reservationMapper.totalPay", userNo);
+	}
+
+	public ArrayList<Payment> payList(SqlSessionTemplate sqlSession, int userNo) {
+		return (ArrayList)sqlSession.selectList("reservationMapper.payList", userNo);
 	}
 
 

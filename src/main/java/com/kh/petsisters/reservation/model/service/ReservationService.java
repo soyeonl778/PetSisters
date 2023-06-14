@@ -5,6 +5,7 @@ import java.util.List;
 import java.sql.Date;
 
 import com.kh.petsisters.common.model.vo.PageInfo;
+import com.kh.petsisters.payment.model.vo.Payment;
 import com.kh.petsisters.reservation.model.vo.CareJournal;
 import com.kh.petsisters.reservation.model.vo.Reservation;
 import com.kh.petsisters.reservation.model.vo.Review;
@@ -44,6 +45,17 @@ public interface ReservationService {
 	// 돌봄일지 상세 조회
 	ArrayList<CareJournal> careDetail(int jno);
 	
+	// 이번주 정산금 조회
+	int weekPay(int userNo);
+	
+	// 총 정산금 조회
+	int totalPay(int userNo);
+	
+	// 결제 내역 조회
+	ArrayList<Payment> payList(int userNo);
+	
+	
+	
 	
 	// ======== 펫시터 관련 =========
 	// 펫시터 예약 화면 조회용
@@ -63,6 +75,7 @@ public interface ReservationService {
 
 	// 펫시터 돌봄일지에 파일 있을경우 파일 추가
 	int insertJournalFile(ArrayList<CareJournal> list);
+
 
 
 

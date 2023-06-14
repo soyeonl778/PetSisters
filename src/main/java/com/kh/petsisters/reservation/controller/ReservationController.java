@@ -5,7 +5,9 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -22,6 +24,7 @@ import com.google.gson.Gson;
 import com.kh.petsisters.common.model.vo.PageInfo;
 import com.kh.petsisters.common.template.Pagination;
 import com.kh.petsisters.member.model.vo.Member;
+import com.kh.petsisters.payment.model.vo.Payment;
 import com.kh.petsisters.reservation.model.service.ReservationService;
 import com.kh.petsisters.reservation.model.vo.CareJournal;
 import com.kh.petsisters.reservation.model.vo.Reservation;
@@ -252,12 +255,7 @@ public class ReservationController {
 	@RequestMapping("careDetail")
 	public String careDetail(@RequestParam(value="jno") int jno, Model model) {
 		
-		// jno = 돌봄일지 고유번호
-		System.out.println(jno);
-		
 		ArrayList<CareJournal> list = reservationService.careDetail(jno);
-		
-		System.out.println(list);
 		
 		model.addAttribute("list", list);
 		
@@ -267,8 +265,69 @@ public class ReservationController {
 	
 	
 	@RequestMapping("payList")
-	public String patList() {
+	public String patList(HttpSession session, Model model) {
 		
+		int userNo = ((Member)(session.getAttribute("loginUser"))).getUserNo();
+		
+		int weekPay = reservationService.weekPay(userNo);
+		
+		int totalPay = reservationService.totalPay(userNo);
+		
+		ArrayList<Payment> list = reservationService.payList(userNo);
+		
+		model.addAttribute("weekPay", weekPay);
+		model.addAttribute("totalPay", totalPay);
+		model.addAttribute("list", list);
+		
+		// 월별로 묶을 Map 생성
+		Map<String, List<Payment>> monthlyPayments = new HashMap<>();
+		
+		// 데이터를 월별로 묶기
+		for (Payment payment : list) {
+		    // Payment 데이터의 payDate에서 월(Month) 정보 추출
+		    String month = new SimpleDateFormat("MM").format(payment.getPayDate());
+		    
+		    // 해당 월의 Payment 리스트 가져오기
+		    List<Payment> monthlyPaymentList = monthlyPayments.get(month);
+		    
+		    // 리스트가 없으면 새로 생성하여 맵에 추가
+		    if (monthlyPaymentList == null) {
+		        monthlyPaymentList = new ArrayList<>();
+		        monthlyPayments.put(month, monthlyPaymentList);
+		    }
+		    
+		    // Payment 데이터를 해당 월의 리스트에 추가
+		    monthlyPaymentList.add(payment);
+		}
+		
+		
+		// 월별로 묶인 데이터 출력 예시
+		for (Map.Entry<String, List<Payment>> entry : monthlyPayments.entrySet()) {
+		    String month = entry.getKey();
+		    List<Payment> monthlyPaymentList = entry.getValue();
+		    
+		    System.out.println("월: " + month);
+		    
+		    for (Payment payment : monthlyPaymentList) {
+		        // 일자별로 세부적인 처리를 수행하여 사용하면 됩니다.
+		        // payment.getPayDate()로 일자 정보를 가져올 수 있습니다.
+		        // payment.getPayDesc(), payment.getPayPrice() 등의 필요한 정보를 활용합니다.
+		        // 여기서는 간단히 일자 정보만 출력하도록 예시를 작성하였습니다.
+		        System.out.println("일자: " + new SimpleDateFormat("dd").format(payment.getPayDate()));
+		    }
+		    
+		    System.out.println("===================");
+		}
+		
+		
+		
+		
+		
+		
+		
+		System.out.println("weekPay: " + weekPay);
+		System.out.println("totalPay: " + totalPay);
+		System.out.println("list: " + list);
 		
 		return "notice/settlementinquiry";
 	}

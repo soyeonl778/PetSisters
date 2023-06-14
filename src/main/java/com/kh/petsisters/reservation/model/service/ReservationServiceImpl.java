@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kh.petsisters.common.model.vo.PageInfo;
+import com.kh.petsisters.payment.model.vo.Payment;
 import com.kh.petsisters.reservation.model.dao.ReservationDao;
 import com.kh.petsisters.reservation.model.vo.CareJournal;
 import com.kh.petsisters.reservation.model.vo.Reservation;
@@ -106,6 +107,21 @@ public class ReservationServiceImpl implements ReservationService{
 	@Override
 	public ArrayList<CareJournal> careDetail(int jno) {
 		return reservationDao.careDetail(sqlSession, jno);
+	}
+
+	@Override
+	public int weekPay(int userNo) {
+		return reservationDao.weekPay(sqlSession, userNo);
+	}
+
+	@Override
+	public int totalPay(int userNo) {
+		return reservationDao.totalPay(sqlSession, userNo);
+	}
+
+	@Override
+	public ArrayList<Payment> payList(int userNo) {
+		return reservationDao.payList(sqlSession, userNo);
 	}
 
 	
