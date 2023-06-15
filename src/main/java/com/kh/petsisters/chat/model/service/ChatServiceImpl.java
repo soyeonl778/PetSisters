@@ -1,5 +1,7 @@
 package com.kh.petsisters.chat.model.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,6 +29,16 @@ public class ChatServiceImpl implements ChatService {
 	@Override
 	public int insertMessage(ChatMessage chatMessage) {
 		return chatDao.insertMessage(chatMessage);
+	}
+
+	@Override
+	public List<ChatRoom> chatRoomList(int userNo) {
+		return chatDao.chatRoomList(userNo);
+	}
+
+	@Override
+	public int selectUnReadCount(ChatMessage message) {
+		return chatDao.selectUnReadCount(message);
 	}
 	
 

@@ -14,15 +14,15 @@
 	<resultMap id="chatRoomResultSet" type="chatRoom">
 		<result column="ROOM_NO" property="roomNo" />
 		<result column="USER_NO" property="userNo" />
-		<result column="" property="userName" />
-		<result column="" property="userPic" />
-		<result column="" property="userPet" />
-		<result column="" property="userPro" />
+		<result column="USER_NICKNAME" property="userNickname" />
+		<result column="USER_PIC" property="userPic" />
+		<result column="USER_PET" property="userPet" />
+		<result column="USER_PRO" property="userPro" />
 		<result column="MASTER_NO" property="masterNo" />
-		<result column="" property="masterName" />
-		<result column="" property="masterPic" />
-		<result column="" property="masterPet" />
-		<result column="" property="masterPro" />
+		<result column="MASTER_NICKNAME" property="masterNickname" />
+		<result column="MASTER_PIC" property="masterPic" />
+		<result column="MASTER_PET" property="masterPet" />
+		<result column="MASTER_PRO" property="masterPro" />
 	</resultMap>
 	
 	
@@ -44,8 +44,21 @@
 		SELECT *
 		  FROM CHAT_ROOM
 		WHERE ROOM_NO = #{roomNo}
-	
 	</select>
+	
+    <select id="chatRoomList" parameterType="_int" resultMap="chatRoomResultSet">
+        SELECT *
+        FROM CHAT_ROOM
+        WHERE USER_NO = #{userNo} OR MASTER_NO = #{userNo}
+    </select>
+    
+    <select id="selectUnReadCount" parameterType="ChatMessage" resultType="_int">
+        SELECT COUNT(*)
+        FROM MESSAGE
+        WHERE ROOM_NO = #{roomNo}
+        	AND USER_NO != #{userNo} 
+        	AND UNREAD_COUNT = 1
+    </select>
 
 
 

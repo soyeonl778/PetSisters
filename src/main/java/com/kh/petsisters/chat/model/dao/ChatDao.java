@@ -1,5 +1,7 @@
 package com.kh.petsisters.chat.model.dao;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -17,11 +19,16 @@ public class ChatDao {
     	System.out.println(roomNo);
         return sqlSession.selectOne("chatMapper.selectChatRoom", roomNo);
     }
-    
     public int insertMessage(ChatMessage chatMessage) {
         return sqlSession.insert("chatMapper.insertMessage", chatMessage);
     }
-//    
+    public List<ChatRoom> chatRoomList(int userNo) {
+        return sqlSession.selectList("chatMapper.chatRoomList", userNo);
+    }
+    public int selectUnReadCount(ChatMessage message) {
+    	return sqlSession.selectOne("chatMapper.selectUnReadCount",message);
+    }
+//   
 //    public List<ChatMessage> messageList(String roomId) {
 //        return sqlSession.selectList("chatMapper.messageList", roomId);
 //    }
@@ -34,13 +41,7 @@ public class ChatDao {
 //        return sqlSession.selectOne("chatMapper.searchChatRoom", room);
 //    }
 // 
-//    public List<ChatRoom> chatRoomList(String userEmail) {
-//        return sqlSession.selectList("chatMapper.chatRoomList", userEmail);
-//    }
 // 
-//    public int selectUnReadCount(ChatMessage message) {
-//        return sqlSession.selectOne("chatMapper.selectUnReadCount",message);
-//    }
 // 
 //    public int updateCount(ChatMessage message) {
 //        return sqlSession.update("chatMapper.updateCount", message);
