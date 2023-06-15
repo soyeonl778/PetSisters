@@ -36,9 +36,14 @@
                   <li>
                     <a href="/showFaq">자주하는 질문</a>
                   </li>
-                  <li class="inquiry">
-                    <a href="list.in">1:1 문의</a>
-                  </li>
+                  <c:choose>
+                  	<c:when test="${not empty loginUser}">
+                  		<li class="inquiry">
+                    		<a href="list.in">1:1 문의</a>
+                  		</li>
+                  	</c:when>
+                  </c:choose>
+                  
                 </ul>
               </div>
             </div>
@@ -146,5 +151,6 @@
   		});
   	});
   </script>
+
 </body>
 </html>

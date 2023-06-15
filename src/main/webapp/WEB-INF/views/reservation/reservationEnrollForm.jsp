@@ -72,7 +72,7 @@
                   </div>
                   <!-- 박스 내부 -->
                   <div align="center" class="formBtn">
-                    <button type="button" onclick="orderPay();" class="btn btn-info btn-lg">카카오페이로 결제하기</button>
+                    <button type="button" onclick="orderPay();" class="btn btn-info btn-lg">결제하기</button>
                   </div>
 				 </form>
                 </div>
@@ -87,60 +87,85 @@
   </div>
 
 <jsp:include page="../common/footer.jsp" />
-<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-<script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 <script>
-	//결제기능
-	function orderPay(){
-		let payPrice = $('.pays').text();				// 총 금액
-		let itemList9 = $('.package').text()			// 아이템 목록
-		let userName9 = $('.join').text()				// 회원 이름
-		let orderAddress9 = $('.totalprice').text();	// 배송지 주소
+	function orderPay() {
+		// 결제 정보 설정
+		  let payNo = 12345; // 결제번호
+		  let payDate = new Date(); // 결제일시
+		  let payDesc = "결제내용"; // 결제내용
+		  let payPrice = 50000; // 결제금액
+		  let status = "결제완료"; // 결제상태
+		  let refResno = 98765; // 참조예약번호 (예약테이블)
+	  
+		//임의의 고유한 주문 번호 생성
+		const orderNumber = Date.now().toString() + Math.random().toString(36).substr(2, 9);
 		
-		IMP.init('imp68338217');
-		IMP.request_pay({
-		    pg : 'kakao',
-		    pay_method : 'card',
-		    merchant_uid : 'merchant_' + new Date().getTime(),
-		    name : itemList9 , //결제창에서 보여질 이름
-		    amount : payPrice, //실제 결제되는 가격
-		    buyer_email : 'test888@test.do',
-		    buyer_name : userName9,
-		    buyer_tel : '010-1234-5678',
-		    buyer_addr : orderAddress9,
-		    buyer_postcode : '123-456'
-		}, function(rsp) {
-			// console.log(rsp);
-		    if ( rsp.success ) {
-		    	var msg = '결제가 완료되었습니다.';
-		    	insertOrder(rsp.imp_uid);
-		        // location.href = '/orderComplete';
-		    } else {
-		    	 var msg = '결제에 실패하였습니다.';
-		         msg += '에러내용 : ' + rsp.error_msg;
-		    }
-		    alert(msg);
+		// 임의의 고유한 사용자 번호 생성
+		const userNumber = 'user' + Math.random().toString(36).substr(2, 9);
+		
+		// 카카오페이 API 호출
+		Kakao.init('a24cd6e1a1347f08eb3922c727b12aea');
+		let cancel_url = "../common/errorPage.jsp";
+		let fail_url = "../common/errorPage.jsp";
+		Kakao.API.request({
+		  url: '/v1/payment/ready',
+		  data: {
+		    cid: 'TC0ONETIME',
+		    partner_order_id: orderNumber,
+		    partner_user_id: userNumber,
+		    item_name: itemList9, // 결제창에서 보여질 상품명
+		    quantity: 1,
+		    total_amount: countMoney9, // 결제할 총 금액
+		    tax_free_amount: 0,
+		    approval_url: '/paySuccess',
+		    cancel_url: '취소_리다이렉트_URL',
+		    fail_url: '실패_리다이렉트_URL',
+		  },
+		  success: function (response) {
+		  	// 카카오페이 결제창 열기
+		    window.open(response.next_redirect_pc_url);
+		  },
+		  fail: function (error) {
+		    console.log(error);
+		  },
 		});
 	}
-</script>
-<script>
-	function insertOrder(orderUid) {
-		$.ajax({
-			
-			url: "insertOrder",
-			type: "post",
-			data: {
-				totalPay: parseInt($('.countMoney').text()),
-				orderUid: orderUid
-			},
-			success: function(res) {
-				insertItemList();
-			},
-			error: function(err) {
-				console.log(err);
-			}
-		})
+	
+	function insertOrder(orderId) {
+		  // 결제 정보 저장 및 처리 로직
+		  let payNo = 12345; // 결제번호
+		  let payDate = new Date(); // 결제일시
+		  let payDesc = "결제내용"; // 결제내용
+		  let payPrice = 50000; // 결제금액
+		  let status = "결제완료"; // 결제상태
+		  let refResno = 98765; // 참조예약번호 (예약테이블)
+		  
+		  // 결제 정보를 서버로 전송
+		  $.ajax({
+		    url: "/savePayment", // 저장 및 처리 로직이 구현된 서버 API의 엔드포인트
+		    type: "post",
+		    data: {
+		      payNo: payNo,
+		      payDate: payDate,
+		      payDesc: payDesc,
+		      payPrice: payPrice,
+		      status: status,
+		      refResno: refResno
+		    },
+		    success: function(res) {
+		      // 결제 정보 저장 및 처리 성공 시 동작
+		      console.log("결제 정보 저장 및 처리 성공");
+		      location.href = "/paySuccess";
+		    },
+		    error: function(err) {
+		      // 결제 정보 저장 및 처리 실패 시 동작
+		      console.log("결제 정보 저장 및 처리 실패");
+		      console.log(err);
+		      // 추가로 필요한 동작이 있다면 이곳에 작성
+		    }
+		 });
 	}
 </script>
+
 </body>
 </html>
