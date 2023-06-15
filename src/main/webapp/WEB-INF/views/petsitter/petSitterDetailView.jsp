@@ -381,7 +381,7 @@
                                 <c:when test="${ likeCheck == 0 }">
                                   <div class="likeBtn">
                                     <a onclick="" class="heart-login">
-                                      <i class="bi bi-heart heartIcon" id="unChecked"></i><p>찜 갯수&nbsp;</p>
+                                      <i class="bi bi-heart heartIcon" id="unChecked"></i><p>${ likeCount }&nbsp;</p>
                                     </a>
                                   </div>
                                 </c:when>
@@ -389,7 +389,7 @@
                                 <c:otherwise>
                                   <div class="likeBtn">
                                     <a onclick="" class="heart-login">
-                                      <i class="bi bi-heart-fill heartIcon" id="cheked"></i><p>찜 갯수&nbsp;</p>
+                                      <i class="bi bi-heart-fill heartIcon" id="cheked"></i><p>${ likeCount }&nbsp;</p>
                                     </a>
                                   </div>
                                 </c:otherwise>
@@ -402,7 +402,7 @@
                         <c:otherwise>
                           <div class="likeBtn">
                             <a href="#" class="heart-notlogin">
-                              <i class="bi bi-heart"></i><p>찜 갯수&nbsp;</p>
+                              <i class="bi bi-heart"></i><p>${ likeCount }&nbsp;</p>
                             </a>
                           </div>
                         </c:otherwise>

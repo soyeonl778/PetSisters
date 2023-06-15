@@ -68,10 +68,8 @@ public class PetSitterController {
 			mv.addObject("likeCheck", likeCheck);
 		}
 		
-		/*
 		// 펫시터 찜 갯수 조회
-		int likeCount = petSitterService.selectLikeCount(refPno);
-		*/
+		int likeCount = petSitterService.selectLikeCount(pno);
 		
 		// 조회된 데이터를 mv 에 담아서 포워딩 페이지 경로를 잡아주기
 		mv.addObject("p", p)
@@ -79,6 +77,7 @@ public class PetSitterController {
 		  .addObject("reviewCount", reviewCount)
 		  .addObject("dogList", dogList)
 		  .addObject("psImgList", psImgList)
+		  .addObject("likeCount", likeCount)
 		  .setViewName("petsitter/petSitterDetailView");
 
 		return mv;
@@ -187,6 +186,7 @@ public class PetSitterController {
 		ArrayList<PetSitter> list = petSitterService.selectList(pi);
 		
 		// 펫시터 대표이미지 리스트 조회
+//		ArrayList<PetSitterImg> thumbnailList = petSitterService.selectThumbnailList(pi);
 		
 		mv.addObject("pi", pi)
 		  .addObject("list", list)
@@ -231,8 +231,7 @@ public class PetSitterController {
 		} else { // 채워진 하트 일 때 DELETE
 			
 			// 펫시터 찜 삭제 요청
-			result = petSitterService.deleteLike(psLike);
-			
+			result = petSitterService.deleteLike(psLike);	
 		}
 		
 		return (result > 0) ? "success" : "fail";

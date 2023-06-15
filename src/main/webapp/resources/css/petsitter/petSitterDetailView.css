@@ -223,6 +223,7 @@ div, form, img { box-sizing: border-box; }
 
 .likeBtn p {
     margin-bottom: 0;
+    color: black;
 }
 
 .bi-heart {

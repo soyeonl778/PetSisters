@@ -113,5 +113,11 @@ public class PetSitterServiceImpl implements  PetSitterService {
 		return petSitterDao.selectLikeCount(sqlSession, refPno);
 	}
 
+	@Override
+	public ArrayList<PetSitterImg> selectThumbnailList() {
+
+		return petSitterDao.selectThumbnailList(sqlSession);
+	}
+
 
 }
