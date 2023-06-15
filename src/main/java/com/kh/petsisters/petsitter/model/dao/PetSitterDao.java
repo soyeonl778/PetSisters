@@ -38,10 +38,7 @@ public class PetSitterDao {
 		
 		RowBounds rowBounds = new RowBounds(offset, limit);
 		
-//		(ArrayList)sqlSession.selectList("petSitterMapper.selectList", null, rowBounds);
-//		sqlSession.selectList("petSitterMapper.selectThumbnailList", null, rowBounds);
-		
-		return null;
+		return (ArrayList)sqlSession.selectList("petSitterMapper.selectList", null, rowBounds);
 	}
 	
 	public ArrayList<Review> selectReviewList(SqlSessionTemplate sqlSession, int pno) {
@@ -111,10 +108,6 @@ public class PetSitterDao {
 		return sqlSession.selectOne("petSitterMapper.selectLikeCount", refPno);
 	}
 	
-//	public ArrayList<PetSitterImg> selectThumbnailList(SqlSessionTemplate sqlSession) {
-//		
-//		return sqlSession.selectList("petSitterMapper.selectThumbnailList", null, rowBounds);
-//	}
 }
 
 
