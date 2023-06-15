@@ -992,7 +992,7 @@
 
         const data = {
             "roomNo" : 1,
-            "userName" : "${ loginUser.userName }",
+            "userNickname" : "${ loginUser.userNickname }",
             "userNo" : "${ loginUser.userNo }",
             "message"   : messageText 
         };
