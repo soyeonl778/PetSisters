@@ -62,13 +62,31 @@
 			 , A.CHANGE_NAME
 			 , A.FILE_PATH AS AT_FILE_PATH 
 		 FROM BOARD B
-         LEFT JOIN B_ATTACHMENT A ON (B.B_NO = A.REF_BNO) 	
+         LEFT JOIN P_ATTACHMENT A ON (B.B_NO = A.REF_BNO) 	
         WHERE B.STATUS = 'Y'
 		  AND CATEGORY_MAIN = '1'
         ORDER BY B.B_NO DESC	
 	</select>	
 
+	<!-- 조회수 증가용 쿼리문 -->
+	<update id="increaseCount" parameterType="_int">
+		UPDATE BOARD
+		   SET COUNT = COUNT + 1
+		 WHERE BOARD_NO = #{boardNo}
+		   AND STATUS = 'Y'
+	</update>
+	
 	<!-- 게시글 작성용 쿼리문 -->
+	<insert id="insertFreeBoard" parameterType="board">
+	
+	
+	</insert>
+	
+	
+	
+	
+	<!-- 게시글 작성용 쿼리문 -->
+	<!--  
 	<insert id="insertFreeBoard" parameterType="board">
 		INSERT INTO BOARD(B_NO
 						, B_TITLE
@@ -89,17 +107,33 @@
 				   		, #{originName}
 				   		, #{changeName})
 	</insert>
-
-	<!-- 조회수 증가용 쿼리문 -->
-	<update id="increaseCount" parameterType="_int">
-		UPDATE BOARD
-		   SET COUNT = COUNT + 1
-		 WHERE BOARD_NO = #{boardNo}
-		   AND STATUS = 'Y'
-	</update>
+	-->
 	
 	
 	
+	
+	
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	<!-- 여기서부터 하나하나 수정해나가기 --> 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
 	 
 	<!-- 일반게시판 글작성 : 다중파일 & BOARD테이블 -->
 	<!--
@@ -149,7 +183,7 @@
 			 , TO_CHAR(B.CREATE_DATE, 'YYYY-MM-DD') AS "CREATE_DATE"
 			 , A.REF_BNO
 		FROM BOARD B
-		LEFT JOIN B_ATTACHMENT A ON (B.B_NO = A.REF_BNO)
+		LEFT JOIN P_ATTACHMENT A ON (B.B_NO = A.REF_BNO)
 		ORDER BY BOARD_NO DESC
 		WHERE STATUS = 'Y'
 		   AND CATEGORY_MAIN = '1' 		
@@ -206,12 +240,12 @@
 							  , FILE_PATH
 							  , FILE_LEVEL
 							  , REF_BNO)
-					VALUES (SEQ_B_ATTACHMENT.NEXTVAL
+					VALUES (SEQ_P_ATTACHMENT.NEXTVAL
 						  , #{originName}
 						  , #{changeName}
 						  , #{filePath}
 						  , #{fileLevel}
-						  , SEQ_B_ATTACHMENT.CURRVAL)
+						  , SEQ_P_ATTACHMENT.CURRVAL)
 	</insert>
 	-->
 
@@ -220,7 +254,7 @@
 	<select id="selectAttachment" parameterType="_int" resultMap="attachmentResultSet">
 		SELECT ORIGIN_NAME
 		     , CHANGE_NAME
-		  FROM B_ATTACHMENT
+		  FROM P_ATTACHMENT
 		 WHERE STATUS = 'Y'
 		   AND REF_BNO = #{boardNo}
 	</select>	
@@ -229,7 +263,7 @@
 	
 	<!--  
 	<insert id="insertAttachmentList" parameterType="">
-		INSERT INTO B_ATTACHMENT(FILE_NO,
+		INSERT INTO P_ATTACHMENT(FILE_NO,
 							   , ORIGIN_NAME
 							   , CHANGE_NAME
 							   , FILE_PATH
@@ -237,12 +271,12 @@
 							   , DEFAULT
 							   , FILE_LEVEL
 							   , REF_BNO)
-					VALUES(SEQ_B_ATTACHMENT.NEXTVAL
+					VALUES(SEQ_P_ATTACHMENT.NEXTVAL
 					     , #{}
 					     , #{}
 					     , #{}
 					     , #{}
-					     , SEQ_B_ATTACHMENT.CURRVAL)
+					     , SEQ_P_ATTACHMENT.CURRVAL)
 	</insert>	  
 	-->		  
 				  

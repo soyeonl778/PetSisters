@@ -31,54 +31,13 @@ public class BoardController {
 	@Autowired
 	private BoardService boardService;
 	
-	/*
-	@Autowired
-	private Attachment at;
-	*/
 
-	/*
-	// 내강아지자랑 게시판 : 사진게시판 (사진형식, 다중파일)
-	@RequestMapping("mypetlist.bo")
-	public ModelAndView selectList(
-			@RequestParam(value="cPage", defaultValue="1") int currentPage, 
-			ModelAndView mv) {
-		
-		// 헤더에서 전달값으로 cno="2" 넘겨주기 : 일반게시판
-		
-		
-		// 페이징처리를 위한 PageInfo 객체 얻어내기
-		int listCount = boardService.selectListCount();
-		
-		int pageLimit = 10;
-		int boardLimit = 6;
-		
-		PageInfo pi = Pagination.getPageInfo(listCount, currentPage, pageLimit, boardLimit);
 	
-		
-		ArrayList<Board> list = boardService.selectList(pi);
-		
-		// 다중파일 업로드 
-		
-		
-		
-		System.out.println(list);
-		
-		mv.addObject("pi", pi)
-		  .addObject("list", list)
-		  .setViewName("board/boardCategoryForm");
-		
-		return mv;
-	}
-	*/
-	
-	
-	
+	// 사진게시판 포워딩
 	@RequestMapping("mypetlist.bo")
 	public String selectList() {
-		
-		// imsiBoardMain
-		// boardEnrollForm
-		return "board/imsiBoardEnrollForm";
+
+		return "board/boardMain";
 	}
 	
 	
@@ -109,7 +68,7 @@ public class BoardController {
 		return mv;
 	}
 	
-
+	/*
 	@RequestMapping("freeEnrollForm.bo")
 	public String FreeEnrollForm() {
 		
@@ -129,28 +88,8 @@ public class BoardController {
 	
 		return "board/boardDetailForm";
 	}
-	
-	/*
-	@RequestMapping("detail.bo")
-	public String selectBoard(int bno) {
-		
-		int result = boardService.increaseCount(bno);
-		
-		if(result > 0) {
-			
-			Board b = boardService.selectBoard(bno);
-			
-			mv.addObject("b", b).setViewName("board/boardDetailView");
-			
-		} else {
-			
-			mv.addObject("errorMsg", "게시글 상세조회 실패").setViewName("common/errorPage");
-			
-		}
-		
-		return mv;
-	}
 	*/
+
 	
 	// 테스트용
 	@RequestMapping("test")
@@ -194,6 +133,77 @@ public class BoardController {
 		
 		return "board/boardDetailForm";
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	/*
+	@RequestMapping("detail.bo")
+	public String selectBoard(int bno) {
+		
+		int result = boardService.increaseCount(bno);
+		
+		if(result > 0) {
+			
+			Board b = boardService.selectBoard(bno);
+			
+			mv.addObject("b", b).setViewName("board/boardDetailView");
+			
+		} else {
+			
+			mv.addObject("errorMsg", "게시글 상세조회 실패").setViewName("common/errorPage");
+			
+		}
+		
+		return mv;
+	}
+	*/
+	
+	
+	
+	/*
+	// 내강아지자랑 게시판 : 사진게시판 (사진형식, 다중파일)
+	@RequestMapping("mypetlist.bo")
+	public ModelAndView selectList(
+			@RequestParam(value="cPage", defaultValue="1") int currentPage, 
+			ModelAndView mv) {
+		
+		// 헤더에서 전달값으로 cno="2" 넘겨주기 : 일반게시판
+		
+		
+		// 페이징처리를 위한 PageInfo 객체 얻어내기
+		int listCount = boardService.selectListCount();
+		
+		int pageLimit = 10;
+		int boardLimit = 6;
+		
+		PageInfo pi = Pagination.getPageInfo(listCount, currentPage, pageLimit, boardLimit);
+	
+		
+		ArrayList<Board> list = boardService.selectList(pi);
+		
+		// 다중파일 업로드 
+		
+		
+		
+		System.out.println(list);
+		
+		mv.addObject("pi", pi)
+		  .addObject("list", list)
+		  .setViewName("board/boardCategoryForm");
+		
+		return mv;
+	}
+	*/
+	
 	
 	/*
 	// 자유게시판 : 글작성 insert 기능

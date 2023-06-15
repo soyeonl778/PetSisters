@@ -86,7 +86,12 @@
 	                                  <div class="file-upload-form">
 	                                    <div class="file-upload-top">
 	                                      <i id="plusIcon" class="fa-solid fa-square-plus fa-9x" style="color: #e6e6eb;" ></i>
-	                                    </div>
+                                          <div class="img_header" >
+                                              <img id="contentImg1" width="150" height="120">
+                                              <img id="contentImg2" width="150" height="120">
+                                              <img id="contentImg3" width="150" height="120"> 
+                                          </div>
+                                      </div>
 	                                    
                                       <div class="fileSection preview">
                                         <label for="btnAtt">첨부파일 : </label>
@@ -95,8 +100,7 @@
                                         <input type="file" name="upfileList" id="btnAtt" onchange="loadImg(this, 2);" > <br>
                                         <label for="btnAtt">첨부파일 : </label>
                                         <input type="file" name="upfileList" id="btnAtt" onchange="loadImg(this, 3);" >
-                                      </div> 
-	                                     
+                                      </div>  
 	                                  </div>
 	                                  
                                 	</form>
@@ -135,24 +139,32 @@
       <!-- Footer 영역 끝 -->
       <script>
         function loadImg(inputFile, num) {
+            
+            // 태그설정
+            let contentImg1 = document.getElementById("contentImg1");  
+            let contentImg2 = document.getElementById("contentImg1");
+            let contentImg3 = document.getElementById("contentImg1"); 
 
-          document.getElementById('plusIcon').style.display = 'none';
+            // 플러스 아이콘 제거
+            document.getElementById('plusIcon').style.display = 'none';
 
             if(inputFile.files.length == 1) { // 선택된 파일이 있을 경우
 
-              alert('good??');
-              
               let reader = new FileReader();
-
               reader.readAsDataURL(inputFile.files[0]);
-
-              // 파일 읽기가 완료되었을 때, 실행하게끔 처리
               reader.onload = function(e) {
+                switch(num) {
+                    case 1: alert('switch문 접근완료');
+                            $("#contentImg1").css("display", "inline");
+                            $("#contentImg1").attr("src", e.target.result); break;
 
-                var img = document.createElement('img');
-                img.attr('src', e.target.result);
-                img.attr('id', "img-tags");
-                $('#img-tags').appendTo('.file-upload-top');
+                    case 2 : $("#contentImg2").attr("src", e.target.result);
+                             $("#contentImg2").css("display", "inline"); break;
+
+                    case 3 : $("#contentImg3").attr("src", e.target.result);
+                             $("#contentImg3").css("display", "inline"); break;
+                }   
+                
 
               }
 
@@ -160,35 +172,22 @@
 
               // 미리보기 사라지게 하기
               switch(num) {
-                case 1: $("#img-tags").attr("src", null); break;
+                case 1 : $("#contentImg1").attr("src", null); $("#contentImg1").css("display", "none"); break;
+                case 2 : $("#contentImg2").attr("src", null); $("#contentImg2").css("display", "none"); break;
+                case 3 : $("#contentImg3").attr("src", null); $("#contentImg3").css("display", "none"); break;
               }
+              
+              // 모든 사진이 없을 경우, 플러스아이콘이 보여지도록 설정하기 
+              if($("#contentImg1").css("display") === "none" &&
+                 $("#contentImg2").css("display") === "none" &&
+                 $("#contentImg3").css("display") === "none" ) {
+
+                    document.getElementById('plusIcon').style.display = 'block';
+                 }
+
             }
 
         }
-
-          /*        
-          $(function() {
-            var fileInput = document.getElementById('btnAtt'); // input 태그
-            var fileSection = document.querySelector('.file-upload-top'); // 이미지가 위치할 부모태그
-            var plusIcon = document.getElementById('plusIcon'); // 아이콘을 의미하는 태그
-
-            fileInput.addEventListener('change', function() {
-              var files = fileInput.files;
-              
-              for (var i = 0; i < files.length; i++) {
-                  var file = files[i];
-                  var img = document.createElement('img');
-                  img.src = URL.createObjectURL(file);
-                  img.attr('src', )
-                  fileSection.appendChild(img);
-                }
-
-                plusIcon.style.display = 'none';
-
-            });
-            
-          });
-          */
       </script>
     </body>
     </html>
