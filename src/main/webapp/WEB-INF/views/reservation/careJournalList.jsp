@@ -47,7 +47,7 @@
 							<div class="page_section section_destination">
 								<!-- 이 영역 안에서 페이지 작업 하시면 됩니다 -->
 								<div>
-									<form id="journalForm" action="journalList" method="post">
+									<form id="journalForm" action="journalList" method="get">
 
 										<div class="topTitWrap">
 											<div class="titDescs">돌봄일지 목록</div>
@@ -118,41 +118,60 @@
 									</div>
 									<!-- 카드 영역-->
 									<!-- 페이지네이션-->
-									<div id="pagination">
-										<nav aria-label="Page navigation example">
-											<c:if test="${ pi.listCount != 0 }">
-												<ul id="pagiUl" class="pagination paginationUlTag">
+<div id="pagination">
+	<nav aria-label="Page navigation example">
+		<c:if test="${ pi.listCount != 0 }">
+			<ul id="pagiUl" class="pagination paginationUlTag">
 
-													<c:choose>
-														<c:when test="${ pi.currentPage eq 1 }">
-															<li class="arrowTag disabled"><a href="">&lsaquo;</a></li>
-														</c:when>
-														<c:otherwise>
-															<li class="arrowTag"><a
-																href="journalList?cPage=${ pi.currentPage - 1 }">&lsaquo;</a></li>
-														</c:otherwise>
-													</c:choose>
+				<c:choose>
+					<c:when test="${ pi.currentPage eq 1 }">
+						<li class="arrowTag disabled"><a href="">&lsaquo;</a></li>
+					</c:when>
+					<c:otherwise>
+						<c:if test="${ empty options }">
+							<li class="arrowTag">
+								<a href="journalList?cPage=${ pi.currentPage - 1 }">&lsaquo;</a>
+							</li>
+						</c:if>
+						<c:if test="${ not empty options }">
+							<li class="arrowTag">
+								<a href="journalList?cPage=${ pi.currentPage - 1 }&options=${options}&keyword=${keyword}">&lsaquo;</a>
+							</li>
+						</c:if>
+					</c:otherwise>
+				</c:choose>
 
-													<c:forEach var="p" begin="${ pi.startPage }"
-														end="${ pi.endPage }" step="1">
-														<li class="page-item active"><a class="page-link"
-															href="journalList?cPage=${p }">${ p }</a></li>
-													</c:forEach>
+				<c:forEach var="p" begin="${ pi.startPage }" end="${ pi.endPage }" step="1">
+				  <c:if test="${empty options}">
+					<li class="page-item active"><a class="page-link"
+						href="journalList?cPage=${p }">${ p }</a></li>
+				  </c:if>		
+				  <c:if test="${not empty options}">
+				  <li class="page-item active"><a class="page-link"
+						href="journalList?cPage=${p }&options=${options}&keyword=${keyword}">${ p }</a></li>
+				  </c:if>
+				</c:forEach>
 
-													<c:choose>
-														<c:when test="${ pi.currentPage eq pi.maxPage }">
-															<li class="arrowTag disabled"><a
-																href="javascript:void(0)">&rsaquo;</a></li>
-														</c:when>
-														<c:otherwise>
-															<li class="arrowTag"><a
-																href="journalList?cPage=${pi.currentPage + 1}">&rsaquo;</a></li>
-														</c:otherwise>
-													</c:choose>
-												</ul>
-											</c:if>
-										</nav>
-									</div>
+				<c:choose>
+					<c:when test="${ pi.currentPage eq pi.maxPage }">
+						<li class="arrowTag disabled"><a
+							href="javascript:void(0)">&rsaquo;</a></li>
+					</c:when>
+					<c:otherwise>
+					 <c:if test="${ empty options }">
+						<li class="arrowTag"><a
+							href="journalList?cPage=${pi.currentPage + 1}">&rsaquo;</a></li>
+					  </c:if>		
+					 <c:if test="${ not empty options }">
+						<li class="arrowTag"><a
+							href="journalList?cPage=${pi.currentPage + 1}&options=${options}&keyword=${keyword}">&rsaquo;</a></li>
+					  </c:if>		
+					</c:otherwise>
+				</c:choose>
+			</ul>
+		</c:if>
+	</nav>
+</div>
 									<!-- 페이지네이션-->
 								</div>
 

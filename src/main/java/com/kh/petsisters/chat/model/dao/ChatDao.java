@@ -28,11 +28,11 @@ public class ChatDao {
     public int selectUnReadCount(ChatMessage message) {
     	return sqlSession.selectOne("chatMapper.selectUnReadCount",message);
     }
-//   
-//    public List<ChatMessage> messageList(String roomId) {
-//        return sqlSession.selectList("chatMapper.messageList", roomId);
-//    }
-// 
+   
+    public List<ChatMessage> messageList(int roomNo) {
+        return sqlSession.selectList("chatMapper.messageList", roomNo);
+    }
+ 
 //    public int createChat(ChatRoom room) {
 //        return sqlSession.insert("chatMapper.createChat", room);
 //    }

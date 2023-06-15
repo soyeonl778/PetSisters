@@ -42,14 +42,17 @@
                  		 </div>
                     </div>
                     
-                    
-                    
                     <!-- 카드 하나 영역-->
                     <div class="fimg">
                       <div class="tetego">
                           <c:set var="imageArray" value="${fn:split(c.changeName, ',')}" />
 						  <c:set var="firstImage" value="${fn:trim(imageArray[0])}" />
+						  <c:if test="${empty firstImage}">
+						  <img src="/resources/img/main/첨부파일없음.png" style="margin: 0!important;">
+						  </c:if>
+						  <c:if test="${ not empty firstImage }">
 						 <img src="${c.filePath}${firstImage}" alt="">
+						 </c:if>
                       </div>
                     </div>
                     
@@ -63,8 +66,13 @@
                       
                       <div class="imgSections">
                       <c:forEach var="image" items="${fn:split(c.changeName, ',')}">
+                      <c:if test="${empty image}">
+						  <img src="/resources/img/main/첨부파일없음.png">
+					  </c:if>
+					  <c:if test="${not empty image }">
                        <c:set var="trimmedImage" value="${fn:trim(image)}" />
                         <img src="${c.filePath}${trimmedImage}" alt="" style="height: 150px;">
+                        </c:if>
                         </c:forEach>
                       </div>
                     </div>

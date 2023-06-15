@@ -171,6 +171,29 @@ public class ReservationDao {
 		return (ArrayList)sqlSession.selectList("reservationMapper.searchPay", parameter);
 	}
 
+	public int selectJournalCount(SqlSessionTemplate sqlSession, int userNo) {
+		return sqlSession.selectOne("reservationMapper.selectJournalCount", userNo);
+	}
+
+	public ArrayList<CareJournal> careJournalManagement(SqlSessionTemplate sqlSession, PageInfo pi, int userNo,
+			String options) {
+		
+		Map<String, Object> parameter = new HashMap<>();
+		parameter.put("userNo", userNo);
+		parameter.put("options", options);
+		
+		int offset = (pi.getCurrentPage() - 1) * pi.getBoardLimit();
+		int limit = pi.getBoardLimit();
+		
+		RowBounds rowBounds = new RowBounds(offset, limit);
+		
+		return (ArrayList)sqlSession.selectList("reservationMapper.careJournalManagement", parameter, rowBounds);
+	}
+
+	public CareJournal updateJournal(SqlSessionTemplate sqlSession, int jno) {
+		return sqlSession.selectOne("reservationMapper.updateJournal", jno);
+	}
+
 
 
 }

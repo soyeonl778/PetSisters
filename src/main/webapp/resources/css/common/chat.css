@@ -306,7 +306,7 @@ background-color: #0888D0;
 }
 
 .OpponentImage {
-    margin-right: 12px;
+    margin-right: 3px;
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -382,7 +382,7 @@ background-color: #0888D0;
 
 .chatContentArea {
     overflow: hidden auto;
-    padding: 0px 20px;
+    padding: 10px 10px;
 }
 
 .dayArea {

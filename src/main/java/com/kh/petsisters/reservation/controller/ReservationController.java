@@ -62,11 +62,9 @@ public class ReservationController {
 		
 		ArrayList<Reservation> list = reservationService.selectPetsitterList(pi, userNo, checkReview);
 
-		
 		model.addAttribute("pi", pi);
 		model.addAttribute("list", list);
-		System.out.println(pi);
-		System.out.println(list);
+		
 		return "reservation/reservationList";
 	}
 	
@@ -207,8 +205,6 @@ public class ReservationController {
 		// System.out.println(rNo);
 		Reservation rev = reservationService.reservationDetail(rNo);
 		
-		System.out.println(rev);
-		
 		model.addAttribute("rev", rev);
 		
 		return "reservation/reservationDetail";
@@ -240,8 +236,6 @@ public class ReservationController {
 		PageInfo pi = Pagination.getPageInfo(listCount, currentPage, pageLimit, boardLimit);
 		
 		ArrayList<CareJournal> list = reservationService.journalList(pi, userNo, keyword, options);
-		
-		System.out.println(list);
 		
 		model.addAttribute("list", list);
 		model.addAttribute("pi", pi);
@@ -290,6 +284,7 @@ public class ReservationController {
 		model.addAttribute("totalPay", totalPay);
 		model.addAttribute("list", list);
 		
+		/*
 		// 월별로 묶을 Map 생성
 		Map<String, List<Payment>> monthlyPayments = new HashMap<>();
 		
@@ -330,6 +325,9 @@ public class ReservationController {
 		    System.out.println("===================");
 		}
 		
+		*/
+		
+			
 		return "notice/settlementinquiry";
 	}
 	
@@ -348,8 +346,6 @@ public class ReservationController {
 		int userNo = ((Member)(session.getAttribute("loginUser"))).getUserNo();
 		
 		ArrayList<Payment> list = reservationService.searchPay(userNo, startDate, endDate);
-		
-		System.out.println(list);
 		
 		return new Gson().toJson(list);
 		
@@ -377,8 +373,6 @@ public class ReservationController {
 			@RequestParam(value="pPage", defaultValue="1") int currentPage,
 			@RequestParam(value="keyword", required=false) String keyword
 			) {
-//		@RequestParam(value="startDate", required=false) String startDateStr,
-//		@RequestParam(value="endDate", required=false) String endDateStr
 		
 		int userNo = ((Member)(session.getAttribute("loginUser"))).getUserNo();
 		
@@ -449,6 +443,56 @@ public class ReservationController {
 		
 		return "reservation/carejournalEnrollForm";
 	}
+	
+	
+	/**
+	 * 돌봄일지 관리 리스트
+	 * @param options
+	 * @param currentPage
+	 * @param session
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping("journalManager")
+	public String careJournalManagement(@RequestParam(value="options", required=false) String options,
+										@RequestParam(value="cPage", defaultValue="1") int currentPage,
+										HttpSession session, Model model) {
+		
+		int userNo = ((Member)(session.getAttribute("loginUser"))).getUserNo();
+		
+		int listCount = reservationService.selectJournalCount(userNo);
+		
+		int pageLimit = 10;
+		int boardLimit = 6;
+		
+		PageInfo pi = Pagination.getPageInfo(listCount, currentPage, pageLimit, boardLimit);
+		
+		ArrayList<CareJournal> list = reservationService.careJournalManagement(pi, userNo, options);
+		
+		model.addAttribute("list", list);
+		model.addAttribute("options", options);
+		model.addAttribute("pi", pi);
+		
+		return "reservation/careJournalManagement";
+	}
+	
+	
+	
+	
+	@RequestMapping("updateJournal")
+	public String updateJournal(@RequestParam(value="jNo") int jno, Model model) {
+		
+		System.out.println(jno);
+		
+		CareJournal c = reservationService.updateJournal(jno);
+		
+		model.addAttribute("c", c);
+		
+		System.out.println(c);
+		
+		return "reservation/carejournalUpdateForm";
+	}
+	
 	
 	
 	

@@ -77,6 +77,15 @@ public interface ReservationService {
 	// 펫시터 돌봄일지에 파일 있을경우 파일 추가
 	int insertJournalFile(ArrayList<CareJournal> list);
 
+	// 펫시터 돌봄일지 관리 갯수 조회용
+	int selectJournalCount(int userNo);
+
+	// 펫시터 돌봄일지 관리 리스트 조회용
+	ArrayList<CareJournal> careJournalManagement(PageInfo pi, int userNo, String options);
+
+	// 펫시터 돌봄일지 수정시 초기 정보 조회용
+	CareJournal updateJournal(int jno);
+
 
 
 

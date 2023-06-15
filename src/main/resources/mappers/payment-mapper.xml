@@ -11,5 +11,14 @@
 		<result column="REF_RESNO" property="refResno" />
 	</resultMap>
 	
+	<insert id="processPayment" parameterType="payment">
+		INSERT INTO PAYMENT(PAY_NO, PAY_DATE, PAY_DESCRIPTION, PAY_PRICE, STATUS, REF_RESNO)
+			  VALUES(SEQ_PAYMENT.NEXTVAL
+			  	   , TO_CHAR(PAY_DATE, 'YYYY-MM-DD') AS "PAY_DATE" 
+			  	   , #{payDscpt}
+			  	   , #{payPrice}
+			  	   , #{status}
+			  	   , #{refResno})
+	</insert>
 	
 </mapper>

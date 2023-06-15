@@ -40,6 +40,12 @@ public class ChatServiceImpl implements ChatService {
 	public int selectUnReadCount(ChatMessage message) {
 		return chatDao.selectUnReadCount(message);
 	}
+
+	@Override
+	public List<ChatMessage> messageList(int roomNo) {
+		return chatDao.messageList(roomNo);
+	}
+
 	
 
 
