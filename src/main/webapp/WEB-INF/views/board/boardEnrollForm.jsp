@@ -129,45 +129,58 @@
       <!-- Footer 영역 시작 -->
       <jsp:include page="../common/footer.jsp" />
       <!-- Footer 영역 끝 -->
-       <script>
-    $(function() {
-      var fileInput = document.getElementById('btnAtt'); // input 태그
-      var fileSection = document.querySelector('.file-upload-top'); // 이미지가 위치할 부모태그
-      var plusIcon = document.getElementById('plusIcon'); // 아이콘을 의미하는 태그
+      <script>
+        function loadImg(inputFile, num) {
+            
+            if(inputFile.files.length == 1) { // 선택된 파일이 있을 경우
+              
+              let reader = new FileReader();
 
-      fileInput.addEventListener('change', function() {
-        var files = fileInput.files;
-        
-        for (var i = 0; i < files.length; i++) {
-            var file = files[i];
-            var img = document.createElement('img');
-            img.src = URL.createObjectURL(file);
-            /*img.attr('src', )*/
-            fileSection.appendChild(img);
-          }
+              reader.readAsDataURL(inputFile.files[0]);
 
-          plusIcon.style.display = 'none';
+              // 파일 읽기가 완료되었을 때, 실행하게끔 처리
+              reader.onload = function(e) {
 
-      });
-    });
+                var img = document.createElement('img');
+                img.attr('src', e.target.result);
+                img.attr('id', "img-tags");
+                $('#img-tags').appendTo('.file-upload-top');
 
-    /*
-    function loadImg(inputFile, num) {
-      
-      if(inputFile.files.length == 1) {
-        
-        let reader = new FileReader();
+              }
 
-        reader.readAsDataURL(inputFile.files[0]);
+            } else { // 선택된 파일이 사라졌을 경우
 
+              // 미리보기 사라지게 하기
+              switch(num) {
+                case 1: $("#img-tags").attr("src", null); break;
+              }
+            }
 
+        }
 
-      }
-      
-    }
-    */
+          /*        
+          $(function() {
+            var fileInput = document.getElementById('btnAtt'); // input 태그
+            var fileSection = document.querySelector('.file-upload-top'); // 이미지가 위치할 부모태그
+            var plusIcon = document.getElementById('plusIcon'); // 아이콘을 의미하는 태그
 
+            fileInput.addEventListener('change', function() {
+              var files = fileInput.files;
+              
+              for (var i = 0; i < files.length; i++) {
+                  var file = files[i];
+                  var img = document.createElement('img');
+                  img.src = URL.createObjectURL(file);
+                  img.attr('src', )
+                  fileSection.appendChild(img);
+                }
 
-  </script>
+                plusIcon.style.display = 'none';
+
+            });
+            
+          });
+          */
+      </script>
     </body>
     </html>
