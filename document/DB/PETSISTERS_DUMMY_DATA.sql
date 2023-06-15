@@ -48,13 +48,22 @@ VALUES ( SEQ_P_ATTACHMENT.NEXTVAL,
          1);
 INSERT INTO P_ATTACHMENT
 VALUES ( SEQ_P_ATTACHMENT.NEXTVAL,
+         '개1.jpg',
+         '2023060494348464342.jpg',
+         'resources/upFiles/petsitter_upfiles/',
+         SYSDATE,
+         'Y',
+         1,
+         2);
+INSERT INTO P_ATTACHMENT
+VALUES ( SEQ_P_ATTACHMENT.NEXTVAL,
          '그림이사진2.jpg',
          '2023060454348464669.jpg',
          'resources/upFiles/petsitter_upfiles/',
          SYSDATE,
          'Y',
          1,
-         5);
+         3);   
 INSERT INTO P_ATTACHMENT
 VALUES ( SEQ_P_ATTACHMENT.NEXTVAL,
          '개1.jpg',
@@ -63,7 +72,16 @@ VALUES ( SEQ_P_ATTACHMENT.NEXTVAL,
          SYSDATE,
          'Y',
          1,
-         2);     
+         4);     
+INSERT INTO P_ATTACHMENT
+VALUES ( SEQ_P_ATTACHMENT.NEXTVAL,
+         '그림이사진2.jpg',
+         '2023060454348464669.jpg',
+         'resources/upFiles/petsitter_upfiles/',
+         SYSDATE,
+         'Y',
+         1,
+         5);
 
 --------------------------------------------------
 -----------    공지사항 테이블 더미    -------------
