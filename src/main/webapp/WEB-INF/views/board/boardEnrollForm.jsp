@@ -15,7 +15,7 @@
       <!--<script src="/resources/js/tt.js"></script>-->
       
       
-      <title>커뮤니티 글작성</title>
+      <title>임보영 완전 졸림 이거 못봄</title>
       <!--폰트어썸-->
       <script src="https://kit.fontawesome.com/d3eb8276e5.js" crossorigin="anonymous"></script>
       <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> -->
@@ -31,7 +31,7 @@
         <div id="container">
           <div id="main">
             <div id="content">
-              <div class="page_aticle aticle_type2">
+              <div class="page_aticle aticle_type2" style="padding-top: 25px;">
                 <!-- 본문 영역-->
                 <div id="viewOrderList" class="page_section section_orderlist">
                   <div class="page_section section_destination">
@@ -65,12 +65,16 @@
                                       </select>
 	                                  </div>
 	                                  -->
-
+									  <div>
+									  <p class="text-review">제목</p>
+									  <input type="text" class="boardTitle" name="title" placeholder="제목을 입력해주세요" required>
+									  
+									  </div>
 	                                  <!-- 내용 -->
 	                                  <p class="text-review">내용</p>
 	                                  <a class="petsister-a">
 	                                    <div class="petsister">
-	                                        <textarea class="petsister-input" type="text" placeholder="커뮤니티를 등록해주세요"  name="boardContent" required></textarea>
+	                                        <textarea class="petsister-input" type="text" placeholder="내용을 입력해주세요"  name="boardContent" required></textarea>
 	                                    </div>
 	                                  </a>
 	    								
