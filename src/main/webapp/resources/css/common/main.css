@@ -491,10 +491,9 @@ body #header .location_login .location_notice{  /* 안내메세지 처음에 blo
   height: 850px;
   margin-bottom: 1px;
   background-image: url(/resources/img/main/최하단배너.png);
-  /* box-shadow: 0px 3px 16px -4px lightgray; */
   box-sizing: border-box;
-  background-size: contain;
-  /* background-size: cover; */
+  background-size: cover;
+  background-position: center;
 }
 .bottomLeft {
   float: left;

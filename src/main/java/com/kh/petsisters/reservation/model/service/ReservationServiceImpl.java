@@ -129,6 +129,16 @@ public class ReservationServiceImpl implements ReservationService{
 		return reservationDao.searchPay(sqlSession, userNo, startDate, endDate);
 	}
 
+	@Override
+	public int selectJournalCount(int userNo) {
+		return reservationDao.selectJournalCount(sqlSession, userNo);
+	}
+
+	@Override
+	public ArrayList<CareJournal> careJournalManagement(PageInfo pi, int userNo, String options) {
+		return reservationDao.careJournalManagement(sqlSession, pi, userNo, options);
+	}
+
 	
 
 

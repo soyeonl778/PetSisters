@@ -456,8 +456,51 @@
 	</insert>
 	
 	
+	<!-- 돌봄일지 관리 리스트 갯수 조회용 쿼리문 -->
+	<select id="selectJournalCount" resultType="_int">
+		SELECT COUNT(*)
+		FROM JOURNAL J
+		   JOIN RESERVATION R ON J.REF_RESNO = R.RES_NO
+		   JOIN PETSITTER P ON R.REF_PNO = P.P_NO
+		   JOIN MEMBER M ON P.USER_NO = M.USER_NO
+		  WHERE M.USER_NO = #{userNo} 	
+	</select>
 	
 	
+	<!-- 돌봄일지 관리 리스트 조회용 쿼리문 -->
+	<select id="careJournalManagement" resultMap="careResultSet">
+		 SELECT J.J_NO,
+		        JA.FILE_LEVEL,
+		        JA.FILE_PATH,
+		        R.STATUS,
+		        R.START_DATE,
+		        R.END_DATE,
+		        J.CREATE_DATE,
+		        M2.USER_NAME,
+		        LISTAGG(JA.ORIGIN_NAME, ', ') WITHIN GROUP (ORDER BY JA.ORIGIN_NAME) AS ORIGIN_NAME,
+		        LISTAGG(JA.CHANGE_NAME, ', ') WITHIN GROUP (ORDER BY JA.CHANGE_NAME) AS CHANGE_NAME
+		   FROM JOURNAL J   
+		   LEFT JOIN J_ATTACHMENT JA ON J.J_NO = JA.REF_JNO
+		   JOIN RESERVATION R ON J.REF_RESNO = R.RES_NO
+		   JOIN PETSITTER P ON R.REF_PNO = P.P_NO
+		   JOIN MEMBER M ON P.USER_NO = M.USER_NO
+		   JOIN MEMBER M2 ON R.USER_NO = M2.USER_NO
+		  WHERE M.USER_NO = #{userNo} 
+	   GROUP BY J.J_NO, 
+	            JA.FILE_LEVEL, 
+	            JA.FILE_PATH, 
+	            R.STATUS, 
+	            R.START_DATE, 
+	            R.END_DATE, 
+	            J.CREATE_DATE, 
+	            M2.USER_NAME	
+		 <if test="options == 'new' or options == null">
+		 ORDER BY CREATE_DATE DESC
+		 </if>
+		 <if test="options == 'old'">
+		 ORDER BY CREATE_DATE ASC
+		 </if>
+	</select>
 	
 
 

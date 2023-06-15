@@ -65,8 +65,7 @@ public class ReservationController {
 		
 		model.addAttribute("pi", pi);
 		model.addAttribute("list", list);
-		System.out.println(pi);
-		System.out.println(list);
+		
 		return "reservation/reservationList";
 	}
 	
@@ -241,8 +240,6 @@ public class ReservationController {
 		
 		ArrayList<CareJournal> list = reservationService.journalList(pi, userNo, keyword, options);
 		
-		System.out.println(list);
-		
 		model.addAttribute("list", list);
 		model.addAttribute("pi", pi);
 		model.addAttribute("options", options);
@@ -290,6 +287,7 @@ public class ReservationController {
 		model.addAttribute("totalPay", totalPay);
 		model.addAttribute("list", list);
 		
+		/*
 		// 월별로 묶을 Map 생성
 		Map<String, List<Payment>> monthlyPayments = new HashMap<>();
 		
@@ -330,6 +328,9 @@ public class ReservationController {
 		    System.out.println("===================");
 		}
 		
+		*/
+		
+			
 		return "notice/settlementinquiry";
 	}
 	
@@ -377,8 +378,6 @@ public class ReservationController {
 			@RequestParam(value="pPage", defaultValue="1") int currentPage,
 			@RequestParam(value="keyword", required=false) String keyword
 			) {
-//		@RequestParam(value="startDate", required=false) String startDateStr,
-//		@RequestParam(value="endDate", required=false) String endDateStr
 		
 		int userNo = ((Member)(session.getAttribute("loginUser"))).getUserNo();
 		
@@ -450,6 +449,35 @@ public class ReservationController {
 		return "reservation/carejournalEnrollForm";
 	}
 	
+	
+	
+	@RequestMapping("journalManager")
+	public String careJournalManagement(@RequestParam(value="options", required=false) String options,
+										@RequestParam(value="cPage", defaultValue="1") int currentPage,
+										HttpSession session, Model model) {
+		
+		System.out.println(options);
+		
+		int userNo = ((Member)(session.getAttribute("loginUser"))).getUserNo();
+		
+		int listCount = reservationService.selectJournalCount(userNo);
+		
+		int pageLimit = 10;
+		int boardLimit = 6;
+		
+		PageInfo pi = Pagination.getPageInfo(listCount, currentPage, pageLimit, boardLimit);
+		
+		ArrayList<CareJournal> list = reservationService.careJournalManagement(pi, userNo, options);
+		
+		System.out.println(listCount);
+		System.out.println(list);
+		
+		model.addAttribute("list", list);
+		model.addAttribute("options", options);
+		model.addAttribute("pi", pi);
+		
+		return "reservation/careJournalManagement";
+	}
 	
 	
 	

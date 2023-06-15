@@ -40,7 +40,7 @@
 					<ul class="list_menu">
 						<li><a href="petsitterRev">내 예약 관리</a></li>
 						<li class="on"><a href="payList">정산 조회</a></li>
-						<li><a href="#">돌봄 일지 관리</a></li>
+						<li><a href="journalManager">돌봄 일지 관리</a></li>
 					</ul>
 				</div>
 			</div>
