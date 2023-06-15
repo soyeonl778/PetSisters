@@ -17,9 +17,9 @@ public class ChatMessage {
 
 	private int messageNo;
 	private String message;
-	private Date createDate;
+	private String createDate;
 	private int userNo;
-	private String userName;
+	private String userNickname;
 	private int roomNo;
 	private int unReadCount;	// 안 읽은 메세지 수
 	private int sessionCount;	// 현재 세션 수

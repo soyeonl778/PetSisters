@@ -13,6 +13,8 @@ public interface ChatService {
 	
 	List<ChatRoom> chatRoomList(int userNo);
 	
+	List<ChatMessage> messageList(int roomNo);
+	
 	int selectUnReadCount(ChatMessage message);
 
 }

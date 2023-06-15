@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.google.gson.Gson;
@@ -32,12 +34,27 @@ public class ChatController {
 		return "/common/chatForm";
 	}
 	
+	/*
+	 * 세션에 로그인되어 있는 유저 조회
+	 */
+    @RequestMapping("chatSession.do")
+    public void chatSession( HttpServletResponse response) throws JsonIOException, IOException{
+        
+        ArrayList<Integer> chatSessionList = cSession.getLoginUser();
+        
+        response.setContentType("application/json; charset=utf-8");
+ 
+        Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
+        gson.toJson(chatSessionList,response.getWriter());
+    }
+	
+    /*
+     * 채팅 방 목록 불러오기
+     */
     @RequestMapping("chatRoomList.do")
     public void createChat(ChatRoom room, ChatMessage message, int userNo, HttpServletResponse response) throws JsonIOException, IOException {
+    	
         List<ChatRoom> cList = cService.chatRoomList(userNo);
-        
-        System.out.println(cList);
-        System.out.println(cList.size());
         
         for(int i = 0; i < cList.size(); i++) {
             message.setRoomNo(cList.get(i).getRoomNo());
@@ -52,20 +69,25 @@ public class ChatController {
         gson.toJson(cList,response.getWriter());
     }
     
-    @RequestMapping("chatSession.do")
-    public void chatSession( HttpServletResponse response) throws JsonIOException, IOException{
+	/*
+	 * 해당 채팅방의 채팅 메세지 불러오기
+	 */
+    @RequestMapping(value="{roomNo}.do")
+    public void messageList(@PathVariable int roomNo, int userNo, Model model, HttpServletResponse response) throws JsonIOException, IOException {
         
-        ArrayList<Integer> chatSessionList = cSession.getLoginUser();
-        
+        List<ChatMessage> mList = cService.messageList(roomNo);
         response.setContentType("application/json; charset=utf-8");
+        System.out.println(mList);
  
-        Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
-        gson.toJson(chatSessionList,response.getWriter());
+        // 안읽은 메세지의 숫자 0으로 바뀌기
+        ChatMessage message = new ChatMessage();
+        message.setUserNo(userNo);
+        message.setRoomNo(roomNo);
+        // cService.updateCount(message);
         
-        System.out.println(chatSessionList);
+        Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
+        gson.toJson(mList,response.getWriter());
     }
-	
-	
 	
 
 }
