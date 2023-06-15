@@ -40,7 +40,7 @@ WHERE USER_NO = 3;
 INSERT INTO P_ATTACHMENT
 VALUES ( SEQ_P_ATTACHMENT.NEXTVAL,
          '그림이사진1.jpg',
-         '2023060154348464359.jpg',
+         '그림이사진1.jpg',
          'resources/upFiles/petsitter_upfiles/',
          SYSDATE,
          'Y',
@@ -48,8 +48,8 @@ VALUES ( SEQ_P_ATTACHMENT.NEXTVAL,
          1);
 INSERT INTO P_ATTACHMENT
 VALUES ( SEQ_P_ATTACHMENT.NEXTVAL,
-         '개1.jpg',
-         '2023060494348464342.jpg',
+         '그림이사진2.jpg',
+         '그림이사진2.jpg',
          'resources/upFiles/petsitter_upfiles/',
          SYSDATE,
          'Y',
@@ -57,8 +57,8 @@ VALUES ( SEQ_P_ATTACHMENT.NEXTVAL,
          2);
 INSERT INTO P_ATTACHMENT
 VALUES ( SEQ_P_ATTACHMENT.NEXTVAL,
-         '그림이사진2.jpg',
-         '2023060454348464669.jpg',
+         '개1.jpg',
+         '개1.jpg',
          'resources/upFiles/petsitter_upfiles/',
          SYSDATE,
          'Y',
@@ -66,8 +66,17 @@ VALUES ( SEQ_P_ATTACHMENT.NEXTVAL,
          3);   
 INSERT INTO P_ATTACHMENT
 VALUES ( SEQ_P_ATTACHMENT.NEXTVAL,
-         '개1.jpg',
-         '2023060494348464342.jpg',
+         '개2.jpg',
+         '개2.jpg',
+         'resources/upFiles/petsitter_upfiles/',
+         SYSDATE,
+         'Y',
+         1,
+         4);
+INSERT INTO P_ATTACHMENT
+VALUES ( SEQ_P_ATTACHMENT.NEXTVAL,
+         '개3.jpg',
+         '개3.jpg',
          'resources/upFiles/petsitter_upfiles/',
          SYSDATE,
          'Y',
@@ -75,8 +84,17 @@ VALUES ( SEQ_P_ATTACHMENT.NEXTVAL,
          4);     
 INSERT INTO P_ATTACHMENT
 VALUES ( SEQ_P_ATTACHMENT.NEXTVAL,
-         '그림이사진2.jpg',
-         '2023060454348464669.jpg',
+         '개4.jpg',
+         '개4.jpg',
+         'resources/upFiles/petsitter_upfiles/',
+         SYSDATE,
+         'Y',
+         1,
+         5);
+INSERT INTO P_ATTACHMENT
+VALUES ( SEQ_P_ATTACHMENT.NEXTVAL,
+         '개1.jpg',
+         '개1.jpg',
          'resources/upFiles/petsitter_upfiles/',
          SYSDATE,
          'Y',
@@ -426,16 +444,27 @@ VALUES (SEQ_JOURNAL.NEXTVAL, '돌봄테스트1', '돌봄테스트내용1', '2023-06-10', 'Y'
 --------------------------------------------------
 ---------------    후기 테이블 더미    --------------
 --------------------------------------------------
-INSERT INTO REVIEW
-VALUES(SEQ_REVIEW.NEXTVAL,
-       '정말 넘모 조와용',
-       '어쩜 이리 섬세하신지..홍홍',
-       SYSDATE,
-       '만족하셨다니 기분이 좋네요',
-       SYSDATE,
-       'Y',
-       NULL,
-       1);
+INSERT INTO REVIEW VALUES(SEQ_REVIEW.NEXTVAL, '정말 넘모 조와용', '어쩜 이리 섬세하신지..홍홍',
+    SYSDATE, '만족하셨다니 기분이 좋네요', SYSDATE, 'Y', NULL, 1);
+INSERT INTO REVIEW VALUES(SEQ_REVIEW.NEXTVAL, '정말 넘모 조와용', '어쩜 이리 섬세하신지..홍홍',
+    SYSDATE, '만족하셨다니 기분이 좋네요', SYSDATE, 'Y', NULL, 2);
+INSERT INTO REVIEW VALUES(SEQ_REVIEW.NEXTVAL, '정말 넘모 조와용', '어쩜 이리 섬세하신지..홍홍',
+    SYSDATE, '만족하셨다니 기분이 좋네요', SYSDATE, 'Y', NULL, 3);
+INSERT INTO REVIEW VALUES(SEQ_REVIEW.NEXTVAL, '정말 넘모 조와용', '어쩜 이리 섬세하신지..홍홍',
+    SYSDATE, '만족하셨다니 기분이 좋네요', SYSDATE, 'Y', NULL, 4);
+INSERT INTO REVIEW VALUES(SEQ_REVIEW.NEXTVAL, '정말 넘모 조와용', '어쩜 이리 섬세하신지..홍홍',
+    SYSDATE, '만족하셨다니 기분이 좋네요', SYSDATE, 'Y', NULL, 5);
+INSERT INTO REVIEW VALUES(SEQ_REVIEW.NEXTVAL, '정말 넘모 조와용', '어쩜 이리 섬세하신지..홍홍',
+    SYSDATE, '만족하셨다니 기분이 좋네요', SYSDATE, 'Y', NULL, 6);
+INSERT INTO REVIEW VALUES(SEQ_REVIEW.NEXTVAL, '정말 넘모 조와용', '어쩜 이리 섬세하신지..홍홍',
+    SYSDATE, '만족하셨다니 기분이 좋네요', SYSDATE, 'Y', NULL, 7);
+INSERT INTO REVIEW VALUES(SEQ_REVIEW.NEXTVAL, '정말 넘모 조와용', '어쩜 이리 섬세하신지..홍홍',
+    SYSDATE, '만족하셨다니 기분이 좋네요', SYSDATE, 'Y', NULL, 8);
+INSERT INTO REVIEW VALUES(SEQ_REVIEW.NEXTVAL, '정말 넘모 조와용', '어쩜 이리 섬세하신지..홍홍',
+    SYSDATE, '만족하셨다니 기분이 좋네요', SYSDATE, 'Y', NULL, 9);
+INSERT INTO REVIEW VALUES(SEQ_REVIEW.NEXTVAL, '정말 넘모 조와용', '어쩜 이리 섬세하신지..홍홍',
+    SYSDATE, '만족하셨다니 기분이 좋네요', SYSDATE, 'Y', NULL, 10);
+       
        
 --------------------------------------------------
 -------------    강아지 테이블 더미    ---------------
