@@ -355,28 +355,127 @@
                             }
                           });
                           
-                        } else {
-                          alertify.alert("알림", "답글 작성 후 등록 요청해주세요.");
-                        }
+                          } else {
+                            alertify.alert("알림", "답글 작성 후 등록 요청해주세요.");
+                          }
                       }
 
                     </script>
 
                     <div id="content2">
+                      
                       <c:choose>
-                        <c:when test="${ (not empty loginUser) and (loginUser.petsitterNo eq p.petSitterNo) }">
-                          <div class="updateFormBtn">
-                            <a href="updateForm.pe?pno=${ p.petSitterNo }" class="btn btn-secondary">프로필 수정</a>
-                          </div>
+                        <%-- 로그인 상태일 경우 : 하트 클릭 가능 --%>
+                        <c:when test="${ not empty loginUser.userNo }">
+                          <c:choose>
+                            <%-- 로그인 유저의 pno가 펫시터 상세페이지의 pno와 일치할 경우 --%>
+                            <c:when test="${ loginUser.petsitterNo eq p.petSitterNo }">
+                              <div class="updateFormBtn">
+                                <a href="updateForm.pe?pno=${ p.petSitterNo }" class="btn btn-secondary">프로필 수정</a>
+                              </div>
+                            </c:when>
+                            <%-- 로그인 유저의 pno가 펫시터 상세페이지의 pno와 일치하지 않을 경우 --%>
+                            <c:otherwise>
+                              <c:choose>
+                                <%-- 빈 하트 일 때 --%>
+                                <c:when test="${ likeCheck == 0 }">
+                                  <div class="likeBtn">
+                                    <a onclick="" class="heart-login">
+                                      <i class="bi bi-heart heartIcon" id="unChecked"></i><p>찜 갯수&nbsp;</p>
+                                    </a>
+                                  </div>
+                                </c:when>
+                                <%-- 채워진 하트 일 때 --%>
+                                <c:otherwise>
+                                  <div class="likeBtn">
+                                    <a onclick="" class="heart-login">
+                                      <i class="bi bi-heart-fill heartIcon" id="cheked"></i><p>찜 갯수&nbsp;</p>
+                                    </a>
+                                  </div>
+                                </c:otherwise>
+                              </c:choose>
+                            </c:otherwise>
+                          </c:choose>
                         </c:when>
+                        <%-- 로그인 상태가 아닐 경우 : 하트 클릭 불가능 --%>
+                        <%-- 빈 하트 --%>
                         <c:otherwise>
                           <div class="likeBtn">
-                            <i class="bi bi-heart"></i><p>찜 갯수</p>
+                            <a href="#" class="heart-notlogin">
+                              <i class="bi bi-heart"></i><p>찜 갯수&nbsp;</p>
+                            </a>
                           </div>
                         </c:otherwise>
                       </c:choose>
+
+                      <script>
+
+                        $(document).ready(function() {
+                          $(".heart-login").on("click", function() {
+
+                            // 빈 하트라면
+                            if ($(this).find(".heartIcon").hasClass("bi-heart")) {
+                              sendHeartData('${loginUser.userNo}', '${p.petSitterNo}', 0);
+                              $(this).find(".heartIcon").removeClass("bi-heart").addClass("bi-heart-fill");
+
+                            // 채워진 하트라면
+                            } else {
+                              sendHeartData('${loginUser.userNo}', '${p.petSitterNo}', 1);
+                              $(this).find(".heartIcon").removeClass("bi-heart-fill").addClass("bi-heart");
+                            }
+
+                          });
+
+                        });
+
+                        // AJAX 호출 함수 정의
+                        function sendHeartData(userNo, refPno, check) {
+
+                          var requestData = {};
+
+                          if (check === 0) {
+                            requestData = {
+                              userNo: userNo,
+                              refPno: refPno,
+                              check: check
+                            };
+                          } else {
+                            requestData = {
+                              userNo: userNo,
+                              refPno: refPno,
+                              check: check
+                            };
+                          }
+
+                          $.ajax({
+                            url: "like.pe",
+                            method: "POST",
+                            data: requestData,
+                            success: function(result) {
+                            	
+                              if(check === 0) {
+                                // 일회성 알람문구 담아서 새로고침
+                                alertify.alert("알림", "펫시터 찜 완료").set({onok: function(){ location.reload(); }});
+                                
+                              } else {
+                                // 일회성 알람문구 담아서 새로고침
+                                alertify.alert("알림", "펫시터 찜 해제 완료").set({onok: function(){ location.reload(); }});
+                              }
+                            	
+                              // 찜 요청 성공 시 수행할 작업
+                              console.log("찜 AJAX 요청이 성공했습니다.");
+                            },
+                            error: function() {
+                              // 찜 요청 실패 시 수행할 작업
+                              console.error("찜 AJAX 요청이 실패했습니다.");
+                            }
+                          });
+                        }
+  
+                      </script>
+                      
                       <div class="card">
-                        <form action="/pay" method="post" id="reserveForm">
+                        <form action="/pay" method="get" id="reserveForm">
                           <input type="hidden" name="userNo" value="${ loginUser.userNo }">
                           <input type="hidden" name="pno" value="${ p.petSitterNo }">
                           <input type="hidden" id="payPrice" name="payPrice" value="">
@@ -410,21 +509,6 @@
                       </div>
 
                         <script>
-
-                          // 찜 버튼 클릭 이벤트
-                          var i = 0;
-                          $('.bi-heart').on('click', function() {
-                              if(i == 0) {
-                                  $(this).removeClass('bi-heart');
-                                  $(this).addClass('bi-heart-fill');
-                                  i++;
-                              } else if(i == 1){
-                                  $(this).removeClass('bi-heart-fill');
-                                  $(this).addClass('bi-heart');
-                                  i--;
-                              }
-                          });
-
 
                           // 예약 요청 반려동물 마릿수 증감 이벤트
                           $('#petCount').text(0);

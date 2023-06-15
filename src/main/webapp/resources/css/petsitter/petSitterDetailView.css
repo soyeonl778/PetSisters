@@ -210,10 +210,19 @@ div, form, img { box-sizing: border-box; }
     border: none;
 }
 
-.likeBtn i {
-    margin: 5px 40px 20px;
+.likeBtn>a {
+    margin: 5px 30px 20px;
     text-decoration: none;
     text-decoration-line: none;
+}
+
+.likeBtn>a {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.likeBtn p {
+    margin-bottom: 0;
 }
 
 .bi-heart {

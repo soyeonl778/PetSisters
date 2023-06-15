@@ -6,6 +6,7 @@ import com.kh.petsisters.common.model.vo.PageInfo;
 import com.kh.petsisters.member.model.vo.Dog;
 import com.kh.petsisters.petsitter.model.vo.PetSitter;
 import com.kh.petsisters.petsitter.model.vo.PetSitterImg;
+import com.kh.petsisters.petsitter.model.vo.PetSitterLike;
 import com.kh.petsisters.reservation.model.vo.Review;
 
 public interface PetSitterService {
@@ -43,6 +44,18 @@ public interface PetSitterService {
 	
 	// 펫시터 프로필 이미지 삭제
 	int deletePetSitterImg(ArrayList<Integer> deleteList);
+	
+	// 회원의 펫시터 찜 체크 여부 조회
+	int selectLikeCheck(PetSitterLike psLike);
+	
+	// 펫시터 찜 추가 요청
+	int insertLike(PetSitterLike psLike);
+	
+	// 펫시터 찜 삭제 요청
+	int deleteLike(PetSitterLike psLike);
+	
+	// 펫시터 찜 갯수 조회
+	int selectLikeCount(int refPno);
 }
 
 

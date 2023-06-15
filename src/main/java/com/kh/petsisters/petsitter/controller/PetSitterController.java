@@ -20,9 +20,11 @@ import org.springframework.web.servlet.ModelAndView;
 import com.kh.petsisters.common.model.vo.PageInfo;
 import com.kh.petsisters.common.template.Pagination;
 import com.kh.petsisters.member.model.vo.Dog;
+import com.kh.petsisters.member.model.vo.Member;
 import com.kh.petsisters.petsitter.model.service.PetSitterService;
 import com.kh.petsisters.petsitter.model.vo.PetSitter;
 import com.kh.petsisters.petsitter.model.vo.PetSitterImg;
+import com.kh.petsisters.petsitter.model.vo.PetSitterLike;
 import com.kh.petsisters.reservation.model.vo.Review;
 
 @Controller
@@ -50,14 +52,34 @@ public class PetSitterController {
 		
 		// 프로필 상세페이지 이미지 리스트 조회
 		ArrayList<PetSitterImg> psImgList = petSitterService.selectPetSitterImg(pno);
-
+		
+		Member loginUser = (Member)session.getAttribute("loginUser");
+		
+		if(loginUser != null) {
+			PetSitterLike psLike = new PetSitterLike();
+			int userNo = loginUser.getUserNo();
+			
+			psLike.setUserNo(userNo);
+			psLike.setRefPno(pno);
+			
+			// 회원의 찜 체크 여부 조회
+			int likeCheck = petSitterService.selectLikeCheck(psLike); // 1 또는 0 (0일 때 빈 하트)
+			
+			mv.addObject("likeCheck", likeCheck);
+		}
+		
+		/*
+		// 펫시터 찜 갯수 조회
+		int likeCount = petSitterService.selectLikeCount(refPno);
+		*/
+		
 		// 조회된 데이터를 mv 에 담아서 포워딩 페이지 경로를 잡아주기
-		mv.addObject("p", p);
-		mv.addObject("revList", revList);
-		mv.addObject("reviewCount", reviewCount);
-		mv.addObject("dogList", dogList);
-		mv.addObject("psImgList", psImgList);
-		mv.setViewName("petsitter/petSitterDetailView");
+		mv.addObject("p", p)
+		  .addObject("revList", revList)
+		  .addObject("reviewCount", reviewCount)
+		  .addObject("dogList", dogList)
+		  .addObject("psImgList", psImgList)
+		  .setViewName("petsitter/petSitterDetailView");
 
 		return mv;
 	}
@@ -84,7 +106,7 @@ public class PetSitterController {
 		  @RequestParam("upfile") ArrayList<MultipartFile> upfileList,
 		  @RequestParam(value="delete", required = false) ArrayList<Integer> deleteList,
 								  HttpSession session,
-			                      ModelAndView mv) {
+			                      Model model) {
 		
 	    int result2 = 1;
 	    String filePath = "/resources/upFiles/petsitter_upfiles/";
@@ -164,6 +186,8 @@ public class PetSitterController {
 		// 펫시터 리스트 전체 조회
 		ArrayList<PetSitter> list = petSitterService.selectList(pi);
 		
+		// 펫시터 대표이미지 리스트 조회
+		
 		mv.addObject("pi", pi)
 		  .addObject("list", list)
 		  .setViewName("petsitter/petSitterListView");
@@ -191,9 +215,35 @@ public class PetSitterController {
 		return (result > 0) ? "success" : "fail";
 	}
 	
+	@ResponseBody
+	@RequestMapping(value="like.pe", produces="text/html; charset=UTF-8")
+	public String petSitterLike(PetSitterLike psLike,
+								int check,
+								HttpSession session) {
+		
+		int result = 0;
+		
+		if(check == 0) { // 빈 하트 일 때 INSERT
+			
+			// 펫시터 찜 추가 요청
+			result = petSitterService.insertLike(psLike);
+			
+		} else { // 채워진 하트 일 때 DELETE
+			
+			// 펫시터 찜 삭제 요청
+			result = petSitterService.deleteLike(psLike);
+			
+		}
+		
+		return (result > 0) ? "success" : "fail";
+		
+	}
 	
 	
 	
+	
+	
+	// ----------------------------------------------------------------
 	// 현재 넘어온 첨부파일 그 자체를 파일명 수정 후 서버의 폴더에 저장시키는 일반 메소드
 	public String saveFile(MultipartFile upfile, HttpSession session) {
 		

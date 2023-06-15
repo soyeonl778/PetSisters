@@ -10,6 +10,7 @@ import com.kh.petsisters.common.model.vo.PageInfo;
 import com.kh.petsisters.member.model.vo.Dog;
 import com.kh.petsisters.petsitter.model.vo.PetSitter;
 import com.kh.petsisters.petsitter.model.vo.PetSitterImg;
+import com.kh.petsisters.petsitter.model.vo.PetSitterLike;
 import com.kh.petsisters.reservation.model.vo.Review;
 
 @Repository
@@ -85,6 +86,26 @@ public class PetSitterDao {
 		}
 		
 		return result;
+	}
+	
+	public int selectLikeCheck(SqlSessionTemplate sqlSession, PetSitterLike psLike) {
+		
+		return sqlSession.selectOne("petSitterMapper.selectLikeCheck", psLike);
+	}
+	
+	public int insertLike(SqlSessionTemplate sqlSession, PetSitterLike psLike) {
+
+		return sqlSession.insert("petSitterMapper.insertLike", psLike);
+	}
+	
+	public int deleteLike(SqlSessionTemplate sqlSession, PetSitterLike psLike) {
+		
+		return sqlSession.delete("petSitterMapper.deleteLike", psLike);
+	}
+	
+	public int selectLikeCount(SqlSessionTemplate sqlSession, int refPno) {
+		
+		return sqlSession.selectOne("petSitterMapper.selectLikeCount", refPno);
 	}
 }
 

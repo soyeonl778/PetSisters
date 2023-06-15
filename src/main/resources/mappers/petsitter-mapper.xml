@@ -55,6 +55,11 @@
 		<result column="REF_PNO" property="refPno" />
 	</resultMap>
 	
+	<resultMap id="petSitterLikeSet" type="petSitterLike">
+		<result column="USER_NO" property="userNo" />
+		<result column="REF_PNO" property="refNo" />
+	</resultMap>
+	
 	<!-- 펫시터 프로필 상세 조회용 쿼리문 -->
 	<select id="selectPetSitter" parameterType="_int" resultMap="petSitterResultSet">
        	SELECT P_NO
@@ -199,6 +204,33 @@
 		   SET STATUS = 'N'
 		 WHERE FILE_NO = #{fileNo}
 	</update>
+	
+	<!-- 회원의 펫시터 찜 체크 여부 조회 -->
+	<select id="selectLikeCheck" parameterType="petSitterLike" resultType="_int">
+		SELECT COUNT(*)
+		  FROM P_LIKE
+		 WHERE USER_NO = #{userNo}
+		   AND REF_PNO = #{refPno}
+	</select>
+	
+	<!-- 펫시터 찜 추가 요청용 쿼리문 -->
+	<insert id="insertLike" parameterType="petSitterLike">
+		INSERT INTO P_LIKE VALUES(#{userNo}, #{refPno})
+	</insert>
+	
+	<!-- 펫시터 찜 삭제 요청용 쿼리문 -->
+	<delete id="deleteLike" parameterType="petSitterLike">
+		DELETE FROM P_LIKE
+		 WHERE USER_NO = #{userNo}
+		   AND REF_PNO = #{refPno}
+	</delete>
+	
+	<!-- 펫시터 찜 갯수 조회용 쿼리문 -->
+	<select id="selectLikeCount" parameterType="_int" resultType="_int">
+		SELECT COUNT(*)
+		  FROM P_LIKE
+		 WHERE REF_PNO = #{refPno}
+	</select>
 
 </mapper>
 
