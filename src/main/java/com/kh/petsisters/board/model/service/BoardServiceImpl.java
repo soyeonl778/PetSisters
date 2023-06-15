@@ -62,19 +62,12 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public int insertAttachmentList(ArrayList<Attachment> list) {
-		// TODO Auto-generated method stub
-		return 0;
+		return boardDao.insertAttachmentList(sqlSession, list);
 	}
 
 	
 
-/*
-	@Override
-	public int insertAttachmentList() {
-		return boardDao.insertAttachmentList(sqlSession, list);
-	}
 
-*/	
 
 
 }

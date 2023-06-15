@@ -62,7 +62,7 @@
 			 , A.CHANGE_NAME
 			 , A.FILE_PATH AS AT_FILE_PATH 
 		 FROM BOARD B
-         LEFT JOIN P_ATTACHMENT A ON (B.B_NO = A.REF_BNO) 	
+         LEFT JOIN B_ATTACHMENT A ON (B.B_NO = A.REF_BNO) 	
         WHERE B.STATUS = 'Y'
 		  AND CATEGORY_MAIN = '1'
         ORDER BY B.B_NO DESC	
@@ -76,17 +76,8 @@
 		   AND STATUS = 'Y'
 	</update>
 	
-	<!-- 게시글 작성용 쿼리문 -->
-	<insert id="insertFreeBoard" parameterType="board">
 	
-	
-	</insert>
-	
-	
-	
-	
-	<!-- 게시글 작성용 쿼리문 -->
-	<!--  
+	<!-- 게시글 작성용 쿼리문 --> 
 	<insert id="insertFreeBoard" parameterType="board">
 		INSERT INTO BOARD(B_NO
 						, B_TITLE
@@ -104,10 +95,39 @@
 				   		, DEFAULT
 				   		, DEFAULT
 				   		, #{userNo}
-				   		, #{originName}
-				   		, #{changeName})
+				   		, 1
+				   		, 1)
 	</insert>
-	-->
+	
+	<!-- 첨부파일 작성용 쿼리문 -->
+	<insert id="attachmentResultSet" parameterType="attachment">
+		INSERT INTO B_ATTACHMENT(FILE_NO
+		                       , ORIGIN_NAME
+		                       , CHANGE_NAME
+		                       , FILE_PATH
+		                       , CREATE_DATE
+		                       , STATUS
+		                       , FILE_LEVEL
+		                       , REF_BNO)
+		                VALUES(SEQ_B_ATTACHMENT.NEXTVAL
+		                     , #{at.originName}
+		                     , #{at.changeName}
+		                     , #{at.filePath}
+		                     , SYSDATE
+		                     , DEFAULT
+		                     , NULL
+		                     , SEQ_B_ATTACHMENT.CURRVAL)						 
+	</insert>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
@@ -127,7 +147,7 @@
 	 
 	 
 	 
-	 
+	
 	 
 	 
 	 
@@ -183,7 +203,7 @@
 			 , TO_CHAR(B.CREATE_DATE, 'YYYY-MM-DD') AS "CREATE_DATE"
 			 , A.REF_BNO
 		FROM BOARD B
-		LEFT JOIN P_ATTACHMENT A ON (B.B_NO = A.REF_BNO)
+		LEFT JOIN B_ATTACHMENT A ON (B.B_NO = A.REF_BNO)
 		ORDER BY BOARD_NO DESC
 		WHERE STATUS = 'Y'
 		   AND CATEGORY_MAIN = '1' 		
@@ -240,12 +260,12 @@
 							  , FILE_PATH
 							  , FILE_LEVEL
 							  , REF_BNO)
-					VALUES (SEQ_P_ATTACHMENT.NEXTVAL
+					VALUES (SEQ_B_ATTACHMENT.NEXTVAL
 						  , #{originName}
 						  , #{changeName}
 						  , #{filePath}
 						  , #{fileLevel}
-						  , SEQ_P_ATTACHMENT.CURRVAL)
+						  , SEQ_B_ATTACHMENT.CURRVAL)
 	</insert>
 	-->
 
@@ -254,7 +274,7 @@
 	<select id="selectAttachment" parameterType="_int" resultMap="attachmentResultSet">
 		SELECT ORIGIN_NAME
 		     , CHANGE_NAME
-		  FROM P_ATTACHMENT
+		  FROM B_ATTACHMENT
 		 WHERE STATUS = 'Y'
 		   AND REF_BNO = #{boardNo}
 	</select>	
@@ -263,7 +283,7 @@
 	
 	<!--  
 	<insert id="insertAttachmentList" parameterType="">
-		INSERT INTO P_ATTACHMENT(FILE_NO,
+		INSERT INTO B_ATTACHMENT(FILE_NO,
 							   , ORIGIN_NAME
 							   , CHANGE_NAME
 							   , FILE_PATH
@@ -271,12 +291,12 @@
 							   , DEFAULT
 							   , FILE_LEVEL
 							   , REF_BNO)
-					VALUES(SEQ_P_ATTACHMENT.NEXTVAL
+					VALUES(SEQ_B_ATTACHMENT.NEXTVAL
 					     , #{}
 					     , #{}
 					     , #{}
 					     , #{}
-					     , SEQ_P_ATTACHMENT.CURRVAL)
+					     , SEQ_B_ATTACHMENT.CURRVAL)
 	</insert>	  
 	-->		  
 				  

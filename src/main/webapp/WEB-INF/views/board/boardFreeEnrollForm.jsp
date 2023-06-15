@@ -74,10 +74,6 @@
                         <td><textarea id="content" class="form-control" rows="10" style="resize:none;" name="boardContent" required></textarea></td>
                     </tr>
                     
-                    <!-- <tr>
-                        <th><label for="upfile">첨부파일</label></th>
-                        <td><input type="file" id="upfile" class="form-control-file border" name="upfile"></td>
-                    </tr> -->
                     
                 </table>
                 <br>

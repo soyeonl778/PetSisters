@@ -68,14 +68,14 @@ public class BoardController {
 		return mv;
 	}
 	
-	/*
+	
 	@RequestMapping("freeEnrollForm.bo")
 	public String FreeEnrollForm() {
 		
 		return "board/boardFreeEnrollForm";
 	}
 	
-	
+	/*
 	@RequestMapping("enrollForm.bo")
 	public String enrollForm() {
 		
@@ -91,10 +91,12 @@ public class BoardController {
 	*/
 
 	
-	// 테스트용
+	// 테스트용 글작성 : 일반게시판
 	@RequestMapping("test")
 	public String test(ArrayList<MultipartFile> upfileList, 
-			 		   HttpSession session, 
+			 		   HttpSession session,
+			 		   Model model,
+			 		   Board b,
 			 		   Attachment a) {
 		
 		ArrayList<Attachment> list = new ArrayList<>();
@@ -114,24 +116,29 @@ public class BoardController {
 			System.out.println(list);
 		}
 		
-		// System.out.println(b);
 		
-//		int result = boardService.insertFreeBoard(b);
-//		
-//		if(result > 0) { // 성공 => 일회성 알람문구 띄운 뒤 게시글 리스트페이지로 url 재요청
-//			
-//			session.setAttribute("alertMsg", "성공적으로 게시글이 등록되었습니다.");
-//			
-//			return "redirect:/freelist.bo"; // 내부적으로 1번 페이지로 향함
-//			
-//		} else { // 실패 => 에러 문구를 담아서 에러페이지로 포워딩
-//			
-//			model.addAttribute("errorMsg", "게시글 등록 실패");
-//			
-//			return "common/errorPage";
-//		}
+		// 사진+게시글 등록 서비스 요청 후 결과 받기
+		int result1 = new BoardService().insertFreeBoard(b);
 		
-		return "board/boardDetailForm";
+		int result2 = new BoardService().insertAttachmentList(list);
+		
+		int result = result1 * result2;
+		
+		
+		if(result2 > 0) { // 성공 => 일회성 알람문구 띄운 뒤 게시글 리스트페이지로 url 재요청
+			
+			session.setAttribute("alertMsg", "성공적으로 게시글이 등록되었습니다.");
+			
+			return "redirect:/freelist.bo"; // 내부적으로 1번 페이지로 향함
+			
+		} else { // 실패 => 에러 문구를 담아서 에러페이지로 포워딩
+			
+			model.addAttribute("errorMsg", "게시글 등록 실패");
+		
+			return "common/errorPage";
+		}
+		
+		//return "board/boardDetailForm";
 	}
 	
 	

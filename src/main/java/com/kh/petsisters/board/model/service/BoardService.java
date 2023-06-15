@@ -27,7 +27,7 @@ public interface BoardService {
 	// 게시글 상세 조회
 	Board selectBoard(int boardNo);
 	
-	// 게시글 작성하기 서비스
+	// 자유게시글 작성하기 서비스
 	int insertFreeBoard(Board b);
 	
 	// 첨부파일 업로드 서비스
