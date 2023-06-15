@@ -78,7 +78,7 @@ public class BoardController {
 		
 		// imsiBoardMain
 		// boardEnrollForm
-		return "board/boardEnrollForm";
+		return "board/imsiBoardEnrollForm";
 	}
 	
 	
