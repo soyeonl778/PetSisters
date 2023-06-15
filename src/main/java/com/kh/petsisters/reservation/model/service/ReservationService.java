@@ -83,6 +83,9 @@ public interface ReservationService {
 	// 펫시터 돌봄일지 관리 리스트 조회용
 	ArrayList<CareJournal> careJournalManagement(PageInfo pi, int userNo, String options);
 
+	// 펫시터 돌봄일지 수정시 초기 정보 조회용
+	CareJournal updateJournal(int jno);
+
 
 
 

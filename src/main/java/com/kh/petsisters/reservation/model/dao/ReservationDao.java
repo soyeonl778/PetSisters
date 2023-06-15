@@ -190,6 +190,10 @@ public class ReservationDao {
 		return (ArrayList)sqlSession.selectList("reservationMapper.careJournalManagement", parameter, rowBounds);
 	}
 
+	public CareJournal updateJournal(SqlSessionTemplate sqlSession, int jno) {
+		return sqlSession.selectOne("reservationMapper.updateJournal", jno);
+	}
+
 
 
 }

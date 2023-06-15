@@ -106,7 +106,8 @@
 													
 													
 													<div class="btnSection">
-													
+													<a href="updateJournal?jNo=${l.jno}" class="careBtn updateBtn">돌봄일지 수정</a>
+													<a href="#" class="careBtn deleteBtn">돌봄일지 삭제</a>
 													</div>
 													
 													

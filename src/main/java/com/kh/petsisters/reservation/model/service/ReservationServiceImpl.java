@@ -139,6 +139,11 @@ public class ReservationServiceImpl implements ReservationService{
 		return reservationDao.careJournalManagement(sqlSession, pi, userNo, options);
 	}
 
+	@Override
+	public CareJournal updateJournal(int jno) {
+		return reservationDao.updateJournal(sqlSession, jno);
+	}
+
 	
 
 
