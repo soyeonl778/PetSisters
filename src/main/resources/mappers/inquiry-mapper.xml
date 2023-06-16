@@ -78,7 +78,7 @@
 	<!-- 댓글 리스트 조회용 쿼리문 -->
 	<select id="selectReplyList" parameterType="_int" resultMap="csreplyResultSet">
 		SELECT
-		REP_NO, REP_CONTENT, TO_CHAR(CREATE_DATE, 'YYYY-MM-DD') AS "CREATE_DATE", REF_INO
+		REP_NO, REP_CONTENT, TO_CHAR(CREATE_DATE, 'YYYY-MM-DD') AS "CREATE_DATE"
 		  FROM CS_REPLY
 		 WHERE STATUS = 'Y'
 		   AND REF_INO = #{inquiryNo}
@@ -89,10 +89,12 @@
 	<insert id="insertReply" parameterType="csReply">
 		INSERT INTO CS_REPLY(REP_NO
 						, REP_CONTENT
+						, USER_NO
 						, REF_INO
 						, CREATE_DATE)
 		  		   VALUES(SEQ_CS_REPLY.NEXTVAL
 		  		   		, #{repContent}
+		  		   		, #{userNo}
 		  		   		, #{inquiryNo}
 		  		   		, #{createDate})
 	</insert>

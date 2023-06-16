@@ -27,8 +27,8 @@ public class InquiryServiceImpl implements InquiryService {
 	}
 
 	@Override
-	public List<Inquiry> selectList(PageInfo pi, Member m) {
-		return inquiryDao.selectList(sqlSession, pi, m);
+	public List<Inquiry> selectList(PageInfo pi, int userNo) {
+		return inquiryDao.selectList(sqlSession, pi, userNo);
 	}
 
 	@Override
@@ -43,16 +43,17 @@ public class InquiryServiceImpl implements InquiryService {
 
 	@Override
 	public int deleteInquiry(int inquiryNo) {
-		return sqlSession.delete("inquiryMapper.deleteInquiry", inquiryNo);
+		return inquiryDao.deleteInquiry(sqlSession, inquiryNo);
 	}
 
 	@Override
 	public List<CSReply> selectReplyList(int inquiryNo) {
-		return sqlSession.selectList("inquiryMapper.selectReplyList", inquiryNo);
+		return inquiryDao.selectReplyList(sqlSession, inquiryNo);
 	}
 
 	@Override
 	public int insertReply(CSReply r) {
-		return sqlSession.insert("inquiryMapper.insertReply", r);
+		return inquiryDao.insertReply(sqlSession, r);
 	}
+	
 }

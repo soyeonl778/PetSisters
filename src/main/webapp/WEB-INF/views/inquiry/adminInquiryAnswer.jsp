@@ -23,23 +23,7 @@
         <div id="content">
           <div class="page_aticle aticle_type2">
             <!-- 사이드 메뉴바 -->
-            <div id="snb" class="snb_my" style="position: absolute;">
-              <img src="/resources/img/사이드바이미지.png" alt="sideBarImg">
-              <h2 class="tit_snb">고객센터</h2>
-              <div class="inner_sub">
-                <ul class="list_menu">
-                  <li>
-                    <a href="/notice/noticeList.html">공지사항</a>
-                  </li>
-                  <li>
-                    <a href="/notice/faq.html">자주하는 질문</a>
-                  </li>
-                  <li class="on">
-                    <a href="/notice/adminInquiryList.html">1:1 문의 관리</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
+            	<jsp:include page="../common/csSidebar.jsp" />
             <!-- 사이드 메뉴바 끝 -->
 
             <!-- 본문 영역-->

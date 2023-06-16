@@ -25,23 +25,7 @@
         <div id="content">
           <div class="page_aticle aticle_type2">
             <!-- 사이드 메뉴바 -->
-            <div id="snb" class="snb_my" style="position: absolute;">
-              <img src="/resources/img/main/사이드바이미지.png" alt="sideBarImg">
-              <h2 class="tit_snb">고객센터</h2>
-              <div class="inner_sub">
-                <ul class="list_menu">
-                  <li>
-                    <a href="list.no">공지사항</a>
-                  </li>
-                  <li>
-                    <a href="/showFaq">자주하는 질문</a>
-                  </li>
-                  <li class="on">
-                    <a href="#">1:1 문의</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
+            	<jsp:include page="../common/csSidebar.jsp" />
             <!-- 사이드 메뉴바 끝 -->
 
             <!-- 본문 영역-->
@@ -103,7 +87,30 @@
 						    </td>
 						</tr>
                     </table>
+                    <br/>
                 </div>
+                <br/>
+                <form id="postForm" action="" method="post">
+	            	<input type="hidden" name="userNo" value="${ loginUser.userNo }">
+	            </form>
+                <div class="replyDetail">
+                <table id="replyArea" class="table" align="center">
+                 	<thead>
+                 		<tr>
+                 			<th colspan="3">댓글(<span id="rcount">0</span>)</th>
+                 		</tr>
+                 		<tr>
+                 			<th colspan="2">
+                 				<textarea class="form-control" id="replyContent" style="resize:none;"></textarea>
+                 			</th>
+                 			<th style="vertical-align:middle">
+                 				<button class="btn btn-secondary" onclick="addReply();">등록</button>
+                 			</th>
+                 		</tr>
+                 	</thead>
+                 	<tbody></tbody>
+                 </table>
+                 </div>
                 
                 <br/>
                 <div style="text-align: right;">
@@ -119,6 +126,62 @@
 
     </div>
   </div>
+  
+  <script>
+  	$(function() {
+  		selectReplyList();
+  	});
+  	
+  	function addReply() {
+  		if($("#content").val().trim().length != 0) {
+  			$.ajax({
+  				url: "rinsert.in",
+  				data: {
+  					repNo : ${r.repNo},
+  					repContent : $("#content").val(),
+  					refIno : ${r.refIno},
+  					createDate : ${r.createDate}
+  				}),
+  				type: "post",
+  				success: function(result) {
+  					if(result == "success") {
+  						selectReplyList();
+  						$("#content").val("");
+  					}
+  				},
+  				error: function() {
+  					console.log("댓글 작성이 안돼요.");
+  				}
+  			});
+  		} else {
+  			alert("알림", "등록할 내용이 없습니다. 내용을 입력해주세요.");
+  		}
+  	}
+  	
+  	function selectReplyList() {
+  		$.ajax({
+  			url: "rlist.in",
+  			data: {inquiryNo: ${r.inquiryNo}},
+  			type: "get",
+  			success: function(result) {
+  				let resultStr = "";
+  				for(let i = 0; i < result.length; i++) {
+  					resultStr += "<tr>"
+  							   + "<td>" + result[i].repNo + "</td>"
+  							   + "<td>" + result[i].repContent + "</td>"
+  							   + "<td>" + result[i].createDate + "</td>"
+  							   + "</tr>";
+  				}
+  				
+  				$("#replyArea>tbody").html(resultStr);
+  				#("#rcount").text(result.length);
+  			},
+  			error: function() {
+  				console.log("댓글 목록 조회가 안돼요.");
+  			}
+  		});
+  	}
+  </script>
   
   <!-- Footer 영역 시작 -->
   	<jsp:include page="../common/footer.jsp" />

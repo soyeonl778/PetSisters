@@ -2,6 +2,8 @@ package com.kh.petsisters.inquiry.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -33,8 +35,10 @@ public class InquiryController {
 	public ModelAndView selectList(
 			@RequestParam(value="cPage", defaultValue="1") int currentPage,
 			ModelAndView mv
-			, Member m) {
+			, HttpSession session) {
 		
+		int userNo = ((Member)session.getAttribute("loginUser")).getUserNo();
+				
 		int listCount = inquiryService.selectListCount();
 		
 		int pageLimit = 10;
@@ -42,7 +46,7 @@ public class InquiryController {
 		
 		PageInfo pi = Pagination.getPageInfo(listCount, currentPage, pageLimit, boardLimit);
 		
-		List<Inquiry> list = inquiryService.selectList(pi, m);
+		List<Inquiry> list = inquiryService.selectList(pi, userNo);
 		
 		mv.addObject("pi", pi)
 		  .addObject("list", list)
@@ -58,7 +62,10 @@ public class InquiryController {
 	}
 		
 	@RequestMapping("insert.in")
-	public String insertInquiry(Inquiry i, MultipartFile upfile, HttpSession session, Model model) {
+	public String insertInquiry(Inquiry i, 
+								MultipartFile upfile, 
+								HttpSession session, 
+								Model model) {
 		
 	    try {
 	    	
@@ -73,15 +80,14 @@ public class InquiryController {
 	        
 	        if (result > 0) {
 	        	
-	            session.setAttribute("alertMsg", "성공적으로 문의글을 등록했습니다.");
-	            
+	            session.setAttribute("message", "성공적으로 문의글을 등록했습니다.");
 	            return "redirect:/detail.in?inquiryNo=" + i.getInquiryNo();
 	            
 	        } else {
 	        	
 	            model.addAttribute("errorMsg", "문의글 등록에 실패했습니다.");
 	            
-	            return "notice/errorPage";
+	            return "common/errorPage";
 	        }
 	        
 	    } catch (IOException e) {
@@ -112,15 +118,15 @@ public class InquiryController {
 		
 		if(result > 0) {
 			
-			session.setAttribute("alertMsg", "성공적으로 문의글을 삭제하였습니다.");
+			session.setAttribute("message", "성공적으로 문의글을 삭제하였습니다.");
 			
-			return "redirect:/list.no";
+			return "redirect:/list.in";
 			
 		} else {
 			
 			model.addAttribute("errorMsg", "문의글 삭제 실패");
 			
-			return "notice/errorPage";
+			return "common/errorPage";
 		}
 	}
 	
@@ -141,6 +147,29 @@ public class InquiryController {
 		int result = inquiryService.insertReply(r);
 		
 		return (result > 0) ? "success" : "fail"; // 무조건 문자열 타입으로 응답데이터 리턴
+	}
+	
+	public String saveFile(MultipartFile upfile, HttpSession session) {
+		
+		String originName = upfile.getOriginalFilename();
+		System.out.println(originName);
+		String currentTime = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
+		
+		int ranNum = (int)(Math.random() * 90000 + 10000);
+		
+		String ext = originName.substring(originName.lastIndexOf("."));
+		 
+		String changeName = currentTime + ranNum + ext;
+		
+		String savePath = session.getServletContext().getRealPath("resources/upFiles/inquiry_upfiles/");
+		
+		try {
+			upfile.transferTo(new File(savePath + changeName));
+		} catch(IOException e) {
+			e.printStackTrace();
+		}
+		
+		return changeName;
 	}
 	
 }

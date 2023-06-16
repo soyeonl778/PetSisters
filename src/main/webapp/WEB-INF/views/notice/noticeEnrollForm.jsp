@@ -25,23 +25,7 @@
         <div id="content">
           <div class="page_aticle aticle_type2">
             <!-- 사이드 메뉴바 -->
-            <div id="snb" class="snb_my" style="position: absolute;">
-              <img src="/resources/img/main/사이드바이미지.png" alt="sideBarImg">
-              <h2 class="tit_snb">고객센터</h2>
-              <div class="inner_sub">
-                <ul class="list_menu">
-                  <li class="on">
-                    <a href="list.no">공지사항</a>
-                  </li>
-                  <li>
-                    <a href="/showFaq">자주하는 질문</a>
-                  </li>
-                  <li class="inquiry">
-                    <a href="list.in">1:1 문의</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
+            	<jsp:include page="../common/csSidebar.jsp" />
             <!-- 사이드 메뉴바 끝 -->
 
             <!-- 본문 영역-->
@@ -95,17 +79,5 @@
   	<jsp:include page="../common/footer.jsp" />
   <!-- Footer 영역 끝 -->
 
-  <script>
-  	$(function() {
-  		$("li.inquiry > a").click(function(e) {
-  			e.preventDefault();
-  			
-  			let userNo = "${loginUser.userNo}";
-  			let url = "list.in?userNo=" + userNo;
-  			location.href = url;
-  		});
-  	});
-  </script>
-  
 </body>
 </html>

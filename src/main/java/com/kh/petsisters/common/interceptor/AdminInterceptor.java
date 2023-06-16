@@ -8,9 +8,9 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import com.kh.petsisters.member.model.vo.Member;
 
+@Override
 public class AdminInterceptor extends HandlerInterceptorAdapter {
 	
-	@Override
 	public boolean preHandle(HttpServletRequest request
 						   , HttpServletResponse response
 						   , Object handler) throws Exception {
@@ -20,7 +20,7 @@ public class AdminInterceptor extends HandlerInterceptorAdapter {
 		if(loginUser.getUserName().equals("관리자")) {
 			return true;
 		} else {
-			session.setAttribute("alertMsg", "관리자만 접근 가능한 페이지입니다.");
+			session.setAttribute("message", "관리자만 접근 가능한 페이지입니다.");
 			response.sendRedirect(request.getContextPath() + "/");
 			
 			return false;

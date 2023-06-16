@@ -23,14 +23,14 @@ public class InquiryDao {
 		return sqlSession.selectOne("inquiryMapper.selectListCount");
 	}
 	
-	public List<Inquiry> selectList(SqlSessionTemplate sqlSession, PageInfo pi, Member m) {
+	public List<Inquiry> selectList(SqlSessionTemplate sqlSession, PageInfo pi, int userNo) {
 		
 		int offset = (pi.getCurrentPage() - 1) * pi.getBoardLimit();
 		int limit = pi.getBoardLimit();
 		
 		RowBounds rowBounds = new RowBounds(offset, limit);
 		
-		return sqlSession.selectList("inquiryMapper.selectList", m, rowBounds);
+		return sqlSession.selectList("inquiryMapper.selectList", userNo, rowBounds);
 	}
 	
 	public int insertInquiry(SqlSessionTemplate sqlSession, Inquiry i) {
@@ -45,7 +45,7 @@ public class InquiryDao {
 	}
 	
 	public int deleteInquiry(SqlSessionTemplate sqlSession, int inquiryNo) {
-		return sqlSession.selectOne("inquiryMapper.deleteInquiry", inquiryNo);
+		return sqlSession.delete("inquiryMapper.deleteInquiry", inquiryNo);
 	}
 	
 	public List<CSReply> selectReplyList(SqlSessionTemplate sqlSession, int inquiryNo) {

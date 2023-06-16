@@ -26,6 +26,13 @@ public class PaymentController {
 		return "reservation/reservationEnrollForm";
 	}
 	
+	@PostMapping("/savePayment")
+    @ResponseBody
+    public String savePayment(@RequestBody Payment p) {
+        paymentService.processPayment(p);
+        return "결제 완료";
+    }
+	
 	// 결제완료화면 띄우기
 	@RequestMapping("/paySuccess")
 	public String paySuccess() {
@@ -33,11 +40,4 @@ public class PaymentController {
 		return "reservation/reservationSuccess";
 	}
 	
-	@PostMapping("/savePayment")
-    @ResponseBody
-    public String savePayment(@RequestBody Payment p) {
-        paymentService.processPayment(p);
-        return "결제 완료";
-    }
-		
 }

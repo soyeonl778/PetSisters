@@ -25,23 +25,7 @@
         <div id="content">
           <div class="page_aticle aticle_type2">
             <!-- 사이드 메뉴바 -->
-            <div id="snb" class="snb_my" style="position: absolute;">
-              <img src="/resources/img/main/사이드바이미지.png" alt="sideBarImg">
-              <h2 class="tit_snb">고객센터</h2>
-              <div class="inner_sub">
-                <ul class="list_menu">
-                  <li>
-                    <a href="list.no">공지사항</a>
-                  </li>
-                  <li>
-                    <a href="/showFaq">자주하는 질문</a>
-                  </li>
-                  <li class="on">
-                    <a onclick="#">1:1 문의</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
+            	<jsp:include page="../common/csSidebar.jsp" />
             <!-- 사이드 메뉴바 끝 -->
 
             <!-- 본문 영역-->
@@ -61,35 +45,22 @@
                   
                   <thead>
                     <tr class="category">
-                    	<th height="51">번호</th>
+                    	<th width="100" height="51">접수번호</th>
                         <th>제목</th>
                         <th width="100">작성일</th>
                     </tr>
                   </thead>
-                  <c:choose>
-						<c:when test="${not empty loginUser}">
-							<tbody id="inquiryBody">
-								<c:if test="${not empty list}">
-									<c:forEach var="i" items="${list}">
-			                  		<tr>
-			                  			<td height="51">${i.inquiryNo}</td>
-			                  			<td>${i.inquiryTitle}</td>
-			                  			<td>${i.createDate}</td>
-			                  		</tr>
-			                  		</c:forEach>
-								</c:if>
-			                  	<c:if test="${empty list}">
-			                  		등록된 1:1 문의글이 존재하지 않습니다.
-			                  	</c:if>
-	                  		</tbody>							
-						</c:when>
-						<c:otherwise>
-							<script>
-								alert("로그인이 필요한 서비스입니다.");
-								location.href = "/list.no";
-							</script>
-						</c:otherwise>
-					</c:choose>
+					<tbody id="inquiryBody">
+						<c:if test="${not empty list}">
+							<c:forEach var="i" items="${list}">
+	                  		<tr>
+	                  			<td height="51">${i.inquiryNo}</td>
+	                  			<td>${i.inquiryTitle}</td>
+	                  			<td>${i.createDate}</td>
+	                  		</tr>
+	                  		</c:forEach>
+						</c:if>
+                 	</tbody>							
                 </table>
 				
                 <br/>
@@ -135,14 +106,5 @@
   	<jsp:include page="../common/footer.jsp" />
   <!-- Footer 영역 끝 -->
   
-  <script>
-  	$(function() {
-		$("#inquiryTable>tbody>tr").click(function() {
-			let inquiryNo = $(this).children().eq(0).text();
-			/* console.log(inquiryNo); */
-			location.href = "detail.in?inquiryNo=" + inquiryNo;
-		});
-  	});
-  </script>
 </body>
 </html>

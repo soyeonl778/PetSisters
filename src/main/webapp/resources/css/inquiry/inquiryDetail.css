@@ -13,7 +13,17 @@ body {
     box-sizing: border-box;
 }
 
-#inquiryDetail {
+.replyDetail {
+    min-width: 950px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+#inquiryDetail, #replyContent {
     margin-top: 20px;
     padding-bottom: 0;
     border-collapse: separate;

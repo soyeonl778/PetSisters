@@ -72,15 +72,11 @@ public class NoticeController {
 		int result = noticeService.insertNotice(n);
 		
 		if(result > 0) {
-			
-			session.setAttribute("alertMsg", "성공적으로 공지사항을 등록했습니다.");
-			
+			session.setAttribute("message", "성공적으로 공지사항을 등록했습니다.");
 			return "redirect:/list.no";
 		
 		} else {
-			
 			model.addAttribute("errorMsg", "공지사항 등록에 실패했습니다.");
-			
 			return "redirect:/enrollForm.no";
 		}
 	}
@@ -113,16 +109,12 @@ public class NoticeController {
 		int result = noticeService.deleteNotice(noticeNo);
 		
 		if(result > 0) {
-			
-			session.setAttribute("alertMsg", "성공적으로 공지사항을 삭제했습니다.");
-			
+			session.setAttribute("message", "성공적으로 공지사항을 삭제했습니다.");
 			return "redirect:/list.no";
 			
 		} else {
-			
 			model.addAttribute("errorMsg", "공지사항 삭제에 실패했습니다.");
-			
-			return "notice/errorPage";
+			return "common/errorPage";
 		}
 	}
 	
@@ -145,7 +137,7 @@ public class NoticeController {
 		
 		if(result > 0) {
 			
-			session.setAttribute("alertMsg", "성공적으로 공지사항을 수정했습니다.");
+			session.setAttribute("message", "성공적으로 공지사항을 수정했습니다.");
 			
 			return "redirect:/detail.no?noticeNo=" + n.getNoticeNo();
 		
@@ -153,7 +145,7 @@ public class NoticeController {
 			
 			model.addAttribute("errorMsg", "공지사항 수정에 실패했습니다.");
 			
-			return "notice/errorPage";
+			return "common/errorPage";
 		}
 		
 	}
