@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.kh.petsisters.chat.model.vo.ChatMessage;
 import com.kh.petsisters.chat.model.vo.ChatRoom;
+import com.kh.petsisters.member.model.vo.Member;
 
 @Repository
 public class ChatDao {
@@ -32,17 +33,21 @@ public class ChatDao {
     public List<ChatMessage> messageList(int roomNo) {
         return sqlSession.selectList("chatMapper.messageList", roomNo);
     }
+    
+    public Member getMemberDetail(int userNo) {
+    	return sqlSession.selectOne("chatMapper.getMemberDetail", userNo);
+    }
  
-//    public int createChat(ChatRoom room) {
-//        return sqlSession.insert("chatMapper.createChat", room);
-//    }
-// 
-//    public ChatRoom searchChatRoom(ChatRoom room) {
-//        return sqlSession.selectOne("chatMapper.searchChatRoom", room);
-//    }
-// 
-// 
-// 
+    public int createChat(ChatRoom room) {
+        return sqlSession.insert("chatMapper.createChat", room);
+    }
+ 
+    public ChatRoom searchChatRoom(ChatRoom room) {
+        return sqlSession.selectOne("chatMapper.searchChatRoom", room);
+    }
+ 
+ 
+ 
 //    public int updateCount(ChatMessage message) {
 //        return sqlSession.update("chatMapper.updateCount", message);
 //    };

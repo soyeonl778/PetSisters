@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.kh.petsisters.chat.model.vo.ChatMessage;
 import com.kh.petsisters.chat.model.vo.ChatRoom;
+import com.kh.petsisters.member.model.vo.Member;
 
 public interface ChatService {
 	
@@ -16,5 +17,11 @@ public interface ChatService {
 	List<ChatMessage> messageList(int roomNo);
 	
 	int selectUnReadCount(ChatMessage message);
+	
+	Member getMemberDetail(int userNo);
+	
+	ChatRoom searchChatRoom(ChatRoom room);
 
+	int createChat(ChatRoom room);
+	
 }

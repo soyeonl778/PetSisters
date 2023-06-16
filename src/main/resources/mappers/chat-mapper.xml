@@ -25,6 +25,26 @@
 		<result column="MASTER_PRO" property="masterPro" />
 	</resultMap>
 	
+	<resultMap id="memberResultSet" type="member">
+		<result column="USER_NO" property="userNo" />
+		<result column="USER_ID" property="userId" />
+		<result column="USER_PWD" property="userPwd" />
+		<result column="USER_NAME" property="userName" />
+		<result column="USER_SSN" property="userSsn" />
+		<result column="USER_NICKNAME" property="userNickname" />
+		<result column="PHONE" property="phone" />
+		<result column="EMAIL" property="email" />
+		<result column="ADDRESS" property="address" />
+		<result column="GENDER" property="gender" />
+		<result column="SITTER_STATUS" property="sitterStatus" />
+		<result column="CA_DATE" property="caDate" />
+		<result column="CA_STATUS" property="caStatus" />
+		<result column="STATUS" property="status" />
+		<result column="FILE_PATH" property="filePath" />
+		<result column="ENROLL_DATE" property="enrollDate" />
+		<result column="P_NO" property="petsitterNo" />
+	</resultMap>
+	
 	
 	<!-- 메세지 DB 저장 -->
 	<insert id="insertMessage" parameterType="chatMessage">
@@ -66,6 +86,34 @@
 		FROM MESSAGE
 		WHERE ROOM_NO = #{roomNo}
     </select>
+    
+    <select id="getMemberDetail" parameterType="_int" resultMap="memberResultSet">
+    	SELECT *
+    	FROM MEMBER
+    	WHERE USER_NO = #{userNo}
+    </select>
+    
+   	<select id="searchChatRoom" parameterType="ChatRoom" resultMap="chatRoomResultSet">
+        SELECT * 
+        FROM CHAT_ROOM
+        WHERE USER_NO = #{userNo} 
+        	AND MASTER_NO = #{masterNo}
+    </select>
+    
+    <!-- 신규 채팅방일 때 채팅 방 생성 -->
+    <insert id="createChat" parameterType="ChatRoom">
+        insert into CHAT_ROOM values(SEQ_CHAT_ROOM.NEXTVAL, 
+        											#{userNo}, 
+        											#{userNickname}, 
+        											#{userPic},
+        											#{userPet},
+        											#{userPro},
+        											#{masterNo},  
+        											#{masterNickname},   
+        											#{masterPic},
+        											#{masterPet}, 
+        											#{masterPro})
+    </insert>
 
 
 

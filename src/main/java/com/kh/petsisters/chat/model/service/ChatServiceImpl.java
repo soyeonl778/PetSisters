@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.kh.petsisters.chat.model.dao.ChatDao;
 import com.kh.petsisters.chat.model.vo.ChatMessage;
 import com.kh.petsisters.chat.model.vo.ChatRoom;
+import com.kh.petsisters.member.model.vo.Member;
 
 @Service
 public class ChatServiceImpl implements ChatService {
@@ -46,7 +47,20 @@ public class ChatServiceImpl implements ChatService {
 		return chatDao.messageList(roomNo);
 	}
 
-	
+	@Override
+	public Member getMemberDetail(int userNo) {
+		return chatDao.getMemberDetail(userNo);
+	}
+
+	@Override
+	public ChatRoom searchChatRoom(ChatRoom room) {
+		return chatDao.searchChatRoom(room);
+	}
+
+	@Override
+	public int createChat(ChatRoom room) {
+		return chatDao.createChat(room);
+	}
 
 
 }

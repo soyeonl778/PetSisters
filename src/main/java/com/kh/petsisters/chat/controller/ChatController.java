@@ -5,12 +5,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -19,6 +21,7 @@ import com.kh.petsisters.chat.model.service.ChatService;
 import com.kh.petsisters.chat.model.vo.ChatMessage;
 import com.kh.petsisters.chat.model.vo.ChatRoom;
 import com.kh.petsisters.chat.model.vo.ChatSession;
+import com.kh.petsisters.member.model.vo.Member;
 
 @Controller
 public class ChatController {
@@ -88,6 +91,53 @@ public class ChatController {
         Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
         gson.toJson(mList,response.getWriter());
     }
+    
+    /**
+     * 채팅 방이 없을 때 생성
+     */
+    @RequestMapping("createChat.do")
+    public String createChat(ChatRoom room,
+    								HttpSession session, int masterNo) {
+    	
+        Member user = (Member)session.getAttribute("loginUser");
+        Member master = cService.getMemberDetail(masterNo);
+        
+        room.setUserNo(user.getUserNo());
+        room.setUserNickname(user.getUserNickname());
+        room.setUserPic(user.getFilePath());
+        room.setUserPet(user.getSitterStatus());
+        room.setUserPro(user.getCaStatus());
+        
+        
+        room.setMasterNo(master.getUserNo());
+        room.setMasterNickname(master.getUserNickname());
+        room.setMasterPic(master.getFilePath());
+        room.setMasterPet(master.getSitterStatus());
+        room.setMasterPro(master.getCaStatus());
+
+
+ 
+        ChatRoom exist  = cService.searchChatRoom(room);
+        
+        // DB에 방이 없을 때
+        if(exist == null) {
+            System.out.println("방이 없다!!");
+            int result = cService.createChat(room);
+            if(result == 1) {
+                System.out.println("방 만들었다!!");
+                return "redirect:/chatForm.ch";
+            }else {
+                return "fail";
+            }
+        }
+        // DB에 방이 있을 때
+        else{
+            System.out.println("방이 있다!!");
+            return "redirect:/chatForm.ch";
+        }
+    }
+    
+    
 	
 
 }
