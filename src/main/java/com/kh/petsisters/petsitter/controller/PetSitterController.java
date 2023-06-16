@@ -196,6 +196,10 @@ public class PetSitterController {
 	@RequestMapping(value="updateComment.pe", produces="text/html; charset=UTF-8")
 	public String ajaxUpdateComment(Review r) {
 		
+		System.out.println("-----");
+		System.out.println(r);
+		System.out.println("-----");
+		
 		// 펫시터 후기 답글 수정
 		int result = petSitterService.updateComment(r);
 		
@@ -208,6 +212,8 @@ public class PetSitterController {
 		
 		// 펫시터 후기 답글 삭제
 		int result = petSitterService.deleteComment(r);
+		
+		System.out.println(result);
 		
 		return (result > 0) ? "success" : "fail";
 	}

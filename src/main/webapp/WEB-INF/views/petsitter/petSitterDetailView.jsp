@@ -23,9 +23,8 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
 
   <!-- 슬라이더 -->
-  <!-- <script src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" /> -->
+  <!-- <link rel="stylesheet" type="text/css" href="slick/slick.css"/>
+  <link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/> -->
   
   <title>펫시터 상세페이지</title>
 </head>
@@ -49,11 +48,11 @@
                     <div id="content1">
                       <div class="viewslider_wrap">
                         <section class="slide-box">
-                          <ul class="slider-for">
+                          <div class="single-item">
                             <c:forEach var="psImg" items="${ psImgList }">
-                              <li><img src="${ psImg.filePath }${ psImg.changeName }"></li>
+                              <div><img src="${ psImg.filePath }${ psImg.changeName }"></div>
                             </c:forEach>
-                          </ul>
+                          </div>
                         </section>
                       </div>
                       <div class="profileBox">
@@ -235,11 +234,11 @@
                                         <p>펫시터님 답글</p><p name="adate"></p>
                                       </div>
                                       <div class="updateBtn">
-                                        <button onclick="updateComment(${ r.revNo })" type="button" class="btn btn-secondary">등록</button><button type="button" class="btn btn-secondary">삭제</button>
+                                        <button onclick="updateComment(${ r.revNo })" type="button" class="btn btn-secondary">등록</button>
                                       </div>
                                     </div>
                                     <div id="commentForm">
-                                      <textarea id="acontent"></textarea>
+                                      <textarea id="acontent${ r.revNo }"></textarea>
                                     </div>
                                   </div>
                                 </div>
@@ -255,14 +254,14 @@
                                       </div>
                                       <c:if test="${ loginUser.petsitterNo eq p.petSitterNo }">
                                       <div class="updateBtn">
-                                          <button onclick="updateComment(${ r.revNo })" type="button" class="btn btn-secondary">수정</button><button type="button" class="btn btn-secondary">삭제</button>
+                                          <button onclick="updateComment(${ r.revNo })" type="button" class="btn btn-secondary">수정</button><button onclick="deleteComment(${ r.revNo })" type="button" class="btn btn-secondary">삭제</button>
                                       </div>
                                       </c:if>
                                     </div>
                                     <c:choose>
                                       <c:when test="${ loginUser.petsitterNo eq p.petSitterNo }">
                                         <div id="commentForm">
-                                          <textarea id="acontent">${ r.acontent }</textarea>
+                                          <textarea id="acontent${ r.revNo }">${ r.acontent }</textarea>
                                         </div>
                                       </c:when>
                                       <c:otherwise>
@@ -395,6 +394,11 @@
 
   <!--카카오맵 API-->
   <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=0f876d0e519ec1bc91c1da0c5e2829c7"></script>
+
+  <!-- 슬라이더 -->
+  <!-- <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+  <script type="text/javascript" src="slick/slick.min.js"></script> -->
 
   <script>
 
@@ -581,36 +585,36 @@
       var map = new kakao.maps.Map(mapContainer, mapOption);
 
 
-        var address = "${ p.address }"; 
-        var geocoder = new kakao.maps.services.Geocoder();
+      var address = "${ p.address }"; 
+      var geocoder = new kakao.maps.services.Geocoder();
 
-        geocoder.addressSearch(address, function (result, status) {
-          if (status === kakao.maps.services.Status.OK) {
-            var latitude = result[0].y;
-            var longitude = result[0].x;
+      geocoder.addressSearch(address, function (result, status) {
+        if (status === kakao.maps.services.Status.OK) {
+          var latitude = result[0].y;
+          var longitude = result[0].x;
 
-            var container = document.getElementById('map');
-            var options = {
-              center: new kakao.maps.LatLng(latitude, longitude),
-              level: 6
-            };
+          var container = document.getElementById('map');
+          var options = {
+            center: new kakao.maps.LatLng(latitude, longitude),
+            level: 6
+          };
 
-            var map = new kakao.maps.Map(container, options);
+          var map = new kakao.maps.Map(container, options);
 
-            var circle = new kakao.maps.Circle({
-              center: new kakao.maps.LatLng(latitude, longitude),  // 원의 중심 좌표
-              radius: 500,  // 원의 반지름 (단위: m)
-              strokeWeight: 2,  // 선의 두께 (단위: px)
-              strokeColor: '#0888D0',  // 선의 색상
-              strokeOpacity: 0.8,  // 선의 불투명도 (0~1 사이의 값)
-              strokeStyle: 'solid',  // 선의 스타일 ('solid', 'shortdash', 'shortdot', 'shortdashdot', 'longdash', 'longdot', 'longdashdot')
-              fillColor: '#B9EAFF',  // 채우기 색상
-              fillOpacity: 0.2  // 채우기 불투명도 (0~1 사이의 값)
-            });
+          var circle = new kakao.maps.Circle({
+            center: new kakao.maps.LatLng(latitude, longitude),  // 원의 중심 좌표
+            radius: 500,  // 원의 반지름 (단위: m)
+            strokeWeight: 2,  // 선의 두께 (단위: px)
+            strokeColor: '#0888D0',  // 선의 색상
+            strokeOpacity: 0.8,  // 선의 불투명도 (0~1 사이의 값)
+            strokeStyle: 'solid',  // 선의 스타일 ('solid', 'shortdash', 'shortdot', 'shortdashdot', 'longdash', 'longdot', 'longdashdot')
+            fillColor: '#B9EAFF',  // 채우기 색상
+            fillOpacity: 0.2  // 채우기 불투명도 (0~1 사이의 값)
+          });
 
-            circle.setMap(map);
-          }
-        });
+          circle.setMap(map);
+        }
+      });
 
       
 
@@ -633,22 +637,7 @@
 
 
       // ------------------------ 슬라이더 ------------------------
-      // $('.slider-for').slick({
-      //   slidesToShow: 1,
-      //   slidesToScroll: 1,
-      //   arrows: false,
-      //   fade: true,
-      //   asNavFor: '.slider-nav'
-      // });
-
-      // $('.slider-nav').slick({
-      //   slidesToShow: 3,
-      //   slidesToScroll: 1,
-      //   asNavFor: '.slider-for',
-      //   centerMode: true,
-      //   focusOnSelect: true
-      // });
-
+      $('.single-item').slick();
 
 
       // ------------------------ 상세페이지 이용 가능 서비스 표시 ------------------------
@@ -680,13 +669,13 @@
     // 답글 수정
     function updateComment(revNo) {
       
-      if($("#acontent").val().trim().length != 0) {
+      if($("#acontent" + revNo).val().trim().length != 0) {
         // 즉, 유효한 내용이 한 글자라도 있을 경우
         $.ajax({
           url : "updateComment.pe",
           data : {
             revNo : revNo,
-            acontent : $("#acontent").val()
+            acontent : $("#acontent" + revNo).val()
           },
           type : "post",
           success : function(result) {
@@ -704,6 +693,28 @@
         } else {
           alertify.alert("알림", "답글 작성 후 등록 요청해주세요.");
         }
+    }
+
+    // 답글 삭제
+    function deleteComment(revNo) {
+      
+        $.ajax({
+          url : "deleteComment.pe",
+          data : {
+            revNo : revNo
+          },
+          type : "post",
+          success : function(result) {
+            
+            if(result == "success") {
+              alertify.alert("알림", "답글 삭제 완료").set({onok: function(){ location.reload(); }});
+            }
+
+          },
+          error : function() {
+            console.log("답글 삭제용 ajax 통신 실패!");
+          }
+        });
     }
 
 

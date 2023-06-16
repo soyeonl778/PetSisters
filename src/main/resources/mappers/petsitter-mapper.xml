@@ -165,12 +165,12 @@
 	</update>
 	
 	<!-- 펫시터 상세페이지 후기 답글 삭제용 쿼리문 -->
-	<delete id="deleteComment" parameterType="review">
+	<update id="deleteComment" parameterType="review">
 		UPDATE REVIEW
 		   SET A_CONTENT = NULL
 		     , A_DATE = NULL
 		 WHERE REV_NO = #{revNo}
-	</delete>
+	</update>
 	
 	<!-- 펫시터 프로필 이미지 등록용 쿼리문 -->
 	<insert id="insertPetSitterImg" parameterType="petSitterImg">
