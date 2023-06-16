@@ -144,6 +144,21 @@ public class ReservationServiceImpl implements ReservationService{
 		return reservationDao.updateJournal(sqlSession, jno);
 	}
 
+	@Override
+	public int updateCare(int jno, String careTitle, String careDesc) {
+		return reservationDao.updateCare(sqlSession, jno, careTitle, careDesc);
+	}
+
+	@Override
+	public int updateCareFile(ArrayList<CareJournal> list) {
+		return reservationDao.updateCareFile(sqlSession, list);
+	}
+
+	@Override
+	public int deleteJournal(int jno) {
+		return reservationDao.deleteJournal(sqlSession, jno);
+	}
+
 	
 
 

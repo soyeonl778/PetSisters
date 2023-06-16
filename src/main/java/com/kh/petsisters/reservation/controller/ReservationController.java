@@ -478,24 +478,93 @@ public class ReservationController {
 	
 	
 	
-	
+	/**
+	 * 돌봄일지 수정 초기정보 셋팅용
+	 * @param jno
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping("updateJournal")
 	public String updateJournal(@RequestParam(value="jNo") int jno, Model model) {
-		
-		System.out.println(jno);
 		
 		CareJournal c = reservationService.updateJournal(jno);
 		
 		model.addAttribute("c", c);
 		
-		System.out.println(c);
-		
 		return "reservation/carejournalUpdateForm";
 	}
 	
 	
+	/**
+	 * 돌봄일지 수정
+	 * @param fileNames
+	 * @param careTitle
+	 * @param careDesc
+	 * @param jno
+	 * @param session
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping(value="updateCare" , method = RequestMethod.POST)
+	public String updateCare(
+			@RequestParam(required = false, name = "fileNames") List<MultipartFile> fileNames,
+            @RequestParam String careTitle,
+            @RequestParam String careDesc,
+            @RequestParam int jno,
+            HttpSession session) {
+		
+		System.out.println(careTitle);
+		System.out.println(careDesc);
+		System.out.println(jno);
+		System.out.println("fileNames" + fileNames);
+		
+		int result = reservationService.updateCare(jno, careTitle, careDesc);
+		
+		
+		ArrayList<CareJournal> list = new ArrayList<>();
+		if(fileNames != null) {
+			
+	        for (MultipartFile file : fileNames) {
+	            String originalFileName = file.getOriginalFilename();
+	            String savedFileName = saveFiles(file, session);
+	            
+	            CareJournal cj = new CareJournal();
+		        cj.setOriginName(originalFileName);
+		        cj.setChangeName(savedFileName);
+		        cj.setJno(jno);
+		        list.add(cj);
+	        }
+	        System.out.println(list);
+	        if(result > 0) {
+	        	
+	        	int res = reservationService.updateCareFile(list);
+	        }
+		}
+		
+		return "redirect:/careJournalManagement";
+	}
 	
 	
+	/**
+	 * 돌봄일지 삭제
+	 * @param model
+	 * @param jno
+	 * @return
+	 */
+	@RequestMapping("deleteJournal")
+	public String deleteJournal(Model model, @RequestParam int jno) {
+		
+		int result = reservationService.deleteJournal(jno);
+		
+		if(result > 0) {
+			
+			return "redirect:/journalManager";
+		} else {
+			
+			return null;
+		}
+		
+	}
 	
 	
 	/**

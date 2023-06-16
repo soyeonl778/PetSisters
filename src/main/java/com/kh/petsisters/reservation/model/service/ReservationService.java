@@ -86,6 +86,15 @@ public interface ReservationService {
 	// 펫시터 돌봄일지 수정시 초기 정보 조회용
 	CareJournal updateJournal(int jno);
 
+	// 펫시터 돌봄일지 제목,내용 수정용
+	int updateCare(int jno, String careTitle, String careDesc);
+
+	// 펫시터 돌봄일지 파일 업데이트용
+	int updateCareFile(ArrayList<CareJournal> list);
+
+	// 펫시터 돌봄일지 삭제
+	int deleteJournal(int jno);
+
 
 
 

@@ -32,7 +32,7 @@
 									<form id="imForm" action="" method="post"
 										enctype="multipart/form-data">
 										<div>
-										<input type="hidden" id="cNo" value="${cNo}">
+										<input type="hidden" id="jno" value="${c.jno}">
 											<div class="titleSection">
 												<div class="titleText">제목</div>
 												<input type="text" name="" id="careTitle"
@@ -50,11 +50,7 @@
 												name="attachments" id="btnAtt" multiple="multiple">
 											<div id="att_zone"
 												data-placeholder='파일을 첨부 하려면 파일 선택 버튼을 클릭하거나 파일을 드래그앤드롭 하세요'>
-												
-												<c:if test="${c.changeName != null }">
-												<!-- 쌩으로 그냥 때려박기 -->
-												
-												</c:if>
+											
 												
 											</div>
 										</div>
@@ -62,7 +58,7 @@
 
 										<div align="center" class="formBtn">
 											<button type="button" onclick="submitForm()"
-												class="btn btn-primary">등록하기</button>
+												class="btn btn-primary">수정완료</button>
 											<button type="button" onclick="history.back()"
 												class="btn btn-info">뒤로가기</button>
 										</div>
@@ -196,7 +192,7 @@
 	  var delFile = [];
 	  var careTitle = $('#careTitle').val();
 	  var careDesc = $('#careDesc').val();
-	  var cNo = $('#cNo').val();
+	  var jno = $('#jno').val();
 	  var attZone = document.getElementById('att_zone');
 	  var inputs = attZone.getElementsByTagName('input');
 		  
@@ -224,7 +220,7 @@
 		    }
 		    formData.append('careTitle', careTitle);
 		    formData.append('careDesc', careDesc);
-		    formData.append('cNo', cNo);
+		    formData.append('jno', jno);
 		    
 		    /*
 		    for (var i = 0; i < fileNames.length; i++) {
@@ -241,7 +237,7 @@
 		    console.log(fileNames, '3');
 		    
 		    $.ajax({
-		        url: 'insertJournal',
+		        url: 'updateCare',
 		        enctype: "multipart/form-data",
 		        method: 'POST',
 		        data: formData,
@@ -249,8 +245,8 @@
 		        processData: false,
 		        success: function(res) {
 		          console.log(res);
-		          alert('돌봄일지 작성 성공');
-		          window.location.href = '/petsitterRev';
+		          alert('돌봄일지 수정 성공');
+		          window.location.href = '/journalManager';
 		        },
 		        error: function(error) {
 		          console.log('error', error);

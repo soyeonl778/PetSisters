@@ -194,6 +194,29 @@ public class ReservationDao {
 		return sqlSession.selectOne("reservationMapper.updateJournal", jno);
 	}
 
+	public int updateCare(SqlSessionTemplate sqlSession, int jno, String careTitle, String careDesc) {
+		
+		Map<String, Object> parameter = new HashMap<>();
+		parameter.put("jno", jno);
+		parameter.put("careTitle", careTitle);
+		parameter.put("careDesc", careDesc);
+		
+		return sqlSession.update("reservationMapper.updateCare", parameter);
+	}
+
+	public int updateCareFile(SqlSessionTemplate sqlSession, ArrayList<CareJournal> list) {
+		
+	    int result = 0;
+	    for (CareJournal item : list) {
+	        result += sqlSession.update("reservationMapper.updateCareFile", item);
+	    }
+	    return result;
+	}
+
+	public int deleteJournal(SqlSessionTemplate sqlSession, int jno) {
+		return sqlSession.update("reservationMapper.deleteJournal", jno);
+	}
+
 
 
 }

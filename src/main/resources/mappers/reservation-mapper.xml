@@ -523,6 +523,32 @@
 		       FILE_PATH 	
 	</select>
 
+
+	<!-- 돌봄일지 제목,내용 수정용 쿼리문 -->
+	<update id="updateCare" parameterType="care">
+		UPDATE JOURNAL
+		SET J_TITLE = #{careTitle},
+		    J_CONTENT = #{careDesc}
+		WHERE J_NO = #{jno}    	
+	</update>
+
+
+	<!-- 돌봄일지 사진 업데이트용 쿼리문 -->
+	<update id="updateCareFile" parameterType="java.util.List">
+		UPDATE J_ATTACHMENT
+		SET ORIGIN_NAME = #{originName},
+		    CHANGE_NAME = #{changeName}
+		WHERE REF_JNO = #{jno}  	
+	</update>
+
+
+	<!-- 돌봄일지 삭제용 쿼리문 -->
+	<update id="deleteJournal">
+		UPDATE JOURNAL
+		SET STATUS = 'N'
+		WHERE J_NO = #{jno}	
+	</update>
+
 </mapper>
 
 

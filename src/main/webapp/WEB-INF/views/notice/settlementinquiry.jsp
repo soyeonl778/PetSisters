@@ -184,7 +184,7 @@ $(document).ready(function () {
 	    		        if (prevMonth !== '') {
 	    		        	inner += '<hr>';
 	    		        }
-	    		        inner += '<h2 class="monthTitle">' + month + ' 월</h2>';
+	    		        inner += '<h2 class="monthTitle">'+ 0 + month + ' 월</h2>';
 	    		        prevMonth = month;
 	    		      }
 	    		    
