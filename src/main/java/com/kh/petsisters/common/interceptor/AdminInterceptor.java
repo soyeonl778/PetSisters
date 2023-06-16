@@ -8,9 +8,9 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import com.kh.petsisters.member.model.vo.Member;
 
-@Override
 public class AdminInterceptor extends HandlerInterceptorAdapter {
 	
+	@Override
 	public boolean preHandle(HttpServletRequest request
 						   , HttpServletResponse response
 						   , Object handler) throws Exception {
