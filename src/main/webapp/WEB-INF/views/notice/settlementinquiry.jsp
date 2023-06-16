@@ -21,6 +21,7 @@
   <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
   
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 <title>정산 조회</title>
 </head>
 <body>
@@ -177,8 +178,13 @@ $(document).ready(function () {
 	    		for(let i = 0; i < res.length; i++) {
 	    			
 	    		    var payment = res[i];
-	    		    var month = payment.payDate.substring(0, 1);
-	    		    var day = payment.payDate.substring(3, 5);
+	    		    
+	    		    var dateFormat = "M월 DD, YYYY";
+	    		    
+	    		    var formattedDate = moment(payment.payDate, "M월 DD, YYYY").format(dateFormat);
+	    		    
+	    		    var month = formattedDate.substring(0, 1);
+	    		    var day = formattedDate.substring(3, 5);
 	    		    
 	    		    if (month !== prevMonth) {
 	    		        if (prevMonth !== '') {
