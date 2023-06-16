@@ -23,18 +23,16 @@
 <body>
 
 	<script>
-	
-		var psService = "<c:out value='${p.petSitterService}'/>"; // 값을 JavaScript 변수에 할당
-		var psServiceArr = psService.split(","); // 쉼표(,)로 분할하여 배열로 변환
 		
-	    $(document).ready(function() {
-	      
-	      for(var i = 0; i < psServiceArr.length; i++) {
-	        
-	        $("input:checkbox[name='petSitterService'][value='"+ psServiceArr[i] +"']").prop("checked", true);
-	      }
-	      
-	    });
+    $(document).ready(function() {
+      
+      // 이용 가능 서비스 배열값 체크박스 체크하기
+      for(var i = 0; i < psServiceArr.length; i++) {
+        
+        $("input:checkbox[name='petSitterService'][value='"+ psServiceArr[i] +"']").prop("checked", true);
+      }
+      
+    });
 	    
 	</script>
 
@@ -245,6 +243,13 @@
 
   <script>
 
+    // ------------------------ 이용 가능 서비스 ------------------------
+		var psService = "<c:out value='${p.petSitterService}'/>"; // 값을 JavaScript 변수에 할당
+		var psServiceArr = psService.split(","); // 쉼표(,)로 분할하여 배열로 변환
+
+
+
+    // ------------------------ 첨부 파일 ------------------------
     var maxAppend = 1;
 
     $('#addList .add').on('click',function(){ 

@@ -11,60 +11,21 @@
   <link rel="stylesheet" href="/resources/css/petsitter/petSitterDetailView.css">
   <jsp:include page="../common/common.jsp" />
 
+  <!--datepicker 캘린더 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script  src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css"/>
+
   <!-- 폰트어썸 아이콘 적용 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
   <!-- 부트스트랩 아이콘 -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
-  
-  <!-- 캘린더 -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js" integrity="sha512-T/tUfKSV1bihCnd+MxKD0Hm1uBBroVYBOYSk1knyvQ9VyZJpc/ALb4P0r6ubwVPSGB2GvjeoMAJJImBG12TiaQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" integrity="sha512-mSYUmp1HYZDFaVKK//63EcZq4iFWFjxSL+Z3T/aCt4IO9Cejm03q3NKKYN6pFQzY0SBOr8h+eCIAZHPXcpZaNw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.ko.min.js" integrity="sha512-L4qpL1ZotXZLLe8Oo0ZyHrj/SweV7CieswUODAAPN/tnqN3PA1P+4qPu5vIryNor6HQ5o22NujIcAZIfyVXwbQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
   <!-- 슬라이더 -->
-  <script src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script> 
+  <!-- <script src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
-
-  <script>
-    $( document ).ready( function() {
-      
-      // 슬라이더
-      $('.slider-for').slick({
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        arrows: false,
-        fade: true,
-        asNavFor: '.slider-nav'
-      });
-
-      $('.slider-nav').slick({
-        slidesToShow: 3,
-        slidesToScroll: 1,
-        asNavFor: '.slider-for',
-        centerMode: true,
-        focusOnSelect: true
-      });
-
-      // 상세페이지 이용 가능 서비스 표시
-      var psService = "<c:out value='${p.petSitterService}'/>"; // 값을 JavaScript 변수에 할당
-		  var psServiceArr = psService.split(","); // 쉼표(,)로 분할하여 배열로 변환
-
-      for(var i = 0; i < psServiceArr.length; i++) {
-
-        var psServiceId = $("div[id='"+ psServiceArr[i] +"']").attr('id');
-
-        const div = document.getElementById(psServiceId);
-        div.style.display = 'grid';
-	    }
-      
-    });
-
-  </script>
-
-  <!-- 카카오맵 API -->
-  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=0f876d0e519ec1bc91c1da0c5e2829c7"></script>
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" /> -->
   
   <title>펫시터 상세페이지</title>
 </head>
@@ -89,11 +50,6 @@
                       <div class="viewslider_wrap">
                         <section class="slide-box">
                           <ul class="slider-for">
-                            <c:forEach var="psImg" items="${ psImgList }">
-                              <li><img src="${ psImg.filePath }${ psImg.changeName }"></li>
-                            </c:forEach>
-                          </ul>
-                          <ul class="slider-nav">
                             <c:forEach var="psImg" items="${ psImgList }">
                               <li><img src="${ psImg.filePath }${ psImg.changeName }"></li>
                             </c:forEach>
@@ -279,7 +235,7 @@
                                         <p>펫시터님 답글</p><p name="adate"></p>
                                       </div>
                                       <div class="updateBtn">
-                                        <button onclick="updateComment(${r.revNo})" type="button" class="btn btn-secondary">등록</button><button type="button" class="btn btn-secondary">삭제</button>
+                                        <button onclick="updateComment(${ r.revNo })" type="button" class="btn btn-secondary">등록</button><button type="button" class="btn btn-secondary">삭제</button>
                                       </div>
                                     </div>
                                     <div id="commentForm">
@@ -299,7 +255,7 @@
                                       </div>
                                       <c:if test="${ loginUser.petsitterNo eq p.petSitterNo }">
                                       <div class="updateBtn">
-                                          <button onclick="updateComment(${r.revNo})" type="button" class="btn btn-secondary">수정</button><button type="button" class="btn btn-secondary">삭제</button>
+                                          <button onclick="updateComment(${ r.revNo })" type="button" class="btn btn-secondary">수정</button><button type="button" class="btn btn-secondary">삭제</button>
                                       </div>
                                       </c:if>
                                     </div>
@@ -325,43 +281,6 @@
                       </div>
                     </div>
 
-                    <script>
-                      // 답글 작성 버튼 클릭 시 동작하는 함수
-                      function showCommentForm(button) {
-                        var commentSection = button.closest('.review').querySelector('#comment');
-                        commentSection.style.display = commentSection.style.display === 'none' ? 'flex' : 'none';
-                      }
-
-                      function updateComment(revNo) { // 답글 작성용 ajax
-                        
-                        if($("#acontent").val().trim().length != 0) {
-                          // 즉, 유효한 내용이 한 글자라도 있을 경우
-                          $.ajax({
-                            url : "updateComment.pe",
-                            data : {
-                              revNo : revNo,
-                              acontent : $("#acontent").val()
-                            },
-                            type : "post",
-                            success : function(result) {
-                              
-                              if(result == "success") {
-                                alertify.alert("알림", "답글 등록 완료").set({onok: function(){ location.reload(); }});
-                              }
-
-                            },
-                            error : function() {
-                              console.log("답글 작성용 ajax 통신 실패!");
-                            }
-                          });
-                          
-                          } else {
-                            alertify.alert("알림", "답글 작성 후 등록 요청해주세요.");
-                          }
-                      }
-
-                    </script>
-
                     <div id="content2">
                       
                       <c:choose>
@@ -380,7 +299,7 @@
                                 <%-- 빈 하트 일 때 --%>
                                 <c:when test="${ likeCheck == 0 }">
                                   <div class="likeBtn">
-                                    <a onclick="" class="heart-login">
+                                    <a href="#" class="heart-login">
                                       <i class="bi bi-heart heartIcon" id="unChecked"></i><p>${ likeCount }&nbsp;</p>
                                     </a>
                                   </div>
@@ -388,7 +307,7 @@
                                 <%-- 채워진 하트 일 때 --%>
                                 <c:otherwise>
                                   <div class="likeBtn">
-                                    <a onclick="" class="heart-login">
+                                    <a href="#" class="heart-login">
                                       <i class="bi bi-heart-fill heartIcon" id="cheked"></i><p>${ likeCount }&nbsp;</p>
                                     </a>
                                   </div>
@@ -407,72 +326,6 @@
                           </div>
                         </c:otherwise>
                       </c:choose>
-
-                      <script>
-
-                        $(document).ready(function() {
-                          $(".heart-login").on("click", function() {
-
-                            // 빈 하트라면
-                            if ($(this).find(".heartIcon").hasClass("bi-heart")) {
-                              sendHeartData('${loginUser.userNo}', '${p.petSitterNo}', 0);
-                              $(this).find(".heartIcon").removeClass("bi-heart").addClass("bi-heart-fill");
-
-                            // 채워진 하트라면
-                            } else {
-                              sendHeartData('${loginUser.userNo}', '${p.petSitterNo}', 1);
-                              $(this).find(".heartIcon").removeClass("bi-heart-fill").addClass("bi-heart");
-                            }
-
-                          });
-
-                        });
-
-                        // AJAX 호출 함수 정의
-                        function sendHeartData(userNo, refPno, check) {
-
-                          var requestData = {};
-
-                          if (check === 0) {
-                            requestData = {
-                              userNo: userNo,
-                              refPno: refPno,
-                              check: check
-                            };
-                          } else {
-                            requestData = {
-                              userNo: userNo,
-                              refPno: refPno,
-                              check: check
-                            };
-                          }
-
-                          $.ajax({
-                            url: "like.pe",
-                            method: "POST",
-                            data: requestData,
-                            success: function(result) {
-                            	
-                              if(check === 0) {
-                                // 일회성 알람문구 담아서 새로고침
-                                alertify.alert("알림", "펫시터 찜 완료").set({onok: function(){ location.reload(); }});
-                                
-                              } else {
-                                // 일회성 알람문구 담아서 새로고침
-                                alertify.alert("알림", "펫시터 찜 해제 완료").set({onok: function(){ location.reload(); }});
-                              }
-                            	
-                              // 찜 요청 성공 시 수행할 작업
-                              console.log("찜 AJAX 요청이 성공했습니다.");
-                            },
-                            error: function() {
-                              // 찜 요청 실패 시 수행할 작업
-                              console.error("찜 AJAX 요청이 실패했습니다.");
-                            }
-                          });
-                        }
-  
-                      </script>
                       
                       <div class="card">
                         <form action="/pay" method="get" id="reserveForm">
@@ -482,8 +335,8 @@
                           <div class="card-body">
                             <h5 class="card-title">언제 펫시터가 필요하신가요?</h5>
                             <div class="dateInput">
-                              <input type="date" class="form-control" id="startDate" name="startDate" data-placeholder="체크인 날짜" required>&nbsp;&nbsp;
-                              <input type="date" class="form-control" id="endDate" name="endDate" data-placeholder="체크아웃 날짜" required>
+                              <input type="text" class="datepicker1 form-control" id="startDate" name="startDate" placeholder="체크인 날짜" required>&nbsp;&nbsp;
+                              <input type="text" class="datepicker2 form-control" id="endDate" name="endDate" placeholder="체크아웃 날짜" required>
                             </div>
                             <hr>
                             <h5 class="card-title">맡기시는 반려동물</h5>
@@ -508,130 +361,12 @@
                         </form>
                       </div>
 
-                        <script>
-
-                          // 예약 요청 반려동물 마릿수 증감 이벤트
-                          $('#petCount').text(0);
-                          $('#petCount2').text(0);
-
-                          // HTML 요소 가져오기
-                          const petCountElement = document.getElementById('petCount');
-                          const priceElement = document.getElementById('price');
-                          const dayElement = document.getElementById('day');
-
-                          // + 버튼 클릭 시 이벤트 처리
-                          function increaseCount() {
-                            let petCount = parseInt($('#petCount').text());
-                            petCount++;
-                            $('#petCount').text(petCount);
-
-                            updateTotal();
-                          }
-
-                          // - 버튼 클릭 시 이벤트 처리
-                          function decreaseCount() {
-                            let petCount = parseInt($('#petCount').text());
-                            if (petCount > 1) {
-                              petCount--;
-                              $('#petCount').text(petCount);
-                            }
-
-                            updateTotal();
-                          }
-
-                          // 이용요금 업데이트 함수
-                          function updateTotal() {
-                            let petCount = parseInt($('#petCount').text());
-                            let price = parseInt($('#price').val());
-                            let day = parseInt($('#day').text());
-
-                            let total = petCount * price * day;
-
-                            // 결과를 #petCount2 요소에 출력
-                            $('#petCount2').text(petCount);
-
-                            // 천단위 콤마 추가
-                            let formattedTotal = total.toLocaleString();
-
-                            $('#total').text(formattedTotal);
-                            $('#payPrice').val(formattedTotal);
-                          }
-
-                          // + 버튼 클릭 시 이벤트 연결
-                          const plusButton = document.querySelector('button[value="+"]');
-                          plusButton.addEventListener('click', increaseCount);
-
-                          // - 버튼 클릭 시 이벤트 연결
-                          const minusButton = document.querySelector('button[value="-"]');
-                          minusButton.addEventListener('click', decreaseCount);
-
-
-                          $(document).ready(function() {
-
-                            $('#day').text(0);
-
-                            $('#startDate, #endDate').on('change', function() {
-
-                              // 시작일, 종료일
-                              var startDate = Date.parse($('#startDate').val());
-                              var endDate = Date.parse($('#endDate').val());
-
-                              resetValues();
-
-                              if (startDate && endDate) {
-                                calculateDateDifference();
-                                updateTotal();
-                              }
-
-                              function calculateDateDifference() {
-  
-                                if (endDate < startDate) {
-                                  $('#endDate').val('');
-                                  $('#day').text(0); // endDate가 startDate보다 이전인 경우 0으로 설정
-                                } else {
-                                  // 날짜 차이를 계산(결과는 밀리초로 반환되므로 일 단위로 변환)
-                                  var dateDifference = Math.ceil((endDate - startDate) / (1000 * 60 * 60 * 24));
-    
-                                  // 결과를 #day 요소에 출력
-                                  $('#day').text(dateDifference + 1);
-
-                                  // #payDscpt 요소의 값을 가져오기
-                                  var payDscptValue = $('#payDscpt').text();
-                                  addHiddenInput('payDscpt', payDscptValue);
-
-                                  console.log(payDscptValue);
-                                }
-                              }
-
-                              function addHiddenInput(name, value) {
-                                var input = $('<input>').attr({
-                                  type: 'hidden',
-                                  name: name,
-                                  value: value
-                                });
-                                $('#reserveForm').append(input);
-                              }
-
-                              // 값 초기화 함수
-                              function resetValues() {
-                                $('#petCount').text(0);
-                                $('#petCount2').text(0);
-                                $('#day').text(0);
-                                $('#total').val('');
-                                $('#reserveForm').find('input[name="payDscpt"]').remove();
-                              }
-
-                            });
-                          });
-
-                        </script>
-
                       <br>
                       <div class="card">
                         <div class="card-body">
                           <h5 class="card-title">예약 가능 날짜</h5>
                           <div class="container">
-                            <input type="date">
+                            <input type="text" id="datepicker" class="form-control" placeholder="예약 가능 날짜">
                           </div>
                         </div>
                       </div>
@@ -639,7 +374,7 @@
                       <div class="card">
                         <div class="card-body">
                           <h5 class="card-title">펫시터님 위치</h5>
-                          <p class="card-text">강남구 도곡동</p>
+                          <p class="card-text">${ p.address }</p>
                         </div>
                         <div id="map"></div>
                       </div>
@@ -658,50 +393,368 @@
 
 	<jsp:include page="../common/footer.jsp" />
 
-    <!-- 캘린더
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-    <script>
+  <!--카카오맵 API-->
+  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=0f876d0e519ec1bc91c1da0c5e2829c7"></script>
 
-      $(document).ready(function () {
-        $("#tete1").flatpickr({
-          inline: true
-        });
-        });
+  <script>
 
-    </script> -->
+    $(function () {
 
-    <script>
-      // 카카오맵 API
-      $(document).ready(function() {
-        var container = document.getElementById('map'); // 지도를 표시할 div
-        var options = {
-          center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-          level: 6 // 지도의 확대 레벨
-        };
+      // ------------------------ datepicker 캘린더 ------------------------
+      $.datepicker.setDefaults({
+        dateFormat: 'yy/mm/dd',
+        prevText: '이전 달',
+        nextText: '다음 달',
+        monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+        monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+        dayNames: ['일', '월', '화', '수', '목', '금', '토'],
+        dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
+        dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+        showMonthAfterYear: true,
+        yearSuffix: '년'
+      });
+
+      $(".datepicker1, .datepicker2, #datepicker").datepicker({
+        minDate: 0,
+        beforeShowDay: disableSomeDay
+      });
+
+      // 예약 불가능일 설정
+      var disabledDays = ["2023-06-24", "2023-06-25"];
+
+      // 날짜를 나타내기 전에(beforeShowDay) 실행할 함수
+      function disableSomeDay(date) {
+        var month = date.getMonth();
+        var dates = date.getDate();
+        var year = date.getFullYear();
+
+        // 배열에 해당하는 날짜는 0번째 index 에 false 를 담아 리턴
+        for(i = 0; i < disabledDays.length; i++) {
+          if($.inArray(year + '-' + (month + 1) + '-' + dates,disabledDays) != -1) {
+            return [false];
+          }
+          return [true];
+        }
+      }
+
+      // 주말(토, 일요일) 선택 막기
+      function noWeekendsOrHolidays(date) {
+          var noWeekend = jQuery.datepicker.noWeekends(date);
+          return noWeekend[0] ? [true] : noWeekend;
+      }
+
+
+
+      // ------------------------ 예약 장바구니 ----------------------------
+      $('#day').text(0);
     
-        var map = new kakao.maps.Map(container, options); // 지도 생성
-  
-        // 지도에 표시할 원을 생성합니다
-        var circle = new kakao.maps.Circle({
-            center : new kakao.maps.LatLng(33.450701, 126.570667),  // 원의 중심좌표 입니다 
-            radius: 500, // 미터 단위의 원의 반지름입니다 
-            strokeWeight: 5, // 선의 두께입니다 
-            strokeColor: '#75B8FA', // 선의 색깔입니다
-            strokeOpacity: 1, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
-            strokeStyle: 'dashed', // 선의 스타일 입니다
-            fillColor: '#CFE7FF', // 채우기 색깔입니다
-            fillOpacity: 0.7  // 채우기 불투명도 입니다
-        }); 
-  
-        // 지도에 원을 표시합니다 
-        circle.setMap(map);
+      $('#startDate, #endDate').on('change', function() {
+
+        // 시작일, 종료일
+        var startDate = new Date($('#startDate').val());
+        var endDate = new Date($('#endDate').val());
+
+        if(startDate instanceof Date && !isNaN(startDate) && endDate instanceof Date && !isNaN(endDate)) {
+          calculateDateDifference();
+          updateTotal();
+        } else {
+
+          resetValues();
+        }
+
+      });
+
+    });
 
 
-        $(document).ready(function() {
-          $('.slider-nav .slick-list .slick-track li').css('margin', '0 3px');
+
+    // ------------------------ 예약 장바구니 ------------------------
+    // 예약 요청 반려동물 마릿수 증감 이벤트
+    $('#petCount').text(0);
+    $('#petCount2').text(0);
+
+    // HTML 요소 가져오기
+    const petCountElement = document.getElementById('petCount');
+    const priceElement = document.getElementById('price');
+    const dayElement = document.getElementById('day');
+
+    // + 버튼 클릭 시 이벤트 처리
+    function increaseCount() {
+      let petCount = parseInt($('#petCount').text());
+      petCount++;
+      $('#petCount').text(petCount);
+
+      updateTotal();
+    }
+
+    // - 버튼 클릭 시 이벤트 처리
+    function decreaseCount() {
+      let petCount = parseInt($('#petCount').text());
+      if (petCount > 1) {
+        petCount--;
+        $('#petCount').text(petCount);
+      }
+
+      updateTotal();
+    }
+
+    // 이용요금 업데이트 함수
+    function updateTotal() {
+      let petCount = parseInt($('#petCount').text());
+      let price = parseInt($('#price').val());
+      let day = $('#day').text();
+
+      let total = petCount * price * day;
+
+      // 결과를 #petCount2 요소에 출력
+      $('#petCount2').text(petCount);
+
+      // 천단위 콤마 추가
+      let formattedTotal = total.toLocaleString();
+
+      $('#total').text(formattedTotal);
+      $('#payPrice').val(formattedTotal);
+    }
+
+    // + 버튼 클릭 시 이벤트 연결
+    const plusButton = document.querySelector('button[value="+"]');
+    plusButton.addEventListener('click', increaseCount);
+
+    // - 버튼 클릭 시 이벤트 연결
+    const minusButton = document.querySelector('button[value="-"]');
+    minusButton.addEventListener('click', decreaseCount);
+
+    function calculateDateDifference() {
+
+      // 시작일, 종료일
+      var startDate = new Date($('#startDate').val());
+      var endDate = new Date($('#endDate').val());
+
+      if (endDate < startDate) {
+        $('#endDate').val('');
+        $('#day').text(0); // endDate가 startDate보다 이전인 경우 0으로 설정
+      } else {
+
+        // 날짜 차이를 계산(결과는 밀리초로 반환되므로 일 단위로 변환)
+        var dateDifference = Math.ceil((endDate - startDate) / (1000 * 60 * 60 * 24));
+
+        // 결과를 #day 요소에 출력
+        $('#day').text(dateDifference + 1);
+
+        // #payDscpt 요소의 값을 가져오기
+        var payDscptValue = $('#payDscpt').text();
+        addHiddenInput('payDscpt', payDscptValue);
+      }
+    }
+
+    // input hidden 추가
+    function addHiddenInput(name, value) {
+      var input = $('<input>').attr({
+        type: 'hidden',
+        name: name,
+        value: value
+      });
+      $('#reserveForm').append(input);
+    }
+
+    // 값 초기화 함수
+    function resetValues() {
+      $('#petCount').text(0);
+      $('#petCount2').text(0);
+      $('#day').text(0);
+      $('#total').val('');
+      $('#reserveForm').find('input[name="payDscpt"]').remove();
+    }
+
+
+
+    $(document).ready(function() {
+
+      // ------------------------ 카카오맵 API ----------------------------
+      var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+        mapOption = {
+          center: new kakao.maps.LatLng(37.53420144526709, 126.8973809043428), // 지도의 중심좌표
+          level: 3 // 지도의 확대 레벨
+        };
+
+      // 지도를 생성합니다    
+      var map = new kakao.maps.Map(mapContainer, mapOption);
+
+
+        var address = "${ p.address }"; 
+        var geocoder = new kakao.maps.services.Geocoder();
+
+        geocoder.addressSearch(address, function (result, status) {
+          if (status === kakao.maps.services.Status.OK) {
+            var latitude = result[0].y;
+            var longitude = result[0].x;
+
+            var container = document.getElementById('map');
+            var options = {
+              center: new kakao.maps.LatLng(latitude, longitude),
+              level: 6
+            };
+
+            var map = new kakao.maps.Map(container, options);
+
+            var circle = new kakao.maps.Circle({
+              center: new kakao.maps.LatLng(latitude, longitude),  // 원의 중심 좌표
+              radius: 500,  // 원의 반지름 (단위: m)
+              strokeWeight: 2,  // 선의 두께 (단위: px)
+              strokeColor: '#0888D0',  // 선의 색상
+              strokeOpacity: 0.8,  // 선의 불투명도 (0~1 사이의 값)
+              strokeStyle: 'solid',  // 선의 스타일 ('solid', 'shortdash', 'shortdot', 'shortdashdot', 'longdash', 'longdot', 'longdashdot')
+              fillColor: '#B9EAFF',  // 채우기 색상
+              fillOpacity: 0.2  // 채우기 불투명도 (0~1 사이의 값)
+            });
+
+            circle.setMap(map);
+          }
         });
-      })
-    </script>
+
+      
+
+      // ------------------------ 찜 버튼 ----------------------------
+      $(".heart-login").on("click", function() {
+
+        // 빈 하트라면
+        if ($(this).find(".heartIcon").hasClass("bi-heart")) {
+          sendHeartData('${loginUser.userNo}', '${p.petSitterNo}', 0);
+          $(this).find(".heartIcon").removeClass("bi-heart").addClass("bi-heart-fill");
+
+        // 채워진 하트라면
+        } else {
+          sendHeartData('${loginUser.userNo}', '${p.petSitterNo}', 1);
+          $(this).find(".heartIcon").removeClass("bi-heart-fill").addClass("bi-heart");
+        }
+
+      });
+
+
+
+      // ------------------------ 슬라이더 ------------------------
+      // $('.slider-for').slick({
+      //   slidesToShow: 1,
+      //   slidesToScroll: 1,
+      //   arrows: false,
+      //   fade: true,
+      //   asNavFor: '.slider-nav'
+      // });
+
+      // $('.slider-nav').slick({
+      //   slidesToShow: 3,
+      //   slidesToScroll: 1,
+      //   asNavFor: '.slider-for',
+      //   centerMode: true,
+      //   focusOnSelect: true
+      // });
+
+
+
+      // ------------------------ 상세페이지 이용 가능 서비스 표시 ------------------------
+      var psService = "<c:out value='${p.petSitterService}'/>"; // 값을 JavaScript 변수에 할당
+		  var psServiceArr = psService.split(","); // 쉼표(,)로 분할하여 배열로 변환
+
+      for(var i = 0; i < psServiceArr.length; i++) {
+
+        var psServiceId = $("div[id='"+ psServiceArr[i] +"']").attr('id');
+
+        const div = document.getElementById(psServiceId);
+        div.style.display = 'grid';
+	    }
+
+
+
+    })
+
+
+
+    // ======================== 함수 ============================
+    // ------------------------ 답글 기능 ------------------------
+    // 답글 작성 버튼 클릭 시 동작하는 함수
+    function showCommentForm(button) {
+      var commentSection = button.closest('.review').querySelector('#comment');
+      commentSection.style.display = commentSection.style.display === 'none' ? 'flex' : 'none';
+    }
+
+    // 답글 수정
+    function updateComment(revNo) {
+      
+      if($("#acontent").val().trim().length != 0) {
+        // 즉, 유효한 내용이 한 글자라도 있을 경우
+        $.ajax({
+          url : "updateComment.pe",
+          data : {
+            revNo : revNo,
+            acontent : $("#acontent").val()
+          },
+          type : "post",
+          success : function(result) {
+            
+            if(result == "success") {
+              alertify.alert("알림", "답글 등록 완료").set({onok: function(){ location.reload(); }});
+            }
+
+          },
+          error : function() {
+            console.log("답글 작성용 ajax 통신 실패!");
+          }
+        });
+        
+        } else {
+          alertify.alert("알림", "답글 작성 후 등록 요청해주세요.");
+        }
+    }
+
+
+
+    // ------------------------ 찜 버튼 ------------------------
+    // AJAX 호출 함수 정의
+    function sendHeartData(userNo, refPno, check) {
+
+      var requestData = {};
+
+      if (check === 0) {
+        requestData = {
+          userNo: userNo,
+          refPno: refPno,
+          check: check
+        };
+      } else {
+        requestData = {
+          userNo: userNo,
+          refPno: refPno,
+          check: check
+        };
+      }
+
+      $.ajax({
+        url: "like.pe",
+        method: "POST",
+        data: requestData,
+        success: function(result) {
+          
+          if(check === 0) {
+            // 일회성 알람문구 담아서 새로고침
+            alertify.alert("알림", "펫시터 찜 완료").set({onok: function(){ location.reload(); }});
+            
+          } else {
+            // 일회성 알람문구 담아서 새로고침
+            alertify.alert("알림", "펫시터 찜 해제 완료").set({onok: function(){ location.reload(); }});
+          }
+          
+          // 찜 요청 성공 시 수행할 작업
+          console.log("찜 AJAX 요청이 성공했습니다.");
+        },
+        error: function() {
+          // 찜 요청 실패 시 수행할 작업
+          console.error("찜 AJAX 요청이 실패했습니다.");
+        }
+      });
+    }
+
+
+  </script>
 
 </body>
 </html>

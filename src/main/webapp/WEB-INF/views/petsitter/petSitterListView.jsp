@@ -11,6 +11,30 @@
   <link rel="stylesheet" href="/resources/css/petsitter/petSitterListView.css">
   <jsp:include page="../common/common.jsp" />
 
+  <!-- datepicker 캘린더 -->
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+
+    // ------------------------ datepicker 캘린더 ------------------------
+    $.datepicker.setDefaults({
+      dateFormat: 'yy/mm/dd',
+      prevText: '이전 달',
+      nextText: '다음 달',
+      monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+      monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+      dayNames: ['일', '월', '화', '수', '목', '금', '토'],
+      dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
+      dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+      showMonthAfterYear: true,
+      yearSuffix: '년'
+    });
+
+
+
+  </script>
+
   <title>펫시터 찾기</title>
 </head>
 
@@ -38,20 +62,20 @@
                     <div class="col-4">
                         <label class="form-label">언제 맡기시나요?</label>
                         <div class="dateInput">
-                            <input type="date" class="form-control" id="startDate" name="startDate" data-placeholder="체크인 날짜">
-                            <input type="date" class="form-control" id="endDate" name="endDate" data-placeholder="체크아웃 날짜">
+                            <input type="text" id="datepicker1" class="form-control" id="startDate" name="startDate" placeholder="체크인 날짜">
+                            <input type="text" id="datepicker2" class="form-control" id="endDate" name="endDate" placeholder="체크아웃 날짜">
                         </div>
                     </div>
                 </div>
                 <div class="careListBtn">
-                    <label class="form-label">원하시는 조건을 선택하세요</label>
-                    <div>
-                        <button class="btn btn-outline-secondary" type="button">반려동물 없음</button>
-                        <button class="btn btn-outline-secondary" type="button">픽업 가능</button>
-                        <button class="btn btn-outline-secondary" type="button">대형견 가능</button>
-                        <button class="btn btn-outline-secondary" type="button">마당 있음</button>
-                        <button class="btn btn-secondary" type="button">노견 케어</button>
-                    </div>
+                  <label class="form-label">원하시는 조건을 선택하세요</label>
+                  <div>
+                      <button class="btn btn-outline-secondary" type="button">반려동물 없음</button>
+                      <button class="btn btn-outline-secondary" type="button">픽업 가능</button>
+                      <button class="btn btn-outline-secondary" type="button">대형견 가능</button>
+                      <button class="btn btn-outline-secondary" type="button">마당 있음</button>
+                      <button class="btn btn-secondary" type="button">노견 케어</button>
+                  </div>
                 </div>
             </div>
             <br>
@@ -173,6 +197,15 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
     <script>
       $(document).ready(function () {
+
+        // ------------------------ datepicker 캘린더 ------------------------
+        $("#datepicker1, #datepicker2").datepicker({
+          dateFormat: 'yy/mm/dd',
+          minDate: 0
+        });
+
+
+        
         $(window).scroll(function () {
           var scrollTop = $(document).scrollTop();
           var footerOffset = $(".link_footer").offset().top;
@@ -186,6 +219,8 @@
           $(".snb_my").animate({ "top": scrollTop });
         });
       });
+
+
     </script>
 </body>
 </html>

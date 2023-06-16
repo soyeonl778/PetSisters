@@ -185,9 +185,6 @@ public class PetSitterController {
 		// 펫시터 리스트 전체 조회
 		ArrayList<PetSitter> list = petSitterService.selectList(pi);
 		
-		// 펫시터 대표이미지 리스트 조회
-//		ArrayList<PetSitterImg> thumbnailList = petSitterService.selectThumbnailList(pi);
-		
 		mv.addObject("pi", pi)
 		  .addObject("list", list)
 		  .setViewName("petsitter/petSitterListView");

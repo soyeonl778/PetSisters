@@ -57,8 +57,6 @@ public interface PetSitterService {
 	// 펫시터 찜 갯수 조회
 	int selectLikeCount(int refPno);
 	
-	// 펫시터 대표이미지 리스트 조회
-	ArrayList<PetSitterImg> selectThumbnailList(pi);
 }
 
 
