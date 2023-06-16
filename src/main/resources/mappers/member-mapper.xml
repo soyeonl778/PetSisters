@@ -33,6 +33,7 @@
 		<result column="DOG_NOTE" property="dogNote" />
 		<result column="FILE_PATH" property="filePath" />
 		<result column="STATUS" property="status" />
+		<result column="USERID" property="userId" />
 	</resultMap>
 	
 	<!-- 로그인 기능 -->
@@ -88,13 +89,14 @@
 	<!-- 회원 정보 수정용 쿼리문 -->
 	<update id="updateMember" parameterType="member">
 		UPDATE MEMBER
-		   SET USER_PWD = #{userPwd}
+		   SET USER_ID = #{userId}
+		   	 , USER_PWD = #{userPwd}
 		   	 , USER_NAME = #{userName}
 			 , USER_NICKNAME = #{userNickname}
 			 , EMAIL = #{email}
 			 , PHONE = #{phone}
 			 , ADDRESS = #{address}
-		 WHERE USER_ID = #{userId}
+		 WHERE USER_NO = #{userNo}
 	</update>
 	
 	<!-- 회원 탈퇴용 쿼리문 -->
@@ -176,8 +178,16 @@
 			 , NEUTRALIZATION_STATUS = #{neutralizationStatus}
 			 , DOG_NOTE = #{dogNote}
 			 , FILE_PATH = #{filePath}
-		 WHERE USER_ID = #{userId}
+		 WHERE DOG_NO = #{dogNo}
 	</update>
+	
+	<!-- 펫 등록해지 쿼리문 -->
+	<update id="petDelete" parameterType="_int">
+		UPDATE DOG
+			  SET STATUS = 'N'
+		WHERE DOG_NO = #{dogNo}
+	</update>
+	
 	
 	<!-- 아이디 중복체크용 쿼리문 -->
 	<select id="idCheck" parameterType="string" resultType="_int">

@@ -65,7 +65,7 @@
                 <div id="titleWrapper">
                   <h3 class="title_11">펫 프로필 상세정보</h3>
                 </div>
-                <form id="profileWrapper" action="petUpdate.me" method="post">
+                <form id="profileWrapper" action="petUpdate.me" method="get">
                   <hr>
                     <div class="file_main">
                       <label>사진</label>
@@ -78,8 +78,9 @@
                       </div>
                     </div>
                   <hr>
+                  <input type="hidden" name="dogNo" value="${ d.dogNo }" />
                   <label>이름</label>
-                  <input class="pet_name" placeholder="${ d.dogName }" />
+                  <input class="pet_name" name="dogName" value="${ d.dogName }" placeholder="반려견 이름을 입력해주세요." />
                   <hr>
                   <div class="gender_wrap">
 	                  <div class="genderMain">
@@ -92,13 +93,13 @@
                   </div>
                   <hr>
                   <label>견종</label>
-                  <input class="pet_type" placeholder="${ d.dogBreed }" />
+                  <input class="pet_type" name="dogBreed" value="${ d.dogBreed }" placeholder="ex)골든리트리버" />
                   <hr>
                   <label>생일</label>
-                  <input class="pet_birth" placeholder="${ d.dogBirthday }" />
+                  <input class="pet_birth" name="dogBirthday" value="${ d.dogBirthday }" placeholder="ex)2023-06-06" />
                   <hr>
                   <label>몸무게</label>
-                  <input class="pet_kg" placeholder="${ d.dogWeight }" /> kg
+                  <input class="pet_kg" name="dogWeight" value="${ d.dogWeight }" placeholder="ex)15" /> kg
                   <hr>
                   <div class="gender_wrap">
                   	<div class="genderMain">
@@ -115,7 +116,7 @@
 		                  <label>돌봄시 <br>참고사항</label>
 		              </div>
 	                  <div class="noteArea">
-			              <textarea class="dog_note" cols="50" rows="5" placeholder="${ d.dogNote }"></textarea><br>
+			              <textarea class="dog_note" cols="50" rows="5" name="dogNote" value="${ d.dogNote }" placeholder="ex)우리 댕댕이는 생식만 먹여요. 큰 소리에 예민한 편이에요."></textarea><br>
 			              <div class="count"><span>0</span>/100</div>
 	                  </div>
                   </div>

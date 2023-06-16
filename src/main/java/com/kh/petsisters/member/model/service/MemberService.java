@@ -40,6 +40,9 @@ public interface MemberService {
 		
 	// 펫 정보 수정 서비스
 		int petUpdate(Dog d);
+		
+	// 펫 등록해지 서비스
+		int petDelete(int dogNo);
 	
 	// 아이디중복체크 서비스 (select)
 		int idCheck(String checkId);

@@ -37,9 +37,6 @@ public class MemberController {
 	private BCryptPasswordEncoder bcryptPasswordEncoder;
 
 	
-	// ***************************
-	// 로그인 / 회원가입 / 마이페이지 영역 (소연)
-	
 	// 로그인 페이지 이동 영역
 	@RequestMapping("loginForm.me")
 	public String loginForm() {
@@ -69,10 +66,10 @@ public class MemberController {
 		}
 		
 		Member loginUser = memberService.loginMember(m);
-				
+		
 		if(loginUser != null 
 			/*&& bcryptPasswordEncoder.matches(m.getUserPwd(), loginUser.getUserPwd())*/) { // 로그인 성공 처리
-				
+			
 		    // ChatSession에 사용자 추가
 		    chatSession.addLoginUser(loginUser.getUserNo());
 		    
@@ -99,6 +96,7 @@ public class MemberController {
 	    Member loginUser = (Member) session.getAttribute("loginUser");
 	    
 	    if (loginUser != null) {
+	    	
 	        // ChatSession에서 사용자 제거
 	        chatSession.removeLoginUser(loginUser.getUserNo());
 	    }
@@ -218,9 +216,9 @@ public class MemberController {
 			
 		} else {
 			
-			model.addAttribute("errorMsg", "회원정보 변경 실패");
+			model.addAttribute("alertMsg", "회원정보 변경 실패");
 			
-			return "redirect:/myProfile.me";
+			return "/member/my_profile";
 			
 		}
 	}
@@ -266,7 +264,6 @@ public class MemberController {
 							  ModelAndView mv,
 							  HttpSession session) {
 		int userNo = ((Member)session.getAttribute("loginUser")).getUserNo();
-		System.out.println(userNo);
 		int listCount = memberService.selectListCount(userNo);
 		
 		int pageLimit = 10;
@@ -276,7 +273,6 @@ public class MemberController {
 		
 		ArrayList<Dog> list = memberService.petListView(pi, userNo);
 		
-		System.out.println(list);
 		mv.addObject("pi", pi)
 		  .addObject("list", list)
 		  .setViewName("member/petList");
@@ -332,6 +328,7 @@ public class MemberController {
 			   			  HttpSession session,
 			   			  Model model) {
 		
+		System.out.println(d);
 		int result = memberService.petUpdate(d);
 		
 		if(result > 0) {
@@ -341,14 +338,23 @@ public class MemberController {
 			return "redirect:/petProfile.me?dno=" + d.getDogNo();
 		} else {
 			
-			model.addAttribute("errorMsg", "펫 정보 수정 실패");
+			model.addAttribute("alertMsg", "펫 정보 수정 실패");
 			return "member/pet_profile";
 		}
 	}
 	
 	@RequestMapping("petDelete.me")
-	public String petDelete() {
-		return "/member/pet_profile";
+	public String petDelete(int dogNo,
+							Model model,
+							HttpSession session) {
+		
+		int result = memberService.petDelete(dogNo);
+		
+		
+			
+		return "/member/petList";
+		
+		
 	}
 	
 	// 마이페이지 펫시터 찜 조회 영역

@@ -80,30 +80,31 @@
                       </div>
                     </div>
                   <hr>
+                  <input type="hidden" name="userNo" value="${ loginUser.userNo }" />
                   <label>아이디</label>
-                  <input class="default_id" id="userId" placeholder="${ loginUser.userId }" readonly />
+                  <input class="default_id" id="userId" value="${ loginUser.userId }" placeholder="${ loginUser.userId }" readonly />
                   <hr>
                   <label>비밀번호</label>
-                  <input class="change_pwd" type="password" id="userPwd" placeholder="${ loginUser.userPwd }" />
+                  <input class="change_pwd" type="password" id="userPwd" value="${ loginUser.userPwd }" placeholder="${ loginUser.userPwd }" />
                   <hr>
                   <label>성함</label>
-                  <input class="change_name" id="userName" placeholder="${ loginUser.userName }" readonly />
+                  <input class="change_name" id="userName" value="${ loginUser.userName }" placeholder="${ loginUser.userName }" readonly />
                   <hr>
                   <label>닉네임</label>
-                  <input class="change_nick" id="userNickname" placeholder="${ loginUser.userNickname }" />
+                  <input class="change_nick" id="userNickname" value="${ loginUser.userNickname }" placeholder="${ loginUser.userNickname }" />
                   <hr>
                   <label>이메일</label>
-                  <input class="change_email" id="email" placeholder="${ loginUser.email }" />
+                  <input class="change_email" id="email" value="${ loginUser.email }" placeholder="${ loginUser.email }" />
                   <hr>
                   <label>휴대전화</label>
-                  <input class="change_phone" id="phone" placeholder="${ loginUser.phone }" />
+                  <input class="change_phone" id="phone" value="${ loginUser.phone }" placeholder="${ loginUser.phone }" />
                   <hr>
                   <div class="kakaoAddress">
 	                  <div>
 	                  	<label>주소</label>
 	                  </div>
 	                  <div class="address_search">
-		                  <input class="change_address" id="address_input" placeholder="${ loginUser.address }" />
+		                  <input class="change_address" id="address_input" value="${ loginUser.address }" placeholder="${ loginUser.address }" />
 		                  <i id="address_kakao" class="fas fa-search-location fa-lg" style="color: #858585;"><b>주소검색</b></i>
 	                  </div>
                   </div>

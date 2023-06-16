@@ -68,6 +68,10 @@ public class MemberDao {
 		return sqlSession.update("memberMapper.petUpdate", d);
 	}
 	
+	public int petDelete(SqlSessionTemplate sqlSession, int dogNo) {
+		return sqlSession.update("memberMapper.petDelete", dogNo);
+	}
+	
 	public int idCheck(SqlSessionTemplate sqlSession, String checkId) {
 		
 		return sqlSession.selectOne("memberMapper.idCheck", checkId);

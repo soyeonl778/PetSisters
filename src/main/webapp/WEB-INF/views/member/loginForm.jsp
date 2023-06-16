@@ -51,17 +51,28 @@
 	                        <div class="login_group">
 	                          <p>
 	                            <label for="login_id">아이디 </label>
-	                            <input type="text" name="userId" maxlength="15" placeholder="아이디를 정확하게 입력하세요." id="userId" name="userId" required><br>
+	                            <input type="text" name="userId" id="userId" value="${ cookie.saveId.value }" maxlength="15" placeholder="아이디를 정확하게 입력하세요." required><br>
 	                          </p>
 	                          <p class="pw01">
 	                            <label for="login_pwd">비밀번호 </label>
 	                            <input type="password" name="userPwd" placeholder="영문+숫자+특수문자 조합8~16자리를 입력해주세요."
 	                              maxlength="16" id="userPwd" name="userPwd" required><br>
 	                          </p>
-	                          <span class="input_btn checkbox">
-	                            <input type="checkbox" name="idSave" id="idSave" value="Y">
-	                            <label>아이디 저장</label>
-	                          </span>
+	                          <c:choose>
+	                        	<c:when test="${ not empty cookie.saveId }">
+	                        		<span class="input_btn checkbox">
+									  <input type="checkbox" name="saveId" id="saveId" value="Y" checked>
+									  <label for="saveId">아이디 저장</label>
+									</span>
+	                        	</c:when>
+	                        	<c:otherwise>
+	                        		<span class="input_btn checkbox">
+									  <input type="checkbox" name="saveId" id="saveId" value="Y">
+									  <label for="saveId">아이디 저장</label>
+									</span>
+	                        	</c:otherwise>
+	                        	</c:choose>
+	                          
 	                        </div>
 	                        <div class="btn_group">
 	                          <button type="submit" class="btn_log" onclick="location.href='/';">로그인</button>

@@ -45,17 +45,7 @@
                   </div>
                   <form action="insert.me" method="post" id="enrollForm">
                   <div class="sub2">
-	                    <div class="enrollWrapper">
-	                      <div class="file_main">
-	                      <label>● 사진</label>
-	                      <div class="file_change">
-	                        <img class="profile_img" src="/resources/upFiles/member_profiles/user01.png" />
-	                        <div class="profile_con">
-	                        	<button type="button" class="img_btn">사진변경</button>
-	                          <p>등록된 사진은 회원님의 게시물이나 댓글들에 사용됩니다.</p>
-	                        </div>
-	                      </div>
-	                      </div>
+	                 <div class="enrollWrapper">
 	                  <hr>
                       <div class="idArea">
 	                      <div>
