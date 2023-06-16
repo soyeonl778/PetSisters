@@ -547,7 +547,7 @@
             if(data[i].userNo == "${loginUser.userNo}") {
 
               // 채팅목록하나 생성
-              var $chatting = $("<div class='chatting enterRoomList' onclick='enterRoom(this)'></div>").attr("rno",data[i].roomNo).attr("mno",data[i].masterNo);
+              var $chatting = $("<div class='chatting enterRoomList' onclick='enterRoom(this)'></div>").attr("rno",data[i].roomNo).attr("uno",data[i].masterNo);
               
               // profileArea 에 profileImage 추가
               var $img = $("<img class='profileImage'>").attr("src", data[i].masterPic);
@@ -598,7 +598,6 @@
               // profileArea 에 profileImage 추가
               var $img = $("<img class='profileImage'>").attr("src", data[i].userPic);
               $profileArea.append($img);
-              
               // 현재 요청자가 로그인 상태 일 때
               if(loginList.indexOf(data[i].userNo) != -1) {
                 // online class속성 부여해서 온라인 체크등 표시
@@ -690,11 +689,11 @@
       websocket.onmessage = onMessage;
 
       // 스크롤 맨 아래로 이동
-      // var element = $('.chatContentArea')[0];
-      // element.scrollTop = element.scrollHeight;
+      var element = $('.chatContentArea')[0];
+      element.scrollTop = element.scrollHeight;
   }
 
-  //웹 소켓에 연결되었을 때 호출될 함수
+  // 웹 소켓에 연결되었을 때 호출될 함수
   function onOpen() {
 
     console.log("웹소켓 연결 성공!");
@@ -704,22 +703,104 @@
       "roomNo": roomNo,
       "userNickname" : "${ loginUser.userNickname }",
       "userNo" : "${ loginUser.userNo }",
-      "message" : "ENTER-CHAT"
+      "message" : "ENTER-CHAT",
     };
     let jsonData = JSON.stringify(data);
     websocket.send(jsonData);
 
   }
 
+  // 메시지 전송 함수
+  function sendMessage() {
+
+    // textarea의 내용을 가져옵니다.
+    var messageText = $('.chatInput').val();
+
+    if (messageText === '') {
+        return; // 빈 메시지이면 함수를 종료합니다.
+    }
+
+    var currentDate = new Date();
+    currentDate.setHours(currentDate.getHours() + 9);
+    var formattedDate = currentDate.toISOString();
+
+    const data = {
+        "roomNo" : roomNo,
+        "userNickname" : "${ loginUser.userNickname }",
+        "userNo" : "${ loginUser.userNo }",
+        "message"   : messageText,
+        "createDate" : formattedDate
+    };
+
+    CheckLR(data);
+
+    let jsonData = JSON.stringify(data);
+
+    if (websocket.readyState === WebSocket.OPEN) {
+      websocket.send(jsonData);
+    } else {
+      console.log("웹소켓 연결이 닫혀 있습니다.");
+    }
+
+    // // 새로운 채팅 메시지를 생성합니다.
+    // var newChatMessage = '<div class="lineWrapperRight">' +
+    //               '<div class="messageDateArea">' +
+    //               '<div class="messageDate"></div>' +
+    //               '</div>' +
+    //               '<div class="messageWrapper">' +
+    //               '<div>' +
+    //               '<p class="myMessageBox">' + messageText + '</p>' +
+    //               '</div>' +
+    //               '</div>' +
+    //               '</div>';
+
+    // // chatContentArea에 새로운 채팅 메시지 추가
+    // $('.chatContentArea').append(newChatMessage);
+
+    // textarea 비우기
+    $('.chatInput').val('');
+    $('.textLength').text('0/1000');
+
+    // 스크롤 맨 아래로 이동
+    var element = $('.chatContentArea')[0];
+    element.scrollTop = element.scrollHeight;
+
+  }
+
   // * 2 메세지 수신
   function onMessage(evt) {
+
+    let receive = evt.data.split(",");
+    let profileImageSrc = $(".OpponentImage").attr("src");
+    let roomNoCheck = $(".OpponentRoomNo").attr("value");
+
+    var currentDate = new Date();
+    currentDate.setHours(currentDate.getHours() + 9);
+    var formattedDate = currentDate.toISOString();
+
+    const data = {
+      "roomNo" : receive[0],
+      "userNickname" : receive[1],
+      "userNo" : receive[2],
+      "message" : receive[3],
+      "createDate" : formattedDate
+    };
+
+    console.log("onMessage -> data : ", data);
+              
+    if(data.roomNo === roomNoCheck && data.userNo != "${ loginUser.userNo }") {
+        CheckLR(data, profileImageSrc);
+    }
+
     console.log("메세지 수신:", evt.data);
+    $('.chatContentArea').scrollTop($('.chatContentArea')[0].scrollHeight);
   }
 
   // ---------------- 채팅 방 클릭 시 => 우측 chatRightArea 열어주기 ----------------
   $(document).on("click", ".enterRoomList",function(){
     
     // 클릭한 chattingArea 로부터 이미지, 닉네임, 펫시터등급 가져오기
+    var rno = $(this).attr("rno");
     var profileImageSrc = $(this).find(".profileImage").attr("src");
     var nickname = $(this).find(".previewNickname").text();
     var grade = $(this).find(".subText").text();
@@ -727,7 +808,10 @@
     // 가져온 정보를 사용하여 프로필 이미지, 닉네임, 펫시터 등급 동적으로 생성
     $(".OpponentImage").attr("src", profileImageSrc);
     $(".OpponentInfo").empty(); // 기존의 요소들을 비워줍니다.
-    $(".OpponentInfo").append($("<span class='OpponentNickname'></span>")).text(nickname);
+    $(".OpponentInfo").append($("<input class='OpponentRoomNo' type='hidden'>"));
+    $(".OpponentRoomNo").val(rno);
+    $(".OpponentInfo").append($("<span class='OpponentNickname'></span>"));
+    $(".OpponentNickname").text(nickname);
     
     // 가져온 펫시터등급 정보로 동적으로 표기
     if(grade === "프로펫시터") {
@@ -767,7 +851,11 @@
 
   // 채팅 방 클릭 시 방번호 배정 후 웹소켓 연결
   function enterRoom(obj) {
-    
+
+    if (websocket != null) {
+      websocket.close(); 
+    }
+
     // 현재 html에 추가되었던 동적 태그 전부 지우기
     $('.chatEmptyBox').css('display', 'none');
     $('.chatNormalRoom').css('display', 'flex');
@@ -807,24 +895,29 @@
   function CheckLR(data, profileImageSrc) {
     // userNo 이 loginSession의 userNo 과 다르면 왼쪽, 같으면 오른쪽
     const LR = (data.userNo != "${ loginUser.userNo }") ? "left" : "right";
-    appendMessageTag(LR, data.messageNo, data.userNo, data.message, data.createDate, profileImageSrc);
+    appendMessageTag(LR, data.userNo, data.message, data.createDate, profileImageSrc);
   }
 
   // 채팅 메시지 태그 추가
-  function appendMessageTag(LR, messageNo, userNo, message, createDate, profileImageSrc) {
+  function appendMessageTag(LR, userNo, message, createDate, profileImageSrc) {
 
     // ---------------- 시간을 오전/오후 형식으로 표현하기 ----------------
-
     // 시간형식에서 시분초 추출
-    const time = createDate.slice(11, 19);
-    const hour = parseInt(time.slice(0, 2));
+    const time = String(createDate).slice(11, 19);
+    const hour = time.slice(0, 2);
     const minute = time.slice(3, 5);
     const second = time.slice(6, 8);
+
+    // console.log(time);
+    // console.log(hour);
+    // console.log(minute);
+    // console.log(second);
+
     // 오전/오후 표시를 위한 변수
     let period;
     
     // 오전/오후 판단
-    if (hour >= 12) {
+    if (Number(hour) >= 12) {
       period = "오후";
     } else {
       period = "오전";
@@ -838,10 +931,11 @@
     
     // 변수에 담기
     const formattedTime = period + " " + hour12 + ":" + minute + ":" + second;
+    // console.log(formattedTime);
 
     // 좌측 메시지 추가
     if (LR === "left") {
-      const $chatContainer = $("<div>").attr("id", "scroll2").addClass("containment left");
+      const $chatContainer = $("<div>").addClass("containment left");
       const $lineWrapper = $("<div>").addClass("lineWrapperLeft");
       const $messageProfileArea = $("<div>").addClass("messageProfileArea");
       const $profileImage = $("<img>").addClass("messageProfileImage").attr("src", profileImageSrc);
@@ -865,7 +959,7 @@
     
     // 우측 메시지 추가
     else if (LR === "right") {
-      const $chatContainer = $("<div>").attr("id", "scroll3").addClass("containment right");
+      const $chatContainer = $("<div>").addClass("containment right");
       const $lineWrapper = $("<div>").addClass("lineWrapperRight");
       const $messageDateArea = $("<div>").addClass("messageDateArea");
       const $messageDate = $("<div>").addClass("messageDate").text(formattedTime);
@@ -883,11 +977,6 @@
       $(".chatContentArea").append($chatContainer);
     }
 
-    
-
-    // 메시지 태그 생성
-    const messageTag = "";
-    
   }
 
 
@@ -925,22 +1014,20 @@
       $('.chatNormalRoom').hide();
       $('.chatEmptyBox').css('display', 'flex');
 
-      // 웹소켓 닫기
-      websocket.close(); 
-
-      // 콘솔에 WebSocket 연결 상태 출력
-      if(websocket.readyState = 2) {
+      if (websocket.readyState === WebSocket.OPEN) {
+        websocket.close(); 
         console.log("WebSocket 연결 해제 완료");
       }
 
+      // // 콘솔에 WebSocket 연결 상태 출력
+      // if(websocket.readyState = 2) {
+      //   console.log("WebSocket 연결 해제 완료");
+      // }
+
     });
-
-  });
-
 
 
   // ---------------- 메세지 보내기 이벤트 ----------------
-  $(document).ready(function() {
     
     $('.chatContentArea').scrollTop($('.chatContentArea')[0].scrollHeight);
 
@@ -979,56 +1066,7 @@
         }
     });
 
-    // 메시지 전송 함수
-    function sendMessage() {
 
-        // textarea의 내용을 가져옵니다.
-        var messageText = $('.chatInput').val();
-        
-
-        if (messageText === '') {
-            return; // 빈 메시지이면 함수를 종료합니다.
-        }
-
-        const data = {
-            "roomNo" : 1,
-            "userNickname" : "${ loginUser.userNickname }",
-            "userNo" : "${ loginUser.userNo }",
-            "message"   : messageText 
-        };
-
-        let jsonData = JSON.stringify(data);
-
-        if (websocket.readyState === WebSocket.OPEN) {
-          websocket.send(jsonData);
-        } else {
-          console.log("웹소켓 연결이 닫혀 있습니다.");
-        }
-    
-        // 새로운 채팅 메시지를 생성합니다.
-        var newChatMessage = '<div class="lineWrapperRight">' +
-                      '<div class="messageDateArea">' +
-                      '<div class="messageDate"></div>' +
-                      '</div>' +
-                      '<div class="messageWrapper">' +
-                      '<div>' +
-                      '<p class="myMessageBox">' + messageText + '</p>' +
-                      '</div>' +
-                      '</div>' +
-                      '</div>';
-
-        // chatContentArea에 새로운 채팅 메시지 추가
-        $('.chatContentArea').append(newChatMessage);
-    
-        // textarea 비우기
-        $('.chatInput').val('');
-        $('.textLength').text('0/1000');
-
-        // 스크롤 맨 아래로 이동
-        var element = $('.chatContentArea')[0];
-        element.scrollTop = element.scrollHeight;
-
-    }
 
     // 채팅 내용 입력 이벤트 호출
     $('.chatInput').keyup(checkTextareaLength);

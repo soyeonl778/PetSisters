@@ -640,8 +640,8 @@ VALUES(SEQ_PAYMENT.NEXTVAL,
 --------------------------------------------------
 --------------    채팅방 테이블 더미    --------------
 --------------------------------------------------
-INSERT INTO CHAT_ROOM VALUES(SEQ_CHAT_ROOM.NEXTVAL,1,'아발',null, 'N', 'N', 2,'김제니', '/resources/img/chat/김제니.png', 'Y', 'Y');
-INSERT INTO CHAT_ROOM VALUES(SEQ_CHAT_ROOM.NEXTVAL,3,'소연','/resources/img/chat/하두리.png', 'N', 'N', 1,'아발', '', 'Y', 'Y');
+INSERT INTO CHAT_ROOM VALUES(SEQ_CHAT_ROOM.NEXTVAL,1,'관리자', '/resources/upFiles/member_profiles/1.png', 'N', 'N', 2,'펫시터1', '/resources/upFiles/member_profiles/2.png', 'Y', 'Y');
+INSERT INTO CHAT_ROOM VALUES(SEQ_CHAT_ROOM.NEXTVAL,3,'펫시터2','/resources/upFiles/member_profiles/3.png', 'N', 'N', 1,'관리자', '/resources/upFiles/member_profiles/1.png', 'Y', 'Y');
 
 --------------------------------------------------
 --------------    메세지 테이블 더미    --------------

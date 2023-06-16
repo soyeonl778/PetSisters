@@ -65,13 +65,12 @@ public class WebSocketHandler extends TextWebSocketHandler implements Initializi
         
         // Json객체 → Java객체
         ChatMessage chatMessage = objectMapper.readValue(msg,ChatMessage.class);
-        // System.out.println(chatMessage);
+         System.out.println(chatMessage);
         
         // 받은 메세지에 담긴 roomNo로 해당 채팅방을 찾아온다.
         ChatRoom chatRoom = cService.selectChatRoom(chatMessage.getRoomNo());
-        // System.out.println(chatRoom);
         
-        // 채팅 세션 목록에 채팅방이 존재하지 않고, 처음 들어왔고, DB에서의 채팅방이 있을 때
+        // 채팅 세션 목록에 채팅방이 존재하지 않고, 처음 들어왔고, DB에서의 채팅방이 없을 때
         // 채팅방 생성
         if(RoomList.get(chatRoom.getRoomNo()) == null && chatMessage.getMessage().equals("ENTER-CHAT") && chatRoom != null) {
             
@@ -102,7 +101,10 @@ public class WebSocketHandler extends TextWebSocketHandler implements Initializi
         else if(RoomList.get(chatRoom.getRoomNo()) != null && !chatMessage.getMessage().equals("ENTER-CHAT") && chatRoom != null) {
             
             // 메세지에 이름, 이메일, 내용을 담는다.
-            TextMessage textMessage = new TextMessage(chatMessage.getUserNickname() + "," + chatMessage.getUserNo() + "," + chatMessage.getMessage());
+            TextMessage textMessage = new TextMessage(chatMessage.getRoomNo() + "," + 
+            																	  chatMessage.getUserNickname() + "," + 
+            																	  chatMessage.getUserNo() + "," + 
+            																	  chatMessage.getMessage());
             
             // 현재 session 수
             int sessionCount = 0;

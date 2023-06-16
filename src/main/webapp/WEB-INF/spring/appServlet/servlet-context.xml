@@ -36,6 +36,7 @@
 			<mapping path="/updateForm.pe" />
 			<mapping path="/update.pe" />
 			<mapping path="/supportForm.me" />
+			<mapping path="/chatForm.ch" />
 			<beans:bean class="com.kh.petsisters.common.interceptor.LoginInterceptor" id="loginInterceptor" />
 		</interceptor>
 	</interceptors>

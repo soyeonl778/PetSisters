@@ -382,7 +382,12 @@ background-color: #0888D0;
 
 .chatContentArea {
     overflow: hidden auto;
-    padding: 10px 10px;
+    padding-top: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 15px;
+
+
 }
 
 .dayArea {
