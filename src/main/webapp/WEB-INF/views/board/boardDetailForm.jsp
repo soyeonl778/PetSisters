@@ -147,6 +147,18 @@
                                 <span class="plus-icon">+</span>
                                 <p class="all-community"> 전체 후기 보기</p>
                               </a>
+                              
+                              <!-- 로그인시 수정삭제 버튼 보여짐 -->
+                              <div align="center">
+								<a href="javascript:history.back()" class="btn btn-secondary btn-sm">목록가기</a>
+					
+									if(${ loginUser } != null && ${ loginUser.getUserId() }.equals(b.getBoardWriter())) { 
+										<!-- 작성자일 경우만 노출되야하는 버튼들 -->
+										<a href="updateForm.bo?bno=1" class="btn btn-warning btn-sm">수정하기</a>
+										<a href="delete.bo?bno=1" class="btn btn-danger btn-sm">삭제하기</a>
+								 } 
+							   </div>
+                              
                           </div>
                         </div>
                       </section>

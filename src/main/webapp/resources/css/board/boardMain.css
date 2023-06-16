@@ -510,3 +510,7 @@ body #container #main .layout-pagination .pagediv span strong{
     width: 100%;
     margin: 0 auto;
 }
+.post-thumbnail img {
+	width: 80%;
+	margin: auto;
+}

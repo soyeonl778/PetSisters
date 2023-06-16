@@ -32,4 +32,16 @@ public interface BoardService {
 	
 	// 첨부파일 업로드 서비스
 	int insertAttachmentList(ArrayList<Attachment> list);
+	
+	// 사진게시판 리스트 조회
+	ArrayList<Board> selectTopList();
+
+	ArrayList<Board> selectBottomList1();
+
+	ArrayList<Board> selectBottomList2();
+
+	ArrayList<Board> selectBottomList3();
+
+	ArrayList<Board> selectMypetList();
+	
 }

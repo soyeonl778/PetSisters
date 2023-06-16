@@ -55,16 +55,19 @@
                                 <div class="community-detail-board">
                                   
                                   <form id="enrollForm" method="post" action="insert.bo" enctype="multipart/form-data">
-                                    <!--
+                                    	
+                                      <input type="hidden" value="2" name="categoryMain">
+                                    
+                                    
 	                                  <div class="selectCategory">
 	                                    <label for="category">카테고리 :&nbsp;</label>
-                                      <select id="category" name="category">
-                                        <option value="option2">견종정보</option>
-                                        <option value="option3">이야기방</option>
-                                        <option value="option3">반려견 정보</option>
+                                      <select id="category" name="categorySub">
+                                        <option value="1">견종정보</option>
+                                        <option value="2">이야기방</option>
+                                        <option value="3">반려견 정보</option>
                                       </select>
 	                                  </div>
-	                                  -->
+	                                  
 									  <div>
 									  <p class="text-review">제목</p>
 									  <input type="text" class="boardTitle" name="title" placeholder="제목을 입력해주세요" required>

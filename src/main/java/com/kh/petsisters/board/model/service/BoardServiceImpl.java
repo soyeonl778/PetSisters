@@ -65,6 +65,32 @@ public class BoardServiceImpl implements BoardService {
 		return boardDao.insertAttachmentList(sqlSession, list);
 	}
 
+	@Override
+	public ArrayList<Board> selectTopList() {
+		return boardDao.selectTopList(sqlSession);
+	}
+
+	@Override
+	public ArrayList<Board> selectBottomList1() {
+		return boardDao.selectBottomList1(sqlSession);
+	}
+
+	@Override
+	public ArrayList<Board> selectBottomList2() {
+		return boardDao.selectBottomList2(sqlSession);
+	}
+
+	@Override
+	public ArrayList<Board> selectBottomList3() {
+		return boardDao.selectBottomList3(sqlSession);
+	}
+
+	@Override
+	public ArrayList<Board> selectMypetList() {
+		return boardDao.selectMypetList(sqlSession);
+	}
+
+
 	
 
 

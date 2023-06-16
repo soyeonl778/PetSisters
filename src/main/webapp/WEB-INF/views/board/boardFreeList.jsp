@@ -66,26 +66,7 @@
 										<div class="titleWrap">
 											<h1 class="titTag">자유게시판</h1>
 										</div>
-										<!--
-										<form action="#" method="post">
-											<div class="payWrapper">
-												<div class="dateWrapper">
-													<div class="dateSection">
-														조회 기간 선택 : <input id="datepicker1" type="text" name="searchDate"> 
-													</div>
-													<button class="dateBtn btn btn-primary" type="button">조회</button>
-												</div>
-												<div class="searchTag">
-													<input type="text" name="keyword" placeholder="고객명을 입력해주세요" value="${ keyword }">
-													<button id="search_icon" type="submit">
-														<i class="fa-solid fa-magnifying-glass" style="color: #0888D0"></i>
-													</button>
-												</div>
-												
-											</div>
-										</form>
-										-->
-
+										
 										<div class="tableContainer">
 
                                             <c:if test="${ not empty loginUser }">
@@ -114,24 +95,12 @@
                                                             <td>${ b.count }</td>
                                                             <td>${ b.createDate }</td>
                                                             <td> 
-                                                            	<!--  
+                                                            	  
                                                                 <c:if test="${ not empty b.originName }">
                                                                                                                                                                                                             ★
-																 <div><img src="${ b.atFilePath.concat(changeName) }" >here</div>		                                                                                                                                                                                                            
+																 <div style="width: 75px;"><img src="${b.atFilePath}${b.changeName}" >here</div>		                                                                                                                                                                                                            
                                                                 </c:if>
-                                                                -->
-                                                                 
-                                                                 
-                                                                 <!--  
-                                                                <c:if test="${ not empty b.originName }">
-                                                                                                                                                                                                            ★
-																 <div><img src="${ b.originName.toLowerCase() }" >here</div>		                                                                                                                                                                                                            
-                                                                </c:if>
-                                                                --> 
-                                                                <c:if test="${ not empty b.originName }">
-                                                                                                                                                                                                            ★
-																 <div><img src="#" >here</div>		                                                                                                                                                                                                            
-                                                                </c:if>
+                                                                
                                                             </td>
                                                         </tr>
 													</c:forEach>

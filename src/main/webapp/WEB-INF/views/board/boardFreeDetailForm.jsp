@@ -29,7 +29,7 @@
     <div class="content" align="center">
         <br><br>
         <div class="innerOuter">
-            <h2>게시글 작성하기</h2>
+            <h2>게시글 수정페이지</h2>
             <br>
 
             <form id="enrollForm" method="post" action="test" enctype="multipart/form-data">
@@ -42,7 +42,7 @@
                 <table id="boardList" algin="center">
                     <tr>
                         <th><label for="title">제목</label></th>
-                        <td colspan="3"><input type="text" id="title" class="form-control" name="boardTitle" required></td>
+                        <td colspan="3"><input type="text" id="title" class="form-control" name="boardTitle" value="내용입니다"></td>
                     </tr>
                     <tr>
                         <th><label for="writer">작성자</label></th>

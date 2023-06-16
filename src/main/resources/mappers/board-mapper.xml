@@ -95,8 +95,8 @@
 				   		, DEFAULT
 				   		, DEFAULT
 				   		, #{userNo}
-				   		, 1
-				   		, 1)
+				   		, #{categoryMain}
+				   		, #{categorySub})
 	</insert>
 	
 	<!-- 첨부파일 작성용 쿼리문 -->
@@ -119,11 +119,82 @@
 		                     , SEQ_B_ATTACHMENT.CURRVAL)						 
 	</insert>
 	
+	<!-- 사진게시글 : 일반게시글 상위 5 개 조회 -->
+	<select id="selectTopList" resultMap="boardResultSet">
+		SELECT B_NO
+		     , B_TITLE
+			 , ORIGIN_NAME
+			 , CHANGE_NAME
+			 , FILE_PATH AS AT_FILE_PATH 
+		FROM
+		(
+			SELECT * 
+			 FROM BOARD B
+			 LEFT JOIN B_ATTACHMENT A ON (B.B_NO = A.REF_BNO) 	
+			WHERE B.STATUS = 'Y'
+			  AND CATEGORY_MAIN = '1'
+			ORDER BY B.COUNT DESC
+		) 
+		WHERE ROWNUM &lt; 5  		
+	</select>
 	
+
+	<!-- boardMain 하단 카테고리 조회용 -->
+	<select id="selectBottomList1" resultMap="boardResultSet">
+		SELECT B_NO
+		     , B.B_TITLE
+			 , A.ORIGIN_NAME
+			 , A.CHANGE_NAME
+			 , A.FILE_PATH AS AT_FILE_PATH
+		FROM BOARD B 
+		LEFT JOIN B_ATTACHMENT A ON (B.B_NO = A.REF_BNO)
+		WHERE B.STATUS = 'Y'
+		AND CATEGORY_MAIN = 2
+		AND CATEGORY_SUB = 1
+		ORDER BY B.CREATE_DATE DESC
+	</select>
 	
+	<select id="selectBottomList2" resultMap="boardResultSet">
+		SELECT B_NO
+		     , B.B_TITLE
+			 , A.ORIGIN_NAME
+			 , A.CHANGE_NAME
+			 , A.FILE_PATH AS AT_FILE_PATH
+		FROM BOARD B 
+		LEFT JOIN B_ATTACHMENT A ON (B.B_NO = A.REF_BNO)
+		WHERE B.STATUS = 'Y'
+		AND CATEGORY_MAIN = 2
+		AND CATEGORY_SUB = 2
+		ORDER BY B.CREATE_DATE DESC
+	</select>
 	
+	<select id="selectBottomList3" resultMap="boardResultSet">
+		SELECT B_NO
+		     , B.B_TITLE
+			 , A.ORIGIN_NAME
+			 , A.CHANGE_NAME
+			 , A.FILE_PATH AS AT_FILE_PATH
+		FROM BOARD B 
+		LEFT JOIN B_ATTACHMENT A ON (B.B_NO = A.REF_BNO)
+		WHERE B.STATUS = 'Y'
+		AND CATEGORY_MAIN = 2
+		AND CATEGORY_SUB = 3
+		ORDER BY B.CREATE_DATE DESC
+	</select>
 	
-	
+	<!-- 사진게시판 : 강아지자랑 게시글 조회 -->
+	<select id="selectMypetList" resultMap="boardResultSet">
+		SELECT B_NO
+		     , B.B_TITLE
+			 , A.ORIGIN_NAME
+			 , A.CHANGE_NAME
+			 , A.FILE_PATH AS AT_FILE_PATH
+		FROM BOARD B 
+		LEFT JOIN B_ATTACHMENT A ON (B.B_NO = A.REF_BNO)
+		WHERE B.STATUS = 'Y'
+		AND CATEGORY_MAIN = 2
+		ORDER BY B.CREATE_DATE DESC	
+	</select>
 	
 	
 	

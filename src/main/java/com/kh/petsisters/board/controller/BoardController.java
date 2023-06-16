@@ -31,14 +31,48 @@ public class BoardController {
 	@Autowired
 	private BoardService boardService;
 	
-
 	
-	// 사진게시판 포워딩
-	@RequestMapping("mypetlist.bo")
-	public String selectList() {
+	
+	// 커뮤니티 (메인페이지) 포워딩
+	@RequestMapping("main.bo")
+	public String selectThumbnailList(Model model) {
 
+		ArrayList<Board> list = boardService.selectTopList();
+		ArrayList<Board> list1 = boardService.selectBottomList1();
+		ArrayList<Board> list2 = boardService.selectBottomList2();
+		ArrayList<Board> list3 = boardService.selectBottomList3();
+		
+		
+		
+		System.out.println(list);
+		System.out.println(list1);
+		System.out.println(list2);
+		System.out.println(list3);
+		
+		model.addAttribute("list", list);
+		model.addAttribute("list1", list1);
+		model.addAttribute("list2", list2);
+		model.addAttribute("list3", list3);
+		
 		return "board/boardMain";
 	}
+	
+
+	
+	// 사진게시판 포워딩 : 안돼
+	@RequestMapping("mypetlist.bo")
+	public String selectList(Model model) {
+		
+		ArrayList<Board> list = boardService.selectMypetList();
+		
+		System.out.println(list);
+		
+		
+		
+		//boardMypetForm
+		return "board/boardMypetForm";
+	}
+	
 	
 	
 	// 자유게시판 : 일반게시판(목록형식)
@@ -59,7 +93,7 @@ public class BoardController {
 		
 		ArrayList<Board> list = boardService.selectFreeList(pi);
 		
-		// System.out.println(list);
+		System.out.println(list);
 		
 		mv.addObject("pi", pi)
 		  .addObject("list", list)
@@ -81,77 +115,22 @@ public class BoardController {
 		
 		return "board/boardEnrollForm";
 	}
+	*/
 	
 	@RequestMapping("detail.bo")
-	public String selectBoard() {
+	public String detailBoard() {
 		
 	
 		return "board/boardDetailForm";
 	}
-	*/
-
 	
-	// 테스트용 글작성 : 일반게시판
-	@RequestMapping("test")
-	public String test(ArrayList<MultipartFile> upfileList, 
-			 		   HttpSession session,
-			 		   Model model,
-			 		   Board b,
-			 		   Attachment a) {
+	@RequestMapping("updateForm.bo")
+	public String updateBoard() {
 		
-		ArrayList<Attachment> list = new ArrayList<>();
-		
-		for(int i = 0; i < upfileList.size(); i++) {
-			
-			if(!upfileList.get(i).getOriginalFilename().equals("")) {
-				
-				String changeName = saveFile(upfileList.get(i), session);
-				
-				a.setOriginName(upfileList.get(i).getOriginalFilename());
-				a.setChangeName("resources/upFiles/board_upfiles/" + changeName);
-				
-			}
-			
-			list.add(a);
-			System.out.println(list);
-		}
-		
-		
-		// 사진+게시글 등록 서비스 요청 후 결과 받기
-		int result1 = new BoardService().insertFreeBoard(b);
-		
-		int result2 = new BoardService().insertAttachmentList(list);
-		
-		int result = result1 * result2;
-		
-		
-		if(result2 > 0) { // 성공 => 일회성 알람문구 띄운 뒤 게시글 리스트페이지로 url 재요청
-			
-			session.setAttribute("alertMsg", "성공적으로 게시글이 등록되었습니다.");
-			
-			return "redirect:/freelist.bo"; // 내부적으로 1번 페이지로 향함
-			
-		} else { // 실패 => 에러 문구를 담아서 에러페이지로 포워딩
-			
-			model.addAttribute("errorMsg", "게시글 등록 실패");
-		
-			return "common/errorPage";
-		}
-		
-		//return "board/boardDetailForm";
+	
+		return "board/boardUpdateForm";
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	/*
 	@RequestMapping("detail.bo")
 	public String selectBoard(int bno) {
@@ -165,7 +144,7 @@ public class BoardController {
 			mv.addObject("b", b).setViewName("board/boardDetailView");
 			
 		} else {
-			
+		
 			mv.addObject("errorMsg", "게시글 상세조회 실패").setViewName("common/errorPage");
 			
 		}
@@ -173,6 +152,68 @@ public class BoardController {
 		return mv;
 	}
 	*/
+	
+	
+	// 테스트용 글작성 : 일반게시판
+	@RequestMapping("test")
+	public String test(ArrayList<MultipartFile> upfileList, 
+			 		   HttpSession session,
+			 		   Model model,
+			 		   Board b) {
+		
+		Attachment a = new Attachment();
+		
+		ArrayList<Attachment> list = new ArrayList<>();
+		
+		for(int i = 0; i < upfileList.size(); i++) {
+			
+			if(!upfileList.get(i).getOriginalFilename().equals("")) {
+				
+				String changeName = saveFile(upfileList.get(i), session);
+				
+				a.setOriginName(upfileList.get(i).getOriginalFilename());
+				a.setChangeName(changeName);
+			}
+			
+			list.add(a);
+			System.out.println(list);
+		}
+		
+		
+		// 사진+게시글 등록 서비스 요청 후 결과 받기
+		int result1 = boardService.insertFreeBoard(b);
+		
+		int result2 = boardService.insertAttachmentList(list);
+		
+		int result = result1 * result2;
+		
+		
+		if(result > 0) {
+			
+			session.setAttribute("alertMsg", "성공적으로 게시글이 등록되었습니다.");
+			
+			return "redirect:/freelist.bo"; 
+			
+		} else { 
+			
+			model.addAttribute("errorMsg", "게시글 등록 실패");
+		
+			return "common/errorPage";
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
 	
 	
 	
@@ -377,7 +418,7 @@ public class BoardController {
 		String changeName = currentTime + ranNum + ext;
 		
 		// 6. 업로드 하고자 하는 서버의 물리적인 경로 알아내기
-		String savePath = session.getServletContext().getRealPath("/resources/uploadFiles/");
+		String savePath = session.getServletContext().getRealPath("/resources/upFiles/board_upfiles/");
 		
 		// 7. 경로와 수정파일명을 합체 후 파일을 업로드 해주기
 		// MultipartFile 객체에서 제공하는 transferTo 메소드

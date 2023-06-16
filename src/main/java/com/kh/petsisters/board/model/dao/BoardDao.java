@@ -67,14 +67,30 @@ public class BoardDao {
 		for(Attachment at : list) {
 			
 			// 반복문이 돌  때마다 쿼리문 실행 후 결과  받기 => 누적 곱으로 구하기
-			result *= sqlSession.insert("xxx.insertAttachmentList", at);
+			result *= sqlSession.insert("boardMapper.insertAttachmentList", at);
 		}
 		
 		return result;
-		
-		
-		
-		
+	}
+	
+	public ArrayList<Board> selectTopList(SqlSessionTemplate sqlSession) {
+		return (ArrayList)sqlSession.selectList("boardMapper.selectTopList");
+	}
+
+	public ArrayList<Board> selectBottomList1(SqlSessionTemplate sqlSession) {
+		return (ArrayList)sqlSession.selectList("boardMapper.selectBottomList1");
+	}
+
+	public ArrayList<Board> selectBottomList2(SqlSessionTemplate sqlSession) {
+		return (ArrayList)sqlSession.selectList("boardMapper.selectBottomList2");
+	}
+
+	public ArrayList<Board> selectBottomList3(SqlSessionTemplate sqlSession) {
+		return (ArrayList)sqlSession.selectList("boardMapper.selectBottomList3");
+	}
+
+	public ArrayList<Board> selectMypetList(SqlSessionTemplate sqlSession) {
+		return (ArrayList)sqlSession.selectList("boardMapper.selectMypetList");
 	}
 	
 }
