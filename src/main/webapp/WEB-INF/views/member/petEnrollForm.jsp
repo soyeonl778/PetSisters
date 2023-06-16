@@ -71,9 +71,13 @@
                         <input type="text" id="dogName" name="dogName" maxlength="15" placeholder="반려견 이름을 입력해주세요." style="width:240px" required>
                       </p>
                       <p class="input_btn checkbox">
-                        <label for="dogGender">● 성별</label><br>
-                        <input type="radio" id="Male" value="M" name="dogGender"> <b>남</b>
-                        <input type="radio" id="Female" value="F" name="dogGender"> <b>여</b> <br>
+                      	<div class="genderMain">
+                        	<label for="dogGender">● 성별</label><br>
+                        </div>
+                        <div class="radio_gender">
+	                        <input type="radio" id="Male" value="M" name="dogGender"> <b>남</b>
+	                        <input type="radio" id="Female" value="F" name="dogGender"> <b>여</b> <br>
+                      	</div>
                       </p>
                       <p>
                         <label for="dogBreed">● 견종 </label><br>
@@ -88,9 +92,13 @@
                         <input type="text" name="dogWeight" id="dogWeight" maxlength="15" placeholder="ex)4" style="width:80px" onkeyup="passConfirm()" required>  kg
                       </p>
                       <p class="input_btn checkbox">
-                        <label>● 중성화여부 </label><br>
-                        <input type="radio" name="neutralizationStatus" id="neutralizationStatus" value="Y"> <b>yes</b>
-                        <input type="radio" name="neutralizationStatus" id="neutralizationStatus" value="N"> <b>no</b> <br>
+                      	<div class="nMain">
+                        	<label>● 중성화여부 </label><br>
+                        </div>
+                        <div class="radio_n">
+	                        <input type="radio" name="neutralizationStatus" id="neutralizationStatus" value="Y"> <b>Yes</b>
+	                        <input type="radio" name="neutralizationStatus" id="neutralizationStatus" value="N"> <b>No</b> <br>
+                      	</div>
                       </p>
                       <div class="note_main">
 		                  <div class="note1">

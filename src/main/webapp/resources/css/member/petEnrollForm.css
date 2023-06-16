@@ -12,6 +12,8 @@
 	margin-left: 250px;
 }
 
+
+
 #enrollWrapper {
     margin-left: 250px;
     width: 55%;
@@ -85,4 +87,40 @@
     color:white;
     font-size: 20px;
     border-radius: 4px;
+}
+
+.nMain {
+    margin-left: 20px;
+}
+
+.radio_n{
+	display: flex;
+	align-items: center;
+	margin-left: 20px;
+}
+
+.radio_n input {
+	margin-left: 20px;
+}
+
+.radio_n b {
+	margin-left: 10px;
+}
+
+.genderMain {
+    margin-left: 20px;
+}
+
+.radio_gender{
+	display: flex;
+	align-items: center;
+	margin-left: 20px;
+}
+
+.radio_gender input {
+	margin-left: 20px;
+}
+
+.radio_gender b {
+	margin-left: 10px;
 }

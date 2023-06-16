@@ -81,9 +81,15 @@
                   <label>이름</label>
                   <input class="pet_name" placeholder="${ d.dogName }" />
                   <hr>
-                  <label>성별</label>
-                  <input type="radio" id="Male" value="M" name="dogGender"> 남
-                  <input type="radio" id="Female" value="F" name="dogGender"> 여
+                  <div class="gender_wrap">
+	                  <div class="genderMain">
+	                  	<label>성별</label>
+	                  </div>
+	                  <div class="radio_gender">
+		                  <input type="radio" id="Male" value="M" name="dogGender"> <b>남</b>
+			              <input type="radio" id="Female" value="F" name="dogGender"> <b>여</b>
+	                  </div>
+                  </div>
                   <hr>
                   <label>견종</label>
                   <input class="pet_type" placeholder="${ d.dogBreed }" />
@@ -94,9 +100,15 @@
                   <label>몸무게</label>
                   <input class="pet_kg" placeholder="${ d.dogWeight }" /> kg
                   <hr>
-                  <label>중성화</label>
-                  <input type="radio" name="neutralizationStatus" id="Yes" value="Y"> Yes
-                  <input type="radio" name="neutralizationStatus" id="No" value="N"> No
+                  <div class="gender_wrap">
+                  	<div class="genderMain">
+                  		<label>중성화</label>
+                  	</div>
+                  	<div class="radio_gender">
+	                  <input type="radio" name="neutralizationStatus" id="Yes" value="Y"> <b>Yes</b>
+	                  <input type="radio" name="neutralizationStatus" id="No" value="N"> <b>No</b>
+                  	</div>
+                  </div>
                   <hr>
                   <div class="note_main">
 	                  <div class="note1">
@@ -109,6 +121,7 @@
                   </div>
                   <div class="btnArea">
                   	<button type="submit" class="update_btn">수정하기</button>
+                  	<button type="submit" class="delete_btn">등록해지</button>
                   </div>
                   <br>
                 </form>

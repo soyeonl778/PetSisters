@@ -114,6 +114,12 @@ input:focus {
 	outline: 0;
 }
 
+.btnArea {
+	margin-top: 50px;
+	display: flex;
+	justify-content: center;
+}
+
 .update_btn {
 	height: 60px;
     width: 200px;
@@ -122,7 +128,39 @@ input:focus {
     font-size: 20px;
     border-radius: 4px;
 }
+.delete_btn {
+	margin-left: 10px;
+    height: 60px;
+    width: 200px;
+    background-color: #575757;
+    color:white;
+    font-size: 20px;
+    border-radius: 4px;
+}
 
 .fix {
     display: flex;
+}
+
+.genderMain{
+	display: flex;
+	align-items: center;
+}
+
+.gender_wrap {
+	display: flex;
+}
+
+.radio_gender{
+	display: flex;
+	align-items: center;
+}
+
+.radio_gender b {
+	margin-left: 10px;
+	margin-right: 20px;
+}
+
+.pet_kg {
+	width:30px;
 }

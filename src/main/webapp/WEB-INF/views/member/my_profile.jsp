@@ -6,9 +6,13 @@
 <head>
   <meta charset="UTF-8" />
   
+  <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+  
   <!-- header css -->
   <link rel="stylesheet" href="/resources/css/member/my_profile.css">
   <link rel="stylesheet" href="/resources/css/common/memberForm.css">
+  <!-- 폰트어썸 아이콘 적용 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <jsp:include page="../common/common.jsp" />
 
   <title>마이페이지_내프로필관리</title>
@@ -64,7 +68,9 @@
                 <form id="profileWrapper" action="update.me" method="post">
                   <hr>
                     <div class="file_main">
-                      <label>사진</label>
+                      <div>
+                      	<label>사진</label>
+                      </div>
                       <div class="file_change">
                         <img class="profile_img" src="/resources/upFiles/member_profiles/user01.png" />
                         <div class="profile_con">
@@ -78,7 +84,10 @@
                   <input class="default_id" id="userId" placeholder="${ loginUser.userId }" readonly />
                   <hr>
                   <label>비밀번호</label>
-                  <input class="change_pwd" id="userPwd" placeholder="${ loginUser.userPwd }" />
+                  <input class="change_pwd" type="password" id="userPwd" placeholder="${ loginUser.userPwd }" />
+                  <hr>
+                  <label>성함</label>
+                  <input class="change_name" id="userName" placeholder="${ loginUser.userName }" readonly />
                   <hr>
                   <label>닉네임</label>
                   <input class="change_nick" id="userNickname" placeholder="${ loginUser.userNickname }" />
@@ -89,12 +98,19 @@
                   <label>휴대전화</label>
                   <input class="change_phone" id="phone" placeholder="${ loginUser.phone }" />
                   <hr>
-                  <label>주소</label>
-                  <input class="change_address" id="address" placeholder="${ loginUser.address }" />
+                  <div class="kakaoAddress">
+	                  <div>
+	                  	<label>주소</label>
+	                  </div>
+	                  <div class="address_search">
+		                  <input class="change_address" id="address_input" placeholder="${ loginUser.address }" />
+		                  <i id="address_kakao" class="fas fa-search-location fa-lg" style="color: #858585;"><b>주소검색</b></i>
+	                  </div>
+                  </div>
                   <br>
                   <div class="btnArea">
 	                  <button type="submit" class="update_btn">수정하기</button>
-	                  <button type="submit" class="delete_btn" data-toggle="modal" data-target="#deleteForm">탈퇴하기</button>
+	                  <button type="button" class="delete_btn" data-toggle="modal" data-target="#deleteForm">탈퇴하기</button>
                   </div>
                 </form>
                 <!-- 이 영역 안에서 페이지 작업 하시면 됩니다 -->
@@ -122,8 +138,8 @@
                     <!-- Modal body -->
                     <div class="modal-body">
                         <div align="center">
-                            탈퇴 후 복구가 불가능합니다. <br>
-                            정말로 탈퇴 하시겠습니까? <br>
+				                            탈퇴 후 복구가 불가능합니다. <br>
+				                            정말로 탈퇴 하시겠습니까? <br>
                         </div>
                         <br>
                             <label for="userPwd" class="mr-sm-2">Password : </label>
@@ -138,6 +154,20 @@
             </div>
         </div>
     </div>
+    
+    <script>
+	 // 주소 검색용
+	    $('#address_kakao').click(function() {
+	      
+	      new daum.Postcode({
+	      oncomplete: function(data) {
+	        document.getElementById("address_input").value = data.address; // 주소 넣기
+	            // document.querySelector("input[name=address_detail]").focus(); //상세입력 포커싱
+	      }
+	  	}).open();
+	      
+	    });
+    </script>
     
   <!-- Footer 영역 시작 -->
     <jsp:include page="../common/footer.jsp" /> 

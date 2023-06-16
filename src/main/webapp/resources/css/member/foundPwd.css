@@ -33,7 +33,7 @@
 .btn_id2 {
     height: 40px;
     width: 300px;
-    background-color: #0888D0;
+    background-color: #5e5e5e;
     color:white;
     font-size: 17px;
     display: inline-block;
@@ -43,7 +43,7 @@
 .btn_pwd2 {
     height: 40px;
     width: 300px;
-    background-color: #5e5e5e;
+    background-color: #0888D0;
     color:white;
     font-size: 17px;
     display: inline-block;

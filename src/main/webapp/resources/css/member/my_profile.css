@@ -110,3 +110,35 @@ input:focus {
     font-size: 20px;
     border-radius: 4px;
 }
+
+.address_search {
+	display: flex;
+	align-items: center;
+}
+
+.address_search input{
+	width: 200px;
+}
+
+.address_search i {
+	margin-left: 3px;
+	height: 38px;
+	width: 130px;
+	border-radius: 5px;
+	background-color: #EAEAEA;
+	display: flex;
+	align-items: center;
+    justify-content: center;
+	cursor: pointer;
+	
+}
+
+.address_search b {
+	margin-left: 10px;
+	font-size:15px;
+	color: grey;
+}
+
+.kakaoAddress {
+	display: flex;
+}

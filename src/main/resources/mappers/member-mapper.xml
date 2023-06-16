@@ -89,6 +89,7 @@
 	<update id="updateMember" parameterType="member">
 		UPDATE MEMBER
 		   SET USER_PWD = #{userPwd}
+		   	 , USER_NAME = #{userName}
 			 , USER_NICKNAME = #{userNickname}
 			 , EMAIL = #{email}
 			 , PHONE = #{phone}
