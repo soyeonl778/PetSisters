@@ -40,7 +40,6 @@
 
           <ul class="chatList">
 
-
             <!-- 채팅목록 하드코딩 더미데이터 -->
             <!--
             <li class="chattingArea">
@@ -399,7 +398,9 @@
               <div class="chatFormOptionArea">
                 <div class="chatFormSubmenu">
                   <label class="optionWrapper">
-                    <i class="fas fa-images fa-lg" style="color: #868b94;"><input type="file" multiple="" accept="image/png, image/jpeg, image/gif"></i>
+                    <!-- <i class="fas fa-images fa-lg" style="color: #868b94;">
+                      <input type="file" multiple="" accept="image/png, image/jpeg, image/gif">
+                    </i> -->
                     
                   </label>
                 </div>
