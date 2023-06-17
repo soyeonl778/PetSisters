@@ -311,6 +311,13 @@
                                 <%-- 빈 하트 일 때 --%>
                                 <c:when test="${ likeCheck == 0 }">
                                   <div class="likeBtn">
+			                          <div>
+				                          <a href="/createChat.do?masterNo=${p.petSitterNo}">
+					                          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="40" fill="currentColor" class="bi bi-chat-dots-fill" viewBox="0 0 16 16">
+											  <path d="M16 8c0 3.866-3.582 7-8 7a9.06 9.06 0 0 1-2.347-.306c-.584.296-1.925.864-4.181 1.234-.2.032-.352-.176-.273-.362.354-.836.674-1.95.77-2.966C.744 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7zM5 8a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm4 0a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+											</svg>
+				                          </a>
+			                          </div>                                  
                                     <a href="#" class="heart-login">
                                       <i class="bi bi-heart heartIcon" id="unChecked"></i><p>${ likeCount }&nbsp;</p>
                                     </a>
@@ -319,6 +326,13 @@
                                 <%-- 채워진 하트 일 때 --%>
                                 <c:otherwise>
                                   <div class="likeBtn">
+			                          <div>
+				                          <a href="/createChat.do?masterNo=${p.petSitterNo}">
+					                          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="40" fill="currentColor" class="bi bi-chat-dots-fill" viewBox="0 0 16 16">
+											  <path d="M16 8c0 3.866-3.582 7-8 7a9.06 9.06 0 0 1-2.347-.306c-.584.296-1.925.864-4.181 1.234-.2.032-.352-.176-.273-.362.354-.836.674-1.95.77-2.966C.744 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7zM5 8a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm4 0a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+											</svg>
+				                          </a>
+			                          </div>                                  
                                     <a href="#" class="heart-login">
                                       <i class="bi bi-heart-fill heartIcon" id="cheked"></i><p>${ likeCount }&nbsp;</p>
                                     </a>
@@ -332,6 +346,13 @@
                         <%-- 빈 하트 --%>
                         <c:otherwise>
                           <div class="likeBtn">
+                          <div>
+	                          <a href="/createChat.do?masterNo=${p.petSitterNo}">
+		                          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="40" fill="currentColor" class="bi bi-chat-dots-fill" viewBox="0 0 16 16">
+								  <path d="M16 8c0 3.866-3.582 7-8 7a9.06 9.06 0 0 1-2.347-.306c-.584.296-1.925.864-4.181 1.234-.2.032-.352-.176-.273-.362.354-.836.674-1.95.77-2.966C.744 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7zM5 8a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm4 0a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+								</svg>
+	                          </a>
+                          </div>
                             <a href="#" class="heart-notlogin">
                               <i class="bi bi-heart"></i><p>${ likeCount }&nbsp;</p>
                             </a>
@@ -583,6 +604,20 @@
 
 
     $(document).ready(function() {
+    	
+    	// 2023-06-17 조승호 수정 : 상세페이지 이용 가능 서비스 표시 함수 최상단으로 이동
+        // ------------------------ 상세페이지 이용 가능 서비스 표시 ------------------------
+        var psService = "<c:out value='${p.petSitterService}'/>"; // 값을 JavaScript 변수에 할당
+  		  var psServiceArr = psService.split(","); // 쉼표(,)로 분할하여 배열로 변환
+
+        for(var i = 0; i < psServiceArr.length; i++) {
+
+          var psServiceId = $("div[id='"+ psServiceArr[i] +"']").attr('id');
+
+          const div = document.getElementById(psServiceId);
+          div.style.display = 'grid';
+  	    }
+    	
 
       // ------------------------ 카카오맵 API ----------------------------
       var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
@@ -655,20 +690,6 @@
       //   arrows: true,
       //   dots : true
       // });
-
-
-      // ------------------------ 상세페이지 이용 가능 서비스 표시 ------------------------
-      var psService = "<c:out value='${p.petSitterService}'/>"; // 값을 JavaScript 변수에 할당
-		  var psServiceArr = psService.split(","); // 쉼표(,)로 분할하여 배열로 변환
-
-      for(var i = 0; i < psServiceArr.length; i++) {
-
-        var psServiceId = $("div[id='"+ psServiceArr[i] +"']").attr('id');
-
-        const div = document.getElementById(psServiceId);
-        div.style.display = 'grid';
-	    }
-
 
 
     })
