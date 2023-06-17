@@ -187,7 +187,11 @@
                                   	
                                   </div>
                                 
+	                                <div class="btnArea">
+	                                	<button class="btn btn-info" onclick="window.history.go(-1)">목록으로</button>
+	                                </div>
                                 </div>
+                                
                                 
                                 <!-- 여기까지 임보영 -->
                           </div>
