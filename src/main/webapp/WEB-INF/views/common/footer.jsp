@@ -8,7 +8,7 @@
           <h2 class="cc_tit">더 궁금한것이 있으세요?
           </h2>
           <div class="cc_view cc_kakao">
-            <a href="#" class="footerTag">
+            <a href="chatForm.ch" class="footerTag">
               <div class="footerLink">1:1 카톡상담</div>
             </a>
             <a href="/showFaq" class="footerTag">

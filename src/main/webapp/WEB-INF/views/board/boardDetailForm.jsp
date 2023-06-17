@@ -40,127 +40,159 @@
                         <div class="content-header">
                           <div class="content-header-sub">
                             <div class="content-header-sub-a">
+                              <h2 class="header-title">제목영역입니다</h2>
                               <img class="header-img" src="https://petplanet.co/static/images/reviews/like.png"></div>
-                              <h2 class="header-title">밀키보호자님 커뮤니티</h2>
                           </div>
                         </div>
-    
-                        <div>
+
                           <div class="main-card">
-                              <div class="main-card-region">
-                                <a class="arrow-left" href="">
-                                  <img class="arrow-left-img" src="https://petplanet.co/static/images/common/arrow.png">
-                                </a>
-                                
-                                
-                                <!--게시글 메인페이지 시작-->
+                              <div id="mainWrapper" class="main-card-region">
+
                                 <div class="community-detail-board">
-                                  <!--안됨-->
-                                  <div class="board-img">
-                                    
-                                    <!-- <div class="community-detail-board-img-a">
-                                      <img class="community-detail-board-img" src="${ b.dogImg }" alt="test">
-                                    </div> -->
-
-                                    
-                                    <div class="slick-slider slick-initialized">
-                                      <button type="button" data-role="none" class="slick-arrow slick-prev" style="display:block;"></button>
-                                      
-                                      <div class="slick-list">
-                                        <div class="slick-trace">
-                                          <div data-index="-1" tabindex="-1" class="slick-slide slick-cloned" aria-hidden="true"><img src="/resources/img/강아지발판.jpg" alt=""></div>
-                                          <div data-index="0" tabindex="-1" class="slick-slide slick-actice slick-current" aria-hidden="false"><img src="/resources/img/갈색포매라니안.jpg" alt=""></div>
-                                          <div data-index="1" tabindex="-1" class="slick-slide" aria-hidden="true"><img src="${ b.dogImg }" alt=""></div>
-                                          <div data-index="2" tabindex="-1" class="slick-slide slick-cloned" aria-hidden="true"><img src="/resources/img/강아지2.png" alt=""></div>
-                                          <div data-index="3" tabindex="-1" class="slick-slide slick-cloned" aria-hidden="true"><img src="/resources/img/갈색포매라니안.jpg" alt=""></div>
-                                        </div>
-                                      </div>
-                                      <button type="button" data-role="none" class="slick-arrow slick-next" style="display:block;">
-                                      </button>
-                                    </div>
-                                    
-
-
-                                    <!--동그라미미니버튼-->
-                                    <div class="dot-slide-img">
-                                      <div class="dot-1"><img src="https://petplanet.co/static/images/common/dot_active.png" alt=""></div>
-                                      <div class="dot-2"><img src="https://petplanet.co/static/images/common/dot.png" alt=""></div>
-                                    </div>
-                                  </div>
-                                  <!--안됨-->
-    
-                                  <div class="board-writer-a">
-                                    <div class="board-writer-top">
-                                      <p class="board-writer">${ b.dogName } 보호자님</p>
-                                      <div class="board-star-area">
-                                        <img src="https://petplanet.co/static/images/common/star_1.png">
-                                        <img src="https://petplanet.co/static/images/common/star_1.png">
-                                        <img src="https://petplanet.co/static/images/common/star_1.png">
-                                        <img src="https://petplanet.co/static/images/common/star_1.png">
-                                        <img src="https://petplanet.co/static/images/common/star_1.png">
-                                      </div>
-                                    </div>
-                                    <h1 class="board-writer-bottom">
-                                      인천 부평구 부개동 펫시터님과 함께했어요
-                                    </h1>
-                                  </div>
                                   
-                                  <p class="board-content">
-                                  	${ b.boardContent }
-                                  </p>
-    
-                                  <p class="shop-1">
-                                    <a href="">#펫시터</a>
-                                    <a href="">#가정집 펫시터</a>
-                                    <a href="">#인천 부평구 부개동 펫시터 이용 후기</a>
-                                  </p>
                                   
-                                  <div class="community-card-petsister-a ">
-                                    <p class="community-card-petsister">${ b.dogName }</p>
-                                  </div>
                                   
-                                  <div class="petsister-a">
-                                    <div class="petsister">
-                                        <img class="petsister-img" src="${ b.dogImg }" alt="그림이사진">
-                                        <div class="petsister-img-left">
-                                            <p style="margin-top: 0; margin-bottom: 0; font-size: 15px; color:rgb(56, 60, 71);">박◯연 펫시터*인천 부평구 부개동</p>
-                                            <p style="margin-bottom: 0; margin-top: 9px; font-size: 13px; color: rgb(56, 60, 72);">밤송이네 아늑한 힐링공간</p>
-                                        </div>
-                                    </div>
+                                  
+                                  <div id="carouselExampleControls" class="subWrapper carousel slide" data-bs-ride="carousel">
+                                  	
+                                  	
+                                  	
+                                  	<div class="subContainer carousel-inner">
+                                  	
+	                                  	<div class="imgSection carousel-item active">
+	                                  		<img class="mainImg d-block w-100" src="/resources/img/main/첨부파일없음.png">
+	                                  	</div>
+	                                  	<div class="imgSection carousel-item">
+	                                  		<img class="mainImg d-block w-100" src="/resources/img/main/그림이사진1.jpg">
+	                                  	</div>
+	                                  	<div class="imgSection carousel-item">
+	                                  		<img class="mainImg d-block w-100" src="/resources/img/main/그림이사진2.jpg">
+	                                  	</div>
+	                                  	<div class="imgSection carousel-item">
+	                                  		<img class="mainImg d-block w-100" src="/resources/img/main/코송-040.jpg">
+	                                  	</div>
+	                                  	  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+										    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+										    <span class="visually-hidden">Previous</span>
+										  </button>
+										  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+										    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+										    <span class="visually-hidden">Next</span>
+										  </button>
+	                                  	
+	                                  	
+	                                  	<div class="topTitle">
+	                                  		<div class="topImg">
+		                                  		<img src="/resources/img/main/첨부파일없음.png">
+		                                  		<div>조승호</div>
+	                                  		</div>
+	                                  		<div class="topCount">
+	                                  			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+												  <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+												  <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+												</svg>
+	                                  			<div>159</div>
+	                                  		</div>
+	                                  	</div>
+                                  	</div>
+                                  	
+                                  	
+                                  	<div class="contentWrapper">
+	                                  	<div class="bottomTit">
+	                                  		내 이름은
+	                                  	</div>
+	                                  	
+	                                  	<div class="bottomDesc">
+	                                  		내이름은 홍시 <br>
+	                                  		새 나라의 개린이 곧 3살을 바라보고 있지요
+	                                  	</div>
+                                  	
+                                  	
+	                                  	<div class="petInfo">
+	                                  		이 회원님의 반려동물이 궁금하다면?
+	                                  	</div>
+	                                  	
+	                                  	<div class="petInfomation">
+	                                  		<img src="/resources/img/main/첨부파일없음.png">
+	                                  		<div>
+	                                  			<div class="petName">
+	                                  				홍시
+	                                  			</div>
+	                                  			<div class="petBirth">
+	                                  				3.5kg / F / 2020-04-12
+	                                  			</div>
+	                                  		</div>
+	                                  	</div>
+                                  	
+                                  	</div>
+                                  	
+                                  	<div class="reply">
+                                  	
+                                  		<div class="replySection">
+                                  			<svg class="heart" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+											  <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+											</svg>
+											<div class="like fontDiv">
+												좋아요 30
+											</div>
+                                  			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat" viewBox="0 0 16 16">
+											  <path d="M2.678 11.894a1 1 0 0 1 .287.801 10.97 10.97 0 0 1-.398 2c1.395-.323 2.247-.697 2.634-.893a1 1 0 0 1 .71-.074A8.06 8.06 0 0 0 8 14c3.996 0 7-2.807 7-6 0-3.192-3.004-6-7-6S1 4.808 1 8c0 1.468.617 2.83 1.678 3.894zm-.493 3.905a21.682 21.682 0 0 1-.713.129c-.2.032-.352-.176-.273-.362a9.68 9.68 0 0 0 .244-.637l.003-.01c.248-.72.45-1.548.524-2.319C.743 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7-3.582 7-8 7a9.06 9.06 0 0 1-2.347-.306c-.52.263-1.639.742-3.468 1.105z"/>
+											</svg>
+											<div class="fontDiv">
+												댓글 2
+											</div>
+                                  		</div>
+                                  	
+                                  	
+                                  		<div class="rere">
+											댓글                                  		
+                                  		</div>
+                                  		<div class="replyWrapper">
+	                                  		<div class="replys">
+	                                  			<img src="/resources/img/main/첨부파일없음.png">
+												<div class="replyName">
+													<div class="reName">
+														뭉이엄마
+													</div>
+													<div class="replyDesc">
+														커여워요
+													</div>
+												</div>                                  			
+	                                  		</div>
+	                                  		<div class="replys">
+	                                  			<img src="/resources/img/main/첨부파일없음.png">
+												<div class="replyName">
+													<div class="reName">
+														뭉이아빠
+													</div>
+													<div class="replyDesc">
+														커여워요ㅋㅋㅋ
+													</div>
+												</div>                                  			
+	                                  		</div>
+	                                  		<div class="replys">
+	                                  			<img src="/resources/img/main/첨부파일없음.png">
+												<div class="replyName">
+													<div class="reName">
+														뭉이
+													</div>
+													<div class="replyDesc">
+														ㅋㅋㅋㅋㅋㅋ웃겼어요
+													</div>
+												</div>                                  			
+	                                  		</div>
+                                  		</div>
+                                  	</div>
+                                  	
+                                  	
                                   </div>
                                 
                                 </div>
                                 
                                 <!-- 여기까지 임보영 -->
-    
-                                <a class="arrow-right" href="javascript:void(0)">
-                                  <img class="arrow-right-img" src="https://petplanet.co/static/images/common/arrow.png" alt="">
-                                </a>
-                                <!--게시글 메인페이지 끝-->
-                              </div>
-                              <!--전체후기보기-버튼-->
-                              <a class="main-card-bottom-button" href="">
-                                <span class="plus-icon">+</span>
-                                <p class="all-community"> 전체 후기 보기</p>
-                              </a>
-                              
-                              <!-- 로그인시 수정삭제 버튼 보여짐 -->
-                              <div align="center">
-								<a href="javascript:history.back()" class="btn btn-secondary btn-sm">목록가기</a>
-					
-									if(${ loginUser } != null && ${ loginUser.getUserId() }.equals(b.getBoardWriter())) { 
-										<!-- 작성자일 경우만 노출되야하는 버튼들 -->
-										<a href="updateForm.bo?bno=1" class="btn btn-warning btn-sm">수정하기</a>
-										<a href="delete.bo?bno=1" class="btn btn-danger btn-sm">삭제하기</a>
-								 } 
-							   </div>
-                              
                           </div>
                         </div>
                       </section>
-                    
-                    
-                    
                     
                     
                     </div>
@@ -175,7 +207,7 @@
         </div>
       </div>
       <!-- Footer 영역 시작 -->
-      <jsp include page="../common/footer.jsp" />
+      <jsp:include page="../common/footer.jsp" />
       <!-- Footer 영역 끝 -->
        
     </body>
