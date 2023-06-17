@@ -12,6 +12,8 @@
 <!-- 
 <script src="/resources/js/careJournalEnrollForm.js"></script>
  -->
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.js"></script>
 <title>돌봄일지 작성</title>
 </head>
 <body>
@@ -243,8 +245,23 @@
 		        processData: false,
 		        success: function(res) {
 		          console.log(res);
-		          alert('돌봄일지 작성 성공');
-		          window.location.href = '/petsitterRev';
+		          Swal.fire({
+		              title: '돌봄일지를 등록하시겠습니까?',
+		              icon: 'warning',
+		              showCancelButton: true,
+		              confirmButtonColor: '#3085d6',
+		              cancelButtonColor: '#d33',
+		              confirmButtonText: '등록',
+		              cancelButtonText: '취소',
+		              reverseButtons: false, // 버튼 순서 거꾸로
+		              
+		            }).then((result) => {
+		              if (result.isConfirmed) {
+		                
+		         	 window.location.href = '/petsitterRev';
+		              }
+		            })
+		          
 		        },
 		        error: function(error) {
 		          console.log('error', error);

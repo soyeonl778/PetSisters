@@ -22,10 +22,40 @@
 	<script>
 		alertify.alert('알림', '${ alertMsg }',
 				function() {
-					alertify.success('또오셨군용');
+					alertify.success('환영합니다!');
 				});
 	</script>
 	<c:remove var="alertMsg" scope="session" />
+</c:if>
+
+<c:if test="${ not empty updateMsg }">
+	<script>
+		alertify.alert('알림', '${ updateMsg }',
+				function() {
+					alertify.success('수정완료!');
+				});
+	</script>
+	<c:remove var="updateMsg" scope="session" />
+</c:if>
+
+<c:if test="${ not empty writeMsg }">
+	<script>
+		alertify.alert('알림', '${ writeMsg }',
+				function() {
+					alertify.success('작성완료!');
+				});
+	</script>
+	<c:remove var="writeMsg" scope="session" />
+</c:if>
+
+<c:if test="${ not empty deleteMsg }">
+	<script>
+		alertify.alert('알림', '${ deleteMsg }',
+				function() {
+					alertify.success('삭제되었습니다.');
+				});
+	</script>
+	<c:remove var="deleteMsg" scope="session" />
 </c:if>
 
 <nav class="navbar navbar-expand-lg bg-light fixed-top">

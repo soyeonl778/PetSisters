@@ -110,6 +110,8 @@ public class ReservationController {
 		System.out.println(result);
 		if(result > 0) {
 			
+			session.setAttribute("writeMsg", "등록되었습니다!");
+			
 			return "redirect:/reservationList";
 		} else {
 			
@@ -159,6 +161,9 @@ public class ReservationController {
 		int result = reservationService.updateForm(r);
 		
 		if(result > 0) {
+			
+			session.setAttribute("updateMsg", "수정되었습니다!");
+			
 			return "redirect:/reservationList";
 		} else {
 			
@@ -183,6 +188,8 @@ public class ReservationController {
 		int result = reservationService.deleteReservation(rNo);
 		
 		if(result > 0) {
+			
+			session.setAttribute("deleteMsg", "삭제되었습니다");
 			
 			return "redirect:/reservationList";
 		} else {
@@ -552,11 +559,13 @@ public class ReservationController {
 	 * @return
 	 */
 	@RequestMapping("deleteJournal")
-	public String deleteJournal(Model model, @RequestParam int jno) {
+	public String deleteJournal(Model model, @RequestParam int jno, HttpSession session) {
 		
 		int result = reservationService.deleteJournal(jno);
 		
 		if(result > 0) {
+			
+			session.setAttribute("deleteMsg", "삭제되었습니다");
 			
 			return "redirect:/journalManager";
 		} else {
