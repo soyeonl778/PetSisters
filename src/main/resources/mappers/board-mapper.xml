@@ -52,7 +52,7 @@
 	</select>
 	
 	<!-- 일반게시글 리스트 조회 -->
-	<select id="selectBoardExt" resultMap="boardResultSet">
+	<select id="selectFreeList" resultMap="boardResultSet">
 		SELECT B.B_NO
 		     , B.B_TITLE
 		     , B.USER_NO
@@ -204,7 +204,7 @@
 	
 	<!-- 게시글 상세 조회용 쿼리문 -->
 	 
-	<select id="selectBoard"  >
+	<select id="selectBoard" resultMap="boardResultSet">
 		SELECT B.B_NO
 		     , B.B_CONTENT
 		     , B.USER_NO
