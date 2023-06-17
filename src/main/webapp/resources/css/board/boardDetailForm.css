@@ -11,7 +11,8 @@ button {
     width: 100%;
 }
 .content-section .content-header {
-    margin: 0 auto;
+    padding-top: 164px;
+    margin: 85px auto 100px;
     width: 1080px;
 }
 .content-header-sub {
@@ -19,7 +20,7 @@ button {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    margin-bottom: 50px;
+    margin-bottom: 100px;
 }
 .content-header-sub-a {
     display: flex;
@@ -44,11 +45,9 @@ button {
     align-items: center;
     margin-bottom: 120px;
 }
-/*
 .main-card-region {
     display: flex;
 }
-*/
 .main-card-bottom-button {
     margin-top: 60px;
     width: 304px;
@@ -79,10 +78,7 @@ button {
     box-shadow: rgb(235, 235, 235) 1px 1px 12px 0px;
     align-items: center;
     border: 1px solid rgb(235, 235, 235);
-    padding: 30px 5px 50px;
-    height: 100%;
-    min-height: 1500px;
-    margin-bottom: 80px; 
+    padding: 5px 5px 50px;
 }
 .board-img {
     position: relative;
@@ -381,138 +377,10 @@ img {
     color: rgb(77, 80, 85);
     text-overflow: ellipsis;
     text-align: left;
+    /* margin-bottom: 0px; */  
 }
-#mainWrapper {
-	width: 100%;
-}
-.subWrapper {
-	width: 43%;
-    border: 1px solid lightgray;
-    border-radius: 9px;
-    box-shadow: 1px 1px 3px lightgray;
-    height: 1500px;
-}
-.imgSection {
-	text-align: center;
-    padding-top: 17px;
-}
-.imgSection img {
-	border-radius: 8px;
-}
-.topTitle {
-	display: flex;
-    flex-direction: row;
-    justify-content: space-between;	
-    width: 90%;
-    margin: 0 auto;
-    margin-top: 20px;
-    border-bottom: 3px solid lightgray;
-    padding-bottom: 17px;
-}
-.topImg {
-	display: flex;
-	align-items: center;
-	gap: 10px;
-}
-.topImg > img {
-	height: 45px;
-	border-radius: 25px;
-}
-.topCount {
-	display: flex;
-    align-items: center;
-    gap: 10px;
-}
-.contentWrapper {
-	width: 90%;
-    margin: 0 auto;
-    margin-top: 15px;
-    margin-bottom: 40px
-}
-.bottomTit {
-	font-weight: 800;
-    font-size: larger;
-    margin-bottom: 10px;
-}
-.bottomDesc {
-	font-weight: 500;
-	line-height: 26px;
-	min-height: 300px;
-}
-.petInfo {
-	font-weight: 900;
-    font-size: large;
-    border-bottom: 1px solid lightgray;
-    padding-bottom: 10px;
-}
-.petInfomation {
-	display: flex;
-    gap: 15px;
-    margin-top: 15px;
-    margin-left: 16px;
-}
-.petInfomation > img {
-	height: 45px;
-    border-radius: 25px;
-}
-.petName {
-	font-weight: 900;
-}
-.petBirth {
-	font-size: smaller;
-}
-.reply {
-    height: 545px;
-    width: 90%;
-    margin: 0 auto;
-    border-radius: 27px;
-    box-shadow: 0px 1px 20px 0px #EFF2F2;
-    background-color: #EFF2F2;
-}
-.replySection {
-	display: flex;
-    gap: 8px;
-    align-items: center;
-    padding-top: 25px;
-    border-bottom: 1px solid lightgray;
-    width: 90%;
-    margin: 0 auto;
-    padding-bottom: 10px;
-}
-.heart {
-	color: red;
-}
-.like {
-	margin-right: 10px;
-}
-.fontDiv {
-	font-weight: 600;
-}
-.replys > img{
-	height: 40px;
-    border-radius: 25px;
-    margin-right: 10px;
-}
-.rere {
-	font-weight: 900;
-	margin: 15px;
-}
-.replyWrapper {
-	width: 87%;
-    margin: 0 auto;
-}
-.replys {
-	display: flex;
-	padding: 10px 0;
-}
-.reName{
-	font-weight: 900;
-    font-size: large;
-}
-.mainImg {
-	height: 400px;
-}
-.subContainer {
-	width: 90%;
-    margin: 0 auto;
-}
+/* .community-detail-board-img {
+    width: 530px;
+    height: 300px;
+    border-radius: 3px;
+} */

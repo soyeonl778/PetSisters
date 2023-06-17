@@ -115,8 +115,21 @@
                         	</c:forEach>
 						</div>
                            
+                         	
+                         	
+                         	
+                         	
+                         	
+                         	
+                         	
+                           
+                          
+                         
                       </div>  
                         
+                           
+                           
+                              
                       </div>
                     </div> 
                   <!--반려견정보--> 
@@ -125,6 +138,8 @@
 
               </div>
                 
+                
+                
                 <!-- 이 영역 안에서 페이지 작업 하시면 됩니다 -->
               </div>
             </div>
@@ -132,6 +147,8 @@
           </div>
         </div>
       </div>
+
+    </div>
   
   <!-- Footer 영역 시작 -->
   <jsp:include page="../common/footer.jsp" />
