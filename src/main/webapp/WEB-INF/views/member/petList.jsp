@@ -77,7 +77,7 @@
                       	  <input type="hidden" name="pet_no" value="${d.dogNo}" />
                       	</div>
                         <div class="pet_img">
-                          <img class="p_img" src="${ d.filePath }">
+                          <img id="petImg" class="p_img" src="${ d.filePath }">
                         </div>
                         <div class="pet_infoArea">
                           

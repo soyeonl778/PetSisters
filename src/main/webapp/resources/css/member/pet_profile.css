@@ -84,11 +84,39 @@ input:focus {
 }
 
 .img_btn {
+	height: 35px;
+	width: 110px;
+	font-size: 15px;
+	display: inline-block;
+	padding-top: 6px;
+	background-color: #EAEAEA;
+	color: #333;
+	font-weight: bold;
+	text-align: center;
+	text-decoration: none;
+	cursor: pointer;
+	border-radius: 4px;
+	border:1px solid lightgray;
+	transition: background-color 0.3s ease;
+}
+
+.img_btn:hover {
+  background-color: #CCCCCC;
+}
+
+.img_btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.2);
+}
+
+.img_btn {
 	background-color: #EAEAEA;
 }
 
 .btnArea {
 	margin-top: 50px;
+	display: flex;
+	justify-content: center;
 }
 
 .note_main {

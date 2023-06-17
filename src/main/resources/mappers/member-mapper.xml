@@ -96,6 +96,7 @@
 			 , EMAIL = #{email}
 			 , PHONE = #{phone}
 			 , ADDRESS = #{address}
+			 , FILE_PATH = #{filePath}
 		 WHERE USER_NO = #{userNo}
 	</update>
 	

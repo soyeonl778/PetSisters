@@ -65,14 +65,16 @@
                 <div id="titleWrapper">
                   <h3 class="title_11">펫 프로필 상세정보</h3>
                 </div>
-                <form id="profileWrapper" action="petUpdate.me" method="get">
+                <form id="profileWrapper" action="petUpdate.me" method="post" enctype="multipart/form-data">
                   <hr>
                     <div class="file_main">
                       <label>사진</label>
                       <div class="file_change">
-                        <img class="profile_img" src="/resources/img/main/로이-4052.jpg" />
+                        <img id="preview_img" class="profile_img" src="${ d.filePath }" />
+                        <input type="hidden" name="filePath" value="${ d.filePath }">
                         <div class="profile_con">
-                          <button type="button" class="img_btn">사진변경</button>
+                         	<label id="file_inputcss" for="file_input" class="img_btn">사진변경</label>
+							<input type="file" name="upfile" id="file_input" style="display: none;">
                           <p>등록된 사진은 반려견의 프로필입니다.</p>
                         </div>
                       </div>
@@ -116,7 +118,7 @@
 		                  <label>돌봄시 <br>참고사항</label>
 		              </div>
 	                  <div class="noteArea">
-			              <textarea class="dog_note" cols="50" rows="5" name="dogNote" value="${ d.dogNote }" placeholder="ex)우리 댕댕이는 생식만 먹여요. 큰 소리에 예민한 편이에요."></textarea><br>
+			              <textarea class="dog_note" cols="50" rows="5" name="dogNote" placeholder="${ d.dogNote }">${ d.dogNote }</textarea><br>
 			              <div class="count"><span>0</span>/100</div>
 	                  </div>
                   </div>
@@ -166,6 +168,23 @@
 	    	    $('.text_box .count span').html(100);
 	    	  }
 	    	});
+	    
+	    // 파일 미리보기
+	    const fileInput = document.getElementById('file_input');
+	    const previewImg = document.getElementById('preview_img');
+
+	    fileInput.addEventListener('change', function() {
+	      const file = fileInput.files[0];
+	      const reader = new FileReader();
+
+	      reader.onload = function(e) {
+	        previewImg.src = e.target.result;
+	      }
+
+	      if (file) {
+	        reader.readAsDataURL(file);
+	      }
+	    });
     </script>
     
   </div>

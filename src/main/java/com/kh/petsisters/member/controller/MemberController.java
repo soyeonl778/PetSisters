@@ -1,6 +1,10 @@
 package com.kh.petsisters.member.controller;
 
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.UUID;
 
 import javax.servlet.http.Cookie;
@@ -15,6 +19,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.petsisters.chat.model.vo.ChatSession;
@@ -200,7 +205,26 @@ public class MemberController {
 	@RequestMapping("update.me")
 	public String updateMember(Member m,
 							   HttpSession session,
+							   @RequestParam("upfile") MultipartFile upfile,
 							   Model model) {
+		
+		m.setFilePath(((Member)session.getAttribute("loginUser")).getFilePath());
+		
+		// 즉, filename 필드값 (원본파일명) 이 있을 경우
+		if(!upfile.getOriginalFilename().equals("")) {
+			
+			// 1. 기존에 첨부파일이 있었을 경우 => 기존의 첨부파일을 찾아서 삭제
+			if(m.getFilePath() != null) {
+				String realPath =  session.getServletContext().getRealPath(m.getFilePath());
+				new File(realPath).delete();
+			}
+			
+			// 2. 새로 넘어온 첨부파일을 서버에 업로드 시키기
+			String changeName = saveFile(upfile, session, "/resources/upFiles/member_profiles/");
+			
+			// 3. b 에 새로 넘어온 첨부파일에 대한 원본명, 수정파일명을 덮어 씌우기 (필드값 셋팅)
+			m.setFilePath("/resources/upFiles/member_profiles/" + changeName);
+		}
 		
 		int result = memberService.updateMember(m);
 		
@@ -325,10 +349,28 @@ public class MemberController {
 	// 펫정보 수정 기능 영역
 	@RequestMapping("petUpdate.me")
 	public String petUpdate(Dog d,
-			   			  HttpSession session,
-			   			  Model model) {
+			   			  	HttpSession session,
+			   			  	@RequestParam("upfile") MultipartFile upfile,
+			   			  	Model model) {
+				
+		// 즉, filename 필드값 (원본파일명) 이 있을 경우
+		if(!upfile.getOriginalFilename().equals("")) {
+			
+			System.out.println(d.getFilePath());
+			// 1. 기존에 첨부파일이 있었을 경우 => 기존의 첨부파일을 찾아서 삭제
+			if(d.getFilePath() != null) {
+				String realPath =  session.getServletContext().getRealPath(d.getFilePath());
+				System.out.println(realPath);
+				new File(realPath).delete();
+			}
+			
+			// 2. 새로 넘어온 첨부파일을 서버에 업로드 시키기
+			String changeName = saveFile(upfile, session, "/resources/upFiles/dog_profiles/");
+			
+			// 3. b 에 새로 넘어온 첨부파일에 대한 원본명, 수정파일명을 덮어 씌우기 (필드값 셋팅)
+			d.setFilePath("/resources/upFiles/dog_profiles/" + changeName);
+		}
 		
-		System.out.println(d);
 		int result = memberService.petUpdate(d);
 		
 		if(result > 0) {
@@ -385,6 +427,39 @@ public class MemberController {
 		return (count > 0) ? "NNNNN" : "NNNNY";
 	}
 	
+	public String saveFile(MultipartFile upfile, HttpSession session, String saveDirectory) {
+		
+		// 1. 원본파일명 뽑기
+		String originName = upfile.getOriginalFilename(); // "bono.jpg"
+		
+		// 2. 현재 시간 형식을 문자열로 뽑아내기
+		String currentTime = new SimpleDateFormat("yyyyMMddHHmmss")
+													.format(new Date()); // "20230511104920"
+		
+		// 3. 뒤에 붙을 5자리 랜덤값 뽑기 (10000 ~ 99999)
+		int ranNum = (int)(Math.random() * 90000 + 10000); // 13152
+		
+		// 4. 원본파일명으로부터 확장자명 뽑기
+		String ext = originName.substring(originName.lastIndexOf(".")); // ".jpg"
+		
+		// 5. 2, 3, 4 단계에서 구한 값을 모두 이어 붙이기
+		String changeName = currentTime + ranNum + ext;
+		
+		// 6. 업로드 하고자 하는 서버의 물리적인 경로 알아내기
+		String savePath = session.getServletContext().getRealPath(saveDirectory);
+		
+		// 7. 경로와 수정파일명을 합체 후 파일을 업로드 해주기
+		// MultipartFile 객체에서 제공하는 transferTo 메소드
+		// [ 표현법 ]
+		// upfile.transferTo(업로드하고자하는파일객체);
+		try {
+			upfile.transferTo(new File(savePath + changeName));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		return changeName;
+	}
 	
 	
 }

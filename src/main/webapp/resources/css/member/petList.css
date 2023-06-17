@@ -89,3 +89,8 @@
 .chevron-right {
   margin-left: 80px; 
 }
+
+#petImg {
+	width: 120px;
+	height: 120px;
+}

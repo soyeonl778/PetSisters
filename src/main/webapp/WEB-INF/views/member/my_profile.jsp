@@ -65,16 +65,17 @@
                 <div id="titleWrapper">
                   <h3 class="title_11">내 프로필 정보</h3>
                 </div>
-                <form id="profileWrapper" action="update.me" method="post">
+                <form id="profileWrapper" action="update.me" method="post" enctype="multipart/form-data">
                   <hr>
                     <div class="file_main">
                       <div>
                       	<label>사진</label>
                       </div>
                       <div class="file_change">
-                        <img class="profile_img" src="/resources/upFiles/member_profiles/user01.png" />
+                        <img id="preview_img" class="profile_img" src="${ loginUser.filePath }" />
                         <div class="profile_con">
-                        	<button type="button" class="img_btn">사진변경</button>
+                        	<label id="file_inputcss" for="file_input" class="img_btn">사진변경</label>
+							<input type="file" name="upfile" id="file_input" style="display: none;">
                           <p>등록된 사진은 회원님의 게시물이나 댓글들에 사용됩니다.</p>
                         </div>
                       </div>
@@ -82,29 +83,29 @@
                   <hr>
                   <input type="hidden" name="userNo" value="${ loginUser.userNo }" />
                   <label>아이디</label>
-                  <input class="default_id" id="userId" value="${ loginUser.userId }" placeholder="${ loginUser.userId }" readonly />
+                  <input class="default_id" name="userId" value="${ loginUser.userId }" placeholder="${ loginUser.userId }" readonly />
                   <hr>
                   <label>비밀번호</label>
-                  <input class="change_pwd" type="password" id="userPwd" value="${ loginUser.userPwd }" placeholder="${ loginUser.userPwd }" />
+                  <input class="change_pwd" type="password" name="userPwd" value="${ loginUser.userPwd }" placeholder="${ loginUser.userPwd }" />
                   <hr>
                   <label>성함</label>
-                  <input class="change_name" id="userName" value="${ loginUser.userName }" placeholder="${ loginUser.userName }" readonly />
+                  <input class="change_name" name="userName" value="${ loginUser.userName }" placeholder="${ loginUser.userName }" readonly />
                   <hr>
                   <label>닉네임</label>
-                  <input class="change_nick" id="userNickname" value="${ loginUser.userNickname }" placeholder="${ loginUser.userNickname }" />
+                  <input class="change_nick" name="userNickname" value="${ loginUser.userNickname }" placeholder="${ loginUser.userNickname }" />
                   <hr>
                   <label>이메일</label>
-                  <input class="change_email" id="email" value="${ loginUser.email }" placeholder="${ loginUser.email }" />
+                  <input class="change_email" name="email" value="${ loginUser.email }" placeholder="${ loginUser.email }" />
                   <hr>
                   <label>휴대전화</label>
-                  <input class="change_phone" id="phone" value="${ loginUser.phone }" placeholder="${ loginUser.phone }" />
+                  <input class="change_phone" name="phone" value="${ loginUser.phone }" placeholder="${ loginUser.phone }" />
                   <hr>
                   <div class="kakaoAddress">
 	                  <div>
 	                  	<label>주소</label>
 	                  </div>
 	                  <div class="address_search">
-		                  <input class="change_address" id="address_input" value="${ loginUser.address }" placeholder="${ loginUser.address }" />
+		                  <input class="change_address" id="address_input" name="address" value="${ loginUser.address }" placeholder="${ loginUser.address }" />
 		                  <i id="address_kakao" class="fas fa-search-location fa-lg" style="color: #858585;"><b>주소검색</b></i>
 	                  </div>
                   </div>
@@ -167,6 +168,23 @@
 	      }
 	  	}).open();
 	      
+	    });
+	 	
+	 // 파일 미리보기
+	    const fileInput = document.getElementById('file_input');
+	    const previewImg = document.getElementById('preview_img');
+
+	    fileInput.addEventListener('change', function() {
+	      const file = fileInput.files[0];
+	      const reader = new FileReader();
+
+	      reader.onload = function(e) {
+	        previewImg.src = e.target.result;
+	      }
+
+	      if (file) {
+	        reader.readAsDataURL(file);
+	      }
 	    });
     </script>
     
