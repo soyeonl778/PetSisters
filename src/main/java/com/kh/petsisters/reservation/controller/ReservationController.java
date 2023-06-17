@@ -107,7 +107,6 @@ public class ReservationController {
 		}
 		
 		int result = reservationService.insertReview(r);
-		System.out.println(result);
 		if(result > 0) {
 			
 			session.setAttribute("writeMsg", "등록되었습니다!");
@@ -520,11 +519,6 @@ public class ReservationController {
             @RequestParam int jno,
             HttpSession session) {
 		
-		System.out.println(careTitle);
-		System.out.println(careDesc);
-		System.out.println(jno);
-		System.out.println("fileNames" + fileNames);
-		
 		int result = reservationService.updateCare(jno, careTitle, careDesc);
 		
 		
@@ -541,7 +535,6 @@ public class ReservationController {
 		        cj.setJno(jno);
 		        list.add(cj);
 	        }
-	        System.out.println(list);
 	        if(result > 0) {
 	        	
 	        	int res = reservationService.updateCareFile(list);
@@ -660,7 +653,6 @@ public class ReservationController {
 	public String saveFiles(MultipartFile upfile, HttpSession session) {
 		
 		String originName = upfile.getOriginalFilename();
-		System.out.println(originName);
 		String currentTime = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
 		
 		int ranNum = (int)(Math.random() * 90000 + 10000);
@@ -690,7 +682,6 @@ public class ReservationController {
 	public String saveFile(MultipartFile upfile, HttpSession session) {
 		
 		String originName = upfile.getOriginalFilename();
-		System.out.println(originName);
 		String currentTime = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
 		
 		int ranNum = (int)(Math.random() * 90000 + 10000);

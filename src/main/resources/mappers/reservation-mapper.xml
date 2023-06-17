@@ -289,7 +289,7 @@
 	<!-- 이번주 정산금 구하는 쿼리문 -->
 	<select id="weekPay" resultType="_int">
 	<![CDATA[
-		SELECT SUM(P.PAY_PRICE)
+		SELECT COALESCE(SUM(P.PAY_PRICE), 0)
 		FROM PAYMENT P
 		JOIN RESERVATION R ON P.REF_RESNO = R.RES_NO
 		JOIN PETSITTER PT ON R.REF_PNO = PT.P_NO
@@ -303,7 +303,7 @@
 	
 	<!-- 정산금 총액 구하는 쿼리문 -->
 	<select id="totalPay" resultType="_int">
-		SELECT SUM(PAY_PRICE)
+		SELECT COALESCE(SUM(PAY_PRICE), 0)
 		  FROM PAYMENT P
 		  JOIN RESERVATION R ON REF_RESNO = RES_NO
 		  JOIN PETSITTER PT ON REF_PNO = P_NO 
