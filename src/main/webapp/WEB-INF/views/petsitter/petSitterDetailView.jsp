@@ -20,11 +20,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
   <!-- 부트스트랩 아이콘 -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
-
-  <!-- 슬라이더 -->
-  <!-- <link rel="stylesheet" type="text/css" href="slick/slick.css"/>
-  <link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/> -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">s
   
   <title>펫시터 상세페이지</title>
 </head>
@@ -46,15 +42,32 @@
                 <div>
                   <div id="content-area">
                     <div id="content1">
-                      <div class="viewslider_wrap">
-                        <section class="slide-box">
-                          <div class="single-item">
-                            <c:forEach var="psImg" items="${ psImgList }">
-                              <div><img src="${ psImg.filePath }${ psImg.changeName }"></div>
-                            </c:forEach>
-                          </div>
-                        </section>
+
+
+                      <div id="carouselExampleIndicators" class="carousel slide">
+                        <div class="carousel-indicators">
+                          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>  
+                          <c:forEach var="psImg" items="${ psImgList }" varStatus="status">
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="${ status.count }" aria-label="Slide ${ status.count } + 1"></button>
+						              </c:forEach>
+                        </div>
+                        <div class="carousel-inner">
+                          <c:forEach var="psImg" items="${ psImgList }">
+                            <div class="carousel-item active">
+                              <img src="${ psImg.filePath }${ psImg.changeName }" class="d-block w-100" alt="...">
+                            </div>
+                          </c:forEach>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                          <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                          <span class="visually-hidden">Next</span>
+                        </button>
                       </div>
+
                       <div class="profileBox">
                         <div class="profileImg">
                           <img src="/resources/img/main/그림이사진1.jpg">
@@ -395,11 +408,6 @@
   <!--카카오맵 API-->
   <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=0f876d0e519ec1bc91c1da0c5e2829c7"></script>
 
-  <!-- 슬라이더 -->
-  <!-- <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-  <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-  <script type="text/javascript" src="slick/slick.min.js"></script> -->
-
   <script>
 
     $(function () {
@@ -637,7 +645,14 @@
 
 
       // ------------------------ 슬라이더 ------------------------
-      $('.single-item').slick();
+      // $('.single-item').slick({
+      //   slide: 'div',
+      //   infinite: true,
+      //   slidesToShow: 3,
+      //   slidesToScroll: 3,
+      //   arrows: true,
+      //   dots : true
+      // });
 
 
       // ------------------------ 상세페이지 이용 가능 서비스 표시 ------------------------

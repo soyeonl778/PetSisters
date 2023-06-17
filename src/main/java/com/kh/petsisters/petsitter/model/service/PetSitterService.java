@@ -22,7 +22,7 @@ public interface PetSitterService {
 	int selectListCount();
 	
 	// 펫시터 프로필 리스트 조회
-	ArrayList<PetSitter> selectList(PageInfo pi);
+	ArrayList<PetSitter> selectList(PageInfo pi, PetSitter p);
 	
 	// 펫시터 상세페이지 후기 리스트 조회
 	ArrayList<Review> selectReviewList(int pno);

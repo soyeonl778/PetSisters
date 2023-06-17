@@ -29,12 +29,18 @@ public class PetSitter {
 	private String caStatus;             // CA_STATUS 펫시터자격증여부
 	private String userFilePath;         // FILE_PATH	회원 파일 경로
 	
+	// RESERVATION
+	private String startDate;            // START_DATE
+	private String endDate;              // END_DATE
+	
 	// REVIEW
 	private int reviewCount;			 // REVIEW_COUNT 후기 총갯수
 	
 	// P_ATTACHMENT
 	private String changeName;           //	CHANGE_NAME
 	private String paFilePath;           //	FILE_PATH
+	
+	private String keyword;              // 검색용 키워드
 }
 
 

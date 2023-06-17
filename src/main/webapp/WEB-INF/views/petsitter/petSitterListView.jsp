@@ -49,35 +49,42 @@
         <div id="content">
           <div class="page_aticle aticle_type2">
             <div class="searchForm row justify-content-around">
+              <div>
                 <div class="searchArea">
                     <div class="addressArea">
                         <label class="form-label">어디에 사시나요?</label>
                         <div class="col-4 addressForm">
-                            <div>
+                            <div class="searchBtn" onclick="searchKeyword()">
                                 <img src="/resources/img/petsitter/magnifier.png">
                             </div>
-                            <input type="text" class="form-control" id="addressInput" placeholder="동 이름을 검색하세요">
+                            <input type="text" class="form-control" id="addressInput" name="keyword" placeholder="동 이름을 검색하세요" onkeypress="handleKeyPress(event)">
                         </div>
                     </div>
                     <div class="col-4">
                         <label class="form-label">언제 맡기시나요?</label>
-                        <div class="dateInput">
-                            <input type="text" id="datepicker1" class="form-control" id="startDate" name="startDate" placeholder="체크인 날짜">
-                            <input type="text" id="datepicker2" class="form-control" id="endDate" name="endDate" placeholder="체크아웃 날짜">
-                        </div>
+                        <form action="list.pe" method="get">
+                          <div class="dateInput">
+                              <input type="text" id="datepicker1" class="form-control" id="startDate" name="startDate" placeholder="체크인 날짜">
+                              <input type="text" id="datepicker2" class="form-control" id="endDate" name="endDate" placeholder="체크아웃 날짜">
+                              <button class="searchBtn" type="submit">
+                                <img src="/resources/img/petsitter/magnifier.png">
+                              </button>
+                          </div>
+                        </form>
                     </div>
-                </div>
-                <div class="careListBtn">
-                  <label class="form-label">원하시는 조건을 선택하세요</label>
-                  <div>
-                      <button class="btn btn-outline-secondary" type="button">반려동물 없음</button>
+                  </div>
+                  <div class="careListBtn">
+                    <label class="form-label">원하시는 조건을 선택하세요</label>
+                    <div>
                       <button class="btn btn-outline-secondary" type="button">픽업 가능</button>
-                      <button class="btn btn-outline-secondary" type="button">대형견 가능</button>
-                      <button class="btn btn-outline-secondary" type="button">마당 있음</button>
+                      <button class="btn btn-outline-secondary" type="button">매일 산책</button>
+                      <button class="btn btn-outline-secondary" type="button">목욕 가능</button>
+                      <button class="btn btn-outline-secondary" type="button">모발 관리</button>
                       <button class="btn btn-secondary" type="button">노견 케어</button>
+                    </div>
                   </div>
                 </div>
-            </div>
+              </div>
             <br>
             <hr>
             <br>
@@ -89,7 +96,6 @@
                     <div class="filter">
                         <a>가까운순</a>
                         <a>인기순</a>
-                        <a>가격순</a>
                         <img src="/resources/img/petsitter/filter.png">
                     </div>
                     <div class="content">
@@ -218,7 +224,36 @@
           $(".snb_my").stop();
           $(".snb_my").animate({ "top": scrollTop });
         });
+
+        $('#startDate, #endDate').on('change', function() {
+
+        // 시작일, 종료일
+        var startDate = new Date($('#startDate').val());
+        var endDate = new Date($('#endDate').val());
+
+          if(startDate instanceof Date && !isNaN(startDate) && endDate instanceof Date && !isNaN(endDate)) {
+            calculateDateDifference();
+            updateTotal();
+          } else {
+
+            resetValues();
+          }
+
+        });
+
       });
+
+      function searchKeyword() {
+
+        var k = $('#addressInput').val();
+        window.location.href = 'list.pe?keyword=' + encodeURIComponent(k);
+      }
+
+      function handleKeyPress(event) {
+        if (event.keyCode === 13) { // Enter 키의 keyCode는 13입니다.
+            searchKeyword();
+        }
+      }
 
 
     </script>

@@ -31,14 +31,14 @@ public class PetSitterDao {
 		return sqlSession.selectOne("petSitterMapper.selectListCount");
 	}
 	
-	public ArrayList<PetSitter> selectList(SqlSessionTemplate sqlSession, PageInfo pi) {
+	public ArrayList<PetSitter> selectList(SqlSessionTemplate sqlSession, PageInfo pi, PetSitter p) {
 		
 		int offset = (pi.getCurrentPage() - 1) * pi.getBoardLimit(); // offset : 건너 뛸 숫자
 		int limit = pi.getBoardLimit(); // limit : 조회할 갯수
 		
 		RowBounds rowBounds = new RowBounds(offset, limit);
 		
-		return (ArrayList)sqlSession.selectList("petSitterMapper.selectList", null, rowBounds);
+		return (ArrayList)sqlSession.selectList("petSitterMapper.selectList", p, rowBounds);
 	}
 	
 	public ArrayList<Review> selectReviewList(SqlSessionTemplate sqlSession, int pno) {

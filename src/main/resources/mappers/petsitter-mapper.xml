@@ -99,7 +99,7 @@
 	</select>
 	
 	<!-- 게시글 리스트 조회용 쿼리문 -->
-	<select id="selectList" resultMap="petSitterResultSet">
+	<select id="selectList" parameterType="string" resultMap="petSitterResultSet">
 		SELECT P.P_NO,
 		       P.P_TITLE,
 		       P.CARE_LIST,
@@ -118,6 +118,16 @@
 		    WHERE STATUS = 'Y'
 		) PA ON P.P_NO = PA.REF_PNO AND PA.RN = 1
 		WHERE P.P_MODE = 'Y'
+		<if test="keyword != '%0%'">
+		  AND M.ADDRESS LIKE #{keyword}
+		</if>
+		<if test="endDate != 0">
+		  AND P.P_NO NOT IN (
+		    SELECT REF_PNO
+		    FROM IMPOSSIBLE_DATE
+		    WHERE TRUNC(I_DATE) BETWEEN TO_DATE(#{startDate}, 'YYYY/MM/DD') AND TO_DATE(#{endDate}, 'YYYY/MM/DD')
+		  )
+		</if>
 		GROUP BY P.P_NO, P.P_TITLE, P.CARE_LIST, M.ADDRESS, M.CA_STATUS, PA.FILE_PATH, PA.CHANGE_NAME
 		ORDER BY P.P_NO DESC
 	</select>

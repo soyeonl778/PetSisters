@@ -42,9 +42,9 @@ public class PetSitterServiceImpl implements  PetSitterService {
 	}
 	
 	@Override
-	public ArrayList<PetSitter> selectList(PageInfo pi) {
+	public ArrayList<PetSitter> selectList(PageInfo pi, PetSitter p) {
 		
-		return petSitterDao.selectList(sqlSession, pi);
+		return petSitterDao.selectList(sqlSession, pi, p);
 	}
 
 	@Override

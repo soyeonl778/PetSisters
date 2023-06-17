@@ -1,4 +1,4 @@
-.page_section>div { height: 2800px; }
+/* .page_section>div { height: 2800px; } */
 
 div, form, img { box-sizing: border-box; }
 
@@ -6,7 +6,9 @@ div, form, img { box-sizing: border-box; }
     padding-top: 10px;
 }
 
-#content-area { height: 100%; }
+#content-area {
+    height: 100%;
+}
 
 #content-area>div {
     height: 100%;
@@ -265,6 +267,11 @@ div, form, img { box-sizing: border-box; }
     margin-bottom: 30px;
 }
 
+.reviewList {
+    height: 800px;
+    overflow: scroll;
+}
+
 .userProfile {
     display: flex;
     align-items: center;
@@ -335,4 +342,9 @@ div, form, img { box-sizing: border-box; }
 #slash {
     margin-left: 5px;
     margin-right: 5px;
+}
+
+/* 투명 스크롤바 */
+::-webkit-scrollbar {
+    display: none;
 }
