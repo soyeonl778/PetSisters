@@ -18,6 +18,6 @@ public class Attachment {
 	private String createDate; 
 	private String status; 
 	private int fileLevel;
-	private int ref_bno; 
+	private int refBno; 
 
 }

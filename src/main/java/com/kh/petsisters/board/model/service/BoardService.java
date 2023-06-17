@@ -28,7 +28,7 @@ public interface BoardService {
 	Board selectBoard(int boardNo);
 	
 	// 자유게시글 작성하기 서비스
-	int insertFreeBoard(Board b);
+	int insertBoard(Board b);
 	
 	// 첨부파일 업로드 서비스
 	int insertAttachmentList(ArrayList<Attachment> list);
@@ -37,7 +37,6 @@ public interface BoardService {
 	ArrayList<Board> selectTopList();
 
 	ArrayList<Board> selectBottomList1();
-
 
 	ArrayList<Board> selectMypetList();
 	

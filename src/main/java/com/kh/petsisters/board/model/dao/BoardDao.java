@@ -52,8 +52,8 @@ public class BoardDao {
 	}
 	
 	
-	public int insertFreeBoard(SqlSessionTemplate sqlSession, Board b) {
-		return sqlSession.insert("boardMapper.insertFreeBoard", b);
+	public int insertBoard(SqlSessionTemplate sqlSession, Board b) {
+		return sqlSession.insert("boardMapper.insertBoard", b);
 	}
 	
 

@@ -70,7 +70,7 @@
 										<div class="tableContainer">
 
                                             <c:if test="${ not empty loginUser }">
-                                                <a id="writing-icon" class="btn btn-secondary" style="float:right;" href="freeEnrollForm.bo?categoryMain=1&categorySub=1">글쓰기</a>
+                                                <a id="writing-icon" class="btn btn-secondary" style="float:right;" href="freeEnrollForm.bo">글쓰기</a>
                                             </c:if>
 
 											<table id="boardList" class="table table-hover" align="center">
