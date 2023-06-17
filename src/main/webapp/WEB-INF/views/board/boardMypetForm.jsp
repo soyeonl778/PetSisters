@@ -103,49 +103,7 @@
                   
                   <!-- 카드 4개 영역 끝 -->
                   
-                  <div class="popular-posts-section">
-                    <h3 class="front-page" id="popular-title">
-                      "인기 커뮤니티 TOP5"
-                    </h3>
-                    
-                    <!-- 카드4개영역 -->
-                    <!-- 
-                    <div class="popular-post-subsection">
-                      <div class="row row-cols-1 row-cols-md-4 g-4">
-                         
-                        <div class="col">
-                        
-				
-						  
-						  <div class="card">
-							<c:if test="${ fileName != -1 }">
-							<div onclick="careDetail(${l.jno})">
-								<img
-									src="${ l.filePath.concat(l.changeName).substring(0, fileName) }"
-									class="card-img-top" alt="...">
-							</div>
-							</c:if>
-
-							<c:if test="${fileName == -1 }">
-								<img src="/resources/img/main/첨부파일없음.png"
-									class="card-img-top" alt="..." onclick="careDetail(${l.jno})">
-
-							</c:if>
-							<div class="card-body" onclick="petsitterLink(${l.pno})">
-								<h5 class="card-title">일지 작성일 : ${ l.create_date.substring(0, 10) }</h5>
-								<h5 class="card-titles">${ l.startDate }~${ l.endDate }</h5>
-								<input type="hidden" id="hiddenName" value="${l.petistterName}">
-								<p class="card-text">${ l.petistterName }</p>
-							</div>
-						</div>
-                        --> 
-                          <!-- 카드 디자인 영역 여기넣어 -->
-                                         
-                        
-                        
-                        
-                      
-                      </div>
+                  
                     </div>
                     <!-- 카드4개영역 끝 -->
                   

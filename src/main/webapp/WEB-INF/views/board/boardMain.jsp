@@ -47,21 +47,20 @@
                       
                       <div class="row row-cols-1 row-cols-md-4 g-4">
                           <!-- 그림 4개 정렬 시작 -->
-                          
                         <c:forEach var="b" items="${ list }" > 
                           
 	                        <div class="col">
 	                          <div class="card">
-	                          <c:if test="${ not empty b.changeName }">
-	                            <img src="${b.atFilePath }${b.changeName}" class="card-img-top" alt="...">
-	                          </c:if>  
-	                          <c:if test="${ empty b.changeName }">
-	                         	 <img src="/resources/img/main/첨부파일없음.png" class="card-img-top" alt="...">
-	                          </c:if>
-	                            <div class="card-body">
-	                              <h5 class="card-title">${ b.boardTitle }</h5>
-	                              <p class="card-text" style="height: 96px">${ b.boardContent }</p>
-	                            </div>
+		                          <c:if test="${ not empty b.changeName }">
+		                            <img src="${b.atFilePath }${b.changeName}" class="card-img-top" alt="...">
+		                          </c:if>  
+		                          <c:if test="${ empty b.changeName }">
+		                         	 <img src="/resources/img/main/첨부파일없음.png" class="card-img-top" alt="...">
+		                          </c:if>
+		                          <div class="card-body">
+			                          <h5 class="card-title">${ b.boardTitle }</h5>
+			                          <p class="card-text" style="height: 96px">${ b.boardContent }</p>
+		                          </div>
 	                          </div>
 	                        </div>
 	                        
@@ -73,88 +72,69 @@
 
                     </div>
                   </div>
-                  </div> 
+                </div> 
                   
                   
                   
 
-                  <div id="talk_free_room">
-                    <!--반려견정보-->
-                    <div class="dog-free-board">
-                      <div class="popular-posts-section">
-                        <h3 class="front-page" id="popular-title">
-                          "내 강아지 자랑"
-                        </h3>
-                        <div class="popular-post-subsection">
-                          <div class="popular-post-meta">
-                              <a href="mypetlist.bo">
-                                <span class="see-more">
-                                  바로가기<i class="fa-solid fa-chevron-right"></i>
-                                </span>
-                              </a>
-                          </div>
-                          <div class="popular-posts">
-                          
-                          	<c:forEach var="b" items="${list1}" begin="0" end="4">
-	                            <div class="popular-post-grid">
-	                                <span class="post-thumbnail"><a href=""><img src="/resources/img/main/첨부파일없음.png" alt=""></a></span>
-	                                <span class="post-title"><a href="">${ b.boardContent }</a></span>
-	                            </div>
-                            </c:forEach> 
-                                                     
-                          </div>        
-                        </div>
-                        
-                        <div class="popular-post-subsection">
-                          <div class="popular-post-meta">
-                              <a href="list.bo">
-                                <span class="see-more">
-                                  
-                                </span>
-                              </a>
-                          </div>
-                          <div class="popular-posts">
-                          
-                          	<c:forEach var="b" items="${list2}" begin="0" end="4">
-	                            <div class="popular-post-grid">
-	                                <span class="post-thumbnail"><a href=""><img src="/resources/img/main/첨부파일없음.png" alt=""></a></span>
-	                                <span class="post-title"><a href="">${ b.boardContent }</a></span>
-	                            </div>
-                            </c:forEach>
-                            
-                           
-                          </div>
-                        </div>
-                        
-                 		<div class="popular-post-subsection">
-                          <div class="popular-post-meta">
-                              <a href="list.bo">
-                                <span class="see-more">
-                                  
-                                </span>
-                              </a>
-                          </div>
-                          <div class="popular-posts">
-                          
-                          	<c:forEach var="b" items="${list2}" begin="0" end="4">
-	                            <div class="popular-post-grid">
-	                                <span class="post-thumbnail"><a href=""><img src="/resources/img/main/첨부파일없음.png" alt=""></a></span>
-	                                <span class="post-title"><a href="">${ b.boardContent }</a></span>
-	                            </div>
-                            </c:forEach>
-                            
-                           
-                          </div>
-                        </div>
+                <div id="talk_free_room">
+                  <!--반려견정보-->
+                  <div class="dog-free-board">
+                    <div class="popular-posts-section">
+                      <h3 class="front-page" id="popular-title">
+                        "내 강아지 자랑"
+                      </h3>
                       
-
-
-
+                      <div class="popular-post-subsection">
+                        <div class="popular-post-meta">
+                            <a href="mypetlist.bo">
+                              <span class="see-more">
+                               	 바로가기<i class="fa-solid fa-chevron-right"></i>
+                              </span>
+                            </a>
+                        </div>
+                        
+                        <div class="row row-cols-1 row-cols-md-5 g-4">
+                        	<c:forEach var="b" items="${list1}" begin="0" end="14" varStatus="loop">
+                        		<div class="col">
+								    <div class="card">
+								      <c:if test="${ not empty b.changeName }">
+			                            <img src="${b.atFilePath }${b.changeName}" class="card-img-top" alt="...">
+			                          </c:if>  
+			                          <c:if test="${ empty b.changeName }">
+			                         	 <img src="/resources/img/main/첨부파일없음.png" class="card-img-top" alt="...">
+			                          </c:if>
+								      <div class="card-body">
+								        <h5 class="card-title">${ b.boardTitle }</h5>
+								        <p class="card-text">${ b.boardContent }</p>
+								      </div>
+								    </div>
+						  		</div>
+                        	</c:forEach>
+						</div>
+                           
+                         	
+                         	
+                         	
+                         	
+                         	
+                         	
+                         	
+                           
+                          
+                         
                       </div>  
-                    </div>
+                        
+                           
+                           
+                              
+                      </div>
+                    </div> 
+                  <!--반려견정보--> 
+                  </div>
                 </div>
 
-                </div>
+              </div>
                 
                 
                 
@@ -173,4 +153,4 @@
   <!-- Footer 영역 끝 -->
     
 </body>
-</htm>
+</html>
