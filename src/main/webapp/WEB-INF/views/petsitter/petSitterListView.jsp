@@ -51,36 +51,35 @@
             <div class="searchForm row justify-content-around">
               <div>
                 <div class="searchArea">
+                  <form action="list.pe" method="get" id="searchForm">
                     <div class="addressArea">
-                        <label class="form-label">어디에 사시나요?</label>
-                        <div class="col-4 addressForm">
-                            <div class="searchBtn" onclick="searchKeyword()">
-                                <img src="/resources/img/petsitter/magnifier.png">
-                            </div>
-                            <input type="text" class="form-control" id="addressInput" name="keyword" placeholder="동 이름을 검색하세요" onkeypress="handleKeyPress(event)">
-                        </div>
+                      <label class="form-label">어디에 사시나요?</label>
+                      <div class="col-4 addressForm">
+                        <input type="text" class="form-control" id="addressInput" name="keyword" placeholder="동 이름을 검색하세요">
+                      </div>
                     </div>
                     <div class="col-4">
-                        <label class="form-label">언제 맡기시나요?</label>
-                        <form action="list.pe" method="get">
+                      <label class="form-label">언제 맡기시나요?</label>
+                        <div>
                           <div class="dateInput">
-                              <input type="text" id="datepicker1" class="form-control" id="startDate" name="startDate" placeholder="체크인 날짜">
-                              <input type="text" id="datepicker2" class="form-control" id="endDate" name="endDate" placeholder="체크아웃 날짜">
-                              <button class="searchBtn" type="submit">
-                                <img src="/resources/img/petsitter/magnifier.png">
-                              </button>
+                            <input type="text" id="datepicker1" class="form-control" id="startDate" name="startDate" placeholder="체크인 날짜">
+                            <input type="text" id="datepicker2" class="form-control" id="endDate" name="endDate" placeholder="체크아웃 날짜">
+                            <button class="searchBtn" type="submit" onkeypress="handleKeyPress(event)">
+                              <img src="/resources/img/petsitter/magnifier.png">
+                            </button>
                           </div>
-                        </form>
+                        </div>
+                      </div>
                     </div>
-                  </div>
+                  </form>
                   <div class="careListBtn">
                     <label class="form-label">원하시는 조건을 선택하세요</label>
                     <div>
-                      <button class="btn btn-outline-secondary" type="button">픽업 가능</button>
-                      <button class="btn btn-outline-secondary" type="button">매일 산책</button>
-                      <button class="btn btn-outline-secondary" type="button">목욕 가능</button>
-                      <button class="btn btn-outline-secondary" type="button">모발 관리</button>
-                      <button class="btn btn-secondary" type="button">노견 케어</button>
+                      <button onclick="searchButtonClicked('집 앞 픽업')" class="btn btn-secondary" type="button">픽업 가능</button>
+                      <button onclick="searchButtonClicked('매일 산책')" class="btn btn-secondary" type="button">매일 산책</button>
+                      <button onclick="searchButtonClicked('목욕 가능')" class="btn btn-secondary" type="button">목욕 가능</button>
+                      <button onclick="searchButtonClicked('모발 관리')" class="btn btn-secondary" type="button">모발 관리</button>
+                      <button onclick="searchButtonClicked('노견 케어')" class="btn btn-secondary" type="button">노견 케어</button>
                     </div>
                   </div>
                 </div>
@@ -122,6 +121,15 @@
                                       </c:when>
                                     </c:choose>
                                   </ul>
+                                  <ul>
+                                    <c:choose>
+                                      <c:when test="${ not empty p.petSitterService }">
+                                        <c:forEach var="item" items="${ p.petSitterService }">
+                                          <li><c:out value="${ item }"/></li>
+                                        </c:forEach>
+                                      </c:when>
+                                    </c:choose>
+                                  </ul>
                                 </div>
                                 <p class="card-text"><small class="text-muted">후기 ${ p.reviewCount }개</small></p>
                               </div>
@@ -129,19 +137,6 @@
                           </div>
                         </div>
                       </c:forEach>
-
-                      <script>
-
-                        $(function() {
-
-                          $(".content>div").click(function() {
-                            let pno = $(this).find(".pno").text();
-                            location.href = "detail.pe?pno=" + pno;
-                          });
-
-                        });
-
-                      </script>
                         
                     </div>
                 </div>
@@ -200,62 +195,69 @@
 
   <jsp:include page="../common/footer.jsp" />
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-    <script>
-      $(document).ready(function () {
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+  <script>
+    $(document).ready(function () {
 
-        // ------------------------ datepicker 캘린더 ------------------------
-        $("#datepicker1, #datepicker2").datepicker({
-          dateFormat: 'yy/mm/dd',
-          minDate: 0
-        });
+      // ------------------------ datepicker 캘린더 ------------------------
+      $("#datepicker1, #datepicker2").datepicker({
+        dateFormat: 'yy/mm/dd',
+        minDate: 0
+      });
 
+      // 체크인, 체크아웃 날짜 입력 시 이벤트
+      $('#startDate, #endDate').on('change', function() {
 
-        
-        $(window).scroll(function () {
-          var scrollTop = $(document).scrollTop();
-          var footerOffset = $(".link_footer").offset().top;
-          var windowHeight = $(window).height();
+      // 시작일, 종료일
+      var startDate = new Date($('#startDate').val());
+      var endDate = new Date($('#endDate').val());
 
-          if (scrollTop + windowHeight > footerOffset) {
-            scrollTop = footerOffset - windowHeight;
-          }
+        if(startDate instanceof Date && !isNaN(startDate) && endDate instanceof Date && !isNaN(endDate)) {
+          calculateDateDifference();
+          updateTotal();
+        } else {
 
-          $(".snb_my").stop();
-          $(".snb_my").animate({ "top": scrollTop });
-        });
-
-        $('#startDate, #endDate').on('change', function() {
-
-        // 시작일, 종료일
-        var startDate = new Date($('#startDate').val());
-        var endDate = new Date($('#endDate').val());
-
-          if(startDate instanceof Date && !isNaN(startDate) && endDate instanceof Date && !isNaN(endDate)) {
-            calculateDateDifference();
-            updateTotal();
-          } else {
-
-            resetValues();
-          }
-
-        });
+          resetValues();
+        }
 
       });
 
-      function searchKeyword() {
+    });
 
-        var k = $('#addressInput').val();
-        window.location.href = 'list.pe?keyword=' + encodeURIComponent(k);
+    $(function() {
+
+      $(".content>div").click(function() {
+        let pno = $(this).find(".pno").text();
+        location.href = "detail.pe?pno=" + pno;
+      });
+
+    });
+
+    // searchForm 엔터키 이벤트
+    function handleKeyPress(event) {
+      if (event.keyCode === 13) { // Enter 키의 keyCode는 13입니다.
+          searchForm();
       }
+    }
 
-      function handleKeyPress(event) {
-        if (event.keyCode === 13) { // Enter 키의 keyCode는 13입니다.
-            searchKeyword();
-        }
+    // 버튼 클릭 시 name 값을 컨트롤러에 전달하는 AJAX 요청
+    function searchButtonClicked(service) {
+
+      location.href = '/list.pe?service=' + service;
+
+      var button = event.target; // 클릭된 버튼 요소 가져오기
+      var isActive = $(button).hasClass("active"); // 현재 활성화 상태 확인
+      
+      // 버튼의 활성화/비활성화 상태 변경
+      if (isActive) {
+        $(button).removeClass("active");
+      } else {
+        $(button).addClass("active");
       }
+    }
 
 
-    </script>
+  </script>
+
 </body>
 </html>

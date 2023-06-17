@@ -168,10 +168,11 @@ public class PetSitterController {
 		}
 	}
 	
-	@RequestMapping("list.pe")
-	public ModelAndView selectList(@RequestParam(value="keyword", defaultValue="0") String keyword,
-								   @RequestParam(value="startDate", defaultValue="0") String startDate,
-								   @RequestParam(value="endDate", defaultValue="0") String endDate,
+	@RequestMapping(value="list.pe", produces="text/html; charset=UTF-8")
+	public ModelAndView selectList(@RequestParam(value="keyword", defaultValue="") String keyword,
+								   @RequestParam(value="startDate", defaultValue="") String startDate,
+								   @RequestParam(value="endDate", defaultValue="") String endDate,
+								   @RequestParam(value="service", defaultValue="") String service,
 								   @RequestParam(value="cPage", defaultValue="1") int currentPage,
 								   ModelAndView mv) {
 		
@@ -188,13 +189,10 @@ public class PetSitterController {
 		p.setKeyword(keyword);
 		p.setStartDate(startDate);
 		p.setEndDate(endDate);
-		
-		System.out.println(p);
+		p.setPetSitterService(service);
 		
 		// 펫시터 리스트 전체 조회
 		ArrayList<PetSitter> list = petSitterService.selectList(pi, p);
-		
-		System.out.println(list);
 		
 		mv.addObject("pi", pi)
 		  .addObject("list", list)

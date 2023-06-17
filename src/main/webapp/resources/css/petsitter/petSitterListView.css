@@ -12,7 +12,12 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    gap: 100px;
+}
+
+#searchForm {
+    display: flex;
+    justify-content: space-between;
+    gap: 210px;
 }
 
 .searchForm {
@@ -46,19 +51,12 @@
 .addressForm {
     display: flex;
     align-items: center;
-    border: 1px solid lightgray;
-    border-radius: 5px;
 }
 
 .addressForm img {
-    height: 20px;
+    height: 25px;
     margin-left: 10px;
-    max-width: 24px;
-}
-
-#addressInput {
-    border: none;
-    width: 1000px;
+    max-width: 25px;
 }
 
 #careList {
@@ -78,7 +76,6 @@
     border-radius: 20px;
     color: #0888D0;
     background-color: unset;
-
 }
 
 .careListBtn button:hover {
@@ -87,8 +84,12 @@
     background-color: #0888D0;
 }
 
+.btn-secondary .active {
+    background-color: #0888D0; /* 원하는 활성화된 버튼의 색상으로 변경 */
+}
+
 .col-4.addressForm {
-    width: 100%;
+    width: 120%;
 }
 .addressArea {
     width: 300px;
@@ -146,12 +147,4 @@ input[type='date']::before {
 
 .careList ul {
     padding-left: 0;
-}
-.formTag {
-    display: flex;
-    justify-content: space-between;
-    width: 84%;
-}
-.searchBtn:hover{
-    cursor: pointer;
 }

@@ -25,7 +25,12 @@
 	<script>
 		
     $(document).ready(function() {
+
+      // ------------------------ 이용 가능 서비스 ------------------------
       
+      var psService = "<c:out value='${p.petSitterService}'/>"; // 값을 JavaScript 변수에 할당
+		  var psServiceArr = psService.split(","); // 쉼표(,)로 분할하여 배열로 변환
+
       // 이용 가능 서비스 배열값 체크박스 체크하기
       for(var i = 0; i < psServiceArr.length; i++) {
         
@@ -95,7 +100,7 @@
                               <td>
                                 <div class="petService">
                                   <div>
-                                    <input type="checkbox" id="pickup" value="집앞픽업" name="petSitterService">
+                                    <input type="checkbox" id="pickup" value="집 앞 픽업" name="petSitterService">
                                     <img src="/resources/img/petsitter/집 앞 픽업.png">
                                   </div>
                                   <div><p>집 앞 픽업<br>비용은 펫시터와 협의</p></div>
@@ -104,7 +109,7 @@
                               <td>
                                 <div class="petService">
                                   <div>
-                                    <input type="checkbox" id="hair" value="모발관리" name="petSitterService">
+                                    <input type="checkbox" id="hair" value="모발 관리" name="petSitterService">
                                     <img src="/resources/img/petsitter/모발 관리.png">
                                   </div>
                                   <div><p>모발 관리<br>눈물 또는 빗질 관리 가능</p></div>
@@ -115,7 +120,7 @@
                               <td>
                                 <div class="petService">
                                   <div>
-                                    <input type="checkbox" id="medicine" value="약물복용" name="petSitterService">
+                                    <input type="checkbox" id="medicine" value="약물 복용" name="petSitterService">
                                     <img src="/resources/img/petsitter/약물 복용.png">
                                   </div>
                                   <div><p>약물 복용<br>경구(입) 약물 복용 가능</p></div>
@@ -124,7 +129,7 @@
                               <td>
                                 <div class="petService">
                                   <div>
-                                    <input type="checkbox" id="emergency" value="응급처치" name="petSitterService">
+                                    <input type="checkbox" id="emergency" value="응급 처치" name="petSitterService">
                                     <img src="/resources/img/petsitter/응급 처치.png">
                                   </div>
                                   <div><p>응급 처치<br>응급 상황 시 병원 이동 가능</p></div>
@@ -135,7 +140,7 @@
                               <td>
                                 <div class="petService">
                                   <div>
-                                    <input type="checkbox" id="bath" value="목욕가능" name="petSitterService">
+                                    <input type="checkbox" id="bath" value="목욕 가능" name="petSitterService">
                                     <img src="/resources/img/petsitter/목욕 가능.png">
                                   </div>
                                   <div><p>목욕 가능<br>비용은 펫시터와 협의</p></div>
@@ -144,7 +149,7 @@
                               <td>
                                 <div class="petService">
                                   <div>
-                                    <input type="checkbox" id="walk" value="매일산책" name="petSitterService">
+                                    <input type="checkbox" id="walk" value="매일 산책" name="petSitterService">
                                     <img src="/resources/img/petsitter/매일 산책.png">
                                   </div>
                                   <div><p>매일 산책<br>산책 및 실외 배변 가능</p></div>
@@ -155,7 +160,7 @@
                               <td>
                                 <div class="petService">
                                   <div>
-                                    <input type="checkbox" id="play" value="실내놀이" name="petSitterService">
+                                    <input type="checkbox" id="play" value="실내 놀이" name="petSitterService">
                                     <img src="/resources/img/petsitter/실내 놀이.png">
                                   </div>
                                   <div><p>실내 놀이<br>터그 놀이, 노즈워크 등</p></div>
@@ -164,7 +169,7 @@
                               <td>
                                 <div class="petService">
                                   <div>
-                                    <input type="checkbox" id="reserve" value="장기예약" name="petSitterService">
+                                    <input type="checkbox" id="reserve" value="장기 예약" name="petSitterService">
                                     <img src="/resources/img/petsitter/장기 예약.png">
                                   </div>
                                   <div><p>장기 예약<br>14일 이상 돌봄 가능</p></div>
@@ -175,7 +180,7 @@
                               <td>
                                 <div class="petService">
                                   <div>
-                                    <input type="checkbox" id="oldDog" value="노견케어" name="petSitterService">
+                                    <input type="checkbox" id="oldDog" value="노견 케어" name="petSitterService">
                                     <img src="/resources/img/petsitter/노견 케어.png">
                                   </div>
                                   <div><p>노견 케어<br>8년 이상 노견 돌봄 가능</p></div>
@@ -184,7 +189,7 @@
                               <td>
                                 <div class="petService">
                                   <div>
-                                    <input type="checkbox" id="puppy" value="퍼피케어" name="petSitterService">
+                                    <input type="checkbox" id="puppy" value="퍼피 케어" name="petSitterService">
                                     <img src="/resources/img/petsitter/퍼피 케어.png">
                                   </div>
                                   <div><p>퍼피 케어<br>1년 미만 퍼피 돌봄 가능</p></div>
@@ -242,12 +247,6 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 
   <script>
-
-    // ------------------------ 이용 가능 서비스 ------------------------
-		var psService = "<c:out value='${p.petSitterService}'/>"; // 값을 JavaScript 변수에 할당
-		var psServiceArr = psService.split(","); // 쉼표(,)로 분할하여 배열로 변환
-
-
 
     // ------------------------ 첨부 파일 ------------------------
     var maxAppend = 1;
