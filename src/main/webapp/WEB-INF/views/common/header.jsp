@@ -20,10 +20,7 @@
 <!-- 주의사항 : script 태그 내부에서는 custom action 태그를 사용 불가함 -->
 <c:if test="${ not empty alertMsg }">
 	<script>
-		alertify.alert('알림', '${ alertMsg }',
-				function() {
-					alertify.success('환영합니다!');
-				});
+		alertify.alert('알림', '${ alertMsg }')
 	</script>
 	<c:remove var="alertMsg" scope="session" />
 </c:if>
