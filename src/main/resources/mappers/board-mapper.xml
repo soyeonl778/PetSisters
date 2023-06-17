@@ -52,7 +52,7 @@
 	</select>
 	
 	<!-- 일반게시글 리스트 조회 -->
-	<select id="selectBoard" resultMap="boardResultSet">
+	<select id="selectBoardExt" resultMap="boardResultSet">
 		SELECT B.B_NO
 		     , B.B_TITLE
 		     , B.USER_NO
