@@ -39,6 +39,7 @@
 			<mapping path="/chatForm.ch" />
 			<mapping path="/list.in" />
 			<mapping path="/createChat.do" />
+			<mapping path="/freeEnrollForm.bo" />
 			<beans:bean class="com.kh.petsisters.common.interceptor.LoginInterceptor" id="loginInterceptor" />
 		</interceptor>
 	</interceptors>
