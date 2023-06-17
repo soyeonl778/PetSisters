@@ -50,12 +50,12 @@
                         <c:forEach var="b" items="${ list }" > 
                           
 	                        <div class="col">
-	                          <div class="card">
+	                          <div class="card" onclick="goPage(${b.boardNo})">
 		                          <c:if test="${ not empty b.changeName }">
-		                            <img src="${b.atFilePath }${b.changeName}" class="card-img-top" alt="...">
+		                            <div class="boardMain-top-img"><img src="${b.atFilePath }${b.changeName}" class="card-img-top" alt="..."></div>
 		                          </c:if>  
 		                          <c:if test="${ empty b.changeName }">
-		                         	 <img src="/resources/img/main/첨부파일없음.png" class="card-img-top" alt="...">
+		                          	 <div class="boardMain-top-img"><img src="/resources/img/main/첨부파일없음.png" class="card-img-top" alt="..."></div>
 		                          </c:if>
 		                          <div class="card-body">
 			                          <h5 class="card-title">${ b.boardTitle }</h5>
@@ -97,18 +97,20 @@
                         <div class="row row-cols-1 row-cols-md-5 g-4">
                         	<c:forEach var="b" items="${list1}" begin="0" end="14" varStatus="loop">
                         		<div class="col">
-								    <div class="card">
+                        			
+								    <div class="card" onclick="goPage(${b.boardNo})">
 								      <c:if test="${ not empty b.changeName }">
-			                            <img src="${b.atFilePath }${b.changeName}" class="card-img-top" alt="...">
+			                            <div class="boardMain-img"><img src="${b.atFilePath }${b.changeName}" class="card-img-top" alt="..."></div>
 			                          </c:if>  
 			                          <c:if test="${ empty b.changeName }">
-			                         	 <img src="/resources/img/main/첨부파일없음.png" class="card-img-top" alt="...">
+			                         	 <div class="boardMain-img"><img src="/resources/img/main/첨부파일없음.png" class="card-img-top" alt="..."></div>
 			                          </c:if>
 								      <div class="card-body">
 								        <h5 class="card-title">${ b.boardTitle }</h5>
 								        <p class="card-text">${ b.boardContent }</p>
 								      </div>
 								    </div>
+								    
 						  		</div>
                         	</c:forEach>
 						</div>
@@ -151,6 +153,12 @@
   <!-- Footer 영역 시작 -->
   <jsp:include page="../common/footer.jsp" />
   <!-- Footer 영역 끝 -->
+  
+  <script>
+  function goPage(bno){
+		    location.href = "detail.bo?bno=" + bno;
+  }
+  </script>
     
 </body>
 </html>

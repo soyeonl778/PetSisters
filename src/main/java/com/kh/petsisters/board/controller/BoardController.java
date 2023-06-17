@@ -39,20 +39,14 @@ public class BoardController {
 
 		ArrayList<Board> list = boardService.selectTopList();
 		ArrayList<Board> list1 = boardService.selectBottomList1();
-		ArrayList<Board> list2 = boardService.selectBottomList2();
-		ArrayList<Board> list3 = boardService.selectBottomList3();
-		
 		
 		
 		System.out.println(list);
 		System.out.println(list1);
-		System.out.println(list2);
-		System.out.println(list3);
+
 		
 		model.addAttribute("list", list);
 		model.addAttribute("list1", list1);
-		model.addAttribute("list2", list2);
-		model.addAttribute("list3", list3);
 		
 		return "board/boardMain";
 	}
@@ -118,11 +112,37 @@ public class BoardController {
 	*/
 	
 	@RequestMapping("detail.bo")
-	public String detailBoard() {
+	public String enrollForm() {
 		
-	
 		return "board/boardDetailForm";
 	}
+	
+	
+	
+	/*
+	@RequestMapping("detail.bo")
+	public String detailBoard(int bno,
+						      Model model) {
+		
+		int result = boardService.increaseCount(bno);
+		
+		if(result > 0) {
+			
+			Board b = boardService.selectBoard(bno);
+
+			model.addAttribute("b", b);
+			
+			return "board/boardDetailForm";
+			
+		} else {
+			
+			model.addAttribute("errorMsg", "게시글이 없습니다.");
+			
+			return "common/errorPage";
+		}
+	}
+	*/
+	
 	
 	@RequestMapping("updateForm.bo")
 	public String updateBoard() {
@@ -130,10 +150,12 @@ public class BoardController {
 	
 		return "board/boardUpdateForm";
 	}
-
+	
+	
+	
 	/*
 	@RequestMapping("detail.bo")
-	public String selectBoard(int bno) {
+	public ModelAndView selectBoard(ModelAndView mv, int bno) {
 		
 		int result = boardService.increaseCount(bno);
 		
@@ -152,6 +174,7 @@ public class BoardController {
 		return mv;
 	}
 	*/
+	
 	
 	
 	// 테스트용 글작성 : 일반게시판

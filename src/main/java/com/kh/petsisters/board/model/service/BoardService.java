@@ -23,7 +23,7 @@ public interface BoardService {
 	
 	// 게시글 상세조회 서비스
 	// 게시글 조회수 증가
-	int increaseCount(int boardNo);
+	int increaseCount(int bno);
 	// 게시글 상세 조회
 	Board selectBoard(int boardNo);
 	
@@ -38,9 +38,6 @@ public interface BoardService {
 
 	ArrayList<Board> selectBottomList1();
 
-	ArrayList<Board> selectBottomList2();
-
-	ArrayList<Board> selectBottomList3();
 
 	ArrayList<Board> selectMypetList();
 	

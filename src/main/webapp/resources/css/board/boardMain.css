@@ -514,3 +514,21 @@ body #container #main .layout-pagination .pagediv span strong{
 	width: 80%;
 	margin: auto;
 }
+.boardMain-img {
+	height: 180px;
+}
+.boardMain-img>img {
+	height: 100%;
+    object-fit: cover;
+}
+
+.boardMain-top-img {
+	height: 244px;
+}
+.boardMain-top-img>img {
+	height: 100%;
+    object-fit: cover;
+}
+.card-title {
+	font-weight: 700;
+}

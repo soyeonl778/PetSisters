@@ -115,15 +115,11 @@
                                     <a href="">#인천 부평구 부개동 펫시터 이용 후기</a>
                                   </p>
                                   
-                                  <p class="shop-2">
-                                    #애견호텔 #강아지 유치원 #웰시믹스 
-                                  </p>
-                                  
                                   <div class="community-card-petsister-a ">
-                                    <p class="community-card-petsister">이 후기의 펫시터가 궁금하다면?</p>
+                                    <p class="community-card-petsister">${ b.dogName }</p>
                                   </div>
                                   
-                                  <a class="petsister-a">
+                                  <div class="petsister-a">
                                     <div class="petsister">
                                         <img class="petsister-img" src="${ b.dogImg }" alt="그림이사진">
                                         <div class="petsister-img-left">
@@ -131,7 +127,7 @@
                                             <p style="margin-bottom: 0; margin-top: 9px; font-size: 13px; color: rgb(56, 60, 72);">밤송이네 아늑한 힐링공간</p>
                                         </div>
                                     </div>
-                                  </a>
+                                  </div>
                                 
                                 </div>
                                 

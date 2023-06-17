@@ -44,8 +44,8 @@ public class BoardServiceImpl implements BoardService {
 	}
 	
 	@Override
-	public int increaseCount(int boardNo) {
-		return boardDao.increaseCount(sqlSession, boardNo);
+	public int increaseCount(int bno) {
+		return boardDao.increaseCount(sqlSession, bno);
 	}
 	
 	@Override
@@ -75,15 +75,6 @@ public class BoardServiceImpl implements BoardService {
 		return boardDao.selectBottomList1(sqlSession);
 	}
 
-	@Override
-	public ArrayList<Board> selectBottomList2() {
-		return boardDao.selectBottomList2(sqlSession);
-	}
-
-	@Override
-	public ArrayList<Board> selectBottomList3() {
-		return boardDao.selectBottomList3(sqlSession);
-	}
 
 	@Override
 	public ArrayList<Board> selectMypetList() {
