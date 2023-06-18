@@ -33,7 +33,20 @@
       <div id="main">
         <div id="content">
           <div class="page_aticle aticle_type2">
-
+			<!-- 사이드 메뉴바 -->
+			<div id="snb" class="snb_my" style="position: absolute;">
+				<img src="/resources/img/main/사이드바이미지.png" alt="sideBarImg">
+				<h2 class="tit_snb">My Page</h2>
+				<div class="inner_sub">
+					<ul class="list_menu">
+						<li class="on"><a href="freelist.bo">자유게시판</a></li>
+						<li><a href="mypetlist.bo">강아지 자랑</a></li>
+					</ul>
+				</div>
+			</div>
+			<!-- 사이드 메뉴바 끝 -->
+			
+			
             <!-- 본문 영역-->
             <div id="viewOrderList" class="page_section section_orderlist">
               <div id="boyoung_page" class="page_section section_destination">

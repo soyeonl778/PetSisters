@@ -64,14 +64,14 @@ public class BoardController {
 	
 	
 	// 자유게시판
-	@RequestMapping("freelist.bo")
-	public ModelAndView selectFreeList(
+	@RequestMapping(".bo")
+	public ModelAndView select(
 			@RequestParam(value="cPage", defaultValue="1") int currentPage, 
 			ModelAndView mv) {
 
 		
 		// 페이징처리를 위한 PageInfo 객체 얻어내기 : CATEGORY_MAIN = "1"
-		int listCount = boardService.selectFreeListCount();
+		int listCount = boardService.selectCount();
 		
 		int pageLimit = 10;
 		int boardLimit = 6;
@@ -79,11 +79,11 @@ public class BoardController {
 		PageInfo pi = Pagination.getPageInfo(listCount, currentPage, pageLimit, boardLimit);
 	
 		
-		ArrayList<Board> list = boardService.selectFreeList(pi);
+		ArrayList<Board> list = boardService.select(pi);
 		
 		mv.addObject("pi", pi)
 		  .addObject("list", list)
-		  .setViewName("board/boardFreeList");
+		  .setViewName("board/board");
 		
 		return mv;
 	}
@@ -116,6 +116,7 @@ public class BoardController {
 		}
 	*/
 	
+	// detail.bo 에서 포워딩이 안되어서, 넘어온 bno 값이 없음
 	@RequestMapping("updateForm.bo")
 	public String updateBoard(int bno) {
 		
@@ -173,18 +174,18 @@ public class BoardController {
 			// 일회성 알람문구 담아서 프로필 상세페이지로 url 재요청
 			session.setAttribute("alertMsg", "게시글 등록 완료");
 			
-			return "redirect:/detail.bo";
+			return "redirect:/.bo";
 	    	
 		} else { // 수정 실패
 			
 			// 에러 문구 일회성 알람 띄우기
 			session.setAttribute("alertMsg", "게시글 등록 실패");
 		
-			return "redirect:/freelist.bo";
+			return "redirect:/.bo";
 		}
 	}
 	    
-	/*
+	
 	// 상세페이지 포워딩
 	@RequestMapping("detail.bo")
 	public ModelAndView selectBoard(ModelAndView mv,
@@ -206,16 +207,16 @@ public class BoardController {
 		
 		return mv;
 	}
-	*/
 	
 	
+	/*
 	@RequestMapping("detail.bo")
 	public String selectBoard(int bno) {
 		
 	
 		return "board/boardDetailForm";
 	}
-	
+	*/
 	
 	// 수정하기 페이지 자리 
 	

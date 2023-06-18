@@ -117,8 +117,8 @@
                               
                               
 	                              <!--전체후기보기-버튼-->
-	                             <button type="submit" class="main-card-bottom-button" href="">
-	                               <p class="all-community">작성하기</p>
+	                             <button type="submit" class="main-card-bottom-button" onclick="location.href='insert.bo'">
+	                               작성하기 여기가 맞냐고
 	                             </button>
 	                          </form>
 		                               

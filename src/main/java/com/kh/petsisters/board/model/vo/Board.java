@@ -25,6 +25,10 @@ public class Board {
 	
 	private String dogName;
 	private String dogImg;
+	private String dogBreed;
+	private String dogGender;
+	
+	private String userName;
 	
 	private String originName;
 	private String changeName;

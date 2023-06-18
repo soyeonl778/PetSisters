@@ -15,6 +15,12 @@
 		<result column="CATEGORY_SUB" property="categorySub" />
 		
 		<result column="DOG_NAME" property="dogName" />
+		<result column="DOG_BREED" property="dogBreed" />
+		<result column="DOG_GENDER" property="dogGender" />
+		
+		<result column="M_USER_NAME" property="userName" />
+		
+		
 		<result column="FILE_PATH" property="dogImg" />
 		<result column="ORIGIN_NAME" property="originName" />
 		<result column="CHANGE_NAME" property="changeName" />
@@ -163,14 +169,14 @@
 	<!-- 게시글 상세 조회용 쿼리문 -->
 	 
 	<select id="selectBoard" resultMap="boardResultSet">
-		SELECT M.USER_NAME,
+		SELECT M.USER_NAME AS M_USER_NAME,
 		       B.B_TITLE,  
 		       B.B_CONTENT,
 		       B.CREATE_DATE,
 		       DOG_NAME,
 		       DOG_BREED,
 		       DOG_GENDER,
-		       D.FILE_PATH 강아지사진,
+		       D.FILE_PATH AS FILE_PATH,
 		       LISTAGG(BA.FILE_NO, ',') WITHIN GROUP(ORDER BY BA.FILE_NO) AS 커뮤니티사진번호,
 		       LISTAGG(BA.ORIGIN_NAME, ',') WITHIN GROUP(ORDER BY BA.ORIGIN_NAME) AS 커뮤니티오리진,
 		       LISTAGG(BA.CHANGE_NAME, ',') WITHIN GROUP(ORDER BY BA.CHANGE_NAME) AS 커뮤니티변경,
