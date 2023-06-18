@@ -573,11 +573,31 @@ VALUES (SEQ_JOURNAL.NEXTVAL, '돌봄테스트1', '돌봄테스트내용1', '2023-06-10', 'Y'
                         VALUES(SEQ_J_ATTACHMENT.NEXTVAL, 
                         '스크린샷 2023-03-16 100627.png', 
                         '2023061309592568786.png', 
-                        'resources/upFiles/care_upfiles/', 
+                        '/resources/upFiles/care_upfiles/', 
                         SYSDATE, 
                         'Y', 
                         1, 
                         SEQ_JOURNAL.CURRVAL);
+                        
+INSERT INTO J_ATTACHMENT VALUES(SEQ_J_ATTACHMENT.NEXTVAL, '산책1.jpg',
+                            '산책1.jpg', '/resources/upFiles/care_upfiles/', 
+                            SYSDATE, 'Y', 1, 11);
+INSERT INTO J_ATTACHMENT VALUES(SEQ_J_ATTACHMENT.NEXTVAL, '산책2.jpg',
+                            '산책2.jpg', '/resources/upFiles/care_upfiles/', 
+                            SYSDATE, 'Y', 1, 10);
+INSERT INTO J_ATTACHMENT VALUES(SEQ_J_ATTACHMENT.NEXTVAL, '산책3.jpg',
+                            '산책3.jpg', '/resources/upFiles/care_upfiles/', 
+                            SYSDATE, 'Y', 1, 1);
+INSERT INTO J_ATTACHMENT VALUES(SEQ_J_ATTACHMENT.NEXTVAL, '산책4.jpg',
+                            '산책4.jpg', '/resources/upFiles/care_upfiles/', 
+                            SYSDATE, 'Y', 1, 2);
+INSERT INTO J_ATTACHMENT VALUES(SEQ_J_ATTACHMENT.NEXTVAL, '산책5.jpg',
+                            '산책5.jpg', '/resources/upFiles/care_upfiles/', 
+                            SYSDATE, 'Y', 1, 3);
+INSERT INTO J_ATTACHMENT VALUES(SEQ_J_ATTACHMENT.NEXTVAL, '산책6.jpg',
+                            '산책6.jpg', '/resources/upFiles/care_upfiles/', 
+                            SYSDATE, 'Y', 1, 4);
+
          
 --------------------------------------------------
 ---------------    후기 테이블 더미    --------------

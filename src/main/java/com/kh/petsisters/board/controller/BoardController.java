@@ -198,9 +198,10 @@ public class BoardController {
 		
 		if(result > 0) { // 성공
 			Board b = boardService.selectBoard(bno);
-			
+			Board dog = boardService.dogInfo(bno);
 			// 조회된 데이터를 mv 에 담아서 포워딩 페이지 경로를 잡아주기
 			mv.addObject("b", b).setViewName("board/boardDetailForm");
+			mv.addObject("dog", dog).setViewName("board/boardDetailForm");
 		} else { // 실패
 			
 			// 에러문구를 담아서 에러페이지로 포워딩 경로 잡아주기
@@ -290,13 +291,20 @@ public class BoardController {
 		
 	}
 	
-	
-	
 	@ResponseBody
 	@RequestMapping(value="writeReply", produces = "application/json; charset=UTF-8")
 	public String writeReply(String replyDesc, int userNo, int bNo) {
 		
 		int result = boardService.writeReply(replyDesc, userNo, bNo);
+		
+		return new Gson().toJson(result);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="replyDelete", produces = "application/json; charset=UTF-8")
+	public String replyDelete(int repNo) {
+		
+		int result = boardService.replyDelete(repNo);
 		
 		return new Gson().toJson(result);
 	}

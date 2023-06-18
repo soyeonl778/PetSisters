@@ -505,3 +505,25 @@ body #container #main .layout-pagination .pagediv span strong{
     color : white;
     background-color:rgb(254, 116, 119);
 }
+
+.reCont {
+	display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.reBtn{
+	display: flex;
+    flex-direction: column;
+}
+.rereBtn{
+	border-radius: 5px;
+    width: 60px;
+    height: 35px;
+    color: white;
+}
+.updateRe{
+	background-color: #0DCAF0;
+}
+.deleteRe{
+	background-color: #DC3545;
+}

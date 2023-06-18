@@ -20,9 +20,9 @@
 </head>
     
     <body>
-        <!-- 헤더 영역 시작-->
-        <jsp:include page="../common/header.jsp" /> 
-        <!-- 헤더 영역 끝-->
+     <!-- 헤더 영역 시작-->
+     <jsp:include page="../common/header.jsp" /> 
+     <!-- 헤더 영역 끝-->
     
       <div id="Container-Wrapper">
         <!-- 페이지 영역 시작 -->
@@ -114,19 +114,19 @@
 	                                  	</div>
 	                                  	
 	                                  	<div class="petInfomation">
-	                                  	<c:if test="${ empty b.dogFilePath }">
+	                                  	<c:if test="${ empty dog.filePath }">
 	                                  		<img src="/resources/img/main/첨부파일없음.png">
 	                                  	</c:if>
-	                                  	<c:if test="${ not empty b.dogFilePath }">
-	                                  		<img src="/${ b.dogFilePath }">
+	                                  	<c:if test="${ not empty dog.filePath }">
+	                                  		<img src="/${ dog.filePath }">
 	                                  	</c:if>
 	                                  	
 	                                  		<div>
 	                                  			<div class="petName">
-	                                  				${b.dogName}
+	                                  				${dog.dogName}
 	                                  			</div>
 	                                  			<div class="petBirth">
-	                                  				${ b.dogBreed } / ${ b.dogGender }
+	                                  				${ dog.dogBreed } / ${ dog.dogGender }
 	                                  			</div>
 	                                  		</div>
 	                                  	</div>
@@ -146,8 +146,8 @@
                                   			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat" viewBox="0 0 16 16">
 											  <path d="M2.678 11.894a1 1 0 0 1 .287.801 10.97 10.97 0 0 1-.398 2c1.395-.323 2.247-.697 2.634-.893a1 1 0 0 1 .71-.074A8.06 8.06 0 0 0 8 14c3.996 0 7-2.807 7-6 0-3.192-3.004-6-7-6S1 4.808 1 8c0 1.468.617 2.83 1.678 3.894zm-.493 3.905a21.682 21.682 0 0 1-.713.129c-.2.032-.352-.176-.273-.362a9.68 9.68 0 0 0 .244-.637l.003-.01c.248-.72.45-1.548.524-2.319C.743 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7-3.582 7-8 7a9.06 9.06 0 0 1-2.347-.306c-.52.263-1.639.742-3.468 1.105z"/>
 											</svg>
-											<div class="fontDiv">
-												댓글 2
+											<div class="fontDiv countReply">
+												
 											</div>
                                   		</div>
                                   		
@@ -213,10 +213,11 @@
     		   bno: ${b.boardNo} 
     	   },
     	   success: function(res) {
-    		   console.log(res[0].repContent);
+    		   console.log(res);
     		   var replyWrapperElement = document.querySelector(".replyWrapper");
+    		   var countReply = document.querySelector(".countReply");
     		   var resultText = "";
-    		   
+    		   var counts = 0; 
     		   for(let i = 0; i < res.length; i++) {
     			   var userImg = "";
     			   if(res[i].userFile == null) {
@@ -225,17 +226,35 @@
     				   userImg = res[i].userFile
     			   }
     			   
-    		        resultText += '<div class="replys">'
+    			   if(res[i].replyUserNo == ${loginUser.userNo}) {
+    			   
+    		        resultText += '<div class="reCont">'
+    		        	+ '<div class="replys">'
                         + '<img src="' + userImg + '">'
                         + '<div class="replyName">'
                         + '<div class="reName">' + res[i].userNickName + '</div>'
                         + '<div class="replyDesc">' + res[i].repContent + '</div>'
                         + '</div>'
+                        + '</div>'
+                        + '<div class="reBtn">'
+                        + '<button class="deleteRe rereBtn" onclick="replyDelete(' + res[i].repNo + ')">' + '삭제' + '</button>'
+                        + '</div>'
                         + '</div>';
+                        
+    			   } else {
+    				   resultText += '<div class="replys">'
+                           + '<img src="' + userImg + '">'
+                           + '<div class="replyName">'
+                           + '<div class="reName">' + res[i].userNickName + '</div>'
+                           + '<div class="replyDesc">' + res[i].repContent + '</div>'
+                           + '</div>'
+                           + '</div>';
+    				   
+    			   }
     		   }
     		   
     		   replyWrapperElement.innerHTML += resultText;
-    		   
+    		   countReply.innerText = res.length;
     	   },
     	   error: function(err) {
     		   console.log(err);
@@ -267,6 +286,25 @@
     		   }
     	   })
        }
+       
+       
+       function replyDelete(repNo){
+			$.ajax({
+				url: 'replyDelete',
+				method: 'post',
+				data: {
+					repNo: repNo
+				},
+				success: function(e) {
+					location.reload();
+					console.log(e);
+				},
+				error: function(e) {
+					console.log(e);
+				}
+			});
+       }
+       
        </script>
     </body>
     </html>

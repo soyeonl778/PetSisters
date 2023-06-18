@@ -120,4 +120,12 @@ public class BoardDao {
 		return sqlSession.insert("boardMapper.writeReply", parameter);
 	}
 	
+	public Board dogInfo(SqlSessionTemplate sqlSession, int bNo) {
+		return sqlSession.selectOne("boardMapper.dogInfo", bNo);
+	}
+
+	public int replyDelete(SqlSessionTemplate sqlSession, int repNo) {
+		return sqlSession.update("boardMapper.replyDelete", repNo);
+	}
+	
 }

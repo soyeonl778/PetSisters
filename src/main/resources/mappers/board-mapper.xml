@@ -22,6 +22,7 @@
 		<result column="CHANGE_NAME" property="changeName" />
 		<result column="AT_FILE_PATH" property="atFilePath" />
 		<result column="DOG_FILE_PATH" property="dogFilePath" />
+		<result column="DOG_FILE_PATH" property="dogBirth" />
 	</resultMap>
 	
 	<resultMap id="attachmentResultSet" type="attachment">
@@ -253,14 +254,15 @@
 		SELECT REP_CONTENT,
 		       CREATE_DATE,
 		       USER_NICKNAME,
-		       M.FILE_PATH M_FILE_PATH
+		       M.FILE_PATH M_FILE_PATH,
+		       REP_NO,
+		       R.USER_NO
 		  FROM REPLY R
 		  JOIN MEMBER M ON R.USER_NO = M.USER_NO
 		 WHERE R.STATUS = 'Y'
 		   AND REF_BNO = #{bNo}	
 	  ORDER BY CREATE_DATE DESC	   
 	</select>
-	
 	
 	<insert id="writeReply">
 		INSERT INTO REPLY
@@ -273,6 +275,25 @@
 		#{bNo}
 		)	
 	</insert>
+	
+	<select id="dogInfo" resultMap="boardResultSet">
+		SELECT DOG_NAME,
+		       DOG_GENDER,
+		       DOG_BREED,
+		       DOG_BIRTHDAY,
+		       D.FILE_PATH
+		  FROM DOG D
+		  JOIN MEMBER M ON D.USER_NO = M.USER_NO
+		  JOIN BOARD B ON M.USER_NO = B.USER_NO
+		 WHERE B_NO = #{bNo}
+		 AND ROWNUM = 1 	
+	</select>			  
+		
+	<update id="replyDelete">
+		UPDATE REPLY
+		SET STATUS = 'N'
+		WHERE REP_NO = #{repNo}	
+	</update>
 	
 
 	

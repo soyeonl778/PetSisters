@@ -53,4 +53,8 @@ public interface BoardService {
 
 	int writeReply(String replyDesc, int userNo, int bNo);
 	
+	Board dogInfo(int bno);
+
+	int replyDelete(int repNo);
+	
 }

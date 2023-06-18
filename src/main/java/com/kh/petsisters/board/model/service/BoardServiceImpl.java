@@ -101,6 +101,16 @@ public class BoardServiceImpl implements BoardService {
 	public int writeReply(String replyDesc, int userNo, int bNo) {
 		return boardDao.writeReply(sqlSession, replyDesc, userNo, bNo);
 	}
+	
+	@Override
+	public Board dogInfo(int bno) {
+		return boardDao.dogInfo(sqlSession, bno);
+	}
+
+	@Override
+	public int replyDelete(int repNo) {
+		return boardDao.replyDelete(sqlSession, repNo);
+	}
 
 
 	
