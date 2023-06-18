@@ -4,7 +4,7 @@
 }
 
 #profileWrapper {
-    width: 80%;
+    width: 800px;
 }
 
 button {
@@ -180,5 +180,5 @@ input:focus {
 #titleWrapper {
     margin-top: 65px;
     margin-right: auto;
-    margin-left: 100px;
+    margin-left: 90px;
 }

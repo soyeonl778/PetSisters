@@ -35,68 +35,67 @@
               <div class="page_section section_destination">
                 <!-- 이 영역 안에서 페이지 작업 하시면 됩니다 -->
                 <!--<div style="height: 1000px; background-color: beige;"></div> -->
-                <div id="titleWrapper">
-                	<div>
-                		<h3 class="title_11">반려동물 리스트</h3>
-                	</div>
-                  	<div>
-                  		<button type="button" class="btn_enroll" onclick="location.href='petEnrollForm.me';">펫 등록하기</button>
-                  	</div>
-                </div>
-                <div id="main_content">
-                  <hr>
-                  <div id="contentWrapper">
-					<c:forEach var="d" items="${list}">
-                      <div class="content" onclick="location.href='petProfile.me?dno=${ d.dogNo }'">
-                      	<div class="pet_no">
-                      	  <input type="hidden" name="pet_no" value="${d.dogNo}" />
-                      	</div>
-                        <div class="pet_img">
-                          <img id="petImg" class="p_img" src="${ d.filePath }">
-                        </div>
-                        <div class="pet_infoArea">
-                          
-                          <div>
-                            <div class="pet_name">${ d.dogName }</div>
-                            <div class="pet_info">${ d.dogWeight }kg / ${ d.dogGender } / ${ d.dogBirthday }</div>
+                <div class="petListWrapper">
+                  <div id="titleWrapper">
+                    <div>
+                      <h3 class="title_11">반려동물 리스트</h3>
+                    </div>
+                    <div class="btn_enrollArea">
+                      <button type="button" class="btn_enroll" onclick="location.href='petEnrollForm.me';">펫 등록하기</button>
+                    </div>
+                  </div>
+                  <div id="main_content">
+                    <div id="contentWrapper">
+                      <c:forEach var="d" items="${list}">
+                        <div class="content" onclick="location.href='petProfile.me?dno=${ d.dogNo }'">
+                          <div class="pet_no">
+                            <input type="hidden" name="pet_no" value="${d.dogNo}" />
                           </div>
-                          
+                          <div class="pet_img">
+                            <img id="petImg" class="p_img" src="${ d.filePath }">
+                          </div>
+                          <div class="pet_infoArea">
+                            <div>
+                              <div class="pet_name">${ d.dogName }</div>
+                              <div class="pet_info">${ d.dogWeight }kg / ${ d.dogGender } / ${ d.dogBirthday }</div>
+                            </div>
+                          </div>
                           <div class="chevron-right">
                             <i class="fas fa-chevron-right fa-lg" style="color: #8c8c8c;"></i>
                           </div>
                         </div>
-                      </div>
-                    </c:forEach>
+                      </c:forEach>
+                    </div>
                   </div>
-                </div>
-                
-                <!-- 페이징처리부분 -->
-                <div id="pagingArea">
-                  <nav aria-label="Page navigation example">
-                    <ul id="pagiUl" class="pagination paginationUlTag">
-                    	<c:choose>
-                		<c:when test="${ pi.currentPage eq 1 }">
-		                    <li class="arrowTag disabled"><a href="#">&lsaquo;</a></li>
-                		</c:when>
-                		<c:otherwise>
-         				    <li class="arrowTag"><a href="petList.me?cPage=${ pi.currentPage - 1 }">&lsaquo;</a></li>
-                		</c:otherwise>
-                	</c:choose>
-                    
-                    <c:forEach var="p" begin="${ pi.startPage }" end="${ pi.endPage }" step="1">
-                    	<li class="page-item"><a class="page-link" href="petList.me?cPage=${ p }">${ p }</a></li>
-                    </c:forEach>
-                    
-                    <c:choose>
-                    	<c:when test="${ pi.currentPage eq pi.maxPage }">
-		                    <li class="arrowTag disabled"><a href="#">&rsaquo;</a></li>
-                    	</c:when>
-                    	<c:otherwise>
-                    		<li class="arrowTag"><a href="petList.me?cPage=${ pi.currentPage + 1 }">&rsaquo;</a></li>
-                    	</c:otherwise>
+                  
+                  <!-- 페이징처리부분 -->
+                  <div id="pagingArea">
+                    <nav aria-label="Page navigation example">
+                      <ul id="pagiUl" class="pagination paginationUlTag">
+                        <c:choose>
+                      <c:when test="${ pi.currentPage eq 1 }">
+                          <li class="arrowTag disabled"><a href="#">&lsaquo;</a></li>
+                      </c:when>
+                      <c:otherwise>
+                      <li class="arrowTag"><a href="petList.me?cPage=${ pi.currentPage - 1 }">&lsaquo;</a></li>
+                      </c:otherwise>
                     </c:choose>
-                    </ul>
-                  </nav>
+                      
+                      <c:forEach var="p" begin="${ pi.startPage }" end="${ pi.endPage }" step="1">
+                        <li class="page-item"><a class="page-link" href="petList.me?cPage=${ p }">${ p }</a></li>
+                      </c:forEach>
+                      
+                      <c:choose>
+                        <c:when test="${ pi.currentPage eq pi.maxPage }">
+                          <li class="arrowTag disabled"><a href="#">&rsaquo;</a></li>
+                        </c:when>
+                        <c:otherwise>
+                          <li class="arrowTag"><a href="petList.me?cPage=${ pi.currentPage + 1 }">&rsaquo;</a></li>
+                        </c:otherwise>
+                      </c:choose>
+                      </ul>
+                    </nav>
+                  </div>
                 </div>
                 <!-- 이 영역 안에서 페이지 작업 하시면 됩니다 -->
               </div>

@@ -41,37 +41,58 @@
                   <div id="contentWrapper">
                     <div class="content1">
                       <div class="siter_img">
-                        <img src="/resources/img/시터1.png">
+                        <img src="/resources/upFiles/member_profiles/1.png">
                         <i class="fas fa-heart" style="color: #e70000;"></i>
                       </div>
-                      <div class="siter_info">
-                        <label>김조셉 시터님</label> <br>
-                        <h7>서울시 구로구 신도림동</h7> <br>
-                        <h3>더 사랑하고 아끼고 <br> 책임감 있게~</h3>
+                      <div class="siter_infoArea">
+                        <div class="siter_info">
+                          <label label>김조셉 시터님</label>
+                        </div>
+                        <div class="siter_info">
+                          <h7>서울시 구로구 신도림동</h7>
+                        </div>
+                        <div class="siter_info">
+                          <h3>더 사랑하고 아끼고 <br> 책임감 있게~</h3>
+                        </div>
+                      </div>
+                    </div>
+
+                    
+                    <div class="content1">
+                      <div class="siter_img">
+                        <img src="/resources/upFiles/member_profiles/1.png">
+                        <i class="fas fa-heart" style="color: #e70000;"></i>
+                      </div>
+                      <div class="siter_infoArea">
+                        <div class="siter_info">
+                          <label label>김조셉 시터님</label>
+                        </div>
+                        <div class="siter_info">
+                          <h7>서울시 구로구 신도림동</h7>
+                        </div>
+                        <div class="siter_info">
+                          <h3>더 사랑하고 아끼고 <br> 책임감 있게~</h3>
+                        </div>
                       </div>
                     </div>
                     <div class="content1">
                       <div class="siter_img">
-                        <img src="/resources/img/시터2.png">
-                        <i class="fas fa-heart" style="color: rgb(231, 0, 0);"></i>
-                      </div>
-                      <div class="siter_info">
-                        <label>김명화 시터님</label> <br>
-                        <h7>서울시 관악구 신림동</h7> <br>
-                        <h3>멍멍이 엄마 마음으로 <br> 케어해드립니다.</h3>
-                      </div>
-                    </div>
-                    <div class="content1">
-                      <div class="siter_img">
-                        <img src="/resources/img/시터3.png">
+                        <img src="/resources/upFiles/member_profiles/1.png">
                         <i class="fas fa-heart" style="color: #e70000;"></i>
                       </div>
-                      <div class="siter_info">
-                        <label>김춘식 시터님</label> <br>
-                        <h7>서울시 용산구 이태원동</h7> <br>
-                        <h3>세심한 부분까지 <br> 아이들을 돌봐드리겠습니다^^</h3>
+                      <div class="siter_infoArea">
+                        <div class="siter_info">
+                          <label label>김조셉 시터님</label>
+                        </div>
+                        <div class="siter_info">
+                          <h7>서울시 구로구 신도림동</h7>
+                        </div>
+                        <div class="siter_info">
+                          <h3>더 사랑하고 아끼고 <br> 책임감 있게~</h3>
+                        </div>
                       </div>
                     </div>
+                    
                   </div>
                 </div>
                 <!-- 페이징처리부분 -->
