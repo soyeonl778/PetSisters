@@ -1,23 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-      <meta charset="UTF-8" />
-      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <!-- header css -->
-      <jsp:include page="../common/common.jsp" />
-      <link rel="stylesheet" href="/resources/css/board/boardDetailFormSub.css">
-      <link rel="stylesheet" href="/resources/css/board/boardDetailForm.css">
-      
-      <title>커뮤니티 상세페이지 현재- 임보영 임보영</title>
-      <!-- 슬라이더 CDN-->
-      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
-      <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-
-      
-    </head>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>   
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- header css -->
+  <jsp:include page="../common/common.jsp" />
+  <link rel="stylesheet" href="/resources/css/board/boardDetailFormSub.css">
+  <link rel="stylesheet" href="/resources/css/board/boardDetailForm.css">
+  
+  <title>커뮤니티 상세페이지</title>
+  <!-- 슬라이더 CDN-->
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+</head>
     
     <body>
         <!-- 헤더 영역 시작-->
@@ -40,7 +40,7 @@
                         <div class="content-header">
                           <div class="content-header-sub">
                             <div class="content-header-sub-a">
-                              <h2 class="header-title">상세페이지</h2>
+                              <h2 class="header-title">${ b.userName }님</h2>
                               <img class="header-img" src="https://petplanet.co/static/images/reviews/like.png"></div>
                           </div>
                         </div>
@@ -50,27 +50,29 @@
 
                                 <div class="community-detail-board">
                                   
-                                  
-                                  
-                                  
                                   <div id="carouselExampleControls" class="subWrapper carousel slide" data-bs-ride="carousel">
                                   	
-                                  	
-                                  	
                                   	<div class="subContainer carousel-inner">
-                                  	
+                                  		<c:if test="${ empty b.changeName }">
 	                                  	<div class="imgSection carousel-item active">
 	                                  		<img class="mainImg d-block w-100" src="/resources/img/main/첨부파일없음.png">
 	                                  	</div>
-	                                  	<div class="imgSection carousel-item">
-	                                  		<img class="mainImg d-block w-100" src="/resources/img/main/그림이사진1.jpg">
+	                                  	</c:if>
+	                                  	
+	                                  	<c:if test="${not empty b.changeName }">
+	                                  	
+	                                  	<c:set var="changeName" value="${ b.changeName }" />
+	                                  	<c:set var="nameList" value="${fn:split(changeName, ',')}" />
+	                                  	
+	                                  	<c:forEach items="${nameList}" var="name">
+	                                  	<c:set var="currentName" value="${name}" />
+	                                  	<div class="imgSection carousel-item active">
+	                                  		<img class="mainImg d-block w-100" src="${ b.filePath }${currentName}.jpg">
 	                                  	</div>
-	                                  	<div class="imgSection carousel-item">
-	                                  		<img class="mainImg d-block w-100" src="/resources/img/main/그림이사진2.jpg">
-	                                  	</div>
-	                                  	<div class="imgSection carousel-item">
-	                                  		<img class="mainImg d-block w-100" src="/resources/img/main/코송-040.jpg">
-	                                  	</div>
+	                                  	</c:forEach>
+	                                  	
+	                                  	</c:if>
+	           
 	                                  	  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
 										    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
 										    <span class="visually-hidden">Previous</span>
@@ -82,28 +84,28 @@
 	                                  	
 	                                  	
 	                                  	<div class="topTitle">
-	                                  		<div class="topImg">
-		                                  		<img src="/resources/img/main/첨부파일없음.png">
-		                                  		<div>조승호</div>
-	                                  		</div>
 	                                  		<div class="topCount">
 	                                  			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
 												  <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
 												  <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
 												</svg>
-	                                  			<div>159</div>
 	                                  		</div>
 	                                  	</div>
                                   	</div>
                                   	
                                   	
                                   	<div class="contentWrapper">
-	                                  	<div class="bottomTit">
-	                                  		${b.dogName}
+                                  	
+	                                  	<div style="display: flex;justify-content: space-between;">
+		                                  	<div class="bottomTit">
+		                                  		${b.boardTitle}
+		                                  	</div>
+		                                  	<div class="bottomTit">
+		                                  	게시일 : ${ b.createDate.substring(0, 10) }
+		                                  	</div>
 	                                  	</div>
-	                                  	
 	                                  	<div class="bottomDesc">
-	                                  		${b.boardTitle}
+	                                  		${b.boardContent}
 	                                  	</div>
                                   	
                                   	
@@ -112,13 +114,19 @@
 	                                  	</div>
 	                                  	
 	                                  	<div class="petInfomation">
+	                                  	<c:if test="${ empty b.dogFilePath }">
 	                                  		<img src="/resources/img/main/첨부파일없음.png">
+	                                  	</c:if>
+	                                  	<c:if test="${ not empty b.dogFilePath }">
+	                                  		<img src="/${ b.dogFilePath }">
+	                                  	</c:if>
+	                                  	
 	                                  		<div>
 	                                  			<div class="petName">
-	                                  				홍시
+	                                  				${b.dogName}
 	                                  			</div>
 	                                  			<div class="petBirth">
-	                                  				3.5kg / F / 2020-04-12
+	                                  				${ b.dogBreed } / ${ b.dogGender }
 	                                  			</div>
 	                                  		</div>
 	                                  	</div>
@@ -128,11 +136,12 @@
                                   	<div class="reply">
                                   	
                                   		<div class="replySection">
-                                  			<svg class="heart" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
-											  <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
-											</svg>
+	                                  			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+												  <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+												  <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+												</svg>
 											<div class="like fontDiv">
-												좋아요 30
+												 ${ b.count }
 											</div>
                                   			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat" viewBox="0 0 16 16">
 											  <path d="M2.678 11.894a1 1 0 0 1 .287.801 10.97 10.97 0 0 1-.398 2c1.395-.323 2.247-.697 2.634-.893a1 1 0 0 1 .71-.074A8.06 8.06 0 0 0 8 14c3.996 0 7-2.807 7-6 0-3.192-3.004-6-7-6S1 4.808 1 8c0 1.468.617 2.83 1.678 3.894zm-.493 3.905a21.682 21.682 0 0 1-.713.129c-.2.032-.352-.176-.273-.362a9.68 9.68 0 0 0 .244-.637l.003-.01c.248-.72.45-1.548.524-2.319C.743 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7-3.582 7-8 7a9.06 9.06 0 0 1-2.347-.306c-.52.263-1.639.742-3.468 1.105z"/>
@@ -141,45 +150,20 @@
 												댓글 2
 											</div>
                                   		</div>
-                                  	
-                                  	
+                                  		
+                                  		<c:if test="${not empty loginUser.userNo }">
+                                  		<input class="userNo" type="hidden" value="${loginUser.userNo}">
+	                                  		<div style="margin-left: 20px;margin-top: 9px;display: flex;">
+	                                  			<textarea class="replyDesc" name="replyDesc" style="resize: none;border-radius: 8px;border: none;
+	                                  			width: 85%;height: 80px; padding:8px;"></textarea>
+	                                  			<button onclick="goReply()" class="btn btn-primary">등록</button>
+	                                  		</div>
+                                  		</c:if>
                                   		<div class="rere">
 											댓글                                  		
                                   		</div>
                                   		<div class="replyWrapper">
-	                                  		<div class="replys">
-	                                  			<img src="/resources/img/main/첨부파일없음.png">
-												<div class="replyName">
-													<div class="reName">
-														뭉이엄마
-													</div>
-													<div class="replyDesc">
-														커여워요
-													</div>
-												</div>                                  			
-	                                  		</div>
-	                                  		<div class="replys">
-	                                  			<img src="/resources/img/main/첨부파일없음.png">
-												<div class="replyName">
-													<div class="reName">
-														뭉이아빠
-													</div>
-													<div class="replyDesc">
-														커여워요ㅋㅋㅋ
-													</div>
-												</div>                                  			
-	                                  		</div>
-	                                  		<div class="replys">
-	                                  			<img src="/resources/img/main/첨부파일없음.png">
-												<div class="replyName">
-													<div class="reName">
-														뭉이
-													</div>
-													<div class="replyDesc">
-														ㅋㅋㅋㅋㅋㅋ웃겼어요
-													</div>
-												</div>                                  			
-	                                  		</div>
+	   
                                   		</div>
                                   	</div>
                                   	
@@ -194,7 +178,6 @@
                                         </c:if>
 	                                </div>
                                 </div>
-                                
                                 
                                 <!-- 여기까지 임보영 -->
                           </div>
@@ -216,6 +199,74 @@
       <!-- Footer 영역 시작 -->
       <jsp:include page="../common/footer.jsp" />
       <!-- Footer 영역 끝 -->
+       <script>
+       window.onload = function() {
+    	   rere();
+       }
+    	   
+       function rere() {
+       $.ajax({
+    	   
+    	   url:'addReply',
+    	   method: 'post',
+    	   data: {
+    		   bno: ${b.boardNo} 
+    	   },
+    	   success: function(res) {
+    		   console.log(res[0].repContent);
+    		   var replyWrapperElement = document.querySelector(".replyWrapper");
+    		   var resultText = "";
+    		   
+    		   for(let i = 0; i < res.length; i++) {
+    			   var userImg = "";
+    			   if(res[i].userFile == null) {
+    				   userImg = '/resources/img/main/첨부파일없음.png';
+    			   } else {
+    				   userImg = res[i].userFile
+    			   }
+    			   
+    		        resultText += '<div class="replys">'
+                        + '<img src="' + userImg + '">'
+                        + '<div class="replyName">'
+                        + '<div class="reName">' + res[i].userNickName + '</div>'
+                        + '<div class="replyDesc">' + res[i].repContent + '</div>'
+                        + '</div>'
+                        + '</div>';
+    		   }
+    		   
+    		   replyWrapperElement.innerHTML += resultText;
+    		   
+    	   },
+    	   error: function(err) {
+    		   console.log(err);
+    	   }
+       });
+       }
+
        
+       function goReply() {
+    	   
+    	   let replyDesc = document.querySelector(".replyDesc").value;
+    	   let userNo = document.querySelector(".userNo").value;
+    	   
+    	   $.ajax({
+    		   url: 'writeReply',
+    		   method: 'post',
+    		   data: {
+    			   replyDesc: replyDesc,
+    			   userNo: userNo,
+    			   bNo: ${b.boardNo}
+    		   },
+    		   success: function(res) {
+    			   console.log(res);
+    			   document.querySelector(".replyDesc").value = "";
+    			   location.reload();
+    		   },
+    		   error: function(err) {
+    			   console.log(err);
+    		   }
+    	   })
+       }
+       </script>
     </body>
     </html>

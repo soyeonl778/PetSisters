@@ -14,16 +14,18 @@ import org.springframework.ui.Model;
 //import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.gson.Gson;
 import com.kh.petsisters.board.model.service.BoardService;
 import com.kh.petsisters.board.model.vo.Attachment;
 //import com.kh.petsisters.board.model.vo.Attachment;
 import com.kh.petsisters.board.model.vo.Board;
+import com.kh.petsisters.board.model.vo.BoardReply;
 import com.kh.petsisters.common.model.vo.PageInfo;
 import com.kh.petsisters.common.template.Pagination;
-import com.kh.petsisters.petsitter.model.vo.PetSitterImg;
 
 
 @Controller
@@ -276,6 +278,29 @@ public class BoardController {
 			}
 
 	}
+		
+		
+	@ResponseBody
+	@RequestMapping(value="addReply", produces = "application/json; charset=UTF-8")
+	public String addReply(int bno) {
+		
+		ArrayList<BoardReply> list = boardService.addReply(bno);
+		
+		return new Gson().toJson(list);
+		
+	}
+	
+	
+	
+	@ResponseBody
+	@RequestMapping(value="writeReply", produces = "application/json; charset=UTF-8")
+	public String writeReply(String replyDesc, int userNo, int bNo) {
+		
+		int result = boardService.writeReply(replyDesc, userNo, bNo);
+		
+		return new Gson().toJson(result);
+	}
+		
 	
 	
 	public String saveFile(MultipartFile upfile, HttpSession session) {

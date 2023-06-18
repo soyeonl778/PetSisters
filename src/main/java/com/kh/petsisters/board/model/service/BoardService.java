@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.kh.petsisters.board.model.vo.Attachment;
 import com.kh.petsisters.board.model.vo.Board;
+import com.kh.petsisters.board.model.vo.BoardReply;
 import com.kh.petsisters.common.model.vo.PageInfo;
 
 public interface BoardService {
@@ -47,5 +48,9 @@ public interface BoardService {
 	
 	// 첨부파일 수정하기 서비스
 	int updateAttachmentList(Attachment at);
+	
+	ArrayList<BoardReply> addReply(int bno);
+
+	int writeReply(String replyDesc, int userNo, int bNo);
 	
 }

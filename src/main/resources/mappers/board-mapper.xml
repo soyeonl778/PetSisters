@@ -35,6 +35,17 @@
 		<result column="REF_BNO" property="ref_bno" />
 	</resultMap>
 	
+	<resultMap id="replyResultSet" type="boardReply">
+		<result column="REP_NO" property="repNo" />
+		<result column="REP_CONTENT" property="repContent" />
+		<result column="CREATE_DATE" property="replyCreateDate" />
+		<result column="STATUS" property="replyStatus" />
+		<result column="USER_NO" property="replyUserNo" />
+		<result column="REF_BNO" property="refBno" />
+		<result column="USER_NICKNAME" property="userNickName" />
+		<result column="M_FILE_PATH" property="userFile" />
+	</resultMap>
+	
 	
 	<!-- 자유/사진 게시글 총 갯수 구하는 쿼리문 -->
 	<select id="selectListCount" parameterType="board" resultType="_int">
@@ -171,33 +182,24 @@
 		       B.B_TITLE,  
 		       B.B_CONTENT,
 		       B.CREATE_DATE,
-		       DOG_NAME,
-		       DOG_BREED,
-		       DOG_GENDER,
-		       D.FILE_PATH AS DOG_FILE_PATH,
-		       LISTAGG(BA.FILE_NO, ',') WITHIN GROUP(ORDER BY BA.FILE_NO) AS FILE_NO,
-		       LISTAGG(BA.ORIGIN_NAME, ',') WITHIN GROUP(ORDER BY BA.ORIGIN_NAME) AS ORIGIN_NAME,
-		       LISTAGG(BA.CHANGE_NAME, ',') WITHIN GROUP(ORDER BY BA.CHANGE_NAME) AS CHANGE_NAME,
-		       BA.FILE_PATH FILE_PATH,
-		       B.COUNT,
-		       B.B_NO
+		       LISTAGG(BA.FILE_NO, ',') WITHIN GROUP(ORDER BY BA.FILE_NO) AS BA_FILE_NO,
+		       LISTAGG(BA.ORIGIN_NAME, ',') WITHIN GROUP(ORDER BY BA.ORIGIN_NAME) AS BA_ORIGIN_NAME,
+		       LISTAGG(BA.CHANGE_NAME, ',') WITHIN GROUP(ORDER BY BA.CHANGE_NAME) AS BA_CHANGE_NAME,
+		       BA.FILE_PATH 커뮤니티경로,
+               B.COUNT,
+               B.B_NO
 		  FROM BOARD B
 		  LEFT JOIN B_ATTACHMENT BA ON B.B_NO = BA.REF_BNO
 		  LEFT JOIN MEMBER M ON B.USER_NO = M.USER_NO
-		  LEFT JOIN DOG D ON M.USER_NO = D.USER_NO
 		 WHERE B.B_NO = #{boardNo}
 		   AND B.STATUS = 'Y' 
 		 GROUP BY M.USER_NICKNAME, 
 		       B.B_TITLE, 
 		       B.B_CONTENT, 
 		       B.CREATE_DATE, 
-		       DOG_NAME, 
-		       DOG_BREED, 
-		       DOG_GENDER, 
-		       D.FILE_PATH, 
 		       BA.FILE_PATH,
-		       B.COUNT,
-		       B.B_NO 
+               B.B_NO,
+               B.COUNT
 	</select>
 	
 	<!-- 일반/사진 : 수정페이지 , 기존내용 조회용 뿌리는 쿼리문 -->
@@ -246,6 +248,31 @@
 		 WHERE REF_BNO = #{refBno}
 		   AND STATUS = 'Y'	
 	</update>
+	
+	<select id="addReply" parameterType="_int" resultMap="replyResultSet">
+		SELECT REP_CONTENT,
+		       CREATE_DATE,
+		       USER_NICKNAME,
+		       M.FILE_PATH M_FILE_PATH
+		  FROM REPLY R
+		  JOIN MEMBER M ON R.USER_NO = M.USER_NO
+		 WHERE R.STATUS = 'Y'
+		   AND REF_BNO = #{bNo}	
+	  ORDER BY CREATE_DATE DESC	   
+	</select>
+	
+	
+	<insert id="writeReply">
+		INSERT INTO REPLY
+		VALUES(
+		SEQ_REPLY.NEXTVAL,
+		#{replyDesc},
+		SYSDATE,
+		'Y',
+		#{userNo},
+		#{bNo}
+		)	
+	</insert>
 	
 
 	

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.kh.petsisters.board.model.dao.BoardDao;
 import com.kh.petsisters.board.model.vo.Attachment;
 import com.kh.petsisters.board.model.vo.Board;
+import com.kh.petsisters.board.model.vo.BoardReply;
 import com.kh.petsisters.common.model.vo.PageInfo;
 
 @Service
@@ -89,6 +90,16 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public int updateAttachmentList(Attachment at) {
 		return boardDao.updateAttachmentList(sqlSession, at);
+	}
+	
+	@Override
+	public ArrayList<BoardReply> addReply(int bno) {
+		return boardDao.addReply(sqlSession, bno);
+	}
+
+	@Override
+	public int writeReply(String replyDesc, int userNo, int bNo) {
+		return boardDao.writeReply(sqlSession, replyDesc, userNo, bNo);
 	}
 
 

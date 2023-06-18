@@ -1,6 +1,8 @@
 package com.kh.petsisters.board.model.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -8,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.kh.petsisters.board.model.vo.Attachment;
 import com.kh.petsisters.board.model.vo.Board;
+import com.kh.petsisters.board.model.vo.BoardReply;
 import com.kh.petsisters.common.model.vo.PageInfo;
 
 @Repository
@@ -101,6 +104,20 @@ public class BoardDao {
 	
 	public int updateAttachmentList(SqlSessionTemplate sqlSession, Attachment at) {
 		return sqlSession.update("boardMapper.updateAttachmentList", at);
+	}
+	
+	public ArrayList<BoardReply> addReply(SqlSessionTemplate sqlSession, int bNo) {
+		return (ArrayList)sqlSession.selectList("boardMapper.addReply", bNo);
+	}
+
+	public int writeReply(SqlSessionTemplate sqlSession, String replyDesc, int userNo, int bNo) {
+		
+		Map<String, Object> parameter = new HashMap<>();
+		parameter.put("replyDesc", replyDesc);
+		parameter.put("userNo", userNo);
+		parameter.put("bNo", bNo);
+		
+		return sqlSession.insert("boardMapper.writeReply", parameter);
 	}
 	
 }
