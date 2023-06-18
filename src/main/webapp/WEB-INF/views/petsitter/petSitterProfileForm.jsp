@@ -11,13 +11,14 @@
   <link rel="stylesheet" href="/resources/css/petsitter/petSitterProfileForm.css">
   <jsp:include page="../common/common.jsp" />
 
+
+  <!-- 파일 첨부 -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  
   <!-- datepicker 캘린더 -->
   <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
-  <!-- 파일 첨부 -->
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
   <!-- 폰트어썸 아이콘 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
