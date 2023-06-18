@@ -213,7 +213,7 @@ public class BoardController {
 	public String selectBoard(int bno) {
 		
 	
-		return "board/boardUpdateForm2";
+		return "board/boardDetailForm";
 	}
 	
 	
