@@ -197,7 +197,7 @@ VALUES (SEQ_INQUIRY.NEXTVAL
            , 8);
            
 --------------------------------------------------
-------------    1:1문의 댓글 테이블 더미    ------------
+----------    1:1문의 댓글 테이블 더미    ----------
 --------------------------------------------------
 INSERT INTO CS_REPLY
 (REP_NO, REP_CONTENT, USER_NO, REF_INO, CREATE_DATE)
@@ -553,6 +553,264 @@ VALUES(SEQ_DOG.NEXTVAL,
        'resources/upFiles/dog_profiles/로이.jpg',
        'Y',
        4); 
+INSERT INTO DOG
+VALUES(SEQ_DOG.NEXTVAL,
+       '구름이',
+       'M',
+       '사모예드',
+       '19/08/13',
+       19,
+       'Y',
+       NULL,
+       'resources/upFiles/dog_profiles/로이.jpg',
+       'Y',
+       2);
+INSERT INTO DOG
+VALUES(SEQ_DOG.NEXTVAL,
+       '절미',
+       'M',
+       '믹스견',
+       '18/03/28',
+       13,
+       'N',
+       NULL,
+       'resources/upFiles/dog_profiles/로이.jpg',
+       'Y',
+       2);
+INSERT INTO DOG
+VALUES(SEQ_DOG.NEXTVAL,
+       '초코',
+       'F',
+       '푸들',
+       '14/10/04',
+       10,
+       'Y',
+       NULL,
+       'resources/upFiles/dog_profiles/로이.jpg',
+       'Y',
+       2);
+       
+INSERT INTO DOG
+VALUES(SEQ_DOG.NEXTVAL,
+       '해피',
+       'M',
+       '꼬똥드뚤레',
+       '19/11/11',
+       8,
+       'Y',
+       NULL,
+       'resources/upFiles/dog_profiles/로이.jpg',
+       'Y',
+       3);
+INSERT INTO DOG
+VALUES(SEQ_DOG.NEXTVAL,
+       '뭉치',
+       'F',
+       '시바견',
+       '17/01/09',
+       12,
+       'Y',
+       NULL,
+       'resources/upFiles/dog_profiles/로이.jpg',
+       'Y',
+       3);
+INSERT INTO DOG
+VALUES(SEQ_DOG.NEXTVAL,
+       '큐티',
+       'F',
+       '웰시코기',
+       '20/07/25',
+       14,
+       'Y',
+       NULL,
+       'resources/upFiles/dog_profiles/로이.jpg',
+       'Y',
+       3);
+
+INSERT INTO DOG
+VALUES(SEQ_DOG.NEXTVAL,
+       '쿠키',
+       'M',
+       '불독',
+       '21/06/06',
+       16,
+       'Y',
+       NULL,
+       'resources/upFiles/dog_profiles/로이.jpg',
+       'Y',
+       4);
+INSERT INTO DOG
+VALUES(SEQ_DOG.NEXTVAL,
+       '쿠키',
+       'M',
+       '웰시코기',
+       '22/10/30',
+       7,
+       'Y',
+       NULL,
+       'resources/upFiles/dog_profiles/로이.jpg',
+       'Y',
+       4);
+INSERT INTO DOG
+VALUES(SEQ_DOG.NEXTVAL,
+       '조단이',
+       'F',
+       '푸들',
+       '23/01/11',
+       8,
+       'Y',
+       NULL,
+       'resources/upFiles/dog_profiles/로이.jpg',
+       'Y',
+       4);
+       
+INSERT INTO DOG
+VALUES(SEQ_DOG.NEXTVAL,
+       '콩이',
+       'M',
+       '진돗개',
+       '19/05/16',
+       17,
+       'Y',
+       NULL,
+       'resources/upFiles/dog_profiles/로이.jpg',
+       'Y',
+       5);
+INSERT INTO DOG
+VALUES(SEQ_DOG.NEXTVAL,
+       '달래',
+       'F',
+       '시츄',
+       '21/02/14',
+       6,
+       'Y',
+       NULL,
+       'resources/upFiles/dog_profiles/로이.jpg',
+       'Y',
+       5);
+INSERT INTO DOG
+VALUES(SEQ_DOG.NEXTVAL,
+       '봄이',
+       'F',
+       '말티푸',
+       '22/12/22',
+       5,
+       'Y',
+       NULL,
+       'resources/upFiles/dog_profiles/로이.jpg',
+       'Y',
+       5);
+       
+INSERT INTO DOG
+VALUES(SEQ_DOG.NEXTVAL,
+       '쿠키',
+       'M',
+       '말티즈',
+       '17/09/09',
+       9,
+       'Y',
+       NULL,
+       'resources/upFiles/dog_profiles/로이.jpg',
+       'Y',
+       6);
+INSERT INTO DOG
+VALUES(SEQ_DOG.NEXTVAL,
+       '유디니',
+       'F',
+       '꼬똥드툴레',
+       '21/11/11',
+       8,
+       'Y',
+       NULL,
+       'resources/upFiles/dog_profiles/로이.jpg',
+       'Y',
+       6);
+INSERT INTO DOG
+VALUES(SEQ_DOG.NEXTVAL,
+       '조단이',
+       'F',
+       '푸들',
+       '23/01/11',
+       8,
+       'Y',
+       NULL,
+       'resources/upFiles/dog_profiles/로이.jpg',
+       'Y',
+       6);
+       
+INSERT INTO DOG
+VALUES(SEQ_DOG.NEXTVAL,
+       '뚱이',
+       'F',
+       '푸들',
+       '19/04/18',
+       10,
+       'Y',
+       NULL,
+       'resources/upFiles/dog_profiles/로이.jpg',
+       'Y',
+       7);
+INSERT INTO DOG
+VALUES(SEQ_DOG.NEXTVAL,
+       '달콩이',
+       'F',
+       '닥스훈트',
+       '21/07/07',
+       7,
+       'Y',
+       NULL,
+       'resources/upFiles/dog_profiles/로이.jpg',
+       'Y',
+       7);
+INSERT INTO DOG
+VALUES(SEQ_DOG.NEXTVAL,
+       '새롬이',
+       'M',
+       '비숑',
+       '23/02/08',
+       3,
+       'Y',
+       NULL,
+       'resources/upFiles/dog_profiles/로이.jpg',
+       'Y',
+       7);
+       
+INSERT INTO DOG
+VALUES(SEQ_DOG.NEXTVAL,
+       '바비',
+       'F',
+       '비숑',
+       '16/05/30',
+       9,
+       'Y',
+       NULL,
+       'resources/upFiles/dog_profiles/로이.jpg',
+       'Y',
+       8);
+INSERT INTO DOG
+VALUES(SEQ_DOG.NEXTVAL,
+       '율이',
+       'M',
+       '슈나우저',
+       '18/11/07',
+       8,
+       'Y',
+       NULL,
+       'resources/upFiles/dog_profiles/로이.jpg',
+       'Y',
+       8);
+INSERT INTO DOG
+VALUES(SEQ_DOG.NEXTVAL,
+       '초롱이',
+       'M',
+       '퍼그',
+       '22/04/23',
+       6,
+       'Y',
+       NULL,
+       'resources/upFiles/dog_profiles/로이.jpg',
+       'Y',
+       8);
        
 --------------------------------------------------
 --------------    결제 테이블 더미    --------------
