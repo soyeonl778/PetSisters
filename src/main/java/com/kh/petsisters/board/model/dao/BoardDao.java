@@ -13,22 +13,18 @@ import com.kh.petsisters.common.model.vo.PageInfo;
 @Repository
 public class BoardDao {
 	
-	public int selectListCount(SqlSessionTemplate sqlSession) {
-		return sqlSession.selectOne("boardMapper.selectListCount");
+	public int selectListCount(SqlSessionTemplate sqlSession, Board b) {
+		return sqlSession.selectOne("boardMapper.selectListCount", b);
 	}
 	
-	public int selectFreeListCount(SqlSessionTemplate sqlSession) {
-		return sqlSession.selectOne("boardMapper.selectFreeListCount");
-	}
-	
-	public ArrayList<Board> selectList(SqlSessionTemplate sqlSession, PageInfo pi) {
+	public ArrayList<Board> selectList(SqlSessionTemplate sqlSession, PageInfo pi, Board b) {
 		
 		int offset = (pi.getCurrentPage() - 1) * pi.getBoardLimit(); 
 		int limit = pi.getBoardLimit(); 
 		
 		RowBounds rowBounds = new RowBounds(offset, limit);
 		
-		return (ArrayList)sqlSession.selectList("boardMapper.selectList", null, rowBounds);
+		return (ArrayList)sqlSession.selectList("boardMapper.selectList", b, rowBounds);
 	}
 	
 	
@@ -53,7 +49,9 @@ public class BoardDao {
 	
 	
 	public int insertBoard(SqlSessionTemplate sqlSession, Board b) {
-		return sqlSession.insert("boardMapper.insertBoard", b);
+		int result = sqlSession.insert("boardMapper.insertBoard", b);
+		b.setBoardNo(sqlSession.selectOne("boardMapper.selectBoardNo"));
+		return result;
 	}
 	
 

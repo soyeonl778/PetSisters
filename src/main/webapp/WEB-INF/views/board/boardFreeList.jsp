@@ -75,19 +75,19 @@
 
 											<table id="boardList" class="table table-hover" align="center">
 												<thead>
-													<tr>
-														<th scope="col">No.</th>
-														<th scope="col">글번호</th>
-														<th scope="col">제목</th>
-														<th scope="col">작성자</th>
-														<th scope="col">조회수</th>
-														<th scope="col" style="text-align: center;">작성일</th>
-														<th scope="col" style="text-align: center;">첨부파일</th>
+													<tr align="center">
+														<th width="5%" scope="col">No.</th>
+														<th width="10%" scope="col">글번호</th>
+														<th width="35%" scope="col">제목</th>
+														<th width="10%" scope="col">작성자</th>
+														<th width="10%" scope="col">조회수</th>
+														<th width="15%" scope="col" style="text-align: center;">작성일</th>
+														<th width="15%" scope="col" style="text-align: center;">첨부파일</th>
 													</tr>
 												</thead>
 												<tbody>
 													<c:forEach var="b" items="${ list }">
-                                                        <tr>
+                                                        <tr align="center">
                                                             <td></td>
                                                             <td class="bno">${ b.boardNo }</td>
                                                             <td>${ b.boardTitle }</td>
@@ -95,12 +95,9 @@
                                                             <td>${ b.count }</td>
                                                             <td>${ b.createDate }</td>
                                                             <td> 
-                                                            	  
-                                                                <c:if test="${ not empty b.originName }">
-                                                                                                                                                                                                            ★
-																 <div style="width: 75px;"><img src="${b.atFilePath}${b.changeName}" >here</div>		                                                                                                                                                                                                            
-                                                                </c:if>
-                                                                
+																<c:if test="${ not empty b.originName }">
+																	<div style="width: 75px;"><img src="${b.atFilePath}"></div>		                                                                                                                                                                                                            
+																</c:if>
                                                             </td>
                                                         </tr>
 													</c:forEach>
@@ -122,26 +119,20 @@
 													<li class="arrowTag disabled"><a href="">&lsaquo;</a></li>
 												</c:when>
 												<c:otherwise>
-													<li class="arrowTag"><a
-														href="petsitterRev?pPage=${ pi.currentPage - 1 }">&lsaquo;</a></li>
+													<li class="arrowTag"><a href="freeList.bo?cPage=${ pi.currentPage - 1 }">&lsaquo;</a></li>
 												</c:otherwise>
 											</c:choose>
 
 											<c:forEach var="p" begin="${ pi.startPage }" end="${ pi.endPage }" step="1">
-												<li class="page-item active">
-													<a class="page-link" href="petsitterRev?pPage=${ p }">${ p }</a>
-												</li>
+												<li class="page-item active"><a class="page-link" href="freeList.bo?cPage=${ p }">${ p }</a></li>
 											</c:forEach>
 
 											<c:choose>
 												<c:when test="${ pi.currentPage eq pi.maxPage }">
-													<li class="arrowTag disabled"><a
-														href="javascript:void(0)">&rsaquo;</a></li>
+													<li class="arrowTag disabled"><a href="javascript:void(0)">&rsaquo;</a></li>
 												</c:when>
 												<c:otherwise>
-													<li class="arrowTag"><a
-														href="petsitterRev?pPage=${pi.currentPage + 1}">&rsaquo;</a>
-														</li>
+													<li class="arrowTag"><a href="freeList.bo?cPage=${pi.currentPage + 1}">&rsaquo;</a></li>
 												</c:otherwise>
 											</c:choose>
 

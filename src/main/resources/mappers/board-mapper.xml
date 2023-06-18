@@ -39,23 +39,35 @@
 		<result column="REF_BNO" property="ref_bno" />
 	</resultMap>
 	
-
-
-	<!-- 일반게시글 총 갯수 구하는 쿼리문 -->
-	<select id="selectFreeListCount" resultType="_int">
+	
+	<!-- 자유/사진 게시글 총 갯수 구하는 쿼리문 -->
+	<select id="selectListCount" parameterType="board" resultType="_int">
 		SELECT COUNT(*)
 		  FROM BOARD
 		 WHERE STATUS = 'Y'
-		   AND CATEGORY_MAIN = '1' 
+		   AND CATEGORY_MAIN = #{categoryMain}
 	</select>
 	
-	<!-- 사진게시글 총 갯수 구하는 쿼리문 -->
-	<select id="selectListCount" resultType="_int">
-		SELECT COUNT(*)
-		  FROM BOARD
-		 WHERE STATUS = 'Y'
-		   AND CATEGORY_MAIN = '2' 
-	</select>
+	<select id="selectList" parameterType="board" resultMap="boardResultSet">
+		SELECT B.B_NO
+		     , B.B_TITLE
+		     , B.USER_NO
+		     , B.COUNT 
+			 , TO_CHAR(B.CREATE_DATE, 'YYYY-MM-DD') AS CREATE_DATE
+			 , A.ORIGIN_NAME
+			 , A.CHANGE_NAME
+			 , A.FILE_PATH || A.CHANGE_NAME AS AT_FILE_PATH
+		 FROM BOARD B
+         LEFT JOIN (
+            SELECT REF_BNO, ORIGIN_NAME, CHANGE_NAME, FILE_PATH,
+                ROW_NUMBER() OVER (PARTITION BY REF_BNO ORDER BY FILE_NO) AS RN
+            FROM B_ATTACHMENT
+           WHERE STATUS = 'Y'
+         ) A ON (B.B_NO = A.REF_BNO) AND A.RN = 1
+        WHERE B.STATUS = 'Y'
+          AND CATEGORY_MAIN = #{categoryMain}
+        ORDER BY B.B_NO DESC	
+	</select>	
 	
 	<!-- 일반게시글 리스트 조회 -->
 	<select id="selectFreeList" resultMap="boardResultSet">
@@ -98,6 +110,11 @@
 				   		, #{categoryMain}
 				   		, #{categorySub})
 	</insert>
+	
+	<!-- 게시글 작성용 쿼리문 --> 
+	<select id="selectBoardNo" resultType="_int">
+		SELECT SEQ_BOARD.CURRVAL AS "B_NO" FROM DUAL
+	</select>
 	
 	<!-- 첨부파일 작성용 쿼리문 -->
 	<insert id="insertAttachmentList" parameterType="attachment">

@@ -65,21 +65,24 @@ public class BoardController {
 	
 	// 자유게시판
 	@RequestMapping("freeList.bo")
-	public ModelAndView select(
+	public ModelAndView select(Board b,
 			@RequestParam(value="cPage", defaultValue="1") int currentPage, 
 			ModelAndView mv) {
-
 		
-		// 페이징처리를 위한 PageInfo 객체 얻어내기 : CATEGORY_MAIN = "1"
-		int listCount = boardService.selectListCount();
+		b.setCategoryMain(1);
+		b.setCategorySub(1);
+
+		int listCount = boardService.selectListCount(b);
 		
 		int pageLimit = 10;
 		int boardLimit = 6;
 		
 		PageInfo pi = Pagination.getPageInfo(listCount, currentPage, pageLimit, boardLimit);
-	
 		
-		ArrayList<Board> list = boardService.selectFreeList(pi);
+		ArrayList<Board> list = boardService.selectList(pi, b);
+		
+		System.out.println(pi);
+		System.out.println(list);
 		
 		mv.addObject("pi", pi)
 		  .addObject("list", list)
@@ -162,7 +165,7 @@ public class BoardController {
 			// 일회성 알람문구 담아서 프로필 상세페이지로 url 재요청
 			session.setAttribute("alertMsg", "게시글 등록 완료");
 			
-			return "redirect:/.bo";
+			return "redirect:/detail.bo?bno=" + b.getBoardNo();
 	    	
 		} else { // 수정 실패
 			
