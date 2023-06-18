@@ -50,7 +50,7 @@ public class BoardController {
 
 	
 	// 사진게시판 
-	@RequestMapping("mypetlist.bo")
+	@RequestMapping("mypetList.bo")
 	public String selectList(Model model) {
 		
 		ArrayList<Board> list = boardService.selectMypetList();
@@ -64,14 +64,14 @@ public class BoardController {
 	
 	
 	// 자유게시판
-	@RequestMapping(".bo")
+	@RequestMapping("freeList.bo")
 	public ModelAndView select(
 			@RequestParam(value="cPage", defaultValue="1") int currentPage, 
 			ModelAndView mv) {
 
 		
 		// 페이징처리를 위한 PageInfo 객체 얻어내기 : CATEGORY_MAIN = "1"
-		int listCount = boardService.selectCount();
+		int listCount = boardService.selectListCount();
 		
 		int pageLimit = 10;
 		int boardLimit = 6;
@@ -79,7 +79,7 @@ public class BoardController {
 		PageInfo pi = Pagination.getPageInfo(listCount, currentPage, pageLimit, boardLimit);
 	
 		
-		ArrayList<Board> list = boardService.select(pi);
+		ArrayList<Board> list = boardService.selectFreeList(pi);
 		
 		mv.addObject("pi", pi)
 		  .addObject("list", list)
@@ -102,19 +102,7 @@ public class BoardController {
 		
 		return mv;
 	}
-	/*
-	// 업데이트 페이지로 , selectBoard(bno)해서 업데이트폼에 기존 게시글의 정보를 select로 뿌려준다.
-		@RequestMapping("updateForm.bo")
-		public ModelAndView updateBoard(ModelAndView mv, int bno) {
-			
-			Board b = boardService.selectBoardInUpdate(bno);
-			
-			mv.addObject("b", b)
-			  .setViewName("board/boardUpdateForm2");
-			
-			return mv;
-		}
-	*/
+
 	
 	// detail.bo 에서 포워딩이 안되어서, 넘어온 bno 값이 없음
 	@RequestMapping("updateForm.bo")
@@ -208,57 +196,6 @@ public class BoardController {
 		return mv;
 	}
 	
-	
-	/*
-	@RequestMapping("detail.bo")
-	public String selectBoard(int bno) {
-		
-	
-		return "board/boardDetailForm";
-	}
-	*/
-	
-	// 수정하기 페이지 자리 
-	
-	
-	
-	
-	/*
-	// 내강아지자랑 게시판 : 사진게시판 (사진형식, 다중파일)
-	@RequestMapping("mypetlist.bo")
-	public ModelAndView selectList(
-			@RequestParam(value="cPage", defaultValue="1") int currentPage, 
-			ModelAndView mv) {
-		
-		// 헤더에서 전달값으로 cno="2" 넘겨주기 : 일반게시판
-		
-		
-		// 페이징처리를 위한 PageInfo 객체 얻어내기
-		int listCount = boardService.selectListCount();
-		
-		int pageLimit = 10;
-		int boardLimit = 6;
-		
-		PageInfo pi = Pagination.getPageInfo(listCount, currentPage, pageLimit, boardLimit);
-	
-		
-		ArrayList<Board> list = boardService.selectList(pi);
-		
-		// 다중파일 업로드 
-		
-		
-		
-		System.out.println(list);
-		
-		mv.addObject("pi", pi)
-		  .addObject("list", list)
-		  .setViewName("board/boardCategoryForm");
-		
-		return mv;
-	}
-	*/
-	
-
 	
 	public String saveFile(MultipartFile upfile, HttpSession session) {
 		
