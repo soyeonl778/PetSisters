@@ -112,16 +112,16 @@ INSERT INTO NOTICE VALUES (SEQ_NOTICE.NEXTVAL, '[공지] 펫시스터즈 안심보험 적용�
 돌봄 대상으로 등록된 반려동물이 입은 신체적 손해를 보장합니다. <br/><br/>
 보험 가입 비용은 전액 펫시스터즈에서 부담하며, 돌봄 비용은 기존과 동일합니다. <br/><br/>
 앞으로도 더욱 안전한 반려동물 케어 서비스를 제공할 수 있도록 노력하겠습니다. <br/><br/>
-감사합니다.', '2023-06-01', 0, 'Y');
+감사합니다.', '2023-06-01', 777, 'Y');
 INSERT INTO NOTICE VALUES (SEQ_NOTICE.NEXTVAL, '[안내] 6월 고객센터 휴무 일정 안내',
 '안녕하세요 펫시스터즈입니다. <br/> 항상 펫시스터즈를 이용해주시는 보호자님들께 진심으로 감사드립니다. <br/><br/>
 2023년 6월 고객센터 휴무 일정 안내 드립니다. <br/>
 보호자님의 양해 부탁드리며, 아래 내용 확인하셔서 이용에 불편 없으시기를 바랍니다. <br/><br/>
 ● 현충일 : 2023. 06. 06(화) 고객센터 휴무 <br/><br/>
 문의글에 대한 답변은 6월 7일(수)부터 순차적으로 제공됩니다. <br/><br/>
-감사합니다.', '2023-06-05', 0, 'Y');
+감사합니다.', '2023-06-05', 486, 'Y');
 INSERT INTO NOTICE VALUES (SEQ_NOTICE.NEXTVAL, '[정보] 오늘은 반려동물의 날',
-'오늘은 반려동물의 날이에요. 이름부터 귀엽지 않나요? <br/> 안 귀엽다고? 그럴리가 없는데... <br/><br/>', '2023-06-06', 0, 'Y');
+'오늘은 반려동물의 날이에요. 이름부터 귀엽지 않나요? <br/> 안 귀엽다고? 그럴리가 없는데... <br/><br/>', '2023-06-06', 120, 'Y');
 INSERT INTO NOTICE VALUES (SEQ_NOTICE.NEXTVAL, '[기획성] 댕댕이의 여름나기',
 '안녕하세요 펫시스터즈입니다. 항상 펫시스터즈를 이용해주시는 보호자님들께 진심으로 감사드립니다. <br/>
 다가오는 무더운 여름을 대비해 반려인과 반려견 모두 즐겁게 여름철 산책을 즐기는 방법을 준비했습니다. <br/><br/>
@@ -132,13 +132,68 @@ INSERT INTO NOTICE VALUES (SEQ_NOTICE.NEXTVAL, '[기획성] 댕댕이의 여름나기',
 뜨겁게 달궈진 아스팔트를 반려견이 발로 밟는다면 화상을 입을 수 있습니다. <br/>
 신발을 신기거나 반려인이 먼저 온도를 체크 후 밟도록 유도해주세요. <br/><br/>
 여름철에는 고온 다습하여 피부병에 걸리기 쉽습니다. 산책을 다녀와서 목욕 후에는 반드시 완벽하게 수분을 말려주세요. <br/>
-더운 여름, 건강하게 즐기며 지낼 수 있도록 보호자님들이 잘 챙기시면 좋겠습니다.', '2023-06-10', 0, 'Y');
+더운 여름, 건강하게 즐기며 지낼 수 있도록 보호자님들이 잘 챙기시면 좋겠습니다.', '2023-06-10', 404, 'Y');
+INSERT INTO NOTICE VALUES (SEQ_NOTICE.NEXTVAL, '[서비스] 서비스 예약 변경 및 취소', 
+'예약 변경 <br/>
+? 돌봄 3일 전 : 변경 가능 <br/>
+? 돌봄 1~2일 전 : 결제 금액의 20% 수수료 발생 <br/>
+? 돌봄 당일 : 변경 불가 <br/><br/>
+예약 취소 <br/>
+? 돌봄 3일 전 : 전액 환불 <br/>
+? 돌봄 1~2일 전 : 결제 금액의 50% 환불 <br/>
+? 돌봄 시작 3시간 전 : 결제 금액의 20% 환불 <br/>
+? 돌봄 시작 3시간 이내 : 환불금 없음 <br/><br/>
+* 수수료는 할인 전 청구금액을 기준으로 합니다.', '2023-06-18', 0, 'Y');
+INSERT INTO NOTICE VALUES (SEQ_NOTICE.NEXTVAL, '[안내] 채팅이 뭔가요?', 
+'고객님과 펫시터의 개인정보 보호를 위한 앱 내 전용 채팅으로 아이에 대한 추가정보 등을 펫시터와 이야기 할 수 있는 채팅 시스템입니다.', '2023-06-18', 0, 'Y');
+INSERT INTO NOTICE VALUES (SEQ_NOTICE.NEXTVAL, '[안내] 채팅방은 언제 개설되나요?', 
+'? 펫시터가 배정되고 결제 후 예약 완료가 되면 자동으로 채팅방이 오픈됩니다.', '2023-06-18', 0, 'Y');
+INSERT INTO NOTICE VALUES (SEQ_NOTICE.NEXTVAL, '[안내] 출입 비밀번호 등 정보 유출이 걱정될 때', 
+'출입 비밀번호는 펫시스터즈 서버에도 저장되지 않으며, 돌봄종료 시 자동으로 소멸됩니다. <br/><br/>
+또한, 방문펫시터도 개인정보의 중요성을 인지한 펫시터만 운영 중입니다.', '2023-06-18', 0, 'Y');
+INSERT INTO NOTICE VALUES (SEQ_NOTICE.NEXTVAL, '[서비스] 펫시팅 당일 예약', 
+'네. 당일 예약도 가능합니다. <br/><br/>
+그러나 예약을 더욱 안전하게 확정하기 위해서는 최소 3일 전에 미리 예약하는 것을 추천드립니다.', '2023-06-18', 0, 'Y');
+INSERT INTO NOTICE VALUES (SEQ_NOTICE.NEXTVAL, '[안내] 펫시터님들은 믿을 수 있나요?', 
+'까다로운 신원 검증 및 국내 최고 반려동물 전문가의 교육을 수료한 10% 미만의 합격자만이 펫시스터즈 펫시터로 활동하고 있습니다. <br/> 또한, 펫시스터즈 펫시터들 모두 고객님들이 안심하실 수 있도록, 모든 돌봄 과정을 실시간으로 촬영하는 것에 동의하며, 총 4가지의 서류 제출을 의무화 하고 있습니다. <br/> 신원 보증인 부대와 신분증 사본을 통해 신원을 검증하고, 비밀유지 서약서로 고객님의 개인 정보를 안전하게 보호할 것을 법적으로 약속합니다. <br/> 또한, 펫시터 계약서를 통해, 펫시스터즈 소속으로 활동 중인 펫시터님들을 지속적으로 관리하고 있습니다.', '2023-06-18', 0, 'Y');
+INSERT INTO NOTICE VALUES (SEQ_NOTICE.NEXTVAL, '[안내] 펫시스터즈 펫시터의 차별점은 무엇인가요?', 
+'* 더 안전한 펫시팅을 위한 펫시터 헬프 시스템 <br/>
+- 펫시팅시 어려운 점에 관해 훈련사님 무료 전화 상담 <br/>
+- 위험 상황시 방문 솔루션으로 안전한 펫시팅 지원 <br/>
+- 펫시팅 관련 지속적인 교육 연계 및 피드백 수립 <br/> <br/>
+* 10만원 상당의 펫시터 용품 지원, 스타터킷을 무료로 드려요 <br/>
+- 펫시터님 홍보를 위한 명함 증정 <br/>
+- 펫시스터즈 유니폼 (맨투맨, 바람막이, 티셔츠) 증정 <br/>
+- 산책가방, 배변봉투, 탈취제, 손소독제 등 증정 <br/>
+- 항목은 변경될 수 있습니다 <br/> <br/>
+* 국내 펫시팅 업종 유일 펫시터 보험을 지원합니다. <br/>
+- 반려동물에 의해 펫시터님이 상해를 입었을 경우, 최대 1회 10만원의 병원 진료비를 지원합니다. <br/>
+- 해당 반려동물이 다쳤을 경우, 최대 100만원까지 지원 (펫시터님의 귀책 사유일 경우 보험 지원 불가)', '2023-06-18', 0, 'Y');
+INSERT INTO NOTICE VALUES (SEQ_NOTICE.NEXTVAL, '[서비스] 펫시터는 확정된 예약을 취소할 수 있나요?', 
+'펫시터 계약에 따라 원칙적으로 펫시터는 확정된 예약을 취소할 수 없습니다. <br/>
+만약 귀책 사유로 취소를 할 경우에는 패널티가 부가됩니다.', '2023-06-18', 0, 'Y');
+INSERT INTO NOTICE VALUES (SEQ_NOTICE.NEXTVAL, '[펫시터] 반려견을 키워보지 않았는데, 지원이 가능한가요?', 
+'반려견을 키운 경험이 없어도 지원이 가능합니다. <br/>
+펫시스터즈에서는 반려견에 대한 전문 교육을 실시하며, <br/>
+분기마다의 정기 교육도 진행할 예정이므로 걱정하지 말고 지원 부탁드립니다.', '2023-06-18', 0, 'Y');
+INSERT INTO NOTICE VALUES (SEQ_NOTICE.NEXTVAL, '[공지] 개인정보 처리방침 개정됩니다.', 
+'안녕하세요 펫시스터즈입니다. <br/>
+항상 펫시스터즈를 이용해주시는 보호자님들께 진심으로 감사 인사를 드리며, <br/>
+개인정보 처리방침을 개정하게 되어 안내드립니다. <br/>
+변경 시행일과 변경 사항은 아래와 같습니다. <br/> <br/>
+[변경 시행일] <br/>
+변경 공고일 : 2023년 6월 20일 <br/>
+변경 시행일 : 2023년 7월 1일 <br/> <br/>
+본 개정에 동의하지 않으실 경우, <br/>
+개정 시행일인 2023년 7월 1일 이전까지 본 개정에 대한 거부의사를 표시하고, 펫시스터즈를 탈퇴할 수 있습니다. <br/> <br/>
+개정 시행일 이후에도 거부 의사를 표시하지 않고 서비스를 이용하는 경우 변경에 동의한 것으로 간주합니다. <br/> <br/>
+펫시스터즈는 앞으로도 회원분들이 더 좋은 서비스를 이용하실 수 있도록 최선의 노력을 다하겠습니다. <br/> 감사합니다.', '2023-06-20', 0, 'Y');
 
 --------------------------------------------------
 ------------    1:1문의 테이블 더미    ------------
 --------------------------------------------------
 INSERT INTO INQUIRY
-(I_NO, I_TITLE, I_CONTENT, CREATE_DATE, STATUS, USER_NO)
+(I_NO, I_TITLE, I_CONTENT, CREATE_DATE, STATUS, FILE_PATH, USER_NO)
 VALUES (SEQ_INQUIRY.NEXTVAL
            , '펫시팅 이후에 없던 상처가 생겼어요'
            , '제일 최근에 맡긴 펫시팅 이후로 안 보이던 상처를 발견했어요. <br/>
@@ -146,6 +201,7 @@ VALUES (SEQ_INQUIRY.NEXTVAL
              병원에 가볼 정도는 아니지만 케어하시면서 알아채지 못할 정도는 아니었을 것 같은데 무슨 일이었는지 좀 알고 싶어요.'
            , '2023-06-07'
            , 'Y'
+           , 'resources/upFiles/inquiry_upfiles/강아지젤리.png'
            , 7);
 INSERT INTO INQUIRY
 (I_NO, I_TITLE, I_CONTENT, CREATE_DATE, STATUS, USER_NO)
@@ -157,13 +213,14 @@ VALUES (SEQ_INQUIRY.NEXTVAL
            , 'Y'
            , 7);
 INSERT INTO INQUIRY
-(I_NO, I_TITLE, I_CONTENT, CREATE_DATE, STATUS, USER_NO)
+(I_NO, I_TITLE, I_CONTENT, CREATE_DATE, STATUS, FILE_PATH, USER_NO)
 VALUES (SEQ_INQUIRY.NEXTVAL
            , '아이 하네스 줄이 바뀐 것 같아요.'
            , '펫시팅 맡기면서 같이 드렸던 하네스줄이 있었는데, 원래 쓰던 게 아니라서요. <br/>
              두 개 색깔이 같아서 헷갈리신 것 같은데 펫시터 분께 개인적으로 연락 드릴 방법이 있을까요?'
            , SYSDATE
            , 'Y'
+           , 'resources/upFiles/inquiry_upfiles/하네스.jpg'
            , 7);
 INSERT INTO INQUIRY
 (I_NO, I_TITLE, I_CONTENT, CREATE_DATE, STATUS, USER_NO)
@@ -193,6 +250,46 @@ VALUES (SEQ_INQUIRY.NEXTVAL
            , SYSDATE
            , 'Y'
            , 8);
+           
+--------------------------------------------------
+----------    1:1문의 댓글 테이블 더미    ----------
+--------------------------------------------------
+INSERT INTO CS_REPLY
+(REP_NO, REP_CONTENT, USER_NO, REF_INO, CREATE_DATE)
+VALUES(SEQ_CS_REPLY.NEXTVAL
+         ,'안녕하세요, 예약 일정을 미룰 수 있는 지 문의 주셨습니다. 해당일에 펫시터 님의 일정이 없으시다면 취소 후 재예약 가능합니다. 저희 측에서 따로 미뤄드릴 수는 없는 점 양해 부탁드립니다. 감사합니다.'
+         ,1         
+         ,2
+         ,'2023-06-14');
+INSERT INTO CS_REPLY
+(REP_NO, REP_CONTENT, USER_NO, REF_INO, CREATE_DATE)
+VALUES(SEQ_CS_REPLY.NEXTVAL
+         ,'아... 알겠습니다. 예약이 일주일 밖에 안 남았는데 취소 수수료는 무조건 부담해야하는 거죠?'
+         ,7
+         ,2
+         ,'2023-06-14');
+INSERT INTO CS_REPLY
+(REP_NO, REP_CONTENT, USER_NO, REF_INO, CREATE_DATE)
+VALUES(SEQ_CS_REPLY.NEXTVAL
+         ,'안녕하세요, 재예약 시 수수료 부과와 관련해서 문의 주셨습니다. 예약 취소 후 재예약 확정 시 수수료는 환불됩니다. 감사합니다.'
+         ,1         
+         ,2
+         ,'2023-06-14');  
+      
+INSERT INTO CS_REPLY
+(REP_NO, REP_CONTENT, USER_NO, REF_INO, CREATE_DATE)
+VALUES(SEQ_CS_REPLY.NEXTVAL
+         ,'안녕하세요, 하네스 줄이 바뀌셨다고 문의 주셨는데 관련해서 해당 펫시터 님에게 전달해드렸습니다. 최대한 빨리 해결하실 수 있도록 늘 최선을 다하겠습니다. 감사합니다.'
+         ,1         
+         ,6
+         ,SYSDATE); 
+INSERT INTO CS_REPLY
+(REP_NO, REP_CONTENT, USER_NO, REF_INO, CREATE_DATE)
+VALUES(SEQ_CS_REPLY.NEXTVAL
+         ,'펫시터님께 연락 드렸습니다. 최대한 빠르고 정확하게 상황 파악 후 다시 연락 드리겠습니다. 감사합니다.'
+         ,7         
+         ,1
+         ,'2023-06-07');
  
 --------------------------------------------------
 ------------    펫시터찜 테이블 더미    ------------
@@ -511,6 +608,264 @@ VALUES(SEQ_DOG.NEXTVAL,
        'resources/upFiles/dog_profiles/로이.jpg',
        'Y',
        4); 
+INSERT INTO DOG
+VALUES(SEQ_DOG.NEXTVAL,
+       '구름이',
+       'M',
+       '사모예드',
+       '19/08/13',
+       19,
+       'Y',
+       NULL,
+       'resources/upFiles/dog_profiles/로이.jpg',
+       'Y',
+       2);
+INSERT INTO DOG
+VALUES(SEQ_DOG.NEXTVAL,
+       '절미',
+       'M',
+       '믹스견',
+       '18/03/28',
+       13,
+       'N',
+       NULL,
+       'resources/upFiles/dog_profiles/로이.jpg',
+       'Y',
+       2);
+INSERT INTO DOG
+VALUES(SEQ_DOG.NEXTVAL,
+       '초코',
+       'F',
+       '푸들',
+       '14/10/04',
+       10,
+       'Y',
+       NULL,
+       'resources/upFiles/dog_profiles/로이.jpg',
+       'Y',
+       2);
+       
+INSERT INTO DOG
+VALUES(SEQ_DOG.NEXTVAL,
+       '해피',
+       'M',
+       '꼬똥드뚤레',
+       '19/11/11',
+       8,
+       'Y',
+       NULL,
+       'resources/upFiles/dog_profiles/로이.jpg',
+       'Y',
+       3);
+INSERT INTO DOG
+VALUES(SEQ_DOG.NEXTVAL,
+       '뭉치',
+       'F',
+       '시바견',
+       '17/01/09',
+       12,
+       'Y',
+       NULL,
+       'resources/upFiles/dog_profiles/로이.jpg',
+       'Y',
+       3);
+INSERT INTO DOG
+VALUES(SEQ_DOG.NEXTVAL,
+       '큐티',
+       'F',
+       '웰시코기',
+       '20/07/25',
+       14,
+       'Y',
+       NULL,
+       'resources/upFiles/dog_profiles/로이.jpg',
+       'Y',
+       3);
+
+INSERT INTO DOG
+VALUES(SEQ_DOG.NEXTVAL,
+       '쿠키',
+       'M',
+       '불독',
+       '21/06/06',
+       16,
+       'Y',
+       NULL,
+       'resources/upFiles/dog_profiles/로이.jpg',
+       'Y',
+       4);
+INSERT INTO DOG
+VALUES(SEQ_DOG.NEXTVAL,
+       '쿠키',
+       'M',
+       '웰시코기',
+       '22/10/30',
+       7,
+       'Y',
+       NULL,
+       'resources/upFiles/dog_profiles/로이.jpg',
+       'Y',
+       4);
+INSERT INTO DOG
+VALUES(SEQ_DOG.NEXTVAL,
+       '조단이',
+       'F',
+       '푸들',
+       '23/01/11',
+       8,
+       'Y',
+       NULL,
+       'resources/upFiles/dog_profiles/로이.jpg',
+       'Y',
+       4);
+       
+INSERT INTO DOG
+VALUES(SEQ_DOG.NEXTVAL,
+       '콩이',
+       'M',
+       '진돗개',
+       '19/05/16',
+       17,
+       'Y',
+       NULL,
+       'resources/upFiles/dog_profiles/로이.jpg',
+       'Y',
+       5);
+INSERT INTO DOG
+VALUES(SEQ_DOG.NEXTVAL,
+       '달래',
+       'F',
+       '시츄',
+       '21/02/14',
+       6,
+       'Y',
+       NULL,
+       'resources/upFiles/dog_profiles/로이.jpg',
+       'Y',
+       5);
+INSERT INTO DOG
+VALUES(SEQ_DOG.NEXTVAL,
+       '봄이',
+       'F',
+       '말티푸',
+       '22/12/22',
+       5,
+       'Y',
+       NULL,
+       'resources/upFiles/dog_profiles/로이.jpg',
+       'Y',
+       5);
+       
+INSERT INTO DOG
+VALUES(SEQ_DOG.NEXTVAL,
+       '쿠키',
+       'M',
+       '말티즈',
+       '17/09/09',
+       9,
+       'Y',
+       NULL,
+       'resources/upFiles/dog_profiles/로이.jpg',
+       'Y',
+       6);
+INSERT INTO DOG
+VALUES(SEQ_DOG.NEXTVAL,
+       '유디니',
+       'F',
+       '꼬똥드툴레',
+       '21/11/11',
+       8,
+       'Y',
+       NULL,
+       'resources/upFiles/dog_profiles/로이.jpg',
+       'Y',
+       6);
+INSERT INTO DOG
+VALUES(SEQ_DOG.NEXTVAL,
+       '조단이',
+       'F',
+       '푸들',
+       '23/01/11',
+       8,
+       'Y',
+       NULL,
+       'resources/upFiles/dog_profiles/로이.jpg',
+       'Y',
+       6);
+       
+INSERT INTO DOG
+VALUES(SEQ_DOG.NEXTVAL,
+       '뚱이',
+       'F',
+       '푸들',
+       '19/04/18',
+       10,
+       'Y',
+       NULL,
+       'resources/upFiles/dog_profiles/로이.jpg',
+       'Y',
+       7);
+INSERT INTO DOG
+VALUES(SEQ_DOG.NEXTVAL,
+       '달콩이',
+       'F',
+       '닥스훈트',
+       '21/07/07',
+       7,
+       'Y',
+       NULL,
+       'resources/upFiles/dog_profiles/로이.jpg',
+       'Y',
+       7);
+INSERT INTO DOG
+VALUES(SEQ_DOG.NEXTVAL,
+       '새롬이',
+       'M',
+       '비숑',
+       '23/02/08',
+       3,
+       'Y',
+       NULL,
+       'resources/upFiles/dog_profiles/로이.jpg',
+       'Y',
+       7);
+       
+INSERT INTO DOG
+VALUES(SEQ_DOG.NEXTVAL,
+       '바비',
+       'F',
+       '비숑',
+       '16/05/30',
+       9,
+       'Y',
+       NULL,
+       'resources/upFiles/dog_profiles/로이.jpg',
+       'Y',
+       8);
+INSERT INTO DOG
+VALUES(SEQ_DOG.NEXTVAL,
+       '율이',
+       'M',
+       '슈나우저',
+       '18/11/07',
+       8,
+       'Y',
+       NULL,
+       'resources/upFiles/dog_profiles/로이.jpg',
+       'Y',
+       8);
+INSERT INTO DOG
+VALUES(SEQ_DOG.NEXTVAL,
+       '초롱이',
+       'M',
+       '퍼그',
+       '22/04/23',
+       6,
+       'Y',
+       NULL,
+       'resources/upFiles/dog_profiles/로이.jpg',
+       'Y',
+       8);
        
 --------------------------------------------------
 --------------    결제 테이블 더미    --------------

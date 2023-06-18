@@ -63,60 +63,61 @@
                 </div>
                 <form action="petInsert.me" method="post" id="petEnrollForm">
                 	<input type="hidden" name="userNo" value="${ loginUser.userNo }">
-	               <hr class="hrhr">
-                  <div class="sub2">
-                    <div class="enrollWrapper">
-                      <p>
-                        <label for="dogName">● 이름 </label><br>
-                        <input type="text" id="dogName" name="dogName" maxlength="15" placeholder="반려견 이름을 입력해주세요." style="width:240px" required>
-                      </p>
-                      <p class="input_btn checkbox">
-                      	<div class="genderMain">
-                        	<label for="dogGender">● 성별</label><br>
+                    <div class="sub2Wrapper">
+                      <div class="sub2">
+                        <div class="enrollWrapper">
+                          <p>
+                            <label for="dogName">● 이름 </label><br>
+                            <input type="text" id="dogName" name="dogName" maxlength="15" placeholder="반려견 이름을 입력해주세요." style="width:240px" required>
+                          </p>
+                          <p class="input_btn checkbox">
+                            <div class="genderMain">
+                              <label for="dogGender">● 성별</label><br>
+                            </div>
+                            <div class="radio_gender">
+                              <input type="radio" id="Male" value="M" name="dogGender"> <b>남</b>
+                              <input type="radio" id="Female" value="F" name="dogGender"> <b>여</b> <br>
+                            </div>
+                          </p>
+                          <p>
+                            <label for="dogBreed">● 견종 </label><br>
+                            <input type="text" name="dogBreed" id="dogBreed" maxlength="15" placeholder="ex)골든리트리버" style="width:230px" required>
+                          </p>
+                          <p>
+                            <label for="dogBirthday">● 생일 </label><br>
+                            <input type="text" name="dogBirthday" id="dogBirthday" maxlength="15" placeholder="ex)2023-06-06" style="width:300px" required><br>
+                          </p>
+                          <p>
+                            <label for="dogWeight">● 몸무게 </label><br>
+                            <input type="text" name="dogWeight" id="dogWeight" maxlength="15" placeholder="ex)4" style="width:80px" onkeyup="passConfirm()" required>  kg
+                          </p>
+                          <p class="input_btn checkbox">
+                            <div class="nMain">
+                              <label>● 중성화여부 </label><br>
+                            </div>
+                            <div class="radio_n">
+                              <input type="radio" name="neutralizationStatus" id="neutralizationStatus" value="Y"> <b>Yes</b>
+                              <input type="radio" name="neutralizationStatus" id="neutralizationStatus" value="N"> <b>No</b> <br>
+                            </div>
+                          </p>
+                          <div class="note_main">
+                          <div class="note1">
+                            <label>● 돌봄시 참고사항</label>
                         </div>
-                        <div class="radio_gender">
-	                        <input type="radio" id="Male" value="M" name="dogGender"> <b>남</b>
-	                        <input type="radio" id="Female" value="F" name="dogGender"> <b>여</b> <br>
-                      	</div>
-                      </p>
-                      <p>
-                        <label for="dogBreed">● 견종 </label><br>
-                        <input type="text" name="dogBreed" id="dogBreed" maxlength="15" placeholder="ex)골든리트리버" style="width:230px" required>
-                      </p>
-                      <p>
-                        <label for="dogBirthday">● 생일 </label><br>
-                        <input type="text" name="dogBirthday" id="dogBirthday" maxlength="15" placeholder="ex)2023-06-06" style="width:300px" required><br>
-                      </p>
-                      <p>
-                        <label for="dogWeight">● 몸무게 </label><br>
-                        <input type="text" name="dogWeight" id="dogWeight" maxlength="15" placeholder="ex)4" style="width:80px" onkeyup="passConfirm()" required>  kg
-                      </p>
-                      <p class="input_btn checkbox">
-                      	<div class="nMain">
-                        	<label>● 중성화여부 </label><br>
+                          <div class="noteArea">
+                          <textarea name="dogNote" id="dogNote" class="dog_note" cols="50" rows="5" placeholder="ex)우리 댕댕이는 생식만 먹여요. 큰 소리에 예민한 편이에요."></textarea><br>
+                          <div class="count"><span>0</span>/100</div>
+                          </div>
                         </div>
-                        <div class="radio_n">
-	                        <input type="radio" name="neutralizationStatus" id="neutralizationStatus" value="Y"> <b>Yes</b>
-	                        <input type="radio" name="neutralizationStatus" id="neutralizationStatus" value="N"> <b>No</b> <br>
-                      	</div>
-                      </p>
-                      <div class="note_main">
-		                  <div class="note1">
-			                  <label>● 돌봄시 참고사항</label>
-			              </div>
-		                  <div class="noteArea">
-				              <textarea name="dogNote" id="dogNote" class="dog_note" cols="50" rows="5" placeholder="ex)우리 댕댕이는 생식만 먹여요. 큰 소리에 예민한 편이에요."></textarea><br>
-				              <div class="count"><span>0</span>/100</div>
-		                  </div>
-	                  </div>
-	                  
-	                  <br>
+                        
+                        <br>
+                        </div>
+                        <div class="btnWrapper">
+                          <button type="reset" class="btn_reset">재입력</button>
+                          <button type="submit" class="btn_submit">등록하기</button>
+                        </div>
+                      </div>
                     </div>
-                    <div class="btnWrapper">
-                      <button type="reset" class="btn_reset">재입력</button>
-                      <button type="submit" class="btn_submit">등록하기</button>
-                    </div>
-                  </div>
                   </form>
                 <!-- 이 영역 안에서 페이지 작업 하시면 됩니다 -->
               </div>

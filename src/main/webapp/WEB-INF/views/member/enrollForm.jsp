@@ -30,105 +30,106 @@
           <div class="page_aticle aticle_type2">
 
             <!-- 본문 영역-->
-            <div id="viewOrderList" class="page_section section_orderlist">
-              <div class="page_section section_destination">
-                <!-- 이 영역 안에서 페이지 작업 하시면 됩니다 -->
-                <div id="mainContent">
-                  <div class="sub1" >
-                    <div class="title1">
-                      <h1>회원가입</h1>
+            <div class="enrollFormArea">
+              <div id="viewOrderList" class="page_section section_orderlist">
+                <div class="page_section section_destination">
+                  <!-- 이 영역 안에서 페이지 작업 하시면 됩니다 -->
+                  <div id="mainContent">
+                    <div class="sub1" >
+                      <div class="title1">
+                        <h1>회원가입</h1>
+                      </div>
+                      <div class="title2">
+                        <h7>회원으로 가입하시면 첫고객 대상 10% 할인쿠폰을 넣어드립니다. <br>
+                          지금바로 회원가입 해보세요.</h7>
+                      </div>
                     </div>
-                    <div class="title2">
-                      <h7>회원으로 가입하시면 첫고객 대상 10% 할인쿠폰을 넣어드립니다. <br>
-                      	지금바로 회원가입 해보세요.</h7>
-                    </div>
+                    <form action="insert.me" method="post" id="enrollForm">
+                    <div class="sub2">
+                    <div class="enrollWrapper">
+                        <div class="idArea">
+                          <div>
+                            <label for="userId">● 아이디 (영문/소문자 6~16자) </label><br>
+                          </div>
+                            <div class="id_check2">
+                            <input type="text" id="userId" name="userId" maxlength="15" placeholder="아이디를 입력해주세요." style="width:230px" required>
+                            <div id="checkResult" style="font-size : 0.8em; display : none"></div>
+                            </div>
+                        </div>
+                        <p>
+                          <label for="userNickname">● 닉네임 </label><br>
+                          <input type="text" id="userNickname" name="userNickname" maxlength="15" placeholder="나만의 닉네임을 지어주세요." style="width:230px" required>
+                        </p>
+                        <p>
+                          <label for="userPwd">● 비밀번호 </label><br>
+                          <input type="password" name="userPwd" id="userPwd" maxlength="15" placeholder="영문+숫자+특수문자 조합 8~16자리" style="width:300px" required><br>
+                        </p>
+                        <div class="checkPwdArea">
+                          <div>
+                            <label for="checkPwd">● 비밀번호 확인 </label><br>
+                          </div>
+                          <div class="pwd_check2">
+                            <input type="password" name="checkPwd" id="checkPwd" maxlength="15" placeholder="정확히 기입해주세요." style="width:300px" onkeyup="passConfirm()" required>
+                            <div id="confirmMsg" style="font-size : 0.8em; display : block"></div>
+                          </div>
+                        </div>
+                        <p>
+                          <label for="userName">● 이름 </label><br>
+                          <input type="text" name="userName" maxlength="15" placeholder="ex)홍길동" required><br>
+                        </p>
+                        <p>
+                          <label for="userNickname">● 닉네임 </label><br>
+                          <input type="text" name="userNickname" maxlength="15" placeholder="ex)나는야 꽃미남" required><br>
+                        </p>
+                        <p>
+                          <label for="userSsn">● 생년월일 </label><br>
+                          <input type="text" name="userSsn" maxlength="6" placeholder="ex)990101" required> <br>
+                        </p>
+                        <p>
+                          <label for="phone">● 휴대폰 번호 </label><br>
+                          <input type="text" name="phone" maxlength="11" placeholder="(-) 제외하고 숫자  ex)01012349876" style="width:300px" required><br>
+                        </p>
+                        <p>
+                          <label for="email">● 이메일 </label><br>
+                          <input type="email" name="email" maxlength="30" placeholder="@ 까지 정확한 이메일 형식을 입력해주세요." style="width:350px" required><br>
+                        </p>
+                        <div class="kakaoAddress">
+                          <div>
+                            <label for="address">● 거주지 주소 </label>
+                          </div>
+                          <div class="address_search">
+                            <input type="text" id="address_input" name="address" maxlength="30" placeholder="주소 입력" required><br>
+                            <i id="address_kakao" class="fas fa-search-location fa-lg" style="color: #ffffff;"><b>주소검색</b></i>
+                          </div>
+                        </div>
+                        <p>
+                          <div class="genderMain">
+                            <label>● 성별</label><br>
+                          </div>
+                          <div class="radio_gender">
+                            <input type="radio" id="Male" value="M" name="gender"> <b>남</b>
+                            <input type="radio" id="Female" value="F" name="gender"> <b>여</b> <br>
+                          </div>
+                        </p>
+                        <div class="input_btn">
+                          <div class="check_email">
+                            <input type="checkbox" name="checkbox" id="checkEmail" value="Y">
+                          </div>
+                          <div class="check_agree"></div>
+                            <label>이메일수신동의 여부(선택)</label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="btnWrapper">
+                        <button type="reset" class="btn_reset">재입력</button>
+                        <button type="submit" class="btn_submit" disabled>회원가입</button>
+                      </div>
+                    </form>
                   </div>
-                  <form action="insert.me" method="post" id="enrollForm">
-                  <div class="sub2">
-	                 <div class="enrollWrapper">
-	                  <hr>
-                      <div class="idArea">
-	                      <div>
-	                        <label for="userId">● 아이디 (영문/소문자 6~16자) </label><br>
-	                      </div>
-                      	  <div class="id_check2">
-	                        <input type="text" id="userId" name="userId" maxlength="15" placeholder="아이디를 입력해주세요." style="width:230px" required>
-	                        <div id="checkResult" style="font-size : 0.8em; display : none"></div>
-                      	  </div>
-                      </div>
-                      <p>
-                        <label for="userNickname">● 닉네임 </label><br>
-                        <input type="text" id="userNickname" name="userNickname" maxlength="15" placeholder="나만의 닉네임을 지어주세요." style="width:230px" required>
-                      </p>
-                      <p>
-                        <label for="userPwd">● 비밀번호 </label><br>
-                        <input type="password" name="userPwd" id="userPwd" maxlength="15" placeholder="영문+숫자+특수문자 조합 8~16자리" style="width:300px" required><br>
-                      </p>
-                      <div class="checkPwdArea">
-                      	<div>
-                        	<label for="checkPwd">● 비밀번호 확인 </label><br>
-                        </div>
-                        <div class="pwd_check2">
-                        	<input type="password" name="checkPwd" id="checkPwd" maxlength="15" placeholder="정확히 기입해주세요." style="width:300px" onkeyup="passConfirm()" required>
-                        	<div id="confirmMsg" style="font-size : 0.8em; display : block"></div>
-                      	</div>
-                      </div>
-                      <p>
-                        <label for="userName">● 이름 </label><br>
-                        <input type="text" name="userName" maxlength="15" placeholder="ex)홍길동" required><br>
-                      </p>
-                      <p>
-                        <label for="userNickname">● 닉네임 </label><br>
-                        <input type="text" name="userNickname" maxlength="15" placeholder="ex)나는야 꽃미남" required><br>
-                      </p>
-                      <p>
-                        <label for="userSsn">● 생년월일 </label><br>
-                        <input type="text" name="userSsn" maxlength="6" placeholder="ex)990101" required> <br>
-                      </p>
-                      <p>
-                        <label for="phone">● 휴대폰 번호 </label><br>
-                        <input type="text" name="phone" maxlength="11" placeholder="(-) 제외하고 숫자  ex)01012349876" style="width:300px" required><br>
-                      </p>
-                      <p>
-                        <label for="email">● 이메일 </label><br>
-                        <input type="email" name="email" maxlength="30" placeholder="@ 까지 정확한 이메일 형식을 입력해주세요." style="width:350px" required><br>
-                      </p>
-                      <div class="kakaoAddress">
-                      	<div>
-                        	<label for="address">● 거주지 주소 </label>
-                        </div>
-                        <div class="address_search">
-                        	<input type="text" id="address_input" name="address" maxlength="30" placeholder="주소 입력" required><br>
-                        	<i id="address_kakao" class="fas fa-search-location fa-lg" style="color: #ffffff;"><b>주소검색</b></i>
-                        </div>
-                      </div>
-                      <p>
-                      	<div class="genderMain">
-                        	<label>● 성별</label><br>
-                        </div>
-                        <div class="radio_gender">
-	                        <input type="radio" id="Male" value="M" name="gender"> <b>남</b>
-	                        <input type="radio" id="Female" value="F" name="gender"> <b>여</b> <br>
-                      	</div>
-                      </p>
-                      <div class="input_btn">
-                      	<div class="check_email">
-                        	<input type="checkbox" name="checkbox" id="checkEmail" value="Y">
-                        </div>
-                        <div class="check_agree"></div>
-                        	<label>이메일수신동의 여부(선택)</label>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="btnWrapper">
-                      <button type="reset" class="btn_reset">재입력</button>
-                      <button type="submit" class="btn_submit" disabled>회원가입</button>
-                    </div>
-                  </form>
+                  <!-- 이 영역 안에서 페이지 작업 하시면 됩니다 -->
                 </div>
-                <!-- 이 영역 안에서 페이지 작업 하시면 됩니다 -->
               </div>
-            </div>
+            </div> 
             <!-- 본문 영역 끝-->
           </div>
         </div>
