@@ -13,19 +13,15 @@
 		<result column="USER_NO" property="userNo" />
 		<result column="CATEGORY_MAIN" property="categoryMain" />
 		<result column="CATEGORY_SUB" property="categorySub" />
-		
 		<result column="DOG_NAME" property="dogName" />
 		<result column="DOG_BREED" property="dogBreed" />
 		<result column="DOG_GENDER" property="dogGender" />
-		
 		<result column="M_USER_NAME" property="userName" />
-		
-		
-		<result column="FILE_PATH" property="dogImg" />
+		<result column="FILE_PATH" property="filePath" />
 		<result column="ORIGIN_NAME" property="originName" />
 		<result column="CHANGE_NAME" property="changeName" />
 		<result column="AT_FILE_PATH" property="atFilePath" />
-		
+		<result column="DOG_FILE_PATH" property="dogFilePath" />
 	</resultMap>
 	
 	<resultMap id="attachmentResultSet" type="attachment">
@@ -51,6 +47,7 @@
 	<select id="selectList" parameterType="board" resultMap="boardResultSet">
 		SELECT B.B_NO
 		     , B.B_TITLE
+		     , B.B_CONTENT
 		     , B.USER_NO
 		     , B.COUNT 
 			 , TO_CHAR(B.CREATE_DATE, 'YYYY-MM-DD') AS CREATE_DATE
@@ -167,44 +164,30 @@
 		ORDER BY B.CREATE_DATE DESC
 	</select>
 	
-	
-	<!-- 사진게시판 : 강아지자랑 게시글 조회 -->
-	<select id="selectMypetList" resultMap="boardResultSet">
-		SELECT B_NO
-		     , B.B_TITLE
-		     , B.B_CONTENT
-			 , A.ORIGIN_NAME
-			 , A.CHANGE_NAME
-			 , A.FILE_PATH AS AT_FILE_PATH
-		FROM BOARD B 
-		LEFT JOIN B_ATTACHMENT A ON (B.B_NO = A.REF_BNO)
-		WHERE B.STATUS = 'Y'
-		AND CATEGORY_MAIN = 2
-		ORDER BY B.CREATE_DATE DESC	
-	</select>
-	
-	<!-- 게시글 상세 조회용 쿼리문 -->
+		<!-- 게시글 상세 조회용 쿼리문 -->
 	 
 	<select id="selectBoard" resultMap="boardResultSet">
-		SELECT M.USER_NAME AS M_USER_NAME,
+		SELECT M.USER_NICKNAME AS M_USER_NAME,
 		       B.B_TITLE,  
 		       B.B_CONTENT,
 		       B.CREATE_DATE,
 		       DOG_NAME,
 		       DOG_BREED,
 		       DOG_GENDER,
-		       D.FILE_PATH AS FILE_PATH,
-		       LISTAGG(BA.FILE_NO, ',') WITHIN GROUP(ORDER BY BA.FILE_NO) AS 커뮤니티사진번호,
-		       LISTAGG(BA.ORIGIN_NAME, ',') WITHIN GROUP(ORDER BY BA.ORIGIN_NAME) AS 커뮤니티오리진,
-		       LISTAGG(BA.CHANGE_NAME, ',') WITHIN GROUP(ORDER BY BA.CHANGE_NAME) AS 커뮤니티변경,
-		       BA.FILE_PATH 커뮤니티경로
+		       D.FILE_PATH AS DOG_FILE_PATH,
+		       LISTAGG(BA.FILE_NO, ',') WITHIN GROUP(ORDER BY BA.FILE_NO) AS FILE_NO,
+		       LISTAGG(BA.ORIGIN_NAME, ',') WITHIN GROUP(ORDER BY BA.ORIGIN_NAME) AS ORIGIN_NAME,
+		       LISTAGG(BA.CHANGE_NAME, ',') WITHIN GROUP(ORDER BY BA.CHANGE_NAME) AS CHANGE_NAME,
+		       BA.FILE_PATH FILE_PATH,
+		       B.COUNT,
+		       B.B_NO
 		  FROM BOARD B
 		  LEFT JOIN B_ATTACHMENT BA ON B.B_NO = BA.REF_BNO
 		  LEFT JOIN MEMBER M ON B.USER_NO = M.USER_NO
 		  LEFT JOIN DOG D ON M.USER_NO = D.USER_NO
-		 WHERE B.USER_NO = #{userNo}
+		 WHERE B.B_NO = #{boardNo}
 		   AND B.STATUS = 'Y' 
-		 GROUP BY M.USER_NAME, 
+		 GROUP BY M.USER_NICKNAME, 
 		       B.B_TITLE, 
 		       B.B_CONTENT, 
 		       B.CREATE_DATE, 
@@ -212,7 +195,9 @@
 		       DOG_BREED, 
 		       DOG_GENDER, 
 		       D.FILE_PATH, 
-		       BA.FILE_PATH 
+		       BA.FILE_PATH,
+		       B.COUNT,
+		       B.B_NO 
 	</select>
 	
 	<!-- 일반/사진 : 수정페이지 , 기존내용 조회용 뿌리는 쿼리문 -->
@@ -232,6 +217,37 @@
 			AND CATEGORY_SUB = 1
 			-->
 	</select>
+	
+		<!-- 커뮤니티 업데이트용 쿼리문 -->
+	<update id="updateBoard" parameterType="board">
+		UPDATE BOARD
+		   SET B_TITLE = #{boardTitle},
+		       B_CONTENT = #{boardContent},
+		       CREATE_DATE = SYSDATE,
+		 WHERE B_NO = #{boardNo}
+		   AND STATUS = 'Y'	
+	</update>
+	
+	<!-- 기존 첨부파일 삭제 -->
+	<update id="deleteAttaAll" parameterType="_int">
+		UPDATE B_ATTACHMENT
+		SET STATUS = 'N',
+		WHERE REF_BNO = #{boardNo}
+	</update>
+	
+	
+	<!-- 첨부파일 업데이트용 쿼리문 -->
+	<update id="updateAttachmentList" parameterTyp="attachment">
+		UPDATE B_ATTACHMENT
+		   SET ORIGIN_NAME = #{originName},
+		       CHANGE_NAME = #{changeName},
+		       FILE_PATH = #{filePath},
+		       CREATE_DATE = SYSDATE,
+		 WHERE REF_BNO = #{refBno}
+		   AND STATUS = 'Y'	
+	</update>
+	
+
 	
 	
 	

@@ -86,12 +86,21 @@ public class BoardDao {
 	public ArrayList<Board> selectBottomList3(SqlSessionTemplate sqlSession) {
 		return (ArrayList)sqlSession.selectList("boardMapper.selectBottomList3");
 	}
-
-	public ArrayList<Board> selectMypetList(SqlSessionTemplate sqlSession) {
-		return (ArrayList)sqlSession.selectList("boardMapper.selectMypetList");
-	}
 	
 	public Board selectBoardInUpdate(SqlSessionTemplate sqlSession, int bno) {
 		return sqlSession.selectOne("boardMapper.selectBoardInUpdate"); 
 	}
+	
+	public int updateBoard(SqlSessionTemplate sqlSession, Board b) {
+		return sqlSession.update("boardMapper.updateBoard", b);
+	}
+	
+	public int deleteAttaAll(SqlSessionTemplate sqlSession, int boardNo) {
+		return sqlSession.update("boardMapper.deleteAttaAll", boardNo);
+	}
+	
+	public int updateAttachmentList(SqlSessionTemplate sqlSession, Attachment at) {
+		return sqlSession.update("boardMapper.updateAttachmentList", at);
+	}
+	
 }

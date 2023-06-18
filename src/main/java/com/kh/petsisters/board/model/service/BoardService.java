@@ -36,9 +36,16 @@ public interface BoardService {
 
 	ArrayList<Board> selectBottomList1();
 
-	ArrayList<Board> selectMypetList();
-	
 	// 자유게시판 수정하기 서비스
 	Board selectBoardInUpdate(int bno);
+	
+	// 자유게시글 수정하기 서비스
+	int updateBoard(Board b);
+	
+	// 기존 첨부파일 STATUS = 'N' 변경 서비스
+	int deleteAttaAll(int boardNo);
+	
+	// 첨부파일 수정하기 서비스
+	int updateAttachmentList(Attachment at);
 	
 }

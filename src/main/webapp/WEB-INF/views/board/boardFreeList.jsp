@@ -16,7 +16,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <jsp:include page="../common/common.jsp" />
 <link rel="stylesheet"
-	href="/resources/css/reservation/reservationListPetsiter.css">
+	href="/resources/css/board/boardFreeList.css">
 <!-- dateRangePicker-->
 <link rel="stylesheet" type="text/css"
 	href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
@@ -49,8 +49,8 @@
 							<h2 class="tit_snb">My Page</h2>
 							<div class="inner_sub">
 								<ul class="list_menu">
-									<li class="on"><a href="freelist.bo">자유게시판</a></li>
-									<li><a href="mypetlist.bo">강아지 자랑</a></li>
+									<li class="on"><a href="freeList.bo">자유게시판</a></li>
+									<li><a href="mypetList.bo">강아지 자랑</a></li>
 								</ul>
 							</div>
 						</div>

@@ -59,18 +59,9 @@
                                       <input type="hidden" value="${b.categoryMain}" name="categoryMain">
                                       <input type="hidden" value="${b.categorySub}" name="categorySub">
                                       <input type="hidden" value="${loginUser.userNo}" name="userNo">
-                                    
-                                    	<!--  
-		                                  <div class="selectCategory">
-		                                    <label for="category">카테고리 :&nbsp;</label>
-	                                      <select id="category" name="categorySub">
-	                                        <option value="1">견종정보</option>
-	                                        <option value="2">이야기방</option>
-	                                        <option value="3">반려견 정보</option>
-	                                      </select>
-		                                  </div>
-	                                  -->
-	                                  
+                                      <input type="hidden" value="${b.boardNo}" name="boardNo">
+                                      <!--<input type="hidden" value="${at.fileNo}" name="fileNo">-->
+                                      
 									  <div>
 									  <p class="text-review">제목</p>
 									  <input type="text" class="boardTitle" name="boardTitle" placeholder="제목을 입력해주세요" required>
@@ -117,8 +108,8 @@
                               
                               
 	                              <!--전체후기보기-버튼-->
-	                             <button type="submit" class="main-card-bottom-button" href="">
-	                               <p class="all-community">작성하기</p>
+	                             <button type="submit" class="main-card-bottom-button" onclick="location.href='update.bo'">
+	                               		작성하기
 	                             </button>
 	                          </form>
 		                               

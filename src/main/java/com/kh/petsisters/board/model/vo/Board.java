@@ -27,12 +27,14 @@ public class Board {
 	private String dogImg;
 	private String dogBreed;
 	private String dogGender;
+	private String dogFilePath;
 	
 	private String userName;
 	
 	private String originName;
 	private String changeName;
 	private String atFilePath;		// 보드 조회용 게시글 사진
+	private String filePath;
 	
 
 

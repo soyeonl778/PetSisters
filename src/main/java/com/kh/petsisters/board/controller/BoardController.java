@@ -51,27 +51,12 @@ public class BoardController {
 	
 	// 사진게시판 
 	@RequestMapping("mypetList.bo")
-	public String selectList(Model model) {
+	public ModelAndView mypetList(Board b,
+								@RequestParam(value="cPage", defaultValue="1") int currentPage,
+								ModelAndView mv) {
 		
-		ArrayList<Board> list = boardService.selectMypetList();
+		b.setCategoryMain(2);
 		
-		model.addAttribute("list", list);
-		
-		
-		return "board/boardMypetForm";
-	}
-	
-	
-	
-	// 자유게시판
-	@RequestMapping("freeList.bo")
-	public ModelAndView select(Board b,
-			@RequestParam(value="cPage", defaultValue="1") int currentPage, 
-			ModelAndView mv) {
-		
-		b.setCategoryMain(1);
-		b.setCategorySub(1);
-
 		int listCount = boardService.selectListCount(b);
 		
 		int pageLimit = 10;
@@ -83,6 +68,31 @@ public class BoardController {
 		
 		System.out.println(pi);
 		System.out.println(list);
+		
+		mv.addObject("pi", pi)
+		  .addObject("list", list)
+		  .setViewName("board/boardMypetList");
+		
+		return mv;
+	}
+	
+	
+	// 자유게시판
+	@RequestMapping("freeList.bo")
+	public ModelAndView select(Board b,
+										@RequestParam(value="cPage", defaultValue="1") int currentPage,
+										ModelAndView mv) {
+		
+		b.setCategoryMain(1);
+
+		int listCount = boardService.selectListCount(b);
+		
+		int pageLimit = 10;
+		int boardLimit = 6;
+		
+		PageInfo pi = Pagination.getPageInfo(listCount, currentPage, pageLimit, boardLimit);
+		
+		ArrayList<Board> list = boardService.selectList(pi, b);
 		
 		mv.addObject("pi", pi)
 		  .addObject("list", list)
@@ -197,6 +207,74 @@ public class BoardController {
 		}
 		
 		return mv;
+	}
+	
+	
+	// 업데이트 
+		@RequestMapping("update.bo")
+		public String updateBoard(Board b,
+				@RequestParam("upfile") ArrayList<MultipartFile> upfileList,
+				   				    HttpSession session,
+				   				    Model model) {
+			
+			
+			int result1 = 1;
+			int result2 = 1;
+			String filePath = "/resources/upFiles/board_upfiles/";
+			
+			result1 = boardService.updateBoard(b);
+			
+			
+			// ------------------- 다중첨부파일 부분 -------------------
+			int boardNo = b.getBoardNo();
+			result2 = boardService.deleteAttaAll(boardNo);
+			
+		    if(upfileList.get(0).getSize() > 0) {
+		    	
+		    	
+		    	for(int i = 0; i < upfileList.size(); i++) {
+		    		
+		    		if (upfileList.get(i).getSize() > 0) {
+		    			
+		    			Attachment at = new Attachment();
+		    			
+		    			String changeName = saveFile(upfileList.get(i), session);
+		    			
+		    			// 펫시터 이미지 객체에 담기
+		    			at.setOriginName(upfileList.get(i).getOriginalFilename());
+		    			at.setChangeName(changeName);
+		    			at.setFilePath(filePath);
+		    			at.setRefBno(b.getBoardNo());
+		    			
+		    			result2 = boardService.updateAttachmentList(at);
+		    		}
+		    		
+		    	}
+		    	
+		    	
+		    	
+		    }
+		    
+		   
+		    
+		    
+		    int result = result1 * result2;
+		    
+		    if(result > 0) { // 등록 성공
+		    	
+				// 일회성 알람문구 담아서 프로필 상세페이지로 url 재요청
+				session.setAttribute("alertMsg", "게시글 수정 완료");
+				
+				return "redirect:/.bo";
+		    	
+			} else { // 수정 실패
+				
+				// 에러 문구 일회성 알람 띄우기
+				session.setAttribute("alertMsg", "게시글 수정 실패");
+			
+				return "redirect:/.bo";
+			}
+
 	}
 	
 	

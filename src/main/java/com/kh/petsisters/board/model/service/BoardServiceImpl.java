@@ -72,13 +72,23 @@ public class BoardServiceImpl implements BoardService {
 
 
 	@Override
-	public ArrayList<Board> selectMypetList() {
-		return boardDao.selectMypetList(sqlSession);
+	public Board selectBoardInUpdate(int bno) {
+		return boardDao.selectBoardInUpdate(sqlSession, bno);
+	}
+	
+	@Override
+	public int updateBoard(Board b) {
+		return boardDao.updateBoard(sqlSession, b);
 	}
 
 	@Override
-	public Board selectBoardInUpdate(int bno) {
-		return boardDao.selectBoardInUpdate(sqlSession, bno);
+	public int deleteAttaAll(int boardNo) {
+		return boardDao.deleteAttaAll(sqlSession, boardNo);
+	}
+	
+	@Override
+	public int updateAttachmentList(Attachment at) {
+		return boardDao.updateAttachmentList(sqlSession, at);
 	}
 
 
