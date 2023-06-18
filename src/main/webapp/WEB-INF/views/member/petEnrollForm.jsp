@@ -63,7 +63,6 @@
                 </div>
                 <form action="petInsert.me" method="post" id="petEnrollForm">
                 	<input type="hidden" name="userNo" value="${ loginUser.userNo }">
-	               <hr class="hrhr">
                   <div class="sub2">
                     <div class="enrollWrapper">
                       <p>
