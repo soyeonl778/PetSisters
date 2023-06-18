@@ -53,8 +53,8 @@
 				    </div>
             <!-- 사이드 메뉴바 끝 -->
 
-            <!-- 본문 영역-->
-            <div id="viewOrderList" class="page_section section_orderlist">
+             <!-- 본문 영역-->
+             <div id="viewOrderList" class="page_section section_orderlist">
               <div class="page_section section_destination">
                 <!-- 이 영역 안에서 페이지 작업 하시면 됩니다 -->
                 <!--<div style="height: 1000px; background-color: beige;"></div> -->
@@ -72,41 +72,48 @@
                     <table id="boardList" class="table table-hover">
                       <thead>
                         <tr>
-                          <th>내용</th>
-                          <th>날짜</th>
+                          <th width="70%">제목</th>
+                          <th width="10%">조회수</th>
+                          <th width="20%">날짜</th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
-                          <td>이게 맞아?</td>
+                          <td>제목입니다 반갑습니다 제목입니다 반갑습니다</td>
+                          <td>15</td>
                           <td>2023-05-29</td>
                         </tr>
                         <tr>
-                          <td>아닐걸?</td>
+                          <td>제목입니다 반갑습니다 제목입니다 반갑습니다</td>
+                          <td>15</td>
                           <td>2023-05-29</td>
                         </tr>
                         <tr>
-                          <td>이게 맞아?</td>
+                          <td>제목입니다 반갑습니다 제목입니다 반갑습니다</td>
+                          <td>15</td>
                           <td>2023-05-29</td>
                         </tr>
                         <tr>
-                          <td>맞을걸?</td>
+                          <td>제목입니다 반갑습니다 제목입니다 반갑습니다</td>
+                          <td>15</td>
                           <td>2023-05-29</td>
                         </tr>
                         <tr>
-                          <td>하기시룸</td>
+                          <td>제목입니다 반갑습니다 제목입니다 반갑습니다</td>
+                          <td>15</td>
                           <td>2023-05-29</td>
                         </tr>
                         <tr>
-                          <td>이게 맞아?</td>
+                          <td>제목입니다 반갑습니다 제목입니다 반갑습니다</td>
+                          <td>15</td>
                           <td>2023-05-29</td>
                         </tr>
                         <tr>
-                          <td>맞다고쳐?</td>
+                          <td>제목입니다 반갑습니다 제목입니다 반갑습니다</td>
+                          <td>15</td>
                           <td>2023-05-29</td>
                         </tr>
                       </tbody>
-
                     </table>
                   </div>
                 </div>
