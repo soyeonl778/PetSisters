@@ -39,7 +39,7 @@
                 <br/>
                 
                 <div class="inquiryEnrollForm">
-                  <form action="insert.in" method="post">
+                  <form action="insert.in" method="post" enctype="multipart/form-data">
                   	<input type="hidden" name="userNo" value="${loginUser.userNo}">
                     <table id="inquiryEnrollForm" style="text-align: center;">
                         <tr>
@@ -56,7 +56,7 @@
                           <th>첨부파일</th>
                           <td>
                             <div class="fileSection preview" style="text-align: left;">
-                              	<input type="file" name="file" id="btnAtt">
+                              	<input type="file" name="upfile" id="btnAtt">
                             	<div id="att_zone"></div>
 	                            <span>
 	                              · 30MB 이하의 이미지만 업로드 가능합니다. <br/>

@@ -57,6 +57,8 @@ public interface PetSitterService {
 	// 펫시터 찜 갯수 조회
 	int selectLikeCount(int refPno);
 	
+	// 펫시터 예약 불가능일 등록 요청
+//	int insertImpoDate()
 }
 
 

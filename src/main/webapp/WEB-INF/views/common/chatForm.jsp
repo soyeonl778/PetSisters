@@ -316,8 +316,23 @@
                   <div class="moreOption" style="display: none;">
                     <div class="optionItem">채팅방 나가기</div>
                   </div>
+                  <div class="chatExitSection" style="display: none;">
+                    <div class="chatExitArea">
+                      <div>
+                        <div class="chatExit">
+                          <div class="chatExitContent">확인 버튼을 누르면 채팅방을 나갑니다.<br>정말 나가시겠어요?</div>
+                          <div class="button-wrapper">
+                            <button class="cancelBtn">취소</button>
+                            <button class="okButton">확인</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
+
+
 
               <div class="chatContentArea">
                 <div class="dayArea">
@@ -465,31 +480,33 @@
 <!---------------------------------- 채팅방 목록 불러오기 --------------------------------->
 <script>
 
-  // 화면 로딩 된 후
-  $(window).on('load', function(){
+  // 채팅방 선택 css 를 위한 전역변수
+  let selectedRoom = null;
 
-    getRoomList();
-        
-    // 2초에 한번씩 채팅 목록 불러오기(실시간 알림 전용)
-    setInterval(function(){
-      // 방 목록 불러오기
+    // 화면 로딩 된 후
+    $(window).on('load', function(){
+
       getRoomList();
-      
-      /*
-      // 읽지 않은 메세지 총 갯수가 0개가 아니면
-      if(countAll != 0){
-        // 채팅 icon 깜빡거리기
-        $('.chatIcon').addClass('iconBlink');
-        play();
-      }else{
-        // 깜빡거림 없애기
-        $('.chatIcon').removeClass('iconBlink');
-      }
-      */
-    },2000);
-  });
+          
+      // 2초에 한번씩 채팅 목록 불러오기(실시간 알림 전용)
+      setInterval(function(){
+        // 방 목록 불러오기
+        getRoomList();
+        
+        /*
+        // 읽지 않은 메세지 총 갯수가 0개가 아니면
+        if(countAll != 0){
+          // 채팅 icon 깜빡거리기
+          $('.chatIcon').addClass('iconBlink');
+          play();
+        }else{
+          // 깜빡거림 없애기
+          $('.chatIcon').removeClass('iconBlink');
+        }
+        */
+      },2000);
+    });
 
-  
   // 채팅 방 목록 가져오기
   function getRoomList() {
 
@@ -588,6 +605,11 @@
               // 채팅목록하나를 chattingArea 에 추가
               $chattingArea.append($chatting);
 
+              // 채팅목록이 모두 생성된 후에 선택된 방의 정보와 일치하는 요소에 selected 클래스 추가
+              if (selectedRoom && parseInt(selectedRoom.roomNo) === data[i].roomNo) {
+                $chatting.addClass("selected");
+              }
+
             }
 
             // ---------------- 자신이 상대방 입장일 때 ----------------
@@ -633,6 +655,11 @@
               // 채팅목록하나를 chattingArea 에 추가
               $chattingArea.append($chatting);
 
+              // 채팅목록이 모두 생성된 후에 선택된 방의 정보와 일치하는 요소에 selected 클래스 추가
+              if (selectedRoom && parseInt(selectedRoom.roomNo) === data[i].roomNo) {
+                $chatting.addClass("selected");
+              }
+
             }
 
             // chattingArea 를 chatList 에 추가
@@ -662,19 +689,20 @@
     });
   }
 
-</script>
 
 
 
 
 
 
-<!---------------------------------- 채팅방 열기 --------------------------------->
-<script>
+
+  // ---------------------------------- 채팅방 열기 ---------------------------------
+
 
   // 필요한 전역변수
   let websocket;
   let roomNo;
+
 
   // ---------------- 웹소켓 관련 ----------------
 
@@ -800,6 +828,16 @@
   // ---------------- 채팅 방 클릭 시 => 우측 chatRightArea 열어주기 ----------------
   $(document).on("click", ".enterRoomList",function(){
     
+    // 기존에 선택된 방의 selected 클래스 제거
+    $(".enterRoomList.selected").removeClass("selected");
+    // 현재 선택된 방의 selected 클래스 추가
+    $(this).addClass("selected");
+
+    // 선택된 방의 정보를 전역 변수에 저장
+    selectedRoom = {
+      roomNo: $(this).attr("rno")
+    };
+
     // 클릭한 chattingArea 로부터 이미지, 닉네임, 펫시터등급 가져오기
     var rno = $(this).attr("rno");
     var profileImageSrc = $(this).find(".profileImage").attr("src");
@@ -1011,22 +1049,55 @@
 
     // "채팅방 나가기" 버튼 클릭 시 이벤트 핸들러
     $('.optionItem').on('click', function() {
+
+        // chatExitSection을 보이도록 설정
+        $('.chatExitSection').show();
+    });
+
       // chatNormalRoom 섹션을 숨기고 chatEmptyBox 섹션을 표시
+      
+    // Ajax 요청을 보내는 부분
+    $('.okButton').on('click', function() {
+
+      // 초기화면으로 변경
       $('.chatNormalRoom').hide();
       $('.chatEmptyBox').css('display', 'flex');
+      $('.chatExitSection').hide();
 
       if (websocket.readyState === WebSocket.OPEN) {
         websocket.close(); 
         console.log("WebSocket 연결 해제 완료");
       }
-
-      // // 콘솔에 WebSocket 연결 상태 출력
-      // if(websocket.readyState = 2) {
-      //   console.log("WebSocket 연결 해제 완료");
-      // }
-
+      
+      // ----- 채팅방 나가기 ajax 나중에 구현예정 -----
+      // $.ajax({
+      //   url: '채팅방_삭제_URL', // 채팅방 삭제를 처리하는 서버의 URL을 입력해주세요
+      //   type: 'POST', // 요청 방식을 선택 (GET, POST 등)
+      //   dataType: 'json', // 서버 응답의 데이터 타입 (json, xml 등)
+      //   data: {
+      //     chatRoomId: '채팅방_ID' // 삭제할 채팅방의 ID를 전달해주세요
+      //   },
+      //   success: function(response) {
+      //     // 성공적으로 요청을 처리한 경우 실행할 코드
+      //     console.log('채팅방이 삭제되었습니다.');
+      //   },
+      //   error: function(xhr, status, error) {
+      //     // 요청 처리 중에 에러가 발생한 경우 실행할 코드
+      //     console.error('채팅방 삭제 실패:', error);
+      //   }
+      // });
     });
 
+    // cancelBtn 클릭 시 이벤트 핸들러
+    $('.cancelBtn').on('click', function() {
+      // chatExitSection을 숨김
+      $('.chatExitSection').hide();
+    });
+    
+    // // 콘솔에 WebSocket 연결 상태 출력
+    // if(websocket.readyState = 2) {
+    //   console.log("WebSocket 연결 해제 완료");
+    // }
 
   // ---------------- 메세지 보내기 이벤트 ----------------
     
@@ -1073,12 +1144,8 @@
     $('.chatInput').keyup(checkTextareaLength);
 
   });
-
-
-
-
-
 </script>
+
 
   <!-- JavaScript Bundle with Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>

@@ -30,7 +30,8 @@ public class InquiryDao {
 		
 		RowBounds rowBounds = new RowBounds(offset, limit);
 		
-		return sqlSession.selectList("inquiryMapper.selectList", userNo, rowBounds);
+		List<Inquiry> list = sqlSession.selectList("inquiryMapper.selectList", userNo, rowBounds);
+		return list;
 	}
 	
 	public int insertInquiry(SqlSessionTemplate sqlSession, Inquiry i) {
@@ -55,4 +56,5 @@ public class InquiryDao {
 	public int insertReply(SqlSessionTemplate sqlSession, CSReply r) {
 		return sqlSession.insert("inquiryMapper.insertReply", r);
 	}
+	
 }

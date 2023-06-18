@@ -30,4 +30,5 @@ public interface InquiryService {
 	
 	// 댓글 작성 서비스 (Ajax)
 	int insertReply(CSReply r);
+
 }

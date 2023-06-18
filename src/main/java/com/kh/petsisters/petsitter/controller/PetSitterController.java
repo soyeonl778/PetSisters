@@ -22,6 +22,7 @@ import com.kh.petsisters.common.template.Pagination;
 import com.kh.petsisters.member.model.vo.Dog;
 import com.kh.petsisters.member.model.vo.Member;
 import com.kh.petsisters.petsitter.model.service.PetSitterService;
+import com.kh.petsisters.petsitter.model.vo.ImpossibleDate;
 import com.kh.petsisters.petsitter.model.vo.PetSitter;
 import com.kh.petsisters.petsitter.model.vo.PetSitterImg;
 import com.kh.petsisters.petsitter.model.vo.PetSitterLike;
@@ -104,21 +105,21 @@ public class PetSitterController {
 	public String updatePetSitter(PetSitter p,
 		  @RequestParam("upfile") ArrayList<MultipartFile> upfileList,
 		  @RequestParam(value="delete", required = false) ArrayList<Integer> deleteList,
+		  @RequestParam(value="impoDate", required = false) ArrayList<String> impoDateList,
 								  HttpSession session,
 			                      Model model) {
 		
 	    int result2 = 1;
 	    String filePath = "/resources/upFiles/petsitter_upfiles/";
-    		
+	    
 	    // 프로필폼에서 기존 이미지 파일을 삭제할 경우
 	    if(deleteList != null) {
 	    	
-		    // 삭제할 fileNo 이 담긴 리스트를 보내면서 삭제 요청
-		    result2 = petSitterService.deletePetSitterImg(deleteList);
+	    	// 삭제할 fileNo 이 담긴 리스트를 보내면서 삭제 요청
+	    	result2 = petSitterService.deletePetSitterImg(deleteList);
 	    }
-
+    		
 		// ------------ 새로운 첨부파일 -------------
-
     	// 펫시터 이미지 배열 생성
 	    ArrayList<PetSitterImg> newList = new ArrayList<>();
 
@@ -146,6 +147,39 @@ public class PetSitterController {
 	    	// 펫시터 프로필 다중파일 등록 요청
 	    	result2 = petSitterService.insertPetSitterImg(newList);
 	    }
+	    
+	    
+	    
+	    // ------------ 예약 불가능일 -------------
+	    // 예약 불가능일 배열 생성
+	    ArrayList<String> newDateList = new ArrayList<>();
+	    
+	    // 새로 넘어온 날짜가 존재할 경우
+	    if(impoDateList.get(0).length() > 0) {
+	    	
+		    // impoDateList의 크기 만큼 반복문 실행
+	    	for(int i = 0; i < impoDateList.size(); i++) {
+	    		
+	    		// 불가능일 객체 생성
+	    		ImpossibleDate impoDate = new ImpossibleDate();
+	    		
+	    		// 불가능일 객체에 담기
+	            impoDate.setImpoDate(impoDateList.get(i));
+	            impoDate.setRefPno(p.getPetSitterNo());
+	            
+	            // newDateList.add(i, impoDate);
+	    	}
+	    	// 예약 불가능일 등록 요청 (INSERT)
+//	    	result2 = petSitterService.insertImpoDate(newDateList);
+	    }
+	    
+	    // 프로필폼에서 기존 예약 불가능일을 수정할 경우
+	    if(impoDateList != null) {
+	    	
+		    // 리스트를 보내면서 수정 요청 (UPDATE)
+//		    result2 = petSitterService.updateImpoDate(impoDateList);
+	    }
+	    
 	    
 	    // 펫시터 프로필 수정용 펫시터 객체 UPDATE 요청
 		int result1 = petSitterService.updatePetSitter(p);

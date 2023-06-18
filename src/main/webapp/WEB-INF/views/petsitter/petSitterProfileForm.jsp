@@ -11,8 +11,19 @@
   <link rel="stylesheet" href="/resources/css/petsitter/petSitterProfileForm.css">
   <jsp:include page="../common/common.jsp" />
 
+
   <!-- 파일 첨부 -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  
+  <!-- datepicker 캘린더 -->
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ui-multidatespicker/1.6.6/jquery-ui.multidatespicker.js" integrity="sha512-shDVoXhqpazAEKzSzJQTn5mAtynJ5eIl8pNX2Ah25/GZvZWDEJ/EKiVwfu7DGo8HnIwxlbu4xPi+C0SsHWCCNw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-ui-multidatespicker/1.6.6/jquery-ui.multidatespicker.css" integrity="sha512-VXbqGGD29gdYg6HSSzLd6+eVwBznGTrVoIqZOruvkIbuWSZNDjg/I4p2/zKGMllL5dxzj1PoNoh0dqX1dWxBsQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-ui-multidatespicker/1.6.6/jquery-ui.multidatespicker.min.css" integrity="sha512-mIbgL1BBPonQ8vE6IE3m12DOgjnwObnVHk4C2k3S7yyrgd3ctznEDHnz4871ioTgh7QIy0imgyLeNFk+PehRSw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ui-multidatespicker/1.6.6/jquery-ui.multidatespicker.min.js" integrity="sha512-mMP7O0G5Vv01th+kpYux7RbD89Mx/iQnIvxcKdctiPyADgJzacfQJ8k2AsB8695AAuR2uPuxk7dawb1eehjcuQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
   <!-- 폰트어썸 아이콘 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
@@ -21,25 +32,6 @@
 </head>
 
 <body>
-
-	<script>
-		
-    $(document).ready(function() {
-
-      // ------------------------ 이용 가능 서비스 ------------------------
-      
-      var psService = "<c:out value='${p.petSitterService}'/>"; // 값을 JavaScript 변수에 할당
-		  var psServiceArr = psService.split(","); // 쉼표(,)로 분할하여 배열로 변환
-
-      // 이용 가능 서비스 배열값 체크박스 체크하기
-      for(var i = 0; i < psServiceArr.length; i++) {
-        
-        $("input:checkbox[name='petSitterService'][value='"+ psServiceArr[i] +"']").prop("checked", true);
-      }
-      
-    });
-	    
-	</script>
 
   <jsp:include page="../common/header.jsp" />
 
@@ -223,7 +215,7 @@
                       <br>
                       <div class="dateInput">
                         <h5>예약 불가능한 날짜 선택</h5>
-                        <input type="date">
+                        <input type="text" class="datepicker" id="impoDate" name="impoDate" placeholder="예약 불가능한 날짜">
                       </div>
 
                       <div align="center" class="formBtn">
@@ -246,7 +238,65 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 
-  <script>
+  <script type="text/javascript">
+
+    $(function() {
+
+      // ------------------------ datepicker 캘린더 ------------------------
+      $.datepicker.setDefaults({
+        dateFormat: 'yy/mm/dd',
+        prevText: '이전 달',
+        nextText: '다음 달',
+        monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+        monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+        dayNames: ['일', '월', '화', '수', '목', '금', '토'],
+        dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
+        dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+        showMonthAfterYear: true,
+        yearSuffix: '년'
+      });
+
+      $.datepicker._selectDateOverload = $.datepicker._selectDate;
+      $.datepicker._selectDate = function (id, dateStr) {
+          var target = $(id);
+          var inst = this._getInst(target[0]);
+          if (target[0].multiDatesPicker != null) {
+              inst.inline = true;
+              $.datepicker._selectDateOverload(id, dateStr);
+              inst.inline = false;
+              target[0].multiDatesPicker.changed = false;
+          } else {
+              $.datepicker._selectDateOverload(id, dateStr);
+              target.multiDatesPicker.changed = false;
+          }
+          this._updateDatepicker(inst);
+      };
+
+      $(".datepicker").multiDatesPicker({
+        dateFormat: 'yy/mm/dd',
+        minDate: 0
+      });
+
+    });
+
+
+
+    $(document).ready(function() {
+
+      // ------------------------ 이용 가능 서비스 ------------------------
+
+      var psService = "<c:out value='${p.petSitterService}'/>"; // 값을 JavaScript 변수에 할당
+      var psServiceArr = psService.split(","); // 쉼표(,)로 분할하여 배열로 변환
+
+      // 이용 가능 서비스 배열값 체크박스 체크하기
+      for(var i = 0; i < psServiceArr.length; i++) {
+        
+        $("input:checkbox[name='petSitterService'][value='"+ psServiceArr[i] +"']").prop("checked", true);
+      }
+
+    });
+
+
 
     // ------------------------ 첨부 파일 ------------------------
     var maxAppend = 1;

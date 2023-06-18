@@ -35,10 +35,10 @@
                 <!--<div style="height: 1000px; background-color: beige;"></div> -->
                 <div id="my_contents">
                   <div class="btn_bo">
-                    <button type="button" class="btn_bo2" onclick="location.href='myBoard.me';">내 게시글</button>
+                    <button type="button" class="btn_bo2" onclick="goPage('myBoard.me')">내 게시글</button>
                   </div>
                   <div class="btn_re">
-                    <button type="button" class="btn_re2" onclick="location.href='myReply.me';">내 댓글</button>
+                    <button type="button" class="btn_re2" onclick="goPage('myReply.me')">내 댓글</button>
                   </div>
                 </div>
                 <div id="main_content">
@@ -47,41 +47,48 @@
                     <table id="boardList" class="table table-hover">
                       <thead>
                         <tr>
-                          <th>내용</th>
-                          <th>날짜</th>
+                          <th width="70%">제목</th>
+                          <th width="10%">조회수</th>
+                          <th width="20%">날짜</th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
-                          <td>이게 맞아?</td>
+                          <td>제목입니다 반갑습니다 제목입니다 반갑습니다</td>
+                          <td>15</td>
                           <td>2023-05-29</td>
                         </tr>
                         <tr>
-                          <td>아닐걸?</td>
+                          <td>제목입니다 반갑습니다 제목입니다 반갑습니다</td>
+                          <td>15</td>
                           <td>2023-05-29</td>
                         </tr>
                         <tr>
-                          <td>이게 맞아?</td>
+                          <td>제목입니다 반갑습니다 제목입니다 반갑습니다</td>
+                          <td>15</td>
                           <td>2023-05-29</td>
                         </tr>
                         <tr>
-                          <td>맞을걸?</td>
+                          <td>제목입니다 반갑습니다 제목입니다 반갑습니다</td>
+                          <td>15</td>
                           <td>2023-05-29</td>
                         </tr>
                         <tr>
-                          <td>하기시룸</td>
+                          <td>제목입니다 반갑습니다 제목입니다 반갑습니다</td>
+                          <td>15</td>
                           <td>2023-05-29</td>
                         </tr>
                         <tr>
-                          <td>이게 맞아?</td>
+                          <td>제목입니다 반갑습니다 제목입니다 반갑습니다</td>
+                          <td>15</td>
                           <td>2023-05-29</td>
                         </tr>
                         <tr>
-                          <td>맞다고쳐?</td>
+                          <td>제목입니다 반갑습니다 제목입니다 반갑습니다</td>
+                          <td>15</td>
                           <td>2023-05-29</td>
                         </tr>
                       </tbody>
-
                     </table>
                   </div>
                 </div>

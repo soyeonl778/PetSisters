@@ -46,8 +46,8 @@
                       <div>
                       	<label>사진</label>
                       </div>
+                      <img id="preview_img" class="profile_img" src="${ loginUser.filePath }" />
                       <div class="file_change">
-                        <img id="preview_img" class="profile_img" src="${ loginUser.filePath }" />
                         <div class="profile_con">
                         	<label id="file_inputcss" for="file_input" class="img_btn">사진변경</label>
 							<input type="file" name="upfile" id="file_input" style="display: none;">

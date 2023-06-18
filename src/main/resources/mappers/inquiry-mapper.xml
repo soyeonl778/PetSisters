@@ -10,6 +10,7 @@
 		<result column="CREATE_DATE" property="createDate" />
 		<result column="STATUS" property="status" />
 		<result column="USER_NO" property="userNo" />
+		<result column="COUNT" property="count" />
 		
 		<result column="FILE_PATH" property="filePath" />
 	</resultMap>
@@ -21,6 +22,7 @@
 		<result column="STATUS" property="status" />
 		<result column="USER_NO" property="userNo" />
 		<result column="REF_INO" property="refIno" />
+		<result column="USER_NICKNAME" property="userNickname" />
 	</resultMap>
 	
 	<!-- 1:1 문의글 총 개수 구하는 쿼리문 -->
@@ -32,13 +34,15 @@
 	
 	<!-- 1:1 문의글 리스트를 구해주는 쿼리문 -->
 	<select id="selectList" resultMap="inquiryResultSet" parameterType="member">
-		SELECT I_NO
+			SELECT I_NO
 			 , I_TITLE
 			 , TO_CHAR(CREATE_DATE, 'YYYY-MM-DD') AS "CREATE_DATE"
 			 , USER_NO
 	 	  FROM INQUIRY
 	 	 WHERE STATUS = 'Y'
 	 	   AND USER_NO = #{userNo}
+         GROUP BY I_NO, I_TITLE, CREATE_DATE, USER_NO
+         ORDER BY I_NO DESC
 	</select>
 	
 	<!-- 1:1문의글 작성용 쿼리문 -->
@@ -77,11 +81,13 @@
 	
 	<!-- 댓글 리스트 조회용 쿼리문 -->
 	<select id="selectReplyList" parameterType="_int" resultMap="csreplyResultSet">
-		SELECT
-		REP_NO, REP_CONTENT, TO_CHAR(CREATE_DATE, 'YYYY-MM-DD') AS "CREATE_DATE"
-		  FROM CS_REPLY
-		 WHERE STATUS = 'Y'
-		   AND REF_INO = #{inquiryNo}
+		SELECT M.USER_NICKNAME,
+               C.REP_CONTENT, 
+               TO_CHAR(C.CREATE_DATE, 'YYYY-MM-DD') AS "CREATE_DATE"
+		  FROM CS_REPLY C
+          JOIN MEMBER M ON (M.USER_NO = C.USER_NO)
+		 WHERE C.STATUS = 'Y'
+		   AND C.REF_INO = #{inquiryNo}
 		 ORDER BY REP_NO DESC
 	</select>
 	
@@ -90,13 +96,11 @@
 		INSERT INTO CS_REPLY(REP_NO
 						, REP_CONTENT
 						, USER_NO
-						, REF_INO
-						, CREATE_DATE)
+						, REF_INO)
 		  		   VALUES(SEQ_CS_REPLY.NEXTVAL
 		  		   		, #{repContent}
 		  		   		, #{userNo}
-		  		   		, #{inquiryNo}
-		  		   		, #{createDate})
+		  		   		, #{refIno})
 	</insert>
 	
 </mapper>

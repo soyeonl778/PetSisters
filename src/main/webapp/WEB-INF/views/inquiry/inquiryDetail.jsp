@@ -54,7 +54,7 @@
                 </c:if>
                 
                 <div class="inquiryDetail">
-                    <table id="inquiryDetail" style="text-align: center;">
+                    <table id="inquiryDetail">
                         <tr>
                             <th>제목</th>
                             <td>
@@ -82,7 +82,7 @@
 						            	첨부파일이 없습니다.
 						        </c:if>
 						        <c:if test="${not empty i.filePath}">
-						            <a href="${i.filePath}">${i.filePath}</a>
+						            <img style="text-align:left;" id="imgView" src="${i.filePath}">
 						        </c:if>
 						    </td>
 						</tr>
@@ -90,9 +90,7 @@
                     <br/>
                 </div>
                 <br/>
-                <form id="postForm" action="" method="post">
-	            	<input type="hidden" name="userNo" value="${ loginUser.userNo }">
-	            </form>
+                
                 <div class="replyDetail">
                 <table id="replyArea" class="table" align="center">
                  	<thead>
@@ -128,59 +126,69 @@
   </div>
   
   <script>
-  	$(function() {
-  		selectReplyList();
-  	});
+  $(function() {
+		selectReplyList();
+	});
   	
-  	function addReply() {
-  		if($("#content").val().trim().length != 0) {
-  			$.ajax({
-  				url: "rinsert.in",
-  				data: {
-  					repNo : ${r.repNo},
-  					repContent : $("#content").val(),
-  					refIno : ${r.refIno},
-  					createDate : ${r.createDate}
-  				}),
-  				type: "post",
-  				success: function(result) {
-  					if(result == "success") {
-  						selectReplyList();
-  						$("#content").val("");
-  					}
-  				},
-  				error: function() {
-  					console.log("댓글 작성이 안돼요.");
-  				}
-  			});
-  		} else {
-  			alert("알림", "등록할 내용이 없습니다. 내용을 입력해주세요.");
-  		}
-  	}
-  	
-  	function selectReplyList() {
-  		$.ajax({
-  			url: "rlist.in",
-  			data: {inquiryNo: ${r.inquiryNo}},
-  			type: "get",
-  			success: function(result) {
-  				let resultStr = "";
-  				for(let i = 0; i < result.length; i++) {
-  					resultStr += "<tr>"
-  							   + "<td>" + result[i].repNo + "</td>"
-  							   + "<td>" + result[i].repContent + "</td>"
-  							   + "<td>" + result[i].createDate + "</td>"
-  							   + "</tr>";
-  				}
-  				
-  				$("#replyArea>tbody").html(resultStr);
-  				#("#rcount").text(result.length);
-  			},
-  			error: function() {
-  				console.log("댓글 목록 조회가 안돼요.");
-  			}
-  		});
-  	}
+  function addReply() { // 댓글 작성용 ajax
+		
+		// form 태그 내에서는 required 속성이 적용되지만,
+		// form 태그 밖에서는 required 속성이 소용없다!!
+		// => 댓글 내용이 있는지 먼저 조건검사 진행 (추가적으로 공백과 관련한 로직까지 적용)
+		
+		if($("#replyContent").val().trim().length != 0) {
+			
+			$.ajax({
+				url : "rinsert.in",
+				data : {
+					refIno : ${ i.inquiryNo },
+					repContent : $("#replyContent").val(),
+					userNo : "${ loginUser.userNo }"
+				},
+				type : "post", 
+				success : function(result) {
+					
+					if(result == "success") {
+						selectReplyList();
+						$("#replyContent").val("");
+					}
+				},
+				error : function() {
+					console.log("댓글 작성용 ajax 통신 실패!");
+				}
+			});
+			
+		} else {
+			alertify.alert("알림", "댓글 작성 후 등록 요청해주세요.");
+		}
+	}
+	
+	function selectReplyList() { // 해당 게시글에 딸린 댓글리스트 조회용 ajax
+		
+		$.ajax({
+			url : "rlist.in",
+			data : {inquiryNo : ${i.inquiryNo}},
+			type : "get",
+			success : function(result) {
+				
+				let resultStr = "";
+				
+				for(let i = 0; i < result.length; i++) {
+					resultStr += "<tr>"
+							   + 	"<td>" + result[i].userNickname + "</td>"
+							   + 	"<td>" + result[i].repContent + "</td>"
+							   + 	"<td>" + result[i].createDate + "</td>"
+							   + "</tr>";
+				}
+				
+				$("#replyArea>tbody").html(resultStr);
+				$("#rcount").text(result.length);
+			},
+			error : function() {
+				console.log("댓글리스트 조회용 ajax 통신 실패!");
+			}
+		});
+	}
   </script>
   
   <!-- Footer 영역 시작 -->
