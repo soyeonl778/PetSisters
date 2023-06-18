@@ -74,7 +74,7 @@
 					<a class="nav-link" href="main.bo">커뮤니티</a>
 					<ul class="toggle">
 						<li class="poppy"><a class="selectToggle" href="mypetList.bo">강아지 자랑</a></li>
-						<li><a class="freeBoard selectToggle" href="freeList.bo">자유게시판</a></li>
+						<li><a class="freeBoard selectToggle" href="freeList.bo?categoryMain=1">자유게시판</a></li>
 					</ul>
 				</li>
 				<li class="nav-item"><a class="nav-link" href="chatForm.ch">채팅</a></li>
