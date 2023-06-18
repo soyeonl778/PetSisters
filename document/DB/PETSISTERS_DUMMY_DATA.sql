@@ -138,7 +138,7 @@ INSERT INTO NOTICE VALUES (SEQ_NOTICE.NEXTVAL, '[기획성] 댕댕이의 여름나기',
 ------------    1:1문의 테이블 더미    ------------
 --------------------------------------------------
 INSERT INTO INQUIRY
-(I_NO, I_TITLE, I_CONTENT, CREATE_DATE, STATUS, USER_NO)
+(I_NO, I_TITLE, I_CONTENT, CREATE_DATE, STATUS, FILE_PATH, USER_NO)
 VALUES (SEQ_INQUIRY.NEXTVAL
            , '펫시팅 이후에 없던 상처가 생겼어요'
            , '제일 최근에 맡긴 펫시팅 이후로 안 보이던 상처를 발견했어요. <br/>
@@ -146,6 +146,7 @@ VALUES (SEQ_INQUIRY.NEXTVAL
              병원에 가볼 정도는 아니지만 케어하시면서 알아채지 못할 정도는 아니었을 것 같은데 무슨 일이었는지 좀 알고 싶어요.'
            , '2023-06-07'
            , 'Y'
+           , 'resources/upFiles/inquiry_upfiles/강아지젤리.png'
            , 7);
 INSERT INTO INQUIRY
 (I_NO, I_TITLE, I_CONTENT, CREATE_DATE, STATUS, USER_NO)
@@ -157,13 +158,14 @@ VALUES (SEQ_INQUIRY.NEXTVAL
            , 'Y'
            , 7);
 INSERT INTO INQUIRY
-(I_NO, I_TITLE, I_CONTENT, CREATE_DATE, STATUS, USER_NO)
+(I_NO, I_TITLE, I_CONTENT, CREATE_DATE, STATUS, FILE_PATH, USER_NO)
 VALUES (SEQ_INQUIRY.NEXTVAL
            , '아이 하네스 줄이 바뀐 것 같아요.'
            , '펫시팅 맡기면서 같이 드렸던 하네스줄이 있었는데, 원래 쓰던 게 아니라서요. <br/>
              두 개 색깔이 같아서 헷갈리신 것 같은데 펫시터 분께 개인적으로 연락 드릴 방법이 있을까요?'
            , SYSDATE
            , 'Y'
+           , 'resources/upFiles/inquiry_upfiles/하네스.jpg'
            , 7);
 INSERT INTO INQUIRY
 (I_NO, I_TITLE, I_CONTENT, CREATE_DATE, STATUS, USER_NO)
@@ -193,6 +195,46 @@ VALUES (SEQ_INQUIRY.NEXTVAL
            , SYSDATE
            , 'Y'
            , 8);
+           
+--------------------------------------------------
+------------    1:1문의 댓글 테이블 더미    ------------
+--------------------------------------------------
+INSERT INTO CS_REPLY
+(REP_NO, REP_CONTENT, USER_NO, REF_INO, CREATE_DATE)
+VALUES(SEQ_CS_REPLY.NEXTVAL
+         ,'안녕하세요, 예약 일정을 미룰 수 있는 지 문의 주셨습니다. 해당일에 펫시터 님의 일정이 없으시다면 취소 후 재예약 가능합니다. 저희 측에서 따로 미뤄드릴 수는 없는 점 양해 부탁드립니다. 감사합니다.'
+         ,1         
+         ,2
+         ,'2023-06-14');
+INSERT INTO CS_REPLY
+(REP_NO, REP_CONTENT, USER_NO, REF_INO, CREATE_DATE)
+VALUES(SEQ_CS_REPLY.NEXTVAL
+         ,'아... 알겠습니다. 예약이 일주일 밖에 안 남았는데 취소 수수료는 무조건 부담해야하는 거죠?'
+         ,7
+         ,2
+         ,'2023-06-14');
+INSERT INTO CS_REPLY
+(REP_NO, REP_CONTENT, USER_NO, REF_INO, CREATE_DATE)
+VALUES(SEQ_CS_REPLY.NEXTVAL
+         ,'안녕하세요, 재예약 시 수수료 부과와 관련해서 문의 주셨습니다. 예약 취소 후 재예약 확정 시 수수료는 환불됩니다. 감사합니다.'
+         ,1         
+         ,2
+         ,'2023-06-14');  
+      
+INSERT INTO CS_REPLY
+(REP_NO, REP_CONTENT, USER_NO, REF_INO, CREATE_DATE)
+VALUES(SEQ_CS_REPLY.NEXTVAL
+         ,'안녕하세요, 하네스 줄이 바뀌셨다고 문의 주셨는데 관련해서 해당 펫시터 님에게 전달해드렸습니다. 최대한 빨리 해결하실 수 있도록 늘 최선을 다하겠습니다. 감사합니다.'
+         ,1         
+         ,6
+         ,SYSDATE); 
+INSERT INTO CS_REPLY
+(REP_NO, REP_CONTENT, USER_NO, REF_INO, CREATE_DATE)
+VALUES(SEQ_CS_REPLY.NEXTVAL
+         ,'펫시터님께 연락 드렸습니다. 최대한 빠르고 정확하게 상황 파악 후 다시 연락 드리겠습니다. 감사합니다.'
+         ,7         
+         ,1
+         ,'2023-06-07');
  
 --------------------------------------------------
 ------------    펫시터찜 테이블 더미    ------------
