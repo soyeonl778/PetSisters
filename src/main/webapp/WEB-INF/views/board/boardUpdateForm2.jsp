@@ -15,7 +15,7 @@
       <!--<script src="/resources/js/tt.js"></script>-->
       
       
-      <title>임보영 완전 졸림 이거 못봄</title>
+      <title>수정하기 페이지 도달했니??</title>
       <!--폰트어썸-->
       <script src="https://kit.fontawesome.com/d3eb8276e5.js" crossorigin="anonymous"></script>
       <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> -->
@@ -64,14 +64,14 @@
                                       
 									  <div>
 									  <p class="text-review">제목</p>
-									  <input type="text" class="boardTitle" name="boardTitle" placeholder="제목을 입력해주세요" required>
+									  <input type="text" class="boardTitle" name="boardTitle" placeholder="제목을 입력해주세요" value="${b.boardTitle}" required>
 									  
 									  </div>
 	                                  <!-- 내용 -->
 	                                  <p class="text-review">내용</p>
 	                                  <a class="petsister-a">
 	                                    <div class="petsister">
-	                                        <textarea class="petsister-input" type="text" placeholder="내용을 입력해주세요"  name="boardContent" required></textarea>
+	                                        <textarea class="petsister-input" type="text" placeholder="내용을 입력해주세요" name="boardContent" required></textarea>
 	                                    </div>
 	                                  </a>
 	    								

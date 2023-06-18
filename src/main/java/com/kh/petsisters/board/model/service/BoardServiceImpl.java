@@ -111,7 +111,9 @@ public class BoardServiceImpl implements BoardService {
 	public int replyDelete(int repNo) {
 		return boardDao.replyDelete(sqlSession, repNo);
 	}
-
+	
+	
+	
 
 	
 

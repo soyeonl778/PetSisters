@@ -57,4 +57,5 @@ public interface BoardService {
 
 	int replyDelete(int repNo);
 	
+	
 }

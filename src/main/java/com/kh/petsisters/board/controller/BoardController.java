@@ -119,16 +119,6 @@ public class BoardController {
 	}
 
 	
-	// detail.bo 에서 포워딩이 안되어서, 넘어온 bno 값이 없음
-	@RequestMapping("updateForm.bo")
-	public String updateBoard(int bno) {
-		
-		
-		return "board/boardUpdateForm2";
-	}
-	
-	
-	
 	// 사진/자유게시판 공통 : 글작성 insert 기능
 	@RequestMapping("insert.bo")
 	public String insertFreeBoard(Board b,
@@ -212,73 +202,89 @@ public class BoardController {
 		return mv;
 	}
 	
+	// 업데이트 폼으로 이동
+	@RequestMapping("updateForm.bo")
+	public ModelAndView updateBoard(ModelAndView mv, int bno) {
+		
+		Board b = boardService.selectBoard(bno);
+		
+		//Attachment a = boardService.selectAttachment(bno);
+		
+		//System.out.println(a);
+		
+		mv.addObject("b", b).setViewName("board/boardUpdateForm2");
+		
+		return mv;
+	}
+	
 	
 	// 업데이트 
-		@RequestMapping("update.bo")
-		public String updateBoard(Board b,
-				@RequestParam("upfile") ArrayList<MultipartFile> upfileList,
-				   				    HttpSession session,
-				   				    Model model) {
+	@RequestMapping("update.bo")
+	public String updateBoard(Board b,
+			@RequestParam("upfile") ArrayList<MultipartFile> upfileList,
+			   				    HttpSession session,
+			   				    Model model) {
+		
+		
+		int result1 = 1;
+		int result2 = 1;
+		String filePath = "/resources/upFiles/board_upfiles/";
+		
+		result1 = boardService.updateBoard(b);
+		
+		
+		// ------------------- 다중첨부파일 부분 -------------------
+		int boardNo = b.getBoardNo();
+		result2 = boardService.deleteAttaAll(boardNo);
+		
+	    if(upfileList.get(0).getSize() > 0) {
+	    	
+	    	
+	    	for(int i = 0; i < upfileList.size(); i++) {
+	    		
+	    		if (upfileList.get(i).getSize() > 0) {
+	    			
+	    			Attachment at = new Attachment();
+	    			
+	    			String changeName = saveFile(upfileList.get(i), session);
+	    			
+	    			// 펫시터 이미지 객체에 담기
+	    			at.setOriginName(upfileList.get(i).getOriginalFilename());
+	    			at.setChangeName(changeName);
+	    			at.setFilePath(filePath);
+	    			at.setRefBno(b.getBoardNo());
+	    			
+	    			result2 = boardService.updateAttachmentList(at);
+	    		}
+	    		
+	    	}
+	    	
+	    	
+	    	
+	    }
+	    
+	   
+	    
+	    
+	    int result = result1 * result2;
+	    
+	    if(result > 0) { // 등록 성공
+	    	
+			// 일회성 알람문구 담아서 프로필 상세페이지로 url 재요청
+			session.setAttribute("alertMsg", "게시글 수정 완료");
 			
+			return "redirect:/.bo";
+	    	
+		} else { // 수정 실패
 			
-			int result1 = 1;
-			int result2 = 1;
-			String filePath = "/resources/upFiles/board_upfiles/";
-			
-			result1 = boardService.updateBoard(b);
-			
-			
-			// ------------------- 다중첨부파일 부분 -------------------
-			int boardNo = b.getBoardNo();
-			result2 = boardService.deleteAttaAll(boardNo);
-			
-		    if(upfileList.get(0).getSize() > 0) {
-		    	
-		    	
-		    	for(int i = 0; i < upfileList.size(); i++) {
-		    		
-		    		if (upfileList.get(i).getSize() > 0) {
-		    			
-		    			Attachment at = new Attachment();
-		    			
-		    			String changeName = saveFile(upfileList.get(i), session);
-		    			
-		    			// 펫시터 이미지 객체에 담기
-		    			at.setOriginName(upfileList.get(i).getOriginalFilename());
-		    			at.setChangeName(changeName);
-		    			at.setFilePath(filePath);
-		    			at.setRefBno(b.getBoardNo());
-		    			
-		    			result2 = boardService.updateAttachmentList(at);
-		    		}
-		    		
-		    	}
-		    	
-		    	
-		    	
-		    }
-		    
-		   
-		    
-		    
-		    int result = result1 * result2;
-		    
-		    if(result > 0) { // 등록 성공
-		    	
-				// 일회성 알람문구 담아서 프로필 상세페이지로 url 재요청
-				session.setAttribute("alertMsg", "게시글 수정 완료");
-				
-				return "redirect:/.bo";
-		    	
-			} else { // 수정 실패
-				
-				// 에러 문구 일회성 알람 띄우기
-				session.setAttribute("alertMsg", "게시글 수정 실패");
-			
-				return "redirect:/.bo";
-			}
+			// 에러 문구 일회성 알람 띄우기
+			session.setAttribute("alertMsg", "게시글 수정 실패");
+		
+			return "redirect:/.bo";
+		}
 
-	}
+}
+		
 		
 		
 	@ResponseBody
