@@ -21,11 +21,19 @@ INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user15', 'pass15', '펫시터15', '
 --------------------------------------------------
 -----------    펫시터 프로필 테이블 더미    -----------
 --------------------------------------------------
-INSERT INTO PETSITTER (P_NO, P_TITLE, P_CONTENT, P_SERVICE, CARE_LIST, P_MODE, USER_NO) VALUES (SEQ_PETSITTER.NEXTVAL, '안전하고 편안하게 돌봐주는 펫시팅','test', NULL, NULL, DEFAULT, 2);
-INSERT INTO PETSITTER (P_NO, P_TITLE, P_CONTENT, P_SERVICE, CARE_LIST, P_MODE, USER_NO) VALUES (SEQ_PETSITTER.NEXTVAL, 'test', 'test', NULL, NULL, DEFAULT, 3);
-INSERT INTO PETSITTER (P_NO, P_TITLE, P_CONTENT, P_SERVICE, CARE_LIST, P_MODE, USER_NO) VALUES (SEQ_PETSITTER.NEXTVAL, '안전하고 편안하게 돌봐주는 펫시팅','호박고구마, 힘드졍', '흡연자, 힘들당', '어디에 쓰는고', DEFAULT, 4);
-INSERT INTO PETSITTER (P_NO, P_TITLE, P_CONTENT, P_SERVICE, CARE_LIST, P_MODE, USER_NO) VALUES (SEQ_PETSITTER.NEXTVAL, '저는 4번 펫시터입니다.','어머니 호구마요?', '흡연자, 힘들당', '어디에 쓰는고', DEFAULT, 5);
-INSERT INTO PETSITTER (P_NO, P_TITLE, P_CONTENT, P_SERVICE, CARE_LIST, P_MODE, USER_NO) VALUES (SEQ_PETSITTER.NEXTVAL, '저는 5번 펫시터입니다.','아니 호박고구마 호!박!고!구!마!!!!', '흡연자, 힘들당', '어디에 쓰는고', DEFAULT, 6);
+INSERT INTO PETSITTER (P_NO, P_TITLE, P_CONTENT, P_SERVICE, CARE_LIST, P_MODE, USER_NO) VALUES (SEQ_PETSITTER.NEXTVAL, '순둥이 동구네로 놀러오세요~~?','누구보다 뛰어난 관찰력으로 댁의 소중한 가족이 맡겨졌을 때 빠른 상황판단과 대처로 세심한 보살핌을 약속드립니다.? 이러한 실무적인 경험이 제게 펫시터 활동에 용기를 주었고 남의 손에 맡긴다는 게 애견과 보호자에게 얼마나 중요한 일인지를 잘 알기에 나와 같은 애견 가정을 돕고 때로는 저도 도움받는 길을 찾고자 도전하게 되었습니다. 저희 집은 지하철역 바로 앞 초역세권으로 재건축 한 신축아파트이며 집 앞 상가에 우리 동구가 어릴 때부터 다니고 있는 24시간 동물병원이 있으며, 도보 5분 거리에 매봉산 둘레길이 있고, 10분 거리에 양재천 산책로가 있어 쾌적한 산책에는 아쉬움이 전혀 없습니다. 꼭 소중한 인연으로 여러분을 만나고 싶습니다. ', NULL, NULL, DEFAULT, 2);
+INSERT INTO PETSITTER (P_NO, P_TITLE, P_CONTENT, P_SERVICE, CARE_LIST, P_MODE, USER_NO) VALUES (SEQ_PETSITTER.NEXTVAL, '내 아이를 돌보듯 따뜻하고 편안하게', '반려견들이 더 존중받는 뉴질랜드에서부터 반려견을 키우고, 지인들의 반려견들을 맡아주던 경험도 많습니다. 집 근처에 있는 여러 공원과 반포천은 반려견들이 산책하기에 좋은 환경입니다. 내 아이를 돌보듯 따뜻하고 편안하게, 사랑과 정성으로 최선을 다해 보살펴드리겠습니다.', NULL, NULL, DEFAULT, 3);
+INSERT INTO PETSITTER (P_NO, P_TITLE, P_CONTENT, P_SERVICE, CARE_LIST, P_MODE, USER_NO) VALUES (SEQ_PETSITTER.NEXTVAL, '안전하고 편안하게 돌봐주는 펫시팅','강아지만 보면 좋아서 시간 가는줄도 모르는 초등학생 아들과 정성스럽게 돌봐 드립니다. 새끼때 부터 함께했던, 이제는 별이 되어버린ㅠ 맥스 (골든리트리버), 바우 (올드잉글리쉬 쉽독), 몽이 (페키니즈)를 직접 키우고 경험한 노하우로 견주님의 사랑스러운 반려견을 안전하게 돌봐드리겠습니다. 우리 빨리 만나요~!! * 1박 이상 펫시팅 맡기실 경우 강남구에 사는 반려견은 무료 픽업/드랍 서비스 해드려요. * 사정상 소형견만 케어 가능합니다. * 당일 예약은 힘들어요. * 산책시 사람이나 동물에게 공격성 짖음이 심한 아이는 산책이 힘들수도 있습니다. ㅠ', '흡연자, 힘들당', '어디에 쓰는고', DEFAULT, 4);
+INSERT INTO PETSITTER (P_NO, P_TITLE, P_CONTENT, P_SERVICE, CARE_LIST, P_MODE, USER_NO) VALUES (SEQ_PETSITTER.NEXTVAL, '가족처럼 돌봐드릴게요~^^','강아지가 혼자 남거나 불안할 일이 없이 계속 같이 있어줄 수가 있어요^^ 작은 행동도 곁에서 무엇이 필요한지 세심히 관찰하여 아이들이 머무르는 시간동안 편하고 애정듬뿍 받을 수 있도록 교감하여 아이들의 좋은 친구가 되는 것은 자신있습니다^^ 믿고 맡겨주세요~', '흡연자, 힘들당', '어디에 쓰는고', DEFAULT, 5);
+INSERT INTO PETSITTER (P_NO, P_TITLE, P_CONTENT, P_SERVICE, CARE_LIST, P_MODE, USER_NO) VALUES (SEQ_PETSITTER.NEXTVAL, '책임감 있는 펫시팅','아파트 단지내 산책로, 한강, 서달산 등 집 가까이 다양한 산책코스가 있습니다. - 반려견과 함께한 경험 외에도 지인들의 강아지를 돌보아주었던 경험, 다년간 유기견 봉사를 했던 경험이 있습니다. - 보다 전문적인 펫시팅을 위해 펫플래닛 교육과 반려동물관리사 자격증을 취득하며 이론적으로 한 번 더 학습하였습니다. - 최근 코로나19 때문에 전해수기를 구입하여 소독과 청결에 더욱 신경쓰고 있습니다. 믿고 맡겨주신다면 책임감을 갖고 보살피겠습니다..^^', '흡연자, 힘들당', '어디에 쓰는고', DEFAULT, 6);
+INSERT INTO PETSITTER (P_NO, P_TITLE, P_CONTENT, P_SERVICE, CARE_LIST, P_MODE, USER_NO) VALUES (SEQ_PETSITTER.NEXTVAL, '8번 펫시터님의 즐겁고 편안한 여행','저희 집은 아파트로 식구는 반려견을 아주 사랑하는 성인 아들 1명과 살고 있습니다 집 주변에는 공원과 남산 산책 길이 많이 있습니다 제가 운동을 좋아해서 반려견이 산책을 좋아하면 원하는 만큼 산책을 진행 할 수 있고, 집에 돌아와 반려견의 발을 깨끗이 닦는것은 기본이고 반려견과 보호자님께서 동의를 구하여 맛있는 간식을 만들어줄 수도 있답니다! 보호자분이 오실 때 까지 아기도 여행을 온 것처럼 즐겁게 지낼 수 있도록 사랑으로 잘 돌보겠습니다 감사합니다^^', '흡연자, 힘들당', '어디에 쓰는고', DEFAULT, 9);
+INSERT INTO PETSITTER (P_NO, P_TITLE, P_CONTENT, P_SERVICE, CARE_LIST, P_MODE, USER_NO) VALUES (SEQ_PETSITTER.NEXTVAL, '귀한 내 아이 케어도 귀하게','7살 때부터 30대까지 오랜시간을 반려동물과 함께했습니다. 마지막으로 함께한 아이가 제 가족이 되어 20살이 되던 해에 제 품에서 무지개다리를 건넜고, 한 아이의 처음과 끝을 함께한 그 긴 시간들이 제게 안겨준 경험은 그 어떤 것과도 바꿀 수 없다고 생각합니다. 그 외 애견카페와 유치원을 겸하고 있는 곳에서의 업무 경험을 발판 삼아 강아지는 이렇게 놀아야 해, 밥은 꼭 어떻게 먹어야 한다는 등의 틀에 박힌 기준을 정해두지 않고 “보호자가 원하는 방식을 우선으로 하는 아이들별 성향 맞춤 케어”를 제공하겠습니다.', '흡연자, 힘들당', '어디에 쓰는고', DEFAULT, 10);
+INSERT INTO PETSITTER (P_NO, P_TITLE, P_CONTENT, P_SERVICE, CARE_LIST, P_MODE, USER_NO) VALUES (SEQ_PETSITTER.NEXTVAL, '사랑으로 잘 돌봐드리겠습니다^^','저는 아파트에서 네식구가 거주하고 있으며 단지도 넓어서 산책하기도 좋을뿐만 아니라 주변에 중량천 둔치가 있는곳이라 애들이 뛰어놀기도 좋은 잔듸와 강물이 있어서 시원하고 좋은 동네랍니다. 보호자님께서 안전하고 편안하게 믿고 맡길 수 있도록 최선을 다하고 사랑으로 잘 돌봐 드리겠습니다 ^^', '흡연자, 힘들당', '어디에 쓰는고', DEFAULT, 11);
+INSERT INTO PETSITTER (P_NO, P_TITLE, P_CONTENT, P_SERVICE, CARE_LIST, P_MODE, USER_NO) VALUES (SEQ_PETSITTER.NEXTVAL, '사랑이넘치는1:1맞춤케어','집 근처에는 아파트 내 산책로, 한강, 고구동산 등 여러 산책로가 있습니다. 그동안 제가 반려견과 함께한 시간들과 노하우로 1:1 세심한 케어는 물론, 반려견의 성향에 따라 노즈워크, 집안산책, 터그 놀이 등 상황별 맞춤형 케어로 아이들이 저희 집에 머무는 동안 실컷 즐겁게 놀고 스트레스도 풀면서 편안히 쉬다 갈 수 있도록 최선을 다하겠습니다. 믿고 맡겨주세요^^ 사랑과 애정으로 보살피겠습니다.', '흡연자, 힘들당', '어디에 쓰는고', DEFAULT, 12);
+INSERT INTO PETSITTER (P_NO, P_TITLE, P_CONTENT, P_SERVICE, CARE_LIST, P_MODE, USER_NO) VALUES (SEQ_PETSITTER.NEXTVAL, '편안한 가족처럼?','저는 아파트에 살고 있고 아파트 후문에 우리 아이들이 편안하고 안전하게 산책하기 좋은 공원이 있습니다. 저희 집에서 3분 거리로 가까워서 늘 다니는 산책로입니다. 보호자분이 여행을 간다든지 외출을 하실 때 반려견이 편안하게 내 집처럼 즐겁게 지낼 수 있도록 도와주고 보호자님도 안심하고 안전하게 맡길 수 있는 신뢰의 공간이 되도록 노력하겠습니다.', '흡연자, 힘들당', '어디에 쓰는고', DEFAULT, 13);
+INSERT INTO PETSITTER (P_NO, P_TITLE, P_CONTENT, P_SERVICE, CARE_LIST, P_MODE, USER_NO) VALUES (SEQ_PETSITTER.NEXTVAL, '사랑이 가득한 애견 하우스♥',' 처음 본 아이에게 어떻게 다가가야 하는지 어떻게 친해질 수 있는지 잘 압니다. 믿고 맡겨주세요! 걱정 없이 보호자님들이 안심하시고 볼일 보고 돌아오실 수 있게 제가 예뻐해주고 사랑해주고 있겠습니다!!! 감사합니다 :)', '흡연자, 힘들당', '어디에 쓰는고', DEFAULT, 14);
+INSERT INTO PETSITTER (P_NO, P_TITLE, P_CONTENT, P_SERVICE, CARE_LIST, P_MODE, USER_NO) VALUES (SEQ_PETSITTER.NEXTVAL, '편안하고 포근한 펫시팅','아파트 주변에도 산책로가 잘 되어 있을 뿐만 아니라 바로 옆 탄천변 또한 서울 최고의 산책로로 유명합니다. 저 역시 걷는 걸 워낙 좋아해서 같이 산책하면 너무 좋을 것 같아요 저는 물론이고 제가 보호하고 있는 동안 함께 하게 될 수밖에 없는 다정다감한 우리 가족들의 성격 또한 아가들에게 편안함과 포근함을 줄 수 있을거 라고 생각해요 결혼전 함께했던 우리 둥둥이랑 실실이를 돌보는 마음으로 함께 하겠습니다 따뜻한 마음으로 안전하게 돌봐드리겠습니다 :)', '흡연자, 힘들당', '어디에 쓰는고', DEFAULT, 15);
+INSERT INTO PETSITTER (P_NO, P_TITLE, P_CONTENT, P_SERVICE, CARE_LIST, P_MODE, USER_NO) VALUES (SEQ_PETSITTER.NEXTVAL, '보리네 행복하우스?','저희 개모차는 피콜로카네 탄토2 제품으로 산책이 어려운 중,소형견 친구들은 개모차로 산책이 용이할 것 같아요. 집 근처에는 보라매 공원이 가깝게 있어 아가들 산책도 즐겁게 시켜줄 수 있어요. 그리고 집엔 cctv가 설치 되어 있어, 혹시 모를 사고가 있을시 확인이 가능할 것 같습니다. 저는 지금의 반려견 보리 말고도 여려 견종의 친구들을 제법 오랜 시간동안 함께 지내 왔습니다. 그래서 제법 반려견들의 니즈를 파악할 수 있으며, 보리를 키우며 다른 아이들의 소중함도 잘 알고 있기에, 저에게 맡겨주신다면 아가가 내 집과 같이 편안함을 느끼게 해줄 수 있도록 노력 하겠습니다.', '흡연자, 힘들당', '어디에 쓰는고', DEFAULT, 16);
 
 --------------------------------------------------
 ---------    펫시터 프로필 업데이트 더미    ---------
@@ -302,49 +310,35 @@ VALUES(SEQ_CS_REPLY.NEXTVAL
 --------------------------------------------------
 ------------    펫시터찜 테이블 더미    ------------
 --------------------------------------------------
-INSERT INTO P_LIKE
-VALUES (1, 2);
-INSERT INTO P_LIKE
-VALUES (3, 2);
-INSERT INTO P_LIKE
-VALUES (5, 2);
-INSERT INTO P_LIKE
-VALUES (7, 2);
-INSERT INTO P_LIKE
-VALUES (8, 2);
-
-INSERT INTO P_LIKE
-VALUES (2, 3);
-INSERT INTO P_LIKE
-VALUES (4, 3);
-INSERT INTO P_LIKE
-VALUES (6, 3);
-INSERT INTO P_LIKE
-VALUES (8, 3);
-
-INSERT INTO P_LIKE
-VALUES (1, 4);
-INSERT INTO P_LIKE
-VALUES (2, 4);
-INSERT INTO P_LIKE
-VALUES (5, 4);
-INSERT INTO P_LIKE
-VALUES (6, 4);
-INSERT INTO P_LIKE
-VALUES (8, 4);
-
-INSERT INTO P_LIKE
-VALUES (1, 5);
-INSERT INTO P_LIKE
-VALUES (2, 5);
-INSERT INTO P_LIKE
-VALUES (4, 5);
-INSERT INTO P_LIKE
-VALUES (5, 5);
-INSERT INTO P_LIKE
-VALUES (7, 5);
-INSERT INTO P_LIKE
-VALUES (8, 5);
+INSERT INTO P_LIKE VALUES (1, 2);
+INSERT INTO P_LIKE VALUES (1, 4);
+INSERT INTO P_LIKE VALUES (1, 5);
+INSERT INTO P_LIKE VALUES (2, 1);
+INSERT INTO P_LIKE VALUES (2, 2);
+INSERT INTO P_LIKE VALUES (2, 3);
+INSERT INTO P_LIKE VALUES (2, 4);
+INSERT INTO P_LIKE VALUES (2, 5);
+INSERT INTO P_LIKE VALUES (2, 6);
+INSERT INTO P_LIKE VALUES (2, 7);
+INSERT INTO P_LIKE VALUES (2, 8);
+INSERT INTO P_LIKE VALUES (2, 9);
+INSERT INTO P_LIKE VALUES (2, 10);
+INSERT INTO P_LIKE VALUES (2, 11);
+INSERT INTO P_LIKE VALUES (2, 12);
+INSERT INTO P_LIKE VALUES (3, 2);
+INSERT INTO P_LIKE VALUES (4, 3);
+INSERT INTO P_LIKE VALUES (4, 5);
+INSERT INTO P_LIKE VALUES (5, 2);
+INSERT INTO P_LIKE VALUES (5, 4);
+INSERT INTO P_LIKE VALUES (5, 5);
+INSERT INTO P_LIKE VALUES (6, 3);
+INSERT INTO P_LIKE VALUES (6, 4);
+INSERT INTO P_LIKE VALUES (7, 2);
+INSERT INTO P_LIKE VALUES (7, 5);
+INSERT INTO P_LIKE VALUES (8, 2);
+INSERT INTO P_LIKE VALUES (8, 3);
+INSERT INTO P_LIKE VALUES (8, 4);
+INSERT INTO P_LIKE VALUES (8, 5);
 
 --------------------------------------------------
 -------------    예약 테이블 더미    --------------
