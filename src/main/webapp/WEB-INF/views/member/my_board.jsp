@@ -35,10 +35,10 @@
                 <!--<div style="height: 1000px; background-color: beige;"></div> -->
                 <div id="my_contents">
                   <div class="btn_bo">
-                    <button type="button" class="btn_bo2" onclick="location.href='myBoard.me';">내 게시글</button>
+                    <button type="button" class="btn_bo2" onclick="goPage('myBoard.me')">내 게시글</button>
                   </div>
                   <div class="btn_re">
-                    <button type="button" class="btn_re2" onclick="location.href='myReply.me';">내 댓글</button>
+                    <button type="button" class="btn_re2" onclick="goPage('myReply.me')">내 댓글</button>
                   </div>
                 </div>
                 <div id="main_content">

@@ -36,6 +36,7 @@
 	    var pageName = currentUrl.substring(lastSlashIndex + 1);
 	    sessionStorage.setItem('currentPage', pageName);
 	    
+	    
 	    var menuItems = document.querySelectorAll('.list_menu li');
 	    for (var i = 0; i < menuItems.length; i++) {
 	      var menuItem = menuItems[i];
@@ -44,5 +45,8 @@
 	        break; 
 	      }
 	    }
+	  }
+	  function goPage(e) {
+		    location.href = "http://localhost:8282/" + e;
 	  }
 </script>
