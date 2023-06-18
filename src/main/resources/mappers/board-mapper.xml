@@ -237,7 +237,7 @@
 	
 	
 	<!-- 첨부파일 업데이트용 쿼리문 -->
-	<update id="updateAttachmentList" parameterTyp="attachment">
+	<update id="updateAttachmentList" parameterType="attachment">
 		UPDATE B_ATTACHMENT
 		   SET ORIGIN_NAME = #{originName},
 		       CHANGE_NAME = #{changeName},
