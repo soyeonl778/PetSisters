@@ -2,13 +2,21 @@
 --------------    회원 테이블 더미    --------------
 --------------------------------------------------
 INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'admin', '1234', '관리자', '1234561234567', '관리자', '01012341234', 'admin@kh.or.kr', '서울시 영등포구', 'F', 'N', 'N', NULL, 'Y', '/resources/upFiles/member_profiles/1.png', SYSDATE);
-INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user01', 'pass01', '펫시터1', '1234561234567', '펫시터1', '01011111111', 'user01@kh.or.kr', '서울시 영등포구', 'F', 'Y', 'N', NULL, 'Y', '/resources/upFiles/member_profiles/2.png', SYSDATE);
-INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user02', 'pass02', '펫시터2', '1234561234567', '펫시터2', '01022222222', 'user02@kh.or.kr', '서울시 영등포구', 'F', 'Y', 'N', NULL, 'Y', '/resources/upFiles/member_profiles/3.png', SYSDATE);
-INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user03', 'pass03', '펫시터3', '1234561234567', '펫시터3', '01033333333', 'user03@kh.or.kr', '서울시 영등포구', 'F', 'Y', 'N', NULL, 'Y', '/resources/upFiles/member_profiles/4.png', SYSDATE);
-INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user04', 'pass04', '펫시터4', '1234561234567', '펫시터4', '01044444444', 'user04@kh.or.kr', '서울시 영등포구', 'F', 'Y', 'Y', '2023-05-01', 'Y', '/resources/upFiles/member_profiles/5.png', SYSDATE);
-INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user05', 'pass05', '펫시터5', '1234561234567', '펫시터5', '01055555555', 'user05@kh.or.kr', '서울시 영등포구', 'F', 'Y', 'Y', '2023-06-01', 'Y', '/resources/upFiles/member_profiles/6.png', SYSDATE);
-INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user06', 'pass06', '고객6', '1234561234567', '고객6', '01066666666', 'user06@kh.or.kr', '서울시 영등포구', 'F', 'N', 'N', NULL, 'Y', '/resources/upFiles/member_profiles/7.png', SYSDATE);
-INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user07', 'pass07', '고객7', '1234561234567', '고객7', '01077777777', 'user07@kh.or.kr', '서울시 영등포구', 'F', 'N', 'N', NULL, 'Y', '/resources/upFiles/member_profiles/8.png', SYSDATE);
+INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user01', 'pass01', '펫시터1', '1234561234567', '펫시터1', '01011111111', 'user01@kh.or.kr', '서울시 구로구', 'F', 'Y', 'N', NULL, 'Y', '/resources/upFiles/member_profiles/2.png', SYSDATE);
+INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user02', 'pass02', '펫시터2', '1234561234567', '펫시터2', '01022222222', 'user02@kh.or.kr', '서울시 동작구', 'F', 'Y', 'N', NULL, 'Y', '/resources/upFiles/member_profiles/3.png', SYSDATE);
+INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user03', 'pass03', '펫시터3', '1234561234567', '펫시터3', '01033333333', 'user03@kh.or.kr', '서울시 강남구', 'F', 'Y', 'N', NULL, 'Y', '/resources/upFiles/member_profiles/4.png', SYSDATE);
+INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user04', 'pass04', '펫시터4', '1234561234567', '펫시터4', '01044444444', 'user04@kh.or.kr', '서울시 마포구', 'F', 'Y', 'Y', '2023-05-01', 'Y', '/resources/upFiles/member_profiles/5.png', SYSDATE);
+INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user05', 'pass05', '펫시터5', '1234561234567', '펫시터5', '01055555555', 'user05@kh.or.kr', '서울시 강동구', 'F', 'Y', 'Y', '2023-06-01', 'Y', '/resources/upFiles/member_profiles/6.png', SYSDATE);
+INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user06', 'pass06', '고객6', '1234561234567', '고객6', '01066666666', 'user06@kh.or.kr', '서울시 도봉구', 'F', 'N', 'N', NULL, 'Y', '/resources/upFiles/member_profiles/7.png', SYSDATE);
+INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user07', 'pass07', '고객7', '1234561234567', '고객7', '01077777777', 'user07@kh.or.kr', '서울시 노원구', 'F', 'N', 'N', NULL, 'Y', '/resources/upFiles/member_profiles/8.png', SYSDATE);
+INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user08', 'pass08', '펫시터8', '1234561234567', '펫시터8', '01088888888', 'user08@kh.or.kr', '서울시 중랑구', 'F', 'Y', 'Y', '2023-06-01', 'Y', '/resources/upFiles/member_profiles/9.png', SYSDATE);
+INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user09', 'pass09', '펫시터9', '1234561234567', '펫시터9', '01099999999', 'user09@kh.or.kr', '서울시 동대문구', 'F', 'Y', 'N', NULL, 'Y', '/resources/upFiles/member_profiles/10.png', SYSDATE);
+INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user10', 'pass10', '펫시터10', '1234561234567', '펫시터10', '01000000000', 'user10@kh.or.kr', '서울시 종로구', 'F', 'Y', 'Y', '2023-06-01', 'Y', '/resources/upFiles/member_profiles/11.png', SYSDATE);
+INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user11', 'pass11', '펫시터11', '1234561234567', '펫시터11', '01011111111', 'user11@kh.or.kr', '서울시 용산구', 'F', 'Y', 'N', NULL, 'Y', '/resources/upFiles/member_profiles/12.png', SYSDATE);
+INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user12', 'pass12', '펫시터12', '1234561234567', '펫시터12', '01022222222', 'user12@kh.or.kr', '서울시 서초구', 'F', 'Y', 'Y', '2023-06-01', 'Y', '/resources/upFiles/member_profiles/13.png', SYSDATE);
+INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user13', 'pass13', '펫시터13', '1234561234567', '펫시터13', '01033333333', 'user13@kh.or.kr', '서울시 관악구', 'F', 'Y', 'N', NULL, 'Y', '/resources/upFiles/member_profiles/14.png', SYSDATE);
+INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user14', 'pass14', '펫시터14', '1234561234567', '펫시터14', '01044444444', 'user14@kh.or.kr', '서울시 금천구', 'F', 'Y', 'Y', '2023-06-01', 'Y', '/resources/upFiles/member_profiles/15.png', SYSDATE);
+INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user15', 'pass15', '펫시터15', '1234561234567', '펫시터15', '01055555555', 'user15@kh.or.kr', '서울시 은평구', 'F', 'Y', 'N', NULL, 'Y', '/resources/upFiles/member_profiles/16.png', SYSDATE);
 
 --------------------------------------------------
 -----------    펫시터 프로필 테이블 더미    -----------
@@ -544,7 +552,8 @@ INSERT INTO JOURNAL (J_NO, J_TITLE, J_CONTENT, CREATE_DATE, STATUS, REF_RESNO)
 VALUES (SEQ_JOURNAL.NEXTVAL, '돌봄테스트1', '돌봄테스트내용1', SYSDATE, 'Y', 14);	 
 
 INSERT INTO JOURNAL (J_NO, J_TITLE, J_CONTENT, CREATE_DATE, STATUS, REF_RESNO)
-VALUES (SEQ_JOURNAL.NEXTVAL, '돌봄테스트1', '돌봄테스트내용1', SYSDATE, 'Y', 13);	 
+VALUES (SEQ_JOURNAL.NEXTVAL, '돌봄테스트1', '우리 구름이 점심먹고 공원으로 산책나왔어요~^^<br/>
+    1시간 정도 산책하고 귀가했어요 신나게 잘 놀고 돌아왔답니다! ㅎㅎ', TO_DATE('2023-06-16 14:26', 'YYYY-MM-DD HH24:MI'), 'Y', 13);	 
 
 INSERT INTO JOURNAL (J_NO, J_TITLE, J_CONTENT, CREATE_DATE, STATUS, REF_RESNO)
 VALUES (SEQ_JOURNAL.NEXTVAL, '돌봄테스트1', '돌봄테스트내용1', '2023-06-12', 'Y', 12);	 
@@ -636,7 +645,7 @@ VALUES(SEQ_DOG.NEXTVAL,
        12,
        'N',
        NULL,
-       'resources/upFiles/dog_profiles/로이.jpg',
+       '/resources/upFiles/dog_profiles/강아지1.jpg',
        'Y',
        2);
 INSERT INTO DOG
@@ -648,7 +657,7 @@ VALUES(SEQ_DOG.NEXTVAL,
        18,
        'Y',
        NULL,
-       'resources/upFiles/dog_profiles/로이.jpg',
+       '/resources/upFiles/dog_profiles/강아지2.jpg',
        'Y',
        3);
 INSERT INTO DOG
@@ -660,9 +669,9 @@ VALUES(SEQ_DOG.NEXTVAL,
        21,
        'Y',
        NULL,
-       'resources/upFiles/dog_profiles/로이.jpg',
+       '/resources/upFiles/dog_profiles/강아지3.jpg',
        'Y',
-       4); 
+       4);
 INSERT INTO DOG
 VALUES(SEQ_DOG.NEXTVAL,
        '구름이',
@@ -672,7 +681,7 @@ VALUES(SEQ_DOG.NEXTVAL,
        19,
        'Y',
        NULL,
-       'resources/upFiles/dog_profiles/로이.jpg',
+       '/resources/upFiles/dog_profiles/강아지4.jpg',
        'Y',
        2);
 INSERT INTO DOG
@@ -684,7 +693,7 @@ VALUES(SEQ_DOG.NEXTVAL,
        13,
        'N',
        NULL,
-       'resources/upFiles/dog_profiles/로이.jpg',
+       '/resources/upFiles/dog_profiles/강아지5.jpg',
        'Y',
        2);
 INSERT INTO DOG
@@ -696,7 +705,7 @@ VALUES(SEQ_DOG.NEXTVAL,
        10,
        'Y',
        NULL,
-       'resources/upFiles/dog_profiles/로이.jpg',
+       '/resources/upFiles/dog_profiles/강아지6.jpg',
        'Y',
        2);
        
@@ -709,7 +718,7 @@ VALUES(SEQ_DOG.NEXTVAL,
        8,
        'Y',
        NULL,
-       'resources/upFiles/dog_profiles/로이.jpg',
+       '/resources/upFiles/dog_profiles/강아지7.jpg',
        'Y',
        3);
 INSERT INTO DOG
@@ -721,7 +730,7 @@ VALUES(SEQ_DOG.NEXTVAL,
        12,
        'Y',
        NULL,
-       'resources/upFiles/dog_profiles/로이.jpg',
+       '/resources/upFiles/dog_profiles/강아지8.jpg',
        'Y',
        3);
 INSERT INTO DOG
@@ -733,7 +742,7 @@ VALUES(SEQ_DOG.NEXTVAL,
        14,
        'Y',
        NULL,
-       'resources/upFiles/dog_profiles/로이.jpg',
+       '/resources/upFiles/dog_profiles/강아지9.jpg',
        'Y',
        3);
 
@@ -746,7 +755,7 @@ VALUES(SEQ_DOG.NEXTVAL,
        16,
        'Y',
        NULL,
-       'resources/upFiles/dog_profiles/로이.jpg',
+       '/resources/upFiles/dog_profiles/강아지10.jpg',
        'Y',
        4);
 INSERT INTO DOG
@@ -758,7 +767,7 @@ VALUES(SEQ_DOG.NEXTVAL,
        7,
        'Y',
        NULL,
-       'resources/upFiles/dog_profiles/로이.jpg',
+       '/resources/upFiles/dog_profiles/강아지11.jpg',
        'Y',
        4);
 INSERT INTO DOG
@@ -770,7 +779,7 @@ VALUES(SEQ_DOG.NEXTVAL,
        8,
        'Y',
        NULL,
-       'resources/upFiles/dog_profiles/로이.jpg',
+       '/resources/upFiles/dog_profiles/강아지12.jpg',
        'Y',
        4);
        
@@ -783,7 +792,7 @@ VALUES(SEQ_DOG.NEXTVAL,
        17,
        'Y',
        NULL,
-       'resources/upFiles/dog_profiles/로이.jpg',
+       '/resources/upFiles/dog_profiles/강아지13.jpg',
        'Y',
        5);
 INSERT INTO DOG
@@ -795,7 +804,7 @@ VALUES(SEQ_DOG.NEXTVAL,
        6,
        'Y',
        NULL,
-       'resources/upFiles/dog_profiles/로이.jpg',
+       '/resources/upFiles/dog_profiles/강아지14.jpg',
        'Y',
        5);
 INSERT INTO DOG
@@ -807,7 +816,7 @@ VALUES(SEQ_DOG.NEXTVAL,
        5,
        'Y',
        NULL,
-       'resources/upFiles/dog_profiles/로이.jpg',
+       '/resources/upFiles/dog_profiles/강아지15.jpg',
        'Y',
        5);
        
@@ -820,7 +829,7 @@ VALUES(SEQ_DOG.NEXTVAL,
        9,
        'Y',
        NULL,
-       'resources/upFiles/dog_profiles/로이.jpg',
+       '/resources/upFiles/dog_profiles/강아지16.jpg',
        'Y',
        6);
 INSERT INTO DOG
@@ -832,7 +841,7 @@ VALUES(SEQ_DOG.NEXTVAL,
        8,
        'Y',
        NULL,
-       'resources/upFiles/dog_profiles/로이.jpg',
+       '/resources/upFiles/dog_profiles/강아지17.jpg',
        'Y',
        6);
 INSERT INTO DOG
@@ -844,7 +853,7 @@ VALUES(SEQ_DOG.NEXTVAL,
        8,
        'Y',
        NULL,
-       'resources/upFiles/dog_profiles/로이.jpg',
+       '/resources/upFiles/dog_profiles/강아지18.jpg',
        'Y',
        6);
        
@@ -857,7 +866,7 @@ VALUES(SEQ_DOG.NEXTVAL,
        10,
        'Y',
        NULL,
-       'resources/upFiles/dog_profiles/로이.jpg',
+       '/resources/upFiles/dog_profiles/강아지19.jpg',
        'Y',
        7);
 INSERT INTO DOG
@@ -869,7 +878,7 @@ VALUES(SEQ_DOG.NEXTVAL,
        7,
        'Y',
        NULL,
-       'resources/upFiles/dog_profiles/로이.jpg',
+       '/resources/upFiles/dog_profiles/강아지20.jpg',
        'Y',
        7);
 INSERT INTO DOG
@@ -881,7 +890,7 @@ VALUES(SEQ_DOG.NEXTVAL,
        3,
        'Y',
        NULL,
-       'resources/upFiles/dog_profiles/로이.jpg',
+       '/resources/upFiles/dog_profiles/강아지21.jpg',
        'Y',
        7);
        
@@ -894,7 +903,7 @@ VALUES(SEQ_DOG.NEXTVAL,
        9,
        'Y',
        NULL,
-       'resources/upFiles/dog_profiles/로이.jpg',
+       '/resources/upFiles/dog_profiles/강아지22.jpg',
        'Y',
        8);
 INSERT INTO DOG
@@ -906,7 +915,7 @@ VALUES(SEQ_DOG.NEXTVAL,
        8,
        'Y',
        NULL,
-       'resources/upFiles/dog_profiles/로이.jpg',
+       '/resources/upFiles/dog_profiles/강아지23.jpg',
        'Y',
        8);
 INSERT INTO DOG
@@ -918,7 +927,7 @@ VALUES(SEQ_DOG.NEXTVAL,
        6,
        'Y',
        NULL,
-       'resources/upFiles/dog_profiles/로이.jpg',
+       '/resources/upFiles/dog_profiles/강아지24.jpg',
        'Y',
        8);
        
