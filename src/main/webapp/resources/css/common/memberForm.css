@@ -103,6 +103,11 @@
     clear: both;
 }
 
+.page_aticle.aticle_type2 .page_section {
+    float: right;
+    width: 950px;
+}
+
 .page_aticle .head_aticle {
     padding: 5px 0 34px;
 }
