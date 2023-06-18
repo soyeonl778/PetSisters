@@ -460,9 +460,12 @@ body #header .location_login .location_notice{  /* 안내메세지 처음에 blo
   margin-top: 92px;
   background-repeat: no-repeat;
   box-shadow: 3px 5px 9px gray, 0 1px 2px gray;
+  position: relative;
 }
 .mainVideo {
-	object-fit: cover;
+	width: 100%;
+    object-fit: fill!important;
+    height: 100%;
 }
 .middleSlide {
   padding-top: 90px;
@@ -494,6 +497,7 @@ body #header .location_login .location_notice{  /* 안내메세지 처음에 blo
   box-sizing: border-box;
   background-size: cover;
   background-position: center;
+  position: relative;
 }
 .bottomLeft {
   float: left;
@@ -533,6 +537,9 @@ body #header .location_login .location_notice{  /* 안내메세지 처음에 blo
   border-radius: 5px;
   background-color: white;
   box-shadow: 1px 1px 5px lightgrey;
+}
+.bottomCard:hover{
+	cursor: pointer;
 }
 .bottomCard img {
     width: 100%;
@@ -706,7 +713,26 @@ body #header .location_login .location_notice{  /* 안내메세지 처음에 blo
 .slick-center:after {
   opacity: 0;
 }
-.reviewText {
-
+.clickPosition {
+	position: absolute;
+    top: 55%;
+    left: 60%;
+    transform: translate(-50%, -50%);
+    color: red;
+    width: 20%;
+    height: 15%;
 }
-	
+.clickPosition:hover{
+	cursor: pointer;
+}
+.bottomClick {
+	position: absolute;
+    top: 63%;
+    left: 56%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 140px;
+}
+.bottomClick:hover{
+	cursor: pointer;
+}
