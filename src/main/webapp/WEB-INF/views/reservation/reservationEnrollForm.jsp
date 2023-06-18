@@ -11,7 +11,7 @@
 <jsp:include page="../common/common.jsp" />
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 <link rel="stylesheet" href="/resources/css/reservation/reservationEnrollForm.css">
-<title>예약 내용 작성</title>
+<title>예약 신청</title>
 </head>
 <body>
 <jsp:include page="../common/header.jsp" />	
@@ -52,8 +52,10 @@
                         <div class="oneSec">
                           <div class="onTit">펫시터명</div>
                           <div class="onedesc petsitter">
-                          	이주흔
+                          	4
+                          	<!-- 
                           	<span>서울 구로구 신도림동</span>
+ 							 -->
                           </div>
                         </div>
                       </div>
@@ -65,7 +67,7 @@
                         </div>
                         <div class="oneSec">
                           <div class="onTit">맡기실 반려견 수</div>
-                          <div class="onedesc petAmount">1마리</div>
+                          <div class="onedesc petAmount">1</div>
                         </div>
                       </div>
 
@@ -111,7 +113,7 @@ function orderPay(){
 	    pay_method : 'card',
 	    merchant_uid : 'merchant_' + new Date().getTime(),
 	    
-	    name : payDate, //결제창에서 보여질 이름
+	    name : '조승호', //결제창에서 보여질 이름
 	    amount : payPrice, //실제 결제되는 가격
 	    
 	    desc : payDesc,
@@ -121,51 +123,37 @@ function orderPay(){
 	    petsitter : petsitter
 	    
 	}, function(rsp) {
-		console.log(rsp);
+		console.log('rsp', rsp);
 	    if ( rsp.success ) {
-	    	console.log(rsp.success);
-	    	console.log(merchant_uid);
-	    	var msg = '결제가 완료되었습니다.';
+	    	console.log(rsp.imp_uid);
 	    	insertOrder(rsp.imp_uid);
-	        location.href = '/paySuccess';
 	    } else {
 	    	 var msg = '결제에 실패하였습니다.';
 	         msg += '에러내용 : ' + rsp.error_msg;
 	    }
-	    alert(msg);
+	    
 	});
 }
 	
 	function insertOrder(orderId) {
 		// 결제 정보 저장 및 처리 로직
-		let payNo = merchant_uid;
-		let payDate = $('.payDate').text();
+		alert('결제가 완료되었습니다!');
 		let payDesc = $('.request').text()
 		let payPrice = $('.payPrice').text();
-		let checkIn = $('.date1').text();
-		let checkOut = $('.date2').text();
-		let petAmount = $('.petAmount').text();
-		let petsitter = $('.petsitter').text();
 		  
 		// 결제 정보를 서버로 전송
 		$.ajax({
-		  url: "/savePayment", // 저장 및 처리 로직이 구현된 서버 API의 엔드포인트
+		  url: "insertPay", // 저장 및 처리 로직이 구현된 서버 API의 엔드포인트
 		  type: "post",
 		  data: {
-		    totalPay: parseInt($('.payPrice').text()),
-		    payNo: payNo,
-		    payDate: payDate,
-		    desc: payDesc,
-		    status: status,
-		    refResno: refResno,
-		    checkIn : checkIn,
-		    checkOut : checkOut,
-		    petAmount : petAmount,
-		    petsitter : petsitter
+			payDesc: payDesc,
+			payPrice: 55000,
+			resNo: 10
 		  },
 		  success: function(res) {
 		    // 결제 정보 저장 및 처리 성공 시 동작
-		    console.log("결제 정보 저장 및 처리 성공");
+		    console.log(res);
+		    location.href="paySuccess";
 		  },
 		  error: function(err) {
 		    // 결제 정보 저장 및 처리 실패 시 동작

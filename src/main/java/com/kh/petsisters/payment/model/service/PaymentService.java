@@ -6,4 +6,6 @@ public interface PaymentService {
 
 	int processPayment(Payment p);
 
+	int insertPay(String payDesc, int payPrice, int resNo);
+
 }

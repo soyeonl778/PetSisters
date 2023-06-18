@@ -5,7 +5,7 @@
 	<resultMap id="paymentResultSet" type="payment">
 		<result column="PAY_NO" property="payNo" />
 		<result column="PAY_DATE" property="payDate" />
-		<result column="PAY_DESCRIPTION" property="payDscpt" />
+		<result column="PAY_DESCRIPTION" property="payDesc" />
 		<result column="PAY_PRICE" property="payPrice" />
 		<result column="STATUS" property="status" />
 		<result column="REF_RESNO" property="refResno" />
@@ -19,6 +19,17 @@
 			  	   , #{payPrice}
 			  	   , #{status}
 			  	   , #{refResno})
+	</insert>
+	
+	
+	<insert id="insertPay">
+		INSERT INTO PAYMENT
+		VALUES(SEQ_PAYMENT.NEXTVAL,
+		       SYSDATE,
+		       #{payDesc},
+		       #{payPrice},
+		       'Y',
+		       #{resNo})	
 	</insert>
 	
 </mapper>

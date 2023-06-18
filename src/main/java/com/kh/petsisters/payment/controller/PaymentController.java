@@ -5,8 +5,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.google.gson.Gson;
 import com.kh.petsisters.payment.model.service.PaymentService;
 import com.kh.petsisters.payment.model.vo.Payment;
 
@@ -26,15 +28,30 @@ public class PaymentController {
 		return "reservation/reservationEnrollForm";
 	}
 	
-	@PostMapping("/savePayment")
-    @ResponseBody
-    public String savePayment(@RequestBody Payment p) {
-        paymentService.processPayment(p);
-        return "결제 완료";
-    }
+	
+	@ResponseBody
+	@RequestMapping(value="insertPay", produces = "application/json; charset=UTF-8")
+	public String insertPay(String payDesc, int payPrice, int resNo) {
+		
+		System.out.println(payDesc);
+		System.out.println(payPrice);
+		System.out.println(resNo);
+		
+		int result = paymentService.insertPay(payDesc, payPrice, resNo);
+		
+		System.out.println(result);
+		
+		if(result > 0) {
+			new Gson().toJson(result);
+		}
+		
+		return null;
+	}
+	
+	
 	
 	// 결제완료화면 띄우기
-	@RequestMapping("/paySuccess")
+	@RequestMapping("paySuccess")
 	public String paySuccess() {
 		
 		return "reservation/reservationSuccess";

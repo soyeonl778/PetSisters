@@ -21,6 +21,11 @@ public class PaymentServiceImpl implements PaymentService {
 		p.setStatus("결제 완료"); // 결제 상태를 설정
 		return paymentDao.processPayment(sqlSession, p);
     }
+
+	@Override
+	public int insertPay(String payDesc, int payPrice, int resNo) {
+		return paymentDao.insertPay(sqlSession, payDesc, payPrice, resNo);
+	}
 	
 	
 }
