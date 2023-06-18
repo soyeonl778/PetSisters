@@ -25,7 +25,7 @@ public interface BoardService {
 	// 게시글 조회수 증가
 	int increaseCount(int bno);
 	// 게시글 상세 조회
-	Board selectBoard(int boardNo);
+	Board selectBoard(int bno);
 	
 	// 자유게시글 작성하기 서비스
 	int insertBoard(Board b);
@@ -39,5 +39,8 @@ public interface BoardService {
 	ArrayList<Board> selectBottomList1();
 
 	ArrayList<Board> selectMypetList();
+	
+	// 자유게시판 수정하기 서비스
+	Board selectBoardInUpdate(int bno);
 	
 }

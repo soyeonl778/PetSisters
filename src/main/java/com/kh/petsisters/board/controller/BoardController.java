@@ -34,7 +34,7 @@ public class BoardController {
 	
 	
 	
-	// 커뮤니티 (메인페이지) 포워딩
+	// 커뮤니티 (메인페이지)
 	@RequestMapping("main.bo")
 	public String selectThumbnailList(Model model) {
 
@@ -49,19 +49,21 @@ public class BoardController {
 	
 
 	
-	// 사진게시판 포워딩 : 안돼
+	// 사진게시판 
 	@RequestMapping("mypetlist.bo")
 	public String selectList(Model model) {
 		
 		ArrayList<Board> list = boardService.selectMypetList();
 		
-		//boardMypetForm
+		model.addAttribute("list", list);
+		
+		
 		return "board/boardMypetForm";
 	}
 	
 	
 	
-	// 자유게시판 : 일반게시판(목록형식)
+	// 자유게시판
 	@RequestMapping("freelist.bo")
 	public ModelAndView selectFreeList(
 			@RequestParam(value="cPage", defaultValue="1") int currentPage, 
@@ -87,6 +89,7 @@ public class BoardController {
 	}
 	
 	
+	// 자유게시판 : 등록하기폼 
 	@RequestMapping("freeEnrollForm.bo")
 	public ModelAndView enrollForm(ModelAndView mv) {
 		
@@ -99,6 +102,27 @@ public class BoardController {
 		
 		return mv;
 	}
+	/*
+	// 업데이트 페이지로 , selectBoard(bno)해서 업데이트폼에 기존 게시글의 정보를 select로 뿌려준다.
+		@RequestMapping("updateForm.bo")
+		public ModelAndView updateBoard(ModelAndView mv, int bno) {
+			
+			Board b = boardService.selectBoardInUpdate(bno);
+			
+			mv.addObject("b", b)
+			  .setViewName("board/boardUpdateForm2");
+			
+			return mv;
+		}
+	*/
+	
+	@RequestMapping("updateForm.bo")
+	public String updateBoard(int bno) {
+		
+		
+		return "board/boardUpdateForm2";
+	}
+	
 	
 	
 	// 사진/자유게시판 공통 : 글작성 insert 기능
@@ -160,7 +184,8 @@ public class BoardController {
 		}
 	}
 	    
-	
+	/*
+	// 상세페이지 포워딩
 	@RequestMapping("detail.bo")
 	public ModelAndView selectBoard(ModelAndView mv,
 										int bno) {
@@ -181,127 +206,19 @@ public class BoardController {
 		
 		return mv;
 	}
-	
-	
-	
-	
-	/*
-	@RequestMapping("detail.bo")
-	public String detailBoard(int bno,
-						      Model model) {
-		
-		int result = boardService.increaseCount(bno);
-		
-		if(result > 0) {
-			
-			Board b = boardService.selectBoard(bno);
-
-			model.addAttribute("b", b);
-			
-			return "board/boardDetailForm";
-			
-		} else {
-			
-			model.addAttribute("errorMsg", "게시글이 없습니다.");
-			
-			return "common/errorPage";
-		}
-	}
 	*/
 	
 	
-	@RequestMapping("updateForm.bo")
-	public String updateBoard() {
-		
-	
-		return "board/boardUpdateForm";
-	}
-	
-	
-	
-	/*
 	@RequestMapping("detail.bo")
-	public ModelAndView selectBoard(ModelAndView mv, int bno) {
+	public String selectBoard(int bno) {
 		
-		int result = boardService.increaseCount(bno);
-		
-		if(result > 0) {
-			
-			Board b = boardService.selectBoard(bno);
-			
-			mv.addObject("b", b).setViewName("board/boardDetailView");
-			
-		} else {
-		
-			mv.addObject("errorMsg", "게시글 상세조회 실패").setViewName("common/errorPage");
-			
-		}
-		
-		return mv;
+	
+		return "board/boardUpdateForm2";
 	}
-	*/
 	
 	
+	// 수정하기 페이지 자리 
 	
-//	// 테스트용 글작성 : 일반게시판
-//	@RequestMapping("test")
-//	public String test(ArrayList<MultipartFile> upfileList, 
-//			 		   HttpSession session,
-//			 		   Model model,
-//			 		   Board b) {
-//		
-//		Attachment a = new Attachment();
-//		
-//		ArrayList<Attachment> list = new ArrayList<>();
-//		
-//		for(int i = 0; i < upfileList.size(); i++) {
-//			
-//			if(!upfileList.get(i).getOriginalFilename().equals("")) {
-//				
-//				String changeName = saveFile(upfileList.get(i), session);
-//				
-//				a.setOriginName(upfileList.get(i).getOriginalFilename());
-//				a.setChangeName(changeName);
-//			}
-//			
-//			list.add(a);
-//		}
-//		
-//		
-//		// 사진+게시글 등록 서비스 요청 후 결과 받기
-//		int result1 = boardService.insertFreeBoard(b);
-//		
-//		int result2 = boardService.insertAttachmentList(list);
-//		
-//		int result = result1 * result2;
-//		
-//		
-//		if(result > 0) {
-//			
-//			session.setAttribute("alertMsg", "성공적으로 게시글이 등록되었습니다.");
-//			
-//			return "redirect:/freelist.bo"; 
-//			
-//		} else { 
-//			
-//			model.addAttribute("errorMsg", "게시글 등록 실패");
-//		
-//			return "common/errorPage";
-//		}
-//	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
 	
 	
 	
@@ -340,88 +257,7 @@ public class BoardController {
 	}
 	*/
 	
-	
-	
 
-	
-	
-	
-	
-
-	// 내강아지자랑 게시판 : 글작성 insert  
-	/*
-	@RequestMapping("insert.bo")
-	public String insertFreeBoard(Board b,
-							  Attachment a,
-							  ArrayList<MultipartFile> upfileList,
-							  HttpSession session,
-							  Model model) {
-		
-		
-		for(int i = 0; i < upfileList.size(); i++) {
-			
-			
-			if(!upfileList.get(i).getOriginalFilename().equals("")) {	
-				// 파일을 폴더에 저장 + changeName 반환
-				String changeName = saveFile(upfileList.get(i), session);
-				
-				// 8. 원본파일명, 서버에 업로드된경로 + 수정파일명을 Board b 에 담기
-				a.setOriginName(upfileList.get(i).getOriginalFilename());
-				a.setChangeName("resources/upFiles/board_upfiles/" + changeName);
-			}
-		}
-	
-		
-		
-		// 이 시점 기준으로
-		// 넘어온 첨부파일이 있다면
-		// boardTitle, boardWriter, boardContent, originName, changeName
-		// 필드에 값들이 담겨 있음
-		// 넘어온 첨부파일이 없다면
-		// boardTitle, boardWriter, boardContent
-		// 필드에 값들이 담겨 있음
-		int result = boardService.insertBoard(b);
-		
-		if(result > 0) { // 성공 => 일회성 알람문구 띄운 뒤 게시글 리스트페이지로 url 재요청
-			
-			session.setAttribute("alertMsg", "성공적으로 게시글이 등록되었습니다.");
-			
-			return "redirect:/freelist.bo"; // 내부적으로 1번 페이지로 향함
-			
-		} else { // 실패 => 에러 문구를 담아서 에러페이지로 포워딩
-			
-			model.addAttribute("errorMsg", "게시글 등록 실패");
-			
-			return "common/errorPage";
-		}
-	}
-	*/
-	
-	
-	/* boardDetailForm - 상세페이지 화면에 뿌려주기, bno로  board 정보 뿌려주기 */
-	/*
-	@RequestMapping("detail.bo")
-	public ModelAndView selectBoard(ModelAndView mv, int bno) {
-		
-		// boardDetailForm.jsp 에서 필요로 하는 응답데이터를 조회
-		Board b = boardService.selectBoard(bno);
-		
-		System.out.println(b);
-		
-		// 조회된 데이터를 mv 에 담아서 포워딩 페이지 경로를 잡아주기
-		mv.addObject("b", b).setViewName("board/boardDetailForm");
-		
-		return mv;
-	}
-	*/
-	
-	
-	
-
-
-
-	
-	
 	
 	public String saveFile(MultipartFile upfile, HttpSession session) {
 		

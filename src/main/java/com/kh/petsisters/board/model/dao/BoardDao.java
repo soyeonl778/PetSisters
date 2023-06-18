@@ -93,4 +93,7 @@ public class BoardDao {
 		return (ArrayList)sqlSession.selectList("boardMapper.selectMypetList");
 	}
 	
+	public Board selectBoardInUpdate(SqlSessionTemplate sqlSession, int bno) {
+		return sqlSession.selectOne("boardMapper.selectBoardInUpdate"); 
+	}
 }

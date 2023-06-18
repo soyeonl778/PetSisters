@@ -51,54 +51,52 @@
                     </h3>
                     <div class="popular-post-subsection">
                       
-                      <div class="row row-cols-1 row-cols-md-4 g-4">
-                         
-                        <div class="col">
-                        
-                          
-                          <div class="card">
-                            <img src="/resources/upFiles/dog_profiles/개1.jpg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                              <h5 class="card-title">Card title</h5>
-                              <p class="card-text" style="height: 96px">This is a longer card with supporting text below as a natural lead-in to additional content.This is a longer card with supporting text below as a natural lead-in to additional content.This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-                            </div>
-                          </div>
-                          
-                          
-                        </div>
-                        <div class="col">
-                          <div class="card">
-                            <img src="/resources/upFiles/dog_profiles/개4.jpg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                              <h5 class="card-title">Card title</h5>
-                              <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col">
-                          <div class="card">
-                            <img src="/resources/upFiles/dog_profiles/트포-96974.jpg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                              <h5 class="card-title">Card title</h5>
-                              <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col">
-                          <div class="card">
-                            <img src="/resources/upFiles/dog_profiles/퍼지펫-06258.jpg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                              <h5 class="card-title">Card title</h5>
-                              <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            </div>
-                          </div>
-                        </div>
+                      <!-- test 
+                      <div class="row row-cols-1 row-cols-md-5 g-4">
+                        	<c:forEach var="b" items="${list}" begin="0" end="14" varStatus="loop">
+                        		<div class="col">
+                        			
+								    <div class="card" onclick="goPage(${b.boardNo})">
+								      <c:if test="${ not empty b.changeName }">
+			                            <div class="boardMain-img"><img src="${b.atFilePath }${b.changeName}" class="card-img-top" alt="..."></div>
+			                          </c:if>  
+			                          <c:if test="${ empty b.changeName }">
+			                         	 <div class="boardMain-img"><img src="/resources/img/main/첨부파일없음.png" class="card-img-top" alt="..."></div>
+			                          </c:if>
+								      <div class="card-body">
+								        <h5 class="card-title">${ b.boardTitle }</h5>
+								        <p class="card-text">${ b.boardContent }</p>
+								      </div>
+								    </div>
+								    
+						  		</div>
+                        	</c:forEach>
+						</div>
+                      	-->
                       
+                        
+                      <div class="row row-cols-1 row-cols-md-5 g-4">
+                        <c:forEach var="b" items="${list}" begin="0" end="7">
+	                        <div class="col">
+	                          <div class="card" onclick="goPage(${b.boardNo})">
+	                          	<c:if test="${ not empty b.changeName }">
+	                            	<div class="mypetForm-img"><img src="${b.atFilePath}${b.changeName}" class="card-img-top"></div>
+	                          	</c:if>
+	                          	<c:if test="${ empty b.changeName }">
+	                            	<div class="mypetForm-img"><img src="/resources/img/main/첨부파일없음.png" class="card-img-top"></div>
+	                          	</c:if>
+	                            <div class="card-body">
+	                              <h5 class="card-title">${ b.boardTitle }</h5>
+	                              <p class="card-text" style="height: 96px">${ b.boardContent }</p>
+	                            </div>
+	                          </div>
+	                        </div>
+                        </c:forEach>
+                       
                       </div>
-
-
+                      
+                      
                     </div>
-                  
                   </div>
                   
                   <!-- 카드 4개 영역 끝 -->
@@ -134,6 +132,12 @@
   <!-- Footer 영역 시작 -->
   <jsp:include page="../common/footer.jsp" />
   <!-- Footer 영역 끝 -->
-    
+  
+  <script>
+  function goPage(bno){
+		    location.href = "detail.bo?bno=" + bno;
+  }
+  </script>
+  
 </body>
 </html>

@@ -165,9 +165,9 @@
 	<script>
 		$(function() {
 			$("#boardList>tbody>tr").click(function() {
-				//let bno = $(this).children(".bno").text();
-				//location.href = "detail.bo?bno=" + bno;
-				location.href = "detail.bo";
+				let bno = $(this).children(".bno").text();
+				location.href = "detail.bo?bno=" + bno;
+				//location.href = "detail.bo";
 			})
 		});
 

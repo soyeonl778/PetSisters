@@ -11,7 +11,7 @@
       <link rel="stylesheet" href="/resources/css/board/boardDetailFormSub.css">
       <link rel="stylesheet" href="/resources/css/board/boardDetailForm.css">
       
-      <title>커뮤니티 상세페이지 현재</title>
+      <title>커뮤니티 상세페이지 현재- 임보영 임보영</title>
       <!-- 슬라이더 CDN-->
       <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
@@ -40,7 +40,7 @@
                         <div class="content-header">
                           <div class="content-header-sub">
                             <div class="content-header-sub-a">
-                              <h2 class="header-title">제목영역입니다</h2>
+                              <h2 class="header-title">상세페이지</h2>
                               <img class="header-img" src="https://petplanet.co/static/images/reviews/like.png"></div>
                           </div>
                         </div>
@@ -99,12 +99,11 @@
                                   	
                                   	<div class="contentWrapper">
 	                                  	<div class="bottomTit">
-	                                  		내 이름은
+	                                  		${b.dogName}
 	                                  	</div>
 	                                  	
 	                                  	<div class="bottomDesc">
-	                                  		내이름은 홍시 <br>
-	                                  		새 나라의 개린이 곧 3살을 바라보고 있지요
+	                                  		${b.boardTitle}
 	                                  	</div>
                                   	
                                   	
@@ -189,6 +188,10 @@
                                 
 	                                <div class="btnArea">
 	                                	<button class="btn btn-info" onclick="window.history.go(-1)">목록으로</button>
+	                                	<c:if test="${ not empty loginUser }">
+                                        	<a id="update-icon" class="btn btn-secondary" style="" href="updateForm.bo?bno=${b.boardNo}">수정하기</a>
+                                        	<a id="delete-icon" class="btn btn-secondary" style="" href="updateForm.bo?bno=${b.boardNo}">삭제하기</a>
+                                        </c:if>
 	                                </div>
                                 </div>
                                 
@@ -215,4 +218,4 @@
       <!-- Footer 영역 끝 -->
        
     </body>
-    </htm>
+    </html>
