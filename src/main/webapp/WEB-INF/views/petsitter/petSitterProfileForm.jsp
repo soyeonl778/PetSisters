@@ -20,6 +20,11 @@
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ui-multidatespicker/1.6.6/jquery-ui.multidatespicker.js" integrity="sha512-shDVoXhqpazAEKzSzJQTn5mAtynJ5eIl8pNX2Ah25/GZvZWDEJ/EKiVwfu7DGo8HnIwxlbu4xPi+C0SsHWCCNw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-ui-multidatespicker/1.6.6/jquery-ui.multidatespicker.css" integrity="sha512-VXbqGGD29gdYg6HSSzLd6+eVwBznGTrVoIqZOruvkIbuWSZNDjg/I4p2/zKGMllL5dxzj1PoNoh0dqX1dWxBsQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-ui-multidatespicker/1.6.6/jquery-ui.multidatespicker.min.css" integrity="sha512-mIbgL1BBPonQ8vE6IE3m12DOgjnwObnVHk4C2k3S7yyrgd3ctznEDHnz4871ioTgh7QIy0imgyLeNFk+PehRSw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ui-multidatespicker/1.6.6/jquery-ui.multidatespicker.min.js" integrity="sha512-mMP7O0G5Vv01th+kpYux7RbD89Mx/iQnIvxcKdctiPyADgJzacfQJ8k2AsB8695AAuR2uPuxk7dawb1eehjcuQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
   <!-- 폰트어썸 아이콘 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
@@ -210,7 +215,7 @@
                       <br>
                       <div class="dateInput">
                         <h5>예약 불가능한 날짜 선택</h5>
-                        <input type="text" class="datepicker" id="impoDate" name="impoDate">
+                        <input type="text" class="datepicker" id="impoDate" name="impoDate" placeholder="예약 불가능한 날짜">
                       </div>
 
                       <div align="center" class="formBtn">
@@ -251,31 +256,26 @@
         yearSuffix: '년'
       });
 
-      $(".datepicker").datepicker({
+      $.datepicker._selectDateOverload = $.datepicker._selectDate;
+      $.datepicker._selectDate = function (id, dateStr) {
+          var target = $(id);
+          var inst = this._getInst(target[0]);
+          if (target[0].multiDatesPicker != null) {
+              inst.inline = true;
+              $.datepicker._selectDateOverload(id, dateStr);
+              inst.inline = false;
+              target[0].multiDatesPicker.changed = false;
+          } else {
+              $.datepicker._selectDateOverload(id, dateStr);
+              target.multiDatesPicker.changed = false;
+          }
+          this._updateDatepicker(inst);
+      };
+
+      $(".datepicker").multiDatesPicker({
         dateFormat: 'yy/mm/dd',
         minDate: 0
       });
-
-      // 예약 불가능한 날짜 입력 시 이벤트
-      function addHiddenInput(value) {
-
-        // input hidden 으로 생성 후 값 담기
-        const dateInput = document.createElement('input');
-        dateInput.type = 'hidden';
-        dateInput.name = 'impoDate';
-        dateInput.value = value;
-        
-        // 동적으로 생성된 input 요소를 form에 추가
-        const form = document.getElementsByClassName('dateInput');
-        form.appendChild(dateInput);
-      }
-
-      var impoDateInput = document.getElementById("impoDate");
-
-      impoDateInput.onchange = function() {
-        var value = impoDateInput.value;
-        addHiddenInput(value);
-      };
 
     });
 
