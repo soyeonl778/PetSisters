@@ -18,4 +18,5 @@ public class Inquiry {
 	private String status;
 	private String filePath;
 	private int userNo;
+	private int count; // 댓글 갯수
 }

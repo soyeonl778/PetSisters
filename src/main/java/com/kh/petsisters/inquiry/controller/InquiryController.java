@@ -67,37 +67,48 @@ public class InquiryController {
 								HttpSession session, 
 								Model model) {
 		
-	    try {
-	    	
-	        if (upfile != null && !upfile.isEmpty()) {
-	        	
-	            String filePath = session.getServletContext().getRealPath("/resources/upFiles/inquiry_upfiles/") + upfile.getOriginalFilename();
-	            upfile.transferTo(new File(filePath));
-	            
-	        }
-	        
-	        int result = inquiryService.insertInquiry(i);
-	        
-	        if (result > 0) {
-	        	
-	            session.setAttribute("message", "성공적으로 문의글을 등록했습니다.");
-	            return "redirect:/detail.in?inquiryNo=" + i.getInquiryNo();
-	            
-	        } else {
-	        	
-	            model.addAttribute("errorMsg", "문의글 등록에 실패했습니다.");
-	            
-	            return "common/errorPage";
-	        }
-	        
-	    } catch (IOException e) {
-	    	
-	        model.addAttribute("i", i);
-	        model.addAttribute("errorMsg", "업로드 실패");
-	        
-	        return "inquiry/inquiryEnrollForm";
-	    }
-	}
+		if(!upfile.getOriginalFilename().equals("")) {
+			
+			String changeName = saveFile(upfile, session);
+			i.setFilePath("/resources/upFiles/inquiry_upfiles/" + changeName);
+			
+		}
+		
+		System.out.println(i);
+		
+		int result = inquiryService.insertInquiry(i);
+		
+		if (result > 0) {
+			
+			session.setAttribute("message", "성공적으로 문의글을 등록했습니다.");
+			return "redirect:/detail.in?inquiryNo=" + i.getInquiryNo();
+			
+		} else {
+			
+			model.addAttribute("errorMsg", "문의글 등록에 실패했습니다.");
+			
+			return "/common/errorPage";
+		}
+	}	
+		
+//	    try {
+//	    	
+//	        if (upfile != null && !upfile.isEmpty()) {
+//	        	
+//	            String filePath = session.getServletContext().getRealPath("/resources/upFiles/inquiry_upfiles/") + upfile.getOriginalFilename();
+//	            upfile.transferTo(new File(filePath));
+//	            
+//	        }
+//	        
+//	        
+//	    } catch (IOException e) {
+//	    	
+//	        model.addAttribute("i", i);
+//	        model.addAttribute("errorMsg", "업로드 실패");
+//	        
+//	        return "inquiry/inquiryEnrollForm";
+//	    }
+//	}
 	
 	@RequestMapping("detail.in")
 	public ModelAndView selectInquiry(ModelAndView mv, int inquiryNo) {
@@ -144,6 +155,7 @@ public class InquiryController {
 	@RequestMapping(value="rinsert.in", produces="text/html; charset=UTF-8")
 	public String ajaxInsertReply(CSReply r) {
 		
+		System.out.println(r);
 		int result = inquiryService.insertReply(r);
 		
 		return (result > 0) ? "success" : "fail"; // 무조건 문자열 타입으로 응답데이터 리턴

@@ -17,5 +17,6 @@ public class CSReply {
 	private String status;
 	private int userNo;
 	private int refIno;
+	private String userNickname;
 
 }

@@ -127,7 +127,7 @@ function orderPay(){
 	    	console.log(merchant_uid);
 	    	var msg = '결제가 완료되었습니다.';
 	    	insertOrder(rsp.imp_uid);
-	        // location.href = '/orderComplete';
+	        location.href = '/paySuccess';
 	    } else {
 	    	 var msg = '결제에 실패하였습니다.';
 	         msg += '에러내용 : ' + rsp.error_msg;
