@@ -75,7 +75,7 @@
                   <div class="careListBtn">
                     <label class="form-label">원하시는 조건을 선택하세요</label>
                     <div>
-                      <button onclick="searchButtonClicked('집 앞 픽업')" class="btn btn-secondary" type="button">픽업 가능</button>
+                      <button onclick="searchButtonClicked('집 앞 픽업')" class="btn btn-secondary" type="button">집 앞 픽업</button>
                       <button onclick="searchButtonClicked('매일 산책')" class="btn btn-secondary" type="button">매일 산책</button>
                       <button onclick="searchButtonClicked('목욕 가능')" class="btn btn-secondary" type="button">목욕 가능</button>
                       <button onclick="searchButtonClicked('모발 관리')" class="btn btn-secondary" type="button">모발 관리</button>
@@ -120,8 +120,6 @@
                                         </c:forEach>
                                       </c:when>
                                     </c:choose>
-                                  </ul>
-                                  <ul>
                                     <c:choose>
                                       <c:when test="${ not empty p.petSitterService }">
                                         <c:forEach var="item" items="${ p.petSitterService }">
@@ -222,39 +220,47 @@
 
       });
 
-    });
 
-    $(function() {
 
+
+      // 펫시터 리스트 div 클릭 이벤트
       $(".content>div").click(function() {
         let pno = $(this).find(".pno").text();
         location.href = "detail.pe?pno=" + pno;
       });
 
+
+
+
+      // searchForm 엔터키 이벤트
+      function handleKeyPress(event) {
+        if (event.keyCode === 13) { // Enter 키의 keyCode는 13입니다.
+            searchForm();
+        }
+      }
+
+
+
+
+      // 버튼 클릭 시 name 값을 컨트롤러에 전달하는 AJAX 요청
+      function searchButtonClicked(service) {
+
+        location.href = '/list.pe?service=' + service;
+
+        var button = event.target; // 클릭된 버튼 요소 가져오기
+        var isActive = $(button).hasClass("active-button"); // 현재 활성화 상태 확인
+        
+        // 버튼의 활성화/비활성화 상태 변경
+        if (isActive) {
+          $(button).removeClass("active-button");
+        } else {
+          $(button).addClass("active-button");
+        }
+      }
+
     });
 
-    // searchForm 엔터키 이벤트
-    function handleKeyPress(event) {
-      if (event.keyCode === 13) { // Enter 키의 keyCode는 13입니다.
-          searchForm();
-      }
-    }
 
-    // 버튼 클릭 시 name 값을 컨트롤러에 전달하는 AJAX 요청
-    function searchButtonClicked(service) {
-
-      location.href = '/list.pe?service=' + service;
-
-      var button = event.target; // 클릭된 버튼 요소 가져오기
-      var isActive = $(button).hasClass("active"); // 현재 활성화 상태 확인
-      
-      // 버튼의 활성화/비활성화 상태 변경
-      if (isActive) {
-        $(button).removeClass("active");
-      } else {
-        $(button).addClass("active");
-      }
-    }
 
 
   </script>

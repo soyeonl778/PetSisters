@@ -43,7 +43,6 @@
                   <div id="content-area">
                     <div id="content1">
 
-
                       <div id="carouselExampleIndicators" class="carousel slide">
                         <div class="carousel-indicators">
                           <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>  
@@ -115,7 +114,7 @@
                           <h5>이용 가능 서비스</h5>
                           <div id="petServiceList">
 
-                            <div class="petService" id="집앞픽업" style="display: none;">
+                            <div class="petService" id="집 앞 픽업" style="display: none;">
                               <div class="psDiv">
                                 <div>
                                   <img src="/resources/img/petsitter/집 앞 픽업.png">
@@ -124,7 +123,7 @@
                               </div>
                             </div>
 
-                            <div class="petService" id="모발관리" style="display: none;">
+                            <div class="petService" id="모발 관리" style="display: none;">
                               <div class="psDiv">
                                 <div>
                                   <img src="/resources/img/petsitter/모발 관리.png">
@@ -133,7 +132,7 @@
                               </div>
                             </div>
 
-                            <div class="petService" id="약물복용" style="display: none;">
+                            <div class="petService" id="약물 복용" style="display: none;">
                               <div class="psDiv">
                                 <div>
                                   <img src="/resources/img/petsitter/약물 복용.png">
@@ -142,7 +141,7 @@
                               </div>
                             </div>
 
-                            <div class="petService" id="응급처치" style="display: none;">
+                            <div class="petService" id="응급 처치" style="display: none;">
                               <div class="psDiv">
                                 <div>
                                   <img src="/resources/img/petsitter/응급 처치.png">
@@ -151,7 +150,7 @@
                               </div>
                             </div>
 
-                            <div class="petService" id="목욕가능" style="display: none;">
+                            <div class="petService" id="목욕 가능" style="display: none;">
                               <div class="psDiv">
                                 <div>
                                   <img src="/resources/img/petsitter/목욕 가능.png">
@@ -160,7 +159,7 @@
                               </div>
                             </div>
 
-                            <div class="petService" id="매일산책" style="display: none;">
+                            <div class="petService" id="매일 산책" style="display: none;">
                               <div class="psDiv">
                                 <div>
                                   <img src="/resources/img/petsitter/매일 산책.png">
@@ -169,7 +168,7 @@
                               </div>
                             </div>
 
-                            <div class="petService" id="실내놀이" style="display: none;">
+                            <div class="petService" id="실내 놀이" style="display: none;">
                               <div class="psDiv">
                                 <div>
                                   <img src="/resources/img/petsitter/실내 놀이.png">
@@ -178,7 +177,7 @@
                               </div>
                             </div>
 
-                            <div class="petService" id="장기예약" style="display: none;">
+                            <div class="petService" id="장기 예약" style="display: none;">
                               <div class="psDiv">
                                 <div>
                                   <img src="/resources/img/petsitter/장기 예약.png">
@@ -187,7 +186,7 @@
                               </div>
                             </div>
 
-                            <div class="petService" id="노견케어" style="display: none;">
+                            <div class="petService" id="노견 케어" style="display: none;">
                               <div class="psDiv">
                                 <div>
                                   <img src="/resources/img/petsitter/노견 케어.png">
@@ -196,7 +195,7 @@
                               </div>
                             </div>
 
-                            <div class="petService" id="퍼피케어" style="display: none;">
+                            <div class="petService" id="퍼피 케어" style="display: none;">
                               <div class="psDiv">
                                 <div>
                                   <img src="/resources/img/petsitter/퍼피 케어.png">
@@ -311,13 +310,13 @@
                                 <%-- 빈 하트 일 때 --%>
                                 <c:when test="${ likeCheck == 0 }">
                                   <div class="likeBtn">
-			                          <div>
-				                          <a href="/createChat.do?masterNo=${p.petSitterNo}">
-					                          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="40" fill="currentColor" class="bi bi-chat-dots-fill" viewBox="0 0 16 16">
-											  <path d="M16 8c0 3.866-3.582 7-8 7a9.06 9.06 0 0 1-2.347-.306c-.584.296-1.925.864-4.181 1.234-.2.032-.352-.176-.273-.362.354-.836.674-1.95.77-2.966C.744 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7zM5 8a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm4 0a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
-											</svg>
-				                          </a>
-			                          </div>                                  
+                                    <div>
+                                      <a href="/createChat.do?masterNo=${ p.userNo }">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="40" fill="currentColor" class="bi bi-chat-dots-fill" viewBox="0 0 16 16">
+                                          <path d="M16 8c0 3.866-3.582 7-8 7a9.06 9.06 0 0 1-2.347-.306c-.584.296-1.925.864-4.181 1.234-.2.032-.352-.176-.273-.362.354-.836.674-1.95.77-2.966C.744 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7zM5 8a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm4 0a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+                                        </svg>
+                                      </a>
+                                    </div>                                  
                                     <a href="#" class="heart-login">
                                       <i class="bi bi-heart heartIcon" id="unChecked"></i><p>${ likeCount }&nbsp;</p>
                                     </a>
@@ -326,13 +325,13 @@
                                 <%-- 채워진 하트 일 때 --%>
                                 <c:otherwise>
                                   <div class="likeBtn">
-			                          <div>
-				                          <a href="/createChat.do?masterNo=${p.petSitterNo}">
-					                          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="40" fill="currentColor" class="bi bi-chat-dots-fill" viewBox="0 0 16 16">
-											  <path d="M16 8c0 3.866-3.582 7-8 7a9.06 9.06 0 0 1-2.347-.306c-.584.296-1.925.864-4.181 1.234-.2.032-.352-.176-.273-.362.354-.836.674-1.95.77-2.966C.744 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7zM5 8a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm4 0a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
-											</svg>
-				                          </a>
-			                          </div>                                  
+                                    <div>
+                                      <a href="/createChat.do?masterNo=${ p.userNo }">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="40" fill="currentColor" class="bi bi-chat-dots-fill" viewBox="0 0 16 16">
+                                          <path d="M16 8c0 3.866-3.582 7-8 7a9.06 9.06 0 0 1-2.347-.306c-.584.296-1.925.864-4.181 1.234-.2.032-.352-.176-.273-.362.354-.836.674-1.95.77-2.966C.744 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7zM5 8a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm4 0a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+                                        </svg>
+                                      </a>
+                                    </div>                                  
                                     <a href="#" class="heart-login">
                                       <i class="bi bi-heart-fill heartIcon" id="cheked"></i><p>${ likeCount }&nbsp;</p>
                                     </a>
@@ -346,13 +345,13 @@
                         <%-- 빈 하트 --%>
                         <c:otherwise>
                           <div class="likeBtn">
-                          <div>
-	                          <a href="/createChat.do?masterNo=${p.petSitterNo}">
-		                          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="40" fill="currentColor" class="bi bi-chat-dots-fill" viewBox="0 0 16 16">
-								  <path d="M16 8c0 3.866-3.582 7-8 7a9.06 9.06 0 0 1-2.347-.306c-.584.296-1.925.864-4.181 1.234-.2.032-.352-.176-.273-.362.354-.836.674-1.95.77-2.966C.744 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7zM5 8a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm4 0a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
-								</svg>
-	                          </a>
-                          </div>
+                            <div>
+                              <a href="/createChat.do?masterNo=${ p.userNo }">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="40" fill="currentColor" class="bi bi-chat-dots-fill" viewBox="0 0 16 16">
+                                  <path d="M16 8c0 3.866-3.582 7-8 7a9.06 9.06 0 0 1-2.347-.306c-.584.296-1.925.864-4.181 1.234-.2.032-.352-.176-.273-.362.354-.836.674-1.95.77-2.966C.744 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7zM5 8a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm4 0a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+                                </svg>
+                              </a>
+                            </div>
                             <a href="#" class="heart-notlogin">
                               <i class="bi bi-heart"></i><p>${ likeCount }&nbsp;</p>
                             </a>
@@ -431,7 +430,7 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 
-  <script>
+  <script type="text/javascript">
 
     $(function () {
 
@@ -604,20 +603,20 @@
 
 
     $(document).ready(function() {
+	
+    	// ------------------------ 상세페이지 이용 가능 서비스 표시 ------------------------
+      var psService = "<c:out value='${p.petSitterService}'/>"; // 값을 JavaScript 변수에 할당
+      var psServiceArr = psService.split(","); // 쉼표(,)로 분할하여 배열로 변환
+
+      for(var i = 0; i < psServiceArr.length; i++) {
+
+        var psServiceId = $("div[id='"+ psServiceArr[i] +"']").attr('id');
+
+        const div = document.getElementById(psServiceId);
+        div.style.display = 'grid';
+      }
     	
-    	// 2023-06-17 조승호 수정 : 상세페이지 이용 가능 서비스 표시 함수 최상단으로 이동
-        // ------------------------ 상세페이지 이용 가능 서비스 표시 ------------------------
-        var psService = "<c:out value='${p.petSitterService}'/>"; // 값을 JavaScript 변수에 할당
-  		  var psServiceArr = psService.split(","); // 쉼표(,)로 분할하여 배열로 변환
 
-        for(var i = 0; i < psServiceArr.length; i++) {
-
-          var psServiceId = $("div[id='"+ psServiceArr[i] +"']").attr('id');
-
-          const div = document.getElementById(psServiceId);
-          div.style.display = 'grid';
-  	    }
-    	
 
       // ------------------------ 카카오맵 API ----------------------------
       var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
@@ -678,18 +677,6 @@
         }
 
       });
-
-
-
-      // ------------------------ 슬라이더 ------------------------
-      // $('.single-item').slick({
-      //   slide: 'div',
-      //   infinite: true,
-      //   slidesToShow: 3,
-      //   slidesToScroll: 3,
-      //   arrows: true,
-      //   dots : true
-      // });
 
 
     })
@@ -758,7 +745,6 @@
 
 
     // ------------------------ 찜 버튼 ------------------------
-    // AJAX 호출 함수 정의
     function sendHeartData(userNo, refPno, check) {
 
       var requestData = {};

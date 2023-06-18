@@ -121,19 +121,19 @@ input[type='date']::before {
 .card img {
     margin: 5px;
     border-radius: 5px;
-    width: 329px;
-    height: 231px;
+    width: 330px;
+    height: 248px;
     object-fit: cover;
 }
 
 .card-body {
-    margin: 20px;
+    margin: 15px;
     display: flex;
     flex-direction: column;
 }
 
 .careList {
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
 .careList li:before {
@@ -147,4 +147,8 @@ input[type='date']::before {
 
 .careList ul {
     padding-left: 0;
+}
+
+.active-button {
+    background-color: red; /* 원하는 활성화된 버튼의 색상으로 변경 */
 }

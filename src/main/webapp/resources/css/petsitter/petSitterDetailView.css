@@ -25,13 +25,17 @@ div, form, img { box-sizing: border-box; }
     padding-left: 30px;
 }
 
-.single-item img {
+.carousel-item>img {
     display: block;
     margin: auto;
     width: 780px;
     height: 585px;
     object-fit: cover;
     border-radius: 10px;
+}
+
+.carousel-inner {
+    margin-bottom: 20px;
 }
 
 /* .slider-nav img {
