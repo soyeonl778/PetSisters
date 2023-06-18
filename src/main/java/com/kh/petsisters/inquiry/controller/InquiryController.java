@@ -39,7 +39,7 @@ public class InquiryController {
 		
 		int userNo = ((Member)session.getAttribute("loginUser")).getUserNo();
 				
-		int listCount = inquiryService.selectListCount();
+		int listCount = inquiryService.selectListCount(userNo);
 		
 		int pageLimit = 10;
 		int boardLimit = 5;
@@ -155,7 +155,6 @@ public class InquiryController {
 	@RequestMapping(value="rinsert.in", produces="text/html; charset=UTF-8")
 	public String ajaxInsertReply(CSReply r) {
 		
-		System.out.println(r);
 		int result = inquiryService.insertReply(r);
 		
 		return (result > 0) ? "success" : "fail"; // 무조건 문자열 타입으로 응답데이터 리턴

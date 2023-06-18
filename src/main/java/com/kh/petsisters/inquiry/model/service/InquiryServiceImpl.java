@@ -22,8 +22,8 @@ public class InquiryServiceImpl implements InquiryService {
 	private SqlSessionTemplate sqlSession;
 
 	@Override
-	public int selectListCount() {
-		return inquiryDao.selectListCount(sqlSession);
+	public int selectListCount(int userNo) {
+		return inquiryDao.selectListCount(sqlSession, userNo);
 	}
 
 	@Override

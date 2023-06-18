@@ -26,10 +26,11 @@
 	</resultMap>
 	
 	<!-- 1:1 문의글 총 개수 구하는 쿼리문 -->
-	<select id="selectListCount" resultType="_int">
+	<select id="selectListCount" resultType="_int" parameterType="member">
 		SELECT COUNT(*)
 		  FROM INQUIRY
 		 WHERE STATUS = 'Y'
+		   AND USER_NO = #{userNo}
 	</select>
 	
 	<!-- 1:1 문의글 리스트를 구해주는 쿼리문 -->

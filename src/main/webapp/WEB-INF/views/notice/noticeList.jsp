@@ -74,27 +74,43 @@
                 <br/>
 
                 <!-- 페이지네이션-->
-                <div id="pagination">
-                  <nav aria-label="Page navigation example">
-                    <ul id="pagiUl" class="pagination paginationUlTag">
-                      <li class="arrowTag">
-                        <a href="">&lsaquo;</a>
-                      </li>
-                      <li class="page-item active">
-                        <a class="page-link" href="#">1</a>
-                      </li>
-                      <li class="page-item">
-                        <a class="page-link" href="#">2</a>
-                      </li>
-                      <li class="page-item">
-                        <a class="page-link" href="#">3</a>
-                      </li>
-                      <li class="arrowTag">
-                        <a href="">&rsaquo;</a>
-                      </li>
-                    </ul>
-                  </nav>
-                </div>
+				<div id="pagination">
+					<nav aria-label="Page navigation example">
+						<c:if test="${ pi.listCount != 0 }">
+							<ul id="pagiUl" class="pagination paginationUlTag">
+								<c:choose>
+								  <c:when test="${ pi.currentPage eq 1 }">
+									<li class="arrowTag disabled"><a href="">&lsaquo;</a></li>
+								  </c:when>
+								  <c:otherwise>
+									  <li class="arrowTag">
+				                        <a href="list.no?cPage=${ pi.currentPage - 1 }">&lsaquo;</a>
+									  </li>
+								  </c:otherwise>
+								</c:choose>
+				
+								<c:forEach var="i" begin="${ pi.startPage }" end="${ pi.endPage }" step="1">
+									<li class="page-item active">
+				                      <a class="page-link" href="list.no?cPage=${i}">${i}</a>
+				                    </li>
+								</c:forEach>
+				
+								<c:choose>
+								  <c:when test="${ pi.currentPage eq pi.maxPage }">
+									  <li class="arrowTag disabled">
+				                        <a href="javascript:void(0)">&rsaquo;</a>
+				                      </li>
+									</c:when>
+									<c:otherwise>
+									    <li class="arrowTag">
+				                          <a href="list.no?cPage=${pi.currentPage + 1}">&rsaquo;</a>
+				                        </li>
+								  </c:otherwise>
+								</c:choose>
+							</ul>
+						</c:if>
+					</nav>
+				</div>
                 <!-- 페이지네이션-->
               </div>
             </div>

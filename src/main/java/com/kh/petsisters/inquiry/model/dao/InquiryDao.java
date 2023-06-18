@@ -19,8 +19,8 @@ public class InquiryDao {
 	@Autowired
 	private SqlSession sqlSession;
 	
-	public int selectListCount(SqlSessionTemplate sqlSession) {
-		return sqlSession.selectOne("inquiryMapper.selectListCount");
+	public int selectListCount(SqlSessionTemplate sqlSession, int userNo) {
+		return sqlSession.selectOne("inquiryMapper.selectListCount", userNo);
 	}
 	
 	public List<Inquiry> selectList(SqlSessionTemplate sqlSession, PageInfo pi, int userNo) {
