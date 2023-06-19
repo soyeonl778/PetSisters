@@ -494,17 +494,7 @@ VALUES ( SEQ_RESERVATION.NEXTVAL,
          'µµ¿ò!',
          'Y',
          3,
-         4);  
-         
-INSERT INTO RESERVATION 
-VALUES ( SEQ_RESERVATION.NEXTVAL,
-         '2023-07-01',
-         '2023-07-20',
-         '2023-06-10',
-         '½Ã¸¶ÀÌµ¥¾²',
-         'Y',
-         3,
-         4);          
+         4);         
          
 --------------------------------------------------
 ----------    ¿¹¾àºÒ°¡´É³¯Â¥ Å×ÀÌºí ´õ¹Ì    ----------
@@ -932,7 +922,7 @@ INSERT INTO PAYMENT
 VALUES(SEQ_PAYMENT.NEXTVAL,
        '2023-02-01',
        'ÀÏÁÖÀÏ µ¥½¹',
-       165000,
+       495000,
        DEFAULT,
        1);
 
@@ -940,7 +930,7 @@ INSERT INTO PAYMENT
 VALUES(SEQ_PAYMENT.NEXTVAL,
        '2023-03-06',
        '°­¾ÆÁö¾²',
-       300000,
+       165000,
        DEFAULT,
        2);
        
@@ -948,7 +938,7 @@ INSERT INTO PAYMENT
 VALUES(SEQ_PAYMENT.NEXTVAL,
        '2023-03-27',
        '°»¾óÁã',
-       550000,
+       440000,
        DEFAULT,
        3);
        
@@ -956,7 +946,7 @@ INSERT INTO PAYMENT
 VALUES(SEQ_PAYMENT.NEXTVAL,
        '2023-04-15',
        '¸¹´Ù',
-       55000,
+       495000,
        DEFAULT,
        4);
        
@@ -964,7 +954,7 @@ INSERT INTO PAYMENT
 VALUES(SEQ_PAYMENT.NEXTVAL,
        '2023-04-20',
        '³Ñ¸¹¾î',
-       110000,
+       495000,
        DEFAULT,
        5);
        
@@ -972,7 +962,7 @@ INSERT INTO PAYMENT
 VALUES(SEQ_PAYMENT.NEXTVAL,
        '2023-05-15',
        'ÇÏ·ç´ÙÀÓ¸¶',
-       55000,
+       495000,
        DEFAULT,
        6);
        
@@ -980,7 +970,7 @@ INSERT INTO PAYMENT
 VALUES(SEQ_PAYMENT.NEXTVAL,
        SYSDATE,
        '¾¾´Ù¾¾',
-       165000,
+       495000,
        DEFAULT,
        7);       
        
@@ -988,7 +978,7 @@ INSERT INTO PAYMENT
 VALUES(SEQ_PAYMENT.NEXTVAL,
        SYSDATE,
        'ÆÈºìÂ°',
-       220000,
+       495000,
        DEFAULT,
        8);
        
@@ -996,7 +986,7 @@ INSERT INTO PAYMENT
 VALUES(SEQ_PAYMENT.NEXTVAL,
        SYSDATE,
        '±¸¹øÂ°',
-       55000,
+       1045000,
        DEFAULT,
        9); 
        
@@ -1004,7 +994,7 @@ INSERT INTO PAYMENT
 VALUES(SEQ_PAYMENT.NEXTVAL,
        SYSDATE,
        '¸¶Áö¸·',
-       1100000,
+       55000,
        DEFAULT,
        10);       
        
@@ -1012,7 +1002,7 @@ INSERT INTO PAYMENT
 VALUES(SEQ_PAYMENT.NEXTVAL,
        SYSDATE,
        'ÀÌ°Ô¹¹³Æ¸»ÀÔ´Ï´Ù',
-       110000,
+       55000,
        DEFAULT,
        11);  
        
@@ -1020,7 +1010,7 @@ INSERT INTO PAYMENT
 VALUES(SEQ_PAYMENT.NEXTVAL,
        SYSDATE,
        'ÀÌ°Ô¸Â³ª',
-       550000,
+       770000,
        DEFAULT,
        12);  
        
@@ -1028,7 +1018,7 @@ INSERT INTO PAYMENT
 VALUES(SEQ_PAYMENT.NEXTVAL,
        SYSDATE,
        '¸ð¸£°Î´Ù',
-       55000,
+       1595000,
        DEFAULT,
        13);  
        
@@ -1036,7 +1026,7 @@ INSERT INTO PAYMENT
 VALUES(SEQ_PAYMENT.NEXTVAL,
        SYSDATE,
        '¾Æ¸ô¶û',
-       165000,
+       990000,
        DEFAULT,
        14);  
        
@@ -1044,7 +1034,7 @@ INSERT INTO PAYMENT
 VALUES(SEQ_PAYMENT.NEXTVAL,
        SYSDATE,
        'ÆRÃP',
-       1100000,
+       220000,
        DEFAULT,
        15);  
        
@@ -1052,7 +1042,7 @@ INSERT INTO PAYMENT
 VALUES(SEQ_PAYMENT.NEXTVAL,
        SYSDATE,
        'Èå¾ÆµÎ¿ìÀÚ',
-       1100000,
+       550000,
        DEFAULT,
        16);         
            
