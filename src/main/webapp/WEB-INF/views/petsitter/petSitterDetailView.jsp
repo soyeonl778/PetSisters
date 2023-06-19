@@ -396,15 +396,6 @@
                       <br>
                       <div class="card">
                         <div class="card-body">
-                          <h5 class="card-title">예약 가능 날짜</h5>
-                          <div class="container">
-                            <input type="text" id="datepicker" class="form-control" placeholder="예약 가능 날짜">
-                          </div>
-                        </div>
-                      </div>
-                      <br>
-                      <div class="card">
-                        <div class="card-body">
                           <h5 class="card-title">펫시터님 위치</h5>
                           <p class="card-text">${ p.address }</p>
                         </div>
@@ -445,16 +436,18 @@
         dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
         dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
         showMonthAfterYear: true,
-        yearSuffix: '년'
+        yearSuffix: '년',
+        showButtonPanel: true,
+        closeText: 'close'
       });
 
-      $(".datepicker1, .datepicker2, #datepicker").datepicker({
+      $(".datepicker1, .datepicker2").datepicker({
         minDate: 0,
         beforeShowDay: disableSomeDays
       });
 
       // 예약 불가능일 설정
-      var disabledDays = ${ formatDates };      
+      var disabledDays = ${ formatDates };    
 
       // 특정일 선택막기
       function disableSomeDays(date) {
@@ -468,24 +461,63 @@
       }
 
 
+      
       // ------------------------ 예약 장바구니 ----------------------------
       $('#day').text(0);
     
       $('#startDate, #endDate').on('change', function() {
 
+        // 날짜 검사 로직
         // 시작일, 종료일
         var startDate = new Date($('#startDate').val());
         var endDate = new Date($('#endDate').val());
 
-        if(startDate instanceof Date && !isNaN(startDate) && endDate instanceof Date && !isNaN(endDate)) {
+        var currentDate = new Date(startDate); // startDate로 초기화된 currentDate 변수 선언
+
+        let temp = [...disabledDays];
+
+        for(let i = 0; i < temp.length; i++) {
+          temp[i] = new Date(temp[i]);
+          //onsole.log(temp[i])
+        }
+
+        let calStatus = true;
+        
+        // startDate부터 endDate까지의 매일을 반복
+        while (currentDate <= new Date(endDate)) {
+          
+          for(let i = 0; i < temp.length; i++) {
+            
+            let status = (currentDate.toString() === temp[i].toString());
+
+            // 하루라도 안된다면 => 다시선택하라고 유도
+            if(status) {
+
+              $('#startDate').val("");
+              $('#endDate').val("");
+              
+              resetValues();
+              calStatus = false;
+              break;
+            }
+
+          }
+
+          currentDate.setDate(currentDate.getDate() + 1); // currentDate를 다음 날짜로 설정
+        }
+
+        if(calStatus) {
+          
           calculateDateDifference();
           updateTotal();
         } else {
 
+          alert("예약 가능한 날짜로 다시 선택해주세요.");
           resetValues();
         }
 
       });
+
 
     });
 
@@ -495,6 +527,7 @@
     // 예약 요청 반려동물 마릿수 증감 이벤트
     $('#petCount').text(0);
     $('#petCount2').text(0);
+    $('#total').text(0);
 
     // HTML 요소 가져오기
     const petCountElement = document.getElementById('petCount');
@@ -553,20 +586,27 @@
       var startDate = new Date($('#startDate').val());
       var endDate = new Date($('#endDate').val());
 
+      // 하나라도 날짜가 입력 아직 안된경우  => 계산을 아예 안하면 NaN 가 뜰리없음
+      if($('#startDate').val() == "" || $('#endDate').val() == "") {
+
+        $('#day').text(0);
+      } else {
+
       if (endDate < startDate) {
         $('#endDate').val('');
         $('#day').text(0); // endDate가 startDate보다 이전인 경우 0으로 설정
       } else {
 
-        // 날짜 차이를 계산(결과는 밀리초로 반환되므로 일 단위로 변환)
-        var dateDifference = Math.ceil((endDate - startDate) / (1000 * 60 * 60 * 24));
+          // 날짜 차이를 계산(결과는 밀리초로 반환되므로 일 단위로 변환)
+          var dateDifference = Math.ceil((endDate - startDate) / (1000 * 60 * 60 * 24));
 
-        // 결과를 #day 요소에 출력
-        $('#day').text(dateDifference + 1);
+          // 결과를 #day 요소에 출력
+          $('#day').text(dateDifference + 1);
 
-        // #payDscpt 요소의 값을 가져오기
-        var payDscptValue = $('#payDscpt').text();
-        addHiddenInput('payDscpt', payDscptValue);
+          // #payDscpt 요소의 값을 가져오기
+          var payDscptValue = $('#payDscpt').text();
+          addHiddenInput('payDscpt', payDscptValue);
+        }
       }
     }
 
@@ -585,7 +625,7 @@
       $('#petCount').text(0);
       $('#petCount2').text(0);
       $('#day').text(0);
-      $('#total').val('');
+      $('#total').text(0);
       $('#reserveForm').find('input[name="payDscpt"]').remove();
     }
 

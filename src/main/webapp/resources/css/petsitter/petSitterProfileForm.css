@@ -65,7 +65,16 @@ input[type=text], textarea {
     border-color: lightgray;
 }
 
-.dateInput>input {
+.dateInput {
+    display: flex;
+}
+
+.dateInput>div {
+    margin-right: 100px;
+    margin-bottom: 230px;
+}
+
+.dateInput input {
     height: 35px;
 }
 
@@ -113,6 +122,7 @@ input[type=text], textarea {
 
 #addList {
     padding-left: 0;
+    margin-bottom: 50px;
 }
 
 #addList li {

@@ -214,13 +214,15 @@
                       </div>
                       <br>
                       <div class="dateInput">
-                        <h5>예약 불가능한 날짜 선택</h5>
-                        <input type="text" class="datepicker" id="impoDate" name="impoDate" placeholder="예약 불가능한 날짜">
-
+                        <div class="impoDate">
+                          <h5>예약 불가능한 날짜 선택</h5>
+                          <input type="text" class="datepicker" id="impoDate" name="impoDate" placeholder="예약 불가능한 날짜">
+                        </div>
                         <br><br>
-
-                        <h5>예약 불가능한 날짜 취소</h5>
-                        <input type="text" class="datepicker" id="deleteDate" name="delDate" placeholder="예약 불가능한 날짜">
+                        <div class="deleteDate">
+                          <h5>예약 불가능한 날짜 취소</h5>
+                          <input type="text" class="datepicker" id="deleteDate" name="delDate" placeholder="예약 불가능한 날짜">
+                        </div>
                       </div>
 
                       <div align="center" class="formBtn">
@@ -258,7 +260,9 @@
         dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
         dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
         showMonthAfterYear: true,
-        yearSuffix: '년'
+        yearSuffix: '년',
+        showButtonPanel: true,
+        closeText: 'close'
       });
 
       $.datepicker._selectDateOverload = $.datepicker._selectDate;
@@ -280,14 +284,13 @@
       var today = new Date();
 
       
-      // 예약 불가능일 설정
+      // 예약 불가능일 설정 (INSERT)
       var disabledDays = ${ formatDates };
 
       for(let i = 0; i < disabledDays.length; i++) {
 
        //  문자열   --->>   Date 타입의 "객체"
         disabledDays[i] = new Date(disabledDays[i]);
-        //console.log(disabledDays[i]);
       }
       
       $("#impoDate").multiDatesPicker({
@@ -295,15 +298,15 @@
         addDisabledDates : disabledDays
       });
 
-      // 예약 불가능일 해제 - 2 백엔드 붙이기 (delete 기능)
 
+      // 예약 불가능일 해제 (DELETE)
       var enabledDay = ${ formatDates };
 
       // 창 닫기 기능 추가 - 1
       $("#deleteDate").datepicker({
         minDate: 0,
-        beforeShowDay: disableSomeDays,
-      });  
+        beforeShowDay: disableSomeDays
+      });
 
       function disableSomeDays(date) {
           var m = date.getMonth(), d = date.getDate(), y = date.getFullYear();
@@ -315,21 +318,9 @@
           return [false];
       }
 
-      // impoDate 에 클릭이벤트 (멀티라서 따로 구현) 
-      let count = 0;
-
-      $("#impoDate").click(function() {
-
-        if(count > 0) {
-          let status = $("#ui-datepicker-div").css("display");
-
-          if(status === "block") {
-            $("#ui-datepicker-div").css("display", "none");
-          } else {
-            $("#ui-datepicker-div").css("display", "block");
-          }
-        }
-        count++;
+      // impoDate 닫기 버튼에 클릭이벤트
+      $(".ui-datepicker-close").click(function() {
+        $("#ui-datepicker-div").css("display", "none");
       });
 
     });

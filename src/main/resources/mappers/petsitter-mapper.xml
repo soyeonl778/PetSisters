@@ -264,6 +264,7 @@
 		SELECT I_DATE
 		  FROM IMPOSSIBLE_DATE
 		 WHERE REF_PNO = #{pno}
+	  ORDER BY I_DATE ASC
 	</select>
 	
 	<!-- 펫시터 예약 불가능일 삭제용 쿼리문 -->
