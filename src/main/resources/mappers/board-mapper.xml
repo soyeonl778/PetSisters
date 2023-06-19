@@ -231,12 +231,23 @@
 		   AND STATUS = 'Y'	
 	</update>
 	
+	<!-- 게시글 삭제용 쿼리문 -->
+    <update id="deleteBoard" parameterType="_int">
+        UPDATE BOARD
+           SET STATUS = 'N'
+         WHERE B_NO = #{bNo}
+    </update>
+	
+	
 	<!-- 기존 첨부파일 삭제 -->
 	<update id="deleteAttaAll" parameterType="_int">
 		UPDATE B_ATTACHMENT
 		SET STATUS = 'N',
 		WHERE REF_BNO = #{boardNo}
 	</update>
+	
+	
+	
 	
 	
 	<!-- 첨부파일 업데이트용 쿼리문 -->
@@ -295,7 +306,16 @@
 		WHERE REP_NO = #{repNo}	
 	</update>
 	
-
+	<!-- 첨부파일 조회용 서비스 : 수정페이지  -->
+	<select id="selectAttachment" parameterType="_int" resultMap="attachmentResultSet">
+		SELECT FILE_NO 
+			 , ORIGIN_NAME
+		     , CHANGE_NAME
+		     , FILE_PATH
+		  FROM B_ATTACHMENT
+		 WHERE STATUS = 'Y'
+		   AND REF_BNO = #{bno}
+	</select>	
 	
 	
 	
@@ -438,15 +458,7 @@
 	-->
 
 
-	 <!--   
-	<select id="selectAttachment" parameterType="_int" resultMap="attachmentResultSet">
-		SELECT ORIGIN_NAME
-		     , CHANGE_NAME
-		  FROM B_ATTACHMENT
-		 WHERE STATUS = 'Y'
-		   AND REF_BNO = #{boardNo}
-	</select>	
-	-->
+	 
 	
 	
 	<!--  

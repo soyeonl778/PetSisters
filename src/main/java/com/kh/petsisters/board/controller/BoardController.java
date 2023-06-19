@@ -202,22 +202,48 @@ public class BoardController {
 		return mv;
 	}
 	
+	// 게시글 삭제하기 
+    @RequestMapping("delete.bo")
+    public String deleteBoard(HttpSession session,
+    						  @RequestParam(value = "bno") int bNo) {
+
+        int result = boardService.deleteBoard(bNo);
+
+        
+        if(result > 0) { // 등록 성공
+	    	
+			// 일회성 알람문구 담아서 프로필 상세페이지로 url 재요청
+			session.setAttribute("alertMsg", "게시글 삭제 완료");
+			
+			return "redirect:/freeList.bo";
+	    	
+		} else { // 수정 실패
+			
+			// 에러 문구 일회성 알람 띄우기
+			session.setAttribute("alertMsg", "게시글 등록 실패");
+		
+			return "redirect:/.bo";
+						
+		}
+    }
+	
+	
 	// 업데이트 폼으로 이동
 	@RequestMapping("updateForm.bo")
-	public ModelAndView updateBoard(ModelAndView mv, int bno) {
+	public ModelAndView updateForm(ModelAndView mv, int bno) {
 		
 		Board b = boardService.selectBoard(bno);
 		
-		//Attachment a = boardService.selectAttachment(bno);
+		ArrayList<Attachment> list = boardService.selectAttachment(bno);
 		
-		//System.out.println(a);
+		System.out.println(list);
 		
-		mv.addObject("b", b).setViewName("board/boardUpdateForm2");
+		mv.addObject("b", b).addObject("list", list).setViewName("board/boardUpdateForm2");
 		
 		return mv;
 	}
 	
-	
+	/*
 	// 업데이트 
 	@RequestMapping("update.bo")
 	public String updateBoard(Board b,
@@ -226,54 +252,59 @@ public class BoardController {
 			   				    Model model) {
 		
 		
-		int result1 = 1;
-		int result2 = 1;
+		// int result1 = 1;
+		// int result2 = 1;
 		String filePath = "/resources/upFiles/board_upfiles/";
 		
-		result1 = boardService.updateBoard(b);
+		// result1 = boardService.updateBoard(b);
 		
 		
 		// ------------------- 다중첨부파일 부분 -------------------
-		int boardNo = b.getBoardNo();
-		result2 = boardService.deleteAttaAll(boardNo);
+		// int boardNo = b.getBoardNo();
+		// result2 = boardService.deleteAttaAll(boardNo);
 		
-	    if(upfileList.get(0).getSize() > 0) {
+	    ArrayList<Attachment> list = new ArrayList<>();
+	    // 이미지 객체 생성
+		Attachment at = new Attachment(); 
 	    	
+    	for(int i = 0; i < upfileList.size(); i++) {
+    		
+    		if (upfileList.get(i).getSize() > 0) { // 넘어온 파일이 있다면, 전체삭제 후 insert
+
+    			
+    			
+				String realPath = session.getServletContext().getRealPath("/resources/upFiles/board_upfiles/");
+    			
+				new File(realPath).delete();
+    			
+    			// 서버에 업로드 시키기
+    			String changeName = saveFile(upfileList.get(i), session);
+    			
+    			// 펫시터 이미지 객체에 담기
+    			at.setOriginName(upfileList.get(i).getOriginalFilename());
+    			at.setChangeName(changeName);
+    			at.setFilePath(filePath);
+    			
+    			
+    		} else { // 넘어온 파일이 없다면
+    			
+    			// 넘어온 상품이 없다면 없는걸 어떻게 담아 
+    			//  at.setChangerName(changeNames[i]);
+    			
+    		}
+    		
+    		list.add(at);
+    	}
 	    	
-	    	for(int i = 0; i < upfileList.size(); i++) {
-	    		
-	    		if (upfileList.get(i).getSize() > 0) {
-	    			
-	    			Attachment at = new Attachment();
-	    			
-	    			String changeName = saveFile(upfileList.get(i), session);
-	    			
-	    			// 펫시터 이미지 객체에 담기
-	    			at.setOriginName(upfileList.get(i).getOriginalFilename());
-	    			at.setChangeName(changeName);
-	    			at.setFilePath(filePath);
-	    			at.setRefBno(b.getBoardNo());
-	    			
-	    			result2 = boardService.updateAttachmentList(at);
-	    		}
-	    		
-	    	}
+    	int result = boardService.updateBoardForm(b, list);
 	    	
-	    	
-	    	
-	    }
-	    
-	   
-	    
-	    
-	    int result = result1 * result2;
-	    
+	  
 	    if(result > 0) { // 등록 성공
 	    	
 			// 일회성 알람문구 담아서 프로필 상세페이지로 url 재요청
 			session.setAttribute("alertMsg", "게시글 수정 완료");
 			
-			return "redirect:/.bo";
+			return "redirect:/detail.bo";
 	    	
 		} else { // 수정 실패
 			
@@ -283,9 +314,12 @@ public class BoardController {
 			return "redirect:/.bo";
 		}
 
-}
-		
-		
+	}
+	*/	
+	
+	
+	
+	
 		
 	@ResponseBody
 	@RequestMapping(value="addReply", produces = "application/json; charset=UTF-8")

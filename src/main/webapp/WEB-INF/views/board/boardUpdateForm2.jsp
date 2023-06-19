@@ -71,7 +71,7 @@
 	                                  <p class="text-review">내용</p>
 	                                  <a class="petsister-a">
 	                                    <div class="petsister">
-	                                        <textarea class="petsister-input" type="text" placeholder="내용을 입력해주세요" name="boardContent" required></textarea>
+	                                        <textarea class="petsister-input" type="text" placeholder="내용을 입력해주세요" name="boardContent" required>${b.boardContent}</textarea>
 	                                    </div>
 	                                  </a>
 	    								
@@ -91,12 +91,23 @@
                                       </div>
 	                                    
                                       <div class="fileSection preview">
+                                       	<c:forEach var="b" items="${ list }" >
+                                        <c:if test="${not empty b.originName}">
+                                        	현재 업로드된 파일: 
+                                        	<a href="${ b.changeName }" download="${ b.originName }">${ b.originName }</a><br>
+                                        	<input type="hidden" name="originName" value="${ b.originName }">
+	                          				<input type="hidden" name="changeName" value="${ b.changeName }">
+                                        </c:if>
+                                        </c:forEach>
+                                        
+                                        
                                         <label for="btnAtt">첨부파일 : </label>
-                                        <input type="file" name="upfile" id="btnAtt" onchange="loadImg(this, 1);"> <br>
+                                        <input type="file" name="upfile" id="btnAtt" onchange="loadImg(this, 1);"> <br> 	
                                         <label for="btnAtt">첨부파일 : </label>
                                         <input type="file" name="upfile" id="btnAtt" onchange="loadImg(this, 2);"> <br>
                                         <label for="btnAtt">첨부파일 : </label>
                                         <input type="file" name="upfile" id="btnAtt" onchange="loadImg(this, 3);">
+                                      	
                                       </div>  
 	                                  </div>
 	                                  

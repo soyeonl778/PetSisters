@@ -128,5 +128,13 @@ public class BoardDao {
 		return sqlSession.update("boardMapper.replyDelete", repNo);
 	}
 	
+	public ArrayList<Attachment> selectAttachment(SqlSessionTemplate sqlSession, int bno) {
+		return (ArrayList)sqlSession.selectList("boardMapper.selectAttachment", bno);
+	}
+	
+	public int deleteBoard(SqlSessionTemplate sqlSession, int bNo) {
+        return sqlSession.update("boardMapper.deleteBoard", bNo);
+    }
+	
 	
 }

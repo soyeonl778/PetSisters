@@ -174,7 +174,7 @@
 	                                	<button class="btn btn-info" onclick="window.history.go(-1)">목록으로</button>
 	                                	<c:if test="${ not empty loginUser }">
                                         	<a id="update-icon" class="btn btn-secondary" style="" href="updateForm.bo?bno=${b.boardNo}">수정하기</a>
-                                        	<a id="delete-icon" class="btn btn-secondary" style="" href="updateForm.bo?bno=${b.boardNo}">삭제하기</a>
+                                        	<a id="delete-icon" class="btn btn-secondary" style="" href="delete.bo?bno=${b.boardNo}">삭제하기</a>
                                         </c:if>
 	                                </div>
                                 </div>
