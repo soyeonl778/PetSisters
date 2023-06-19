@@ -15,7 +15,7 @@
 
 #contentWrapper {
     width: 95%;
-    margin-left: 15px;
+    margin-left: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -67,6 +67,7 @@
 }
 .siter_infoArea {
     margin-top: 15px;
+    margin-right:20px;
 }
 
 #viewOrderList {
