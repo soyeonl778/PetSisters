@@ -58,7 +58,7 @@
 			          </c:when>
 				      <c:otherwise>
 			            <c:forEach var="i" items="${list}">
-			                <tr>
+			                <tr class="inquiry-row">
 			                    <td height="51">${i.inquiryNo}</td>
 			                    <td>${i.inquiryTitle}</td>
 			                    <td>${i.createDate}</td>

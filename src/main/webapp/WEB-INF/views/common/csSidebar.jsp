@@ -57,10 +57,12 @@ function inquiry() {
 </script>
 <script>
   	$(function() {
-		$("#inquiryTable>tbody>tr").click(function() {
+		$(".inquiry-row").click(function() {
 			let inquiryNo = $(this).children().eq(0).text();
+			if (!$(this).hasClass("empty-row")) {
 			/* console.log(inquiryNo); */
-			location.href = "detail.in?inquiryNo=" + inquiryNo;
+				location.href = "detail.in?inquiryNo=" + inquiryNo;
+			}
 		});
   	});
 </script>
