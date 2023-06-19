@@ -97,6 +97,9 @@
 		<result column="ETC_EXPERIENCE" property="etcExperience" />
 		<result column="PETSITTER_EXPERIENCE" property="petsitterExperience" />
 		<result column="USER_NO" property="userNo" />
+		<result column="USER_ID" property="userId" />
+		<result column="USER_NAME" property="userName" />
+		<result column="STATUS" property="status" />
 	</resultMap>
 	
 	<select id="dashMemberView" parameterType="_int" resultMap="memberResultSet">
@@ -105,15 +108,16 @@
 		WHERE USER_NO != 1
 	</select>
 	
-	<update id="dashMemberDelete" parameterType="_int">
+	<update id="dashMemberDelete" parameterType="member">
 		UPDATE MEMBER
-			SET STATUS = 'N'
+			SET STATUS = #{status}
 		WHERE USER_NO = #{userNo}
 	</update>
 	
 	<select id="dashPetsiterView" parameterType="_int" resultMap="petSitterResultSet">
 		SELECT M.USER_NO
             , P.P_NO
+            , p.P_TITLE
             , M.USER_NAME
             , M.ADDRESS
             , P.P_MODE
@@ -122,16 +126,42 @@
         JOIN MEMBER M ON (P.USER_NO = M.USER_NO)
 	</select>
 
-	<update id="dashPetsiterDelete" parameterType="_int">
+	<update id="dashPetsiterDelete" parameterType="petSitter">
 		UPDATE MEMBER
-			SET SITTER_STATUS = 'N'
+			SET SITTER_STATUS = #{caStatus}
 		WHERE USER_NO = #{userNo}
 	</update>
 	
 	<select id="dashSupportView" parameterType="_int" resultMap="supportResultSet">
-		SELECT *
-		FROM SUPPORT
+		SELECT M.USER_NO
+            , SUPPORT_NO
+            , M.USER_ID
+            , M.USER_NAME
+            , S.ADDRESS
+            , PYEONG
+            , SMOKE
+            , MY_EXPERIENCE
+            , OTHER_EXPERIENCE
+            , ETC_EXPERIENCE
+            , PETSITTER_EXPERIENCE
+            , S.STATUS
+		FROM SUPPORT S
+        JOIN MEMBER M ON (S.USER_NO = M.USER_NO)
+        WHERE S.STATUS IS NULL
+        AND M.SITTER_STATUS = 'N'
 	</select>
+	
+	<update id="dashSupportApprove" parameterType="support">
+		UPDATE SUPPORT
+			SET STATUS = #{status}
+		WHERE SUPPORT_NO = #{supportNo}
+	</update>
+	
+	<update id="memberSupportApprove" parameterType="support">
+		UPDATE MEMBER
+			SET SITTER_STATUS = #{status}
+		WHERE USER_NO = #{userNo}
+	</update>
 
 </mapper>
 

@@ -16,20 +16,26 @@ public class DashboardDao {
 		return (ArrayList)sqlSession.selectList("dashboardMapper.dashMemberView", null);
 	}
 	
-	public int dashMemberDelete(SqlSessionTemplate sqlSession, int userNo) {
-		return sqlSession.update("dashboardMapper.dashMemberDelete", userNo);
+	public int dashMemberDelete(SqlSessionTemplate sqlSession, Member m) {
+		return sqlSession.update("dashboardMapper.dashMemberDelete", m);
 	}
 	
 	public ArrayList<PetSitter> dashPetsiterView(SqlSessionTemplate sqlSession) {
 		return (ArrayList)sqlSession.selectList("dashboardMapper.dashPetsiterView", null);
 	}
 	
-	public int dashPetsiterDelete(SqlSessionTemplate sqlSession, int userNo) {
-		return sqlSession.update("dashboardMapper.dashPetsiterDelete", userNo);
+	public int dashPetsiterDelete(SqlSessionTemplate sqlSession, PetSitter p) {
+		return sqlSession.update("dashboardMapper.dashPetsiterDelete", p);
 	}
 	
 	public ArrayList<Support> dashSupportView(SqlSessionTemplate sqlSession) {
 		return (ArrayList)sqlSession.selectList("dashboardMapper.dashSupportView", null);
+	}
+	
+	public int dashSupportApprove(SqlSessionTemplate sqlSession, Support s) {
+		int result1 = sqlSession.update("dashboardMapper.dashSupportApprove", s);
+		int result2 = sqlSession.update("dashboardMapper.memberSupportApprove", s);
+		return result1 * result2;
 	}
 	
 }

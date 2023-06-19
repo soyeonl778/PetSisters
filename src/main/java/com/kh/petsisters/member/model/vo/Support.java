@@ -21,10 +21,10 @@ public class Support {
 	private String otherExperience;		//	OTHER_EXPERIENCE	VARCHAR2(2000 BYTE)
 	private String etcExperience;			//	ETC_EXPERIENCE	VARCHAR2(2000 BYTE)
 	private String petsitterExperience;	//	PETSITTER_EXPERIENCE	VARCHAR2(1 BYTE)
+	private String status;
 	private int userNo;						//	USER_NO	NUMBER
 	private String userId;
 	private String userName;
-	private String userNickName;
 	
 	
 }

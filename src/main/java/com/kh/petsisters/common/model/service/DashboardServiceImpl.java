@@ -27,8 +27,8 @@ public class DashboardServiceImpl implements DashboardService {
 	}
 
 	@Override
-	public int dashMemberDelete(int userNo) {
-		return dashboardDao.dashMemberDelete(sqlSession, userNo);
+	public int dashMemberDelete(Member m) {
+		return dashboardDao.dashMemberDelete(sqlSession, m);
 	}
 
 	@Override
@@ -37,13 +37,18 @@ public class DashboardServiceImpl implements DashboardService {
 	}
 
 	@Override
-	public int dashPetsiterDelete(int userNo) {
-		return dashboardDao.dashPetsiterDelete(sqlSession, userNo);
+	public int dashPetsiterDelete(PetSitter p) {
+		return dashboardDao.dashPetsiterDelete(sqlSession, p);
 	}
 
 	@Override
 	public ArrayList<Support> dashSupportView() {
 		return dashboardDao.dashSupportView(sqlSession);
+	}
+
+	@Override
+	public int dashSupportApprove(Support s) {
+		return dashboardDao.dashSupportApprove(sqlSession, s);
 	}
 
 }

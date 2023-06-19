@@ -21,11 +21,10 @@
             #datatablesSimple>tbody>tr:hover {
                 cursor: pointer!important;
             }
-
             .withdrawButtonClass{
                 border: none;
                 border-radius: 4px;
-                width: 64px;
+                width: 70px;
                 height: 32px;
                 line-height: 150%;
                 font-weight: bold;
@@ -34,9 +33,23 @@
                 color: rgb(255, 255, 255);
                 transition: background-color 0.5s ease 0s, color 0.5s ease 0s;
             }
-
             .withdrawButtonClass:hover {
                 background-color: #008cdc;
+            }
+            .rejectButtonClass {
+                border: none;
+                border-radius: 4px;
+                width: 70px;
+                height: 32px;
+                line-height: 150%;
+                font-weight: bold;
+                font-size: 14px;
+                background-color: #ff9595;
+                color: rgb(255, 255, 255);
+                transition: background-color 0.5s ease 0s, color 0.5s ease 0s;
+            }
+            .rejectButtonClass:hover {
+                background-color: #ff0000;
             }
         </style>
     </head>
@@ -106,7 +119,16 @@
                                                 <td>${m.email}</td>
                                                 <td>${m.status}</td>
                                                 <td>${m.enrollDate}</td>
-                                                <td><button id="withdrawButton" class="withdrawButtonClass" onclick="handleWithdraw('${m.status}', ${m.userNo});">탈퇴</button></td>
+                                                <td>
+                                                    <c:choose>
+                                                        <c:when test="${ m.status eq 'Y' }">
+                                                            <button id="" class="rejectButtonClass" onclick="location.href='memberDelete.da?userNo=${m.userNo}&status=${m.status}'">탈퇴</button>
+                                                        </c:when>
+                                                        <c:otherwise>
+                                                            <button id="" class="withdrawButtonClass" onclick="location.href='memberDelete.da?userNo=${m.userNo}&status=${m.status}'">복구</button>
+                                                        </c:otherwise>
+                                                    </c:choose>
+                                                </td>
                                             </tr>
                                         </c:forEach>
                                     </tbody>
@@ -123,17 +145,6 @@
 		
 		</div>
 	</div>
-
-    <script>
-        function handleWithdraw(status, userNo) {
-            
-            if (status === 'Y') {
-            location.href = 'memberDelete.da?userNo=' + userNo;
-          } else {
-            alertify.alert('알림', '이미 탈퇴된 회원입니다.')
-          }
-        }
-      </script>
     </body>
 </html>
 	

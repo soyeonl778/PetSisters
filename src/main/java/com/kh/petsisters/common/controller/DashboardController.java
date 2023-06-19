@@ -42,15 +42,22 @@ public class DashboardController {
 	}
 	
 	@RequestMapping("memberDelete.da")
-	public String dashMemberDelete(int userNo, HttpSession session) {
+	public String dashMemberDelete(Member m, HttpSession session) {
 		
-		int result = dashboardService.dashMemberDelete(userNo);
+		if(m.getStatus().equals("Y")) {
+			m.setStatus("N");
+			session.setAttribute("alertMsg", "성공적으로 회원 탈퇴 되었습니다."); 
+		} else {
+			m.setStatus("Y");
+			session.setAttribute("alertMsg", "성공적으로 복구 되었습니다.");
+		}
+		
+		int result = dashboardService.dashMemberDelete(m);
 		
 		if(result > 0)  {
-			session.setAttribute("alertMsg", "성공적으로 회원이 탈퇴 되었습니다."); 
 			return "redirect:/member.da";
 		} else {
-			session.setAttribute("alertMsg", "회원 탈퇴 실패");
+			session.setAttribute("alertMsg", "회원 탈퇴/복구 실패");
 			return "redirect:/member.da";
 		}
 	}
@@ -64,15 +71,22 @@ public class DashboardController {
 	}
 	
 	@RequestMapping("petsiterDelete.da")
-	public String dashPetsiterDelete(int userNo, HttpSession session) {
+	public String dashPetsiterDelete(PetSitter p, HttpSession session) {
 		
-		int result = dashboardService.dashPetsiterDelete(userNo);
+		if(p.getCaStatus().equals("Y")) {
+			p.setCaStatus("N");
+			session.setAttribute("alertMsg", "성공적으로 비활성화 되었습니다."); 
+		} else {
+			p.setCaStatus("Y");
+			session.setAttribute("alertMsg", "성공적으로 복구 되었습니다.");
+		}
+		
+		int result = dashboardService.dashPetsiterDelete(p);
 		
 		if(result > 0)  {
-			session.setAttribute("alertMsg", "성공적으로 비활성화 되었습니다."); 
 			return "redirect:/petsiter.da";
 		} else {
-			session.setAttribute("alertMsg", "회원 탈퇴 실패");
+			session.setAttribute("alertMsg", "처리 실패");
 			return "redirect:/petsiter.da";
 		}
 	}
@@ -83,6 +97,24 @@ public class DashboardController {
 		  mv.addObject("list", list)
 		  .setViewName("dashboard/dash_support");
 		return mv;
+	}
+	
+	@RequestMapping("supportApprove.da")
+	public String dashSupportApprove(Support s, HttpSession session) {
+
+		int result = dashboardService.dashSupportApprove(s);
+		
+		if(result > 0)  {
+			if(s.getStatus().equals("Y")) {
+				session.setAttribute("alertMsg", "성공적으로 펫시터 등록이 되었습니다."); 
+			} else {
+				session.setAttribute("alertMsg", "펫시터 등록이 반려 되었습니다.");
+			}
+			return "redirect:/support.da";
+		} else {
+			session.setAttribute("alertMsg", "처리 실패");
+			return "redirect:/support.da";
+		}
 	}
 	
 	@RequestMapping("reservation.da")

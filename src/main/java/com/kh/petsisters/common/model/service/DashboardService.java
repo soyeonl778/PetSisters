@@ -10,12 +10,14 @@ public interface DashboardService {
 	
 	ArrayList<Member> dashMemberView();
 	
-	int dashMemberDelete(int userNo);
+	int dashMemberDelete(Member m);
 
 	ArrayList<PetSitter> dashPetsiterView();
 	
-	int dashPetsiterDelete(int userNo);
+	int dashPetsiterDelete(PetSitter p);
 	
 	ArrayList<Support> dashSupportView();
+	
+	int dashSupportApprove(Support s);
 	
 }

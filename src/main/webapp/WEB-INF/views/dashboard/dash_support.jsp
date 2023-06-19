@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -19,8 +20,7 @@
             #datatablesSimple>tbody>tr:hover {
                 cursor: pointer!important;
             }
-
-            .withdrawButtonClass{
+            .approveButtonClass{
                 border: none;
                 border-radius: 4px;
                 width: 70px;
@@ -32,9 +32,23 @@
                 color: rgb(255, 255, 255);
                 transition: background-color 0.5s ease 0s, color 0.5s ease 0s;
             }
-
-            .withdrawButtonClass:hover {
+            .approveButtonClass:hover {
                 background-color: #008cdc;
+            }
+            .rejectButtonClass {
+                border: none;
+                border-radius: 4px;
+                width: 70px;
+                height: 32px;
+                line-height: 150%;
+                font-weight: bold;
+                font-size: 14px;
+                background-color: #ff9595;
+                color: rgb(255, 255, 255);
+                transition: background-color 0.5s ease 0s, color 0.5s ease 0s;
+            }
+            .rejectButtonClass:hover {
+                background-color: #ff0000;
             }
         </style>
     </head>
@@ -59,51 +73,68 @@
                         <h1 class="mt-4">펫시터지원목록</h1>
                         <div class="card mb-4">
                             <div class="card-body">
-                                DataTables is a third party plugin that is used to generate the demo table below. For more information about DataTables, please visit the
-                                <a target="_blank" href="https://datatables.net/">official DataTables documentation</a>
-                                .
+                                펫시터 지원 목록
                             </div>
                         </div>
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
-                                DataTable Example
+                                펫시터 지원 목록
                             </div>
                             <div class="card-body">
                                 <table id="datatablesSimple">
                                     <thead>
                                         <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
+                                            <th>회원번호</th>
+                                            <th>지원번호</th>
+                                            <th>아이디</th>
+                                            <th>이름</th>
+                                            <th>거주지주소</th>
+                                            <th>거주지유형</th>
+                                            <th>흡연여부</th>
+                                            <th>강아지반려경험유무</th>
+                                            <th>타인동물반려경험내용</th>
+                                            <th>그외반려경험내용</th>
+                                            <th>펫시터활동경험유무</th>
+                                            <th>처리상태</th>
+                                            <th>승인반려</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
+                                            <th>회원번호</th>
+                                            <th>지원번호</th>
+                                            <th>아이디</th>
+                                            <th>이름</th>
+                                            <th>거주지주소</th>
+                                            <th>거주지유형</th>
+                                            <th>흡연여부</th>
+                                            <th>강아지반려경험유무</th>
+                                            <th>타인동물반려경험내용</th>
+                                            <th>그외반려경험내용</th>
+                                            <th>펫시터활동경험유무</th>
+                                            <th>처리상태</th>
+                                            <th>승인반려</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
                                         <c:forEach var="s" items="${ list }">
                                             <tr>
                                                 <td>${s.userNo}</td>
+                                                <td>${s.supportNo}</td>
                                                 <td>${s.userId}</td>
                                                 <td>${s.userName}</td>
-                                                <td>${s.userNickname}</td>
-                                                <td>${s.email}</td>
+                                                <td>${s.address}</td>
+                                                <td>${s.pyeong}</td>
+                                                <td>${s.smoke}</td>
+                                                <td>${s.myExperience}</td>
+                                                <td>${s.otherExperience}</td>
+                                                <td>${s.etcExperience}</td>
+                                                <td>${s.petsitterExperience}</td>
                                                 <td>${s.status}</td>
-                                                <td>${s.enrollDate}</td>
                                                 <td>
-                                                    <button id="" class="withdrawButtonClass" onclick="handleWithdraw();">승인</button>
-                                                    <button id="" class="withdrawButtonClass" onclick="handleWithdraw();">반려</button>
+                                                    <button id="" class="approveButtonClass" onclick="location.href='supportApprove.da?userNo=${s.userNo}&supportNo=${s.supportNo}&status=Y'">승인</button>
+                                                    <button id="" class="rejectButtonClass" onclick="location.href='supportApprove.da?userNo=${s.userNo}&supportNo=${s.supportNo}&status=N'">반려</button>
                                                 </td>
                                             </tr>
                                         </c:forEach>
@@ -122,17 +153,6 @@
 		
 		</div>
 	</div>
-
-    <script>
-        function handleWithdraw(status, userNo) {
-            
-            if (status === 'Y') {
-            location.href = 'memberDelete.da?userNo=' + userNo;
-          } else {
-            alertify.alert('알림', '이미 탈퇴된 회원입니다.')
-          }
-        }
-    </script>
 
     </body>
 </html>

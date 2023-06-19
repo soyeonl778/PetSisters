@@ -20,7 +20,6 @@
             #datatablesSimple>tbody>tr:hover {
                 cursor: pointer!important;
             }
-
             .withdrawButtonClass{
                 border: none;
                 border-radius: 4px;
@@ -33,9 +32,23 @@
                 color: rgb(255, 255, 255);
                 transition: background-color 0.5s ease 0s, color 0.5s ease 0s;
             }
-
             .withdrawButtonClass:hover {
                 background-color: #008cdc;
+            }
+            .rejectButtonClass {
+                border: none;
+                border-radius: 4px;
+                width: 70px;
+                height: 32px;
+                line-height: 150%;
+                font-weight: bold;
+                font-size: 14px;
+                background-color: #ff9595;
+                color: rgb(255, 255, 255);
+                transition: background-color 0.5s ease 0s, color 0.5s ease 0s;
+            }
+            .rejectButtonClass:hover {
+                background-color: #ff0000;
             }
         </style>
     </head>
@@ -76,6 +89,7 @@
                                             <th>펫시터 번호</th>
                                             <th>이름</th>
                                             <th>주소</th>
+                                            <th>프로필제목</th>
                                             <th>펫시터 모드</th>
                                             <th>펫시터 상태</th>
                                             <th>펫시터 비활성화</th>
@@ -87,6 +101,7 @@
                                             <th>펫시터 번호</th>
                                             <th>이름</th>
                                             <th>주소</th>
+                                            <th>프로필제목</th>
                                             <th>펫시터 모드</th>
                                             <th>펫시터 상태</th>
                                             <th>펫시터 비활성화</th>
@@ -99,9 +114,19 @@
                                                 <td>${p.petSitterNo}</td>
                                                 <td>${p.userName}</td>
                                                 <td>${p.address}</td>
+                                                <td>${p.petSitterTitle}</td>
                                                 <td>${p.petSitterMode}</td>
                                                 <td>${p.caStatus}</td>
-                                                <td><button id="withdrawButton" class="withdrawButtonClass" onclick="handleWithdraw('${p.caStatus}', ${p.userNo});">비활성화</button></td>
+                                                <td>
+                                                    <c:choose>
+                                                        <c:when test="${ p.caStatus eq 'Y' }">
+                                                            <button id="" class="rejectButtonClass" onclick="location.href='petsiterDelete.da?userNo=${p.userNo}&caStatus=${p.caStatus}'">탈퇴</button>
+                                                        </c:when>
+                                                        <c:otherwise>
+                                                            <button id="" class="withdrawButtonClass" onclick="location.href='petsiterDelete.da?userNo=${p.userNo}&caStatus=${p.caStatus}'">복구</button>
+                                                        </c:otherwise>
+                                                    </c:choose>
+                                                </td>
                                             </tr>
                                         </c:forEach>
                                     </tbody>
@@ -119,17 +144,6 @@
 		
 		</div>
 	</div>
-
-    <script>
-        function handleWithdraw(status, userNo) {
-            
-            if (status === 'Y') {
-            location.href = 'petsiterDelete.da?userNo=' + userNo;
-          } else {
-            alertify.alert('알림', '이미 비활성화된 펫시터입니다.')
-          }
-        }
-      </script>
 
     </body>
 </html>
