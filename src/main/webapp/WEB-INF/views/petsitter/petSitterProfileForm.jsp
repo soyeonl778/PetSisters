@@ -216,6 +216,11 @@
                       <div class="dateInput">
                         <h5>예약 불가능한 날짜 선택</h5>
                         <input type="text" class="datepicker" id="impoDate" name="impoDate" placeholder="예약 불가능한 날짜">
+
+                        <br><br>
+
+                        <h5>예약 불가능한 날짜 취소</h5>
+                        <input type="text" class="datepicker" id="deleteDate" name="delDate" placeholder="예약 불가능한 날짜">
                       </div>
 
                       <div align="center" class="formBtn">
@@ -272,9 +277,59 @@
           this._updateDatepicker(inst);
       };
 
-      $(".datepicker").multiDatesPicker({
-        dateFormat: 'yy/mm/dd',
-        minDate: 0
+      var today = new Date();
+
+      
+      // 예약 불가능일 설정
+      var disabledDays = ${ formatDates };
+
+      for(let i = 0; i < disabledDays.length; i++) {
+
+       //  문자열   --->>   Date 타입의 "객체"
+        disabledDays[i] = new Date(disabledDays[i]);
+        //console.log(disabledDays[i]);
+      }
+      
+      $("#impoDate").multiDatesPicker({
+        minDate: 0,
+        addDisabledDates : disabledDays
+      });
+
+      // 예약 불가능일 해제 - 2 백엔드 붙이기 (delete 기능)
+
+      var enabledDay = ${ formatDates };
+
+      // 창 닫기 기능 추가 - 1
+      $("#deleteDate").datepicker({
+        minDate: 0,
+        beforeShowDay: disableSomeDays,
+      });  
+
+      function disableSomeDays(date) {
+          var m = date.getMonth(), d = date.getDate(), y = date.getFullYear();
+          for (i = 0; i < enabledDay.length; i++) {
+              if($.inArray(y + '-' +(m+1) + '-' + d,enabledDay) != -1) {
+                  return [true];
+              }
+          }
+          return [false];
+      }
+
+      // impoDate 에 클릭이벤트 (멀티라서 따로 구현) 
+      let count = 0;
+
+      $("#impoDate").click(function() {
+
+        if(count > 0) {
+          let status = $("#ui-datepicker-div").css("display");
+
+          if(status === "block") {
+            $("#ui-datepicker-div").css("display", "none");
+          } else {
+            $("#ui-datepicker-div").css("display", "block");
+          }
+        }
+        count++;
       });
 
     });

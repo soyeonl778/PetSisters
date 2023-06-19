@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.kh.petsisters.common.model.vo.PageInfo;
 import com.kh.petsisters.member.model.vo.Dog;
+import com.kh.petsisters.petsitter.model.vo.ImpossibleDate;
 import com.kh.petsisters.petsitter.model.vo.PetSitter;
 import com.kh.petsisters.petsitter.model.vo.PetSitterImg;
 import com.kh.petsisters.petsitter.model.vo.PetSitterLike;
@@ -108,6 +109,32 @@ public class PetSitterDao {
 		return sqlSession.selectOne("petSitterMapper.selectLikeCount", refPno);
 	}
 	
+	public int insertImpoDate(SqlSessionTemplate sqlSession, ArrayList<ImpossibleDate> newDateList) {
+		
+		int result = 1;
+		
+		for(ImpossibleDate impoDate : newDateList) {
+			result *= sqlSession.insert("petSitterMapper.insertImpoDate", impoDate);
+		}
+		
+		return result;
+	}
+	
+	public ArrayList<ImpossibleDate> selectImpoDate(SqlSessionTemplate sqlSession, int pno) {
+		
+		return (ArrayList)sqlSession.selectList("petSitterMapper.selectImpoDate", pno);
+	}
+	
+	public int deleteImpoDate(SqlSessionTemplate sqlSession, ArrayList<ImpossibleDate> newDateList) {
+		
+		int result = 1;
+		
+		for(ImpossibleDate delDate : newDateList) {
+			result *= sqlSession.delete("petSitterMapper.deleteImpoDate", delDate);
+		}
+		
+		return result;
+	}
 }
 
 

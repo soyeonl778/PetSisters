@@ -425,10 +425,10 @@
 
 	<jsp:include page="../common/footer.jsp" />
 
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+
   <!--카카오맵 API-->
   <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=0f876d0e519ec1bc91c1da0c5e2829c7"></script>
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 
   <script type="text/javascript">
 
@@ -450,33 +450,22 @@
 
       $(".datepicker1, .datepicker2, #datepicker").datepicker({
         minDate: 0,
-        beforeShowDay: disableSomeDay
+        beforeShowDay: disableSomeDays
       });
 
       // 예약 불가능일 설정
-      var disabledDays = ["2023-06-24", "2023-06-25"];
+      var disabledDays = ${ formatDates };      
 
-      // 날짜를 나타내기 전에(beforeShowDay) 실행할 함수
-      function disableSomeDay(date) {
-        var month = date.getMonth();
-        var dates = date.getDate();
-        var year = date.getFullYear();
-
-        // 배열에 해당하는 날짜는 0번째 index 에 false 를 담아 리턴
-        for(i = 0; i < disabledDays.length; i++) {
-          if($.inArray(year + '-' + (month + 1) + '-' + dates,disabledDays) != -1) {
-            return [false];
+      // 특정일 선택막기
+      function disableSomeDays(date) {
+          var m = date.getMonth(), d = date.getDate(), y = date.getFullYear();
+          for (i = 0; i < disabledDays.length; i++) {
+              if($.inArray(y + '-' +(m+1) + '-' + d,disabledDays) != -1) {
+                  return [false];
+              }
           }
           return [true];
-        }
       }
-
-      // 주말(토, 일요일) 선택 막기
-      function noWeekendsOrHolidays(date) {
-          var noWeekend = jQuery.datepicker.noWeekends(date);
-          return noWeekend[0] ? [true] : noWeekend;
-      }
-
 
 
       // ------------------------ 예약 장바구니 ----------------------------

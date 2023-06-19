@@ -60,6 +60,11 @@
 		<result column="REF_PNO" property="refNo" />
 	</resultMap>
 	
+	<resultMap id="impoDateSet" type="impossibleDate">
+		<result column="I_DATE" property="impoDate" />
+		<result column="REF_PNO" property="refPno" />
+	</resultMap>
+	
 	<!-- 펫시터 프로필 상세 조회용 쿼리문 -->
 	<select id="selectPetSitter" parameterType="_int" resultMap="petSitterResultSet">
        	SELECT P_NO
@@ -248,6 +253,25 @@
 		  FROM P_LIKE
 		 WHERE REF_PNO = #{refPno}
 	</select>
+	
+	<!-- 펫시터 예약 불가능일 등록용 쿼리문 -->
+	<insert id="insertImpoDate" parameterType="impossibleDate">
+		INSERT INTO IMPOSSIBLE_DATE VALUES(#{impoDate}, #{refPno})
+	</insert>
+	
+	<!-- 펫시터 예약 불가능일 조회용 쿼리문 -->
+	<select id="selectImpoDate" parameterType="_int" resultMap="impoDateSet">
+		SELECT I_DATE
+		  FROM IMPOSSIBLE_DATE
+		 WHERE REF_PNO = #{pno}
+	</select>
+	
+	<!-- 펫시터 예약 불가능일 삭제용 쿼리문 -->
+	<delete id="deleteImpoDate" parameterType="impossibleDate">
+		DELETE IMPOSSIBLE_DATE
+		 WHERE I_DATE = #{impoDate}
+		   AND REF_PNO = #{refPno}
+	</delete>
 
 </mapper>
 

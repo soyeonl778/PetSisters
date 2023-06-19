@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.kh.petsisters.common.model.vo.PageInfo;
 import com.kh.petsisters.member.model.vo.Dog;
+import com.kh.petsisters.petsitter.model.vo.ImpossibleDate;
 import com.kh.petsisters.petsitter.model.vo.PetSitter;
 import com.kh.petsisters.petsitter.model.vo.PetSitterImg;
 import com.kh.petsisters.petsitter.model.vo.PetSitterLike;
@@ -58,7 +59,13 @@ public interface PetSitterService {
 	int selectLikeCount(int refPno);
 	
 	// 펫시터 예약 불가능일 등록 요청
-//	int insertImpoDate()
+	int insertImpoDate(ArrayList<ImpossibleDate> newDateList);
+	
+	// 펫시터 예약 불가능일 조회
+	ArrayList<ImpossibleDate> selectImpoDate(int pno);
+	
+	// 펫시터 예약 불가능일 삭제
+	int deleteImpoDate(ArrayList<ImpossibleDate> newDateList);
 }
 
 

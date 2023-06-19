@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -72,6 +73,24 @@ public class PetSitterController {
 		// 펫시터 찜 갯수 조회
 		int likeCount = petSitterService.selectLikeCount(pno);
 		
+		// 펫시터 예약 불가능일 리스트 조회
+		ArrayList<ImpossibleDate> impoDateList = petSitterService.selectImpoDate(pno);
+		
+		// 날짜 가공하여 리스트에 담기 -> ["2023-6-24", "2023-6-25"]
+        List<String> formatDates = new ArrayList<>();
+        SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S");
+        SimpleDateFormat outputFormat = new SimpleDateFormat("yyyy-M-d");
+
+        for (ImpossibleDate impossibleDate : impoDateList) {
+            try {
+                Date date = inputFormat.parse(impossibleDate.getImpoDate());
+                String formatDate = outputFormat.format(date);
+                formatDates.add("\"" + formatDate + "\"");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+		
 		// 조회된 데이터를 mv 에 담아서 포워딩 페이지 경로를 잡아주기
 		mv.addObject("p", p)
 		  .addObject("revList", revList)
@@ -79,6 +98,7 @@ public class PetSitterController {
 		  .addObject("dogList", dogList)
 		  .addObject("psImgList", psImgList)
 		  .addObject("likeCount", likeCount)
+		  .addObject("formatDates", formatDates)
 		  .setViewName("petsitter/petSitterDetailView");
 
 		return mv;
@@ -94,9 +114,29 @@ public class PetSitterController {
 		// 프로필 상세페이지 이미지 리스트 조회
 		ArrayList<PetSitterImg> psImgList = petSitterService.selectPetSitterImg(pno);
 		
-		mv.addObject("p", p);
-		mv.addObject("psImgList", psImgList);
-		mv.setViewName("petsitter/petSitterProfileForm");
+		// 펫시터 예약 불가능일 리스트 조회
+		ArrayList<ImpossibleDate> impoDateList = petSitterService.selectImpoDate(pno);
+		
+		// 날짜 가공하여 리스트에 담기 -> ["2023-6-24", "2023-6-25"]
+        List<String> formatDates = new ArrayList<>();
+        SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S");
+        SimpleDateFormat outputFormat = new SimpleDateFormat("yyyy-M-d");
+
+        for (ImpossibleDate impossibleDate : impoDateList) {
+            try {
+                Date date = inputFormat.parse(impossibleDate.getImpoDate());
+                String formatDate = outputFormat.format(date);
+                formatDates.add("\"" + formatDate + "\"");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+		
+        // 조회된 데이터를 mv 에 담아서 포워딩 페이지 경로를 잡아주기
+		mv.addObject("p", p)
+		  .addObject("psImgList", psImgList)
+		  .addObject("formatDates", formatDates)
+		  .setViewName("petsitter/petSitterProfileForm");
 		
 		return mv;
 	}
@@ -106,10 +146,11 @@ public class PetSitterController {
 		  @RequestParam("upfile") ArrayList<MultipartFile> upfileList,
 		  @RequestParam(value="delete", required = false) ArrayList<Integer> deleteList,
 		  @RequestParam(value="impoDate", required = false) ArrayList<String> impoDateList,
+		  @RequestParam(value="delDate", required = false) ArrayList<String> delDateList,
 								  HttpSession session,
 			                      Model model) {
 		
-	    int result2 = 1;
+		int result2 = 1;
 	    String filePath = "/resources/upFiles/petsitter_upfiles/";
 	    
 	    // 프로필폼에서 기존 이미지 파일을 삭제할 경우
@@ -151,11 +192,12 @@ public class PetSitterController {
 	    
 	    
 	    // ------------ 예약 불가능일 -------------
-	    // 예약 불가능일 배열 생성
-	    ArrayList<String> newDateList = new ArrayList<>();
 	    
 	    // 새로 넘어온 날짜가 존재할 경우
-	    if(impoDateList.get(0).length() > 0) {
+	    if(impoDateList.size() > 0) {
+	    	
+		    // 예약 불가능일 배열 생성
+		    ArrayList<ImpossibleDate> newDateList = new ArrayList<>();
 	    	
 		    // impoDateList의 크기 만큼 반복문 실행
 	    	for(int i = 0; i < impoDateList.size(); i++) {
@@ -167,19 +209,35 @@ public class PetSitterController {
 	            impoDate.setImpoDate(impoDateList.get(i));
 	            impoDate.setRefPno(p.getPetSitterNo());
 	            
-	            // newDateList.add(i, impoDate);
+	            newDateList.add(impoDate);
 	    	}
-	    	// 예약 불가능일 등록 요청 (INSERT)
-//	    	result2 = petSitterService.insertImpoDate(newDateList);
-	    }
-	    
-	    // 프로필폼에서 기존 예약 불가능일을 수정할 경우
-	    if(impoDateList != null) {
 	    	
-		    // 리스트를 보내면서 수정 요청 (UPDATE)
-//		    result2 = petSitterService.updateImpoDate(impoDateList);
+	    	// 예약 불가능일 등록 요청 (INSERT)
+	    	result2 = petSitterService.insertImpoDate(newDateList);
 	    }
 	    
+	    // 프로필폼에서 기존 예약 불가능일을 삭제할 경우
+	    if(delDateList != null) {
+	    	
+	    	// 예약 불가능일 배열 생성
+		    ArrayList<ImpossibleDate> newDateList = new ArrayList<>();
+	    	
+		    // impoDateList의 크기 만큼 반복문 실행
+	    	for(int i = 0; i < delDateList.size(); i++) {
+	    		
+	    		// 불가능일 객체 생성
+	    		ImpossibleDate delDate = new ImpossibleDate();
+	    		
+	    		// 불가능일 객체에 담기
+	    		delDate.setImpoDate(delDateList.get(i));
+	    		delDate.setRefPno(p.getPetSitterNo());
+	            
+	            newDateList.add(delDate);
+	    	}
+	    	
+	    	// 리스트를 보내면서 삭제 요청 (DELETE)
+	    	result2 = petSitterService.deleteImpoDate(newDateList);
+	    }
 	    
 	    // 펫시터 프로필 수정용 펫시터 객체 UPDATE 요청
 		int result1 = petSitterService.updatePetSitter(p);

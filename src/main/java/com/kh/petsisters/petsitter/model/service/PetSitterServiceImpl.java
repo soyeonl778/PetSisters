@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.kh.petsisters.common.model.vo.PageInfo;
 import com.kh.petsisters.member.model.vo.Dog;
 import com.kh.petsisters.petsitter.model.dao.PetSitterDao;
+import com.kh.petsisters.petsitter.model.vo.ImpossibleDate;
 import com.kh.petsisters.petsitter.model.vo.PetSitter;
 import com.kh.petsisters.petsitter.model.vo.PetSitterImg;
 import com.kh.petsisters.petsitter.model.vo.PetSitterLike;
@@ -111,6 +112,24 @@ public class PetSitterServiceImpl implements  PetSitterService {
 	public int selectLikeCount(int refPno) {
 		
 		return petSitterDao.selectLikeCount(sqlSession, refPno);
+	}
+
+	@Override
+	public int insertImpoDate(ArrayList<ImpossibleDate> newDateList) {
+		
+		return petSitterDao.insertImpoDate(sqlSession, newDateList);
+	}
+
+	@Override
+	public ArrayList<ImpossibleDate> selectImpoDate(int pno) {
+		
+		return petSitterDao.selectImpoDate(sqlSession, pno);
+	}
+
+	@Override
+	public int deleteImpoDate(ArrayList<ImpossibleDate> newDateList) {
+		
+		return petSitterDao.deleteImpoDate(sqlSession, newDateList);
 	}
 
 
