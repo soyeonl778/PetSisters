@@ -23,7 +23,7 @@ body {
     box-sizing: border-box;
 }
 
-#inquiryDetail, #replyContent {
+#inquiryDetail, #replyDetail {
     margin-top: 20px;
     padding-bottom: 0;
     border-collapse: separate;

@@ -101,9 +101,9 @@
                  			<th colspan="2">
                  				<textarea class="form-control" id="replyContent" style="resize:none;"></textarea>
                  			</th>
-                 			<th style="vertical-align:middle">
-                 				<button class="btn btn-secondary" onclick="addReply();">등록</button>
-                 			</th>
+                 			<th>
+								<button class="btn btn-secondary" onclick="addReply();" style="display: block; margin: 0 auto;">등록</button>
+							</th>
                  		</tr>
                  	</thead>
                  	<tbody></tbody>
@@ -126,6 +126,14 @@
   </div>
   
   <script>
+  function backList() {
+	  $(function() {
+		 let userNo = "${loginUser.userNo}";
+		 let  url = "list.in?userNo=" + userNo;
+		 location.href = url;
+	  });
+  }
+  
   $(function() {
 		selectReplyList();
 	});
@@ -175,9 +183,9 @@
 				
 				for(let i = 0; i < result.length; i++) {
 					resultStr += "<tr>"
-							   + 	"<td>" + result[i].userNickname + "</td>"
-							   + 	"<td>" + result[i].repContent + "</td>"
-							   + 	"<td>" + result[i].createDate + "</td>"
+							   + 	"<td style='text-align: center; width:100px; height:50px;'>" + result[i].userNickname + "</td>"
+							   + 	"<td style='width:600px'>" + result[i].repContent + "</td>"
+							   + 	"<td style='width:120px;'>" + result[i].createDate + "</td>"
 							   + "</tr>";
 				}
 				

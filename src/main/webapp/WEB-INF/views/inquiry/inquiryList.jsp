@@ -42,7 +42,6 @@
 		          </form>
 		          
                 <table id="inquiryTable" style="text-align: center;" class="table table-hover">
-                  
                   <thead>
                     <tr class="category">
                     	<th width="100" height="51">접수번호</th>
@@ -50,17 +49,24 @@
                         <th width="100">작성일</th>
                     </tr>
                   </thead>
-					<tbody id="inquiryBody">
-						<c:if test="${not empty list}">
-							<c:forEach var="i" items="${list}">
-	                  		<tr>
-	                  			<td height="51">${i.inquiryNo}</td>
-	                  			<td>${i.inquiryTitle}</td>
-	                  			<td>${i.createDate}</td>
-	                  		</tr>
-	                  		</c:forEach>
-						</c:if>
-                 	</tbody>							
+				  <tbody id="inquiryBody">
+					<c:choose>
+				      <c:when test="${empty list}">
+			            <tr>
+			                <td colspan="3">등록된 글이 없습니다.</td>
+			            </tr>
+			          </c:when>
+				      <c:otherwise>
+			            <c:forEach var="i" items="${list}">
+			                <tr>
+			                    <td height="51">${i.inquiryNo}</td>
+			                    <td>${i.inquiryTitle}</td>
+			                    <td>${i.createDate}</td>
+			                </tr>
+			            </c:forEach>
+				      </c:otherwise>
+				    </c:choose>
+                  </tbody>						
                 </table>
 				
                 <br/>
