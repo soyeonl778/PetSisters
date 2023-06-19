@@ -128,8 +128,6 @@
         function handleWithdraw(status, userNo) {
             
             if (status === 'Y') {
-              console.log(status);
-              console.log(userNo);
             location.href = 'memberDelete.da?userNo=' + userNo;
           } else {
             alertify.alert('알림', '이미 탈퇴된 회원입니다.')

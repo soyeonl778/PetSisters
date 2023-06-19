@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.kh.petsisters.member.model.vo.Member;
+import com.kh.petsisters.petsitter.model.vo.PetSitter;
 
 @Repository
 public class DashboardDao {
@@ -15,8 +16,15 @@ public class DashboardDao {
 	}
 	
 	public int dashMemberDelete(SqlSessionTemplate sqlSession, int userNo) {
-		return sqlSession.insert("dashboardMapper.dashMemberDelete", userNo);
+		return sqlSession.update("dashboardMapper.dashMemberDelete", userNo);
 	}
 	
-
+	public ArrayList<PetSitter> dashPetsiterView(SqlSessionTemplate sqlSession) {
+		return (ArrayList)sqlSession.selectList("dashboardMapper.dashPetsiterView", null);
+	}
+	
+	public int dashPetsiterDelete(SqlSessionTemplate sqlSession, int userNo) {
+		return sqlSession.update("dashboardMapper.dashPetsiterDelete", userNo);
+	}
+	
 }

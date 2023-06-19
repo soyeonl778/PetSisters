@@ -53,8 +53,7 @@
 			<mapping path="/memberDelete.da" />
 			<mapping path="/petsiter.da" />
 			<mapping path="/support.da" />
-			<mapping path="/or.da" />
-			<mapping path="/cr.da" />
+			<mapping path="/reservation.da" />
 			<mapping path="/review.da" />
 			<mapping path="/inquiry.da" />
 			<beans:bean class="com.kh.petsisters.common.interceptor.AdminInterceptor" id="adminInterceptor" />

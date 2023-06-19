@@ -12,11 +12,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.petsisters.common.model.service.DashboardService;
-import com.kh.petsisters.common.model.vo.PageInfo;
-import com.kh.petsisters.common.template.Pagination;
 import com.kh.petsisters.inquiry.model.service.InquiryService;
 import com.kh.petsisters.inquiry.model.vo.Inquiry;
 import com.kh.petsisters.member.model.vo.Member;
+import com.kh.petsisters.petsitter.model.vo.PetSitter;
+import com.kh.petsisters.reservation.model.service.ReservationService;
+import com.kh.petsisters.reservation.model.vo.Reservation;
+import com.kh.petsisters.reservation.model.vo.Review;
 
 @Controller
 public class DashboardController {
@@ -26,6 +28,9 @@ public class DashboardController {
 	
 	@Autowired
 	private InquiryService inquiryService;
+	
+	@Autowired
+	private ReservationService reservationService;
 	
 	@RequestMapping("member.da")
 	public ModelAndView dashMemberView(ModelAndView mv) {
@@ -47,14 +52,28 @@ public class DashboardController {
 			session.setAttribute("alertMsg", "회원 탈퇴 실패");
 			return "redirect:/member.da";
 		}
-		
 	}
 	
-	
-	
 	@RequestMapping("petsiter.da")
-	public String dashPetsiterView() {
-		return "dashboard/dash_petsiter";
+	public ModelAndView dashPetsiterView(ModelAndView mv) {
+		ArrayList<PetSitter> list = dashboardService.dashPetsiterView();
+		  mv.addObject("list", list)
+		  .setViewName("dashboard/dash_petsiter");
+		return mv;
+	}
+	
+	@RequestMapping("petsiterDelete.da")
+	public String dashPetsiterDelete(int userNo, HttpSession session) {
+		
+		int result = dashboardService.dashPetsiterDelete(userNo);
+		
+		if(result > 0)  {
+			session.setAttribute("alertMsg", "성공적으로 비활성화 되었습니다."); 
+			return "redirect:/petsiter.da";
+		} else {
+			session.setAttribute("alertMsg", "회원 탈퇴 실패");
+			return "redirect:/petsiter.da";
+		}
 	}
 	
 	@RequestMapping("support.da")
@@ -62,19 +81,30 @@ public class DashboardController {
 		return "dashboard/dash_support";
 	}
 	
-	@RequestMapping("or.da")
-	public String ongoingReservationView() {
-		return "dashboard/dash_ongoingReservation";
-	}
-	
-	@RequestMapping("cr.da")
-	public String completedReservationView() {
-		return "dashboard/dash_completedReservation";
+	@RequestMapping("reservation.da")
+	public ModelAndView selectDashboardReserv(
+			ModelAndView mv,
+			HttpSession session) {
+		
+		List<Reservation> list = reservationService.selectDashboardReserv();
+		
+		mv.addObject("list", list)
+		  .setViewName("dashboard/dash_reservation");
+		
+		return mv;
 	}
 	
 	@RequestMapping("review.da")
-	public String reviewView() {
-		return "dashboard/dash_review";
+	public ModelAndView selectDashboardReview(
+			ModelAndView mv,
+			HttpSession session) {
+		
+		List<Review> list = reservationService.selectDashboardReview();
+		
+		mv.addObject("list", list)
+		  .setViewName("dashboard/dash_review");
+		
+		return mv;
 	}
 	
 	// 대시보드 조회용 list
