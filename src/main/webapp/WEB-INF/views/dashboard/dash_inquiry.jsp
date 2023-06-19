@@ -92,14 +92,15 @@
 	</main>
 	<!-- 작업영역 끝 -->
 
-<script>
-  	$(function() {
-		$(".inquiryTable>tbody>tr").click(function() {
-			let inquiryNo = $(this).children().eq(0).text();
-			location.href = "detail.in?inquiryNo=" + inquiryNo;
+	<script>
+		$(function() {
+			$(".inquiryTable>tbody>tr").click(function() {
+				let inquiryNo = $(this).children().eq(0).text();
+				let url = "detail.in?inquiryNo=" + inquiryNo;
+				window.open(url, "_blank");
+			});
 		});
-  	});
-</script>
+	</script>
 
 
 		<jsp:include page="./dash_footer.jsp" />

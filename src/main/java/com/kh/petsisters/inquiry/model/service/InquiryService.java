@@ -19,7 +19,7 @@ public interface InquiryService {
 	int selectListCount(int userNo);
 	
 	// 대시보드 조회용 list
-	List<Inquiry> selectDashboardList(PageInfo pi);
+	List<Inquiry> selectDashboardList();
 
 	// 1:1문의 리스트 조회
 	List<Inquiry> selectList(PageInfo pi, int userNo);

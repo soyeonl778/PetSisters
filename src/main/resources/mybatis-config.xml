@@ -50,6 +50,7 @@
 		<mapper resource="mappers/support-mapper.xml" />
 		<mapper resource="mappers/chat-mapper.xml" />
 		<mapper resource="mappers/payment-mapper.xml" />
+		<mapper resource="mappers/dashboard-mapper.xml" />
 	</mappers>
 	<!-- 
 		주의사항 : 매퍼파일을 미리 등록해두려면 해당 mapper 파일이 진짜 존재하고 있어야만 함

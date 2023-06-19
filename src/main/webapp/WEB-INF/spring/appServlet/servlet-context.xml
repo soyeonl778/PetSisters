@@ -49,6 +49,8 @@
 			<mapping path="/update.no" />
 			<mapping path="/updateForm.no" />
 			<mapping path="/delete.no" />
+			<mapping path="/member.da" />
+			<mapping path="/inquiry.da" />
 			<beans:bean class="com.kh.petsisters.common.interceptor.AdminInterceptor" id="adminInterceptor" />
 		</interceptor>
 	</interceptors>

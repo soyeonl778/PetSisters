@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="dashboardMapper">
+	
+	<!-- BOARD 테이블로부터 조회된 ResultSet 을 Board 객체로 가공해주는 resultMap -->
+	<resultMap id="boardResultSet" type="board">
+		<result column="B_NO" property="boardNo" />
+		<result column="B_TITLE" property="boardTitle" />
+		<result column="B_CONTENT" property="boardContent" />
+		<result column="CREATE_DATE" property="createDate" />
+		<result column="STATUS" property="status" />
+		<result column="COUNT" property="count" />
+		<result column="USER_NO" property="userNo" />
+		<result column="CATEGORY_MAIN" property="categoryMain" />
+		<result column="CATEGORY_SUB" property="categorySub" />
+		<result column="DOG_NAME" property="dogName" />
+		<result column="DOG_BREED" property="dogBreed" />
+		<result column="DOG_GENDER" property="dogGender" />
+		<result column="M_USER_NAME" property="userName" />
+		<result column="FILE_PATH" property="filePath" />
+		<result column="ORIGIN_NAME" property="originName" />
+		<result column="CHANGE_NAME" property="changeName" />
+		<result column="AT_FILE_PATH" property="atFilePath" />
+		<result column="DOG_FILE_PATH" property="dogFilePath" />
+		<result column="DOG_FILE_PATH" property="dogBirth" />
+	</resultMap>
+	
+	<resultMap id="attachmentResultSet" type="attachment">
+		<result column="FILE_NO" property="fileNo" />
+		<result column="ORIGIN_NAME" property="originName" />
+		<result column="CHANGE_NAME" property="changeName" />
+		<result column="FILE_PATH" property="filePath" />
+		<result column="CREATE_DATE" property="createDate" />
+		<result column="STATUS" property="status" />
+		<result column="FILE_LEVEL" property="fileLevel" />
+		<result column="REF_BNO" property="ref_bno" />
+	</resultMap>
+	
+	<resultMap id="replyResultSet" type="boardReply">
+		<result column="REP_NO" property="repNo" />
+		<result column="REP_CONTENT" property="repContent" />
+		<result column="CREATE_DATE" property="replyCreateDate" />
+		<result column="STATUS" property="replyStatus" />
+		<result column="USER_NO" property="replyUserNo" />
+		<result column="REF_BNO" property="refBno" />
+		<result column="USER_NICKNAME" property="userNickName" />
+		<result column="M_FILE_PATH" property="userFile" />
+	</resultMap>
+	
+	<resultMap id="memberResultSet" type="member">
+		<result column="USER_NO" property="userNo" />
+		<result column="USER_ID" property="userId" />
+		<result column="USER_PWD" property="userPwd" />
+		<result column="USER_NAME" property="userName" />
+		<result column="USER_SSN" property="userSsn" />
+		<result column="USER_NICKNAME" property="userNickname" />
+		<result column="PHONE" property="phone" />
+		<result column="EMAIL" property="email" />
+		<result column="ADDRESS" property="address" />
+		<result column="GENDER" property="gender" />
+		<result column="SITTER_STATUS" property="sitterStatus" />
+		<result column="CA_DATE" property="caDate" />
+		<result column="CA_STATUS" property="caStatus" />
+		<result column="STATUS" property="status" />
+		<result column="FILE_PATH" property="filePath" />
+		<result column="ENROLL_DATE" property="enrollDate" />
+		<result column="P_NO" property="petsitterNo" />
+	</resultMap>
+	
+	<select id="dashMemberView" parameterType="_int" resultMap="memberResultSet">
+			SELECT *
+		FROM MEMBER
+		WHERE USER_NO != 1
+	</select>
+	
+	<update id="dashMemberDelete" parameterType="_int">
+		UPDATE MEMBER
+			SET STATUS = 'N'
+		WHERE USER_NO = #{userNo}
+	</update>
+
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+

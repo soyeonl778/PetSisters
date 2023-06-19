@@ -34,8 +34,8 @@ public class InquiryServiceImpl implements InquiryService {
 
 	// 대시보드용 : 
 	@Override
-	public List<Inquiry> selectDashboardList(PageInfo pi) {
-		return inquiryDao.selectDashboardList(sqlSession, pi);
+	public List<Inquiry> selectDashboardList() {
+		return inquiryDao.selectDashboardList(sqlSession);
 	}
 	
 	@Override

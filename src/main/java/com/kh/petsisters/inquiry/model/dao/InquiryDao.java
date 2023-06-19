@@ -29,14 +29,9 @@ public class InquiryDao {
 	}
 	
 	// 대시보드용 : 
-	public List<Inquiry> selectDashboardList(SqlSessionTemplate sqlSession, PageInfo pi) {
+	public List<Inquiry> selectDashboardList(SqlSessionTemplate sqlSession) {
 		
-		int offset = (pi.getCurrentPage() - 1) * pi.getBoardLimit();
-		int limit = pi.getBoardLimit();
-		
-		RowBounds rowBounds = new RowBounds(offset, limit);
-		
-		List<Inquiry> list = sqlSession.selectList("inquiryMapper.selectDashboardList", null, rowBounds);
+		List<Inquiry> list = sqlSession.selectList("inquiryMapper.selectDashboardList", null);
 		return list;
 	}
 	
