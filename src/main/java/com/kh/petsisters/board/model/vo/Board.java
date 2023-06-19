@@ -36,6 +36,8 @@ public class Board {
 	private String changeName;
 	private String atFilePath;		// 보드 조회용 게시글 사진
 	private String filePath;
+	private String replyCount;
+	
 	
 
 
