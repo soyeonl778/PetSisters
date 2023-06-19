@@ -25,16 +25,6 @@
 	<c:remove var="alertMsg" scope="session" />
 </c:if>
 
-<c:if test="${ not empty updateMsg }">
-	<script>
-		alertify.alert('알림', '${ updateMsg }',
-				function() {
-					alertify.success('수정완료!');
-				});
-	</script>
-	<c:remove var="updateMsg" scope="session" />
-</c:if>
-
 <c:if test="${ not empty writeMsg }">
 	<script>
 		alertify.alert('알림', '${ writeMsg }',

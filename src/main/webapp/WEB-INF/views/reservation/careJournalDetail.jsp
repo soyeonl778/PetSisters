@@ -38,7 +38,7 @@
 												</div>
 												<div class="careJournal">
 													<div class="contentDate">${ c.create_date.substring(5, 10).replace('-', '월')}일</div>
-													&nbsp돌봄 일지
+													&nbsp;돌봄 일지
 												</div>
 											</div>
 
@@ -90,11 +90,11 @@
 								<!-- 카드 하나 영역-->
 
 
-
-
+								<div style="text-align: center;">
+									<button class="btn btn-secondary btn-lg" onclick="history.go(-1)">뒤로가기</button>
+								</div>
 								<!-- 이 영역 안에서 페이지 작업 하시면 됩니다 -->
 							</div>
-
 						</div>
 						<!-- 본문 영역 끝-->
 					</div>

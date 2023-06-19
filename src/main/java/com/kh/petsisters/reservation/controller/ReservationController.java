@@ -161,8 +161,6 @@ public class ReservationController {
 		
 		if(result > 0) {
 			
-			session.setAttribute("updateMsg", "수정되었습니다!");
-			
 			return "redirect:/reservationList";
 		} else {
 			
