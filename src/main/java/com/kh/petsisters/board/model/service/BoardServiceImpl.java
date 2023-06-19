@@ -111,7 +111,24 @@ public class BoardServiceImpl implements BoardService {
 	public int replyDelete(int repNo) {
 		return boardDao.replyDelete(sqlSession, repNo);
 	}
+
+
+	@Override
+	public ArrayList<Attachment> selectAttachment(int bno) {
+		return boardDao.selectAttachment(sqlSession, bno);
+	}
 	
+	/*
+	@Override
+	public ArrayList<Attachment> updateBoardForm(Board b, ArrayList<Attachment> list) {
+		return boardDao.updateBoardForm(sqlSession, b, list);
+	}
+	 */
+
+	@Override
+	public int deleteBoard(int bNo) {
+		return boardDao.deleteBoard(sqlSession, bNo);
+	}
 	
 	
 

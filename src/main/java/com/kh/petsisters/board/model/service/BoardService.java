@@ -57,5 +57,12 @@ public interface BoardService {
 
 	int replyDelete(int repNo);
 	
+	// 첨부파일을 가져오는 서비스
+	ArrayList<Attachment> selectAttachment(int bno);
 	
+	// 업데이트폼 board / attachment 수정하기 
+	//int updateBoardForm(Board b, ArrayList<Attachment> list);
+	
+	// 게시글 삭제하는 서비스
+	int deleteBoard(int bNo);
 }
