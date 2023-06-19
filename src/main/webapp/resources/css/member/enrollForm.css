@@ -211,3 +211,7 @@ button {
     align-items: center;
     justify-content: center;
 }
+
+.ajs-footer {
+    height: 100px!important;
+}

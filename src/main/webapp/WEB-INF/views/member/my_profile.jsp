@@ -16,6 +16,11 @@
   <jsp:include page="../common/common.jsp" />
 
   <title>마이페이지_내프로필관리</title>
+  <style>
+    .ajs-footer {
+      height: 100px!important;
+    }
+  </style>
 </head>
 <body>
   <!-- 헤더 영역 시작-->

@@ -15,7 +15,11 @@
   <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 
   <title>마이페이지_펫프로필관리</title>
-  
+  <style>
+    .ajs-footer {
+      height: 100px!important;
+    }
+  </style>
 </head>
 <body>
   <!-- 헤더 영역 시작-->
