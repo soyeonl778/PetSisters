@@ -26,32 +26,25 @@
 				<div id="content">
 					<div class="page_aticle aticle_type2">
 						<!-- 사이드 메뉴바 -->
-					    <div id="snb" class="snb_my" style="position: absolute;">
-					      <img src="/resources/img/main/사이드바이미지.png" alt="sideBarImg">
-					      <h2 class="tit_snb">My Page</h2>
-					      <div class="inner_sub">
-					        <ul class="list_menu">
-					          <li class="myProfile.me">
-					            <a href="myProfile.me">내 프로필</a>
-					          </li>
-					          <li class="petList.me">
-					            <a href="petList.me">반려동물 프로필</a>
-					          </li>
-					          <li class="petsiterLike.me">
-					            <a href="petsiterLike.me">펫시터 찜</a>
-					          </li>
-					          <li class="myBoard.me">
-					            <a href="myBoard.me">내 게시글 및 댓글</a>
-					          </li>
-					          <li class="reservationList">
-					            <a href="reservationList">예약 조회</a>
-					          </li>
-					          <li class="journalList on">
-					            <a href="journalList">돌봄 일지</a>
-					          </li>
-					        </ul>
-					      </div>
-					    </div>
+						<div id="snb" class="snb_my" style="position: absolute;">
+							<img src="/resources/img/main/사이드바이미지.png" alt="sideBarImg">
+							<h2 class="tit_snb">My Page</h2>
+							<div class="inner_sub">
+								<ul class="list_menu">
+									<li class="myProfile.me"><a href="myProfile.me">내 프로필</a>
+									</li>
+									<li class="petList.me"><a href="petList.me">반려동물 프로필</a></li>
+									<li class="petsiterLike.me"><a href="petsiterLike.me">펫시터
+											찜</a></li>
+									<li class="myBoard.me"><a href="myBoard.me">내 게시글 및 댓글</a>
+									</li>
+									<li class="reservationList"><a href="reservationList">예약
+											조회</a></li>
+									<li class="journalList on"><a href="journalList">돌봄 일지</a>
+									</li>
+								</ul>
+							</div>
+						</div>
 						<!-- 사이드 메뉴바 끝 -->
 
 						<!-- 본문 영역-->
@@ -81,7 +74,6 @@
 											</div>
 										</div>
 									</form>
-
 									<c:if test="${ not empty options }">
 										<script>
 											$(function() {
@@ -92,33 +84,35 @@
 									<br>
 									<!-- 카드 영역-->
 									<div class="row row-cols-1 row-cols-md-2 g-4">
-									<c:if test="${ empty list }">
-										<div class="nothing">
-											조회된 목록이 없어요!
-										</div>
-									</c:if>
+										<c:if test="${ empty list }">
+											<div class="nothing">조회된 목록이 없어요!</div>
+										</c:if>
 										<c:forEach var="l" items="${ list }">
-											
+
 											<div class="col">
 												<div class="card">
-												<c:set var="imageArray" value="${fn:split(l.changeName, ',')}" />
-						  						<c:set var="firstImage" value="${fn:trim(imageArray[0])}" />
-												<c:if test="${ not empty l.changeName}">
-													
-													<div onclick="careDetail(${l.jno})">
-														<img src="${ l.filePath }${firstImage}" class="card-img-top" alt="...">
-													</div>
+													<c:set var="imageArray"
+														value="${fn:split(l.changeName, ',')}" />
+													<c:set var="firstImage" value="${fn:trim(imageArray[0])}" />
+													<c:if test="${ not empty l.changeName}">
+
+														<div onclick="careDetail(${l.jno})">
+															<img src="${ l.filePath }${firstImage}"
+																class="card-img-top" alt="...">
+														</div>
 													</c:if>
 
 													<c:if test="${ empty l.changeName }">
 														<img src="/resources/img/main/첨부파일없음.png"
-															class="card-img-top" alt="..." onclick="careDetail(${l.jno})">
+															class="card-img-top" alt="..."
+															onclick="careDetail(${l.jno})">
 
 													</c:if>
 													<div class="card-body" onclick="petsitterLink(${l.pno})">
 														<h5 class="card-title">일지 작성일 : ${ l.create_date.substring(0, 10) }</h5>
 														<h5 class="card-titles">${ l.startDate }~${ l.endDate }</h5>
-														<input type="hidden" id="hiddenName" value="${l.petistterName}">
+														<input type="hidden" id="hiddenName"
+															value="${l.petistterName}">
 														<p class="card-text">${ l.petistterName }</p>
 													</div>
 												</div>
@@ -129,60 +123,61 @@
 									</div>
 									<!-- 카드 영역-->
 									<!-- 페이지네이션-->
-<div id="pagination">
-	<nav aria-label="Page navigation example">
-		<c:if test="${ pi.listCount != 0 }">
-			<ul id="pagiUl" class="pagination paginationUlTag">
+									<div id="pagination">
+										<nav aria-label="Page navigation example">
+											<c:if test="${ pi.listCount != 0 }">
+												<ul id="pagiUl" class="pagination paginationUlTag">
 
-				<c:choose>
-					<c:when test="${ pi.currentPage eq 1 }">
-						<li class="arrowTag disabled"><a href="">&lsaquo;</a></li>
-					</c:when>
-					<c:otherwise>
-						<c:if test="${ empty options }">
-							<li class="arrowTag">
-								<a href="journalList?cPage=${ pi.currentPage - 1 }">&lsaquo;</a>
-							</li>
-						</c:if>
-						<c:if test="${ not empty options }">
-							<li class="arrowTag">
-								<a href="journalList?cPage=${ pi.currentPage - 1 }&options=${options}&keyword=${keyword}">&lsaquo;</a>
-							</li>
-						</c:if>
-					</c:otherwise>
-				</c:choose>
+													<c:choose>
+														<c:when test="${ pi.currentPage eq 1 }">
+															<li class="arrowTag disabled"><a href="">&lsaquo;</a></li>
+														</c:when>
+														<c:otherwise>
+															<c:if test="${ empty options }">
+																<li class="arrowTag"><a
+																	href="journalList?cPage=${ pi.currentPage - 1 }">&lsaquo;</a>
+																</li>
+															</c:if>
+															<c:if test="${ not empty options }">
+																<li class="arrowTag"><a
+																	href="journalList?cPage=${ pi.currentPage - 1 }&options=${options}&keyword=${keyword}">&lsaquo;</a>
+																</li>
+															</c:if>
+														</c:otherwise>
+													</c:choose>
 
-				<c:forEach var="p" begin="${ pi.startPage }" end="${ pi.endPage }" step="1">
-				  <c:if test="${empty options}">
-					<li class="page-item active"><a class="page-link"
-						href="journalList?cPage=${p }">${ p }</a></li>
-				  </c:if>		
-				  <c:if test="${not empty options}">
-				  <li class="page-item active"><a class="page-link"
-						href="journalList?cPage=${p }&options=${options}&keyword=${keyword}">${ p }</a></li>
-				  </c:if>
-				</c:forEach>
+													<c:forEach var="p" begin="${ pi.startPage }"
+														end="${ pi.endPage }" step="1">
+														<c:if test="${empty options}">
+															<li class="page-item active"><a class="page-link"
+																href="journalList?cPage=${p }">${ p }</a></li>
+														</c:if>
+														<c:if test="${not empty options}">
+															<li class="page-item active"><a class="page-link"
+																href="journalList?cPage=${p }&options=${options}&keyword=${keyword}">${ p }</a></li>
+														</c:if>
+													</c:forEach>
 
-				<c:choose>
-					<c:when test="${ pi.currentPage eq pi.maxPage }">
-						<li class="arrowTag disabled"><a
-							href="javascript:void(0)">&rsaquo;</a></li>
-					</c:when>
-					<c:otherwise>
-					 <c:if test="${ empty options }">
-						<li class="arrowTag"><a
-							href="journalList?cPage=${pi.currentPage + 1}">&rsaquo;</a></li>
-					  </c:if>		
-					 <c:if test="${ not empty options }">
-						<li class="arrowTag"><a
-							href="journalList?cPage=${pi.currentPage + 1}&options=${options}&keyword=${keyword}">&rsaquo;</a></li>
-					  </c:if>		
-					</c:otherwise>
-				</c:choose>
-			</ul>
-		</c:if>
-	</nav>
-</div>
+													<c:choose>
+														<c:when test="${ pi.currentPage eq pi.maxPage }">
+															<li class="arrowTag disabled"><a
+																href="javascript:void(0)">&rsaquo;</a></li>
+														</c:when>
+														<c:otherwise>
+															<c:if test="${ empty options }">
+																<li class="arrowTag"><a
+																	href="journalList?cPage=${pi.currentPage + 1}">&rsaquo;</a></li>
+															</c:if>
+															<c:if test="${ not empty options }">
+																<li class="arrowTag"><a
+																	href="journalList?cPage=${pi.currentPage + 1}&options=${options}&keyword=${keyword}">&rsaquo;</a></li>
+															</c:if>
+														</c:otherwise>
+													</c:choose>
+												</ul>
+											</c:if>
+										</nav>
+									</div>
 									<!-- 페이지네이션-->
 								</div>
 

@@ -30,32 +30,24 @@
 				<div id="content">
 					<div class="page_aticle aticle_type2">
 						<!-- 사이드 메뉴바 -->
-					    <div id="snb" class="snb_my" style="position: absolute;">
-					      <img src="/resources/img/main/사이드바이미지.png" alt="sideBarImg">
-					      <h2 class="tit_snb">My Page</h2>
-					      <div class="inner_sub">
-					        <ul class="list_menu">
-					          <li class="myProfile.me">
-					            <a href="myProfile.me">내 프로필</a>
-					          </li>
-					          <li class="petList.me">
-					            <a href="petList.me">반려동물 프로필</a>
-					          </li>
-					          <li class="petsiterLike.me">
-					            <a href="petsiterLike.me">펫시터 찜</a>
-					          </li>
-					          <li class="myBoard.me">
-					            <a href="myBoard.me">내 게시글 및 댓글</a>
-					          </li>
-					          <li class="reservationList on">
-					            <a href="reservationList">예약 조회</a>
-					          </li>
-					          <li class="journalList">
-					            <a href="journalList">돌봄 일지</a>
-					          </li>
-					        </ul>
-					      </div>
-					    </div>
+						<div id="snb" class="snb_my" style="position: absolute;">
+							<img src="/resources/img/main/사이드바이미지.png" alt="sideBarImg">
+							<h2 class="tit_snb">My Page</h2>
+							<div class="inner_sub">
+								<ul class="list_menu">
+									<li class="myProfile.me"><a href="myProfile.me">내 프로필</a>
+									</li>
+									<li class="petList.me"><a href="petList.me">반려동물 프로필</a></li>
+									<li class="petsiterLike.me"><a href="petsiterLike.me">펫시터
+											찜</a></li>
+									<li class="myBoard.me"><a href="myBoard.me">내 게시글 및 댓글</a>
+									</li>
+									<li class="reservationList on"><a href="reservationList">예약
+											조회</a></li>
+									<li class="journalList"><a href="journalList">돌봄 일지</a></li>
+								</ul>
+							</div>
+						</div>
 						<!-- 사이드 메뉴바 끝 -->
 						<!-- 본문 영역-->
 						<div id="viewOrderList" class="page_section section_orderlist">
@@ -65,14 +57,12 @@
 									<h2 class="firstTit">예약 조회</h2>
 								</div>
 								<c:if test="${list.isEmpty()}">
-								<div class="emptyData">
-									아직 예약이 없으시네요!
-								</div>
+									<div class="emptyData">아직 예약이 없으시네요!</div>
 								</c:if>
 								<c:forEach var="r" items="${list}">
 									<div class="mainBodyWrapper">
 										<div class="dateWorking">
-											<div class="cardDate">${r.startDate } ~ ${r.endDate }</div>
+											<div class="cardDate">${r.startDate }~ ${r.endDate }</div>
 											<c:if test="${ r.endDate < nowDate }">
 												<div class="itsdone">진행 완료</div>
 											</c:if>
@@ -81,12 +71,14 @@
 											</c:if>
 										</div>
 										<div class="cardSection">
-											<div class="cardContainer" onclick="petsitterLink(${ r.pno })">
-										  <input class="selectPno" type="hidden" value="${ r.pno }">
-										  
-										   <c:set var="imageArray" value="${fn:split(r.originName, ',')}" />
-						  					<c:set var="firstImage" value="${fn:trim(imageArray[0])}" />
-										  	
+											<div class="cardContainer"
+												onclick="petsitterLink(${ r.pno })">
+												<input class="selectPno" type="hidden" value="${ r.pno }">
+
+												<c:set var="imageArray"
+													value="${fn:split(r.originName, ',')}" />
+												<c:set var="firstImage" value="${fn:trim(imageArray[0])}" />
+
 												<div class="cardImage">
 													<img src="${r.petFile}${firstImage}" alt="coshong"
 														class="cardMainImg">
@@ -95,28 +87,32 @@
 													<div class="cardTitDesc">
 														<h4>${ r.address }</h4>
 														<c:if test="${r.caStatus != 'N' }">
-														<p class="proPet">* 프로펫시터</p>
+															<p class="proPet">* 프로펫시터</p>
 														</c:if>
 													</div>
 													<h3 class="cardTitContent">${r.ptitle }</h3>
 													<div class="borderLine"></div>
 													<p class="cardHash">${ r.pcareList.replaceAll(",", " *") }</p>
 													<div class="linkRe">
-														<a href="" class="reviewLink">후기  ${ r.reviewCount } 개</a>
+														<a href="" class="reviewLink">후기 ${ r.reviewCount } 개</a>
 													</div>
 												</div>
 											</div>
 
 											<div class="cardBtn">
-											<input class="writeReviewNo" name="revNo" type="hidden" value="${r.resNo}">
-												<a class="cardDetail" href="reservationDetail?rNo=${r.resNo}">상세 조회</a> 
+												<input class="writeReviewNo" name="revNo" type="hidden"
+													value="${r.resNo}"> <a class="cardDetail"
+													href="reservationDetail?rNo=${r.resNo}">상세 조회</a>
 												<c:if test="${ r.checkReview == 0 }">
-												<a class="cardReview" href="getReviewDate?rNo=${ r.resNo }">후기 작성</a> 
+													<a class="cardReview" href="getReviewDate?rNo=${ r.resNo }">후기
+														작성</a>
 												</c:if>
 												<c:if test="${ r.checkReview == 1 }">
-												<a class="checkReview" href="reviewUpdate?rNo=${ r.resNo }">후기 수정</a> 
+													<a class="checkReview" href="reviewUpdate?rNo=${ r.resNo }">후기
+														수정</a>
 												</c:if>
-												<a class="cardDelete" href="deleteReservation?rNo=${ r.resNo }">삭제</a>
+												<a class="cardDelete"
+													href="deleteReservation?rNo=${ r.resNo }">삭제</a>
 											</div>
 										</div>
 									</div>
@@ -127,33 +123,36 @@
 								<!-- 페이지네이션-->
 								<div id="pagination">
 									<nav aria-label="Page navigation example">
-									<c:if test="${ pi.listCount != 0 }">
-										<ul id="pagiUl" class="pagination paginationUlTag">
-										
-										<c:choose>
-										  <c:when  test="${ pi.currentPage eq 1 }">
-											<li class="arrowTag disabled"><a href="">&lsaquo;</a></li>
-										  </c:when>
-										  <c:otherwise>
-											<li class="arrowTag"><a href="reservationList?rPage=${ pi.currentPage - 1 }">&lsaquo;</a></li>
-										  </c:otherwise>
-									    </c:choose>
-										  
-										<c:forEach var="p" begin="${ pi.startPage }" end="${ pi.endPage }" step="1">  
-											<li class="page-item active">
-												<a class="page-link" href="reservationList?rPage=${p }">${ p }</a>
-											</li>
-										</c:forEach>		
-										
-										<c:choose>	
-											<c:when test="${ pi.currentPage eq pi.maxPage }">
-												<li class="arrowTag disabled"><a href="javascript:void(0)">&rsaquo;</a></li>
-											</c:when>
-											<c:otherwise>
-												<li class="arrowTag"><a href="reservationList?rPage=${pi.currentPage + 1}">&rsaquo;</a></li>
-											</c:otherwise>
-										</c:choose>	
-										</ul>
+										<c:if test="${ pi.listCount != 0 }">
+											<ul id="pagiUl" class="pagination paginationUlTag">
+
+												<c:choose>
+													<c:when test="${ pi.currentPage eq 1 }">
+														<li class="arrowTag disabled"><a href="">&lsaquo;</a></li>
+													</c:when>
+													<c:otherwise>
+														<li class="arrowTag"><a
+															href="reservationList?rPage=${ pi.currentPage - 1 }">&lsaquo;</a></li>
+													</c:otherwise>
+												</c:choose>
+
+												<c:forEach var="p" begin="${ pi.startPage }"
+													end="${ pi.endPage }" step="1">
+													<li class="page-item active"><a class="page-link"
+														href="reservationList?rPage=${p }">${ p }</a></li>
+												</c:forEach>
+
+												<c:choose>
+													<c:when test="${ pi.currentPage eq pi.maxPage }">
+														<li class="arrowTag disabled"><a
+															href="javascript:void(0)">&rsaquo;</a></li>
+													</c:when>
+													<c:otherwise>
+														<li class="arrowTag"><a
+															href="reservationList?rPage=${pi.currentPage + 1}">&rsaquo;</a></li>
+													</c:otherwise>
+												</c:choose>
+											</ul>
 										</c:if>
 									</nav>
 								</div>
