@@ -19,8 +19,25 @@ public class InquiryDao {
 	@Autowired
 	private SqlSession sqlSession;
 	
+	// 대시보드용 : 
+	public int selectAllCount(SqlSessionTemplate sqlSession) {
+		return sqlSession.selectOne("inquiryMapper.selectAllCount");
+	}
+	
 	public int selectListCount(SqlSessionTemplate sqlSession, int userNo) {
 		return sqlSession.selectOne("inquiryMapper.selectListCount", userNo);
+	}
+	
+	// 대시보드용 : 
+	public List<Inquiry> selectDashboardList(SqlSessionTemplate sqlSession, PageInfo pi) {
+		
+		int offset = (pi.getCurrentPage() - 1) * pi.getBoardLimit();
+		int limit = pi.getBoardLimit();
+		
+		RowBounds rowBounds = new RowBounds(offset, limit);
+		
+		List<Inquiry> list = sqlSession.selectList("inquiryMapper.selectDashboardList", null, rowBounds);
+		return list;
 	}
 	
 	public List<Inquiry> selectList(SqlSessionTemplate sqlSession, PageInfo pi, int userNo) {

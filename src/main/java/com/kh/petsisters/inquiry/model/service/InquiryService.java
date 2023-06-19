@@ -10,8 +10,17 @@ import com.kh.petsisters.member.model.vo.Member;
 public interface InquiryService {
 
 	// 1:1문의 리스트 조회 서비스 (+ 페이징처리)
+	
+	// 대시보드용 : 
 	// 1:1문의 게시글의 총 개수 조회
+	int selectAllCount();
+	
+	// 1:1 문의글 본인글 개수 조회
 	int selectListCount(int userNo);
+	
+	// 대시보드 조회용 list
+	List<Inquiry> selectDashboardList(PageInfo pi);
+
 	// 1:1문의 리스트 조회
 	List<Inquiry> selectList(PageInfo pi, int userNo);
 	
@@ -30,5 +39,5 @@ public interface InquiryService {
 	
 	// 댓글 작성 서비스 (Ajax)
 	int insertReply(CSReply r);
-
+	
 }

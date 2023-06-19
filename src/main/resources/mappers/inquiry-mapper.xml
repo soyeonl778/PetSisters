@@ -13,6 +13,7 @@
 		<result column="COUNT" property="count" />
 		
 		<result column="FILE_PATH" property="filePath" />
+		<result column="USER_NICKNAME" property="userNickname" />
 	</resultMap>
 
 	<resultMap id="csreplyResultSet" type="csReply">
@@ -26,6 +27,13 @@
 	</resultMap>
 	
 	<!-- 1:1 문의글 총 개수 구하는 쿼리문 -->
+	<select id="selectAllCount" resultType="_int">
+		SELECT COUNT(*)
+		  FROM INQUIRY
+		 WHERE STATUS = 'Y'
+	</select>
+	
+	<!-- 1:1 문의글 본인글 개수만 구하는 쿼리문 -->
 	<select id="selectListCount" resultType="_int" parameterType="member">
 		SELECT COUNT(*)
 		  FROM INQUIRY
@@ -33,17 +41,30 @@
 		   AND USER_NO = #{userNo}
 	</select>
 	
+	<!-- 대시보드용 : 1:1 문의글 전체 리스트를 구해주는 쿼리문 -->
+	<select id="selectDashboardList" resultMap="inquiryResultSet">
+		SELECT I.I_NO
+		     , M.USER_NICKNAME
+		     , I.I_TITLE
+		     , TO_CHAR(I.CREATE_DATE, 'YYYY-MM-DD') AS "CREATE_DATE"
+		     , I.FILE_PATH
+		  FROM INQUIRY I
+		  JOIN MEMBER M ON (M.USER_NO = I.USER_NO)
+		 WHERE I.STATUS = 'Y'
+		ORDER BY I.I_NO ASC
+	</select>
+	
 	<!-- 1:1 문의글 리스트를 구해주는 쿼리문 -->
 	<select id="selectList" resultMap="inquiryResultSet" parameterType="member">
-			SELECT I_NO
+		SELECT I_NO
 			 , I_TITLE
 			 , TO_CHAR(CREATE_DATE, 'YYYY-MM-DD') AS "CREATE_DATE"
 			 , USER_NO
 	 	  FROM INQUIRY
 	 	 WHERE STATUS = 'Y'
 	 	   AND USER_NO = #{userNo}
-         GROUP BY I_NO, I_TITLE, CREATE_DATE, USER_NO
-         ORDER BY I_NO DESC
+      GROUP BY I_NO, I_TITLE, CREATE_DATE, USER_NO
+      ORDER BY I_NO DESC
 	</select>
 	
 	<!-- 1:1문의글 작성용 쿼리문 -->

@@ -21,11 +21,23 @@ public class InquiryServiceImpl implements InquiryService {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 
+	// 대시보드용 : 
+	@Override
+	public int selectAllCount() {
+		return inquiryDao.selectAllCount(sqlSession);
+	}
+	
 	@Override
 	public int selectListCount(int userNo) {
 		return inquiryDao.selectListCount(sqlSession, userNo);
 	}
 
+	// 대시보드용 : 
+	@Override
+	public List<Inquiry> selectDashboardList(PageInfo pi) {
+		return inquiryDao.selectDashboardList(sqlSession, pi);
+	}
+	
 	@Override
 	public List<Inquiry> selectList(PageInfo pi, int userNo) {
 		return inquiryDao.selectList(sqlSession, pi, userNo);
@@ -55,5 +67,5 @@ public class InquiryServiceImpl implements InquiryService {
 	public int insertReply(CSReply r) {
 		return inquiryDao.insertReply(sqlSession, r);
 	}
-	
+
 }

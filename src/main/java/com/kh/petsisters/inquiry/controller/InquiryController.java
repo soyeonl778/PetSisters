@@ -30,12 +30,13 @@ public class InquiryController {
 	
 	@Autowired
 	private InquiryService inquiryService;
-	
+
+	// 1:1문의 리스트 조회	
 	@RequestMapping("list.in")
 	public ModelAndView selectList(
 			@RequestParam(value="cPage", defaultValue="1") int currentPage,
-			ModelAndView mv
-			, HttpSession session) {
+			ModelAndView mv,
+			HttpSession session) {
 		
 		int userNo = ((Member)session.getAttribute("loginUser")).getUserNo();
 				
@@ -55,12 +56,14 @@ public class InquiryController {
 		return mv;
 	}
 	
+	// 1:1문의글 작성폼
 	@RequestMapping("enrollForm.in")
 	public String enrollForm() {
 		
 		return "inquiry/inquiryEnrollForm";
 	}
 		
+	// 1:1문의 작성하기 
 	@RequestMapping("insert.in")
 	public String insertInquiry(Inquiry i, 
 								MultipartFile upfile, 
@@ -90,26 +93,19 @@ public class InquiryController {
 			return "/common/errorPage";
 		}
 	}	
-		
 //	    try {
-//	    	
 //	        if (upfile != null && !upfile.isEmpty()) {
-//	        	
 //	            String filePath = session.getServletContext().getRealPath("/resources/upFiles/inquiry_upfiles/") + upfile.getOriginalFilename();
 //	            upfile.transferTo(new File(filePath));
-//	            
 //	        }
-//	        
-//	        
 //	    } catch (IOException e) {
-//	    	
 //	        model.addAttribute("i", i);
 //	        model.addAttribute("errorMsg", "업로드 실패");
-//	        
 //	        return "inquiry/inquiryEnrollForm";
 //	    }
 //	}
 	
+	// 1:1문의 상세 조회
 	@RequestMapping("detail.in")
 	public ModelAndView selectInquiry(ModelAndView mv, int inquiryNo) {
 		
@@ -122,6 +118,7 @@ public class InquiryController {
 		return mv;
 	}
 	
+	// 1:1문의 삭제
 	@RequestMapping("delete.in")
 	public String deleteInquiry(int inquiryNo, Model model, String filePath, HttpSession session) {
 		
@@ -141,6 +138,7 @@ public class InquiryController {
 		}
 	}
 	
+	// 댓글 리스트 조회 서비스 (Ajax)
 	@ResponseBody
 	@RequestMapping(value="rlist.in", produces="application/json; charset=UTF-8")
 	public String ajaxSelectReplyList(int inquiryNo) {
@@ -151,6 +149,7 @@ public class InquiryController {
 		
 	}
 	
+	// 댓글 작성 서비스 (Ajax)
 	@ResponseBody
 	@RequestMapping(value="rinsert.in", produces="text/html; charset=UTF-8")
 	public String ajaxInsertReply(CSReply r) {
@@ -160,6 +159,7 @@ public class InquiryController {
 		return (result > 0) ? "success" : "fail"; // 무조건 문자열 타입으로 응답데이터 리턴
 	}
 	
+	// 첨부파일
 	public String saveFile(MultipartFile upfile, HttpSession session) {
 		
 		String originName = upfile.getOriginalFilename();
