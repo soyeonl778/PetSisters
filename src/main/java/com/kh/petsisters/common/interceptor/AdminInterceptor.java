@@ -14,17 +14,32 @@ public class AdminInterceptor extends HandlerInterceptorAdapter {
 	public boolean preHandle(HttpServletRequest request
 						   , HttpServletResponse response
 						   , Object handler) throws Exception {
-		HttpSession session = request.getSession();
-		Member loginUser = (Member)session.getAttribute("loginUser");
 		
-		if(loginUser.getUserName().equals("관리자")) {
-			return true;
-		} else {
-			session.setAttribute("message", "관리자만 접근 가능한 페이지입니다.");
-			response.sendRedirect(request.getContextPath() + "/");
+		HttpSession session = request.getSession();
+		
+		if(session.getAttribute("loginUser") != null) {
 			
-			return false;
+			Member loginUser = (Member)session.getAttribute("loginUser");
+			
+			if(loginUser.getUserName().equals("관리자")) {
+			
+				return true;
+				
+			} else {
+				
+				session.setAttribute("alertMsg", "관리자만 접근 가능한 페이지입니다.");
+				response.sendRedirect(request.getContextPath() + "/");
+				
+				return false;
+				
+			}
+			
+
 		}
+		
+		session.setAttribute("alertMsg", "로그인 후 이용 가능한 서비스입니다.");
+		response.sendRedirect(request.getContextPath() + "/");
+		return false;
 	
 	}
 						 
