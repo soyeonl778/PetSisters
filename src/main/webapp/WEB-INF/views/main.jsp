@@ -32,7 +32,7 @@
     
       <div id="topImg" onclick="location.href='#';">
         <video class="mainVideo" muted autoplay loop>
-          <source src="/resources/video/메인페이지-배너.mp4" type="video/mp4">
+          <source src="/resources/video/메인상단.mp4" type="video/mp4">
         </video>
           <div onclick="goPet()" class="clickPosition">
           </div>
