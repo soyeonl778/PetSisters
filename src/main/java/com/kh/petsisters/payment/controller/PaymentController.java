@@ -2,15 +2,13 @@ package com.kh.petsisters.payment.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.Gson;
 import com.kh.petsisters.payment.model.service.PaymentService;
-import com.kh.petsisters.payment.model.vo.Payment;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -22,11 +20,45 @@ public class PaymentController {
 	private PaymentService paymentService;
 	
 	// 결제화면 띄우기
-	@RequestMapping("/pay")
-	public String enrollForm() {
+	@RequestMapping("pay")
+	public String enrollForm(String startRevDate, String endRevDate,
+			String reqMsg, int totalPays, int userNo,
+			int petsitterNo, Model model) {
+
+		System.out.println(startRevDate);
+		System.out.println(endRevDate);
+		System.out.println(reqMsg);
+		System.out.println(totalPays);
+		System.out.println(userNo);
+		System.out.println(petsitterNo);
 		
-		return "reservation/reservationEnrollForm";
+		int result = paymentService.insertRevInfo(startRevDate, endRevDate,
+				reqMsg, totalPays, userNo, petsitterNo);
+		
+		if(result > 0) {
+			
+			int revNo = paymentService.selectCurrval(userNo, petsitterNo);
+			
+			System.out.println(revNo);
+		
+			model.addAttribute("startRevDate", startRevDate);
+			model.addAttribute("endRevDate", endRevDate);
+			model.addAttribute("reqMsg", reqMsg);
+			model.addAttribute("totalPays", totalPays);
+			model.addAttribute("userNo", userNo);
+			model.addAttribute("petsitterNo", petsitterNo);
+			model.addAttribute("revNo", revNo);
+		
+			return "reservation/reservationEnrollForm";
+		} else {
+			return null;
+		}
+		
 	}
+	
+	
+	
+	
 	
 	
 	@ResponseBody
@@ -47,6 +79,24 @@ public class PaymentController {
 		
 		return null;
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
