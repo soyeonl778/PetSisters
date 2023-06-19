@@ -34,7 +34,7 @@ $(document).ready(function() {
     <div id="container">
       <div id="main">
         <div id="content">
-          <div class="page_aticle aticle_type2">
+          <div class="page_aticle aticle_type22">
 
             <!-- 본문 영역-->
             <div id="viewOrderList" class="page_section section_orderlist">
