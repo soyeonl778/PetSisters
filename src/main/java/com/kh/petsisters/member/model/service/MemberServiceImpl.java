@@ -10,6 +10,7 @@ import com.kh.petsisters.common.model.vo.PageInfo;
 import com.kh.petsisters.member.model.dao.MemberDao;
 import com.kh.petsisters.member.model.vo.Dog;
 import com.kh.petsisters.member.model.vo.Member;
+import com.kh.petsisters.petsitter.model.vo.PetSitter;
 
 @Service
 public class MemberServiceImpl implements MemberService{
@@ -86,5 +87,17 @@ public class MemberServiceImpl implements MemberService{
 	public int idCheck(String checkId) {
 		return memberDao.idCheck(sqlSession, checkId);
 	}
+
+	@Override
+	public int selectLikeListCount(int userNo) {
+		return memberDao.selectLikeListCount(sqlSession, userNo);
+	}
+
+	@Override
+	public ArrayList<PetSitter> selectLikeList(PageInfo pi, int userNo) {
+		return memberDao.selectLikeList(sqlSession, pi, userNo);
+	}
+	
+	
 
 }

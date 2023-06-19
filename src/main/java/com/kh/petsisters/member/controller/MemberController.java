@@ -28,6 +28,7 @@ import com.kh.petsisters.common.template.Pagination;
 import com.kh.petsisters.member.model.service.MemberService;
 import com.kh.petsisters.member.model.vo.Dog;
 import com.kh.petsisters.member.model.vo.Member;
+import com.kh.petsisters.petsitter.model.vo.PetSitter;
 
 @Controller
 public class MemberController {
@@ -401,8 +402,21 @@ public class MemberController {
 	
 	// 마이페이지 펫시터 찜 조회 영역
 	@RequestMapping("petsiterLike.me")
-	public String petsiterLike() {
-		return "/member/petsiter_like";
+	public ModelAndView selectLike(HttpSession session,
+							@RequestParam(value="cPage", defaultValue="1") int currentPage,
+							ModelAndView mv) {
+		int userNo = ((Member)session.getAttribute("loginUser")).getUserNo();
+		int listCount = memberService.selectLikeListCount(userNo);
+		int pageLimit = 10;
+		int boardLimit = 5;
+		PageInfo pi = Pagination.getPageInfo(listCount, currentPage, pageLimit, boardLimit);
+		ArrayList<PetSitter> list = memberService.selectLikeList(pi, userNo);
+		
+		mv.addObject("pi", pi)
+		  .addObject("list", list)
+		  .setViewName("member/petsiter_like");
+
+		return mv;
 	}
 	
 	// 마이페이지 내 게시글 조회 영역

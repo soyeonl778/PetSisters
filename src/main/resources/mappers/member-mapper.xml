@@ -36,6 +36,27 @@
 		<result column="USERID" property="userId" />
 	</resultMap>
 	
+	<!-- PETSITTER 객체로 가공된 resultMap -->
+	<resultMap id="petSitterResultSet" type="petSitter">
+		<result column="P_NO" property="petSitterNo" />
+		<result column="P_TITLE" property="petSitterTitle" />
+		<result column="P_CONTENT" property="petSitterContent" />
+		<result column="P_SERVICE" property="petSitterService" />
+		<result column="CARE_LIST" property="careList" />
+		<result column="P_MODE" property="petSitterMode" />
+		<result column="USER_NO" property="userNo" />		
+		<result column="USER_NAME" property="userName" />
+		<result column="ADDRESS" property="address" />
+		<result column="CA_STATUS" property="caStatus" />
+		<result column="FILE_PATH" property="userFilePath" />
+		<result column="START_DATE" property="startDate" />		
+		<result column="END_DATE" property="endDate" />
+		<result column="REF_PNO" property="refPno" />
+		<result column="REVIEW_COUNT" property="reviewCount" />	
+		<result column="CHANGE_NAME" property="changeName" />
+		<result column="FILE_PATH" property="paFilePath" />
+	</resultMap>
+	
 	<!-- 로그인 기능 -->
 	<select id="loginMember" parameterType="member" resultMap="memberResultSet">
 		SELECT M.*, P.P_NO
@@ -197,8 +218,20 @@
 		WHERE USER_ID = #{checkId}
 	</select>
 	
+	<!-- 펫시터 찜 목록 개수 구하는 쿼리문 -->
+	<select id="selectLikeListCount" resultType="_int">
+		SELECT COUNT(*)
+		   FROM P_LIKE
+		WHERE USER_NO = #{userNo}
+	</select>
 
-
+	<select id="selectLikeList" parameterType="_int" resultMap="petSitterResultSet">
+		SELECT P.P_NO, P.P_TITLE, P.P_CONTENT, M.USER_NAME, M.ADDRESS, M.FILE_PATH
+		FROM PETSITTER P
+		JOIN P_LIKE L ON P.P_NO = L.REF_PNO
+		JOIN MEMBER M ON P.USER_NO = M.USER_NO
+		WHERE L.USER_NO = #{userNo}
+	</select>
 
 
 </mapper>

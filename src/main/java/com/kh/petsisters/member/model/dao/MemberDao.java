@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.kh.petsisters.common.model.vo.PageInfo;
 import com.kh.petsisters.member.model.vo.Dog;
 import com.kh.petsisters.member.model.vo.Member;
+import com.kh.petsisters.petsitter.model.vo.PetSitter;
 
 @Repository
 public class MemberDao {
@@ -76,6 +77,23 @@ public class MemberDao {
 		
 		return sqlSession.selectOne("memberMapper.idCheck", checkId);
 	}
+	
+	public int selectLikeListCount(SqlSessionTemplate sqlSession, int userNo) {
+		
+		return sqlSession.selectOne("memberMapper.selectLikeListCount", userNo);
+	}
+	
+	public ArrayList<PetSitter> selectLikeList(SqlSessionTemplate sqlSession, PageInfo pi, int userNo) {
+		
+		int offset = (pi.getCurrentPage() -1) * pi.getBoardLimit();
+		int limit = pi.getBoardLimit();
+		
+		RowBounds rowBounds = new RowBounds(offset, limit);
+		
+		return (ArrayList)sqlSession.selectList("memberMapper.selectLikeList", userNo, rowBounds);
+	}
+	
+	
 	
 
 }
