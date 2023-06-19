@@ -50,6 +50,12 @@
 			<mapping path="/updateForm.no" />
 			<mapping path="/delete.no" />
 			<mapping path="/member.da" />
+			<mapping path="/memberDelete.da" />
+			<mapping path="/petsiter.da" />
+			<mapping path="/support.da" />
+			<mapping path="/or.da" />
+			<mapping path="/cr.da" />
+			<mapping path="/review.da" />
 			<mapping path="/inquiry.da" />
 			<beans:bean class="com.kh.petsisters.common.interceptor.AdminInterceptor" id="adminInterceptor" />
 		</interceptor>
