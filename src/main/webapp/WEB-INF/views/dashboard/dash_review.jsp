@@ -10,6 +10,11 @@
         <meta name="description" content="" />
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <title>Dashboard</title>
+        <style>
+        	table th, td {
+    			text-align: center;
+        	}
+        </style>
     </head>
     <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
