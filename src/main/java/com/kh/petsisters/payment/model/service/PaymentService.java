@@ -8,4 +8,9 @@ public interface PaymentService {
 
 	int insertPay(String payDesc, int payPrice, int resNo);
 
+	int insertRevInfo(String startRevDate, String endRevDate, String reqMsg, int totalPays, int userNo,
+			int petsitterNo);
+
+	int selectCurrval(int userNo, int petsitterNo);
+
 }

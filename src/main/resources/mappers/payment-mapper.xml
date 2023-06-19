@@ -31,6 +31,34 @@
 	</insert>
 	
 	
+	<insert id="insertRevInfo">
+		INSERT INTO RESERVATION
+		VALUES(
+		SEQ_RESERVATION.NEXTVAL,
+		#{startRevDate},
+		#{endRevDate},
+		SYSDATE,
+		#{reqMsg},
+		'Y',
+		#{userNo},
+		#{petsitterNo}
+		)	
+	</insert>
+	
+	
+	<select id="selectCurrval" resultType="_int">
+		SELECT RES_NO
+		FROM (
+		 SELECT RES_NO
+		   FROM RESERVATION R
+		   JOIN PETSITTER P ON REF_PNO = P_NO
+		  WHERE P_NO = #{petsitterNo} 
+		    AND R.USER_NO = #{userNo}
+		  ORDER BY RES_NO DESC
+		) WHERE ROWNUM = 1  	
+	</select>
+	
+	
 	<insert id="insertPay">
 		INSERT INTO PAYMENT
 		VALUES(SEQ_PAYMENT.NEXTVAL,

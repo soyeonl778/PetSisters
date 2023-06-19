@@ -33,47 +33,37 @@
                     <!-- 박스 내부 -->
                     <div class="infoSec">
                     <input type="hidden" name="userNo" value="${loginUser.userNo}">
+                    <input type="hidden" name="revNo" class="revNo" value="${revNo}">
                       <div class="gridSec">
                         <div class="oneSec">
-                          <div class="onTit">체크인</div>
-                          <div class="onedesc date1">${p.startDate}</div>
+                          <div class="onTit">돌봄 시작일</div>
+                          <div class="onedesc date1">${startRevDate}</div>
                         </div>
                         <div class="oneSec">
-                          <div class="onTit">체크아웃</div>
-                          <div class="onedesc date2">${p.endDate}</div>
+                          <div class="onTit">돌봄 종료일</div>
+                          <div class="onedesc date2">${endRevDate}</div>
                         </div>
                       </div>
                       
                       <div class="gridSec">
                         <div class="oneSec">
                           <div class="onTit">신청일</div>
-                          <div class="onedesc payDate">${p.payDate}</div>
+                          <c:set var="ymd" value="<%=new java.util.Date()%>" />
+                          <div class="onedesc payDate"><fmt:formatDate value="${ymd}" pattern="yyyy/MM/dd" /></div>
                         </div>
                         <div class="oneSec">
-                          <div class="onTit">펫시터명</div>
-                          <div class="onedesc petsitter">
-                          	${p.userName}
+                          <div class="onTit">결제 금액</div>
+                          <div class="onedesc payPrice">
+                          <input type="hidden" class="totalPays" value="${totalPays}">
+                            <fmt:formatNumber value="${totalPays}" pattern="#,###,###"/>원
                           </div>
                         </div>
                       </div>
 	
                       <div class="gridSec">
-                        <div class="oneSec">
-                          <div class="onTit">결제 금액</div>
-                          <div class="onedesc payPrice">
-                            <fmt:formatNumber value="${p.payPrice.replace(',', '')}" pattern="#,###,###"/>원
-                          </div>
-                        </div>
-                        <div class="oneSec">
-                          <div class="onTit">맡기실 반려견 수</div>
-                          <div class="onedesc petAmount">${p.petAmount}마리</div>
-                        </div>
-                      </div>
-
-                      <div class="gridSec">
                       	<div class="requestSec">
                           <div class="requestTit">요청사항</div>
-                          <div class="requestDesc request">${p.content}</div>
+                          <div class="requestDesc request">${reqMsg}</div>
                       	</div>
                       </div>
 
@@ -81,7 +71,8 @@
                   </div>
                   <!-- 박스 내부 -->
                   <div align="center" class="formBtn">
-                    <button type="button" onclick="orderPay();" class="btn btn-info btn-lg">결제하기</button>
+                    <button type="button" class="btn btn-secondary btn-lg" onclick="history.go(-1)">뒤로가기</button>
+                    <button type="button" onclick="orderPay();" class="btn btn-success btn-lg">결제하기</button>
                   </div>
 				 </form>
                 </div>
@@ -103,8 +94,6 @@ function orderPay(){
 	let payPrice = $('.payPrice').text();
 	let checkIn = $('.date1').text();
 	let checkOut = $('.date2').text();
-	let petAmount = $('.petAmount').text();
-	let petsitter = $('.petsitter').text();
 	
 	IMP.init('imp68338217');
 	IMP.request_pay({
@@ -117,15 +106,14 @@ function orderPay(){
 	    
 	    desc : payDesc,
 	    checkIn : checkIn,
-	    checkOut : checkOut,
-	    petAmount : petAmount,
-	    petsitter : petsitter
+	    checkOut : checkOut
 	    
 	}, function(rsp) {
 		console.log('rsp', rsp);
 	    if ( rsp.success ) {
 	    	console.log(rsp.imp_uid);
 	    	insertOrder(rsp.imp_uid);
+	    	
 	    } else {
 	    	 var msg = '결제에 실패하였습니다.';
 	         msg += '에러내용 : ' + rsp.error_msg;
@@ -138,7 +126,9 @@ function orderPay(){
 		// 결제 정보 저장 및 처리 로직
 		alert('결제가 완료되었습니다!');
 		let payDesc = $('.request').text()
-		let payPrice = $('.payPrice').text();
+		let payPrices = $('.totalPays').val();
+		let payPrice = Number(payPrices);
+		let resNo = $('.revNo').val();
 		  
 		// 결제 정보를 서버로 전송
 		$.ajax({
@@ -151,8 +141,7 @@ function orderPay(){
 		  },
 		  success: function(res) {
 		    // 결제 정보 저장 및 처리 성공 시 동작
-		    console.log(res);
-		    location.href="paySuccess";
+		    location.href="list.pe";
 		  },
 		  error: function(err) {
 		    // 결제 정보 저장 및 처리 실패 시 동작

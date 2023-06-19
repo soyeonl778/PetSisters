@@ -26,6 +26,17 @@ public class PaymentServiceImpl implements PaymentService {
 	public int insertPay(String payDesc, int payPrice, int resNo) {
 		return paymentDao.insertPay(sqlSession, payDesc, payPrice, resNo);
 	}
-	
+
+	@Override
+	public int insertRevInfo(String startRevDate, String endRevDate, String reqMsg, int totalPays, int userNo,
+			int petsitterNo) {
+		return paymentDao.insertRevInfo(sqlSession, startRevDate, 
+				endRevDate, reqMsg, totalPays, userNo, petsitterNo);
+	}
+
+	@Override
+	public int selectCurrval(int userNo, int petsitterNo) {
+		return paymentDao.selectCurrval(sqlSession, userNo, petsitterNo);
+	}
 	
 }
