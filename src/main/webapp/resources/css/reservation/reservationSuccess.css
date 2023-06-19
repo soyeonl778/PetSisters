@@ -305,6 +305,19 @@ body #container #main .layout-pagination .pagediv span strong{
   justify-content: center;
   gap: 60px;
 }
+.requestSec {
+  border-bottom: 1px solid black;
+  width: 960px;
+  margin-bottom: 50px;
+}
+.requestTit {
+  font-weight: 500;
+  margin-bottom: 15px;
+}
+.requestDesc {
+  font-weight: 800;
+  margin-bottom: 5px;
+}
 .infoSec {
   font-size: x-large;
   border: 1px solid black;

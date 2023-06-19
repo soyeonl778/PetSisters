@@ -11,6 +11,15 @@
 		<result column="REF_RESNO" property="refResno" />
 	</resultMap>
 	
+		<resultMap id="reservationResultSet" type="reservation">
+		<result column="RES_NO" property="resNo" />
+		<result column="START_DATE" property="startDate" />
+		<result column="END_DATE" property="endDate" />
+		<result column="CONTENT" property="content" />
+		<result column="USER_NO" property="userNo" />
+		<result column="PET_AMOUNT" property="petAmount" />
+	</resultMap>
+	
 	<insert id="processPayment" parameterType="payment">
 		INSERT INTO PAYMENT(PAY_NO, PAY_DATE, PAY_DESCRIPTION, PAY_PRICE, STATUS, REF_RESNO)
 			  VALUES(SEQ_PAYMENT.NEXTVAL
@@ -31,5 +40,19 @@
 		       'Y',
 		       #{resNo})	
 	</insert>
+	
+	<select id="payInfo" parameterType="member">
+	SELECT R.START_DATE
+	     , R.END_DATE
+	     , P.PAY_DATE
+	     , M.USER_NAME
+	     , P.PAY_PRICE
+	     , P.PAY_PRICE / 55000 / (END_DATE - START_DATE) AS PET_AMOUNT
+	     , R.CONTENT
+	  FROM RESERVATION R
+	  JOIN MEMBER M ON R.USER_NO = M.USER_NO
+LEFT OUTER JOIN PAYMENT P ON R.RES_NO = P.REF_RESNO
+	 ORDER BY R.RES_NO
+	</select>
 	
 </mapper>

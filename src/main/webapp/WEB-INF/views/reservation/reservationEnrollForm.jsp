@@ -32,30 +32,27 @@
                     <h1>예약 신청</h1>
                     <!-- 박스 내부 -->
                     <div class="infoSec">
-                    
+                    <input type="hidden" name="userNo" value="${loginUser.userNo}">
                       <div class="gridSec">
                         <div class="oneSec">
                           <div class="onTit">체크인</div>
-                          <div class="onedesc date1">2023-06-02</div>
+                          <div class="onedesc date1">${p.startDate}</div>
                         </div>
                         <div class="oneSec">
                           <div class="onTit">체크아웃</div>
-                          <div class="onedesc date2">2023-06-10</div>
+                          <div class="onedesc date2">${p.endDate}</div>
                         </div>
                       </div>
                       
                       <div class="gridSec">
                         <div class="oneSec">
                           <div class="onTit">신청일</div>
-                          <div class="onedesc payDate">2023-06-01</div>
+                          <div class="onedesc payDate">${p.payDate}</div>
                         </div>
                         <div class="oneSec">
                           <div class="onTit">펫시터명</div>
                           <div class="onedesc petsitter">
-                          	4
-                          	<!-- 
-                          	<span>서울 구로구 신도림동</span>
- 							 -->
+                          	${p.userName}
                           </div>
                         </div>
                       </div>
@@ -63,18 +60,20 @@
                       <div class="gridSec">
                         <div class="oneSec">
                           <div class="onTit">결제 금액</div>
-                          <div class="onedesc payPrice"><fmt:formatNumber value="550000" pattern="#,###,###"/>원</div>
+                          <div class="onedesc payPrice">
+                            <fmt:formatNumber value="${p.payPrice.replace(',', '')}" pattern="#,###,###"/>원
+                          </div>
                         </div>
                         <div class="oneSec">
                           <div class="onTit">맡기실 반려견 수</div>
-                          <div class="onedesc petAmount">1</div>
+                          <div class="onedesc petAmount">${p.petAmount}마리</div>
                         </div>
                       </div>
 
                       <div class="gridSec">
                       	<div class="requestSec">
                           <div class="requestTit">요청사항</div>
-                          <div class="requestDesc request">살이 쪄서 간식은 조금만 주세요 감사합니다!</div>
+                          <div class="requestDesc request">${p.content}</div>
                       	</div>
                       </div>
 
@@ -113,7 +112,7 @@ function orderPay(){
 	    pay_method : 'card',
 	    merchant_uid : 'merchant_' + new Date().getTime(),
 	    
-	    name : '조승호', //결제창에서 보여질 이름
+	    name : '펫시스터즈', //결제창에서 보여질 이름
 	    amount : payPrice, //실제 결제되는 가격
 	    
 	    desc : payDesc,
@@ -147,8 +146,8 @@ function orderPay(){
 		  type: "post",
 		  data: {
 			payDesc: payDesc,
-			payPrice: 55000,
-			resNo: 10
+			payPrice: payPrice,
+			resNo: resNo
 		  },
 		  success: function(res) {
 		    // 결제 정보 저장 및 처리 성공 시 동작
