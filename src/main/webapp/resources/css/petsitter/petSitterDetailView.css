@@ -1,5 +1,3 @@
-/* .page_section>div { height: 2800px; } */
-
 div, form, img { box-sizing: border-box; }
 
 .page_aticle.aticle_type2 {
@@ -38,16 +36,6 @@ div, form, img { box-sizing: border-box; }
     margin-bottom: 20px;
 }
 
-/* .slider-nav img {
-    width: 95%;
-    height: 25%;
-    object-fit: cover;
-    border-radius: 10px;
-    display: inline-block;
-    margin-top: 15px;
-    margin-bottom: 15px;
-} */
-
 .profileImg>img {
     width: 90px;
     height: 90px;
@@ -75,8 +63,10 @@ div, form, img { box-sizing: border-box; }
 
 #petCard img {
     width: 120px;
+    height: 120px;
     border-radius: 10px;
     margin-bottom: 10px;
+    object-fit: cover;
 }
 
 #petCard {

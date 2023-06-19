@@ -27,6 +27,12 @@
 
 <body> 
 
+  <script>
+
+    // $.noConflict();
+
+  </script>
+
   <jsp:include page="../common/header.jsp" />
 
   <div id="Container-Wrapper">
@@ -360,7 +366,7 @@
                       </c:choose>
                       
                       <div class="card">
-                        <form action="/pay" method="get" id="reserveForm">
+                        <form action="pay" method="post" id="reserveForm">
                           <input type="hidden" name="userNo" value="${ loginUser.userNo }">
                           <input type="hidden" name="pno" value="${ p.petSitterNo }">
                           <input type="hidden" id="payPrice" name="payPrice" value="">
@@ -377,7 +383,7 @@
                             </div>
                             <hr>
                             <h5 class="petMsg">요청사항</h5>
-                            <textarea name="content" placeholder="요청사항을 입력해주세요"></textarea>
+                            <textarea class="requestMsg" name="content" placeholder="요청사항을 입력해주세요"></textarea>
                             <hr>
                             <h5>이용요금</h5>
                             <p class="card-text">
@@ -387,7 +393,7 @@
                             </p>
                             <input type="hidden" id="price" value="55000">
                             <div class="d-grid gap-2 mx-auto" id="reserveBtn">
-                              <button type="submit" class="btn btn-secondary">예약 요청</button>
+                              <button onclick="insertRevInfo()" type="button" class="btn btn-secondary">예약 요청</button>
                             </div>
                           </div>
                         </form>
@@ -413,6 +419,15 @@
       </div>
     </div>
   </div>
+
+  <form action="pay" method="post" id="payForm">
+  	<input type='hidden' name="startRevDate" value="">
+  	<input type='hidden' name="endRevDate" value="">
+  	<input type='hidden' name="reqMsg" value="">
+  	<input type='hidden' name="totalPays" value="">
+  	<input type='hidden' name="userNo" value="">
+  	<input type='hidden' name="petsitterNo" value="">
+  </form>
 
 	<jsp:include page="../common/footer.jsp" />
 
@@ -490,7 +505,7 @@
             
             let status = (currentDate.toString() === temp[i].toString());
 
-            // 하루라도 안된다면 => 다시선택하라고 유도
+            // 하루라도 안된다면 => 다시 선택하라고 유도
             if(status) {
 
               $('#startDate').val("");
@@ -632,20 +647,6 @@
 
 
     $(document).ready(function() {
-	
-    	// ------------------------ 상세페이지 이용 가능 서비스 표시 ------------------------
-      var psService = "<c:out value='${p.petSitterService}'/>"; // 값을 JavaScript 변수에 할당
-      var psServiceArr = psService.split(","); // 쉼표(,)로 분할하여 배열로 변환
-
-      for(var i = 0; i < psServiceArr.length; i++) {
-
-        var psServiceId = $("div[id='"+ psServiceArr[i] +"']").attr('id');
-
-        const div = document.getElementById(psServiceId);
-        div.style.display = 'grid';
-      }
-    	
-
 
       // ------------------------ 카카오맵 API ----------------------------
       var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
@@ -687,24 +688,6 @@
 
           circle.setMap(map);
         }
-      });
-
-      
-
-      // ------------------------ 찜 버튼 ----------------------------
-      $(".heart-login").on("click", function() {
-
-        // 빈 하트라면
-        if ($(this).find(".heartIcon").hasClass("bi-heart")) {
-          sendHeartData('${loginUser.userNo}', '${p.petSitterNo}', 0);
-          $(this).find(".heartIcon").removeClass("bi-heart").addClass("bi-heart-fill");
-
-        // 채워진 하트라면
-        } else {
-          sendHeartData('${loginUser.userNo}', '${p.petSitterNo}', 1);
-          $(this).find(".heartIcon").removeClass("bi-heart-fill").addClass("bi-heart");
-        }
-
       });
 
 
@@ -773,6 +756,38 @@
 
 
 
+    // ------------------------ 상세페이지 이용 가능 서비스 표시 ------------------------
+    var psService = "<c:out value='${p.petSitterService}'/>"; // 값을 JavaScript 변수에 할당
+    var psServiceArr = psService.split(","); // 쉼표(,)로 분할하여 배열로 변환
+
+    for(var i = 0; i < psServiceArr.length; i++) {
+
+    var psServiceId = $("div[id='"+ psServiceArr[i] +"']").attr('id');
+
+    const div = document.getElementById(psServiceId);
+    div.style.display = 'grid';
+    }
+
+
+
+    // ------------------------ 찜 버튼 ----------------------------
+    $(".heart-login").on("click", function() {
+
+    // 빈 하트라면
+    if ($(this).find(".heartIcon").hasClass("bi-heart")) {
+      sendHeartData('${loginUser.userNo}', '${p.petSitterNo}', 0);
+      $(this).find(".heartIcon").removeClass("bi-heart").addClass("bi-heart-fill");
+
+    // 채워진 하트라면
+    } else {
+      sendHeartData('${loginUser.userNo}', '${p.petSitterNo}', 1);
+      $(this).find(".heartIcon").removeClass("bi-heart-fill").addClass("bi-heart");
+    }
+
+    });
+
+
+
     // ------------------------ 찜 버튼 ------------------------
     function sendHeartData(userNo, refPno, check) {
 
@@ -815,6 +830,44 @@
           console.error("찜 AJAX 요청이 실패했습니다.");
         }
       });
+    }
+
+
+
+    // ------------------------ 예약 기능 ------------------------
+    // 예약정보 insert를 위한 form 요청
+    function insertRevInfo() {
+    	
+    	// 기본 1일 가격
+    	var baseMoneys = 55000;
+    	// 예약 시작일
+    	var startRevDate = $('.dateInput input[name=startDate]').val();
+    	// 예약 종료일
+    	var endRevDate = $('.dateInput input[name=endDate]').val();
+    	// 강아지 마릿수
+    	var dogs = $('#petCount').text();
+    	// 요청사항
+    	var reqMsg = $('.requestMsg').val();
+    	// 몇박인지
+    	var sum = $('#day').text();
+    	// 기본금 * 강아지수 * 몇박 
+    	var totalPays = baseMoneys * Number(sum) * Number(dogs);
+    	// 현재 로그인한 유저번호
+    	var userNo = $('.card input[name=userNo]').val();
+    	// 예약하고자하는 펫시터 번호
+    	var petsitterNo = $('.card input[name=pno]').val();
+    	
+    	
+    	$("#payForm").children().eq(0).val(startRevDate);
+    	$("#payForm").children().eq(1).val(endRevDate);
+    	$("#payForm").children().eq(2).val(reqMsg);
+    	$("#payForm").children().eq(3).val(totalPays);
+    	$("#payForm").children().eq(4).val(userNo);
+    	$("#payForm").children().eq(5).val(petsitterNo);
+    	// 나머지 input value 들도 다 채우고
+    	$("#payForm").submit();
+    	
+    	
     }
 
 
