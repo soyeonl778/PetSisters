@@ -45,51 +45,51 @@
                       </div>
                     </div>
                     <form action="insert.me" method="post" id="enrollForm">
-                    <div class="sub2">
-                    <div class="enrollWrapper">
-                        <div class="idArea">
-                          <div>
-                            <label for="userId">● 아이디 (영문/소문자 6~16자) </label><br>
-                          </div>
-                            <div class="id_check2">
-                            <input type="text" id="userId" name="userId" maxlength="15" placeholder="아이디를 입력해주세요." style="width:230px" required>
-                            <div id="checkResult" style="font-size : 0.8em; display : none"></div>
+                      <div class="sub2">
+                        <div class="enrollWrapper">
+                          <div class="idArea">
+                            <div>
+                              <label for="userId">● 아이디 (영문/소문자 6~16자) </label><br>
                             </div>
-                        </div>
-                        <p>
-                          <label for="userPwd">● 비밀번호 </label><br>
-                          <input type="password" name="userPwd" id="userPwd" maxlength="15" placeholder="영문+숫자+특수문자 조합 8~16자리" style="width:300px" required><br>
-                        </p>
-                        <div class="checkPwdArea">
-                          <div>
-                            <label for="checkPwd">● 비밀번호 확인 </label><br>
+                              <div class="id_check2">
+                              <input type="text" id="userId" name="userId" maxlength="15" placeholder="아이디를 입력해주세요." style="width:230px" required>
+                              <div id="checkResult" style="font-size : 0.8em; display : none"></div>
+                              </div>
                           </div>
-                          <div class="pwd_check2">
-                            <input type="password" name="checkPwd" id="checkPwd" maxlength="15" placeholder="정확히 기입해주세요." style="width:300px" onkeyup="passConfirm()" required>
-                            <div id="confirmMsg" style="font-size : 0.8em; display : block"></div>
+                          <p>
+                            <label for="userPwd">● 비밀번호 </label><br>
+                            <input type="password" name="userPwd" id="userPwd" maxlength="15" placeholder="영문+숫자+특수문자 조합 8~16자리" style="width:300px" required><br>
+                          </p>
+                          <div class="checkPwdArea">
+                            <div>
+                              <label for="checkPwd">● 비밀번호 확인 </label><br>
+                            </div>
+                            <div class="pwd_check2">
+                              <input type="password" name="checkPwd" id="checkPwd" maxlength="15" placeholder="정확히 기입해주세요." style="width:300px" onkeyup="passConfirm()" required>
+                              <div id="confirmMsg" style="font-size : 0.8em; display : block"></div>
+                            </div>
                           </div>
-                        </div>
-                        <p>
-                          <label for="userName">● 이름 </label><br>
-                          <input type="text" name="userName" maxlength="15" placeholder="ex)홍길동" required><br>
-                        </p>
-                        <p>
-                          <label for="userNickname">● 닉네임 </label><br>
-                          <input type="text" name="userNickname" maxlength="15" placeholder="ex)나는야 꽃미남" required><br>
-                        </p>
-                        <p>
-                          <label for="userSsn">● 생년월일 </label><br>
-                          <input type="text" name="userSsn" maxlength="6" placeholder="ex)990101" required> <br>
-                        </p>
-                        <p>
-                          <label for="phone">● 휴대폰 번호 </label><br>
-                          <input type="text" name="phone" maxlength="11" placeholder="(-) 제외하고 숫자  ex)01012349876" style="width:300px" required><br>
-                        </p>
-                        <p>
-                          <label for="email">● 이메일 </label><br>
-                          <input type="email" name="email" maxlength="30" placeholder="@ 까지 정확한 이메일 형식을 입력해주세요." style="width:350px" required><br>
-                        </p>
-                        <div class="kakaoAddress">
+                          <p>
+                            <label for="userName">● 이름 </label><br>
+                            <input type="text" name="userName" maxlength="15" placeholder="ex)홍길동" required><br>
+                          </p>
+                          <p>
+                            <label for="userNickname">● 닉네임 </label><br>
+                            <input type="text" name="userNickname" maxlength="15" placeholder="ex)나는야 꽃미남" required><br>
+                          </p>
+                          <p>
+                            <label for="userSsn">● 생년월일 </label><br>
+                            <input type="text" name="userSsn" maxlength="6" placeholder="ex)990101" required> <br>
+                          </p>
+                          <p>
+                            <label for="phone">● 휴대폰 번호 </label><br>
+                            <input type="text" name="phone" maxlength="11" placeholder="(-) 제외하고 숫자  ex)01012349876" style="width:300px" required><br>
+                          </p>
+                          <p>
+                            <label for="email">● 이메일 </label><br>
+                            <input type="email" name="email" maxlength="30" placeholder="@ 까지 정확한 이메일 형식을 입력해주세요." style="width:350px" required><br>
+                          </p>
+                          <div class="kakaoAddress">
                           <div>
                             <label for="address">● 거주지 주소 </label>
                           </div>
@@ -131,7 +131,7 @@
         </div>
       </div>
     </div>
-    
+  </div>
     	<script>
         // 비밀번호 일치
         function passConfirm() {
@@ -228,8 +228,6 @@
         });
       </script>
     	
-        
-  </div>
   <!-- Footer 영역 시작 -->
     <jsp:include page="../common/footer.jsp" /> 
   <!-- Footer 영역 끝 -->
