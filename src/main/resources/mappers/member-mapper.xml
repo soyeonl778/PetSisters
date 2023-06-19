@@ -57,13 +57,35 @@
 		<result column="FILE_PATH" property="paFilePath" />
 	</resultMap>
 	
+	<resultMap id="boardResultSet" type="board">
+		<result column="B_NO" property="boardNo" />
+		<result column="B_TITLE" property="boardTitle" />
+		<result column="B_CONTENT" property="boardContent" />
+		<result column="CREATE_DATE" property="createDate" />
+		<result column="STATUS" property="status" />
+		<result column="COUNT" property="count" />
+		<result column="USER_NO" property="userNo" />
+		<result column="CATEGORY_MAIN" property="categoryMain" />
+		<result column="CATEGORY_SUB" property="categorySub" />
+		<result column="DOG_NAME" property="dogName" />
+		<result column="DOG_BREED" property="dogBreed" />
+		<result column="DOG_GENDER" property="dogGender" />
+		<result column="M_USER_NAME" property="userName" />
+		<result column="FILE_PATH" property="filePath" />
+		<result column="ORIGIN_NAME" property="originName" />
+		<result column="CHANGE_NAME" property="changeName" />
+		<result column="AT_FILE_PATH" property="atFilePath" />
+		<result column="DOG_FILE_PATH" property="dogFilePath" />
+		<result column="DOG_FILE_PATH" property="dogBirth" />
+		<result column="DOG_FILE_PATH" property="replyCount" />
+	</resultMap>
+	
 	<!-- 로그인 기능 -->
 	<select id="loginMember" parameterType="member" resultMap="memberResultSet">
 		SELECT M.*, P.P_NO
 		    FROM MEMBER M
 		    LEFT JOIN PETSITTER P ON M.USER_NO = P.USER_NO
 	    WHERE M.USER_ID = #{userId}
-	        AND M.USER_PWD = #{userPwd}
 	        AND M.STATUS = 'Y'
 	</select>
 	
@@ -231,6 +253,26 @@
 		JOIN P_LIKE L ON P.P_NO = L.REF_PNO
 		JOIN MEMBER M ON P.USER_NO = M.USER_NO
 		WHERE L.USER_NO = #{userNo}
+	</select>
+	
+	<!-- 내 게시글 목록 개수 구하는 쿼리문 -->
+	<select id="selectMyBoardListCount" resultType="_int">
+		SELECT COUNT(*)
+		   FROM BOARD
+		WHERE USER_NO = #{userNo}
+	</select>
+	
+	<select id="selectMyBoardList" parameterType="_int" resultMap="boardResultSet">
+		SELECT B.B_NO
+		     , B.B_TITLE
+		     , B.COUNT
+		     , B.CREATE_DATE
+		     , COUNT(R.REP_NO) AS REPLY_COUNT
+		FROM BOARD B
+		LEFT JOIN REPLY R ON B.B_NO = R.REF_BNO
+		WHERE B.USER_NO = #{userNo}
+		GROUP BY B.B_NO, B.B_TITLE, B.COUNT, B.CREATE_DATE
+        ORDER BY B.B_NO DESC
 	</select>
 
 

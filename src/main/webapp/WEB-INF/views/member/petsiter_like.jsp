@@ -13,6 +13,8 @@
   <jsp:include page="../common/common.jsp" />
 
   <title>마이페이지_펫시터찜관리</title>
+  <!-- 폰트어썸 아이콘 적용 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
   <!-- 헤더 영역 시작-->
@@ -82,7 +84,7 @@
                               <h7>${l.address}</h7>
                             </div>
                             <div class="siter_info">
-                              <h3>${l.petSitterTitle}</h3>
+                              <h6 id="siter_title">${l.petSitterTitle}</h6>
                             </div>
                             <div class="siter_info">
                               <p class="petSitterContent">${l.petSitterContent}</p>

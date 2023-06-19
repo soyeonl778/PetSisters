@@ -2,6 +2,7 @@ package com.kh.petsisters.member.model.service;
 
 import java.util.ArrayList;
 
+import com.kh.petsisters.board.model.vo.Board;
 import com.kh.petsisters.common.model.vo.PageInfo;
 import com.kh.petsisters.member.model.vo.Dog;
 import com.kh.petsisters.member.model.vo.Member;
@@ -53,4 +54,10 @@ public interface MemberService {
 	
 	// 펫시터 찜 목록 조회
 		ArrayList<PetSitter> selectLikeList(PageInfo pi, int userNo);
+		
+	// 내 게시글 목록 개수 카운트
+		int selectMyBoardListCount(int userNo);
+		
+	// 내 게시글 목록 조회
+		ArrayList<Board> selectMyBoardList(PageInfo pi, int userNo);
 }

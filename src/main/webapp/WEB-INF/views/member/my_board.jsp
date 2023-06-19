@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -67,52 +68,25 @@
                   </div>
                 </div>
                 <div id="main_content">
-                  <hr>
                   <div id="boardWrapper">
                     <table id="boardList" class="table table-hover">
                       <thead>
                         <tr>
-                          <th width="70%">제목</th>
+                          <th width="60%">제목</th>
                           <th width="10%">조회수</th>
+                          <th width="10%">댓글수</th>
                           <th width="20%">날짜</th>
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td>제목입니다 반갑습니다 제목입니다 반갑습니다</td>
-                          <td>15</td>
-                          <td>2023-05-29</td>
-                        </tr>
-                        <tr>
-                          <td>제목입니다 반갑습니다 제목입니다 반갑습니다</td>
-                          <td>15</td>
-                          <td>2023-05-29</td>
-                        </tr>
-                        <tr>
-                          <td>제목입니다 반갑습니다 제목입니다 반갑습니다</td>
-                          <td>15</td>
-                          <td>2023-05-29</td>
-                        </tr>
-                        <tr>
-                          <td>제목입니다 반갑습니다 제목입니다 반갑습니다</td>
-                          <td>15</td>
-                          <td>2023-05-29</td>
-                        </tr>
-                        <tr>
-                          <td>제목입니다 반갑습니다 제목입니다 반갑습니다</td>
-                          <td>15</td>
-                          <td>2023-05-29</td>
-                        </tr>
-                        <tr>
-                          <td>제목입니다 반갑습니다 제목입니다 반갑습니다</td>
-                          <td>15</td>
-                          <td>2023-05-29</td>
-                        </tr>
-                        <tr>
-                          <td>제목입니다 반갑습니다 제목입니다 반갑습니다</td>
-                          <td>15</td>
-                          <td>2023-05-29</td>
-                        </tr>
+                        <c:forEach var="b" items="${ list }">
+                          <tr>
+                            <td>${b.boardTitle}</td>
+                            <td>${b.count}</td>
+                            <td>${b.replyCount}</td>
+                            <td>${b.createDate}</td>
+                          </tr>
+                        </c:forEach>
                       </tbody>
                     </table>
                   </div>
@@ -152,6 +126,10 @@
   <!-- Footer 영역 시작 -->
     <jsp:include page="../common/footer.jsp" /> 
   <!-- Footer 영역 끝 -->
-
+  <script>
+    function goPage(page) {
+      location.href = page;
+    }
+  </script>
 </body>
 </html>

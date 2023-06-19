@@ -15,7 +15,8 @@
   <jsp:include page="../common/common.jsp" />
 
   <title>회원가입</title>
-  
+  <!-- jQuery 라이브러리 -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 <body>
   <!-- 헤더 영역 시작-->
@@ -44,7 +45,7 @@
                           지금바로 회원가입 해보세요.</h7>
                       </div>
                     </div>
-                    <form action="insert.me" method="post" id="enrollForm">
+                    <form action="insert.me" method="get" id="enrollForm">
                       <div class="sub2">
                         <div class="enrollWrapper">
                           <div class="idArea">
@@ -52,8 +53,8 @@
                               <label for="userId">● 아이디 (영문/소문자 6~16자) </label><br>
                             </div>
                               <div class="id_check2">
-                              <input type="text" id="userId" name="userId" maxlength="15" placeholder="아이디를 입력해주세요." style="width:230px" required>
-                              <div id="checkResult" style="font-size : 0.8em; display : none"></div>
+                                <input type="text" id="userId" name="userId" maxlength="15" placeholder="아이디를 입력해주세요." style="width:230px" required>
+                                <div id="checkResult" style="font-size : 0.8em; display : none"></div>
                               </div>
                           </div>
                           <p>
@@ -155,55 +156,55 @@
 
         $(document).ready(function() {
         
-            // 아이디 중복체크 & 아이디 정규식 검사
-            $(function() {
+          // 아이디 중복체크 & 아이디 정규식 검사
+          $(function() {
+            
+            // 아이디를 입력받을 수 있는 input 요소 객체 자체를 변수에 담아두기
+            const $idInput = $("#userId");
+            
+            $idInput.keyup(function() {
               
-              // 아이디를 입력받을 수 있는 input 요소 객체 자체를 변수에 담아두기
-              const $idInput = $("#enrollForm input[name=userId]");
-              
-              $idInput.keyup(function() {
+              // 우선 최소 5글자 이상으로 입력되어 있을 경우에만 ajax 를 요청해서 중복체크 하기
+              if($idInput.val().length >= 6 && /^(?=.*[a-z])(?=.*\d)[a-z\d]{6,16}$/i.test($idInput.val())) {
                 
-                // 우선 최소 5글자 이상으로 입력되어 있을 경우에만 ajax 를 요청해서 중복체크 하기
-                if($idInput.val().length >= 6 && /^(?=.*[a-z])(?=.*\d)[a-z\d]{6,16}$/i.test($idInput.val())) {
+                // 아이디 중복체크 요청 보내기
+                $.ajax({
+              url : "idCheck.me",
+              data : {checkId : $idInput.val()},
+              type : "get",
+              success : function(result) {
+                
+                if(result == "NNNNN") { // 사용 불가능
+                  console.log("사용불가능");
+                  // 빨간색 메시지로 (사용불가능함) 출력
+                  $("#checkResult").show();
+                  $("#checkResult").css("color", "gray").text("중복된 아이디가 존재합니다. 다시 입력해주세요.");
                   
-                  // 아이디 중복체크 요청 보내기
-                  $.ajax({
-                url : "idCheck.me",
-                data : {checkId : $idInput.val()},
-                type : "get",
-                success : function(result) {
-                  
-                  if(result == "NNNNN") { // 사용 불가능
-                    console.log("사용불가능");
-                    // 빨간색 메시지로 (사용불가능함) 출력
-                    $("#checkResult").show();
-                    $("#checkResult").css("color", "gray").text("중복된 아이디가 존재합니다. 다시 입력해주세요.");
-                    
-                    // 버튼 비활성
-                    $("#enrollForm button[type=submit]").attr("disabled", true);
-                    
-                  } else { // 사용가능
-                    console.log("사용가능");
-                    // 초록색 메세지로 (사용가능함) 출력
-                    $("#checkResult").show();
-                    $("#checkResult").css("color", "green").text("사용 가능한 아이디 입니다!");
-                    
-                    // 버튼 활성화
-                    $("#enrollForm button[type=submit]").attr("disabled", false);
-                  }
-                },
-                error : function() {
-                  console.log("아이디 중복 체크용 ajax 통신 실패!");
-                }
-                  });
-                  
-                } else { // 5글자 미만일 경우 => 버튼 비활성화, 메세지 숨기기
-                  
-                  $("#checkResult").hide();
+                  // 버튼 비활성
                   $("#enrollForm button[type=submit]").attr("disabled", true);
+                  
+                } else { // 사용가능
+                  console.log("사용가능");
+                  // 초록색 메세지로 (사용가능함) 출력
+                  $("#checkResult").show();
+                  $("#checkResult").css("color", "green").text("사용 가능한 아이디 입니다!");
+                  
+                  // 버튼 활성화
+                  $("#enrollForm button[type=submit]").attr("disabled", false);
                 }
-              });
+              },
+              error : function() {
+                console.log("아이디 중복 체크용 ajax 통신 실패!");
+              }
+                });
+                
+              } else { // 5글자 미만일 경우 => 버튼 비활성화, 메세지 숨기기
+                
+                $("#checkResult").hide();
+                $("#enrollForm button[type=submit]").attr("disabled", true);
+              }
             });
+          });
             
             
 

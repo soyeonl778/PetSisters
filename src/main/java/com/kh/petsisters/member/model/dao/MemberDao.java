@@ -6,6 +6,7 @@ import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.kh.petsisters.board.model.vo.Board;
 import com.kh.petsisters.common.model.vo.PageInfo;
 import com.kh.petsisters.member.model.vo.Dog;
 import com.kh.petsisters.member.model.vo.Member;
@@ -91,6 +92,21 @@ public class MemberDao {
 		RowBounds rowBounds = new RowBounds(offset, limit);
 		
 		return (ArrayList)sqlSession.selectList("memberMapper.selectLikeList", userNo, rowBounds);
+	}
+	
+	public int selectMyBoardListCount(SqlSessionTemplate sqlSession, int userNo) {
+		
+		return sqlSession.selectOne("memberMapper.selectMyBoardListCount", userNo);
+	}
+	
+	public ArrayList<Board> selectMyBoardList(SqlSessionTemplate sqlSession, PageInfo pi, int userNo) {
+		
+		int offset = (pi.getCurrentPage() -1) * pi.getBoardLimit();
+		int limit = pi.getBoardLimit();
+		
+		RowBounds rowBounds = new RowBounds(offset, limit);
+		
+		return (ArrayList)sqlSession.selectList("memberMapper.selectMyBoardList", userNo, rowBounds);
 	}
 	
 	

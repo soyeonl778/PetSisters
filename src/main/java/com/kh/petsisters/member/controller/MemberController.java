@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.kh.petsisters.board.model.vo.Board;
 import com.kh.petsisters.chat.model.vo.ChatSession;
 import com.kh.petsisters.common.model.vo.PageInfo;
 import com.kh.petsisters.common.template.Pagination;
@@ -74,7 +75,7 @@ public class MemberController {
 		Member loginUser = memberService.loginMember(m);
 		
 		if(loginUser != null 
-			/*&& bcryptPasswordEncoder.matches(m.getUserPwd(), loginUser.getUserPwd())*/) { // 로그인 성공 처리
+				&& bcryptPasswordEncoder.matches(m.getUserPwd(), loginUser.getUserPwd())) { // 로그인 성공 처리
 			
 		    // ChatSession에 사용자 추가
 		    chatSession.addLoginUser(loginUser.getUserNo());
@@ -123,6 +124,10 @@ public class MemberController {
 	public String insertMember(Member m, 
 							   Model model, 
 							   HttpSession session) {
+		
+		String encPwd = bcryptPasswordEncoder.encode(m.getUserPwd());
+		
+		m.setUserPwd(encPwd);
 		
 		int result = memberService.insertMember(m);
 		
@@ -421,8 +426,24 @@ public class MemberController {
 	
 	// 마이페이지 내 게시글 조회 영역
 	@RequestMapping("myBoard.me")
-	public String myBoard() {
-		return "/member/my_board";
+	public ModelAndView myBoard(HttpSession session,
+					@RequestParam(value="cPage", defaultValue="1") int currentPage,
+						ModelAndView mv) {
+		int userNo = ((Member)session.getAttribute("loginUser")).getUserNo();
+		int listCount = memberService.selectMyBoardListCount(userNo);
+		int pageLimit = 10;
+		int boardLimit = 6;
+		PageInfo pi = Pagination.getPageInfo(listCount, currentPage, pageLimit, boardLimit);
+		ArrayList<Board> list = memberService.selectMyBoardList(pi, userNo);
+		
+		System.out.println(pi);
+		System.out.println(list);
+		
+		mv.addObject("pi", pi)
+		  .addObject("list", list)
+		  .setViewName("member/my_board");
+		
+		return mv;
 	}
 	
 	// 마이페이지 내 댓글 조회 영역

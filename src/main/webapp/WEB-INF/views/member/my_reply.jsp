@@ -152,10 +152,10 @@
   <!-- Footer 영역 시작 -->
     <jsp:include page="../common/footer.jsp" /> 
   <!-- Footer 영역 끝 -->
-<script>
-function goPage(e) {
-	location.href = "http://localhost:8282/" + e;
-}
-</script>
+  <script>
+    function goPage(page) {
+      location.href = page;
+    }
+  </script>
 </body>
 </html>

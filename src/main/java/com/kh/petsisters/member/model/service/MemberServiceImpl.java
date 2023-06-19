@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.kh.petsisters.board.model.vo.Board;
 import com.kh.petsisters.common.model.vo.PageInfo;
 import com.kh.petsisters.member.model.dao.MemberDao;
 import com.kh.petsisters.member.model.vo.Dog;
@@ -97,6 +98,17 @@ public class MemberServiceImpl implements MemberService{
 	public ArrayList<PetSitter> selectLikeList(PageInfo pi, int userNo) {
 		return memberDao.selectLikeList(sqlSession, pi, userNo);
 	}
+
+	@Override
+	public int selectMyBoardListCount(int userNo) {
+		return memberDao.selectMyBoardListCount(sqlSession, userNo);
+	}
+	
+	@Override
+	public ArrayList<Board> selectMyBoardList(PageInfo pi, int userNo) {
+		return memberDao.selectMyBoardList(sqlSession, pi, userNo);
+	}
+
 	
 	
 
