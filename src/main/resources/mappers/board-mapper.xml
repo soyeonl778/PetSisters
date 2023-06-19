@@ -188,7 +188,8 @@
 		       LISTAGG(BA.CHANGE_NAME, ',') WITHIN GROUP(ORDER BY BA.CHANGE_NAME) AS BA_CHANGE_NAME,
 		       BA.FILE_PATH 커뮤니티경로,
                B.COUNT,
-               B.B_NO
+               B.B_NO,
+               B.USER_NO
 		  FROM BOARD B
 		  LEFT JOIN B_ATTACHMENT BA ON B.B_NO = BA.REF_BNO
 		  LEFT JOIN MEMBER M ON B.USER_NO = M.USER_NO
@@ -200,7 +201,8 @@
 		       B.CREATE_DATE, 
 		       BA.FILE_PATH,
                B.B_NO,
-               B.COUNT
+               B.COUNT,
+               B.USER_NO
 	</select>
 	
 	<!-- 일반/사진 : 수정페이지 , 기존내용 조회용 뿌리는 쿼리문 -->

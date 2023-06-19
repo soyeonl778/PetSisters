@@ -527,3 +527,7 @@ body #container #main .layout-pagination .pagediv span strong{
 .deleteRe{
 	background-color: #DC3545;
 }
+.this:hover{
+	cursor:pointer;
+	
+}
