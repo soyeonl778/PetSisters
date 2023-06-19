@@ -57,10 +57,6 @@
                             </div>
                         </div>
                         <p>
-                          <label for="userNickname">● 닉네임 </label><br>
-                          <input type="text" id="userNickname" name="userNickname" maxlength="15" placeholder="나만의 닉네임을 지어주세요." style="width:230px" required>
-                        </p>
-                        <p>
                           <label for="userPwd">● 비밀번호 </label><br>
                           <input type="password" name="userPwd" id="userPwd" maxlength="15" placeholder="영문+숫자+특수문자 조합 8~16자리" style="width:300px" required><br>
                         </p>
