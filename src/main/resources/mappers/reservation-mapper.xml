@@ -86,6 +86,7 @@
 	SELECT COUNT(*) 
 	  FROM RESERVATION
 	 WHERE USER_NO = #{userNo} 
+	   AND STATUS = 'Y'
 	</select>
 	
 	
@@ -100,7 +101,7 @@
 		       P.CARE_LIST,
 		       P.P_NO,
 		       A.FILE_PATH AS FILE_PATH,
-		       A.ORIGIN_NAME,
+               LISTAGG(A.ORIGIN_NAME, ',') WITHIN GROUP (ORDER BY A.ORIGIN_NAME) AS ORIGIN_NAME, 
 		       (SELECT COUNT(*) FROM REVIEW WHERE REF_RESNO = R.RES_NO) AS REVIEW_COUNT,
 		        CASE WHEN REV.REV_NO IS NOT NULL THEN 1 ELSE 0 END AS REVIEW_STATUS
 		FROM RESERVATION R
@@ -110,7 +111,17 @@
 		LEFT JOIN REVIEW REV ON R.RES_NO = REV.REF_RESNO
 	   WHERE R.USER_NO = #{userNo}
 		 AND R.STATUS = 'Y' 
-	   ORDER BY R.START_DATE DESC
+       GROUP BY R.RES_NO, 
+             R.START_DATE, 
+             R.END_DATE, 
+             M.ADDRESS, 
+             M.CA_STATUS, 
+             P.P_TITLE, 
+             P.CARE_LIST, 
+             P.P_NO, 
+             A.FILE_PATH, 
+             CASE WHEN REV.REV_NO IS NOT NULL THEN 1 ELSE 0 END 
+	         ORDER BY R.START_DATE DESC
 	</select>	
 	
 	
@@ -195,7 +206,8 @@
 		  LEFT JOIN P_ATTACHMENT PA ON P.P_NO = PA.REF_PNO
 		  JOIN MEMBER M ON P.USER_NO = M.USER_NO
 		  LEFT JOIN DOG D ON M.USER_NO = D.USER_NO
-		 WHERE R.RES_NO = #{rNo}	
+		 WHERE R.RES_NO = #{rNo}
+		   AND ROWNUM = 1	
 	</select>
 	
 	
@@ -350,7 +362,13 @@
 	</select>
 	
 	
-	
+	<!-- 예약 상세페이지 결제정보 조회용 쿼리문 -->
+	<select id="selectRevPay" resultMap="paymentResultSet">
+		SELECT PAY_PRICE, PAY_DATE
+		FROM PAYMENT P
+		JOIN RESERVATION R ON P.REF_RESNO = RES_NO
+		WHERE RES_NO = #{rNo}	
+	</select>
 	
 	
 	

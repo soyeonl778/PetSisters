@@ -210,8 +210,10 @@ public class ReservationController {
 		
 		// System.out.println(rNo);
 		Reservation rev = reservationService.reservationDetail(rNo);
+		Payment pay = reservationService.selectRevPay(rNo);
 		
 		model.addAttribute("rev", rev);
+		model.addAttribute("pay", pay);
 		
 		return "reservation/reservationDetail";
 	}

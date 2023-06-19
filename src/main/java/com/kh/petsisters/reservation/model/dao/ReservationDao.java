@@ -217,6 +217,10 @@ public class ReservationDao {
 		return sqlSession.update("reservationMapper.deleteJournal", jno);
 	}
 
+	public Payment selectRevPay(SqlSessionTemplate sqlSession, int rNo) {
+		return sqlSession.selectOne("reservationMapper.selectRevPay", rNo);
+	}
+
 
 
 }

@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>   
 <!DOCTYPE html>
 <html>
 <head>
@@ -99,11 +101,11 @@
 
                   <div class="rightTitright">
                     <div class="lineMan">
-                      <span>300,000</span>
+                      <span><fmt:formatNumber value="${ pay.payPrice }" pattern="#,###,###"/></span>
                       <span>원</span>
                     </div>
                     <div>카카오페이</div>
-                    <div>2023-05-15</div>
+                    <div>${ pay.payDate }</div>
                     <div>결제완료</div>
                   </div>
                 </div>

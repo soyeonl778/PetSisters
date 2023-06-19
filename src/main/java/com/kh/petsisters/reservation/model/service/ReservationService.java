@@ -57,6 +57,11 @@ public interface ReservationService {
 	// 결제내역 ajax용
 	ArrayList<Payment> searchPay(int userNo, String startDate, String endDate);
 	
+	// 예약 상세페이지 결제정보 조회용
+	Payment selectRevPay(int rNo);
+	
+	
+	
 	
 	// ======== 펫시터 관련 =========
 	// 펫시터 예약 화면 조회용
@@ -94,6 +99,8 @@ public interface ReservationService {
 
 	// 펫시터 돌봄일지 삭제
 	int deleteJournal(int jno);
+
+	
 
 
 

@@ -159,6 +159,11 @@ public class ReservationServiceImpl implements ReservationService{
 		return reservationDao.deleteJournal(sqlSession, jno);
 	}
 
+	@Override
+	public Payment selectRevPay(int rNo) {
+		return reservationDao.selectRevPay(sqlSession, rNo);
+	}
+
 	
 
 
