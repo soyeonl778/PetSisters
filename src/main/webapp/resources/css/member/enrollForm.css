@@ -45,7 +45,7 @@ button {
 }
 
 .enrollWrapper {
-    height: 1400px;
+    height: 1170px;
     width: 700px;
     background-color: white;
     padding: 5%;
@@ -143,6 +143,7 @@ button {
 }
 
 .btnWrapper {
+    margin-top: 50px;
 	display: flex;
 	align-items: center;
     justify-content: center;
