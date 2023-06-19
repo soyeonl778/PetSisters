@@ -1,22 +1,22 @@
 --------------------------------------------------
 --------------    회원 테이블 더미    --------------
 --------------------------------------------------
-INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'admin', '1234', '관리자', '1234561234567', '관리자', '01012341234', 'admin@kh.or.kr', '서울시 영등포구', 'F', 'N', 'N', NULL, 'Y', '/resources/upFiles/member_profiles/1.png', SYSDATE);
-INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user01', 'pass01', '펫시터1', '1234561234567', '펫시터1', '01011111111', 'user01@kh.or.kr', '서울시 구로구', 'F', 'Y', 'N', NULL, 'Y', '/resources/upFiles/member_profiles/2.png', SYSDATE);
-INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user02', 'pass02', '펫시터2', '1234561234567', '펫시터2', '01022222222', 'user02@kh.or.kr', '서울시 동작구', 'F', 'Y', 'N', NULL, 'Y', '/resources/upFiles/member_profiles/3.png', SYSDATE);
-INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user03', 'pass03', '펫시터3', '1234561234567', '펫시터3', '01033333333', 'user03@kh.or.kr', '서울시 강남구', 'F', 'Y', 'N', NULL, 'Y', '/resources/upFiles/member_profiles/4.png', SYSDATE);
-INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user04', 'pass04', '펫시터4', '1234561234567', '펫시터4', '01044444444', 'user04@kh.or.kr', '서울시 마포구', 'F', 'Y', 'Y', '2023-05-01', 'Y', '/resources/upFiles/member_profiles/5.png', SYSDATE);
-INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user05', 'pass05', '펫시터5', '1234561234567', '펫시터5', '01055555555', 'user05@kh.or.kr', '서울시 강동구', 'F', 'Y', 'Y', '2023-06-01', 'Y', '/resources/upFiles/member_profiles/6.png', SYSDATE);
-INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user06', 'pass06', '고객6', '1234561234567', '고객6', '01066666666', 'user06@kh.or.kr', '서울시 도봉구', 'F', 'N', 'N', NULL, 'Y', '/resources/upFiles/member_profiles/7.png', SYSDATE);
-INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user07', 'pass07', '고객7', '1234561234567', '고객7', '01077777777', 'user07@kh.or.kr', '서울시 노원구', 'F', 'N', 'N', NULL, 'Y', '/resources/upFiles/member_profiles/8.png', SYSDATE);
-INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user08', 'pass08', '펫시터8', '1234561234567', '펫시터8', '01088888888', 'user08@kh.or.kr', '서울시 중랑구', 'F', 'Y', 'Y', '2023-06-01', 'Y', '/resources/upFiles/member_profiles/9.png', SYSDATE);
-INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user09', 'pass09', '펫시터9', '1234561234567', '펫시터9', '01099999999', 'user09@kh.or.kr', '서울시 동대문구', 'F', 'Y', 'N', NULL, 'Y', '/resources/upFiles/member_profiles/10.png', SYSDATE);
-INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user10', 'pass10', '펫시터10', '1234561234567', '펫시터10', '01000000000', 'user10@kh.or.kr', '서울시 종로구', 'F', 'Y', 'Y', '2023-06-01', 'Y', '/resources/upFiles/member_profiles/11.png', SYSDATE);
-INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user11', 'pass11', '펫시터11', '1234561234567', '펫시터11', '01011111111', 'user11@kh.or.kr', '서울시 용산구', 'F', 'Y', 'N', NULL, 'Y', '/resources/upFiles/member_profiles/12.png', SYSDATE);
-INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user12', 'pass12', '펫시터12', '1234561234567', '펫시터12', '01022222222', 'user12@kh.or.kr', '서울시 서초구', 'F', 'Y', 'Y', '2023-06-01', 'Y', '/resources/upFiles/member_profiles/13.png', SYSDATE);
-INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user13', 'pass13', '펫시터13', '1234561234567', '펫시터13', '01033333333', 'user13@kh.or.kr', '서울시 관악구', 'F', 'Y', 'N', NULL, 'Y', '/resources/upFiles/member_profiles/14.png', SYSDATE);
-INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user14', 'pass14', '펫시터14', '1234561234567', '펫시터14', '01044444444', 'user14@kh.or.kr', '서울시 금천구', 'F', 'Y', 'Y', '2023-06-01', 'Y', '/resources/upFiles/member_profiles/15.png', SYSDATE);
-INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user15', 'pass15', '펫시터15', '1234561234567', '펫시터15', '01055555555', 'user15@kh.or.kr', '서울시 은평구', 'F', 'Y', 'N', NULL, 'Y', '/resources/upFiles/member_profiles/16.png', SYSDATE);
+INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'admin', '$2a$10$SLRkh8Pqzj6otPtToAadCOAK5Rvm8tnuC.1Lp8jM5Z8lnF8XDnbM2', '관리자', '1234561234567', '관리자', '01012341234', 'admin@kh.or.kr', '서울시 영등포구', 'F', 'N', 'N', NULL, 'Y', '/resources/upFiles/member_profiles/1.png', SYSDATE);
+INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user01', '$2a$10$XpDQNtmKS/JsEeGnmWHGHuhsS13As1LkMzuJVV68I8XCtfC4hA3Im', '펫시터1', '1234561234567', '펫시터1', '01011111111', 'user01@kh.or.kr', '서울시 구로구', 'F', 'Y', 'N', NULL, 'Y', '/resources/upFiles/member_profiles/2.png', SYSDATE);
+INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user02', '$2a$10$ehe3oCftL/3kloTfPiPc1OrN0LNmENx6f.cvVzuezsSv25ADeNcxK', '펫시터2', '1234561234567', '펫시터2', '01022222222', 'user02@kh.or.kr', '서울시 동작구', 'F', 'Y', 'N', NULL, 'Y', '/resources/upFiles/member_profiles/3.png', SYSDATE);
+INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user03', '$2a$10$TnADZgZPdOhE32VPtZGUFuaKH6Jx7Sy0bSk5hhKbA/2nDArlCXCQm', '펫시터3', '1234561234567', '펫시터3', '01033333333', 'user03@kh.or.kr', '서울시 강남구', 'F', 'Y', 'N', NULL, 'Y', '/resources/upFiles/member_profiles/4.png', SYSDATE);
+INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user04', '$2a$10$kzQqxP.r3/ZsSVaCoQsySeD3ra.PI38T7YYJAVW2Lj/jiwNiBXv8e', '펫시터4', '1234561234567', '펫시터4', '01044444444', 'user04@kh.or.kr', '서울시 마포구', 'F', 'Y', 'Y', '2023-05-01', 'Y', '/resources/upFiles/member_profiles/5.png', SYSDATE);
+INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user05', '$2a$10$O.hNqLbmDse4osUqUQzXZ.sk.h0Kl3qNxLnSLF5xD0wH2foZlT.6m', '펫시터5', '1234561234567', '펫시터5', '01055555555', 'user05@kh.or.kr', '서울시 강동구', 'F', 'Y', 'Y', '2023-06-01', 'Y', '/resources/upFiles/member_profiles/6.png', SYSDATE);
+INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user06', '$2a$10$W4bClgUyXMni0dxkS3Dl6./7SdovfPo.vSyExmQ8w1L7NC8Ybu1Vq', '고객6', '1234561234567', '고객6', '01066666666', 'user06@kh.or.kr', '서울시 도봉구', 'F', 'N', 'N', NULL, 'Y', '/resources/upFiles/member_profiles/7.png', SYSDATE);
+INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user07', '$2a$10$hS7WFASO5Q17rL.DtWAho.fM/2vG..aT5oqVJas8GZwIb.REsEX.q', '고객7', '1234561234567', '고객7', '01077777777', 'user07@kh.or.kr', '서울시 노원구', 'F', 'N', 'N', NULL, 'Y', '/resources/upFiles/member_profiles/8.png', SYSDATE);
+INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user08', '$2a$10$Pti0vw8c8OgDOilRrmF0aeDy/bMkprBu.oWLWKyhUjMaMR1hRt5EC', '펫시터8', '1234561234567', '펫시터8', '01088888888', 'user08@kh.or.kr', '서울시 중랑구', 'F', 'Y', 'Y', '2023-06-01', 'Y', '/resources/upFiles/member_profiles/9.png', SYSDATE);
+INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user09', '$2a$10$Hy1v0MMmhdHm0OkJXdbC9O8wMt3ywTRF9IjHHRYft7ftLvc1r5AlW', '펫시터9', '1234561234567', '펫시터9', '01099999999', 'user09@kh.or.kr', '서울시 동대문구', 'F', 'Y', 'N', NULL, 'Y', '/resources/upFiles/member_profiles/10.png', SYSDATE);
+INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user10', '$2a$10$KGsB6UlIawJz/xbyFxB41.N6Y14Oghd.GZ8WVqjCuGkSmL8xBvykG', '펫시터10', '1234561234567', '펫시터10', '01000000000', 'user10@kh.or.kr', '서울시 종로구', 'F', 'Y', 'Y', '2023-06-01', 'Y', '/resources/upFiles/member_profiles/11.png', SYSDATE);
+INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user11', '$2a$10$RnNn7iVfmP4L6z5nLCpg6.vxEh.vYekCed5ohNFtk.K9u6ZfUr0yu', '펫시터11', '1234561234567', '펫시터11', '01011111111', 'user11@kh.or.kr', '서울시 용산구', 'F', 'Y', 'N', NULL, 'Y', '/resources/upFiles/member_profiles/12.png', SYSDATE);
+INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user12', '$2a$10$d9hP.cuc/xW446Mx./HCr.5YBrv4MDQo0JPFEjooEVslHmX85FG1q', '펫시터12', '1234561234567', '펫시터12', '01022222222', 'user12@kh.or.kr', '서울시 서초구', 'F', 'Y', 'Y', '2023-06-01', 'Y', '/resources/upFiles/member_profiles/13.png', SYSDATE);
+INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user13', '$2a$10$Xf4YuxUB05MylcHNS9dZmeKuQtmrSqaCcTPyBkkYqvRxaSoMUkzQO', '펫시터13', '1234561234567', '펫시터13', '01033333333', 'user13@kh.or.kr', '서울시 관악구', 'F', 'Y', 'N', NULL, 'Y', '/resources/upFiles/member_profiles/14.png', SYSDATE);
+INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user14', '$2a$10$o5r4qt.ZGVesa8kUxq9n7.b5L3Z/dTFTS5.taYOugdYQZlEWDFRlW', '펫시터14', '1234561234567', '펫시터14', '01044444444', 'user14@kh.or.kr', '서울시 금천구', 'F', 'Y', 'Y', '2023-06-01', 'Y', '/resources/upFiles/member_profiles/15.png', SYSDATE);
+INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user15', '$2a$10$IqaM5ZO19GEECiLwqFcjBOb0bMw2DVcNGpG7NwGdVhHGQlV4Iq/Eu', '펫시터15', '1234561234567', '펫시터15', '01055555555', 'user15@kh.or.kr', '서울시 은평구', 'F', 'Y', 'N', NULL, 'Y', '/resources/upFiles/member_profiles/16.png', SYSDATE);
 
 --------------------------------------------------
 -----------    펫시터 프로필 테이블 더미    -----------
@@ -522,9 +522,6 @@ VALUES (SEQ_JOURNAL.NEXTVAL, '돌봄테스트1', '돌봄테스트내용1', SYSDATE, 'Y', 7);
 
 INSERT INTO JOURNAL (J_NO, J_TITLE, J_CONTENT, CREATE_DATE, STATUS, REF_RESNO)
 VALUES (SEQ_JOURNAL.NEXTVAL, '돌봄테스트1', '돌봄테스트내용1', SYSDATE, 'Y', 8);	 
-
-INSERT INTO JOURNAL (J_NO, J_TITLE, J_CONTENT, CREATE_DATE, STATUS, REF_RESNO)
-VALUES (SEQ_JOURNAL.NEXTVAL, '돌봄테스트1', '돌봄테스트내용1', SYSDATE, 'Y', 17);	 
 
 INSERT INTO JOURNAL (J_NO, J_TITLE, J_CONTENT, CREATE_DATE, STATUS, REF_RESNO)
 VALUES (SEQ_JOURNAL.NEXTVAL, '돌봄테스트1', '돌봄테스트내용1', SYSDATE, 'Y', 16);	 
@@ -1094,6 +1091,19 @@ INSERT INTO BOARD VALUES (SEQ_BOARD.NEXTVAL, '제목10', '고양이와 강아지!!', SYSD
 INSERT INTO BOARD VALUES (SEQ_BOARD.NEXTVAL, '제목11', '강아지 영양식 인증샷!!', SYSDATE, DEFAULT, DEFAULT, 3, 2, 1);
 INSERT INTO BOARD VALUES (SEQ_BOARD.NEXTVAL, '제목12', '여름에 강아지 보양식 만들었어요!!', SYSDATE, DEFAULT, DEFAULT, 1, 2, 1);
 
+--------------------------------------------------
+----------     게시판 댓글 테이블 더미    ------------
+--------------------------------------------------
+INSERT INTO REPLY VALUES (SEQ_REPLY.NEXTVAL, '댓글입니다', DEFAULT, DEFAULT, 2, 1);
+INSERT INTO REPLY VALUES (SEQ_REPLY.NEXTVAL, '댓글입니다', DEFAULT, DEFAULT, 3, 1);
+INSERT INTO REPLY VALUES (SEQ_REPLY.NEXTVAL, '댓글입니다', DEFAULT, DEFAULT, 4, 2);
+INSERT INTO REPLY VALUES (SEQ_REPLY.NEXTVAL, '댓글입니다', DEFAULT, DEFAULT, 5, 2);
+INSERT INTO REPLY VALUES (SEQ_REPLY.NEXTVAL, '댓글입니다', DEFAULT, DEFAULT, 6, 3);
+INSERT INTO REPLY VALUES (SEQ_REPLY.NEXTVAL, '댓글입니다', DEFAULT, DEFAULT, 7, 3);
+INSERT INTO REPLY VALUES (SEQ_REPLY.NEXTVAL, '댓글입니다', DEFAULT, DEFAULT, 8, 4);
+INSERT INTO REPLY VALUES (SEQ_REPLY.NEXTVAL, '댓글입니다', DEFAULT, DEFAULT, 9, 4);
+INSERT INTO REPLY VALUES (SEQ_REPLY.NEXTVAL, '댓글입니다', DEFAULT, DEFAULT, 10, 5);
+INSERT INTO REPLY VALUES (SEQ_REPLY.NEXTVAL, '댓글입니다', DEFAULT, DEFAULT, 11, 5);
 
 --------------------------------------------------
 -----------------    커밋구문    ------------------
