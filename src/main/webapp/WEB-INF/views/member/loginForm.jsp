@@ -62,15 +62,15 @@
                               <c:choose>
                               <c:when test="${ not empty cookie.saveId }">
                                 <span class="input_btn checkbox">
-                      <input type="checkbox" name="saveId" id="saveId" value="Y" checked>
-                      <label for="saveId">아이디 저장</label>
-                    </span>
+			                      <input type="checkbox" name="saveId" id="saveId" value="y" checked>
+			                      <label for="saveId">아이디 저장</label>
+			                    </span>
                               </c:when>
                               <c:otherwise>
                                 <span class="input_btn checkbox">
-                      <input type="checkbox" name="saveId" id="saveId" value="Y">
-                      <label for="saveId">아이디 저장</label>
-                    </span>
+			                      <input type="checkbox" name="saveId" id="saveId" value="y">
+			                      <label for="saveId">아이디 저장</label>
+			                    </span>
                               </c:otherwise>
                               </c:choose>
                               
