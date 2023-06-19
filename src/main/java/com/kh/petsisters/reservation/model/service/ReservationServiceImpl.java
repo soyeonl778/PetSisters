@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kh.petsisters.common.model.vo.PageInfo;
+import com.kh.petsisters.inquiry.model.vo.Inquiry;
 import com.kh.petsisters.payment.model.vo.Payment;
 import com.kh.petsisters.reservation.model.dao.ReservationDao;
 import com.kh.petsisters.reservation.model.vo.CareJournal;
@@ -27,6 +28,17 @@ public class ReservationServiceImpl implements ReservationService{
 	@Override
 	public int selectListCount(int userNo) {
 		return reservationDao.selectListCount(sqlSession, userNo);
+	}
+	
+	// 대시보드용 : 
+	@Override
+	public List<Review> selectDashboardReview() {
+		return reservationDao.selectDashboardReview(sqlSession);
+	}
+	
+	@Override
+	public List<Reservation> selectDashboardReserv() {
+		return reservationDao.selectDashboardReserv(sqlSession);
 	}
 
 	@Override

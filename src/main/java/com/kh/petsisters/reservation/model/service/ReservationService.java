@@ -5,6 +5,7 @@ import java.util.List;
 import java.sql.Date;
 
 import com.kh.petsisters.common.model.vo.PageInfo;
+import com.kh.petsisters.inquiry.model.vo.Inquiry;
 import com.kh.petsisters.payment.model.vo.Payment;
 import com.kh.petsisters.reservation.model.vo.CareJournal;
 import com.kh.petsisters.reservation.model.vo.Reservation;
@@ -18,6 +19,12 @@ public interface ReservationService {
 	// 내 예약 펫시터 리스트 조회 (select)
 	ArrayList<Reservation> selectPetsitterList(PageInfo pi, int userNo, Integer checkReview);
 
+	// 대시보드 조회용 ReviewList
+	List<Review> selectDashboardReview();
+	
+	// 대시보드 조회용 ReservationList
+	List<Reservation> selectDashboardReserv();
+	
 	// 후기 작성시 날짜 조회용
 	Reservation selectReview(int writeReviewNo);
 

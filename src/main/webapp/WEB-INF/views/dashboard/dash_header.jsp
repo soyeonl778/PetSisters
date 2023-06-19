@@ -70,13 +70,9 @@
                             <div class="sb-sidenav-menu-heading">예약관리</div>
 
                             <!--- 소분류 --->
-                            <a class="nav-link collapsed" href="or.da" >
+                            <a class="nav-link collapsed" href="reservation.da" >
                                 <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                                진행중예약
-                            </a>
-                            <a class="nav-link collapsed" href="cr.da" >
-                                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                                지난예약
+                                예약관리
                             </a>
                             <a class="nav-link collapsed" href="review.da" >
                                 <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>

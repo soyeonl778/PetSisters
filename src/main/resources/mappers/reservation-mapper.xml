@@ -181,7 +181,24 @@
 		 WHERE RES_NO = #{rNo}
 	</update>
 	
+	<!-- 대시보드용 : 후기글 전체 리스트를 구해주는 쿼리문 -->
+	<select id="selectDashboardReview" resultMap="reviewResultSet">
+		SELECT REV_NO,
+			   REV_TITLE,
+			   TO_CHAR(CREATE_DATE, 'YYYY-MM-DD') AS "CREATE_DATE",
+			   TO_CHAR(A_DATE, 'YYYY-MM-DD') AS "A_DATE"
+		  FROM REVIEW
+		 WHERE STATUS = 'Y'
+		ORDER BY REV_NO ASC
+	</select>
 	
+	<!-- 대시보드용 : 예약목록 전체 리스트를 구해주는 쿼리문 -->
+	<select id="selectDashboardReserv" resultMap="reservationResultSet">
+		SELECT M.USER_NAME,R.RES_NO,R.START_DATE,R.END_DATE,R.REGISTER_DATE,R.CONTENT
+		  FROM RESERVATION R
+		  JOIN MEMBER M ON (M.USER_NO = R.USER_NO)
+		  ORDER BY R.RES_NO ASC
+	</select>
 	
 	<!-- 예약 상세 조회용 쿼리문 -->
 	<select id="reservationDetail" resultMap="reservationResultSet" parameterType="_int">

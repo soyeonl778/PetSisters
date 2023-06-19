@@ -26,33 +26,37 @@
 	<!-- 이 영역 안에서 작업하면 됩니다 -->
 	<main>
 	    <div class="container-fluid px-4">
-	        <h1 class="mt-4">후기관리</h1>
+	        <h1 class="mt-4">예약 목록</h1>
 	        <div class="card mb-4">
 	            <div class="card-body">
-	                	전체 회원의 후기글 조회목록입니다.
+	                	전체 회원의 예약 조회목록입니다.
 	            </div>
 	        </div>
 	        <div class="card mb-4">
 	            <div class="card-header">
 	                <i class="fas fa-table me-1"></i>
-	                	후기글
+	                	예약목록
 	            </div>
 	            <div class="card-body">
-                <table class="reviewTable" id="datatablesSimple">
+                <table class="reservationTable" id="datatablesSimple">
                     <thead>
                       <tr>
-                         <th>후기번호</th>
-                         <th>후기제목</th>
-                         <th>작성일</th>
-                         <th>답변일</th>
+                      	 <th>예약번호</th>
+                      	 <th>회원명</th>
+                         <th>시작일시</th>
+                         <th>종료일시</th>
+                         <th>등록일시</th>
+                         <th>특이사항</th>
                       </tr>
                     </thead>
                     <tfoot>
                       <tr>
-                         <th>후기번호</th>
-                         <th>후기제목</th>
-                         <th>작성일</th>
-                         <th>답변일</th>
+                      	 <th>예약번호</th>
+                      	 <th>회원명</th>
+                         <th>시작일시</th>
+                         <th>종료일시</th>
+                         <th>등록일시</th>
+                         <th>특이사항</th>
                       </tr>
                     </tfoot>
                     <tbody>
@@ -60,10 +64,12 @@
 	                    <c:when test="${not empty list}">
 					    <c:forEach var="i" items="${list}">
 					      <tr>
-					         <td>${i.revNo}</td>
-					         <td>${i.revTitle}</td>
-					         <td>${i.createDate}</td>
-					         <td>${i.adate}</td>
+					      	 <td>${i.resNo}</td>
+					         <td>${i.userName}</td>
+					         <td>${i.startDate}</td>
+					         <td>${i.endDate}</td>
+					         <td>${i.registerDate}</td>
+					         <td>${i.content}</td>
 					      </tr>
 					    </c:forEach>
 					    </c:when>
@@ -78,9 +84,9 @@
 	
 	<script>
 		$(function() {
-			$(".reviewTable>tbody>tr").click(function() {
-				let inquiryNo = $(this).children().eq(0).text();
-				let url = "detail.in?inquiryNo=" + inquiryNo;
+			$(".reservationTable>tbody>tr").click(function() {
+				let rNo = $(this).children().eq(0).text();
+				let url = "reservationDetail?rNo=" + rNo;
 				window.open(url, "_blank");
 			});
 		});

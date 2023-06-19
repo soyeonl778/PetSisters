@@ -11,6 +11,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.kh.petsisters.common.model.vo.PageInfo;
+import com.kh.petsisters.inquiry.model.vo.Inquiry;
 import com.kh.petsisters.payment.model.vo.Payment;
 import com.kh.petsisters.reservation.model.vo.CareJournal;
 import com.kh.petsisters.reservation.model.vo.Reservation;
@@ -23,6 +24,17 @@ public class ReservationDao {
 		return sqlSession.selectOne("reservationMapper.selectListCount", userNo);
 	}
 
+	// 대시보드용 : 
+	public List<Review> selectDashboardReview(SqlSessionTemplate sqlSession) {
+		List<Review> list = sqlSession.selectList("reservationMapper.selectDashboardReview", null);
+		return list;
+	}
+	
+	public List<Reservation> selectDashboardReserv(SqlSessionTemplate sqlSession) {
+		List<Reservation> list = sqlSession.selectList("reservationMapper.selectDashboardReserv", null);
+		return list;
+	}
+	
 	public ArrayList<Reservation> selectPetsitterList(SqlSessionTemplate sqlSession, PageInfo pi
 			, int userNo, Integer checkReview) {
 		
