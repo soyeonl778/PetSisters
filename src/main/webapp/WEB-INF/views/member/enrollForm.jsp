@@ -119,7 +119,7 @@
                       </div>
                       <div class="btnWrapper">
                         <button type="reset" class="btn_reset">재입력</button>
-                        <button type="submit" class="btn_submit" disabled>회원가입</button>
+                        <button type="submit" class="btn_submit">회원가입</button>
                       </div>
                     </form>
                   </div>
@@ -163,46 +163,65 @@
             const $idInput = $("#userId");
             
             $idInput.keyup(function() {
+
+              var userId = $idInput.val();
+              var regex = /^(?=.*[a-z])(?=.*\d)[a-z\d]{6,16}$/i;
               
-              // 우선 최소 5글자 이상으로 입력되어 있을 경우에만 ajax 를 요청해서 중복체크 하기
-              if($idInput.val().length >= 6 && /^(?=.*[a-z])(?=.*\d)[a-z\d]{6,16}$/i.test($idInput.val())) {
+              if(userId === '') {
                 
-                // 아이디 중복체크 요청 보내기
-                $.ajax({
-              url : "idCheck.me",
-              data : {checkId : $idInput.val()},
-              type : "get",
-              success : function(result) {
-                
-                if(result == "NNNNN") { // 사용 불가능
-                  console.log("사용불가능");
-                  // 빨간색 메시지로 (사용불가능함) 출력
-                  $("#checkResult").show();
-                  $("#checkResult").css("color", "gray").text("중복된 아이디가 존재합니다. 다시 입력해주세요.");
+                $('#checkResult').css("color", "blue").text('아이디를 입력해 주세요.').show();
+
+              } else if (!regex.test(userId)) {
+
+                $('#checkResult').css("color", "red").text('올바르지 않은 형식입니다.').show();
+
+              } else {
+
+                $('#checkResult').empty().hide();
+                // 우선 최소 5글자 이상으로 입력되어 있을 경우에만 ajax 를 요청해서 중복체크 하기
+                if($idInput.val().length >= 6) {
+                  console.log($idInput.val());
                   
-                  // 버튼 비활성
-                  $("#enrollForm button[type=submit]").attr("disabled", true);
-                  
-                } else { // 사용가능
-                  console.log("사용가능");
-                  // 초록색 메세지로 (사용가능함) 출력
-                  $("#checkResult").show();
-                  $("#checkResult").css("color", "green").text("사용 가능한 아이디 입니다!");
-                  
-                  // 버튼 활성화
-                  $("#enrollForm button[type=submit]").attr("disabled", false);
+                  // 아이디 중복체크 요청 보내기
+                  $.ajax({
+                  url : "idCheck.me",
+                  data : {checkId : $idInput.val()},
+                  type : "get",
+                  success : function(result) {
+                  console.log("성공");
+                  if(result == "NNNNN") { // 사용 불가능
+                    console.log("사용불가능");
+                    // 빨간색 메시지로 (사용불가능함) 출력
+                    $("#checkResult").show();
+                    $("#checkResult").css("color", "gray").text("중복된 아이디가 존재합니다. 다시 입력해주세요.");
+                    
+                    // 버튼 비활성
+                    $("#enrollForm button[type=submit]").attr("disabled", true);
+                    
+                  } else { // 사용가능
+                    console.log("사용가능");
+                    // 초록색 메세지로 (사용가능함) 출력
+                    $("#checkResult").show();
+                    $("#checkResult").css("color", "green").text("사용 가능한 아이디 입니다!");
+                    
+                    // 버튼 활성화
+                    $("#enrollForm button[type=submit]").attr("disabled", false);
+                  }
+                },
+                error : function() {
+                  console.log("아이디 중복 체크용 ajax 통신 실패!");
                 }
-              },
-              error : function() {
-                console.log("아이디 중복 체크용 ajax 통신 실패!");
+                  });
+                  
+                } else { // 5글자 미만일 경우 => 버튼 비활성화, 메세지 숨기기
+                  
+                  $("#checkResult").hide();
+                  $("#enrollForm button[type=submit]").attr("disabled", true);
+                }
               }
-                });
-                
-              } else { // 5글자 미만일 경우 => 버튼 비활성화, 메세지 숨기기
-                
-                $("#checkResult").hide();
-                $("#enrollForm button[type=submit]").attr("disabled", true);
-              }
+
+
+              
             });
           });
             
@@ -210,21 +229,21 @@
 
             
             
-            // 주소 검색용
-            $('#address_kakao').click(function() {
-              
-              new daum.Postcode({
+          // 주소 검색용
+          $('#address_kakao').click(function() {
+            
+            new daum.Postcode({
               oncomplete: function(data) {
                 document.getElementById("address_input").value = data.address; // 주소 넣기
                     // document.querySelector("input[name=address_detail]").focus(); //상세입력 포커싱
               }
-          }).open();
-              
-            });
+            }).open();
             
-            
-            // 신규 추가 영역
-            
+          });
+          
+          
+          // 신규 추가 영역
+          
             
         });
       </script>
