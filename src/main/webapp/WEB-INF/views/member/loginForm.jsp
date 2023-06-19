@@ -89,6 +89,16 @@
                           </form>
                         </div>
                     </div>
+                    <!-- 구글 로그인 API 영역 -->
+                    <div>
+                    	<script src="https://accounts.google.com/gsi/client" async defer></script>
+                    	<div id="g_id_onload"
+						 	data-client_id="YOUR_CLIENT_ID"
+						 	data-callback="handleCredentialResponse">
+				        </div>
+				        <div class="g_id_signin" data-type="icon" data-shape="circle" ></div>
+                    </div>
+                    
                     <div class="otherArea">
                       <hr class="first_hr1" />
                       <div id="groupWrapper2">
@@ -115,6 +125,30 @@
 
     </div>
   </div>
+  <script>
+	  function handleCredentialResponse(response) {
+	      // decodeJwtResponse() is a custom function defined by you
+	      // to decode the credential response.
+	      const responsePayload = parseJwt(response.credential);
+	
+	      console.log("ID: " + responsePayload.sub);
+	      console.log('Full Name: ' + responsePayload.name);
+	      console.log('Given Name: ' + responsePayload.given_name);
+	      console.log('Family Name: ' + responsePayload.family_name);
+	      console.log("Image URL: " + responsePayload.picture);
+	      console.log("Email: " + responsePayload.email); 
+	  };
+	
+	  function parseJwt (token) {
+	      var base64Url = token.split('.')[1];
+	      var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+	      var jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+	          return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+	      }).join(''));
+	
+	      return JSON.parse(jsonPayload);
+	  };
+  </script>
   <!-- Footer 영역 시작 -->
     <jsp:include page="../common/footer.jsp" /> 
   <!-- Footer 영역 끝 -->

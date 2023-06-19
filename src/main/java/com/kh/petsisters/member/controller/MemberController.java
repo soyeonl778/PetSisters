@@ -195,7 +195,12 @@ public class MemberController {
 			MailUtil mail = new MailUtil();
 			mail.sendEmail(pwdSearch);
 			
+			String encPwd = bcryptPasswordEncoder.encode(m.getUserPwd());
+			
+			pwdSearch.setUserPwd(encPwd);
+			
 			memberService.updateMember(pwdSearch);
+			
 		}
 		model.addAttribute("m", pwdSearch);
 		return "/member/foundPwd";
@@ -394,15 +399,24 @@ public class MemberController {
 	@RequestMapping("petDelete.me")
 	public String petDelete(int dogNo,
 							Model model,
+							String filePath,
 							HttpSession session) {
 		
 		int result = memberService.petDelete(dogNo);
 		
-		
+		if(result > 0) {
 			
-		return "/member/petList";
-		
-		
+			session.setAttribute("alertMsg", "성공적으로 게시글이 삭제되었습니다.");
+			
+			return "redirect:/petList.me";
+			
+		} else {
+			
+			model.addAttribute("errorMsg", "펫 등록해지 실패");
+			
+			return "member/pet_profile";
+			
+		}
 	}
 	
 	// 마이페이지 펫시터 찜 조회 영역

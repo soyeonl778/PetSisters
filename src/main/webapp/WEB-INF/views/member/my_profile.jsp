@@ -117,7 +117,7 @@
                   <br>
                   <div class="btnArea">
 	                  <button type="submit" class="update_btn">수정하기</button>
-	                  <button type="button" class="delete_btn" data-toggle="modal" data-target="#deleteForm">탈퇴하기</button>
+	                  <button type="button" class="delete_btn" data-bs-toggle="modal" data-bs-target="#deleteForm">탈퇴하기</button>
                   </div>
                 </form>
                 <!-- 이 영역 안에서 페이지 작업 하시면 됩니다 -->
@@ -129,6 +129,8 @@
       </div>
     </div>
   </div>
+
+  
   
   <!-- 회원탈퇴 버튼 클릭 시 보여질 Modal -->
     <div class="modal fade" id="deleteForm">
@@ -138,7 +140,7 @@
                 <!-- Modal Header -->
                 <div class="modal-header">
                     <h4 class="modal-title">회원탈퇴</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <button type="button" class="close" data-bs-dismiss="modal">&times;</button>
                 </div>
 
                 <form action="delete.me" method="post">
@@ -150,7 +152,7 @@
                         </div>
                         <br>
                             <label for="userPwd" class="mr-sm-2">Password : </label>
-                            <input type="password" class="form-control mb-2 mr-sm-2" placeholder="Enter Password" id="userPwd" name="userPwd"> <br>
+                            <input type="password" class="form-control mb-2 mr-sm-2" placeholder="비밀번호를 입력해주세요" id="userPwd" name="userPwd"> <br>
                             <input type="hidden" name="userId" value="${ loginUser.userId }">
                     </div>
                     <!-- Modal footer -->
@@ -161,6 +163,7 @@
             </div>
         </div>
     </div>
+  
     
     <script>
 	 // 주소 검색용

@@ -77,7 +77,7 @@
 		<result column="AT_FILE_PATH" property="atFilePath" />
 		<result column="DOG_FILE_PATH" property="dogFilePath" />
 		<result column="DOG_FILE_PATH" property="dogBirth" />
-		<result column="DOG_FILE_PATH" property="replyCount" />
+		<result column="REPLY_COUNT" property="replyCount" />
 	</resultMap>
 	
 	<!-- 로그인 기능 -->
@@ -266,7 +266,7 @@
 		SELECT B.B_NO
 		     , B.B_TITLE
 		     , B.COUNT
-		     , B.CREATE_DATE
+		     , TO_CHAR(B.CREATE_DATE, 'YYYY-MM-DD') AS "CREATE_DATE"
 		     , COUNT(R.REP_NO) AS REPLY_COUNT
 		FROM BOARD B
 		LEFT JOIN REPLY R ON B.B_NO = R.REF_BNO

@@ -130,7 +130,7 @@
                   </div>
                   <div class="btnArea">
                   	<button type="submit" class="update_btn">수정하기</button>
-                  	<button type="submit" class="delete_btn">등록해지</button>
+                  	<button type="button" class="delete_btn" onclick="location.href='petDelete.me?dogNo=${d.dogNo}'">등록해지</button>
                   </div>
                   <br>
                 </form>
