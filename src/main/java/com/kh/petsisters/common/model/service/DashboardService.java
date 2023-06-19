@@ -3,6 +3,7 @@ package com.kh.petsisters.common.model.service;
 import java.util.ArrayList;
 
 import com.kh.petsisters.member.model.vo.Member;
+import com.kh.petsisters.member.model.vo.Support;
 import com.kh.petsisters.petsitter.model.vo.PetSitter;
 
 public interface DashboardService {
@@ -14,4 +15,7 @@ public interface DashboardService {
 	ArrayList<PetSitter> dashPetsiterView();
 	
 	int dashPetsiterDelete(int userNo);
+	
+	ArrayList<Support> dashSupportView();
+	
 }

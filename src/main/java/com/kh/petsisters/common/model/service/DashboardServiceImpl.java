@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.kh.petsisters.common.model.dao.DashboardDao;
 import com.kh.petsisters.member.model.vo.Member;
+import com.kh.petsisters.member.model.vo.Support;
 import com.kh.petsisters.petsitter.model.vo.PetSitter;
 
 @Service
@@ -38,6 +39,11 @@ public class DashboardServiceImpl implements DashboardService {
 	@Override
 	public int dashPetsiterDelete(int userNo) {
 		return dashboardDao.dashPetsiterDelete(sqlSession, userNo);
+	}
+
+	@Override
+	public ArrayList<Support> dashSupportView() {
+		return dashboardDao.dashSupportView(sqlSession);
 	}
 
 }

@@ -15,6 +15,7 @@ import com.kh.petsisters.common.model.service.DashboardService;
 import com.kh.petsisters.inquiry.model.service.InquiryService;
 import com.kh.petsisters.inquiry.model.vo.Inquiry;
 import com.kh.petsisters.member.model.vo.Member;
+import com.kh.petsisters.member.model.vo.Support;
 import com.kh.petsisters.petsitter.model.vo.PetSitter;
 import com.kh.petsisters.reservation.model.service.ReservationService;
 import com.kh.petsisters.reservation.model.vo.Reservation;
@@ -77,8 +78,11 @@ public class DashboardController {
 	}
 	
 	@RequestMapping("support.da")
-	public String dashSupportView() {
-		return "dashboard/dash_support";
+	public ModelAndView dashSupportView(ModelAndView mv) {
+		ArrayList<Support> list = dashboardService.dashSupportView();
+		  mv.addObject("list", list)
+		  .setViewName("dashboard/dash_support");
+		return mv;
 	}
 	
 	@RequestMapping("reservation.da")

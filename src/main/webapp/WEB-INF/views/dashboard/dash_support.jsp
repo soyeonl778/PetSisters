@@ -8,6 +8,35 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <title>Dashboard</title>
+        <style>
+            #datatablesSimple th,
+            #datatablesSimple td {
+            text-align: center;
+            }
+            #datatablesSimple {
+                text-align: center;
+            }
+            #datatablesSimple>tbody>tr:hover {
+                cursor: pointer!important;
+            }
+
+            .withdrawButtonClass{
+                border: none;
+                border-radius: 4px;
+                width: 70px;
+                height: 32px;
+                line-height: 150%;
+                font-weight: bold;
+                font-size: 14px;
+                background-color: #55c1ff;
+                color: rgb(255, 255, 255);
+                transition: background-color 0.5s ease 0s, color 0.5s ease 0s;
+            }
+
+            .withdrawButtonClass:hover {
+                background-color: #008cdc;
+            }
+        </style>
     </head>
     <body class="sb-nav-fixed">
     
@@ -63,16 +92,19 @@
                                         </tr>
                                     </tfoot>
                                     <tbody>
-                                        <c:forEach var="m" items="${ list }">
+                                        <c:forEach var="s" items="${ list }">
                                             <tr>
-                                                <td>${m.userNo}</td>
-                                                <td>${m.userId}</td>
-                                                <td>${m.userName}</td>
-                                                <td>${m.userNickname}</td>
-                                                <td>${m.email}</td>
-                                                <td>${m.status}</td>
-                                                <td>${m.enrollDate}</td>
-                                                <td><button id="withdrawButton" class="withdrawButtonClass" onclick="handleWithdraw('${m.status}', ${m.userNo});">탈퇴</button></td>
+                                                <td>${s.userNo}</td>
+                                                <td>${s.userId}</td>
+                                                <td>${s.userName}</td>
+                                                <td>${s.userNickname}</td>
+                                                <td>${s.email}</td>
+                                                <td>${s.status}</td>
+                                                <td>${s.enrollDate}</td>
+                                                <td>
+                                                    <button id="" class="withdrawButtonClass" onclick="handleWithdraw();">승인</button>
+                                                    <button id="" class="withdrawButtonClass" onclick="handleWithdraw();">반려</button>
+                                                </td>
                                             </tr>
                                         </c:forEach>
                                     </tbody>

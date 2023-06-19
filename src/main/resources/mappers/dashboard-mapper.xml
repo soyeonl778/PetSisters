@@ -87,6 +87,18 @@
 		<result column="FILE_PATH" property="paFilePath" />
 	</resultMap>
 	
+	<resultMap id="supportResultSet" type="support">
+		<result column="SUPPORT_NO" property="supportNo" />
+		<result column="ADDRESS" property="address" />
+		<result column="PYEONG" property="pyeong" />
+		<result column="SMOKE" property="smoke" />
+		<result column="MY_EXPERIENCE" property="myExperience" />
+		<result column="OTHER_EXPERIENCE" property="otherExperience" />
+		<result column="ETC_EXPERIENCE" property="etcExperience" />
+		<result column="PETSITTER_EXPERIENCE" property="petsitterExperience" />
+		<result column="USER_NO" property="userNo" />
+	</resultMap>
+	
 	<select id="dashMemberView" parameterType="_int" resultMap="memberResultSet">
 			SELECT *
 		FROM MEMBER
@@ -115,6 +127,11 @@
 			SET SITTER_STATUS = 'N'
 		WHERE USER_NO = #{userNo}
 	</update>
+	
+	<select id="dashSupportView" parameterType="_int" resultMap="supportResultSet">
+		SELECT *
+		FROM SUPPORT
+	</select>
 
 </mapper>
 
