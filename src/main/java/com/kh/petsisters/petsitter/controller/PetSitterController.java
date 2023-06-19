@@ -244,9 +244,20 @@ public class PetSitterController {
 		
 		int result = result1 * result2; // 1 또는 0
 	    
-
-
+		if(result > 0) { // 수정 성공
+			
+			// 일회성 알람문구 담아서 프로필 상세페이지로 url 재요청
+			session.setAttribute("alertMsg", "프로필이 성공적으로 수정되었습니다.");
+			
+			return "redirect:/detail.pe?pno=" + p.getPetSitterNo();
+			
+		} else { // 수정 실패
+			
+			// 에러 문구 일회성 알람 띄우기
+			session.setAttribute("alertMsg", "프로필 수정에 실패했습니다.");
 		
+			return "redirect:/updateForm.pe?pno=" + p.getPetSitterNo();
+		}
 	}
 	
 	@RequestMapping(value="list.pe", produces="text/html; charset=UTF-8")
