@@ -239,7 +239,7 @@
                                 <p>${ r.revContent }</p>
                               </div>
                               <div class="revImg">
-                                <img src="${ r.filePath }">
+                                <img src="/resources/upFiles/review_upfiles/${ r.filePath }">
                               </div>
                             </div>
                               <c:if test="${ (empty r.acontent) and (loginUser.petsitterNo eq p.petSitterNo) }">
