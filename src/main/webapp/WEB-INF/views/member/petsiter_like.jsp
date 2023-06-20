@@ -43,7 +43,7 @@
 				            <a href="petsiterLike.me">펫시터 찜</a>
 				          </li>
 				          <li class="myBoard.me">
-				            <a href="myBoard.me">내 게시글 및 댓글</a>
+				            <a href="myBoard.me">내 게시글</a>
 				          </li>
 				          <li class="reservationList">
 				            <a href="reservationList">예약 조회</a>
@@ -70,7 +70,7 @@
 
                     <c:forEach var="l" items="${ list }">
                       <input type="hidden" name="">
-                      <div class="content1">
+                      <div class="content1" onclick="location.href='detail.pe?pno=${l.petSitterNo}'">
                         <div class="siter_img">
                           <img src="${l.paFilePath}">
                           <i class="fas fa-heart" style="color: #e70000;"></i>

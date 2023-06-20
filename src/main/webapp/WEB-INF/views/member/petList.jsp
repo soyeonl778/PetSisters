@@ -26,9 +26,34 @@
       <div id="main">
         <div id="content">
           <div class="page_aticle aticle_type2">
-            <!-- 사이드 메뉴바 -->
-            <jsp:include page="./sideMenubar.jsp" />
-            <!-- 사이드 메뉴바 끝 -->
+          <!-- 사이드 메뉴바 -->
+          <div id="snb" class="snb_my" style="position: absolute;">
+            <img src="/resources/img/main/사이드바이미지.png" alt="sideBarImg">
+            <h2 class="tit_snb">My Page</h2>
+            <div class="inner_sub">
+              <ul class="list_menu">
+                <li class="myProfile.me">
+                  <a href="myProfile.me">내 프로필</a>
+                </li>
+                <li class="petList.me on">
+                  <a href="petList.me">반려동물 프로필</a>
+                </li>
+                <li class="petsiterLike.me">
+                  <a href="petsiterLike.me">펫시터 찜</a>
+                </li>
+                <li class="myBoard.me">
+                  <a href="myBoard.me">내 게시글</a>
+                </li>
+                <li class="reservationList">
+                  <a href="reservationList">예약 조회</a>
+                </li>
+                <li class="journalList">
+                  <a href="journalList">돌봄 일지</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <!-- 사이드 메뉴바 끝 -->
 
             <!-- 본문 영역-->
             <div id="viewOrderList" class="page_section section_orderlist">

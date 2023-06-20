@@ -131,7 +131,7 @@ public class PetSitterController {
                 e.printStackTrace();
             }
         }
-		
+        
         // 조회된 데이터를 mv 에 담아서 포워딩 페이지 경로를 잡아주기
 		mv.addObject("p", p)
 		  .addObject("psImgList", psImgList)
@@ -165,11 +165,12 @@ public class PetSitterController {
 	    ArrayList<PetSitterImg> newList = new ArrayList<>();
 
 	    // 새로 넘어온 첨부파일이 존재할 경우
-	    if(upfileList.get(0).getSize() > 0) {
+	    if(!upfileList.isEmpty()) {
 	    	
 		    // upfileList의 크기 만큼 반복문 실행
 	    	for(int i = 0; i < upfileList.size(); i++) {
 	    		
+	    		if(upfileList.get(i).getSize() > 0) {
 	    		// 펫시터 이미지 객체 생성
 	    		PetSitterImg psImg = new PetSitterImg();
 	    		
@@ -184,6 +185,7 @@ public class PetSitterController {
 				
 				// 리스트에 담기
 				newList.add(psImg);
+	    		}
 	    	}
 	    	// 펫시터 프로필 다중파일 등록 요청
 	    	result2 = petSitterService.insertPetSitterImg(newList);
@@ -285,7 +287,7 @@ public class PetSitterController {
 		
 		// 펫시터 리스트 전체 조회
 		ArrayList<PetSitter> list = petSitterService.selectList(pi, p);
-		
+		System.out.println(list);
 		mv.addObject("pi", pi)
 		  .addObject("list", list)
 		  .setViewName("petsitter/petSitterListView");

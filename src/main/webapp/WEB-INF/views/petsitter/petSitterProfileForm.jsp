@@ -56,10 +56,10 @@
                         <div class="form-check form-switch" id="pModeInput">
                           <c:choose>
                             <c:when test="${ p.petSitterMode eq 'Y' }">
-                              <input class="form-check-input" type="checkbox" role="switch" id="petSitterMode" value="${ p.petSitterMode }" name="petSitterMode" checked>
+                              <input class="form-check-input" type="checkbox" role="switch" id="petSitterMode" value="Y" name="petSitterMode" checked>
                             </c:when>
                             <c:otherwise>
-                              <input class="form-check-input" type="checkbox" role="switch" id="petSitterMode" value="${ p.petSitterMode }" name="petSitterMode">
+                              <input class="form-check-input" type="checkbox" role="switch" id="petSitterMode" value="Y" name="petSitterMode">
                             </c:otherwise>
                           </c:choose>
                           <label class="form-check-label" for="flexSwitchCheckChecked">&nbsp;펫시터 모드</label>

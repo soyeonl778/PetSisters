@@ -147,6 +147,7 @@
             , S.STATUS
 		FROM SUPPORT S
         JOIN MEMBER M ON (S.USER_NO = M.USER_NO)
+        ORDER BY M.USER_NO DESC
 	</select>
 	
 	<update id="dashSupportApprove" parameterType="support">

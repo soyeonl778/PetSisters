@@ -41,7 +41,7 @@
 				            <a href="petsiterLike.me">펫시터 찜</a>
 				          </li>
 				          <li class="myBoard.me on">
-				            <a href="myBoard.me">내 게시글 및 댓글</a>
+				            <a href="myBoard.me">내 게시글</a>
 				          </li>
 				          <li class="reservationList">
 				            <a href="reservationList">예약 조회</a>
@@ -62,9 +62,6 @@
                 <div id="my_contents">
                   <div class="btn_bo">
                     <button type="button" class="btn_bo2" onclick="goPage('myBoard.me')">내 게시글</button>
-                  </div>
-                  <div class="btn_re">
-                    <button type="button" class="btn_re2" onclick="goPage('myReply.me')">내 댓글</button>
                   </div>
                 </div>
                 <div id="main_content">
@@ -91,28 +88,38 @@
                     </table>
                   </div>
                 </div>
-                <!-- 페이징처리부분 -->
-                <div id="pagingArea">
-                  <nav aria-label="Page navigation example">
-                    <ul id="pagiUl" class="pagination paginationUlTag">
-                      <li class="arrowTag">
-                        <a href="">&lsaquo;</a>
-                      </li>
-                      <li class="page-item active">
-                        <a class="page-link" href="#">1</a>
-                      </li>
-                      <li class="page-item">
-                        <a class="page-link" href="#">2</a>
-                      </li>
-                      <li class="page-item">
-                        <a class="page-link" href="#">3</a>
-                      </li>
-                      <li class="arrowTag">
-                        <a href="">&rsaquo;</a>
-                      </li>
-                    </ul>
-                  </nav>
-                </div>
+                <!-- 페이지네이션-->
+								<div id="pagination2">
+									<nav aria-label="Page navigation example">
+										<c:if test="${ pi.listCount != 0 }">
+										<ul id="pagiUl" class="pagination paginationUlTag">
+
+											<c:choose>
+												<c:when test="${ pi.currentPage eq 1 }">
+													<li class="arrowTag disabled"><a href="">&lsaquo;</a></li>
+												</c:when>
+												<c:otherwise>
+													<li class="arrowTag"><a href="petsiterLike.me?cPage=${ pi.currentPage - 1 }">&lsaquo;</a></li>
+												</c:otherwise>
+											</c:choose>
+
+											<c:forEach var="p" begin="${ pi.startPage }" end="${ pi.endPage }" step="1">
+												<li class="page-item active"><a class="page-link" href="petsiterLike.me?cPage=${ p }">${ p }</a></li>
+											</c:forEach>
+
+											<c:choose>
+												<c:when test="${ pi.currentPage eq pi.maxPage }">
+													<li class="arrowTag disabled"><a href="javascript:void(0)">&rsaquo;</a></li>
+												</c:when>
+												<c:otherwise>
+													<li class="arrowTag"><a href="petsiterLike.me?cPage=${pi.currentPage + 1}">&rsaquo;</a></li>
+												</c:otherwise>
+											</c:choose>
+										</ul>
+									</c:if>
+									</nav>
+								</div>
+								<!-- 페이지네이션-->
                 <!-- 이 영역 안에서 페이지 작업 하시면 됩니다 -->
               </div>
             </div>

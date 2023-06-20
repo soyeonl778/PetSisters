@@ -40,7 +40,7 @@
 									<li class="petList.me"><a href="petList.me">반려동물 프로필</a></li>
 									<li class="petsiterLike.me"><a href="petsiterLike.me">펫시터
 											찜</a></li>
-									<li class="myBoard.me"><a href="myBoard.me">내 게시글 및 댓글</a>
+									<li class="myBoard.me"><a href="myBoard.me">내 게시글</a>
 									</li>
 									<li class="reservationList on"><a href="reservationList">예약
 											조회</a></li>
