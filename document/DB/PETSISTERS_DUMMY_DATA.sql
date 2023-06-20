@@ -1059,161 +1059,145 @@ INSERT INTO P_LIKE VALUES (8, 3);
 INSERT INTO P_LIKE VALUES (8, 4);
 INSERT INTO P_LIKE VALUES (8, 5);
 
---------------------------------------------------
--------------    ¿¹¾à Å×ÀÌºí ´õ¹Ì    --------------
---------------------------------------------------
+-----------------------------------
+--------- ¿¹¾à Å×ÀÌºí ´õ¹Ì ----------
+-----------------------------------
+
 INSERT INTO RESERVATION 
 VALUES ( SEQ_RESERVATION.NEXTVAL,
-         '2023-06-02',
-         '2023-06-11',
-         '2023-06-29',
-         '¿ì¸®Áý °³´Â ¹°¾î¿ä ÀßÇØº¸¼¼¿ä',
+         '2022-01-08',
+         '2022-01-10',
+         '2023-01-02',
+         '¿ì¸® ¾ÆÀÌ°¡ ºÐ¸®ºÒ¾È Áõ¼¼°¡ ½ÉÇØ¼­ µÇµµ·ÏÀÌ¸é È¥ÀÚµÎÁö ¸»¾ÆÁÖ¼¼¿ä',
          'Y',
-         2,
-         4);
-INSERT INTO RESERVATION 
-VALUES ( SEQ_RESERVATION.NEXTVAL,
-         '2023-05-21',
-         '2023-05-24',
-         '2023-05-02',
-         '¸Û¸Û',
-         'Y',
-         2,
-         5);
-INSERT INTO RESERVATION 
-VALUES ( SEQ_RESERVATION.NEXTVAL,
-         '2023-06-02',
-         '2023-06-10',
-         '2023-06-01',
-         '¹¶¹¶',
-         'Y',
-         2,
+         3,
          1);
 INSERT INTO RESERVATION 
 VALUES ( SEQ_RESERVATION.NEXTVAL,
-         '2023-06-02',
-         '2023-06-11',
-         '2023-06-29',
-         '¿ì¸®Áý °³´Â ¹°¾î¿ä ÀßÇØº¸¼¼¿ä',
+         '2022-05-10',
+         '2022-05-15',
+         '2022-05-05',
+         'ÇÏ·ç¿¡ ¾ÆÄ§ Àú³á ±Í Ã»¼Ò ²À ÇØÁÖ½Ã°í ¾àµµ ²À ¸Ô¿©ÁÖ¼¼¿ä',
          'Y',
-         2,
-         4);
+         4,
+         1);  
 INSERT INTO RESERVATION 
 VALUES ( SEQ_RESERVATION.NEXTVAL,
-         '2023-06-02',
-         '2023-06-11',
-         '2023-06-29',
-         '¿ì¸®Áý °³´Â ¹°¾î¿ä ÀßÇØº¸¼¼¿ä',
+         '2023-01-11',
+         '2022-01-14',
+         '2023-01-06',
+         '»õÇØ º¹ ¸¹ÀÌ ¹ÞÀ¸½Ã±¸ ¿ì¸® ¾ÆÀÌ Àß ºÎÅ¹µå·Á¿ë~',
          'Y',
-         2,
-         4);
+         5,
+         1);
 INSERT INTO RESERVATION 
 VALUES ( SEQ_RESERVATION.NEXTVAL,
-         '2023-06-02',
-         '2023-06-11',
-         '2023-06-29',
-         '¿ì¸®Áý °³´Â ¹°¾î¿ä ÀßÇØº¸¼¼¿ä',
+         '2023-02-01',
+         '2022-02-11',
+         '2023-01-26',
+         '¸¶¿îÆÃÀ» ÀÚÁÖÇÏÁö¸¸ °¡¸¸È÷ ³»¹ö·ÁµÎ¸é ¾Ë¾Æ¼­ ¸ØÃß´Ï±î ³Ê¹« ¾ïÁö·Î ¸»¸®Áö ¸»¾ÆÁÖ¼¼¿ä',
          'Y',
-         2,
-         4);
+         5,
+         1);  
 INSERT INTO RESERVATION 
 VALUES ( SEQ_RESERVATION.NEXTVAL,
-         '2023-06-02',
-         '2023-06-11',
-         '2023-06-29',
-         '¿ì¸®Áý °³´Â ¹°¾î¿ä ÀßÇØº¸¼¼¿ä',
+         '2023-02-21',
+         '2022-02-23',
+         '2023-02-16',
+         '»êÃ¥½Ã ¸ñÁÙ ¸»°í ²À ÇÏ³×½º·Î Ã¤¿ö¼­ ½ÃÄÑÁÖ¼¼¿ë! ¾Æ¾ß ÇØ¿ë!',
          'Y',
-         2,
-         4);
+         6,
+         1);         
 INSERT INTO RESERVATION 
 VALUES ( SEQ_RESERVATION.NEXTVAL,
-         '2023-06-02',
-         '2023-06-11',
-         '2023-06-29',
-         '¿ì¸®Áý °³´Â ¹°¾î¿ä ÀßÇØº¸¼¼¿ä',
+         '2023-03-19',
+         '2022-03-22',
+         '2023-03-11',
+         '³¸À» ¸¹ÀÌ °¡¸®°í ¼Ò½ÉÇÑ ¾ÆÀÌ´Ï±î Àß ÁöÄÑºÁÁÖ¼¼¿ä ¤Ð¤Ð',
          'Y',
-         2,
-         4);
-         
+         7,
+         1); 
+INSERT INTO RESERVATION 
+VALUES ( SEQ_RESERVATION.NEXTVAL,
+         '2023-03-22',
+         '2022-03-23',
+         '2023-03-19',
+         '¸Ô´Â ¾àÀÌ Á» ¸¹Àºµ¥ ÀÚ²Ù ¹ñ¾î¼­ ¸ÔÀÌ±â Èûµå½Ç°Å¿¡¿ä ¤Ð¤Ð ±×·¡µµ ²À ¸Ô¿©ÁÖ¼Å¾ßÇØ¿ë ¤Ð¤Ð',
+         'Y',
+         8,
+         1);        
+INSERT INTO RESERVATION 
+VALUES ( SEQ_RESERVATION.NEXTVAL,
+         '2023-04-01',
+         '2022-04-04',
+         '2023-03-28',
+         'Àß ¶§ ²À Ä§´ë¿¡¼­ ÀÚ·Á°íÇÏ´Â ¹ö¸©ÀÌ ÀÖ´Âµ¥ ¹Ù´Ú¿¡ Ç«½ÅÇÑ Äí¼Ç ÇÏ³ª¸¸ ±ò¾Æ¼­ ÀáÀÚ¸® ÁØºñÇØÁÖ½Ã¸é ³Ñ ÁÁÀ»°Í°°¾Æ¿ä!',
+         'Y',
+         9,
+         1);      
+INSERT INTO RESERVATION 
+VALUES ( SEQ_RESERVATION.NEXTVAL,
+         '2023-04-06',
+         '2022-04-15',
+         '2023-04-19',
+         '»êÃ¥ÇÒ ¶§ ³ªºñ³ª ²É ±¸°æÇÏ´Â°Å ³Ê¹« ÁÁ¾ÆÇÏ´Ï±î ÃµÃµÈ÷ ¿©À¯·Î¿î »êÃ¥ ºÎÅ¹µå¸±°Ô¿ë!',
+         'Y',
+         10,
+         1);      
+INSERT INTO RESERVATION 
+VALUES ( SEQ_RESERVATION.NEXTVAL,
+         '2023-05-12',
+         '2022-05-19',
+         '2023-05-01',
+         'Àß ºÎÅ¹µå¸®°ÚÀ¾´Ï´Ù. -±èÇö¹è',
+         'Y',
+         11,
+         1);  
+INSERT INTO RESERVATION 
+VALUES ( SEQ_RESERVATION.NEXTVAL,
+         '2023-05-20',
+         '2022-05-22',
+         '2023-05-15',
+         '¿ì¸® ¾ÆÀÌ°¡ ÅÐÀÌ º¹½Çº¹½ÇÇØ¼­ ´õÀ§¸¦ ¸¹ÀÌ Å¸´Ï±î ½Ç³» ¿Âµµ ¼±¼±ÇÏ°Ô À¯Áö ºÎÅ¹µå¸±°Ô¿ä~',
+         'Y',
+         12,
+         1);    
 INSERT INTO RESERVATION 
 VALUES ( SEQ_RESERVATION.NEXTVAL,
          '2023-06-01',
-         '2023-06-20',
-         '2023-05-29',
-         '¸Þ¼¼ÁöÀÔ´Ï´Ù',
+         '2022-06-04',
+         '2023-05-28',
+         '¹øÈ£Á» ¾Ë·ÁÁÖ¼¼¿ä ½Ä»ç ÇÑ¹øÇØ¿ä',
          'Y',
-         3,
-         4);        
-         
-INSERT INTO RESERVATION 
-VALUES ( SEQ_RESERVATION.NEXTVAL,
-         '2023-06-10',
-         '2023-06-11',
-         '2023-05-30',
-         '¿©±âºÎÅÍ½ÃÀÛ',
-         'Y',
-         3,
-         4);  
-         
+         13,
+         1); 
 INSERT INTO RESERVATION 
 VALUES ( SEQ_RESERVATION.NEXTVAL,
          '2023-06-08',
-         '2023-06-09',
+         '2022-06-13',
          '2023-06-01',
-         'Çò°¥¸°´Ù',
+         '¹øÈ£Á» ¾Ë·Á´Þ·Á°í µÎ¹øÂ° ¿©Âåº¾´Ï´Ù.',
          'Y',
-         3,
-         4);  
-         
+         14,
+         1);   
 INSERT INTO RESERVATION 
 VALUES ( SEQ_RESERVATION.NEXTVAL,
-         '2023-06-15',
-         '2023-06-29',
-         '2023-06-03',
-         '¹ú½á¾îÁö·¯¿ö',
-         'Y',
-         3,
-         4);  
-         
-INSERT INTO RESERVATION 
-VALUES ( SEQ_RESERVATION.NEXTVAL,
-         '2023-06-01',
-         '2023-06-30',
-         '2023-06-04',
-         '¸î°³³²¾ÒÁö',
-         'Y',
-         3,
-         4);  
-         
-INSERT INTO RESERVATION 
-VALUES ( SEQ_RESERVATION.NEXTVAL,
-         '2023-06-11',
-         '2023-06-29',
-         '2023-06-05',
-         '¾îµð°¡³¡ÀÌ¾ß',
-         'Y',
-         3,
-         4);  
-         
-INSERT INTO RESERVATION 
-VALUES ( SEQ_RESERVATION.NEXTVAL,
-         '2023-06-29',
-         '2023-07-01',
-         '2023-06-07',
-         'ÀÌÁ¦±×¸¸Á¦¹ß',
-         'Y',
-         3,
-         4);  
-         
-INSERT INTO RESERVATION 
-VALUES ( SEQ_RESERVATION.NEXTVAL,
+         '2023-06-12',
+         '2022-06-19',
          '2023-06-10',
-         '2023-06-20',
-         '2023-06-08',
-         'µµ¿ò!',
+         '¿ì¸® ¾ÆÀÌ°¡ ¼Ò¸®¿¡ ¸¹ÀÌ ¹Î°¨ÇÑ ÆíÀÌ¶ó¼­ »êÃ¥ÇÒ ¶§ µµ·Î ÁÖº¯Àº ²À ÇÇÇØÁÖ¼¼¿ä..',
          'Y',
-         3,
-         4);         
+         15,
+         1);        
+INSERT INTO RESERVATION 
+VALUES ( SEQ_RESERVATION.NEXTVAL,
+         '2023-06-28',
+         '2022-07-13',
+         '2023-06-19',
+         'ÇØ¿Ü ÃâÀå ¶§¹®¿¡ Á» ¿À·¡ ¸Ã¾ÆÁÖ¼ÌÀ¸¸é ÇÏ´Âµ¥ º´¿ø¿¡¼­ Áø·á¹Þ°Å³ª Ã³¹æ¹Þ¾Æ¾ß ÇÏ´Â ÀÏÀÌ »ý±â¸é ´Ù³à¿Í¼­ Ãß°¡·Î ÁöºÒÇØµå¸®°Ú½À´Ï´Ù.',
+         'Y',
+         14,
+         1);    
          
 --------------------------------------------------
 ----------    ¿¹¾àºÒ°¡´É³¯Â¥ Å×ÀÌºí ´õ¹Ì    ----------
@@ -1631,136 +1615,144 @@ VALUES(SEQ_DOG.NEXTVAL,
        'Y',
        8);
        
---------------------------------------------------
---------------    °áÁ¦ Å×ÀÌºí ´õ¹Ì    --------------
---------------------------------------------------
-INSERT INTO PAYMENT       
-VALUES(SEQ_PAYMENT.NEXTVAL,
-       '2023-02-01',
-       'ÀÏÁÖÀÏ µ¥½¹',
-       495000,
-       DEFAULT,
-       1);
-
-INSERT INTO PAYMENT       
-VALUES(SEQ_PAYMENT.NEXTVAL,
-       '2023-03-06',
-       '°­¾ÆÁö¾²',
-       165000,
-       DEFAULT,
-       2);
-       
-INSERT INTO PAYMENT       
-VALUES(SEQ_PAYMENT.NEXTVAL,
-       '2023-03-27',
-       '°»¾óÁã',
-       440000,
-       DEFAULT,
-       3);
-       
-INSERT INTO PAYMENT       
-VALUES(SEQ_PAYMENT.NEXTVAL,
-       '2023-04-15',
-       '¸¹´Ù',
-       495000,
-       DEFAULT,
-       4);
-       
-INSERT INTO PAYMENT       
-VALUES(SEQ_PAYMENT.NEXTVAL,
-       '2023-04-20',
-       '³Ñ¸¹¾î',
-       495000,
-       DEFAULT,
-       5);
-       
-INSERT INTO PAYMENT       
-VALUES(SEQ_PAYMENT.NEXTVAL,
-       '2023-05-15',
-       'ÇÏ·ç´ÙÀÓ¸¶',
-       495000,
-       DEFAULT,
-       6);
-       
-INSERT INTO PAYMENT       
-VALUES(SEQ_PAYMENT.NEXTVAL,
-       SYSDATE,
-       '¾¾´Ù¾¾',
-       495000,
-       DEFAULT,
-       7);       
-       
-INSERT INTO PAYMENT       
-VALUES(SEQ_PAYMENT.NEXTVAL,
-       SYSDATE,
-       'ÆÈºìÂ°',
-       495000,
-       DEFAULT,
-       8);
-       
-INSERT INTO PAYMENT       
-VALUES(SEQ_PAYMENT.NEXTVAL,
-       SYSDATE,
-       '±¸¹øÂ°',
-       1045000,
-       DEFAULT,
-       9); 
-       
-INSERT INTO PAYMENT       
-VALUES(SEQ_PAYMENT.NEXTVAL,
-       SYSDATE,
-       '¸¶Áö¸·',
-       55000,
-       DEFAULT,
-       10);       
-       
-INSERT INTO PAYMENT       
-VALUES(SEQ_PAYMENT.NEXTVAL,
-       SYSDATE,
-       'ÀÌ°Ô¹¹³Æ¸»ÀÔ´Ï´Ù',
-       55000,
-       DEFAULT,
-       11);  
-       
-INSERT INTO PAYMENT       
-VALUES(SEQ_PAYMENT.NEXTVAL,
-       SYSDATE,
-       'ÀÌ°Ô¸Â³ª',
-       770000,
-       DEFAULT,
-       12);  
-       
-INSERT INTO PAYMENT       
-VALUES(SEQ_PAYMENT.NEXTVAL,
-       SYSDATE,
-       '¸ð¸£°Î´Ù',
-       1595000,
-       DEFAULT,
-       13);  
-       
-INSERT INTO PAYMENT       
-VALUES(SEQ_PAYMENT.NEXTVAL,
-       SYSDATE,
-       '¾Æ¸ô¶û',
-       990000,
-       DEFAULT,
-       14);  
-       
-INSERT INTO PAYMENT       
-VALUES(SEQ_PAYMENT.NEXTVAL,
-       SYSDATE,
-       'ÆRÃP',
-       220000,
-       DEFAULT,
-       15);  
-       
-INSERT INTO PAYMENT       
-VALUES(SEQ_PAYMENT.NEXTVAL,
-       SYSDATE,
-       'Èå¾ÆµÎ¿ìÀÚ',
-       550000,
-       DEFAULT,
-       16);         
+-----------------------------------
+--------- °áÁ¦ Å×ÀÌºí ´õ¹Ì ----------
+-----------------------------------         
+INSERT INTO PAYMENT
+VALUES(
+SEQ_PAYMENT.NEXTVAL,
+'2023-01-02',
+'(ÁÖ)Æê½Ã½ºÅÍÁî',
+165000,
+'Y',
+1
+);
+INSERT INTO PAYMENT
+VALUES(
+SEQ_PAYMENT.NEXTVAL,
+'2022-05-05',
+'(ÁÖ)Æê½Ã½ºÅÍÁî',
+275000,
+'Y',
+2
+);
+INSERT INTO PAYMENT
+VALUES(
+SEQ_PAYMENT.NEXTVAL,
+'2023-01-06',
+'(ÁÖ)Æê½Ã½ºÅÍÁî',
+220000,
+'Y',
+3
+);
+INSERT INTO PAYMENT
+VALUES(
+SEQ_PAYMENT.NEXTVAL,
+'2023-01-26',
+'(ÁÖ)Æê½Ã½ºÅÍÁî',
+605000,
+'Y',
+4
+);
+INSERT INTO PAYMENT
+VALUES(
+SEQ_PAYMENT.NEXTVAL,
+'2023-02-16',
+'(ÁÖ)Æê½Ã½ºÅÍÁî',
+165000,
+'Y',
+5
+);
+INSERT INTO PAYMENT
+VALUES(
+SEQ_PAYMENT.NEXTVAL,
+'2023-03-11',
+'(ÁÖ)Æê½Ã½ºÅÍÁî',
+220000,
+'Y',
+6
+);
+INSERT INTO PAYMENT
+VALUES(
+SEQ_PAYMENT.NEXTVAL,
+'2023-03-19',
+'(ÁÖ)Æê½Ã½ºÅÍÁî',
+110000,
+'Y',
+7
+);
+INSERT INTO PAYMENT
+VALUES(
+SEQ_PAYMENT.NEXTVAL,
+'2023-03-28',
+'(ÁÖ)Æê½Ã½ºÅÍÁî',
+220000,
+'Y',
+8
+);
+INSERT INTO PAYMENT
+VALUES(
+SEQ_PAYMENT.NEXTVAL,
+'2023-04-19',
+'(ÁÖ)Æê½Ã½ºÅÍÁî',
+550000,
+'Y',
+9
+);
+INSERT INTO PAYMENT
+VALUES(
+SEQ_PAYMENT.NEXTVAL,
+'2023-05-01',
+'(ÁÖ)Æê½Ã½ºÅÍÁî',
+440000,
+'Y',
+10
+);
+INSERT INTO PAYMENT
+VALUES(
+SEQ_PAYMENT.NEXTVAL,
+'2023-05-15',
+'(ÁÖ)Æê½Ã½ºÅÍÁî',
+165000,
+'Y',
+11
+);
+INSERT INTO PAYMENT
+VALUES(
+SEQ_PAYMENT.NEXTVAL,
+'2023-05-28',
+'(ÁÖ)Æê½Ã½ºÅÍÁî',
+220000,
+'Y',
+12
+);
+INSERT INTO PAYMENT
+VALUES(
+SEQ_PAYMENT.NEXTVAL,
+'2023-06-01',
+'(ÁÖ)Æê½Ã½ºÅÍÁî',
+330000,
+'Y',
+13
+);
+INSERT INTO PAYMENT
+VALUES(
+SEQ_PAYMENT.NEXTVAL,
+'2023-06-10',
+'(ÁÖ)Æê½Ã½ºÅÍÁî',
+440000,
+'Y',
+14
+);
+INSERT INTO PAYMENT
+VALUES(
+SEQ_PAYMENT.NEXTVAL,
+'2023-06-19',
+'(ÁÖ)Æê½Ã½ºÅÍÁî',
+880000,
+'Y',
+15
+);     
            
 --------------------------------------------------
 --------------    Ã¤ÆÃ¹æ Å×ÀÌºí ´õ¹Ì    --------------
