@@ -225,7 +225,7 @@
                               <div value="${ r.revNo }"></div>
                               <div class="userProfile">
                                 <div>
-                                  <img src="/resources/img/main/두부02-0107.jpg">
+                                  <img src="${ r.userFilePath }">
                                 </div>
                                 <div>
                                   <p>${ r.userName }님</p>
@@ -244,7 +244,7 @@
                             </div>
                               <c:if test="${ (empty r.acontent) and (loginUser.petsitterNo eq p.petSitterNo) }">
                                 <div id="comment" class="comment" style="display: none;">
-                                  <img src="/resources/img/main/그림이사진1.jpg">
+                                  <img src="${ p.userFilePath }">
                                   <div class="speech-bubble">
                                     <div>
                                       <div>
@@ -264,7 +264,7 @@
                               
                               <c:if test="${ not empty r.acontent }">
                                 <div class="comment">
-                                  <img src="/resources/img/main/그림이사진1.jpg">
+                                  <img src="${ p.userFilePath }">
                                   <div class="speech-bubble">
                                     <div>
                                       <div>

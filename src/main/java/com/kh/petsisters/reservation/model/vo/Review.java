@@ -26,5 +26,6 @@ public class Review {
 	private Date revEndDate;	//  예약 종료일
 	private String userName;	// 	유저 이름
 	private int reviewCount;	//  리뷰 갯수
+	private String userFilePath; // 유저 filePath
 	
 }

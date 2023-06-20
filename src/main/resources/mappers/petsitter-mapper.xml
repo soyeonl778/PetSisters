@@ -32,6 +32,7 @@
 		<result column="FILE_PATH" property="filePath" />
 		<result column="USER_NAME" property="userName" />
 		<result column="REVIEW_COUNT" property="reviewCount" />
+		<result column="FILE_PATH" property="userFilePath" />
 	</resultMap>
 	
 	<resultMap id="dogResultSet" type="dog">
@@ -150,6 +151,7 @@
         	, A_DATE
 	        , R.FILE_PATH
 	        , M.USER_NAME
+	        , M.FILE_PATH
 	     FROM REVIEW R
 	     JOIN RESERVATION RS ON (RS.RES_NO = R.REF_RESNO)
 	LEFT JOIN MEMBER M ON (M.USER_NO = RS.USER_NO)
