@@ -68,9 +68,6 @@ public class BoardController {
 		
 		ArrayList<Board> list = boardService.selectList(pi, b);
 		
-		System.out.println(pi);
-		System.out.println(list);
-		
 		mv.addObject("pi", pi)
 		  .addObject("list", list)
 		  .setViewName("board/boardMypetList");
@@ -189,7 +186,6 @@ public class BoardController {
 		if(result > 0) { // 성공
 			Board b = boardService.selectBoard(bno);
 			Board dog = boardService.dogInfo(bno);
-			System.out.println(b);
 			// 조회된 데이터를 mv 에 담아서 포워딩 페이지 경로를 잡아주기
 			mv.addObject("b", b).setViewName("board/boardDetailForm");
 			mv.addObject("dog", dog).setViewName("board/boardDetailForm");
@@ -236,8 +232,6 @@ public class BoardController {
 		Board b = boardService.selectBoard(bno);
 		
 		ArrayList<Attachment> list = boardService.selectAttachment(bno);
-		
-		System.out.println(list);
 		
 		mv.addObject("b", b).addObject("list", list).setViewName("board/boardUpdateForm2");
 		

@@ -531,3 +531,6 @@ body #container #main .layout-pagination .pagediv span strong{
 	cursor:pointer;
 	
 }
+.here:hover {
+	cursor:pointer;
+}
