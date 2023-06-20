@@ -752,16 +752,98 @@ INSERT INTO NOTICE VALUES (SEQ_NOTICE.NEXTVAL, '[공지] 개인정보 처리방침 개정됩�
 ------------    1:1문의 테이블 더미    ------------
 --------------------------------------------------
 INSERT INTO INQUIRY
+(I_NO, I_TITLE, I_CONTENT, CREATE_DATE, STATUS, USER_NO)
+VALUES (SEQ_INQUIRY.NEXTVAL
+           , '예약 일정을 하루씩 미룰 수 있을까요?'
+           , '일정이 바뀌어서 체크인, 체크아웃 날짜를 하루씩 미루고 싶은데요. <br/>
+             혹시 예약을 취소하지 않고 펫시터 재량으로 날짜만 미룰 수 있을까요?'
+           , '2023-06-01'
+           , 'Y'
+           , 8);
+INSERT INTO INQUIRY
 (I_NO, I_TITLE, I_CONTENT, CREATE_DATE, STATUS, FILE_PATH, USER_NO)
 VALUES (SEQ_INQUIRY.NEXTVAL
            , '펫시팅 이후에 없던 상처가 생겼어요'
            , '제일 최근에 맡긴 펫시팅 이후로 안 보이던 상처를 발견했어요. <br/>
              펫시터 분께 전달받은 내용은 없었고요. <br/>
              병원에 가볼 정도는 아니지만 케어하시면서 알아채지 못할 정도는 아니었을 것 같은데 무슨 일이었는지 좀 알고 싶어요.'
-           , '2023-06-07'
+           , '2023-06-04'
            , 'Y'
            , 'resources/upFiles/inquiry_upfiles/강아지젤리.png'
            , 7);
+INSERT INTO INQUIRY
+(I_NO, I_TITLE, I_CONTENT, CREATE_DATE, STATUS, FILE_PATH, USER_NO)
+VALUES (SEQ_INQUIRY.NEXTVAL
+    , '진상고객은 어떡하나요?'
+    , '갑질이 너무 심해요. <br/>
+        무조건 제가 참아야 하는 건가요...'
+    , '2023-06-08'
+    , DEFAULT
+    , 'resources/upFiles/inquiry_upfiles/슬픔.jpg'
+    , 2);
+INSERT INTO INQUIRY
+(I_NO, I_TITLE, I_CONTENT, CREATE_DATE, STATUS, FILE_PATH, USER_NO)
+VALUES (SEQ_INQUIRY.NEXTVAL
+    , '이번달에 새로 들어온 펫시터입니다.'
+    , '안녕하세요, 이번달에 새로 들어온 펫시터입니다. 제가 곧 이사를 가서 당분간 예약을 막아두고 싶은데요, 이미 확정된 예약건은 이사간 후에 진행해도 되는 걸까요..?'
+    , '2023-06-08'
+    , DEFAULT
+    , 'resources/upFiles/inquiry_upfiles/깡지 (1).jpg'
+    , 3);
+INSERT INTO INQUIRY
+(I_NO, I_TITLE, I_CONTENT, CREATE_DATE, STATUS, FILE_PATH, USER_NO)
+VALUES (SEQ_INQUIRY.NEXTVAL
+    , '늘 감사합니다 펫시스터즈!'
+    , '덕분에 제가 맘 편히 여행을 다녀요. 우리 아기 잘 부탁해요.'
+    , '2023-06-09'
+    , DEFAULT
+    , 'resources/upFiles/inquiry_upfiles/깡지 (2).jpg'
+    , 7);
+INSERT INTO INQUIRY
+(I_NO, I_TITLE, I_CONTENT, CREATE_DATE, STATUS, FILE_PATH, USER_NO)
+VALUES (SEQ_INQUIRY.NEXTVAL
+    , '빠른 답변 부탁드립니다.'
+    , '펫시터입니다. 사정이 생겨 예약을 취소해야 할 땐 어떻게 해야하나요? 전화주세요. 010-0000-0000'
+    , '2023-06-10'
+    , DEFAULT
+    , 'resources/upFiles/inquiry_upfiles/깡지 (3).jpg'
+    , 4);
+INSERT INTO INQUIRY
+(I_NO, I_TITLE, I_CONTENT, CREATE_DATE, STATUS, FILE_PATH, USER_NO)
+VALUES (SEQ_INQUIRY.NEXTVAL
+    , '펫시팅 맡은 강아지가 짖음 방지 마개를 착용하고 있어요..'
+    , '혹시 제가 케어하는 동안에는 마개를 제거한 채 생활하도록 해도 될까요..'
+    , '2023-06-11'
+    , DEFAULT
+    , 'resources/upFiles/inquiry_upfiles/깡지 (4).jpg'
+    , 4);
+INSERT INTO INQUIRY
+(I_NO, I_TITLE, I_CONTENT, CREATE_DATE, STATUS, USER_NO)
+VALUES (SEQ_INQUIRY.NEXTVAL
+           , '아이 하네스 줄이 바뀐 것 같아요.'
+           , '펫시팅 맡기면서 같이 드렸던 하네스줄이 있었는데, 원래 쓰던 게 아니라서요. <br/>
+             두 개 색깔이 같아서 헷갈리신 것 같은데 펫시터 분께 개인적으로 연락 드릴 방법이 있을까요?'
+           , SYSDATE
+           , 'Y'
+           , 8);
+INSERT INTO INQUIRY
+(I_NO, I_TITLE, I_CONTENT, CREATE_DATE, STATUS, FILE_PATH, USER_NO)
+VALUES (SEQ_INQUIRY.NEXTVAL
+    , '우리 애가 사교성이 너무 좋아서 다른 애들이 감당하기 조금 힘들어해요.'
+    , '강아지계의 E 인가봐요 ... <br/> 미리 고지해야하는 사항일까요?'
+    , '2023-06-12'
+    , DEFAULT
+    , 'resources/upFiles/inquiry_upfiles/깡지 (5).jpg'
+    , 5);
+INSERT INTO INQUIRY
+(I_NO, I_TITLE, I_CONTENT, CREATE_DATE, STATUS, FILE_PATH, USER_NO)
+VALUES (SEQ_INQUIRY.NEXTVAL
+    , '펫시팅 중 물림사고를 당했는데, 어떡하죠?'
+    , '우선 병원은 다녀왔습니다. <br/> 고객센터와 연락이 되지 않아서요. <br/> 답변 부탁드려요. <br/>'
+    , '2023-06-13'
+    , DEFAULT
+    , 'resources/upFiles/inquiry_upfiles/깡지 (6).jpg'
+    , 5);
 INSERT INTO INQUIRY
 (I_NO, I_TITLE, I_CONTENT, CREATE_DATE, STATUS, USER_NO)
 VALUES (SEQ_INQUIRY.NEXTVAL
@@ -771,6 +853,129 @@ VALUES (SEQ_INQUIRY.NEXTVAL
            , '2023-06-14'
            , 'Y'
            , 7);
+INSERT INTO INQUIRY
+(I_NO, I_TITLE, I_CONTENT, CREATE_DATE, STATUS, FILE_PATH, USER_NO)
+VALUES (SEQ_INQUIRY.NEXTVAL
+    , '허위사실로 인한 패널티, 억울합니다.'
+    , '펫시팅 중 아이를 제대로 케어하지 못했다고 클레임이 들어왔는데 사실무근입니다. <br/> 누구보다 아이를 열심히 케어했어요. <br/> 오히려 과도한 연락과 요구사항에도 늘 최선을 다했을 뿐입니다. <br/> 조금만 더 신경써서 사실여부를 파악해주세요.'
+    , '2023-06-15'
+    , DEFAULT
+    , 'resources/upFiles/inquiry_upfiles/깡지 (7).jpg'
+    , 6);
+INSERT INTO INQUIRY
+(I_NO, I_TITLE, I_CONTENT, CREATE_DATE, STATUS, FILE_PATH, USER_NO)
+VALUES (SEQ_INQUIRY.NEXTVAL
+    , '별도로 금전을 요구하는 펫시터'
+    , '아이를 잘 봐줄테니 간식비를 줄 수 있냐는데 이런 건 문제 소지가 있지 않나요?'
+    , '2023-06-16'
+    , DEFAULT
+    , 'resources/upFiles/inquiry_upfiles/깡지 (8).jpg'
+    , 7);
+INSERT INTO INQUIRY
+(I_NO, I_TITLE, I_CONTENT, CREATE_DATE, STATUS, FILE_PATH, USER_NO)
+VALUES (SEQ_INQUIRY.NEXTVAL
+    , '고양이 펫시팅 서비스는 언제쯤 제공될까요?'
+    , '저는 반려묘를 키우고 있는데 우리 아이도 맡기고 싶을 때가 종종 있어서요. <br/> 대략 언제쯤 서비스가 오픈될지요?'
+    , '2023-06-17'
+    , DEFAULT
+    , 'resources/upFiles/inquiry_upfiles/깡지 (9).jpg'
+    , 7);
+INSERT INTO INQUIRY
+(I_NO, I_TITLE, I_CONTENT, CREATE_DATE, STATUS, USER_NO)
+VALUES (SEQ_INQUIRY.NEXTVAL
+           , '예약 일정을 하루씩 미룰 수 있을까요?'
+           , '일정이 바뀌어서 체크인, 체크아웃 날짜를 하루씩 미루고 싶은데요. <br/>
+             혹시 예약을 취소하지 않고 펫시터 재량으로 날짜만 미룰 수 있을까요?'
+           , '2023-06-18'
+           , 'Y'
+           , 8);
+INSERT INTO INQUIRY
+(I_NO, I_TITLE, I_CONTENT, CREATE_DATE, STATUS, FILE_PATH, USER_NO)
+VALUES (SEQ_INQUIRY.NEXTVAL
+    , '펫시터 집에 펫캠 설치해도 되나요?'
+    , '요즘 학대니 뭐니 말이 많아서 조금 불안해서요. <br/> 펫캠 설치해도 되나요? <br/> 물론 영상은 확인 후 문제가 없을 경우 바로 삭제할 생각이에요~'
+    , '2023-06-18'
+    , DEFAULT
+    , 'resources/upFiles/inquiry_upfiles/기요미 (1).jpg'
+    , 7);
+INSERT INTO INQUIRY
+(I_NO, I_TITLE, I_CONTENT, CREATE_DATE, STATUS, FILE_PATH, USER_NO)
+VALUES (SEQ_INQUIRY.NEXTVAL
+    , '아무 간식이나 먹이지 말라고 했는데'
+    , '아이가 탈이 나서 급히 병원에 다녀온 뒤 연락해보니까 아무 간식도 아니고 무려 사람이 먹는 음식을 줬다네요. 미친거 아닌가요?'
+    , '2023-06-19'
+    , DEFAULT
+    , 'resources/upFiles/inquiry_upfiles/기요미 (2).jpg'
+    , 8);
+INSERT INTO INQUIRY
+(I_NO, I_TITLE, I_CONTENT, CREATE_DATE, STATUS, FILE_PATH, USER_NO)
+VALUES (SEQ_INQUIRY.NEXTVAL
+    , '우리 아이 종이 보더콜리인데요,'
+    , '하루에 산책을 3시간 정도 꼭 해야 하는데... <br/> 혹시 추가금액을 내서라도 3시간 산책을 보장받을 방법이 있을까요? <br/> 부탁드립니다...'
+    , '2023-06-19'
+    , DEFAULT
+    , 'resources/upFiles/inquiry_upfiles/기요미 (3).jpg'
+    , 8);
+INSERT INTO INQUIRY
+(I_NO, I_TITLE, I_CONTENT, CREATE_DATE, STATUS, FILE_PATH, USER_NO)
+VALUES (SEQ_INQUIRY.NEXTVAL
+    , '기존에 예약한 펫시터 말고 다른 펫시터로 바꿀 수 있을까요?'
+    , '예약 진행할 때에 미처 확인하지 못했는데, 대형견을 기르시더라고요. <br/> 구름이가 대형견을 보면 짖음이 심해져서요.. <br/> 펫시터 변경 가능한지 알고 싶어요.'
+    , '2023-06-19'
+    , DEFAULT
+    , 'resources/upFiles/inquiry_upfiles/기요미 (4).jpg'
+    , 7);
+INSERT INTO INQUIRY
+(I_NO, I_TITLE, I_CONTENT, CREATE_DATE, STATUS, FILE_PATH, USER_NO)
+VALUES (SEQ_INQUIRY.NEXTVAL
+    , '주거지와 먼 곳에서도 펫시팅 가능한가요?'
+    , '반려견을 데리고 출장을 가야 하는데, 숙소에 반려견 동반이 불가능하다고 합니다. <br/> 불가피하게 주거지와 먼 곳에 맡기려고 하는데, 혹시 문제의 소지가 있을까요?'
+    , '2023-06-19'
+    , DEFAULT
+    , 'resources/upFiles/inquiry_upfiles/기요미 (5).jpg'
+    , 8);
+INSERT INTO INQUIRY
+(I_NO, I_TITLE, I_CONTENT, CREATE_DATE, STATUS, FILE_PATH, USER_NO)
+VALUES (SEQ_INQUIRY.NEXTVAL
+    , '펫시팅 도중 펫시터 변경'
+    , '펫시터 분이 연락도 잘 안되고 돌봄일지 내용도 너무 부실하게 올리세요. <br/> 결코 적은 금액이 아닌데, 조금 불만족스러워서요. <br/> 아직 사흘 더 맡겨야 하는데 담당 펫시터를 바꿀 수 있을까요?'
+    , '2023-06-19'
+    , DEFAULT
+    , 'resources/upFiles/inquiry_upfiles/기요미 (6).jpg'
+    , 8);
+INSERT INTO INQUIRY
+(I_NO, I_TITLE, I_CONTENT, CREATE_DATE, STATUS, FILE_PATH, USER_NO)
+VALUES (SEQ_INQUIRY.NEXTVAL
+    , '고객의 일방적인 개인정보 침해'
+    , '고객분이 어떻게 아셨는지 제 개인 전화번호로 연락을 자꾸 하셔요. <br/> 분명히 채팅도 원활하게 주고 받고 있는데요. <br/> 애초에 제가 자발적으로 번호를 드린 적도 없습니다.. <br/> 조치방법이 있을까요?'
+    , '2023-06-19'
+    , DEFAULT
+    , 'resources/upFiles/inquiry_upfiles/기요미 (7).jpg'
+    , 9);
+INSERT INTO INQUIRY
+(I_NO, I_TITLE, I_CONTENT, CREATE_DATE, STATUS, USER_NO)
+VALUES (SEQ_INQUIRY.NEXTVAL
+    , '아이 학대 흔적'
+    , '저는 펫시터인데요. 아이 학대 흔적이 보여서 어찌 해야할 지 심히 당황스럽습니다. <br/> 제가 임의로 병원에 데려가도 될까요?'
+    , '2023-06-19'
+    , DEFAULT
+    , 9);
+INSERT INTO INQUIRY
+(I_NO, I_TITLE, I_CONTENT, CREATE_DATE, STATUS, USER_NO)
+VALUES (SEQ_INQUIRY.NEXTVAL
+    , '최대한 빨리 예약 확정 부탁드려요^^'
+    , '당장 내일 일정이 있어서 급하게 예약 신청을 했어요.. <br/> 가능한 빨리 예약 확정 해주시면 감사하겠습니다~'
+    , '2023-06-19'
+    , DEFAULT
+    , 7);
+INSERT INTO INQUIRY
+(I_NO, I_TITLE, I_CONTENT, CREATE_DATE, STATUS, USER_NO)
+VALUES (SEQ_INQUIRY.NEXTVAL
+    , '펫시팅 중 기물 파손과 관련하여'
+    , '강아지가 저희 집에 머무르는 동안 손해가 큰 기물파손을 할 경우 제가 보상을 요구할 수 있을까요? <br/> 아니면 오롯이 제가 감당해야 할 몫인가요?'
+    , '2023-06-19'
+    , DEFAULT
+    , 13);    
 INSERT INTO INQUIRY
 (I_NO, I_TITLE, I_CONTENT, CREATE_DATE, STATUS, FILE_PATH, USER_NO)
 VALUES (SEQ_INQUIRY.NEXTVAL
@@ -781,34 +986,6 @@ VALUES (SEQ_INQUIRY.NEXTVAL
            , 'Y'
            , 'resources/upFiles/inquiry_upfiles/하네스.jpg'
            , 7);
-INSERT INTO INQUIRY
-(I_NO, I_TITLE, I_CONTENT, CREATE_DATE, STATUS, USER_NO)
-VALUES (SEQ_INQUIRY.NEXTVAL
-           , '펫시팅 이후에 없던 상처가 생겼어요'
-           , '제일 최근에 맡긴 펫시팅 이후로 안 보이던 상처를 발견했어요. <br/>
-             펫시터 분께 전달받은 내용은 없었고요. <br/>
-             병원에 가볼 정도는 아니지만 케어하시면서 알아채지 못할 정도는 아니었을 것 같은데 무슨 일이었는지 좀 알고 싶어요.'
-           , '2023-06-07'
-           , 'Y'
-           , 8);
-INSERT INTO INQUIRY
-(I_NO, I_TITLE, I_CONTENT, CREATE_DATE, STATUS, USER_NO)
-VALUES (SEQ_INQUIRY.NEXTVAL
-           , '예약 일정을 하루씩 미룰 수 있을까요?'
-           , '일정이 바뀌어서 체크인, 체크아웃 날짜를 하루씩 미루고 싶은데요. <br/>
-             혹시 예약을 취소하지 않고 펫시터 재량으로 날짜만 미룰 수 있을까요?'
-           , '2023-06-14'
-           , 'Y'
-           , 8);
-INSERT INTO INQUIRY
-(I_NO, I_TITLE, I_CONTENT, CREATE_DATE, STATUS, USER_NO)
-VALUES (SEQ_INQUIRY.NEXTVAL
-           , '아이 하네스 줄이 바뀐 것 같아요.'
-           , '펫시팅 맡기면서 같이 드렸던 하네스줄이 있었는데, 원래 쓰던 게 아니라서요. <br/>
-             두 개 색깔이 같아서 헷갈리신 것 같은데 펫시터 분께 개인적으로 연락 드릴 방법이 있을까요?'
-           , SYSDATE
-           , 'Y'
-           , 8);
            
 --------------------------------------------------
 ----------    1:1문의 댓글 테이블 더미    ----------
@@ -818,37 +995,36 @@ INSERT INTO CS_REPLY
 VALUES(SEQ_CS_REPLY.NEXTVAL
          ,'안녕하세요, 예약 일정을 미룰 수 있는 지 문의 주셨습니다. 해당일에 펫시터 님의 일정이 없으시다면 취소 후 재예약 가능합니다. 저희 측에서 따로 미뤄드릴 수는 없는 점 양해 부탁드립니다. 감사합니다.'
          ,1         
-         ,2
-         ,'2023-06-14');
+         ,1
+         ,'2023-06-02');
 INSERT INTO CS_REPLY
 (REP_NO, REP_CONTENT, USER_NO, REF_INO, CREATE_DATE)
 VALUES(SEQ_CS_REPLY.NEXTVAL
          ,'아... 알겠습니다. 예약이 일주일 밖에 안 남았는데 취소 수수료는 무조건 부담해야하는 거죠?'
          ,7
-         ,2
-         ,'2023-06-14');
+         ,1
+         ,'2023-06-02');
 INSERT INTO CS_REPLY
 (REP_NO, REP_CONTENT, USER_NO, REF_INO, CREATE_DATE)
 VALUES(SEQ_CS_REPLY.NEXTVAL
          ,'안녕하세요, 재예약 시 수수료 부과와 관련해서 문의 주셨습니다. 예약 취소 후 재예약 확정 시 수수료는 환불됩니다. 감사합니다.'
          ,1         
+         ,1
+         ,'2023-06-03');   
+INSERT INTO CS_REPLY
+(REP_NO, REP_CONTENT, USER_NO, REF_INO, CREATE_DATE)
+VALUES(SEQ_CS_REPLY.NEXTVAL
+         ,'펫시터님께 연락 드렸습니다. 최대한 빠르고 정확하게 상황 파악 후 다시 연락 드리겠습니다. 감사합니다.'
+         ,1        
          ,2
-         ,'2023-06-14');  
-      
+         ,'2023-06-07');
 INSERT INTO CS_REPLY
 (REP_NO, REP_CONTENT, USER_NO, REF_INO, CREATE_DATE)
 VALUES(SEQ_CS_REPLY.NEXTVAL
          ,'안녕하세요, 하네스 줄이 바뀌셨다고 문의 주셨는데 관련해서 해당 펫시터 님에게 전달해드렸습니다. 최대한 빨리 해결하실 수 있도록 늘 최선을 다하겠습니다. 감사합니다.'
          ,1         
          ,6
-         ,SYSDATE); 
-INSERT INTO CS_REPLY
-(REP_NO, REP_CONTENT, USER_NO, REF_INO, CREATE_DATE)
-VALUES(SEQ_CS_REPLY.NEXTVAL
-         ,'펫시터님께 연락 드렸습니다. 최대한 빠르고 정확하게 상황 파악 후 다시 연락 드리겠습니다. 감사합니다.'
-         ,7         
-         ,1
-         ,'2023-06-07');
+         ,SYSDATE);
  
 --------------------------------------------------
 ------------    펫시터찜 테이블 더미    ------------
@@ -1647,6 +1823,15 @@ INSERT INTO REPLY VALUES (SEQ_REPLY.NEXTVAL, '댓글입니다', DEFAULT, DEFAULT, 8, 
 INSERT INTO REPLY VALUES (SEQ_REPLY.NEXTVAL, '댓글입니다', DEFAULT, DEFAULT, 9, 4);
 INSERT INTO REPLY VALUES (SEQ_REPLY.NEXTVAL, '댓글입니다', DEFAULT, DEFAULT, 10, 5);
 INSERT INTO REPLY VALUES (SEQ_REPLY.NEXTVAL, '댓글입니다', DEFAULT, DEFAULT, 11, 5);
+
+--------------------------------------------------
+------------    펫시터지원 테이블 더미    ------------
+--------------------------------------------------
+INSERT INTO SUPPORT VALUES(SEQ_SUPPORT.NEXTVAL, '서울시 구로구', 23, 'N','Y', '펫시터가 좋아서 지원하게 되었습니다.', '펫시터가 좋아서 지원하게 되었습니다.', 'Y','Y', 8);
+INSERT INTO SUPPORT VALUES(SEQ_SUPPORT.NEXTVAL, '서울시 구로구', 23, 'N','Y', '펫시터가 좋아서 지원하게 되었습니다.', '펫시터가 좋아서 지원하게 되었습니다.', 'Y','Y', 9);
+INSERT INTO SUPPORT VALUES(SEQ_SUPPORT.NEXTVAL, '서울시 구로구', 23, 'N','Y', '펫시터가 좋아서 지원하게 되었습니다.', '펫시터가 좋아서 지원하게 되었습니다.', 'Y','Y', 10);
+INSERT INTO SUPPORT VALUES(SEQ_SUPPORT.NEXTVAL, '서울시 구로구', 23, 'N','Y', '펫시터가 좋아서 지원하게 되었습니다.', '펫시터가 좋아서 지원하게 되었습니다.', 'Y','Y', 11);
+INSERT INTO SUPPORT VALUES(SEQ_SUPPORT.NEXTVAL, '서울시 구로구', 23, 'N','Y', '펫시터가 좋아서 지원하게 되었습니다.', '펫시터가 좋아서 지원하게 되었습니다.', 'Y','Y', 12);
 
 --------------------------------------------------
 -----------------    커밋구문    ------------------

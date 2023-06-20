@@ -21,6 +21,7 @@
                 cursor: pointer!important;
             }
             .approveButtonClass{
+                margin-bottom: 5px;
                 border: none;
                 border-radius: 4px;
                 width: 70px;
@@ -36,6 +37,7 @@
                 background-color: #008cdc;
             }
             .rejectButtonClass {
+                margin-bottom: 5px;
                 border: none;
                 border-radius: 4px;
                 width: 70px;
@@ -131,10 +133,27 @@
                                                 <td>${s.otherExperience}</td>
                                                 <td>${s.etcExperience}</td>
                                                 <td>${s.petsitterExperience}</td>
-                                                <td>${s.status}</td>
                                                 <td>
-                                                    <button id="" class="approveButtonClass" onclick="location.href='supportApprove.da?userNo=${s.userNo}&supportNo=${s.supportNo}&status=Y'">승인</button>
-                                                    <button id="" class="rejectButtonClass" onclick="location.href='supportApprove.da?userNo=${s.userNo}&supportNo=${s.supportNo}&status=N'">반려</button>
+                                                    <c:choose>
+                                                        <c:when test="${ s.status eq 'Y' }">
+                                                            승인
+                                                        </c:when>
+                                                        <c:when test="${ s.status eq 'N' }">
+                                                            반려
+                                                        </c:when>
+                                                        <c:otherwise>
+                                                            대기중
+                                                        </c:otherwise>
+                                                    </c:choose>
+                                                </td>
+                                                <td>
+                                                    <button id="" class="approveButtonClass" onclick="location.href='supportApprove.da?userNo=${s.userNo}&supportNo=${s.supportNo}&status=Y'">승인</button><br>
+                                                    <button id="" class="rejectButtonClass" onclick="location.href='supportApprove.da?userNo=${s.userNo}&supportNo=${s.supportNo}&status=N'">반려</button><br>
+                                                    <div onclick="location.href='createChat.do?masterNo=${s.userNo}'">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-dots-fill" viewBox="0 0 16 16">
+                                                            <path d="M16 8c0 3.866-3.582 7-8 7a9.06 9.06 0 0 1-2.347-.306c-.584.296-1.925.864-4.181 1.234-.2.032-.352-.176-.273-.362.354-.836.674-1.95.77-2.966C.744 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7zM5 8a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm4 0a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+                                                        </svg>
+                                                    </div>
                                                 </td>
                                             </tr>
                                         </c:forEach>

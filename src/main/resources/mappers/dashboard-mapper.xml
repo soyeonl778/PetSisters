@@ -147,8 +147,6 @@
             , S.STATUS
 		FROM SUPPORT S
         JOIN MEMBER M ON (S.USER_NO = M.USER_NO)
-        WHERE S.STATUS IS NULL
-        AND M.SITTER_STATUS = 'N'
 	</select>
 	
 	<update id="dashSupportApprove" parameterType="support">
