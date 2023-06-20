@@ -21,19 +21,629 @@ INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user15', '$2a$10$IqaM5ZO19GEECiL
 --------------------------------------------------
 -----------    펫시터 프로필 테이블 더미    -----------
 --------------------------------------------------
-INSERT INTO PETSITTER (P_NO, P_TITLE, P_CONTENT, P_SERVICE, CARE_LIST, P_MODE, USER_NO) VALUES (SEQ_PETSITTER.NEXTVAL, '순둥이 동구네로 놀러오세요~~?','누구보다 뛰어난 관찰력으로 댁의 소중한 가족이 맡겨졌을 때 빠른 상황판단과 대처로 세심한 보살핌을 약속드립니다.? 이러한 실무적인 경험이 제게 펫시터 활동에 용기를 주었고 남의 손에 맡긴다는 게 애견과 보호자에게 얼마나 중요한 일인지를 잘 알기에 나와 같은 애견 가정을 돕고 때로는 저도 도움받는 길을 찾고자 도전하게 되었습니다. 저희 집은 지하철역 바로 앞 초역세권으로 재건축 한 신축아파트이며 집 앞 상가에 우리 동구가 어릴 때부터 다니고 있는 24시간 동물병원이 있으며, 도보 5분 거리에 매봉산 둘레길이 있고, 10분 거리에 양재천 산책로가 있어 쾌적한 산책에는 아쉬움이 전혀 없습니다. 꼭 소중한 인연으로 여러분을 만나고 싶습니다. ', NULL, NULL, DEFAULT, 2);
-INSERT INTO PETSITTER (P_NO, P_TITLE, P_CONTENT, P_SERVICE, CARE_LIST, P_MODE, USER_NO) VALUES (SEQ_PETSITTER.NEXTVAL, '내 아이를 돌보듯 따뜻하고 편안하게', '반려견들이 더 존중받는 뉴질랜드에서부터 반려견을 키우고, 지인들의 반려견들을 맡아주던 경험도 많습니다. 집 근처에 있는 여러 공원과 반포천은 반려견들이 산책하기에 좋은 환경입니다. 내 아이를 돌보듯 따뜻하고 편안하게, 사랑과 정성으로 최선을 다해 보살펴드리겠습니다.', NULL, NULL, DEFAULT, 3);
-INSERT INTO PETSITTER (P_NO, P_TITLE, P_CONTENT, P_SERVICE, CARE_LIST, P_MODE, USER_NO) VALUES (SEQ_PETSITTER.NEXTVAL, '안전하고 편안하게 돌봐주는 펫시팅','강아지만 보면 좋아서 시간 가는줄도 모르는 초등학생 아들과 정성스럽게 돌봐 드립니다. 새끼때 부터 함께했던, 이제는 별이 되어버린ㅠ 맥스 (골든리트리버), 바우 (올드잉글리쉬 쉽독), 몽이 (페키니즈)를 직접 키우고 경험한 노하우로 견주님의 사랑스러운 반려견을 안전하게 돌봐드리겠습니다. 우리 빨리 만나요~!! * 1박 이상 펫시팅 맡기실 경우 강남구에 사는 반려견은 무료 픽업/드랍 서비스 해드려요. * 사정상 소형견만 케어 가능합니다. * 당일 예약은 힘들어요. * 산책시 사람이나 동물에게 공격성 짖음이 심한 아이는 산책이 힘들수도 있습니다. ㅠ', '흡연자, 힘들당', '어디에 쓰는고', DEFAULT, 4);
-INSERT INTO PETSITTER (P_NO, P_TITLE, P_CONTENT, P_SERVICE, CARE_LIST, P_MODE, USER_NO) VALUES (SEQ_PETSITTER.NEXTVAL, '가족처럼 돌봐드릴게요~^^','강아지가 혼자 남거나 불안할 일이 없이 계속 같이 있어줄 수가 있어요^^ 작은 행동도 곁에서 무엇이 필요한지 세심히 관찰하여 아이들이 머무르는 시간동안 편하고 애정듬뿍 받을 수 있도록 교감하여 아이들의 좋은 친구가 되는 것은 자신있습니다^^ 믿고 맡겨주세요~', '흡연자, 힘들당', '어디에 쓰는고', DEFAULT, 5);
-INSERT INTO PETSITTER (P_NO, P_TITLE, P_CONTENT, P_SERVICE, CARE_LIST, P_MODE, USER_NO) VALUES (SEQ_PETSITTER.NEXTVAL, '책임감 있는 펫시팅','아파트 단지내 산책로, 한강, 서달산 등 집 가까이 다양한 산책코스가 있습니다. - 반려견과 함께한 경험 외에도 지인들의 강아지를 돌보아주었던 경험, 다년간 유기견 봉사를 했던 경험이 있습니다. - 보다 전문적인 펫시팅을 위해 펫플래닛 교육과 반려동물관리사 자격증을 취득하며 이론적으로 한 번 더 학습하였습니다. - 최근 코로나19 때문에 전해수기를 구입하여 소독과 청결에 더욱 신경쓰고 있습니다. 믿고 맡겨주신다면 책임감을 갖고 보살피겠습니다..^^', '흡연자, 힘들당', '어디에 쓰는고', DEFAULT, 6);
-INSERT INTO PETSITTER (P_NO, P_TITLE, P_CONTENT, P_SERVICE, CARE_LIST, P_MODE, USER_NO) VALUES (SEQ_PETSITTER.NEXTVAL, '8번 펫시터님의 즐겁고 편안한 여행','저희 집은 아파트로 식구는 반려견을 아주 사랑하는 성인 아들 1명과 살고 있습니다 집 주변에는 공원과 남산 산책 길이 많이 있습니다 제가 운동을 좋아해서 반려견이 산책을 좋아하면 원하는 만큼 산책을 진행 할 수 있고, 집에 돌아와 반려견의 발을 깨끗이 닦는것은 기본이고 반려견과 보호자님께서 동의를 구하여 맛있는 간식을 만들어줄 수도 있답니다! 보호자분이 오실 때 까지 아기도 여행을 온 것처럼 즐겁게 지낼 수 있도록 사랑으로 잘 돌보겠습니다 감사합니다^^', '흡연자, 힘들당', '어디에 쓰는고', DEFAULT, 9);
-INSERT INTO PETSITTER (P_NO, P_TITLE, P_CONTENT, P_SERVICE, CARE_LIST, P_MODE, USER_NO) VALUES (SEQ_PETSITTER.NEXTVAL, '귀한 내 아이 케어도 귀하게','7살 때부터 30대까지 오랜시간을 반려동물과 함께했습니다. 마지막으로 함께한 아이가 제 가족이 되어 20살이 되던 해에 제 품에서 무지개다리를 건넜고, 한 아이의 처음과 끝을 함께한 그 긴 시간들이 제게 안겨준 경험은 그 어떤 것과도 바꿀 수 없다고 생각합니다. 그 외 애견카페와 유치원을 겸하고 있는 곳에서의 업무 경험을 발판 삼아 강아지는 이렇게 놀아야 해, 밥은 꼭 어떻게 먹어야 한다는 등의 틀에 박힌 기준을 정해두지 않고 “보호자가 원하는 방식을 우선으로 하는 아이들별 성향 맞춤 케어”를 제공하겠습니다.', '흡연자, 힘들당', '어디에 쓰는고', DEFAULT, 10);
-INSERT INTO PETSITTER (P_NO, P_TITLE, P_CONTENT, P_SERVICE, CARE_LIST, P_MODE, USER_NO) VALUES (SEQ_PETSITTER.NEXTVAL, '사랑으로 잘 돌봐드리겠습니다^^','저는 아파트에서 네식구가 거주하고 있으며 단지도 넓어서 산책하기도 좋을뿐만 아니라 주변에 중량천 둔치가 있는곳이라 애들이 뛰어놀기도 좋은 잔듸와 강물이 있어서 시원하고 좋은 동네랍니다. 보호자님께서 안전하고 편안하게 믿고 맡길 수 있도록 최선을 다하고 사랑으로 잘 돌봐 드리겠습니다 ^^', '흡연자, 힘들당', '어디에 쓰는고', DEFAULT, 11);
-INSERT INTO PETSITTER (P_NO, P_TITLE, P_CONTENT, P_SERVICE, CARE_LIST, P_MODE, USER_NO) VALUES (SEQ_PETSITTER.NEXTVAL, '사랑이넘치는1:1맞춤케어','집 근처에는 아파트 내 산책로, 한강, 고구동산 등 여러 산책로가 있습니다. 그동안 제가 반려견과 함께한 시간들과 노하우로 1:1 세심한 케어는 물론, 반려견의 성향에 따라 노즈워크, 집안산책, 터그 놀이 등 상황별 맞춤형 케어로 아이들이 저희 집에 머무는 동안 실컷 즐겁게 놀고 스트레스도 풀면서 편안히 쉬다 갈 수 있도록 최선을 다하겠습니다. 믿고 맡겨주세요^^ 사랑과 애정으로 보살피겠습니다.', '흡연자, 힘들당', '어디에 쓰는고', DEFAULT, 12);
-INSERT INTO PETSITTER (P_NO, P_TITLE, P_CONTENT, P_SERVICE, CARE_LIST, P_MODE, USER_NO) VALUES (SEQ_PETSITTER.NEXTVAL, '편안한 가족처럼?','저는 아파트에 살고 있고 아파트 후문에 우리 아이들이 편안하고 안전하게 산책하기 좋은 공원이 있습니다. 저희 집에서 3분 거리로 가까워서 늘 다니는 산책로입니다. 보호자분이 여행을 간다든지 외출을 하실 때 반려견이 편안하게 내 집처럼 즐겁게 지낼 수 있도록 도와주고 보호자님도 안심하고 안전하게 맡길 수 있는 신뢰의 공간이 되도록 노력하겠습니다.', '흡연자, 힘들당', '어디에 쓰는고', DEFAULT, 13);
-INSERT INTO PETSITTER (P_NO, P_TITLE, P_CONTENT, P_SERVICE, CARE_LIST, P_MODE, USER_NO) VALUES (SEQ_PETSITTER.NEXTVAL, '사랑이 가득한 애견 하우스♥',' 처음 본 아이에게 어떻게 다가가야 하는지 어떻게 친해질 수 있는지 잘 압니다. 믿고 맡겨주세요! 걱정 없이 보호자님들이 안심하시고 볼일 보고 돌아오실 수 있게 제가 예뻐해주고 사랑해주고 있겠습니다!!! 감사합니다 :)', '흡연자, 힘들당', '어디에 쓰는고', DEFAULT, 14);
-INSERT INTO PETSITTER (P_NO, P_TITLE, P_CONTENT, P_SERVICE, CARE_LIST, P_MODE, USER_NO) VALUES (SEQ_PETSITTER.NEXTVAL, '편안하고 포근한 펫시팅','아파트 주변에도 산책로가 잘 되어 있을 뿐만 아니라 바로 옆 탄천변 또한 서울 최고의 산책로로 유명합니다. 저 역시 걷는 걸 워낙 좋아해서 같이 산책하면 너무 좋을 것 같아요 저는 물론이고 제가 보호하고 있는 동안 함께 하게 될 수밖에 없는 다정다감한 우리 가족들의 성격 또한 아가들에게 편안함과 포근함을 줄 수 있을거 라고 생각해요 결혼전 함께했던 우리 둥둥이랑 실실이를 돌보는 마음으로 함께 하겠습니다 따뜻한 마음으로 안전하게 돌봐드리겠습니다 :)', '흡연자, 힘들당', '어디에 쓰는고', DEFAULT, 15);
-INSERT INTO PETSITTER (P_NO, P_TITLE, P_CONTENT, P_SERVICE, CARE_LIST, P_MODE, USER_NO) VALUES (SEQ_PETSITTER.NEXTVAL, '보리네 행복하우스?','저희 개모차는 피콜로카네 탄토2 제품으로 산책이 어려운 중,소형견 친구들은 개모차로 산책이 용이할 것 같아요. 집 근처에는 보라매 공원이 가깝게 있어 아가들 산책도 즐겁게 시켜줄 수 있어요. 그리고 집엔 cctv가 설치 되어 있어, 혹시 모를 사고가 있을시 확인이 가능할 것 같습니다. 저는 지금의 반려견 보리 말고도 여려 견종의 친구들을 제법 오랜 시간동안 함께 지내 왔습니다. 그래서 제법 반려견들의 니즈를 파악할 수 있으며, 보리를 키우며 다른 아이들의 소중함도 잘 알고 있기에, 저에게 맡겨주신다면 아가가 내 집과 같이 편안함을 느끼게 해줄 수 있도록 노력 하겠습니다.', '흡연자, 힘들당', '어디에 쓰는고', DEFAULT, 16);
+INSERT INTO PETSITTER
+VALUES (SEQ_PETSITTER.NEXTVAL,
+	'푸돌이와 함께 행복한 시간♥',
+	'안녕하세요. 펫시스터즈 펫시터 장?진 입니다. ? 저는 반려견 푸돌이랑 기족이 된지 2년만에 이 활동을 신청하게 되었어요. 저희 푸돌이는요. 푸들 전문 견사에 몇번이나 찾아간 끝에 데려올 수 있었던 귀한 아이예요. 덕분에 태어나는 것부터 첫 뒤집기, 이유식까지 모두 영상으로 남겨진 친구예요. 어렵게 데려온 친구여서 저도 귀하게 키우고 있어요. 주거 공간을 그리 신경 쓰지 않았던 제가 푸돌이를 위해 집을 살만큼이요. 저희 집은요. 서울 최초 반려동물 특화 오피스텔이예요. 건물 입구에 작은 놀이터와 세족 시설이 따로 마련돼 있고 조만간 상가에 동물 병원과 반려견 유치원도 들어올 예정이예요.(22년 6월) 실외 배변하는 친구들도 걱정말고 놀러오세요. 비가 오거나 눈이 온다해도 실외배변 가능해 옥상정원이 있거든요. 산책을 좋아하는 친구들을 위한 산책코스도 있어요. 선유도한강공원이 도보로 10분 거리에 있어서 차 걱정없이 안전한 산책이 가능하거든요. 대신 저희 푸돌이가 함께 있다는 것만 기억해주세요. 푸돌이는요. 토이푸들 3남매 중 막둥이예요. 위로 두 누나가 있어요. 푸돌이 가족은 매해 분기별로 보는데 올해는 코로나 때문에 지난 겨울을 마지막으로 못보고 있어요. 푸돌이는 3개월 때까지 누나들이랑 함께 자라서 예의를 배운 친구예요. 그런 저희 푸돌이와 특별한 시간 어떠신가요? ?',
+	'모발 관리,응급 처치,매일 산책,실내 놀이,퍼피 케어',
+	'2인 이하 가구,오피스텔,마당 보유,산책로 있음,반려동물 있음',
+	'Y',
+	2);
+INSERT INTO PETSITTER
+VALUES (SEQ_PETSITTER.NEXTVAL,
+	'따뜻한 돌봄을 원하신다면~!^^',
+	'안녕하세요~! 엄마의 마음으로 내 아이처럼 케어하는 펫시스터즈 펫시터 입니다.^^ 몇 달 전 15년간 함께했던 우리 순심이를 떠나보내고 그동안 더 잘해주지 못했던 부분이 아쉬워서 많이 공부하고 배웠습니다. 그렇기 때문에 더욱 세심한 케어를 기본 모토로 삼고 반려견의 마음을 잘 헤아려주는 펫시터를 찾으신다면 기대하셔도 좋습니다.^^ 저희 가정에는 현재 반려견이 없으므로 보호자님의 반려견이 1:1 밀착 관리를 받을 수 있습니다. 아파트 단지 안에 공원이 잘 조성되어 있어 산책은 하루 1번 이상 원하시는 대로 가능하며(1시간 코스), 단지 외에도 3곳 이상의 산책로와 공원이 있기 때문에 날씨와 컨디션에 따라 다른 코스로의 산책도 진행 가능합니다.^^ 혹시나 돌봄 중에 발생하는 응급 상황에 바로 대비할 수 있도록 도보 3분 거리에 밤 10시까지 진료가능한 동물 병원이 있고, 24시간 진료 가능한 동물 병원은 400m거리에(도보 10분) 위치하기에 이 부분은 걱정안하셔도됩니다. 보호자님의 반려견을 믿고 맡겨주시는 것만큼 따뜻하고 세심하게 돌보겠습니다. 감사합니다~!^^',
+	'모발 관리,약물 복용,응급 처치,목욕 가능,매일 산책,실내 놀이,노견 케어,퍼피 케어',
+	'4인 가구,아파트,산책로 있음,반려동물 있음',
+	'Y',
+	3);
+INSERT INTO PETSITTER
+VALUES (SEQ_PETSITTER.NEXTVAL,
+	'댕댕이도 보호자도 행복한 펫시팅',
+	'강아지만 보면 좋아서 시간 가는줄도 모르는 초등학생 아들과 정성스럽게 돌봐 드립니다. 새끼때 부터 함께했던, 이제는 별이 되어버린ㅠ 맥스 (골든리트리버), 바우 (올드잉글리쉬 쉽독), 몽이 (페키니즈)를 직접 키우고 경험한 노하우로 견주님의 사랑스러운 반려견을 안전하게 돌봐드리겠습니다. 우리 빨리 만나요~!! * 1박 이상 펫시팅 맡기실 경우 강남구에 사는 반려견은 무료 픽업/드랍 서비스 해드려요. * 사정상 소형견만 케어 가능합니다. * 당일 예약은 힘들어요. * 산책시 사람이나 동물에게 공격성 짖음이 심한 아이는 산책이 힘들수도 있습니다. ㅠ',
+	'모발 관리,응급 처치,매일 산책,실내 놀이,노견 케어',
+	'2인 이하 가구,아파트,산책로 있음,반려동물 없음',
+	'Y',
+	4);
+INSERT INTO PETSITTER
+VALUES (SEQ_PETSITTER.NEXTVAL,
+	'1:1 케어 따뜻하게 돌볼게요?',
+	'안녕하세요. 저는 신도림에서 신혼을 보내고 있는 새댁이에요. 저희 부부는 각자 강아지를 키운 시간이 긴 만큼 강아지를 무척 사랑해요. ??? 순둥이 푸들 빵이와 함께한 지는 10년이 되었어요. 가끔 빵이를 혼자 집에 두는 날에는 미안함에 온종일 마음이 불편했고, 강아지 호텔링을 했을 때엔 잘 적응하고 있을지, 직원들이 퇴근한 밤에 혼자 우리에 갇혀 있진 않은지, 다른 사나운 강아지들과 한 공간에서 스트레스 받고 있진 않을지 항상 불안했어요. 반려견과 함께하는 분들이시라면, 우리 아이를 낯선 곳에 맡겨야 할 때 조금이라도 더 안전하고 편안하게 지낼 수 있기를 바라실 거예요. 이 마음을 견주로서 너무도 잘 알고 있기에, 아이에게 잠시나마 따뜻한 보금자리가 되어주고자 펫시터를 시작하게 되었어요. 우리 아이가 지낼 곳은 깨끗하게 리모델링한 아파트에요. 하루 종일 함께하며 1:1 케어로 아이가 환경에 잘 적응할 수 있도록 진심을 다해 돌볼 것을 약속드려요. :) 저와 함께하고 있는 반려견 빵이는 성향이 착하고 순하며, 호기심이 많아서 집에 오는 강아지 손님을 좋아해요. 호기심 타임이 끝나면 다시 자기자리로 돌아와 주인만 졸졸 따라다니는 강아지예요. 편안한 마음으로 맡겨 주시면 보호자님이 안심하실 수 있도록 따뜻하게 보살펴드릴게요. ??',
+	'집 앞 픽업,응급 처치,매일 산책,실내 놀이,장기 예약,노견 케어,퍼피 케어',
+	'2인 이하 가구,아파트,산책로 있음,반려동물 있음',
+	'Y',
+	5);
+INSERT INTO PETSITTER
+VALUES (SEQ_PETSITTER.NEXTVAL,
+	'어떤 반려견이든 소중하고 따듯하게',
+	'안녕하세요. 저는 11살의 작고 소중한 할아버지 ‘토리’ 라는 반려견을 키우고 있는 견주입니다. 반려견을 처음 키우며 몰랐던 것들이 되게 많았는데 세월이 지나며 점점 배워온 것 같아요. 또 같이 산 세월이 길어지면 길어질수록 더 애틋하고, 제 반려견 뿐만아니라 모든 동물을 대하는 방식과 생각이 변하게 되었습니다. 유기견에 대한 관심과 더불어 보호소에 있는 동물들에 대한 관심이 늘어나며 정기후원도 해왔습니다. 원래 가족들과 같이 반려견을 키웠었는데, 올해 독립을 하게 되면서 반려견을 데리고 나왔어요. 원래 없던 분리불안이 생기기 시작하니 집을 비울 수 없는 날이 많아지고, 집을 비워야 하는 날엔 유치원에 맡기거나 다른 대안을 찾아봐야했습니다. 분리불안이 있는 반려견을 혼자 사는 사람이 케어하기엔 많은 시간과 노력을 쏟아야 한다는 생각이 들더라구요. 처음엔 저희 아이를 믿고 맡길 수 있는 플랫폼을 찾다가 앱을 설치하게되었는데요. 보다보니, 저도 평일 내내 재택을 하고 있어서 평일에 급하게 맡겨야 할 곳을 찾는 견주님들이 있으면 따듯한 보금자리를 제공해드릴 수 있을 것이라고 생각하게 되어 펫시터를 신청하게 되었습니다. 일단 제가 분리불안이 있는 반려견을 키우다보니, 분리불안에 대해 자연스럽게 공부하게 되고 어떤 특성을 가지는지 잘 알게되었습니다. 그리고 견주분들이 분리불안이 있는 반려견을 집에 혼자 두고 나가시기가 얼마나 걱정되시는지에 대한 마음도 잘 압니다(저도 겪어봐서요), 너무 소중한 내 아이를 믿고 맡길 수 있는 곳이 많지 않아 고민하고 있으실 것 같은데요. 저는 평일에 집에 항상 있으므로 제가 저희 반려견을 소중히 생각하는 것 만큼, 맡겨주시는 반려견도 소중히 대해드릴게요. 저희집 주변에는 강아지들이 산책을 많이 나오는 산책로가 따로 있습니다. 그리고 집 안에는 방마다 애견 매트가 다 깔려있어요. 현관문에는 애견안전문이 설치되어져 있구요. 아이 맡기시면 제가 최대한 정성을 쏟아서 견주님들이 불안해하지 않도록 잘 돌봐드릴게요. 사진과 영상을 찍어서 틈틈히 보내드릴 수 있구요, 맛있는 수제 간식도 급여해드릴 수 있습니다.',
+	'모발 관리,약물 복용,응급 처치,매일 산책,실내 놀이,장기 예약,노견 케어',
+	'2인 이하 가구,오피스텔,반려동물 있음',
+	'Y',
+	6);
+INSERT INTO PETSITTER
+VALUES (SEQ_PETSITTER.NEXTVAL,
+	'행복한 추억 만들어 드릴께요?',
+	'안녕하세요? 저는 어려서부터 동물을 무척 좋아해서 반려견과의 생활을 늘 꿈꾸었습니다. 그러다.. 성인이 된 20대 초반부터 반려견과의 행복한 시간을 함께 하게 되었습니다. 맨 처음 가족으로 맞은 아이는 요크셔 테리어종의 너무나 사랑스럽고 예쁜 아이였는데 무지개 다리를 건넌지 오랜시간이 지난 지금이지만 아직도 눈에 선합니다. 그 후로도 줄곧 여러종의 반려견들과 늘 함께 했고 20대 후반에는 좋아하는 일을 업으로 삼고자 애견샵도 운영했습니다. 마지막으로 얼마전에 자식과 같은 웰시코기 아들을 떠나보내고 공허함과 슬픔의 시간을 보내고 있었습니다. 아이들은 늘 나에게 행복과 힐링을 주는 천사와 같은 존재지만 아이들의 시간은 워낙에 짧은지라 한 아이씩 무지개 다리를 떠나 보내는 일은 너무나 힘들고 가슴아픈 일이었습니다. 그러던 중 지인의 추천으로 펫시터란 일에 관심을 갖게 되어 이 일을 시작하게 되었습니다. 그동안의 오랜 경험과 나름의 지식을 토대로 돌봄의 손길이 필요한 아이들를 위해 일한다면 무엇보다 보람되고 행복할것 같습니다. 물론 경험과 지식도 중요하지만 아이들을 돌봄에 있어서 가장 중요한것은 사랑과 정성이라고 생각합니다. 그리고 저희집은 아이들과 함께 함에 있어 짖음이나 신나게 뛰노는데 전혀 제한이 없는 작은 마당이 딸린 단독주택입니다. 마당이 있어 실내외 배변도 자유롭고요. 집 주변엔 북한산로와 정릉천 산책로가 있어서 즐거운 노즈워크 산책이 가능합니다. 가족인 아이를 다른 사람의 손에 맡긴다는 것은 무척 불안하고 힘든 일일 것입니다. 그런 보호자님들의 마음을 헤아려 정성껏 안전하게 보살핌에 최선을 다하겠습니다. 저는 따로 하는 일이 전혀 없어서 온전히 아이들에만 집중하고 케어할 수 있습니다 아이들이 저희집에 머무는 동안은 편안함과 행복함만을 느낄 수 있도록 노력하겠습니다. 물론 저도 동시에 힐링하구요.?',
+	'모발 관리,응급 처치,목욕 가능,매일 산책,실내 놀이,장기 예약,노견 케어,퍼피 케어',
+	'2인 이하 가구,단독 주택,마당 보유,산책로 있음,반려동물 없음',
+	'Y',
+	9);
+INSERT INTO PETSITTER
+VALUES (SEQ_PETSITTER.NEXTVAL,
+	'안심하고 떠나는 행복여행?',
+	'행복한 반려견과 삶을 살고 있는 펫시스터즈 펫시터입니다~~ ? 저희집 댕댕이 행복이는 2015년생 남아 푸들로 8개월에 파양되었고 저희에게 입양시부터 분리불안이 있어 항상 저와 함께 지내고 있습니다. 분리불안으로 인해 저도 일이 있을 때는 지인이나 호텔에 맡기는 터라 그 누구보다 나의 반려견을 믿고 맡길 수 있는 곳이 절실했습니다!!! 그런데 호텔이나 동물병원에 맡길 경우 케이지에 갇히거나 많은 친구들로 인해 아이가 스트레스를 받더라구요.? 이를 계기로 내가 직접 믿음과 편안함을 줄 수 있는 장소를 제공하며 반려견들을 케어해야겠다는 맘으로 펫시터를 시작하기로 했습니다. 행복이는 실외배변으로 인해 기본 하루 2회 이상 산책을 하는데 집뒤 성미산 산책로와 10분 거리에 연트럴파크, 우천시에도 산책할 수 있는 홍제천로 등등 집주변에 최상의 산책코스가 즐비하답니다. 또한 분리불안 교육의 하나로 수제간식을 이용한 노즈워크도 자주 하고 있으며 간식은 건조기를 이용해 고구마나 닭가슴살로 만들어 주고 있어요. 생명을 사랑하고 잘 돌봐줄 수 있는 능력은 전문성, 비전문성을 떠나 반려견과 함께 해 본 이력과 마음가짐이 중요하다 생각이 듭니다. 우리의 반려견을 나의 가족과 같이 책임감과 사랑으로 돌볼 수 있도록 최선을 다하고 있습니다. 행복이와도 행복한 추억을 만들수 있도록요~~!!? 최근에 우리아이들 견생사진이 되도록 포토존도 만들어 촬영해드리고 있어요 ??',
+	'집 앞 픽업,모발 관리,약물 복용,응급 처치,매일 산책,실내 놀이,노견 케어,퍼피 케어',
+	'2인 이하 가구,빌라,산책로 있음,반려동물 있음',
+	'Y',
+	10);
+INSERT INTO PETSITTER
+VALUES (SEQ_PETSITTER.NEXTVAL,
+	'친구와 함께라서 행복한 펫시팅?',
+	'안녕하세요. 12세 딸, 9세 아들은 반려견을 사랑으로 대할 줄 알며 얌전한 아이들입니다. 반려견은 집에서 벨소리에 잠깐 짖지만 평소에는 아주 얌전합니다. 사람을 잘 따르고 강아지 친구들도 엄청 좋아하며, 밖에서 뛰어 노는 것을 좋아하는 활발하고 명랑한 아이입니다. 시팅하는 동안 외롭지 않도록 친구가 되어 줄 수 있고, 어린 아가들은 사회성을 키우는데도 도움을 줄 수 있습니다. 집에서 편히 지내고, 집이 학의천을 끼고 있는 대단지 아파트여서 산책하면서 에너지 발산하기 아주 좋습니다. 친구와 함께 믿을만한 곳에서 행복한 펫시팅 한 번 해보세요~?',
+	'모발 관리,약물 복용,응급 처치,목욕 가능,매일 산책,실내 놀이,장기 예약,노견 케어,퍼피 케어',
+	'4인 가구,아파트,산책로 있음,반려동물 있음',
+	'Y',
+	11);
+INSERT INTO PETSITTER
+VALUES (SEQ_PETSITTER.NEXTVAL,
+	'작은마당이 있는 로초의 집??',
+	'안녕하세요~? 저는 반려견 1살 로초와 함께 추억을 쌓아가고 있어요.저희 로초는 4.9kg의 하나밖에 없는 믹스 아이에요. 14년 동안 함께하던 반려견을 하늘나라로 보내고 빈자리가 너무 커 포인핸드를 매일 같이 보다가 눈에 밟혀 용인동물보호소에서 로초를 만나 데려오게 되었어요. 길에서 태어나 지내던 스트릿 출신이라 사람을 신뢰하지 못하던 아이가 저희 부부의 넘치는 사랑으로 점점 마음을 열어가는 모습에 하루하루 감동하며 보내고 있습니다. 로초는 사람보다 동물들을 훨씬 좋아하고 의지해요. 애견카페나 다른 곳에서 강아지들을 만났을 때 너무 행복해하는 로초의 모습을 보고 펫시팅을 고려하게 되어 펫시스터즈의 펫시터 교육을 받게되었습니다. 저희 집은 작은 마당이 있는 연립주택이에요. 리모델링 진행 시 반려견을 위해 미끄럽지 않은 마이크로 토핑이라는 마감재를 사용했습니다. 다리가 아픈 아이를 위한 스텝퍼도 준비되어 있습니다. 또 산책이 어려운 경우 마당에 타프가 설치되어 있어 간단한 야외활동도 가능한 장점이 있습니다. 산책은 뒷문으로 바로 안산이 연결되어 있어 안산으로 가는 편입니다. 경사가 완만하고 산책로가 잘되어있습니다. 로초는 함께한지 1년정도밖에 되지 않았지만 이전에 14년동안 함께 한 아이를 케어한 경험으로 다양한 연령대에 강아지를 시팅할 수 있습니다. 그 무엇보다 중요한 사랑과 정성으로 아이들을 안전하게 돌봐드리겠습니다.?',
+	'집 앞 픽업,약물 복용,응급 처치,매일 산책,실내 놀이,장기 예약,노견 케어,퍼피 케어',
+	'2인 이하 가구,빌라,마당 보유,산책로 있음,반려동물 있음',
+	'Y',
+	12);
+INSERT INTO PETSITTER
+VALUES (SEQ_PETSITTER.NEXTVAL,
+	'모두의 휴식처.즐거움은 덤~♡',
+	'안녕하세요. ? 저는 은행원으로 약 16년간 근무하였고 약 19년간 수학교습소를 운영하다가 2021년 8월에 정리하고 안양에서 서울 금천구로 이사를 하였습니다. 주택으로 오면서 딸의 오랜 소망이던 강아지를 작년 말에 입양하여 예쁜 강아지 재롱과 귀여움에 흠뻑 빠져 지내고 있습니다. 다시 일을 시작할까 했는데 키우는 강아지가 눈에 밟혀 도저히 떼놓을 수 없을 거 같아 고민하던 중 펫시터를 알게 되어 서울 50플러스 센터와 펫시스터즈를 통해 교육을 받고 펫시터가 되었습니다.? 저는 사회복지사와 심리상담사 그리고 아동 심리상담사 등의 자격이 있어 사람 대하는 것을 비교적 좋아하는 편인데 강아지를 키워보니 아이 키우는 것과 별반 다르지 않다는 것을 느꼈습니다. 그래서 펫시터도 잘 할 수 있겠다는 생각이 들었습니다. 또한 펫시스터즈 본사에서 많은 정보와 도움을 받을 수 있다는 것에 두려움이 다소 사라지고 기대와 의욕이 생겼습니다. 이제 저의 세 번째 직업으로의 첫걸음을 시작합니다. 믿고 맡겨 주시면 이론과 실무를 겸비하여 보호자님과 반려견 그리고 저와 저의 강아지까지 모두 만족하는 결과를 얻도록 늘 최선을 다하겠습니다. 우리 곧 만나요~^^',
+	'모발 관리,약물 복용,응급 처치,목욕 가능,매일 산책,실내 놀이,노견 케어,퍼피 케어',
+	'3인 가구,단독 주택,마당 보유,산책로 있음,반려동물 있음',
+	'Y',
+	13);
+INSERT INTO PETSITTER
+VALUES (SEQ_PETSITTER.NEXTVAL,
+	'편안한 휴식을 위한 반려견의 집',
+	'안녕하세요. ? 저는 반려견 레이와 함께 벌써 14년째 행복하게 지내고 있습니다. 저희 레이는 레이클랜드 테리어 종으로 생후 2달 때 분양받아서 지금은 6.8kg의 노견이지만 매일 산책을 다니고 있어 건강을 잘 유지하고 있어요. 1살이 되기도 전에 고관절 이형성증 때문에 한쪽 뒷다리 뼈를 잘라내는 대수술을 하기도 했네요. 레이 어릴 때는 하도 작고 털도 온통 짙은 검은색이어서 사진 찍으면 솜뭉치처럼 보이곤 했는데 이제는 벌써 노령견이 되었네요. 견종 특성상 독립적이어서 강아지들한테 추근대거나 불편하게 하지 않고 사람을 좋아해서 무서움 없이 다가가 냄새 맡는 걸 좋아한답니다. 제가 집안일 하거나 책을 읽으면 그저 쿠션에 올라 물끄러미 저만 쳐다보고 있어요. 단지 산책할 때가 되면 그때 와서 제 다리를 긁죠. ? 레이와 14년을 같이 지내다 보니, 가장 아쉬운 것이 노견을 안심하고 맡길 수 있는 곳이 없다는 점입니다. 노견이라고 어리고 작은 강아지들이 자꾸 레이한테 입질하는 것도 보면 정말 마음이 너무 불편해서 외출을 자제하거나 저 스스로가 편히 맡길 곳을 찾게 되더라고요. 노견이던 어린 강아지이던 우리 반려견들을 마음 편히 걱정 없이 맡길 수 있는 곳을 찾게 되는 건 우리 애견인 모두가 공감하는 상황이 아닐까 싶었어요. 이러한 점으로 인해 펫시터를 시작하게 된 것 같아요. 반려동물이 지낼 공간은 빌라 건물이고요, 사진에서 보시는 것처럼 내부는 개축되어있는 1층입니다. 노견과 생활하다 보니 미끄럼 방지 매트, 계단도 2가지 종류로 일반 계단식과 슬라이드식 계단을 설치해놨어요. 이외에도 보라매 공원이 10분 거리에 있어서 매일 보라매로 도보 산책을 다니곤 합니다. 가끔은 차로 이동해서 좀 더 많은 시간을 공원에서 보내기도 합니다. 유모차가 있어 애견의 컨디션을 보면서 걷기도 하고, 유모차에 태워 가기도 한답니다. 제가 펫시터를 하면서 가장 중요하게 여기는 건 편안함입니다. 안전은 기본이고요 저와 함께 하는 시간이 반려견한테도 즐겁고 편안하고 따뜻한 시간이 되었으면 하는 것이 제 바람이네요.?',
+	'약물 복용,응급 처치,매일 산책,실내 놀이,노견 케어',
+	'2인 이하 가구,빌라,반려동물 있어요',
+	'Y',
+	14);
+INSERT INTO PETSITTER
+VALUES (SEQ_PETSITTER.NEXTVAL,
+	'애정을 담아 돌봐드려요?',
+	'안녕하세요! ? 저는 "소리"라는 반려견을 12년째 키우고 있습니다. 소리는 표정이 다양한 귀여운 말티즈입니다, 동네 이웃에게 파양된 5개월된 소리를 입양한 것이 첫 만남이었습니다. 소리는 처음에 다리에 장애가 있어서 1년도 채 안되었을 때 수술을 받게 되었습니다. 수술을 해도 똑바로 못 걸을 거라는 말을 들었지만, 동네에서 가장 큰 병원을 찾아가 수술을 받았고, 산도 들도 신나게 잘 뛰어다닐 정도로 건강을 되찾았습니다.? 소리는 올해 1월에 부모님이 계신 넓은 마당이 있는 집으로 가게 되었고, 너무 보고 싶지만 항상 자유롭게 뛰어노는 소리를 보면 마음이 뿌듯합니다. 소리를 동물병원에 호텔링을 맡긴적이 있었는데, 물통도 밥통도 엎어버리고 상당히 기분 상한 상태였다고 들어서 마음이 참 많이 안좋았습니다. 그런데, 이웃분께 맡겼을 때 잠도 잘자고 밥도 잘먹었다고 하시는 말을 듣고 원래 있던 가정과 비슷한 느낌의 가정집에서 호텔링을 하는 것에 관심이 생겼습니다. 일을 하지 않고 항상 집에 있는 저에게 딱 알맞은 일이라고 생각하였고, 귀여운 강아지들과 함께하는 일이라면 더더욱 마다할 이유가 없었습니다.? 저는 빌라에 살고 있고, 두명이 거주중이기 때문에 공간이 넓습니다. 근처에 망우산과 중랑천이 있기 때문에 강아지들이 노즈 워크 활동을 하고 실외 배변을 하기에는 최적의 장소라고 생각합니다. 소리와 산책을 할 때에는 중랑천으로 자주 갔었는데 한쪽에는 풀길, 다른 한쪽에는 물길이 있어서 탁 트인 곳에서 여유롭게 산책을 할 수 있기때문에 많은 반려인들이 선호하는 곳입니다. 저는 강아지와 함께한 시간이 총 18년 이기때문에 강아지에 대한 이해도가 높고,강아지와 내내 붙어있으며 케어 할 수 있기 때문에 원하시는 케어를 충분히 제공해드릴 수 있습니다. 강아지를 맡길 때 이런저런 마음을 이해하고 알고 있기 때문에 말씀드리는 것은, 강아지를 맡을 때에는 책임감과 애정을 가지고 돌볼 것을 약속드리며 강아지가 외롭고 무섭지 않게 즐거운 시간을 보낼 수 있도록 최선을 다하겠습니다.? +2022.5.16 우리 짱이(믹스)를 입양하였어요~! 포인핸드에서 보고 데려온 귀여운 아가는 현재 1살이 되어 멋진 꼬리를 가진 강쥐로 성장하였습니다. 덩치만 자랐지 입질한번 한적없는 순둥한 아이에요. 아가짱이와 함께 놀수있는 중형견아이면 더더욱 환영합니다?',
+	'모발 관리,응급 처치,매일 산책,실내 놀이,퍼피 케어',
+	'2인 이하 가구,빌라,산책로 있음,반려동물 있음',
+	'Y',
+	15);
+INSERT INTO PETSITTER
+VALUES (SEQ_PETSITTER.NEXTVAL,
+	'소중한 아기들, 내 아이처럼',
+	'인사드립니다. ? 영등포 아크로타워스퀘어 아파트에서 남편과 살고 있는 전업주부 랍니다. 딸 아들 둘다 출가시키고요. 지난 6월에는 막내딸 격인 반려견 누끼를 무지개다리 너머로 보냈답니다. 선천성 심장병을 앓던 포메라니언 누끼는 8년간의 짧은 생을 마치고 별이 됐습니다. 그 아이는 저희 부부에게 하늘에서 내려온 선물이었어요. 아빠의 출근 배웅 장소는 엘리베이터 앞, 주말 늦잠은 누끼의 모닝 뽀뽀 때문에 번번이 실패, 아침 저녁으로 약도 얼마나 잘 먹는지 천사같은 아이 였지요. 남원 실상사에서 49재를 마치고 오면서 이제는 아이를 훌훌 떠나 보내야 한다고 맘먹었지만 그리움은 어쩔 수 없네요. 그러다가 우연히 펫플래닛을 알았어요. 누끼와 전국 곳곳을 다니 면서 눈칫밥도 많이 먹었지요. 식당에서 교대로 밥을 먹기도 했고요. 때론 아이와 함께 묵을 숙소를 찾지 못해 여행을 포기하기도 했답니다. 부득이 아이 혼자서 하루를 지내도록 할 때면 얼마나 불안하고 또 미안하던지. 그래서 주변 분들의 신세를 진 적도 있어요. 아이들에게는 보호자랑 함께 있는 게 최고이지만 불가피하게 다른 사람의 돌봄이 필요할 때도 있지요.? 다행히 저희 아파트가 최근에 조성된 곳이어서 주변이 아이들 산책하기에 좋은 환경이랍니다. 단지 마당에 잘 단장된 정원과 공원이 있고 2층에도 따로 보행 전용 산책로가 있어요. 저희 아이는 소심한 아이라서 한적한 2층 산책로에서 아침 저녁 산책을 했답니다. 아이가 우리에게 주는 기쁨은 세상 무엇과도 바꿀 수 없지요. 그리고 그 조그만 생명체가 보호자님에게 얼마나 소중한지 잘 합니다. 아이들이 편안하고 건강하게 지내다가 돌아갈 수 있도록 정성을 다해 세심하게 보살피겠습니다.',
+	'모발 관리,약물 복용,응급 처치,매일 산책,실내 놀이,퍼피 케어',
+	'2인 이하 가구,아파트,반려동물 없음',
+	'Y',
+	16);
+
+
+
+--------------------------------------------------
+------    펫시터 프로필 첨부파일 테이블 더미    ------
+--------------------------------------------------
+INSERT INTO P_ATTACHMENT
+VALUES (SEQ_P_ATTACHMENT.NEXTVAL,
+	'256e34db21e0541479da444b02901b526.jpg',
+	'256e34db21e0541479da444b02901b526.jpg',
+	'/resources/upFiles/petsitter_upfiles/',
+	SYSDATE,
+	'Y',
+	0,
+	13);
+INSERT INTO P_ATTACHMENT
+VALUES (SEQ_P_ATTACHMENT.NEXTVAL,
+	'25448af3f64f94f2f8eb52a4435b27afb.jpg',
+	'25448af3f64f94f2f8eb52a4435b27afb.jpg',
+	'/resources/upFiles/petsitter_upfiles/',
+	SYSDATE,
+	'Y',
+	0,
+	13);
+INSERT INTO P_ATTACHMENT
+VALUES (SEQ_P_ATTACHMENT.NEXTVAL,
+	'2101371741686407ead0811f58d56db38.jpg',
+	'2101371741686407ead0811f58d56db38.jpg',
+	'/resources/upFiles/petsitter_upfiles/',
+	SYSDATE,
+	'Y',
+	0,
+	13);
+INSERT INTO P_ATTACHMENT
+VALUES (SEQ_P_ATTACHMENT.NEXTVAL,
+	'23b2102dc680b449584327388298b1677.jpg',
+	'23b2102dc680b449584327388298b1677.jpg',
+	'/resources/upFiles/petsitter_upfiles/',
+	SYSDATE,
+	'Y',
+	0,
+	13);
+INSERT INTO P_ATTACHMENT
+VALUES (SEQ_P_ATTACHMENT.NEXTVAL,
+	'39585b681ade04107b5d419863cb3fa44.jpeg',
+	'39585b681ade04107b5d419863cb3fa44.jpeg',
+	'/resources/upFiles/petsitter_upfiles/',
+	SYSDATE,
+	'Y',
+	0,
+	12);
+INSERT INTO P_ATTACHMENT
+VALUES (SEQ_P_ATTACHMENT.NEXTVAL,
+	'3a10774fa7f14414ba1d3c08f1d3dd162.jpeg',
+	'3a10774fa7f14414ba1d3c08f1d3dd162.jpeg',
+	'/resources/upFiles/petsitter_upfiles/',
+	SYSDATE,
+	'Y',
+	0,
+	12);
+INSERT INTO P_ATTACHMENT
+VALUES (SEQ_P_ATTACHMENT.NEXTVAL,
+	'3a7eb78af8db4882a79cbdb90f5f40e1.jpg',
+	'3a7eb78af8db4882a79cbdb90f5f40e1.jpg',
+	'/resources/upFiles/petsitter_upfiles/',
+	SYSDATE,
+	'Y',
+	0,
+	12);
+INSERT INTO P_ATTACHMENT
+VALUES (SEQ_P_ATTACHMENT.NEXTVAL,
+	'3de53db5db28f42458023e6388a78c5c4.jpg',
+	'3de53db5db28f42458023e6388a78c5c4.jpg',
+	'/resources/upFiles/petsitter_upfiles/',
+	SYSDATE,
+	'Y',
+	0,
+	12);
+INSERT INTO P_ATTACHMENT
+VALUES (SEQ_P_ATTACHMENT.NEXTVAL,
+	'30dac408da8744ae7abef26f3043fa97a.jpg',
+	'30dac408da8744ae7abef26f3043fa97a.jpg',
+	'/resources/upFiles/petsitter_upfiles/',
+	SYSDATE,
+	'Y',
+	0,
+	12);
+INSERT INTO P_ATTACHMENT
+VALUES (SEQ_P_ATTACHMENT.NEXTVAL,
+	'1dabe7586a9c046cf8a76d09fa743e799.jpg',
+	'1dabe7586a9c046cf8a76d09fa743e799.jpg',
+	'/resources/upFiles/petsitter_upfiles/',
+	SYSDATE,
+	'Y',
+	0,
+	11);
+INSERT INTO P_ATTACHMENT
+VALUES (SEQ_P_ATTACHMENT.NEXTVAL,
+	'1d297272329ba47659bb5cb221ef33526.jpg',
+	'1d297272329ba47659bb5cb221ef33526.jpg',
+	'/resources/upFiles/petsitter_upfiles/',
+	SYSDATE,
+	'Y',
+	0,
+	11);
+INSERT INTO P_ATTACHMENT
+VALUES (SEQ_P_ATTACHMENT.NEXTVAL,
+	'13a4b67bdaa98482d8c382c9cf73427ac.jpg',
+	'13a4b67bdaa98482d8c382c9cf73427ac.jpg',
+	'/resources/upFiles/petsitter_upfiles/',
+	SYSDATE,
+	'Y',
+	0,
+	11);
+INSERT INTO P_ATTACHMENT
+VALUES (SEQ_P_ATTACHMENT.NEXTVAL,
+	'1341bbb729fba42c085ec1151816bbe93.jpg',
+	'1341bbb729fba42c085ec1151816bbe93.jpg',
+	'/resources/upFiles/petsitter_upfiles/',
+	SYSDATE,
+	'Y',
+	0,
+	11);
+INSERT INTO P_ATTACHMENT
+VALUES (SEQ_P_ATTACHMENT.NEXTVAL,
+	'4be1152337cca4ae1b3c20714cef0086c.jpg',
+	'4be1152337cca4ae1b3c20714cef0086c.jpg',
+	'/resources/upFiles/petsitter_upfiles/',
+	SYSDATE,
+	'Y',
+	0,
+	10);
+INSERT INTO P_ATTACHMENT
+VALUES (SEQ_P_ATTACHMENT.NEXTVAL,
+	'474888b0299e940878fa887afcc49a4a9.jpg',
+	'474888b0299e940878fa887afcc49a4a9.jpg',
+	'/resources/upFiles/petsitter_upfiles/',
+	SYSDATE,
+	'Y',
+	0,
+	10);
+INSERT INTO P_ATTACHMENT
+VALUES (SEQ_P_ATTACHMENT.NEXTVAL,
+	'4e31804b7d1e444288feb1154dfe18428.jpg',
+	'4e31804b7d1e444288feb1154dfe18428.jpg',
+	'/resources/upFiles/petsitter_upfiles/',
+	SYSDATE,
+	'Y',
+	0,
+	10);
+INSERT INTO P_ATTACHMENT
+VALUES (SEQ_P_ATTACHMENT.NEXTVAL,
+	'46fc6e5954f764eddb212de457f166619.jpg',
+	'46fc6e5954f764eddb212de457f166619.jpg',
+	'/resources/upFiles/petsitter_upfiles/',
+	SYSDATE,
+	'Y',
+	0,
+	10);
+INSERT INTO P_ATTACHMENT
+VALUES (SEQ_P_ATTACHMENT.NEXTVAL,
+	'4df02c11ce2ca4545a688c528d00888a3.jpg',
+	'4df02c11ce2ca4545a688c528d00888a3.jpg',
+	'/resources/upFiles/petsitter_upfiles/',
+	SYSDATE,
+	'Y',
+	0,
+	10);
+INSERT INTO P_ATTACHMENT
+VALUES (SEQ_P_ATTACHMENT.NEXTVAL,
+	'5173db0558c3423ab67ebce963831540.jpeg',
+	'5173db0558c3423ab67ebce963831540.jpeg',
+	'/resources/upFiles/petsitter_upfiles/',
+	SYSDATE,
+	'Y',
+	0,
+	9);
+INSERT INTO P_ATTACHMENT
+VALUES (SEQ_P_ATTACHMENT.NEXTVAL,
+	'5fc0f82b053b14185b4e7939c78b871d2.jpeg',
+	'5fc0f82b053b14185b4e7939c78b871d2.jpeg',
+	'/resources/upFiles/petsitter_upfiles/',
+	SYSDATE,
+	'Y',
+	0,
+	9);
+INSERT INTO P_ATTACHMENT
+VALUES (SEQ_P_ATTACHMENT.NEXTVAL,
+	'5206ca0b957e840dcb89edabf4047e090.jpeg',
+	'5206ca0b957e840dcb89edabf4047e090.jpeg',
+	'/resources/upFiles/petsitter_upfiles/',
+	SYSDATE,
+	'Y',
+	0,
+	9);
+INSERT INTO P_ATTACHMENT
+VALUES (SEQ_P_ATTACHMENT.NEXTVAL,
+	'5004ca0d6de3d4ce9a62f18a22aa77e7b.jpeg',
+	'5004ca0d6de3d4ce9a62f18a22aa77e7b.jpeg',
+	'/resources/upFiles/petsitter_upfiles/',
+	SYSDATE,
+	'Y',
+	0,
+	9);
+INSERT INTO P_ATTACHMENT
+VALUES (SEQ_P_ATTACHMENT.NEXTVAL,
+	'6a8d39774a5347cfb5343b4713590d8e.jpg',
+	'6a8d39774a5347cfb5343b4713590d8e.jpg',
+	'/resources/upFiles/petsitter_upfiles/',
+	SYSDATE,
+	'Y',
+	0,
+	8);
+INSERT INTO P_ATTACHMENT
+VALUES (SEQ_P_ATTACHMENT.NEXTVAL,
+	'61e3a6ef0f94f41f09f6ae3b7a0b26409.jpg',
+	'61e3a6ef0f94f41f09f6ae3b7a0b26409.jpg',
+	'/resources/upFiles/petsitter_upfiles/',
+	SYSDATE,
+	'Y',
+	0,
+	8);
+INSERT INTO P_ATTACHMENT
+VALUES (SEQ_P_ATTACHMENT.NEXTVAL,
+	'6fbd0be18d8064cc3a3d1e481d338ff3e.jpg',
+	'6fbd0be18d8064cc3a3d1e481d338ff3e.jpg',
+	'/resources/upFiles/petsitter_upfiles/',
+	SYSDATE,
+	'Y',
+	0,
+	8);
+INSERT INTO P_ATTACHMENT
+VALUES (SEQ_P_ATTACHMENT.NEXTVAL,
+	'6729069903e44472cb003a3f05eb800cf.jpg',
+	'6729069903e44472cb003a3f05eb800cf.jpg',
+	'/resources/upFiles/petsitter_upfiles/',
+	SYSDATE,
+	'Y',
+	0,
+	8);
+INSERT INTO P_ATTACHMENT
+VALUES (SEQ_P_ATTACHMENT.NEXTVAL,
+	'69f882e5f61cd459ba324fcfa374107a2.jpg',
+	'69f882e5f61cd459ba324fcfa374107a2.jpg',
+	'/resources/upFiles/petsitter_upfiles/',
+	SYSDATE,
+	'Y',
+	0,
+	8);
+INSERT INTO P_ATTACHMENT
+VALUES (SEQ_P_ATTACHMENT.NEXTVAL,
+	'7de30663a76645e6a0f52cc340fe8024.jpg',
+	'7de30663a76645e6a0f52cc340fe8024.jpg',
+	'/resources/upFiles/petsitter_upfiles/',
+	SYSDATE,
+	'Y',
+	0,
+	7);
+INSERT INTO P_ATTACHMENT
+VALUES (SEQ_P_ATTACHMENT.NEXTVAL,
+	'7b3d50a0f098749c7bf3c20269172f76c.jpg',
+	'7b3d50a0f098749c7bf3c20269172f76c.jpg',
+	'/resources/upFiles/petsitter_upfiles/',
+	SYSDATE,
+	'Y',
+	0,
+	7);
+INSERT INTO P_ATTACHMENT
+VALUES (SEQ_P_ATTACHMENT.NEXTVAL,
+	'75cb8d32aa8f6443292984e33645a68b1.jpg',
+	'75cb8d32aa8f6443292984e33645a68b1.jpg',
+	'/resources/upFiles/petsitter_upfiles/',
+	SYSDATE,
+	'Y',
+	0,
+	7);
+INSERT INTO P_ATTACHMENT
+VALUES (SEQ_P_ATTACHMENT.NEXTVAL,
+	'7c181e5c7b908463592e6809fb5db5d2e.jpg',
+	'7c181e5c7b908463592e6809fb5db5d2e.jpg',
+	'/resources/upFiles/petsitter_upfiles/',
+	SYSDATE,
+	'Y',
+	0,
+	7);
+INSERT INTO P_ATTACHMENT
+VALUES (SEQ_P_ATTACHMENT.NEXTVAL,
+	'822ebe6a3210c484aa1d0949eca5e9c7f.jpg',
+	'822ebe6a3210c484aa1d0949eca5e9c7f.jpg',
+	'/resources/upFiles/petsitter_upfiles/',
+	SYSDATE,
+	'Y',
+	0,
+	6);
+INSERT INTO P_ATTACHMENT
+VALUES (SEQ_P_ATTACHMENT.NEXTVAL,
+	'8b4ad3755fc1547d3aad9784974fa7e95.jpg',
+	'8b4ad3755fc1547d3aad9784974fa7e95.jpg',
+	'/resources/upFiles/petsitter_upfiles/',
+	SYSDATE,
+	'Y',
+	0,
+	6);
+INSERT INTO P_ATTACHMENT
+VALUES (SEQ_P_ATTACHMENT.NEXTVAL,
+	'84ce28b8b50ae46ebabd8567f827a3c37.jpg',
+	'84ce28b8b50ae46ebabd8567f827a3c37.jpg',
+	'/resources/upFiles/petsitter_upfiles/',
+	SYSDATE,
+	'Y',
+	0,
+	6);
+INSERT INTO P_ATTACHMENT
+VALUES (SEQ_P_ATTACHMENT.NEXTVAL,
+	'81558647985864fc19c522ab75bec70e9.jpg',
+	'81558647985864fc19c522ab75bec70e9.jpg',
+	'/resources/upFiles/petsitter_upfiles/',
+	SYSDATE,
+	'Y',
+	0,
+	6);
+INSERT INTO P_ATTACHMENT
+VALUES (SEQ_P_ATTACHMENT.NEXTVAL,
+	'928590099344447ef8b3cd7f5751ae2b0.jpeg',
+	'928590099344447ef8b3cd7f5751ae2b0.jpeg',
+	'/resources/upFiles/petsitter_upfiles/',
+	SYSDATE,
+	'Y',
+	0,
+	5);
+INSERT INTO P_ATTACHMENT
+VALUES (SEQ_P_ATTACHMENT.NEXTVAL,
+	'93831ade2bb4d4793b4c60ba650e5956b.jpeg',
+	'93831ade2bb4d4793b4c60ba650e5956b.jpeg',
+	'/resources/upFiles/petsitter_upfiles/',
+	SYSDATE,
+	'Y',
+	0,
+	5);
+INSERT INTO P_ATTACHMENT
+VALUES (SEQ_P_ATTACHMENT.NEXTVAL,
+	'9495b6a603e0d42b3b750fee3b7ce57c8.jpeg',
+	'9495b6a603e0d42b3b750fee3b7ce57c8.jpeg',
+	'/resources/upFiles/petsitter_upfiles/',
+	SYSDATE,
+	'Y',
+	0,
+	5);
+INSERT INTO P_ATTACHMENT
+VALUES (SEQ_P_ATTACHMENT.NEXTVAL,
+	'951c9cd09fbbc444cbbf623cbfddddaf6.jpeg',
+	'951c9cd09fbbc444cbbf623cbfddddaf6.jpeg',
+	'/resources/upFiles/petsitter_upfiles/',
+	SYSDATE,
+	'Y',
+	0,
+	5);
+INSERT INTO P_ATTACHMENT
+VALUES (SEQ_P_ATTACHMENT.NEXTVAL,
+	'90a43e75cbcee4749ba10a7e04c748292.jpeg',
+	'90a43e75cbcee4749ba10a7e04c748292.jpeg',
+	'/resources/upFiles/petsitter_upfiles/',
+	SYSDATE,
+	'Y',
+	0,
+	5);
+INSERT INTO P_ATTACHMENT
+VALUES (SEQ_P_ATTACHMENT.NEXTVAL,
+	'10b2ed0595f3364b69b01d1a05e185ea7d.jpeg',
+	'10b2ed0595f3364b69b01d1a05e185ea7d.jpeg',
+	'/resources/upFiles/petsitter_upfiles/',
+	SYSDATE,
+	'Y',
+	0,
+	4);
+INSERT INTO P_ATTACHMENT
+VALUES (SEQ_P_ATTACHMENT.NEXTVAL,
+	'104486d8c61bf2429f815f3ba161a5f893.jpeg',
+	'104486d8c61bf2429f815f3ba161a5f893.jpeg',
+	'/resources/upFiles/petsitter_upfiles/',
+	SYSDATE,
+	'Y',
+	0,
+	4);
+INSERT INTO P_ATTACHMENT
+VALUES (SEQ_P_ATTACHMENT.NEXTVAL,
+	'10849cd69945a44659299fa70b1a278f5.jpeg',
+	'10849cd69945a44659299fa70b1a278f5.jpeg',
+	'/resources/upFiles/petsitter_upfiles/',
+	SYSDATE,
+	'Y',
+	0,
+	4);
+INSERT INTO P_ATTACHMENT
+VALUES (SEQ_P_ATTACHMENT.NEXTVAL,
+	'10860493022d1943e68119e87a331babd3.jpg',
+	'10860493022d1943e68119e87a331babd3.jpg',
+	'/resources/upFiles/petsitter_upfiles/',
+	SYSDATE,
+	'Y',
+	0,
+	4);
+INSERT INTO P_ATTACHMENT
+VALUES (SEQ_P_ATTACHMENT.NEXTVAL,
+	'10adba0c90fb704f498276de1449e0d32e.jpeg',
+	'10adba0c90fb704f498276de1449e0d32e.jpeg',
+	'/resources/upFiles/petsitter_upfiles/',
+	SYSDATE,
+	'Y',
+	0,
+	4);
+INSERT INTO P_ATTACHMENT
+VALUES (SEQ_P_ATTACHMENT.NEXTVAL,
+	'11402d089527034d6ba8c9d6a98d3973c8.jpeg',
+	'11402d089527034d6ba8c9d6a98d3973c8.jpeg',
+	'/resources/upFiles/petsitter_upfiles/',
+	SYSDATE,
+	'Y',
+	0,
+	3);
+INSERT INTO P_ATTACHMENT
+VALUES (SEQ_P_ATTACHMENT.NEXTVAL,
+	'110f43e6284ddc423d9bbd54049f24cd28.jpeg',
+	'110f43e6284ddc423d9bbd54049f24cd28.jpeg',
+	'/resources/upFiles/petsitter_upfiles/',
+	SYSDATE,
+	'Y',
+	0,
+	3);
+INSERT INTO P_ATTACHMENT
+VALUES (SEQ_P_ATTACHMENT.NEXTVAL,
+	'11a6440d66586e4265b926ab03f4adc318.jpeg',
+	'11a6440d66586e4265b926ab03f4adc318.jpeg',
+	'/resources/upFiles/petsitter_upfiles/',
+	SYSDATE,
+	'Y',
+	0,
+	3);
+INSERT INTO P_ATTACHMENT
+VALUES (SEQ_P_ATTACHMENT.NEXTVAL,
+	'114c1a5e68b14a40b5a919efbdf373e7cb.jpeg',
+	'114c1a5e68b14a40b5a919efbdf373e7cb.jpeg',
+	'/resources/upFiles/petsitter_upfiles/',
+	SYSDATE,
+	'Y',
+	0,
+	3);
+INSERT INTO P_ATTACHMENT
+VALUES (SEQ_P_ATTACHMENT.NEXTVAL,
+	'11ab93ccfe91aa44e6b265c90ce6ffb975.jpeg',
+	'11ab93ccfe91aa44e6b265c90ce6ffb975.jpeg',
+	'/resources/upFiles/petsitter_upfiles/',
+	SYSDATE,
+	'Y',
+	0,
+	3);
+INSERT INTO P_ATTACHMENT
+VALUES (SEQ_P_ATTACHMENT.NEXTVAL,
+	'12de181452da884d1682a33d60b855a3b6.jpg',
+	'12de181452da884d1682a33d60b855a3b6.jpg',
+	'/resources/upFiles/petsitter_upfiles/',
+	SYSDATE,
+	'Y',
+	0,
+	2);
+INSERT INTO P_ATTACHMENT
+VALUES (SEQ_P_ATTACHMENT.NEXTVAL,
+	'1241a69ac76d97449a92383e769f821068.jpg',
+	'1241a69ac76d97449a92383e769f821068.jpg',
+	'/resources/upFiles/petsitter_upfiles/',
+	SYSDATE,
+	'Y',
+	0,
+	2);
+INSERT INTO P_ATTACHMENT
+VALUES (SEQ_P_ATTACHMENT.NEXTVAL,
+	'126f332f18e38a4323951a7f9008c757f8.jpg',
+	'126f332f18e38a4323951a7f9008c757f8.jpg',
+	'/resources/upFiles/petsitter_upfiles/',
+	SYSDATE,
+	'Y',
+	0,
+	2);
+INSERT INTO P_ATTACHMENT
+VALUES (SEQ_P_ATTACHMENT.NEXTVAL,
+	'1321b589189ece465ca47677e1c44a0252.jpg',
+	'1321b589189ece465ca47677e1c44a0252.jpg',
+	'/resources/upFiles/petsitter_upfiles/',
+	SYSDATE,
+	'Y',
+	0,
+	1);
+INSERT INTO P_ATTACHMENT
+VALUES (SEQ_P_ATTACHMENT.NEXTVAL,
+	'1305c88228b3204d41847e2671f8ef4ed5.jpg',
+	'1305c88228b3204d41847e2671f8ef4ed5.jpg',
+	'/resources/upFiles/petsitter_upfiles/',
+	SYSDATE,
+	'Y',
+	0,
+	1);
+INSERT INTO P_ATTACHMENT
+VALUES (SEQ_P_ATTACHMENT.NEXTVAL,
+	'13273bbf0574874db7b83baca72de9c55c.jpg',
+	'13273bbf0574874db7b83baca72de9c55c.jpg',
+	'/resources/upFiles/petsitter_upfiles/',
+	SYSDATE,
+	'Y',
+	0,
+	1);
+INSERT INTO P_ATTACHMENT
+VALUES (SEQ_P_ATTACHMENT.NEXTVAL,
+	'13676884e913504ebf9f7964dc15a28bf3.jpg',
+	'13676884e913504ebf9f7964dc15a28bf3.jpg',
+	'/resources/upFiles/petsitter_upfiles/',
+	SYSDATE,
+	'Y',
+	0,
+	1);
 
 --------------------------------------------------
 ---------    펫시터 프로필 업데이트 더미    ---------
