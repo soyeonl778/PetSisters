@@ -103,14 +103,14 @@ public class ChatController {
         Member master = cService.getMemberDetail(masterNo);
         
         room.setUserNo(user.getUserNo());
-        room.setUserNickname(user.getUserNickname());
+        room.setUserNickname(user.getUserName());
         room.setUserPic(user.getFilePath());
         room.setUserPet(user.getSitterStatus());
         room.setUserPro(user.getCaStatus());
         
         
         room.setMasterNo(master.getUserNo());
-        room.setMasterNickname(master.getUserNickname());
+        room.setMasterNickname(master.getUserName());
         room.setMasterPic(master.getFilePath());
         room.setMasterPet(master.getSitterStatus());
         room.setMasterPro(master.getCaStatus());
