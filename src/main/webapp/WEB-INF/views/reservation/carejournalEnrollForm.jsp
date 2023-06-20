@@ -9,9 +9,7 @@
 <jsp:include page="../common/common.jsp" />
 <link rel="stylesheet"
 	href="/resources/css/reservation/careJournalEnrollForm.css">
-<!-- 
-<script src="/resources/js/careJournalEnrollForm.js"></script>
- -->
+<!-- 알림창 라이브러리 -->
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.css">
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.js"></script>
 <title>돌봄일지 작성</title>

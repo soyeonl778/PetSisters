@@ -72,7 +72,7 @@
                   <!-- 박스 내부 -->
                   <div align="center" class="formBtn">
                     <button type="button" class="btn btn-secondary btn-lg" onclick="history.go(-1)">뒤로가기</button>
-                    <button type="button" onclick="orderPay();" class="btn btn-success btn-lg">결제하기</button>
+                    <button type="button" onclick="orderPay();" class="btn btn-success btn-lg" style="background-color:#0888D0;border:none;">결제하기</button>
                   </div>
 				 </form>
                 </div>
@@ -101,7 +101,7 @@ function orderPay(){
 	    pay_method : 'card',
 	    merchant_uid : 'merchant_' + new Date().getTime(),
 	    
-	    name : '펫시스터즈', //결제창에서 보여질 이름
+	    name : '(주)펫시스터즈', //결제창에서 보여질 이름
 	    amount : payPrice, //실제 결제되는 가격
 	    
 	    desc : payDesc,
