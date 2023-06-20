@@ -40,6 +40,7 @@ div, form, img { box-sizing: border-box; }
     width: 90px;
     height: 90px;
     border-radius: 10px;
+    object-fit: cover;
 }
 
 .profileBox {
@@ -170,21 +171,6 @@ div, form, img { box-sizing: border-box; }
     font-size: 20px;
 }
 
-/* .slider-nav>li {
-    text-align: center;
-    box-sizing: border-box;
-    margin-top: 20px;
-}
-
-.slider-nav {
-    padding: 0;
-    box-sizing: border-box;
-}
-
-.slick-prev:before, .slick-next:before {
-    color: black !important;
-} */
-
 #map {
     width: 100%;
     height: 300px;
@@ -285,11 +271,13 @@ div, form, img { box-sizing: border-box; }
     height: 50px;
     border-radius: 50%;
     margin: 10px;
+    object-fit: cover;
 }
 
 .revImg>img{
     width: 100px;
     height: 100px;
+    object-fit: cover;
 }
 
 .revContent {
@@ -311,6 +299,7 @@ div, form, img { box-sizing: border-box; }
     height: 50px;
     border-radius: 50%;
     margin: 10px;
+    object-fit: cover;
 }
 
 .comment textarea {
