@@ -73,20 +73,24 @@
 											<div class="nothing">조회된 목록이 없어요!</div>
 										</c:if>
 										<c:forEach var="l" items="${ list }">
-											<c:set var="fileName"
-												value="${ fn:indexOf(l.filePath.concat(l.changeName), ',')}" />
 
 											<div class="col">
 												<div class="card">
-													<c:if test="${ fileName != -1 }">
+												
+												<c:set var="imageArray"
+														value="${fn:split(l.changeName, ',')}" />
+													<c:set var="firstImage" value="${fn:trim(imageArray[0])}" />
+												
+												
+													<c:if test="${ not empty l.changeName}">
 														<div onclick="careDetail(${l.jno})">
 															<img
-																src="${ l.filePath.concat(l.changeName).substring(0, fileName) }"
+																src="${ l.filePath }${firstImage}"
 																class="card-img-top" alt="...">
 														</div>
 													</c:if>
 
-													<c:if test="${fileName == -1 }">
+													<c:if test="${ empty l.changeName }">
 														<img src="/resources/img/main/첨부파일없음.png"
 															class="card-img-top" alt="..."
 															onclick="careDetail(${l.jno})">
