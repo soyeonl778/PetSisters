@@ -217,46 +217,44 @@
       });
 
 
+      
+    });
+    
 
-
-      // 펫시터 리스트 div 클릭 이벤트
-      $(".content>div").click(function() {
-        let pno = $(this).find(".pno").text();
-        location.href = "detail.pe?pno=" + pno;
-      });
-
-
-
-
-      // searchForm 엔터키 이벤트
-      function handleKeyPress(event) {
-        if (event.keyCode === 13) { // Enter 키의 keyCode는 13입니다.
-            searchForm();
-        }
-      }
-
-
-
-
-      // 버튼 클릭 시 name 값을 컨트롤러에 전달하는 AJAX 요청
-      function searchButtonClicked(service) {
-
-        location.href = '/list.pe?service=' + service;
-
-        var button = event.target; // 클릭된 버튼 요소 가져오기
-        var isActive = $(button).hasClass("active-button"); // 현재 활성화 상태 확인
-        
-        // 버튼의 활성화/비활성화 상태 변경
-        if (isActive) {
-          $(button).removeClass("active-button");
-        } else {
-          $(button).addClass("active-button");
-        }
-      }
-
+    // 펫시터 리스트 div 클릭 이벤트
+    $(".content>div").click(function() {
+      let pno = $(this).find(".pno").text();
+      location.href = "detail.pe?pno=" + pno;
     });
 
 
+
+
+    // searchForm 엔터키 이벤트
+    function handleKeyPress(event) {
+      if (event.keyCode === 13) { // Enter 키의 keyCode는 13입니다.
+          searchForm();
+      }
+    }
+
+
+
+
+    // 버튼 클릭 시 name 값을 컨트롤러에 전달하는 AJAX 요청
+    function searchButtonClicked(service) {
+
+      location.href = '/list.pe?service=' + service;
+
+      var button = event.target; // 클릭된 버튼 요소 가져오기
+      var isActive = $(button).hasClass("active-button"); // 현재 활성화 상태 확인
+      
+      // 버튼의 활성화/비활성화 상태 변경
+      if (isActive) {
+        $(button).removeClass("active-button");
+      } else {
+        $(button).addClass("active-button");
+      }
+    }
 
 
   </script>
