@@ -223,7 +223,7 @@
                         <div class="deleteDate">
                           <h5>예약 불가능한 날짜 취소</h5>
                           <input type="text" class="datepicker" id="deleteDate" name="delDate" placeholder="예약 불가능한 날짜">
-                        </input>
+                        </div>
                       </div>
 
                       <div class="formBtn">

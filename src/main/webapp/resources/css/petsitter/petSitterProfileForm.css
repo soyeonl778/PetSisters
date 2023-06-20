@@ -88,7 +88,7 @@ input[type=text], textarea {
 
 .formBtn {
     margin-top: 70px;
-    align-items: center;
+    text-align: center;
 }
 
 .formBtn .btn-primary {
