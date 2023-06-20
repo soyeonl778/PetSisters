@@ -117,9 +117,7 @@
                               
                               
 	                              <!--전체후기보기-버튼-->
-	                             <button type="submit" class="main-card-bottom-button">
-	                             	  작성하기 
-	                             </button>
+	                             <button type="submit" class="main-card-bottom-button">작성하기</button>
 	                          </form>
 		                               
                               

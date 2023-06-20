@@ -125,8 +125,10 @@
                               
                               
 	                              <!--전체후기보기-버튼-->
-	                             <div align="center">
+	                             <div align="center" id="two-button">
+	                             	<button id="back-button" class="main-card-bottom-button" onclick="window.history.go(-1)">뒤로가기</button>
 				                    <button type="submit" class="main-card-bottom-button">등록하기</button>
+				                    
                					 </div>
 	                          </form>
 		                               

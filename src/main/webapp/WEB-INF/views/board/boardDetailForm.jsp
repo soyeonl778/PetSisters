@@ -129,7 +129,7 @@
 	                                  		<img src="/resources/img/main/첨부파일없음.png">
 	                                  	</c:if>
 	                                  	<c:if test="${ not empty dog.filePath }">
-	                                  		<img src="/${ dog.filePath }">
+	                                  		<img src="${ dog.filePath }">
 	                                  	</c:if>
 	                                  	
 	                                  		<div>
