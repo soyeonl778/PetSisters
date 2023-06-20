@@ -319,11 +319,6 @@
           return [false];
       }
 
-      // impoDate 닫기 버튼에 클릭이벤트
-      $(".ui-datepicker-close").click(function() {
-        $("#ui-datepicker-div").css("display", "none");
-      });
-
     });
 
 
