@@ -194,7 +194,8 @@
 	
 	<!-- 대시보드용 : 예약목록 전체 리스트를 구해주는 쿼리문 -->
 	<select id="selectDashboardReserv" resultMap="reservationResultSet">
-		SELECT M.USER_NAME,R.RES_NO,R.START_DATE,R.END_DATE,R.REGISTER_DATE,R.CONTENT
+		SELECT M.USER_NAME,R.RES_NO,R.START_DATE,R.END_DATE,
+			   TO_CHAR(R.REGISTER_DATE, 'YYYY-MM-DD') AS "REGISTER_DATE",R.CONTENT
 		  FROM RESERVATION R
 		  JOIN MEMBER M ON (M.USER_NO = R.USER_NO)
 		  ORDER BY R.RES_NO ASC

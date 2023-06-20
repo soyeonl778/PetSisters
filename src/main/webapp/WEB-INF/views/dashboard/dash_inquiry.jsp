@@ -11,9 +11,13 @@
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <title>Dashboard</title>
         <style>
-        	table th, td {
-    			text-align: center;
-        	}
+            #datatablesSimple th,
+            #datatablesSimple td {
+            text-align: center;
+            }
+            #datatablesSimple {
+                text-align: center;
+            }
         </style>        
     </head>
     <body class="sb-nav-fixed">
