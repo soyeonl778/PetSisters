@@ -27,6 +27,7 @@ public class Reservation {
 	private String petFile;			// 펫시터 대표 프로필 사진 & 상세페이지에서 펫시터 대표사진
 	private String address;			// 펫시터 주소
 	private String originName;		// 펫시터 원본 대표사진명  & 상세페이지에서 펫시터 대표사진
+	private String changeName;		// 펫시터 원본 대표사진명  & 상세페이지에서 펫시터 대표사진
 	private int reviewCount;		// 리뷰 갯수
 	private int checkReview;		// 리뷰 작성 여부
 	

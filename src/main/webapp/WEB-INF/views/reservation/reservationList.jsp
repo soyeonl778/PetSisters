@@ -75,14 +75,20 @@
 												onclick="petsitterLink(${ r.pno })">
 												<input class="selectPno" type="hidden" value="${ r.pno }">
 
-												<c:set var="imageArray"
-													value="${fn:split(r.originName, ',')}" />
+												<c:set var="imageArray" value="${fn:split(r.changeName, ',')}" />
 												<c:set var="firstImage" value="${fn:trim(imageArray[0])}" />
-
+													
+												<c:if test="${ empty firstImage }">
 												<div class="cardImage">
-													<img src="${r.petFile}${firstImage}" alt="coshong"
-														class="cardMainImg">
+													<img src="/resources/img/main/첨부파일없음.png" alt="coshong" class="cardMainImg">
 												</div>
+												</c:if>	
+													
+												<c:if test="${ not empty firstImage}">	
+												<div class="cardImage">
+													<img src="${r.petFile}${firstImage}" alt="coshong" class="cardMainImg">
+												</div>
+												</c:if>
 												<div class="cardTextContainer">
 													<div class="cardTitDesc">
 														<h4>${ r.address }</h4>

@@ -61,7 +61,7 @@ public class ReservationController {
 		PageInfo pi = Pagination.getPageInfo(listCount, currentPage, pageLimit, boardLimit);
 		
 		ArrayList<Reservation> list = reservationService.selectPetsitterList(pi, userNo, checkReview);
-
+		System.out.println(list);
 		model.addAttribute("pi", pi);
 		model.addAttribute("list", list);
 		

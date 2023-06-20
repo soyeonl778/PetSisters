@@ -19,6 +19,7 @@
 		<result column="FILE_PATH" property="petFile" />
 		<result column="ADDRESS" property="address" />
 		<result column="ORIGIN_NAME" property="originName" />
+		<result column="CHANGE_NAME" property="changeName" />
 		<result column="REVIEW_COUNT" property="reviewCount" />
 		<result column="REVIEW_STATUS" property="checkReview" />
 		<result column="D_FILE_PATH" property="dfilePath" />
@@ -101,6 +102,7 @@
 		       P.CARE_LIST,
 		       P.P_NO,
 		       A.FILE_PATH AS FILE_PATH,
+		       LISTAGG(A.CHANGE_NAME, ',') WITHIN GROUP (ORDER BY A.CHANGE_NAME) AS CHANGE_NAME,
                LISTAGG(A.ORIGIN_NAME, ',') WITHIN GROUP (ORDER BY A.ORIGIN_NAME) AS ORIGIN_NAME, 
 		       (SELECT COUNT(*) FROM REVIEW WHERE REF_RESNO = R.RES_NO) AS REVIEW_COUNT,
 		        CASE WHEN REV.REV_NO IS NOT NULL THEN 1 ELSE 0 END AS REVIEW_STATUS
