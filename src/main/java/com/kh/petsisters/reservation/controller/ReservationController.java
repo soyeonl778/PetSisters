@@ -475,7 +475,6 @@ public class ReservationController {
 		
 		ArrayList<CareJournal> list = reservationService.careJournalManagement(pi, userNo, options);
 		
-		System.out.println(list);
 		model.addAttribute("list", list);
 		model.addAttribute("options", options);
 		model.addAttribute("pi", pi);

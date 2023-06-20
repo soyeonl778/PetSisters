@@ -61,9 +61,9 @@
 
 										<div align="center" class="formBtn">
 											<button type="button" onclick="submitForm()"
-												class="btn btn-primary">수정완료</button>
+												class="btn btn-primary" style="background-color: #0888D0;">수정완료</button>
 											<button type="button" onclick="history.back()"
-												class="btn btn-info">뒤로가기</button>
+												class="btn btn-info" style="background-color:#5E5E5E">뒤로가기</button>
 										</div>
 									</form>
 								</div>
