@@ -20,4 +20,8 @@ public interface DashboardService {
 	
 	int dashSupportApprove(Support s);
 	
+	int dashInsertPetSitter(Support s);
+	
+	int dashSelectPetSitter(Support s);
+	
 }

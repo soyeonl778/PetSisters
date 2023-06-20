@@ -337,7 +337,7 @@ COMMENT ON COLUMN P_ATTACHMENT.FILE_LEVEL IS '파일레벨';
 COMMENT ON COLUMN P_ATTACHMENT.REF_PNO IS '참조펫시터프로필번호';
 
 --------------------------------------------------
---------------    펫시터지원 테이블    ---------------
+--------------    펫시터 지원 테이블    ---------------
 --------------------------------------------------
 CREATE TABLE SUPPORT (
 	SUPPORT_NO NUMBER PRIMARY KEY,

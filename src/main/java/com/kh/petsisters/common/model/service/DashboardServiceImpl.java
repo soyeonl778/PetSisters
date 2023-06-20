@@ -51,4 +51,14 @@ public class DashboardServiceImpl implements DashboardService {
 		return dashboardDao.dashSupportApprove(sqlSession, s);
 	}
 
+	@Override
+	public int dashInsertPetSitter(Support s) {
+		return dashboardDao.dashInsertPetSitter(sqlSession, s);
+	}
+
+	@Override
+	public int dashSelectPetSitter(Support s) {
+		return dashboardDao.dashSelectPetSitter(sqlSession, s);
+	}
+
 }

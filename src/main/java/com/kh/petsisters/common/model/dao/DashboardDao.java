@@ -38,4 +38,11 @@ public class DashboardDao {
 		return result1 * result2;
 	}
 	
+	public int dashInsertPetSitter(SqlSessionTemplate sqlSession, Support s) {
+		return sqlSession.insert("dashboardMapper.dashInsertPetSitter", s);
+	}
+	
+	public int dashSelectPetSitter(SqlSessionTemplate sqlSession, Support s) {
+		return sqlSession.selectOne("dashboardMapper.dashSelectPetSitter", s);
+	}
 }
