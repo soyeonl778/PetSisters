@@ -35,7 +35,11 @@ public class MemberDao {
 	
 	public int updateMember(SqlSessionTemplate sqlSession, Member m) {
 		
-		return sqlSession.update("memberMapper.updateMember", m);
+		int result1 = sqlSession.update("memberMapper.updateMember", m);
+		int result2 = sqlSession.update("memberMapper.updateUserRoom", m);
+		int result3 = sqlSession.update("memberMapper.updateMasterRoom", m);
+		
+		return result1;
 	}
 	
 	public int deleteMember(SqlSessionTemplate sqlSession, String userId) {

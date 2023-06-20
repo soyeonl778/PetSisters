@@ -274,6 +274,22 @@
 		GROUP BY B.B_NO, B.B_TITLE, B.COUNT, B.CREATE_DATE
         ORDER BY B.B_NO DESC
 	</select>
+	
+	<!-- 채팅방 정보 업데이트용 -->
+	<update id="updateUserRoom" parameterType="member">
+		UPDATE CHAT_ROOM
+		SET USER_NICKNAME = #{userNickname}
+		    , USER_PIC = #{filePath}
+		WHERE USER_NO = #{userNo}
+	</update>
+	
+	<update id="updateMasterRoom" parameterType="member">
+		UPDATE CHAT_ROOM
+		SET MASTER_NICKNAME = #{userNickname}
+		    , MASTER_PIC = #{filePath}
+		WHERE MASTER_NO = #{userNo}
+	</update>
+	
 
 
 </mapper>
