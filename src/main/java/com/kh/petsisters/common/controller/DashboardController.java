@@ -103,6 +103,11 @@ public class DashboardController {
 	public String dashSupportApprove(Support s, HttpSession session) {
 
 		int result = dashboardService.dashSupportApprove(s);
+		int result2 = dashboardService.dashSelectPetSitter(s);
+		
+		if(result2 == 0) {
+			dashboardService.dashInsertPetSitter(s);
+		}
 		
 		if(result > 0)  {
 			if(s.getStatus().equals("Y")) {

@@ -1,22 +1,22 @@
 --------------------------------------------------
 --------------    회원 테이블 더미    --------------
 --------------------------------------------------
-INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'admin', '$2a$10$SLRkh8Pqzj6otPtToAadCOAK5Rvm8tnuC.1Lp8jM5Z8lnF8XDnbM2', '관리자', '1234561234567', '관리자', '01012341234', 'admin@kh.or.kr', '서울시 영등포구', 'F', 'N', 'N', NULL, 'Y', '/resources/upFiles/member_profiles/1.png', SYSDATE);
-INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user01', '$2a$10$XpDQNtmKS/JsEeGnmWHGHuhsS13As1LkMzuJVV68I8XCtfC4hA3Im', '펫시터1', '1234561234567', '펫시터1', '01011111111', 'user01@kh.or.kr', '서울시 구로구', 'F', 'Y', 'N', NULL, 'Y', '/resources/upFiles/member_profiles/2.png', SYSDATE);
-INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user02', '$2a$10$ehe3oCftL/3kloTfPiPc1OrN0LNmENx6f.cvVzuezsSv25ADeNcxK', '펫시터2', '1234561234567', '펫시터2', '01022222222', 'user02@kh.or.kr', '서울시 동작구', 'F', 'Y', 'N', NULL, 'Y', '/resources/upFiles/member_profiles/3.png', SYSDATE);
-INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user03', '$2a$10$TnADZgZPdOhE32VPtZGUFuaKH6Jx7Sy0bSk5hhKbA/2nDArlCXCQm', '펫시터3', '1234561234567', '펫시터3', '01033333333', 'user03@kh.or.kr', '서울시 강남구', 'F', 'Y', 'N', NULL, 'Y', '/resources/upFiles/member_profiles/4.png', SYSDATE);
-INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user04', '$2a$10$kzQqxP.r3/ZsSVaCoQsySeD3ra.PI38T7YYJAVW2Lj/jiwNiBXv8e', '펫시터4', '1234561234567', '펫시터4', '01044444444', 'user04@kh.or.kr', '서울시 마포구', 'F', 'Y', 'Y', '2023-05-01', 'Y', '/resources/upFiles/member_profiles/5.png', SYSDATE);
-INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user05', '$2a$10$O.hNqLbmDse4osUqUQzXZ.sk.h0Kl3qNxLnSLF5xD0wH2foZlT.6m', '펫시터5', '1234561234567', '펫시터5', '01055555555', 'user05@kh.or.kr', '서울시 강동구', 'F', 'Y', 'Y', '2023-06-01', 'Y', '/resources/upFiles/member_profiles/6.png', SYSDATE);
-INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user06', '$2a$10$W4bClgUyXMni0dxkS3Dl6./7SdovfPo.vSyExmQ8w1L7NC8Ybu1Vq', '고객6', '1234561234567', '고객6', '01066666666', 'user06@kh.or.kr', '서울시 도봉구', 'F', 'N', 'N', NULL, 'Y', '/resources/upFiles/member_profiles/7.png', SYSDATE);
-INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user07', '$2a$10$hS7WFASO5Q17rL.DtWAho.fM/2vG..aT5oqVJas8GZwIb.REsEX.q', '고객7', '1234561234567', '고객7', '01077777777', 'user07@kh.or.kr', '서울시 노원구', 'F', 'N', 'N', NULL, 'Y', '/resources/upFiles/member_profiles/8.png', SYSDATE);
-INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user08', '$2a$10$Pti0vw8c8OgDOilRrmF0aeDy/bMkprBu.oWLWKyhUjMaMR1hRt5EC', '펫시터8', '1234561234567', '펫시터8', '01088888888', 'user08@kh.or.kr', '서울시 중랑구', 'F', 'Y', 'Y', '2023-06-01', 'Y', '/resources/upFiles/member_profiles/9.png', SYSDATE);
-INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user09', '$2a$10$Hy1v0MMmhdHm0OkJXdbC9O8wMt3ywTRF9IjHHRYft7ftLvc1r5AlW', '펫시터9', '1234561234567', '펫시터9', '01099999999', 'user09@kh.or.kr', '서울시 동대문구', 'F', 'Y', 'N', NULL, 'Y', '/resources/upFiles/member_profiles/10.jpg', SYSDATE);
-INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user10', '$2a$10$KGsB6UlIawJz/xbyFxB41.N6Y14Oghd.GZ8WVqjCuGkSmL8xBvykG', '펫시터10', '1234561234567', '펫시터10', '01000000000', 'user10@kh.or.kr', '서울시 종로구', 'F', 'Y', 'Y', '2023-06-01', 'Y', '/resources/upFiles/member_profiles/11.jpg', SYSDATE);
-INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user11', '$2a$10$RnNn7iVfmP4L6z5nLCpg6.vxEh.vYekCed5ohNFtk.K9u6ZfUr0yu', '펫시터11', '1234561234567', '펫시터11', '01011111111', 'user11@kh.or.kr', '서울시 용산구', 'F', 'Y', 'N', NULL, 'Y', '/resources/upFiles/member_profiles/12.jpg', SYSDATE);
-INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user12', '$2a$10$d9hP.cuc/xW446Mx./HCr.5YBrv4MDQo0JPFEjooEVslHmX85FG1q', '펫시터12', '1234561234567', '펫시터12', '01022222222', 'user12@kh.or.kr', '서울시 서초구', 'F', 'Y', 'Y', '2023-06-01', 'Y', '/resources/upFiles/member_profiles/13.jpg', SYSDATE);
-INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user13', '$2a$10$Xf4YuxUB05MylcHNS9dZmeKuQtmrSqaCcTPyBkkYqvRxaSoMUkzQO', '펫시터13', '1234561234567', '펫시터13', '01033333333', 'user13@kh.or.kr', '서울시 관악구', 'F', 'Y', 'N', NULL, 'Y', '/resources/upFiles/member_profiles/14.jpg', SYSDATE);
-INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user14', '$2a$10$o5r4qt.ZGVesa8kUxq9n7.b5L3Z/dTFTS5.taYOugdYQZlEWDFRlW', '펫시터14', '1234561234567', '펫시터14', '01044444444', 'user14@kh.or.kr', '서울시 금천구', 'F', 'Y', 'Y', '2023-06-01', 'Y', '/resources/upFiles/member_profiles/15.jpg', SYSDATE);
-INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user15', '$2a$10$IqaM5ZO19GEECiLwqFcjBOb0bMw2DVcNGpG7NwGdVhHGQlV4Iq/Eu', '펫시터15', '1234561234567', '펫시터15', '01055555555', 'user15@kh.or.kr', '서울시 은평구', 'F', 'Y', 'N', NULL, 'Y', '/resources/upFiles/member_profiles/16.jpg', SYSDATE);
+INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'admin', '$2a$10$SLRkh8Pqzj6otPtToAadCOAK5Rvm8tnuC.1Lp8jM5Z8lnF8XDnbM2', '관리자', '870105', '관리자', '01012341234', 'admin@kh.or.kr', '서울시 영등포구', 'F', 'N', 'N', NULL, 'Y', '/resources/upFiles/member_profiles/1.png', SYSDATE);
+INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user01', '$2a$10$XpDQNtmKS/JsEeGnmWHGHuhsS13As1LkMzuJVV68I8XCtfC4hA3Im', '정재훈', '901205', '햄스터', '01011111111', 'user01@kh.or.kr', '서울시 구로구', 'F', 'Y', 'N', NULL, 'Y', '/resources/upFiles/member_profiles/2.png', SYSDATE);
+INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user02', '$2a$10$ehe3oCftL/3kloTfPiPc1OrN0LNmENx6f.cvVzuezsSv25ADeNcxK', '김다은', '911219', '멍멍이조아요', '01022222222', 'user02@kh.or.kr', '서울시 동작구', 'F', 'Y', 'N', NULL, 'Y', '/resources/upFiles/member_profiles/3.png', SYSDATE);
+INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user03', '$2a$10$TnADZgZPdOhE32VPtZGUFuaKH6Jx7Sy0bSk5hhKbA/2nDArlCXCQm', '이소연', '920129', '왕언니', '01033333333', 'user03@kh.or.kr', '서울시 강남구', 'F', 'Y', 'N', NULL, 'Y', '/resources/upFiles/member_profiles/4.png', SYSDATE);
+INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user04', '$2a$10$kzQqxP.r3/ZsSVaCoQsySeD3ra.PI38T7YYJAVW2Lj/jiwNiBXv8e', '이주흔', '000101', '밀레니엄', '01044444444', 'user04@kh.or.kr', '서울시 마포구', 'F', 'Y', 'Y', '2023-05-01', 'Y', '/resources/upFiles/member_profiles/5.png', SYSDATE);
+INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user05', '$2a$10$O.hNqLbmDse4osUqUQzXZ.sk.h0Kl3qNxLnSLF5xD0wH2foZlT.6m', '임보영', '810812', '왕눈이언니', '01055555555', 'user05@kh.or.kr', '서울시 강동구', 'F', 'Y', 'Y', '2023-06-01', 'Y', '/resources/upFiles/member_profiles/6.png', SYSDATE);
+INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user06', '$2a$10$W4bClgUyXMni0dxkS3Dl6./7SdovfPo.vSyExmQ8w1L7NC8Ybu1Vq', '조승호', '920112', '섹시한언니', '01066666666', 'user06@kh.or.kr', '서울시 도봉구', 'F', 'N', 'N', NULL, 'Y', '/resources/upFiles/member_profiles/7.png', SYSDATE);
+INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user07', '$2a$10$hS7WFASO5Q17rL.DtWAho.fM/2vG..aT5oqVJas8GZwIb.REsEX.q', '이형주', '881219', '똘이엄마', '01077777777', 'user07@kh.or.kr', '서울시 노원구', 'F', 'N', 'N', NULL, 'Y', '/resources/upFiles/member_profiles/8.png', SYSDATE);
+INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user08', '$2a$10$Pti0vw8c8OgDOilRrmF0aeDy/bMkprBu.oWLWKyhUjMaMR1hRt5EC', '함필규', '920405', '강릉함씨38대손', '01088888888', 'user08@kh.or.kr', '서울시 중랑구', 'F', 'Y', 'Y', '2023-06-01', 'Y', '/resources/upFiles/member_profiles/9.png', SYSDATE);
+INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user09', '$2a$10$Hy1v0MMmhdHm0OkJXdbC9O8wMt3ywTRF9IjHHRYft7ftLvc1r5AlW', '김가현', '930328', '호빵언니', '01099999999', 'user09@kh.or.kr', '서울시 동대문구', 'F', 'Y', 'N', NULL, 'Y', '/resources/upFiles/member_profiles/10.jpg', SYSDATE);
+INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user10', '$2a$10$KGsB6UlIawJz/xbyFxB41.N6Y14Oghd.GZ8WVqjCuGkSmL8xBvykG', '함대길', '850925', '재복맘', '01000000000', 'user10@kh.or.kr', '서울시 종로구', 'F', 'Y', 'Y', '2023-06-01', 'Y', '/resources/upFiles/member_profiles/11.jpg', SYSDATE);
+INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user11', '$2a$10$RnNn7iVfmP4L6z5nLCpg6.vxEh.vYekCed5ohNFtk.K9u6ZfUr0yu', '김계란', '910108', '알통맨', '01011111111', 'user11@kh.or.kr', '서울시 용산구', 'F', 'Y', 'N', NULL, 'Y', '/resources/upFiles/member_profiles/12.jpg', SYSDATE);
+INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user12', '$2a$10$d9hP.cuc/xW446Mx./HCr.5YBrv4MDQo0JPFEjooEVslHmX85FG1q', '육선영', '970907', '아침엔사과', '01022222222', 'user12@kh.or.kr', '서울시 서초구', 'F', 'Y', 'Y', '2023-06-01', 'Y', '/resources/upFiles/member_profiles/13.jpg', SYSDATE);
+INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user13', '$2a$10$Xf4YuxUB05MylcHNS9dZmeKuQtmrSqaCcTPyBkkYqvRxaSoMUkzQO', '이초희', '811219', '초히초히', '01033333333', 'user13@kh.or.kr', '서울시 관악구', 'F', 'Y', 'N', NULL, 'Y', '/resources/upFiles/member_profiles/14.jpg', SYSDATE);
+INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user14', '$2a$10$o5r4qt.ZGVesa8kUxq9n7.b5L3Z/dTFTS5.taYOugdYQZlEWDFRlW', '존윅', '740619', '미스터윅', '01044444444', 'user14@kh.or.kr', '서울시 금천구', 'F', 'Y', 'Y', '2023-06-01', 'Y', '/resources/upFiles/member_profiles/15.jpg', SYSDATE);
+INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user15', '$2a$10$IqaM5ZO19GEECiLwqFcjBOb0bMw2DVcNGpG7NwGdVhHGQlV4Iq/Eu', '톰하디', '790514', '미친섹시함', '01055555555', 'user15@kh.or.kr', '서울시 은평구', 'F', 'Y', 'N', NULL, 'Y', '/resources/upFiles/member_profiles/16.jpg', SYSDATE);
 
 --------------------------------------------------
 -----------    펫시터 프로필 테이블 더미    -----------
@@ -125,8 +125,6 @@ VALUES (SEQ_PETSITTER.NEXTVAL,
 	'2인 이하 가구,아파트,반려동물 없음',
 	'Y',
 	16);
-
-
 
 --------------------------------------------------
 ------    펫시터 프로필 첨부파일 테이블 더미    ------
@@ -644,7 +642,7 @@ VALUES (SEQ_P_ATTACHMENT.NEXTVAL,
 	'Y',
 	0,
 	1);
-
+    
 --------------------------------------------------
 ---------    펫시터 프로필 업데이트 더미    ---------
 --------------------------------------------------
@@ -1817,13 +1815,13 @@ INSERT INTO REPLY VALUES (SEQ_REPLY.NEXTVAL, '댓글입니다', DEFAULT, DEFAULT, 10,
 INSERT INTO REPLY VALUES (SEQ_REPLY.NEXTVAL, '댓글입니다', DEFAULT, DEFAULT, 11, 5);
 
 --------------------------------------------------
-------------    펫시터지원 테이블 더미    ------------
+------------    펫시터 지원 테이블 더미    ------------
 --------------------------------------------------
-INSERT INTO SUPPORT VALUES(SEQ_SUPPORT.NEXTVAL, '서울시 구로구', 23, 'N','Y', '펫시터가 좋아서 지원하게 되었습니다.', '펫시터가 좋아서 지원하게 되었습니다.', 'Y','Y', 8);
-INSERT INTO SUPPORT VALUES(SEQ_SUPPORT.NEXTVAL, '서울시 구로구', 23, 'N','Y', '펫시터가 좋아서 지원하게 되었습니다.', '펫시터가 좋아서 지원하게 되었습니다.', 'Y','Y', 9);
-INSERT INTO SUPPORT VALUES(SEQ_SUPPORT.NEXTVAL, '서울시 구로구', 23, 'N','Y', '펫시터가 좋아서 지원하게 되었습니다.', '펫시터가 좋아서 지원하게 되었습니다.', 'Y','Y', 10);
-INSERT INTO SUPPORT VALUES(SEQ_SUPPORT.NEXTVAL, '서울시 구로구', 23, 'N','Y', '펫시터가 좋아서 지원하게 되었습니다.', '펫시터가 좋아서 지원하게 되었습니다.', 'Y','Y', 11);
-INSERT INTO SUPPORT VALUES(SEQ_SUPPORT.NEXTVAL, '서울시 구로구', 23, 'N','Y', '펫시터가 좋아서 지원하게 되었습니다.', '펫시터가 좋아서 지원하게 되었습니다.', 'Y','Y', 12);
+INSERT INTO SUPPORT VALUES(SEQ_SUPPORT.NEXTVAL, '서울시 구로구', 23, 'N','Y', '펫시터가 좋아서 지원하게 되었습니다.', '펫시터가 좋아서 지원하게 되었습니다.', 'Y',NULL, 8);
+INSERT INTO SUPPORT VALUES(SEQ_SUPPORT.NEXTVAL, '서울시 구로구', 23, 'N','Y', '펫시터가 좋아서 지원하게 되었습니다.', '펫시터가 좋아서 지원하게 되었습니다.', 'Y',NULL, 9);
+INSERT INTO SUPPORT VALUES(SEQ_SUPPORT.NEXTVAL, '서울시 구로구', 23, 'N','Y', '펫시터가 좋아서 지원하게 되었습니다.', '펫시터가 좋아서 지원하게 되었습니다.', 'Y',NULL, 10);
+INSERT INTO SUPPORT VALUES(SEQ_SUPPORT.NEXTVAL, '서울시 구로구', 23, 'N','Y', '펫시터가 좋아서 지원하게 되었습니다.', '펫시터가 좋아서 지원하게 되었습니다.', 'Y',NULL, 11);
+INSERT INTO SUPPORT VALUES(SEQ_SUPPORT.NEXTVAL, '서울시 구로구', 23, 'N','Y', '펫시터가 좋아서 지원하게 되었습니다.', '펫시터가 좋아서 지원하게 되었습니다.', 'Y',NULL, 12);
 
 --------------------------------------------------
 -----------------    커밋구문    ------------------

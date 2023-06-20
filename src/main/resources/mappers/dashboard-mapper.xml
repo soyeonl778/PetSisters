@@ -160,6 +160,23 @@
 			SET SITTER_STATUS = #{status}
 		WHERE USER_NO = #{userNo}
 	</update>
+	
+	<insert id="dashInsertPetSitter" parameterType="support">
+		INSERT INTO PETSITTER
+		VALUES (SEQ_PETSITTER.NEXTVAL,
+			'제목입니다.',
+		    '내용입니다.',
+		    NULL,
+			NULL,
+			'N',
+			#{userNo})
+	</insert>
+	
+	<select id="dashSelectPetSitter" parameterType="support" resultType="_int">
+			SELECT COUNT(USER_NO)
+		FROM PETSITTER
+		WHERE USER_NO = #{userNo}
+	</select>
 
 </mapper>
 
