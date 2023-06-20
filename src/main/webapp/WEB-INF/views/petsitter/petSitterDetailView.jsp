@@ -46,11 +46,20 @@
 
                       <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-inner">
-                          <c:forEach var="psImg" items="${ psImgList }">
-                            <div class="carousel-item active">
-                              <img src="${ psImg.filePath }${ psImg.changeName }" class="d-block w-100" alt="...">
-                            </div>
-                          </c:forEach>
+                          <c:choose>
+                            <c:when test="${ empty psImgList }">
+                              <div class="carousel-item active">
+                                <img src="${ psImg.filePath }${ psImg.changeName }" class="d-block w-100" alt="...">
+                              </div>
+                            </c:when>
+                            <c:otherwise>
+                              <c:forEach var="psImg" items="${ psImgList }">
+                                <div class="carousel-item active">
+                                  <img src="${ psImg.filePath }${ psImg.changeName }" class="d-block w-100" alt="...">
+                                </div>
+                              </c:forEach>
+                            </c:otherwise>
+                          </c:choose>
                         </div>
                         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
                           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -247,6 +256,7 @@
                                     </div>
                                     <div id="commentForm">
                                       <textarea id="acontent${ r.revNo }"></textarea>
+                                      <div class="count"><span>0</span>/500</div>
                                     </div>
                                   </div>
                                 </div>
@@ -262,7 +272,7 @@
                                       </div>
                                       <c:if test="${ loginUser.petsitterNo eq p.petSitterNo }">
                                       <div class="updateBtn">
-                                          <button onclick="updateComment(${ r.revNo })" type="button" class="btn btn-secondary">수정</button><button onclick="deleteComment(${ r.revNo })" type="button" class="btn btn-secondary">삭제</button>
+                                        <button onclick="updateComment(${ r.revNo })" type="button" class="btn btn-secondary">수정</button><button onclick="deleteComment(${ r.revNo })" type="button" class="btn btn-secondary">삭제</button>
                                       </div>
                                       </c:if>
                                     </div>
@@ -270,6 +280,7 @@
                                       <c:when test="${ loginUser.petsitterNo eq p.petSitterNo }">
                                         <div id="commentForm">
                                           <textarea id="acontent${ r.revNo }">${ r.acontent }</textarea>
+                                          <div class="count"><span>0</span>/500</div>
                                         </div>
                                       </c:when>
                                       <c:otherwise>
@@ -312,11 +323,11 @@
 			                              width: 103px;height: 37px;border-radius: 8px;box-shadow: 2px 2px 3px black;">
 			                              <div>
 			                              <svg style="color: #381B1B;" xmlns="http://www.w3.org/2000/svg" width="20" height="25" fill="currentColor" class="bi bi-chat-dots-fill" viewBox="0 0 16 16">
-											  <path d="M16 8c0 3.866-3.582 7-8 7a9.06 9.06 0 0 1-2.347-.306c-.584.296-1.925.864-4.181 1.234-.2.032-.352-.176-.273-.362.354-.836.674-1.95.77-2.966C.744 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7zM5 8a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm4 0a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
-											</svg>
-											</div>
+                                      <path d="M16 8c0 3.866-3.582 7-8 7a9.06 9.06 0 0 1-2.347-.306c-.584.296-1.925.864-4.181 1.234-.2.032-.352-.176-.273-.362.354-.836.674-1.95.77-2.966C.744 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7zM5 8a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm4 0a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+                                    </svg>
+                                    </div>
 			                              <div>채팅요청</div>
-										</div>
+										              </div>
                                     </div>                                  
                                     <a href="#" class="heart-login">
                                       <i class="bi bi-heart heartIcon" id="unChecked"></i><p>${ likeCount }&nbsp;</p>
@@ -327,16 +338,16 @@
                                 <c:otherwise>
                                   <div class="likeBtn">
                                     <div>
-	                              <div class="here" onclick="location.href='/createChat.do?masterNo=${p.userNo}'" style="display: flex;align-items: center;justify-content: space-evenly;
+	                                  <div class="here" onclick="location.href='/createChat.do?masterNo=${p.userNo}'" style="display: flex;align-items: center;justify-content: space-evenly;
 			                              bottom: -22px;right: 20px;color: #381B1B;background-color: #ECD500;
 			                              width: 103px;height: 37px;border-radius: 8px;box-shadow: 2px 2px 3px black;">
-			                              <div>
-			                              <svg style="color: #381B1B;" xmlns="http://www.w3.org/2000/svg" width="20" height="25" fill="currentColor" class="bi bi-chat-dots-fill" viewBox="0 0 16 16">
-											  <path d="M16 8c0 3.866-3.582 7-8 7a9.06 9.06 0 0 1-2.347-.306c-.584.296-1.925.864-4.181 1.234-.2.032-.352-.176-.273-.362.354-.836.674-1.95.77-2.966C.744 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7zM5 8a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm4 0a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
-											</svg>
-											</div>
+                                    <div>
+                                      <svg style="color: #381B1B;" xmlns="http://www.w3.org/2000/svg" width="20" height="25" fill="currentColor" class="bi bi-chat-dots-fill" viewBox="0 0 16 16">
+                                        <path d="M16 8c0 3.866-3.582 7-8 7a9.06 9.06 0 0 1-2.347-.306c-.584.296-1.925.864-4.181 1.234-.2.032-.352-.176-.273-.362.354-.836.674-1.95.77-2.966C.744 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7zM5 8a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm4 0a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+                                      </svg>
+                                    </div>
 			                              <div>채팅요청</div>
-										</div>
+										                </div>
                                     </div>                                  
                                     <a href="#" class="heart-login">
                                       <i class="bi bi-heart-fill heartIcon" id="cheked"></i><p>${ likeCount }&nbsp;</p>
@@ -357,11 +368,11 @@
 			                              width: 103px;height: 37px;border-radius: 8px;box-shadow: 2px 2px 3px black;">
 			                              <div>
 			                              <svg style="color: #381B1B;" xmlns="http://www.w3.org/2000/svg" width="20" height="25" fill="currentColor" class="bi bi-chat-dots-fill" viewBox="0 0 16 16">
-											  <path d="M16 8c0 3.866-3.582 7-8 7a9.06 9.06 0 0 1-2.347-.306c-.584.296-1.925.864-4.181 1.234-.2.032-.352-.176-.273-.362.354-.836.674-1.95.77-2.966C.744 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7zM5 8a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm4 0a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
-											</svg>
-											</div>
+                                      <path d="M16 8c0 3.866-3.582 7-8 7a9.06 9.06 0 0 1-2.347-.306c-.584.296-1.925.864-4.181 1.234-.2.032-.352-.176-.273-.362.354-.836.674-1.95.77-2.966C.744 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7zM5 8a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm4 0a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+                                    </svg>
+                                    </div>
 			                              <div>채팅요청</div>
-										</div>
+										          </div>
                             </div>
                             <a href="#" class="heart-notlogin">
                               <i class="bi bi-heart"></i><p>${ likeCount }&nbsp;</p>
@@ -874,6 +885,19 @@
     	$("#payForm").submit();
     	
     }
+
+
+
+    // ------------------------ textarea 글자수 제한 ------------------------
+    $('#commentForm>textarea').keyup(function(){
+      var content = $(this).val();
+      $('#commentForm .count span').html(content.length);
+      if (content.length > 500){
+        alert("최대 500자까지 입력 가능합니다.");
+        $(this).val(content.substring(0, 500));
+        $('.text_box .count span').html(500);
+      }
+    });
 
 
   </script>
