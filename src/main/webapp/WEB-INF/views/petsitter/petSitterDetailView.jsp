@@ -307,11 +307,16 @@
                                 <c:when test="${ likeCheck == 0 }">
                                   <div class="likeBtn">
                                     <div>
-                                      <a href="/createChat.do?masterNo=${ p.userNo }">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="40" fill="currentColor" class="bi bi-chat-dots-fill" viewBox="0 0 16 16">
-                                          <path d="M16 8c0 3.866-3.582 7-8 7a9.06 9.06 0 0 1-2.347-.306c-.584.296-1.925.864-4.181 1.234-.2.032-.352-.176-.273-.362.354-.836.674-1.95.77-2.966C.744 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7zM5 8a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm4 0a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
-                                        </svg>
-                                      </a>
+		                              <div class="here" onclick="location.href='/createChat.do?masterNo=${p.userNo}'" style="display: flex;align-items: center;justify-content: space-evenly;
+			                              bottom: -22px;right: 20px;color: #381B1B;background-color: #ECD500;
+			                              width: 103px;height: 37px;border-radius: 8px;box-shadow: 2px 2px 3px black;">
+			                              <div>
+			                              <svg style="color: #381B1B;" xmlns="http://www.w3.org/2000/svg" width="20" height="25" fill="currentColor" class="bi bi-chat-dots-fill" viewBox="0 0 16 16">
+											  <path d="M16 8c0 3.866-3.582 7-8 7a9.06 9.06 0 0 1-2.347-.306c-.584.296-1.925.864-4.181 1.234-.2.032-.352-.176-.273-.362.354-.836.674-1.95.77-2.966C.744 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7zM5 8a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm4 0a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+											</svg>
+											</div>
+			                              <div>채팅요청</div>
+										</div>
                                     </div>                                  
                                     <a href="#" class="heart-login">
                                       <i class="bi bi-heart heartIcon" id="unChecked"></i><p>${ likeCount }&nbsp;</p>
@@ -322,11 +327,16 @@
                                 <c:otherwise>
                                   <div class="likeBtn">
                                     <div>
-                                      <a href="/createChat.do?masterNo=${ p.userNo }">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="40" fill="currentColor" class="bi bi-chat-dots-fill" viewBox="0 0 16 16">
-                                          <path d="M16 8c0 3.866-3.582 7-8 7a9.06 9.06 0 0 1-2.347-.306c-.584.296-1.925.864-4.181 1.234-.2.032-.352-.176-.273-.362.354-.836.674-1.95.77-2.966C.744 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7zM5 8a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm4 0a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
-                                        </svg>
-                                      </a>
+	                              <div class="here" onclick="location.href='/createChat.do?masterNo=${p.userNo}'" style="display: flex;align-items: center;justify-content: space-evenly;
+			                              bottom: -22px;right: 20px;color: #381B1B;background-color: #ECD500;
+			                              width: 103px;height: 37px;border-radius: 8px;box-shadow: 2px 2px 3px black;">
+			                              <div>
+			                              <svg style="color: #381B1B;" xmlns="http://www.w3.org/2000/svg" width="20" height="25" fill="currentColor" class="bi bi-chat-dots-fill" viewBox="0 0 16 16">
+											  <path d="M16 8c0 3.866-3.582 7-8 7a9.06 9.06 0 0 1-2.347-.306c-.584.296-1.925.864-4.181 1.234-.2.032-.352-.176-.273-.362.354-.836.674-1.95.77-2.966C.744 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7zM5 8a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm4 0a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+											</svg>
+											</div>
+			                              <div>채팅요청</div>
+										</div>
                                     </div>                                  
                                     <a href="#" class="heart-login">
                                       <i class="bi bi-heart-fill heartIcon" id="cheked"></i><p>${ likeCount }&nbsp;</p>
@@ -342,11 +352,16 @@
                         <c:otherwise>
                           <div class="likeBtn">
                             <div>
-                              <a href="/createChat.do?masterNo=${ p.userNo }">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="40" fill="currentColor" class="bi bi-chat-dots-fill" viewBox="0 0 16 16">
-                                  <path d="M16 8c0 3.866-3.582 7-8 7a9.06 9.06 0 0 1-2.347-.306c-.584.296-1.925.864-4.181 1.234-.2.032-.352-.176-.273-.362.354-.836.674-1.95.77-2.966C.744 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7zM5 8a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm4 0a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
-                                </svg>
-                              </a>
+	                              <div class="here" onclick="location.href='/createChat.do?masterNo=${p.userNo}'" style="display: flex;align-items: center;justify-content: space-evenly;
+			                              bottom: -22px;right: 20px;color: #381B1B;background-color: #ECD500;
+			                              width: 103px;height: 37px;border-radius: 8px;box-shadow: 2px 2px 3px black;">
+			                              <div>
+			                              <svg style="color: #381B1B;" xmlns="http://www.w3.org/2000/svg" width="20" height="25" fill="currentColor" class="bi bi-chat-dots-fill" viewBox="0 0 16 16">
+											  <path d="M16 8c0 3.866-3.582 7-8 7a9.06 9.06 0 0 1-2.347-.306c-.584.296-1.925.864-4.181 1.234-.2.032-.352-.176-.273-.362.354-.836.674-1.95.77-2.966C.744 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7zM5 8a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm4 0a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+											</svg>
+											</div>
+			                              <div>채팅요청</div>
+										</div>
                             </div>
                             <a href="#" class="heart-notlogin">
                               <i class="bi bi-heart"></i><p>${ likeCount }&nbsp;</p>

@@ -343,3 +343,6 @@ div, form, img { box-sizing: border-box; }
 ::-webkit-scrollbar {
     display: none;
 }
+.here:hover{
+	cursor:pointer;
+}

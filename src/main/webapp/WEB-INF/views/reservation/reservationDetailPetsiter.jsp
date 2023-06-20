@@ -81,8 +81,8 @@
                   </div>
 
                   <div align="center" class="formBtn">
-                    <button id="careBtn" class="btn btn-success btn-lg">돌봄일지 작성</button>
-                    <button type="button" onclick="history.back()" class="btn btn-info btn-lg">뒤로가기</button>
+                    <button id="careBtn" class="btn btn-success btn-lg" style="background-color:#0888D0;border:none;">돌봄일지 작성</button>
+                    <button type="button" onclick="history.back()" class="btn btn-info btn-lg" style="background-color:#5E5E5E;border:none;">뒤로가기</button>
                   </div>
 				 </form>
                 </div>
