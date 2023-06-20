@@ -41,6 +41,18 @@
 		   AND USER_NO = #{userNo}
 	</select>
 	
+	<!-- 관리자용 1:1 문의글 전체 리스트를 구해주는 쿼리문 -->
+	<select id="selectAdminInquiry" resultMap="inquiryResultSet" parameterType="member">
+		SELECT I_NO
+			 , I_TITLE
+			 , TO_CHAR(CREATE_DATE, 'YYYY-MM-DD') AS "CREATE_DATE"
+			 , USER_NO
+	 	  FROM INQUIRY
+	 	 WHERE STATUS = 'Y'
+      GROUP BY I_NO, I_TITLE, CREATE_DATE, USER_NO
+      ORDER BY I_NO DESC
+	</select>
+	
 	<!-- 대시보드용 : 1:1 문의글 전체 리스트를 구해주는 쿼리문 -->
 	<select id="selectDashboardList" resultMap="inquiryResultSet">
 		SELECT I.I_NO

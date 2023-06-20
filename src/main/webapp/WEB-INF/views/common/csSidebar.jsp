@@ -44,16 +44,20 @@
   	});
 </script>	
 <script>
-function inquiry() {
-	$(function() {
-		// loginUser.userNo 값이 없을 경우 alert("로그인 후 이용 가능한 서비스입니다."); 출력하고 싶음
-		$("li.inquiryCenter > a").click(function(e) {
-			let userNo = "${loginUser.userNo}";
-			let url = "list.in?userNo=" + userNo;
-			location.href = url;
-		});
-	});
-}
+    function inquiry() {
+        $(function() {
+            $("li.inquiryCenter > a").click(function(e) {
+                let userNo = "${loginUser.userNo}";
+                if(userNo === "1") {
+                let url = "all.in?userNo=" + userNo + "&cPage=1";
+                location.href = url;
+                } else {
+                let url = "list.in?userNo=" + userNo + "&cPage=1";
+                location.href = url;
+                }
+            });
+        });
+    }
 </script>
 <script>
   	$(function() {

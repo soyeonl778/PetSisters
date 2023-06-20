@@ -19,9 +19,21 @@ public class InquiryDao {
 	@Autowired
 	private SqlSession sqlSession;
 	
-	// 대시보드용 : 
+	// 관리자용 1:1문의글 개수
 	public int selectAllCount(SqlSessionTemplate sqlSession) {
 		return sqlSession.selectOne("inquiryMapper.selectAllCount");
+	}
+	
+	// 관리자용 1:1문의 리스트
+	public List<Inquiry> selectAdminInquiry(SqlSessionTemplate sqlSession, PageInfo pi, int userNo) {
+		
+		int offset = (pi.getCurrentPage() - 1) * pi.getBoardLimit();
+		int limit = pi.getBoardLimit();
+		
+		RowBounds rowBounds = new RowBounds(offset, limit);
+		
+		List<Inquiry> list = sqlSession.selectList("inquiryMapper.selectAdminInquiry", userNo, rowBounds);
+		return list;
 	}
 	
 	public int selectListCount(SqlSessionTemplate sqlSession, int userNo) {

@@ -84,8 +84,8 @@
 	<script>
 		$(function() {
 			$(".reviewTable>tbody>tr").click(function() {
-				let inquiryNo = $(this).children().eq(0).text();
-				let url = "detail.in?inquiryNo=" + inquiryNo;
+				let rNo = $(this).children().eq(0).text();
+				let url = "reservationDetail?rNo=" + rNo;
 				window.open(url, "_blank");
 			});
 		});

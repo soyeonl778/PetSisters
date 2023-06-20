@@ -1,14 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   
-  <link rel="stylesheet" href="/resources/css/inquiry/adminInquiryList.css">
+  <link rel="stylesheet" href="/resources/css/inquiry/inquiryList.css">
+  <link rel="stylesheet" href="/resources/css/common/form.css">
   <jsp:include page="../common/common.jsp" />
   
-  <title>1:1 문의 / 관리자</title>
+  <title>1:1 문의</title>
 </head>
 
 <body>
@@ -30,81 +32,87 @@
             <div id="viewOrderList" class="page_section section_orderlist">
               <div class="page_section section_destination">
                 <div class="title">
-                  <h2>1:1 문의 관리</h2>
+                  <h2>1:1 문의</h2>
                   <hr/>
                 </div>
 
                 <br/>
-                
-                <table id="inquiryTable" style="text-align: center;">
+                <form id="postForm" action="/list.in" method="post">
+		          <input type="hidden" name="userNo" value="${i.userNo}">
+		        </form>
+		          
+                <table id="inquiryTable" style="text-align: center;" class="table table-hover">
                   <thead>
                     <tr class="category">
+                    	<th width="100" height="51">접수번호</th>
                         <th>제목</th>
-                        <th width="100">작성자</th>
                         <th width="100">작성일</th>
-                        <th width="100">답변상태</th>
                     </tr>
                   </thead>
-                  <tbody id="inquiryBody">
-                    <a class="inquiry" href="#">
-                      <tr>
-                        <td>우리 강아지에게 없던 상처가 생겼어요..</td>
-                        <td>이주흔</td>
-                        <td>2023-05-29</td>
-                        <td>답변대기</td>
-                        <%-- <c:choose>
-								<c:when test="답변내용이있음">
-									답변완료
-								</c:when>
-								<c:otherwise>
-									답변대기
-								</c:otherwise>
-							</c:choose> --%>
-                      </tr>
-                    </a>
-                    <a class="inquiry" href="#">
-                      <tr>
-                        <td>생후 몇개월부터 맡길 수 있나요?</td>
-                        <td>이소연</td>
-                        <td>2023-05-28</td>
-                        <td>답변완료</td>
-                      </tr>
-                    </a>
-                    <a class="inquiry" href="#">
-                      <tr>
-                        <td>펫시팅 서비스가 불만족스러워요.</td>
-                        <td>정재훈</td>
-                        <td>2023-05-27</td>
-                        <td>답변완료</td>
-                      </tr>
-                    </a>
-                  </tbody>
+				  <tbody id="inquiryBody">
+					<c:choose>
+				      <c:when test="${empty list}">
+			            <tr>
+			                <td colspan="3">등록된 글이 없습니다.</td>
+			            </tr>
+			          </c:when>
+				      <c:otherwise>
+			            <c:forEach var="i" items="${list}">
+			                <tr class="inquiry-row">
+			                    <td height="51">${i.inquiryNo}</td>
+			                    <td>${i.inquiryTitle}</td>
+			                    <td>${i.createDate}</td>
+			                </tr>
+			            </c:forEach>
+				      </c:otherwise>
+				    </c:choose>
+                  </tbody>						
                 </table>
+				
+                <br/>
                 
                 <br/>
                 <!-- 페이지네이션-->
-                <div id="pagination">
-                    <nav aria-label="Page navigation example">
-                      <ul id="pagiUl" class="pagination paginationUlTag">
-                        <li class="arrowTag">
-                          <a href="">&lsaquo;</a>
-                        </li>
-                        <li class="page-item active">
-                          <a class="page-link" href="#">1</a>
-                        </li>
-                        <li class="page-item">
-                          <a class="page-link" href="#">2</a>
-                        </li>
-                        <li class="page-item">
-                          <a class="page-link" href="#">3</a>
-                        </li>
-                        <li class="arrowTag">
-                          <a href="">&rsaquo;</a>
-                        </li>
-                      </ul>
-                    </nav>
-                  </div>
-                  <!-- 페이지네이션-->
+				<div id="pagination">
+					<nav aria-label="Page navigation example">
+						<c:if test="${ pi.listCount != 0 }">
+							<ul id="pagiUl" class="pagination paginationUlTag">
+								<c:choose>
+								  <c:when test="${ pi.currentPage eq 1 }">
+									<li class="arrowTag disabled"><a href="">&lsaquo;</a></li>
+								  </c:when>
+								  <c:otherwise>
+									  <li class="arrowTag">
+				                        <a href="all.in?userNo=1&cPage=${ pi.currentPage - 1 }">&lsaquo;</a>
+									  </li>
+								  </c:otherwise>
+								</c:choose>
+				
+								<c:forEach var="i" begin="${ pi.startPage }" end="${ pi.endPage }" step="1">
+									<li class="page-item active">
+				                      <a class="page-link" href="all.in?userNo=1&cPage=${i}">${i}</a>
+				                    </li>
+								</c:forEach>
+				
+								<c:choose>
+								  <c:when test="${ pi.currentPage eq pi.maxPage }">
+									  <li class="arrowTag disabled">
+				                        <a href="javascript:void(0)">&rsaquo;</a>
+				                      </li>
+									</c:when>
+									<c:otherwise>
+									    <li class="arrowTag">
+				                          <a href="all.in?userNo=1&cPage=${pi.currentPage + 1}">&rsaquo;</a>
+				                        </li>
+								  </c:otherwise>
+								</c:choose>
+							</ul>
+						</c:if>
+					</nav>
+				</div>
+                <!-- 페이지네이션-->
+                  
+                  
               </div>
             </div>
             <!-- 본문 영역 끝-->

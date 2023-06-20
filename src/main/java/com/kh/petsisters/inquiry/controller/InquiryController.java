@@ -31,6 +31,31 @@ public class InquiryController {
 	@Autowired
 	private InquiryService inquiryService;
 
+	// 관리자용 1:1문의글 list
+	@RequestMapping("all.in")
+	public ModelAndView selectAdminInquiry(
+			@RequestParam(value="cPage", defaultValue="1") int currentPage,
+			ModelAndView mv,
+			HttpSession session) {
+		
+		int userNo = ((Member)session.getAttribute("loginUser")).getUserNo();
+		
+		int listCount = inquiryService.selectAllCount();
+		
+		int pageLimit = 10;
+		int boardLimit = 10;
+		
+		PageInfo pi = Pagination.getPageInfo(listCount, currentPage, pageLimit, boardLimit);
+		
+		List<Inquiry> list = inquiryService.selectAdminInquiry(pi, userNo);
+		
+		mv.addObject("pi", pi)
+		  .addObject("list", list)
+		  .setViewName("inquiry/adminInquiryList");
+		
+		return mv;
+	}
+	
 	// 1:1문의 리스트 조회	
 	@RequestMapping("list.in")
 	public ModelAndView selectList(
@@ -128,7 +153,13 @@ public class InquiryController {
 			
 			session.setAttribute("message", "성공적으로 문의글을 삭제하였습니다.");
 			
-			return "redirect:/list.in";
+			Member loginUser = (Member) session.getAttribute("loginUser");
+			
+			if(loginUser.getUserNo() == 1) {
+				return "redirect:/all.in?userNo=1&cPage=1";
+			} else {
+				return "redirect:/list.in?userNo=" + loginUser.getUserNo() + "&cPage=1";
+			}
 			
 		} else {
 			

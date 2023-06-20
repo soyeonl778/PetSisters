@@ -21,7 +21,7 @@ public class InquiryServiceImpl implements InquiryService {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 
-	// 대시보드용 : 
+	// 관리자용 1:1문의글 개수
 	@Override
 	public int selectAllCount() {
 		return inquiryDao.selectAllCount(sqlSession);
@@ -32,6 +32,12 @@ public class InquiryServiceImpl implements InquiryService {
 		return inquiryDao.selectListCount(sqlSession, userNo);
 	}
 
+	// 관리자용 1:1문의 리스트
+	@Override
+	public List<Inquiry> selectAdminInquiry(PageInfo pi, int userNo) {
+		return inquiryDao.selectAdminInquiry(sqlSession, pi, userNo);
+	}
+	
 	// 대시보드용 : 
 	@Override
 	public List<Inquiry> selectDashboardList() {

@@ -36,7 +36,7 @@
                     <hr/>
                 </div>
                 
-                <c:if test="${ (not empty loginUser) and (loginUser.userNo eq i.userNo) }">
+                <c:if test="${ (not empty loginUser) and ((loginUser.userNo eq i.userNo) or (loginUser.userName eq '관리자')) }">
                 	<div align="right">
 	                    <a class="btn btn-danger" onclick="postFormSubmit();">삭제하기</a>
                 	</div>

@@ -11,9 +11,11 @@ public interface InquiryService {
 
 	// 1:1문의 리스트 조회 서비스 (+ 페이징처리)
 	
-	// 대시보드용 : 
-	// 1:1문의 게시글의 총 개수 조회
+	// 관리자용 1:1문의글 개수 조회
 	int selectAllCount();
+	
+	// 관리자용 1:1문의 리스트
+	List<Inquiry> selectAdminInquiry(PageInfo pi, int userNo);
 	
 	// 1:1 문의글 본인글 개수 조회
 	int selectListCount(int userNo);
