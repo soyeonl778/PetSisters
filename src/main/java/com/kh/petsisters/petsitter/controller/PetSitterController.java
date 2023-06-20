@@ -314,8 +314,6 @@ public class PetSitterController {
 		// 펫시터 후기 답글 삭제
 		int result = petSitterService.deleteComment(r);
 		
-		System.out.println(result);
-		
 		return (result > 0) ? "success" : "fail";
 	}
 	

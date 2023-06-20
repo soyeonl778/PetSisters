@@ -12,9 +12,10 @@
   <jsp:include page="../common/common.jsp" />
 
   <!--datepicker 캘린더 -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script  src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css"/>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
   <!-- 폰트어썸 아이콘 적용 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -22,16 +23,11 @@
   <!-- 부트스트랩 아이콘 -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
   
+  
   <title>펫시터 상세페이지</title>
 </head>
 
 <body> 
-
-  <script>
-
-    // $.noConflict();
-
-  </script>
 
   <jsp:include page="../common/header.jsp" />
 
@@ -49,13 +45,7 @@
                   <div id="content-area">
                     <div id="content1">
 
-                      <div id="carouselExampleIndicators" class="carousel slide">
-                        <div class="carousel-indicators">
-                          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>  
-                          <c:forEach var="psImg" items="${ psImgList }" varStatus="status">
-                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="${ status.count }" aria-label="Slide ${ status.count } + 1"></button>
-						              </c:forEach>
-                        </div>
+                      <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-inner">
                           <c:forEach var="psImg" items="${ psImgList }">
                             <div class="carousel-item active">
@@ -63,15 +53,16 @@
                             </div>
                           </c:forEach>
                         </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
                           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                           <span class="visually-hidden">Previous</span>
                         </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
                           <span class="carousel-control-next-icon" aria-hidden="true"></span>
                           <span class="visually-hidden">Next</span>
                         </button>
                       </div>
+
 
                       <div class="profileBox">
                         <div class="profileImg">
@@ -398,7 +389,6 @@
                           </div>
                         </form>
                       </div>
-
                       <br>
                       <div class="card">
                         <div class="card-body">
@@ -434,7 +424,8 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 
   <!--카카오맵 API-->
-  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=0f876d0e519ec1bc91c1da0c5e2829c7"></script>
+  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=0f876d0e519ec1bc91c1da0c5e2829c7&libraries=services"></script>
+
 
   <script type="text/javascript">
 
@@ -453,13 +444,15 @@
         showMonthAfterYear: true,
         yearSuffix: '년',
         showButtonPanel: true,
-        closeText: 'close'
+        closeText: 'close',
       });
 
       $(".datepicker1, .datepicker2").datepicker({
         minDate: 0,
         beforeShowDay: disableSomeDays
       });
+
+      $( "#datepicker" ).datepicker();
 
       // 예약 불가능일 설정
       var disabledDays = ${ formatDates };    
@@ -474,7 +467,6 @@
           }
           return [true];
       }
-
 
       
       // ------------------------ 예약 장바구니 ----------------------------
@@ -659,7 +651,7 @@
       var map = new kakao.maps.Map(mapContainer, mapOption);
 
 
-      var address = "${ p.address }"; 
+      var address = '${ p.address }'; 
       var geocoder = new kakao.maps.services.Geocoder();
 
       geocoder.addressSearch(address, function (result, status) {
@@ -866,7 +858,6 @@
     	$("#payForm").children().eq(5).val(petsitterNo);
     	// 나머지 input value 들도 다 채우고
     	$("#payForm").submit();
-    	
     	
     }
 

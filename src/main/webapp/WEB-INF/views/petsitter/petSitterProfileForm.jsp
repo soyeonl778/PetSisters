@@ -73,6 +73,7 @@
                       <div class="introduction">
                         <h5>내용</h5>
                         <textarea rows="25" id="petSitterContent" name="petSitterContent" style="resize: none;" required>${ p.petSitterContent }</textarea>
+                        <div class="count"><span>0</span>/2000</div>
                       </div>
                       <br>
                       <div>
@@ -208,7 +209,7 @@
                         <ul id="addList"> 
                           <li>
                            <input type="file" id="QnA03" name="upfile" class="files">
-                           <button  type="button" class="btn btn-secondary add" style="vertical-align: sub">추가</button>
+                           <button type="button" class="btn btn-secondary add" style="vertical-align: sub">추가</button>
                           </li> 
                         </ul>
                       </div>
@@ -222,10 +223,10 @@
                         <div class="deleteDate">
                           <h5>예약 불가능한 날짜 취소</h5>
                           <input type="text" class="datepicker" id="deleteDate" name="delDate" placeholder="예약 불가능한 날짜">
-                        </div>
+                        </input>
                       </div>
 
-                      <div align="center" class="formBtn">
+                      <div class="formBtn">
                         <button type="submit" class="btn btn-primary">등록하기</button>
                         <button type="button" onclick="history.back()" class="btn btn-secondary">뒤로가기</button>
                       </div>
@@ -380,6 +381,18 @@
       parentNode.parentNode.removeChild(parentNode);
 
     }
+
+
+    // ------------------------ textarea 글자수 제한 ------------------------
+    $('.introduction>textarea').keyup(function(){
+      var content = $(this).val();
+      $('.introduction .count span').html(content.length);
+      if (content.length > 2000){
+        alert("최대 2000자까지 입력 가능합니다.");
+        $(this).val(content.substring(0, 2000));
+        $('.text_box .count span').html(2000);
+      }
+    });
 
   </script>
 

@@ -92,11 +92,7 @@
               <div class="page_section section_destination">
                 <!-- 이 영역 안에서 페이지 작업 하시면 됩니다 -->
                 <div>
-                    <div class="filter">
-                        <a>가까운순</a>
-                        <a>인기순</a>
-                        <img src="/resources/img/petsitter/filter.png">
-                    </div>
+                  <br><br>
                     <div class="content">
 
                       <c:forEach var="p" items="${ list }">
@@ -148,13 +144,13 @@
                       <c:choose>
                         <c:when test="${ pi.currentPage eq 1 }">
                           <li class="arrowTag disabled">
-                                  <a href="#">&lsaquo;</a>
-                                </li>
+                            <a href="#">&lsaquo;</a>
+                          </li>
                         </c:when>
                     		<c:otherwise>
                     			<li class="arrowTag">
-		                          <a href="list.pe?cPage=${ pi.currentPage - 1 }">&lsaquo;</a>
-		                        </li>
+                            <a href="list.pe?cPage=${ pi.currentPage - 1 }">&lsaquo;</a>
+                          </li>
                     		</c:otherwise>
                     	</c:choose>
                       
@@ -167,13 +163,13 @@
                       <c:choose>
                         <c:when test="${ pi.currentPage eq pi.maxPage }">
                           <li class="arrowTag disabled">
-                                        <a href="#">&rsaquo;</a>
-                                      </li>
+                            <a href="#">&rsaquo;</a>
+                          </li>
                         </c:when>
                         <c:otherwise>
                           <li class="arrowTag">
-                                        <a href="list.pe?cPage=${ pi.currentPage + 1 }">&rsaquo;</a>
-                                      </li>
+                            <a href="list.pe?cPage=${ pi.currentPage + 1 }">&rsaquo;</a>
+                          </li>
                         </c:otherwise>
                       </c:choose>
 
