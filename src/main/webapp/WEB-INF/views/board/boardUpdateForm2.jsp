@@ -54,7 +54,6 @@
                                 <!--게시글 메인페이지 시작-->
                                 <div class="community-detail-board">
                                   
-                                  <form id="enrollForm" method="post" action="missing.bo" enctype="multipart/form-data">
                                     	
                                       <input type="hidden" value="${b.categoryMain}" name="categoryMain">
                                       <input type="hidden" value="${b.categorySub}" name="categorySub">
@@ -126,11 +125,10 @@
                               
 	                              <!--전체후기보기-버튼-->
 	                             <div align="center" id="two-button">
-	                             	<button id="back-button" class="main-card-bottom-button" onclick="window.history.go(-1)">뒤로가기</button>
-				                    <button type="submit" class="main-card-bottom-button">등록하기</button>
+	                             	<button id="back-button" class="main-card-bottom-button" onclick="goBack()">뒤로가기</button>
+				                    <button type="submit" class="main-card-bottom-button" onclick="goMissing()">등록하기</button>
 				                    
                					 </div>
-	                          </form>
 		                               
                               
                           </div>
@@ -199,9 +197,16 @@
 
                     document.getElementById('plusIcon').style.display = 'block';
                  }
-
             }
-
+        }
+        
+        function goBack() {
+        	location.href="main.bo";
+        	
+        }
+        function goMissing() {
+        	location.href="missing.bo";
+        	
         }
       </script>
     </body>
