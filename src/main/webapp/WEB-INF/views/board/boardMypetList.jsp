@@ -36,7 +36,7 @@
             <!-- 사이드 메뉴바 -->
             <div id="snb" class="snb_my" style="position: absolute;">
               <img src="/resources/img/main/사이드바이미지.png" alt="sideBarImg">
-              <h2 class="tit_snb">My Page</h2>
+              <h2 class="tit_snb">카테고리</h2>
               <div class="inner_sub">
                 <ul class="list_menu">
                   <li class="on"><a href="freeList.bo">자유게시판</a></li>
@@ -60,31 +60,12 @@
                     <h3 class="front-page" id="popular-title">
                       "내 강아지 자랑"
                     </h3>
+					<c:if test="${ not empty loginUser }">
+                    	<a id="writing-icon" class="btn btn-secondary" style="float:right;" href="petEnrollForm.bo">글쓰기</a>
+                    </c:if>
                     <div class="popular-post-subsection">
                       
-                        <!-- test 
-                        <div class="row row-cols-1 row-cols-md-5 g-4">
-                            <c:forEach var="b" items="${list}" begin="0" end="14" varStatus="loop">
-                              <div class="col">
-                                
-                      <div class="card" onclick="goPage(${b.boardNo})">
-                        <c:if test="${ not empty b.changeName }">
-                                    <div class="boardMain-img"><img src="${b.atFilePath }${b.changeName}" class="card-img-top" alt="..."></div>
-                                  </c:if>  
-                                  <c:if test="${ empty b.changeName }">
-                                  <div class="boardMain-img"><img src="/resources/img/main/첨부파일없음.png" class="card-img-top" alt="..."></div>
-                                  </c:if>
-                        <div class="card-body">
-                          <h5 class="card-title">${ b.boardTitle }</h5>
-                          <p class="card-text">${ b.boardContent }</p>
-                        </div>
-                      </div>
-                      
-                                    </div>
-                                            </c:forEach>
-                              </div>
-                                          -->
-                      <div class="row row-cols-1 row-cols-md-5 g-4">
+                      <div class="row row-cols-1 row-cols-md-3 g-1" style="width: 100%;">
                         <c:forEach var="b" items="${list}" begin="0" end="7">
                           <div class="col">
                             <div class="card" onclick="goPage(${b.boardNo})">

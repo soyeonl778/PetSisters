@@ -23,6 +23,7 @@
 		<result column="AT_FILE_PATH" property="atFilePath" />
 		<result column="DOG_FILE_PATH" property="dogFilePath" />
 		<result column="DOG_FILE_PATH" property="dogBirth" />
+		<result column="BA_CHANGE_NAME" property="changeName" />
 	</resultMap>
 	
 	<resultMap id="attachmentResultSet" type="attachment">
@@ -179,7 +180,7 @@
 		<!-- 게시글 상세 조회용 쿼리문 -->
 	 
 	<select id="selectBoard" resultMap="boardResultSet">
-		SELECT M.USER_NICKNAME AS M_USER_NAME,
+		SELECT M.USER_NICKNAME AS M_USER_NAME, B.USER_NO AS USER_NO,
 		       B.B_TITLE,  
 		       B.B_CONTENT,
 		       B.CREATE_DATE,
@@ -195,7 +196,7 @@
 		  LEFT JOIN MEMBER M ON B.USER_NO = M.USER_NO
 		 WHERE B.B_NO = #{boardNo}
 		   AND B.STATUS = 'Y' 
-		 GROUP BY M.USER_NICKNAME, 
+		 GROUP BY M.USER_NICKNAME, B.USER_NO,
 		       B.B_TITLE, 
 		       B.B_CONTENT, 
 		       B.CREATE_DATE, 
@@ -240,7 +241,7 @@
          WHERE B_NO = #{bNo}
     </update>
 	
-	
+
 	<!-- 기존 첨부파일 삭제 -->
 	<update id="deleteAttaAll" parameterType="_int">
 		UPDATE B_ATTACHMENT
@@ -249,7 +250,30 @@
 	</update>
 	
 	
+    <!--  
+    <update id="deleteBoardByboard" parameterType="board">
+        UPDATE BOARD
+           SET STATUS = 'N'
+         WHERE B_NO = #{boardNo}
+    </update>
+	-->
 	
+	<!-- 기존 첨부파일 삭제 -->
+	<!--  
+	<update id="deleteAttabyAll" parameterType="board">
+		UPDATE B_ATTACHMENT
+		SET STATUS = 'N',
+		WHERE REF_BNO = #{boardNo}
+	</update>
+	-->
+	<!--  
+	<update id="updateAttachment" parameterType="attachment">
+        UPDATE B_ATTACHMENT
+           SET STATUS = 'Y',
+           	   CHANGE_NAME = #{at.changeName}
+         WHERE REF_BNO = #{refBno}
+    </update>
+	-->
 	
 	
 	<!-- 첨부파일 업데이트용 쿼리문 -->

@@ -87,11 +87,7 @@
                       
                       <div class="popular-post-subsection">
                         <div class="popular-post-meta">
-                            <a href="mypetlist.bo">
-                              <span class="see-more">
-                               	 바로가기<i class="fa-solid fa-chevron-right"></i>
-                              </span>
-                            </a>
+						<li><a href="mypetList.bo">바로가기<i class="fa-solid fa-chevron-right"></i></a></li>
                         </div>
                         
                         <div class="row row-cols-1 row-cols-md-5 g-4">

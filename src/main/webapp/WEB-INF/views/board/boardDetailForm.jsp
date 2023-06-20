@@ -71,14 +71,14 @@
 	                                  	</c:if>
 	                                  	
 	                                  	<c:if test="${not empty b.changeName }">
-	                                  	
+	                                 
 	                                  	<c:set var="changeName" value="${ b.changeName }" />
 	                                  	<c:set var="nameList" value="${fn:split(changeName, ',')}" />
 	                                  	
 	                                  	<c:forEach items="${nameList}" var="name">
 	                                  	<c:set var="currentName" value="${name}" />
 	                                  	<div class="imgSection carousel-item active">
-	                                  		<img class="mainImg d-block w-100" src="${ b.filePath }${currentName}.jpg">
+	                                  		<img class="mainImg d-block w-100" src="/resources/upFiles/board_upfiles/${currentName}">
 	                                  	</div>
 	                                  	</c:forEach>
 	                                  	
@@ -183,7 +183,15 @@
                                 
 	                                <div class="btnArea">
 	                                	<button class="btn btn-info" onclick="window.history.go(-1)">목록으로</button>
-	                                	<c:if test="${ not empty loginUser }">
+	                                	
+	                                	<script>
+	                                		console.log("안되나?")
+	                                		console.log("${loginUser}");
+	                                		console.log("${loginUser.userNo}");
+	                                		console.log("${b.userNo}");
+	                                	</script>
+	                                	
+	                                	<c:if test="${ (not empty loginUser) && (loginUser.userNo eq b.userNo) }">
                                         	<a id="update-icon" class="btn btn-secondary" style="" href="updateForm.bo?bno=${b.boardNo}">수정하기</a>
                                         	<a id="delete-icon" class="btn btn-secondary" style="" href="delete.bo?bno=${b.boardNo}">삭제하기</a>
                                         </c:if>

@@ -114,7 +114,22 @@ public class BoardController {
 		
 		return mv;
 	}
-
+	
+	
+	// 사진게시판 : 등록하기폼 
+	@RequestMapping("petEnrollForm.bo")
+	public ModelAndView petEnrollForm(ModelAndView mv) {
+		
+		Board b = new Board();
+		b.setCategoryMain(2);
+		b.setCategorySub(1);
+		
+		mv.addObject("b", b)
+		  .setViewName("board/boardEnrollForm");
+		
+		return mv;
+	}
+	
 	
 	// 사진/자유게시판 공통 : 글작성 insert 기능
 	@RequestMapping("insert.bo")
@@ -128,6 +143,7 @@ public class BoardController {
 		String filePath = "/resources/upFiles/board_upfiles/";
 		
 		result1 = boardService.insertBoard(b);
+		
 		
 		
 		// ------------------- 다중첨부파일 부분 -------------------
@@ -165,7 +181,7 @@ public class BoardController {
 			session.setAttribute("alertMsg", "게시글 등록 완료");
 			
 			return "redirect:/detail.bo?bno=" + b.getBoardNo();
-	    	
+			
 		} else { // 수정 실패
 			
 			// 에러 문구 일회성 알람 띄우기
@@ -174,7 +190,79 @@ public class BoardController {
 			return "redirect:/.bo";
 		}
 	}
+	
+	/*
+	// 게시글 수정하기 서비스
+	@RequestMapping("update.bo")
+	  public String updateProduct(Board b,
+	                            MultipartFile[] upfiles,
+	                            String[] changeNames,
+	                            HttpSession session) {
+
+	    for(int i = 0; i < 3; i++){
+	      if(!upfiles[i].isEmpty()){
+	        System.out.println(i + "번째 새로운 파일 : " + upfiles[i].getOriginalFilename());
+	      }else{
+	        System.out.println(i + "번째 새로운 파일이 없습니다.");
+	      }
+	    }
+
+	    ArrayList<Attachment> list = new ArrayList<>();
+
+
+	    for(int i = 0; i < upfiles.length; i++){
+
+	      Attachment at = new Attachment();
+
+	      if(!upfiles[i].isEmpty()){
+
+	        if(!changeNames[i].isEmpty()) {
+	        String realPath = session.getServletContext().getRealPath("resources/upFiles/board_upfiles/" + changeNames[i]);
+	        new File(realPath).delete();
+	        }
+
+	        String changeName = saveFile(upfiles[i], session);
+
+	        at.setChangeName(changeName);
+
+	      }else{
+
+	        at.setChangeName(changeNames[i]);
+	      }
+	      
+	      list.add(at);
+
+	    }
+
+	    int result = 0;
 	    
+	    result = boardService.updateBoardAndAtt(b);
+	    
+	    
+	    for(Attachment at : list) {
+
+	        if(!"".equals(at.getChangeName()) && at.getChangeName() != null) {
+
+	          result = boardService.updateAttachment(at);
+
+	        }
+	      }
+	      
+	    
+	    
+
+	    if(result>0) {
+	      session.setAttribute("alertMsg", "상품 수정 성공");
+	      return "redirect:detail.bo?bno=" + b.getBoardNo();
+	    }else{
+	      session.setAttribute("alertMsg", "상품 수정 실패");
+	      return "redirect:detail.bo?bno=" + b.getBoardNo();
+	    }
+	  }
+	  */	
+
+
+	
 	
 	// 상세페이지 포워딩
 	@RequestMapping("detail.bo")
@@ -186,8 +274,11 @@ public class BoardController {
 		if(result > 0) { // 성공
 			Board b = boardService.selectBoard(bno);
 			Board dog = boardService.dogInfo(bno);
+			
+			System.out.println(b);
+			
 			// 조회된 데이터를 mv 에 담아서 포워딩 페이지 경로를 잡아주기
-			mv.addObject("b", b).setViewName("board/boardDetailForm");
+			mv.addObject("b", b);
 			mv.addObject("dog", dog).setViewName("board/boardDetailForm");
 		} else { // 실패
 			
@@ -233,12 +324,23 @@ public class BoardController {
 		
 		ArrayList<Attachment> list = boardService.selectAttachment(bno);
 		
+
 		mv.addObject("b", b).addObject("list", list).setViewName("board/boardUpdateForm2");
+		
 		
 		return mv;
 	}
 	
+	@RequestMapping("missing.bo")
+	public String missingPage() {
+		
+		return "common/missing";
+		
+	}
+
+	
 	/*
+	// 기존 작성중이던 파일
 	// 업데이트 
 	@RequestMapping("update.bo")
 	public String updateBoard(Board b,
@@ -310,7 +412,7 @@ public class BoardController {
 		}
 
 	}
-	*/	
+	*/
 	
 	
 	

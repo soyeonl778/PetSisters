@@ -65,4 +65,9 @@ public interface BoardService {
 	
 	// 게시글 삭제하는 서비스
 	int deleteBoard(int bNo);
+	
+	// 게시글 수정하는 서비스
+	//int updateBoardAndAtt(Board b);
+	// 게시글 수정하는 서비스
+	//int updateAttachment(Attachment at);
 }

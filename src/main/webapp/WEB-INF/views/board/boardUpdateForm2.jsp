@@ -54,7 +54,7 @@
                                 <!--게시글 메인페이지 시작-->
                                 <div class="community-detail-board">
                                   
-                                  <form id="enrollForm" method="post" action="insert.bo" enctype="multipart/form-data">
+                                  <form id="enrollForm" method="post" action="missing.bo" enctype="multipart/form-data">
                                     	
                                       <input type="hidden" value="${b.categoryMain}" name="categoryMain">
                                       <input type="hidden" value="${b.categorySub}" name="categorySub">
@@ -102,11 +102,17 @@
                                         
                                         
                                         <label for="btnAtt">첨부파일 : </label>
-                                        <input type="file" name="upfile" id="btnAtt" onchange="loadImg(this, 1);"> <br> 	
+                                        <input type="file" name="upfiles" id="btnAtt" onchange="loadImg(this, 1);"> <br> 	
                                         <label for="btnAtt">첨부파일 : </label>
-                                        <input type="file" name="upfile" id="btnAtt" onchange="loadImg(this, 2);"> <br>
+                                        <input type="file" name="upfiles" id="btnAtt" onchange="loadImg(this, 2);"> <br>
                                         <label for="btnAtt">첨부파일 : </label>
-                                        <input type="file" name="upfile" id="btnAtt" onchange="loadImg(this, 3);">
+                                        <input type="file" name="upfiles" id="btnAtt" onchange="loadImg(this, 3);">
+                                      	
+                                      	<c:forEach var="i" begin="0" end="2">
+	                                      	<c:if test="${list[i].changeName != null}">
+												<input type="hidden" name="changeNames" value="${ list[i].changeName }"> <!-- 기존에 파일이 있을 경우만 넘어가는놈 -->
+											</c:if>
+                                      	</c:forEach>
                                       	
                                       </div>  
 	                                  </div>
@@ -119,9 +125,9 @@
                               
                               
 	                              <!--전체후기보기-버튼-->
-	                             <button type="submit" class="main-card-bottom-button" onclick="location.href='update.bo'">
-	                               		작성하기
-	                             </button>
+	                             <div align="center">
+				                    <button type="submit" class="main-card-bottom-button">등록하기</button>
+               					 </div>
 	                          </form>
 		                               
                               

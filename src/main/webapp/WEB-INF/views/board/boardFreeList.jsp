@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+-<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
@@ -46,7 +46,7 @@
 						<!-- 사이드 메뉴바 -->
 						<div id="snb" class="snb_my" style="position: absolute;">
 							<img src="/resources/img/main/사이드바이미지.png" alt="sideBarImg">
-							<h2 class="tit_snb">My Page</h2>
+							<h2 class="tit_snb">카테고리</h2>
 							<div class="inner_sub">
 								<ul class="list_menu">
 									<li class="on"><a href="freeList.bo">자유게시판</a></li>

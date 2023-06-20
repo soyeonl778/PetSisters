@@ -137,4 +137,18 @@ public class BoardDao {
     }
 	
 	
+//	public int updateBoardAndAtt(SqlSessionTemplate sqlSession, Board b) {
+//		int result1 = 0;
+//		int result2 = 0;
+//		
+//		result1 = sqlSession.update("boardMapper.deleteBoardByboard", b);
+//			
+//	    result2 = sqlSession.update("boardMapper.deleteAttabyAll", b);
+//	    return result1 * result2;
+//	}
+	
+//	public int updateAttachment(SqlSessionTemplate sqlSession, Attachment at) {
+//		return sqlSession.update("boardMapper.updateAttachment", at);
+//	}
+	
 }
