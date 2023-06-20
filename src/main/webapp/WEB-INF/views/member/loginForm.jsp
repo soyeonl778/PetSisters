@@ -89,15 +89,15 @@
                           </form>
                         </div>
                     </div>
-                    <!-- 구글 로그인 API 영역 -->
-                    <div>
+                    <!-- 구글 로그인 API 영역 
+                    <div class="google_log1">
                     	<script src="https://accounts.google.com/gsi/client" async defer></script>
                     	<div id="g_id_onload"
-						 	data-client_id="YOUR_CLIENT_ID"
+						 	data-client_id="752706864235-v1cvuc800pgnpij7aicp7b4s4flf2ehi.apps.googleusercontent.com"
 						 	data-callback="handleCredentialResponse">
 				        </div>
-				        <div class="g_id_signin" data-type="icon" data-shape="circle" ></div>
-                    </div>
+				        <div class="g_id_signin" data-type="standard"></div>
+                    </div> -->
                     
                     <div class="otherArea">
                       <hr class="first_hr1" />
@@ -125,6 +125,7 @@
 
     </div>
   </div>
+  <!--  
   <script>
 	  function handleCredentialResponse(response) {
 	      // decodeJwtResponse() is a custom function defined by you
@@ -148,7 +149,8 @@
 	
 	      return JSON.parse(jsonPayload);
 	  };
-  </script>
+  </script> -->
+  
   <!-- Footer 영역 시작 -->
     <jsp:include page="../common/footer.jsp" /> 
   <!-- Footer 영역 끝 -->
