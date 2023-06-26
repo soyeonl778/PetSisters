@@ -23,6 +23,7 @@
 		<result column="MASTER_PIC" property="masterPic" />
 		<result column="MASTER_PET" property="masterPet" />
 		<result column="MASTER_PRO" property="masterPro" />
+		<result column="LAST_MESSAGE" property="lastMessage" />
 	</resultMap>
 	
 	<resultMap id="memberResultSet" type="member">

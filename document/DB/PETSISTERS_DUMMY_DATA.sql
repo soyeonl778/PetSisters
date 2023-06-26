@@ -2,7 +2,7 @@
 --------------    회원 테이블 더미    --------------
 --------------------------------------------------
 INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'admin', '$2a$10$SLRkh8Pqzj6otPtToAadCOAK5Rvm8tnuC.1Lp8jM5Z8lnF8XDnbM2', '관리자', '870105', '관리자', '01012341234', 'admin@kh.or.kr', '서울시 영등포구', 'F', 'N', 'N', NULL, 'Y', '/resources/upFiles/member_profiles/1.png', SYSDATE);
-INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user01', '$2a$10$XpDQNtmKS/JsEeGnmWHGHuhsS13As1LkMzuJVV68I8XCtfC4hA3Im', '정재훈', '901205', '햄스터', '01011111111', 'user01@kh.or.kr', '서울시 구로구', 'F', 'Y', 'N', NULL, 'Y', '/resources/upFiles/member_profiles/2.png', SYSDATE);
+INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user01', '$2a$10$XpDQNtmKS/JsEeGnmWHGHuhsS13As1LkMzuJVV68I8XCtfC4hA3Im', '정재훈', '901205', '고객1', '01011111111', 'user01@kh.or.kr', '서울시 구로구', 'F', 'Y', 'N', NULL, 'Y', '/resources/upFiles/member_profiles/2.png', SYSDATE);
 INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user02', '$2a$10$ehe3oCftL/3kloTfPiPc1OrN0LNmENx6f.cvVzuezsSv25ADeNcxK', '김다은', '911219', '멍멍이조아요', '01022222222', 'user02@kh.or.kr', '서울시 동작구', 'F', 'Y', 'N', NULL, 'Y', '/resources/upFiles/member_profiles/3.png', SYSDATE);
 INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user03', '$2a$10$TnADZgZPdOhE32VPtZGUFuaKH6Jx7Sy0bSk5hhKbA/2nDArlCXCQm', '이소연', '920129', '왕언니', '01033333333', 'user03@kh.or.kr', '서울시 강남구', 'F', 'Y', 'N', NULL, 'Y', '/resources/upFiles/member_profiles/4.png', SYSDATE);
 INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL, 'user04', '$2a$10$kzQqxP.r3/ZsSVaCoQsySeD3ra.PI38T7YYJAVW2Lj/jiwNiBXv8e', '이주흔', '000101', '밀레니엄', '01044444444', 'user04@kh.or.kr', '서울시 마포구', 'F', 'Y', 'Y', '2023-05-01', 'Y', '/resources/upFiles/member_profiles/5.png', SYSDATE);
@@ -1755,18 +1755,38 @@ SEQ_PAYMENT.NEXTVAL,
 --------------------------------------------------
 --------------    채팅방 테이블 더미    --------------
 --------------------------------------------------
-INSERT INTO CHAT_ROOM VALUES(SEQ_CHAT_ROOM.NEXTVAL,1,'관리자', '/resources/upFiles/member_profiles/1.png', 'N', 'N', 2,'펫시터1', '/resources/upFiles/member_profiles/2.png', 'Y', 'Y');
-INSERT INTO CHAT_ROOM VALUES(SEQ_CHAT_ROOM.NEXTVAL,3,'펫시터2','/resources/upFiles/member_profiles/3.png', 'N', 'N', 1,'관리자', '/resources/upFiles/member_profiles/1.png', 'Y', 'Y');
+INSERT INTO CHAT_ROOM VALUES(SEQ_CHAT_ROOM.NEXTVAL,3,'펫시터2','/resources/upFiles/member_profiles/3.png', 'Y', 'Y', 2,'정재훈', '/resources/upFiles/member_profiles/1.png', 'Y', 'Y', '넹 감사합니다!!');
+INSERT INTO CHAT_ROOM VALUES(SEQ_CHAT_ROOM.NEXTVAL,4,'펫시터3','/resources/upFiles/member_profiles/4.png', 'Y', 'N', 2,'정재훈', '/resources/upFiles/member_profiles/1.png', 'Y', 'Y', '호빵이 만나러 출발시에 알림드리고 방문하겠습니다^^');
+INSERT INTO CHAT_ROOM VALUES(SEQ_CHAT_ROOM.NEXTVAL,5,'펫시터4','/resources/upFiles/member_profiles/5.png', 'Y', 'Y', 2,'정재훈', '/resources/upFiles/member_profiles/1.png', 'Y', 'Y', '네 알겠습니다~');
+INSERT INTO CHAT_ROOM VALUES(SEQ_CHAT_ROOM.NEXTVAL,6,'펫시터5','/resources/upFiles/member_profiles/6.png', 'Y', 'N', 2,'정재훈', '/resources/upFiles/member_profiles/1.png', 'Y', 'Y', '사람을 엄청 좋아해요 ㅎㅎ 잘부탁드립니다 ㅠㅠ');
+INSERT INTO CHAT_ROOM VALUES(SEQ_CHAT_ROOM.NEXTVAL,7,'펫시터6','/resources/upFiles/member_profiles/7.png', 'Y', 'Y', 2,'정재훈', '/resources/upFiles/member_profiles/1.png', 'Y', 'Y', '비비적비비적 따라 다니네요 너무 이뻐요 ㅎㅎ');
+INSERT INTO CHAT_ROOM VALUES(SEQ_CHAT_ROOM.NEXTVAL,8,'펫시터7','/resources/upFiles/member_profiles/8.png', 'Y', 'N', 2,'정재훈', '/resources/upFiles/member_profiles/1.png', 'Y', 'Y', '감사합니다 ㅎㅎㅎㅎ');
+INSERT INTO CHAT_ROOM VALUES(SEQ_CHAT_ROOM.NEXTVAL,9,'펫시터8','/resources/upFiles/member_profiles/9.png', 'Y', 'Y', 2,'정재훈', '/resources/upFiles/member_profiles/1.png', 'Y', 'Y', '거의 도착했어요!!!');
+INSERT INTO CHAT_ROOM VALUES(SEQ_CHAT_ROOM.NEXTVAL,10,'펫시터9','/resources/upFiles/member_profiles/10.jpg', 'Y', 'N', 2,'정재훈', '/resources/upFiles/member_profiles/1.png', 'Y', 'Y', '안녕하세요! 문의 좀 드리고 싶은게 있어서요');
+INSERT INTO CHAT_ROOM VALUES(SEQ_CHAT_ROOM.NEXTVAL,11,'펫시터10','/resources/upFiles/member_profiles/11.jpg', 'Y', 'N', 2,'정재훈', '/resources/upFiles/member_profiles/1.png', 'Y', 'Y', '안녕하세요~ 보호자님!');
+INSERT INTO CHAT_ROOM VALUES(SEQ_CHAT_ROOM.NEXTVAL,12,'펫시터11','/resources/upFiles/member_profiles/12.jpg', 'Y', 'N', 2,'정재훈', '/resources/upFiles/member_profiles/1.png', 'Y', 'Y', '제가 감사하죠 ㅎㅎ 덕분에 눈호강했어요 ㅎㅎㅎ');
+INSERT INTO CHAT_ROOM VALUES(SEQ_CHAT_ROOM.NEXTVAL,13,'펫시터12','/resources/upFiles/member_profiles/13.jpg', 'Y', 'N', 2,'정재훈', '/resources/upFiles/member_profiles/1.png', 'Y', 'Y', '다음에도 잘부탁드립니다!');
+INSERT INTO CHAT_ROOM VALUES(SEQ_CHAT_ROOM.NEXTVAL,14,'펫시터13','/resources/upFiles/member_profiles/14.jpg', 'Y', 'N', 2,'정재훈', '/resources/upFiles/member_profiles/1.png', 'Y', 'Y', 'ㅎㅎㅎㅎㅎ');
+INSERT INTO CHAT_ROOM VALUES(SEQ_CHAT_ROOM.NEXTVAL,15,'펫시터14','/resources/upFiles/member_profiles/15.jpg', 'Y', 'N', 2,'정재훈', '/resources/upFiles/member_profiles/1.png', 'Y', 'Y', '넵~^^ 담에 또 뵈어요!');
+INSERT INTO CHAT_ROOM VALUES(SEQ_CHAT_ROOM.NEXTVAL,16,'펫시터15','/resources/upFiles/member_profiles/16.jpg', 'Y', 'N', 2,'정재훈', '/resources/upFiles/member_profiles/1.png', 'Y', 'Y', '네~');
 
 --------------------------------------------------
 --------------    메세지 테이블 더미    --------------
 --------------------------------------------------
-INSERT INTO MESSAGE VALUES(SEQ_MESSAGE.NEXTVAL, '메세지내용1', DEFAULT, 1, 1, DEFAULT);
-INSERT INTO MESSAGE VALUES(SEQ_MESSAGE.NEXTVAL, '메세지내용2', DEFAULT, 1, 1, DEFAULT);
-INSERT INTO MESSAGE VALUES(SEQ_MESSAGE.NEXTVAL, '메세지내용3', DEFAULT, 1, 1, DEFAULT);
-INSERT INTO MESSAGE VALUES(SEQ_MESSAGE.NEXTVAL, '메세지내용1', DEFAULT, 2, 2, DEFAULT);
-INSERT INTO MESSAGE VALUES(SEQ_MESSAGE.NEXTVAL, '메세지내용2', DEFAULT, 2, 2, DEFAULT);
-INSERT INTO MESSAGE VALUES(SEQ_MESSAGE.NEXTVAL, '메세지내용3', DEFAULT, 2, 2, DEFAULT);
+INSERT INTO MESSAGE VALUES(SEQ_MESSAGE.NEXTVAL, '안녕하세요~ 보호자님!
+이번 돌봄을 맡게된
+펫시터2 입니다!
+추가 요청사항 또는
+주의사항이 있으시면
+채팅으로 언제든지
+말씀해주세요 :)', TO_DATE('2023-06-18 13:30:27', 'YYYY-MM-DD HH24:MI:SS'), 3, 1, DEFAULT);
+INSERT INTO MESSAGE VALUES(SEQ_MESSAGE.NEXTVAL, '우리 코코가 살이 조금 쪄서 간식은 조금만 주세요 ㅎㅎㅎ', TO_DATE('2023-06-18 13:52:15', 'YYYY-MM-DD HH24:MI:SS'), 2, 1, DEFAULT);
+INSERT INTO MESSAGE VALUES(SEQ_MESSAGE.NEXTVAL, '네 알겠습니다! ㅎㅎ 우리 코코 너무 사랑스러워요♥', TO_DATE('2023-06-18 14:00:32', 'YYYY-MM-DD HH24:MI:SS'), 3, 1, DEFAULT);
+INSERT INTO MESSAGE VALUES(SEQ_MESSAGE.NEXTVAL, '히히 감사합니다 ㅠㅠ 너무 잘 봐주셔서 감사해요ㅎㅎ', TO_DATE('2023-06-18 14:02:59', 'YYYY-MM-DD HH24:MI:SS'), 2, 1, DEFAULT);
+INSERT INTO MESSAGE VALUES(SEQ_MESSAGE.NEXTVAL, '제가 감사하죠 덕분에 눈호강 했어요♥', TO_DATE('2023-06-18 14:05:07', 'YYYY-MM-DD HH24:MI:SS'), 3, 1, DEFAULT);
+INSERT INTO MESSAGE VALUES(SEQ_MESSAGE.NEXTVAL, '다음에도 잘 부탁드려요!!ㅎㅎㅎ', TO_DATE('2023-06-18 14:08:48', 'YYYY-MM-DD HH24:MI:SS'), 2, 1, DEFAULT);
+INSERT INTO MESSAGE VALUES(SEQ_MESSAGE.NEXTVAL, '넹 감사합니다!!', TO_DATE('2023-06-18 14:15:18', 'YYYY-MM-DD HH24:MI:SS'), 3, 1, DEFAULT);
+
 
 ----------------------------------------------------------------
 --------------    커뮤니티 (일반게시판) 테이블 더미    --------------
@@ -1817,11 +1837,11 @@ INSERT INTO REPLY VALUES (SEQ_REPLY.NEXTVAL, '댓글입니다', DEFAULT, DEFAULT, 11,
 --------------------------------------------------
 ------------    펫시터 지원 테이블 더미    ------------
 --------------------------------------------------
-INSERT INTO SUPPORT VALUES(SEQ_SUPPORT.NEXTVAL, '서울시 구로구', 23, 'N','Y', '펫시터가 좋아서 지원하게 되었습니다.', '펫시터가 좋아서 지원하게 되었습니다.', 'Y',NULL, 8);
-INSERT INTO SUPPORT VALUES(SEQ_SUPPORT.NEXTVAL, '서울시 구로구', 23, 'N','Y', '펫시터가 좋아서 지원하게 되었습니다.', '펫시터가 좋아서 지원하게 되었습니다.', 'Y',NULL, 9);
-INSERT INTO SUPPORT VALUES(SEQ_SUPPORT.NEXTVAL, '서울시 구로구', 23, 'N','Y', '펫시터가 좋아서 지원하게 되었습니다.', '펫시터가 좋아서 지원하게 되었습니다.', 'Y',NULL, 10);
-INSERT INTO SUPPORT VALUES(SEQ_SUPPORT.NEXTVAL, '서울시 구로구', 23, 'N','Y', '펫시터가 좋아서 지원하게 되었습니다.', '펫시터가 좋아서 지원하게 되었습니다.', 'Y',NULL, 11);
-INSERT INTO SUPPORT VALUES(SEQ_SUPPORT.NEXTVAL, '서울시 구로구', 23, 'N','Y', '펫시터가 좋아서 지원하게 되었습니다.', '펫시터가 좋아서 지원하게 되었습니다.', 'Y',NULL, 12);
+INSERT INTO SUPPORT VALUES(SEQ_SUPPORT.NEXTVAL, '서울시 구로구', 23, 'N','Y', '펫시터를 해보고 싶어서<br>지원하게 되었습니다.<br>잘부탁드립니다<br>감사합니다.', '펫시터가 좋아서 지원하게 되었습니다.', 'Y',NULL, 8);
+INSERT INTO SUPPORT VALUES(SEQ_SUPPORT.NEXTVAL, '서울시 구로구', 23, 'N','Y', '펫시터를 해보고 싶어서<br>지원하게 되었습니다.<br>잘부탁드립니다<br>감사합니다.', '펫시터가 좋아서 지원하게 되었습니다.', 'Y',NULL, 9);
+INSERT INTO SUPPORT VALUES(SEQ_SUPPORT.NEXTVAL, '서울시 구로구', 23, 'N','Y', '펫시터를 해보고 싶어서<br>지원하게 되었습니다.<br>잘부탁드립니다<br>감사합니다.', '펫시터가 좋아서 지원하게 되었습니다.', 'Y',NULL, 10);
+INSERT INTO SUPPORT VALUES(SEQ_SUPPORT.NEXTVAL, '서울시 구로구', 23, 'N','Y', '펫시터를 해보고 싶어서<br>지원하게 되었습니다.<br>잘부탁드립니다<br>감사합니다.', '펫시터가 좋아서 지원하게 되었습니다.', 'Y',NULL, 11);
+INSERT INTO SUPPORT VALUES(SEQ_SUPPORT.NEXTVAL, '서울시 구로구', 23, 'N','Y', '펫시터를 해보고 싶어서<br>지원하게 되었습니다.<br>잘부탁드립니다<br>감사합니다.', '펫시터가 좋아서 지원하게 되었습니다.', 'Y',NULL, 12);
 
 --------------------------------------------------
 -----------------    커밋구문    ------------------

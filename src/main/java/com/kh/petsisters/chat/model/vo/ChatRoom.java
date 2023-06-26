@@ -27,6 +27,7 @@ public class ChatRoom {
 	private String masterPet;
 	private String masterPro;
 	
+	private String lastMessage;
 	private int unReadCount;
 
 }

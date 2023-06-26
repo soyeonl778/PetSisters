@@ -33,7 +33,7 @@
             <div class="myProfileArea">
               <img class="myProfileImage" src="${loginUser.filePath}" alt="profile">
             </div>
-            <div class="chatMyName">${loginUser.userNickname}</div>
+            <div class="chatMyName">${loginUser.userName}</div>
           </div>
 
 
@@ -592,7 +592,7 @@
               }
               
               // 마지막 메세지 미리보기 표시
-              $previewDescription.append("<span class='descriptionText'>나중에 메세지 표시부분 완료 후 기능추가예정</span>");
+              $previewDescription.append("<span class='descriptionText'>" + data[i].lastMassage + "</span>");
               
               // 미리보기 제목 영역과 설명 영역을 미리보기 영역에 추가
               $previewArea.append($previewTitleArea);
@@ -642,7 +642,7 @@
               }
               
               // 마지막 메세지 미리보기 표시
-              $previewDescription.append("<span class='descriptionText'>나중에 메세지 표시부분 완료 후 기능추가예정</span>");
+              $previewDescription.append("<span class='descriptionText'>" + data[i].lastMessage + "</span>");
               
               // 미리보기 제목 영역과 설명 영역을 미리보기 영역에 추가
               $previewArea.append($previewTitleArea);
