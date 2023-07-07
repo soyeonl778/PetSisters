@@ -53,7 +53,7 @@
      <td> 🏴 Back-end </td>
    </tr>
     <tr>
-     <td> <a href="">김다은</a> </td>
+     <td> <a href="">임보영</a> </td>
      <td> 🏴 Back-end </td>
    </tr>
      <tr>
