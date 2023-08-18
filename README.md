@@ -1,6 +1,11 @@
 ## **🐶 반려동물 돌보미! 펫시스터즈 입니다.**
 
-<br/><br/>
+<br/>
+
+![ezgif com-video-to-gif](https://github.com/Jeong-JaeHoon1/PetSisters/assets/89343390/551fa30d-1309-489b-be36-d13c09da4651)
+
+<br/>
+
 
 ## 🚩 About
 ### PetSisters 는 모든 반려인들의 가장 큰 고민거리인 혼자 남겨진 반려동물에 대한<br> 걱정을 덜어주기 위해 만든 펫시터 매칭 서비스! 반려견 정보공유 커뮤니티는 덤!
