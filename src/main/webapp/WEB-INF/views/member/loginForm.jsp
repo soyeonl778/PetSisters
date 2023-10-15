@@ -6,9 +6,14 @@
 
 <head>
   <meta charset="UTF-8" />
+  <!-- 
+  <meta name="google-signin-scope" content="profile email">
+  <meta name="google-signin-client_id" content="678132708734-vap1qk9p3ivf91odc7pgpn5f3oho6uj9.apps.googleusercontent.com">
+   -->
 <link rel="stylesheet" href="/resources/css/member/loginForm.css">
 <link rel="stylesheet" href="/resources/css/common/memberForm.css">
 <jsp:include page="../common/common.jsp" />
+<script src="https://apis.google.com/js/platform.js" async defer></script>
 
   <title>로그인</title>
 </head>
@@ -59,6 +64,14 @@
                                 <input type="password" name="userPwd" placeholder="영문+숫자+특수문자 조합8~16자리를 입력해주세요."
                                   maxlength="16" id="userPwd" name="userPwd" required><br>
                               </p>
+                              
+                              
+                              <%-- 구글연동 로그인 --%>
+                              	<div>나오나??</div>
+								<div class="g-signin2" data-onsuccess="google" data-theme="dark">구글로그인</div>	                              
+                              
+                              <%-- 구글연동 로그인 --%>
+                              
                               <c:choose>
                               <c:when test="${ not empty cookie.saveId }">
                                 <span class="input_btn checkbox">
@@ -155,5 +168,17 @@
     <jsp:include page="../common/footer.jsp" /> 
   <!-- Footer 영역 끝 -->
 
+<script>
+
+	function google(googleUser){
+		
+		var profile = googleUser.getBasicProfile();
+		
+		var id_token = googleUser.getAuthResponse().id_token;
+		
+	}
+
+
+</script>
 </body>
 </html>
